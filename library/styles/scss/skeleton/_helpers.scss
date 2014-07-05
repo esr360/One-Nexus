@@ -1,0 +1,184 @@
+
+/* Helper Classes
+======================================================================= */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+    &:before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 150%;
+    }
+}
+
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.display-table {
+    display: table;
+}
+
+.display-table-row {
+    display: table-row;
+}
+
+.display-table-cell {    
+    display: table-cell;
+}
+
+.margin-sep {
+    margin-bottom: $base-margin;
+    height: 1px;
+    width: 100%;
+}
+
+/*********************
+Column Vertical Align
+*********************/
+
+.va-top {
+    vertical-align: top !important;
+}
+
+.va-middle {
+    vertical-align: middle !important;
+}
+
+.va-bottom {
+    vertical-align: bottom !important;
+}
+
+/*********************
+Vertical Align Middle
+*********************/
+
+%vam {    
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/*********************
+CLEARFIXIN'
+*********************/
+
+.clearfix, .cf {
+    zoom: 1;
+    &:before, &:after { content: ""; display: table; }
+    &:after { clear: both; }
+}
+
+// @extend .cf;
+
+/*********************
+TOOLS
+*********************/
+
+// http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+.image-replacement {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/*********************
+Horizontal Rules
+*********************/
+
+hr.stripes {
+    width: 100%;
+    height: 10px;    
+    background-image: url(../../images/stripe-overlay.png);
+    background-repeat: repeat;
+    opacity: 0.3;
+    border: none;
+    margin: 2em 0;
+}
+hr.line {
+    color: rgba(0,0,0,0.2);
+    margin: 1em 0;
+}
+
+.text-left   { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-right  { text-align: right !important; }
+
+.left  { float: left !important; }
+.right { float: right !important; }
+
+/*********************
+Responsive Helpers
+*********************/
+
+.min-bp1 { /* Show only when resolution is at least breakpoint-1 */
+    @media (max-width: $breakpoint-1) {
+        display: none !important;
+    }  
+}
+.max-bp1 { /* Show only when resolution is at most breakpoint-1 */
+    @media (min-width: $breakpoint-1) {
+        display: none !important;
+    }  
+}
+.min-bp2 { /* Show only when resolution is at least breakpoint-2 */
+    @media (max-width: $breakpoint-2) {
+        display: none !important;
+    }  
+}
+.max-bp2 { /* Show only when resolution is at most breakpoint-2 */
+    @media (min-width: $breakpoint-2) {
+        display: none !important;
+    }  
+}
+.min-bp3 { /* Show only when resolution is at least breakpoint-3 */
+    @media (max-width: $breakpoint-3) {
+        display: none !important;
+    }  
+}
+.max-bp3 { /* Show only when resolution is at most breakpoint-3 */
+    @media (min-width: $breakpoint-3) {
+        display: none !important;
+    }  
+}
+.min-bp4 { /* Show only when resolution is atleast breakpoint-4 */
+    @media (max-width: $breakpoint-4) {
+        display: none !important;
+    }  
+}
+.max-bp4 { /* Show only when resolution is at most breakpoint-4 */
+    @media (min-width: $breakpoint-4) {
+        display: none !important;
+    }  
+}

@@ -1,0 +1,110 @@
+
+/* Buttons
+================================================================ */
+
+[class^="button"] {
+
+/******************************************************************
+Basic Structure
+******************************************************************/
+
+	background: $grey;
+	display: inline-block;
+	padding: 0 1em;
+	color: $white;
+	cursor: pointer;
+	text-decoration: none;
+	line-height: 2.4;
+	&:hover {
+		background: darken($grey, 10%);
+		text-decoration: none;
+	}
+
+/******************************************************************
+Size Variants
+******************************************************************/
+
+	&[class*="small"] {
+		font-size: 0.8em;
+	}
+
+	&[class*="large"] {
+		font-size: 1.2em;
+	}
+
+/******************************************************************
+Style Variants
+******************************************************************/
+ 
+	&[class*="border"] {
+		background: none;
+		border: 2px solid;
+		color: $grey;
+		&:hover {
+			background: $brand-1;
+			border-color: $brand-1;
+			color: white;
+		}
+	}
+
+	&[class*="disabled"] {
+		opacity: 0.6;
+		cursor: default;
+		transition-delay: 999s;
+	}
+
+	&[class*="full-width"] {
+		width: 100%;
+		text-align: center;
+		padding: 0.4em;
+	}
+
+	&[class*="round"] {
+		border-radius: 0.25em;
+	}
+
+/******************************************************************
+Color Variants
+******************************************************************/
+ 
+	/* Brand Colors */
+
+	@function brand($name) {
+		@return nth($brand-colors, index($brand-names, $name))
+	}
+
+	@each $name in $brand-names {
+		&[class*="#{$name}"] {
+			background: brand($name);
+			&:hover {
+				background: darken(brand($name), 10%);
+			}
+		}
+	} 
+
+	/* Emotional Colors */
+
+	@function emotional($name) {
+		@return nth($emotional-colors, index($emotional-names, $name))
+	}
+
+	@each $name in $emotional-names {
+		&[class*="#{$name}"] {
+			background: emotional($name);
+			&:hover {
+				background: darken(emotional($name), 10%);
+			}
+		}
+	}
+
+} /* End [class^="button"] */
+
+/* Makes input, button and .button elements equal height in Firefox */
+input::-moz-focus-inner,
+button::-moz-focus-inner
+{ 
+    border: 0;
+    padding: 0;
+	margin-top: 1px; 
+	margin-bottom: 1px;
+}

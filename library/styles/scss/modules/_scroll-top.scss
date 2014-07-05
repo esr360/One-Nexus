@@ -1,0 +1,39 @@
+
+/* Scroll to Top
+======================================================================= */
+
+.scroll-top {
+
+	display: none;
+	opacity: 0;
+	visibility: hidden;
+	position: fixed;
+	bottom: 4rem;
+	right: 4rem;
+	font-size: 2em;
+	color: $grey;
+	height: 45px;
+	width: 45px;
+	&.active {
+		opacity: 0.5;
+		visibility: visible;
+	}
+	&:hover {
+		text-decoration: none;
+		opacity: 1;
+		color: $brand-1;
+	}
+	&:before {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 50%;
+		text-align: center;
+		transform: translateY(-50%);
+	}
+
+	@media (min-width: 1500px) {
+		display: block;
+	}
+
+} /* end .scroll-top */

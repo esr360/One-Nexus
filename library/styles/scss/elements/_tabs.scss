@@ -1,0 +1,56 @@
+
+/* Tabs
+================================================================ */
+
+.tabs {
+
+	.nav {
+		display: block;
+		font-size: 0;
+		margin: 0;
+		padding: 0;
+		li {
+			padding: 0.6em 1em;
+			cursor: pointer;
+			display: inline-block;
+			border: 1px solid rgba(0,0,0,0.15);
+			border-bottom: 0;
+			border-right: none;
+			font-size: 1rem;
+			transition: 0.5s;
+			&.active {
+				background: lighten($dark-white, 4%);
+				border-bottom: 1px solid lighten($dark-white, 4%);
+			}
+			&:hover {
+				text-decoration: underline;
+			}
+			&:last-of-type {
+				border-right: 1px solid rgba(0,0,0,0.15);
+			}
+		}
+	}
+	section {	
+		background: lighten($dark-white, 4%);
+		margin-top: -1px;
+		display: none;
+		border: 1px solid rgba(0,0,0,0.15);
+		padding: 1.5em;
+		font-weight: lighter;
+		&.active {
+			display: block;
+		}
+	}
+	/* Full width tab buttons */
+	&.full {
+		.nav {
+			display: table;
+			width: 100%;
+			position: relative;
+			li {
+				display: table-cell;
+			}
+		}
+	}
+
+}

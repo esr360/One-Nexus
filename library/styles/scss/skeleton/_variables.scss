@@ -1,0 +1,94 @@
+
+/* Variables
+================================================================ */
+
+/******************************************************************
+Skeleton
+******************************************************************/
+
+$main-width       :   1200px; /* Change to any px or % value */
+$max-width        :   90%;
+
+$columns          :   12;
+$gutter           :   2.5%;
+
+/******************************************************************
+Breakpoints
+******************************************************************/
+
+$breakpoint-0     :   0px;
+$breakpoint-1     :   460px;
+$breakpoint-2     :   720px;
+$breakpoint-3     :   940px;
+$breakpoint-4     :   1200px;
+$breakpoint-5     :   1400px;
+
+/******************************************************************
+Typography
+******************************************************************/
+
+/* Fonts */
+
+$font-1           :   'Lato', sans-serif;
+$font-2           :   'Cookie', cursive;
+$font-3           :   'Droid Serif', serif;
+$font-4           :   'Roboto', sans-serif;
+
+$sans-serif       :   "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif            :   "Georgia", Cambria, Times New Roman, Times, serif;
+
+/* Font Sizes */
+
+$base-font-size   :   1rem;
+$small-font-size  :   $base-font-size * 0.85;
+
+/******************************************************************
+Color Palette
+******************************************************************/
+
+/* Greyscale Colors */
+
+$white            :   #ffffff;
+$dark-white       :   #f1f1f1;
+$light-grey       :   #b1b1b1;
+$grey             :   #707070;
+$dark-grey        :   #111111;
+$black            :   #000000;
+
+$greyscale-colors :   $white, $light-grey, $grey, $dark-grey, $black;
+$greyscale-names  :   white, light-grey, grey, dark-grey, black;
+
+/* Branding Colors */
+
+$brand-1          :   #008db6;
+$brand-2          :   #0fa28c;
+$brand-3          :	  #b93362;
+
+$brand-colors     :   $brand-1, $brand-2, $brand-3;
+$brand-names      :   brand-1, brand-2, brand-3;
+
+/* Alert Box Colors */
+
+$alert-yellow     :   #e7d16c;
+$alert-red        :   #CB8888;
+$alert-green      :   #9cc079;
+$alert-blue       :   #79a9c0;
+
+/* Emotional Colors */
+
+$help             :   #e7d16c;
+$danger           :   #CB8888;
+$success          :   #9cc079;
+$info             :   #79a9c0;
+
+$emotional-colors     :   $help, $danger, $success, $info;
+$emotional-names      :   help, danger, success, info;
+
+/******************************************************************
+Theming
+******************************************************************/
+
+$base-margin      :   1.5rem;
+
+$main-text-color  :   $grey;
+$background-color :   $dark-white;

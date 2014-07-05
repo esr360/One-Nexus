@@ -1,0 +1,45 @@
+
+/* Headings
+================================================================ */
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1;
+    b {
+        font-weight: bolder;
+    }
+    i {
+        font-style: normal;
+        color: $brand-1;
+    }
+    strong {
+        text-transform: uppercase;
+        font-weight: lighter;
+    }
+    em {
+        font-weight: lighter;
+        font-weight: 100;
+        font-style: normal;
+    }
+    p {
+        font-weight: normal;
+    } 
+    &.highlight {
+        margin-left: 0.3em;
+        line-height: 1.45;
+        > b {
+            background: $brand-1;
+            color: white;
+            font-weight: lighter;
+            padding-bottom: 3px;
+            box-shadow: 0.3em 0 0 $brand-1, -0.3em 0 0 $brand-1;
+            text-shadow: none;
+        }
+    }
+    &.dotted {
+        border-bottom: 1px dotted rgba(0,0,0,0.2);
+        padding-bottom: 0.75rem;
+        a {
+            color: inherit;
+        }
+    }
+}

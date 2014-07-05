@@ -1,0 +1,29 @@
+
+/* Homepage
+======================================================================= */
+
+body.home {
+
+	#content {		
+		.button {
+			width: 100%;
+			margin-bottom: 1em;
+			@media (min-width: $breakpoint-1) {
+				width: auto;
+				margin-bottom: 0;
+			}
+		}
+	}
+	.font-2 {
+		font-size: 1.5em;
+		line-height: 0;
+	}
+	.what-am-i {
+		padding: 7em 0;
+		h3 {
+			display: inline;
+			position: relative;
+			left: -2.25em;
+		}
+	}
+}

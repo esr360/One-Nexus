@@ -1,0 +1,49 @@
+
+/* Dropdown Navigation
+   Used in: "modules/_main-nav.scss"
+================================================================ */
+
+&:hover > ul {
+	display: block;
+}
+
+ul {
+	display: none;
+	position: absolute;
+	z-index: 999;
+	min-width: 185px;
+	text-align: left;
+	padding: 0;
+	margin: 0;
+	li {
+		display: block;
+		a {
+			background: $dark-grey;
+			color: white;
+			line-height: 45px;
+		}
+		&:hover {
+			a {
+				background: darken($brand-1, 10%);
+			}
+			> ul {
+				display: block;
+				a:hover {
+					background: darken($brand-1, 20%);
+				}
+			}
+		}
+	}
+	ul {
+		top: 0;
+		right: 100%;
+		transition: 0.4s;
+		backface-visibility:hidden;
+	}
+	@media (min-width: $breakpoint-4) {
+		ul {
+			left: 100%;
+			right: auto;
+		}
+	}	
+}
