@@ -1,0 +1,44 @@
+
+/* Tables
+================================================================ */
+
+table {
+
+	width: 100%;
+	thead, tfoot {
+		color: white;
+		td {			
+			padding: 0 0.75rem;
+			line-height: 2.4;
+		}
+	}
+	thead {
+		background: $brand-1;
+	}
+	tfoot {
+		background: lighten($dark-grey, 5%);
+	}
+	tbody {
+		td {
+			line-height: 2;
+			padding-left: 0.75rem;
+			border-bottom: 1px solid rgba(0,0,0,0.1);
+			border-left: 1px solid rgba(0,0,0,0.1);
+			&:first-child {
+				border-left: none;
+				padding-left: 0;
+			}
+		}
+		tr {
+			&:last-child {
+				td {
+					border-bottom: none;
+				}
+			}
+		}
+	}
+	&.table-fixed {		
+		table-layout: fixed;
+	}
+
+} // End table

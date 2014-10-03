@@ -1,0 +1,55 @@
+
+/* Main Navigation
+================================================================ */
+
+.main-nav {
+
+/******************************************************************
+Start building the basic layout for lowest resoluton
+******************************************************************/
+
+	ul {
+		@extend ul.reset;
+		display: none;
+		font-size: 0;
+	    li {
+		    @import "dropdown-nav";
+		    ul {
+		    	padding-left: 2em;
+		    }  
+		    &:hover {
+		    	> a {		    		
+					color: white;
+					background: darken($brand-1, 10%);
+		    	}
+		    }
+	    }
+    	a {
+			text-decoration: none;
+			display: block;	
+			line-height: 4.2em;
+			color: $grey;
+			padding: 0 1em;
+			font-size: 1rem;
+    	}
+	}
+
+/******************************************************************
+Start building for larger resolutions
+******************************************************************/
+
+	@media (min-width: $breakpoint-3) {
+		text-align: right;
+		ul {
+			white-space: nowrap;
+		    li {
+				display: inline-block;
+				position: relative;
+		    }
+		}
+		> ul {
+			display: block;
+		}
+	}
+
+} // End .main-nav

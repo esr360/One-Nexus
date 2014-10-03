@@ -1,0 +1,83 @@
+
+/* Grid System
+================================================================ */
+
+/******************************************************************
+Individual Column
+******************************************************************/
+
+[class*="span"] {
+    display: inline-block;
+    zoom: 1; *display: inline; /* IE < 8: fake inline-block */
+    vertical-align: top;
+	margin-left: $gutter;
+	&:first-of-type {
+		margin-left: 0;
+	}
+}
+
+/******************************************************************
+Custom Column Grid
+******************************************************************/
+
+@for $i from 1 through $columns {
+	.span-#{$i} {			
+		width: ( (100/$columns) * $i) - ( ( ((100 / ((100/$columns) * $i)) - 1) * $gutter ) / ( $columns / $i ) )
+	}
+}
+
+.row {
+
+/******************************************************************
+Default Column Stacking
+******************************************************************/
+
+	@media (max-width: $breakpoint-3) {
+		&:not([class*="bp"]) {
+			> [class*="span"] {
+				margin-left: 0;
+				width: 100%;
+			}
+			&.block-columns {
+				> [class*="span"] {
+					display: inline-block;
+				}
+			}
+		}
+	}
+
+/******************************************************************
+Custom Column Stacking
+******************************************************************/
+
+	@function bp($name) {
+		@return nth($bp-values, index($bp-names, $name))
+	}
+
+	@each $name in $bp-names {
+		@media (max-width: bp($name)) {
+			&.#{$name} {
+				[class*="span"] {
+					margin-left: 0;
+					width: 100%;
+				}
+				&.block-columns {
+					> [class*="span"] {
+						display: inline-block;
+					}
+				}
+			}
+		}
+	} 	
+
+/******************************************************************
+Block Columns
+******************************************************************/
+
+	&.block-columns {
+		> [class*="span"] {
+			display: table-cell;
+		}
+	}
+
+} // End .row

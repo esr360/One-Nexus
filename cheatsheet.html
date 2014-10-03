@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>One Nexus - Cheatsheet</title>
+    <meta name="description" content="A mobile-first front end solution built in SASS.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <!-- Icons & fFvicons -->
+    <link rel="apple-touch-icon" href="assets/images/apple-icon-touch.png">
+    <link rel="icon" href="assets/images/favicon.png">
+    <!--[if IE]>
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <![endif]-->
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/styles/css/app.css">
+    <!-- Modernizr -->
+    <script src="assets/js/modernizr.min.js"></script>
+
+    <!-- Cheatsheet CSS -->
+
+    <style type="text/css">
+
+        h2 a:hover {
+            text-decoration: none;
+        }
+        .module-demo {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1em;
+            position: relative;
+        }
+        .grid-system .row div {
+            background: rgba(0,0,0,0.1);
+            text-align: center;
+            line-height: 3;
+            border-radius: 4px;
+        }
+        .view-more {
+            margin-left: 5px;
+        }
+        .thumbnail {
+            width: 100%;
+        }
+        .module-demo .breadcrumb {
+            margin: 0;
+        }
+        .module-demo .app-footer {
+            margin-bottom: 0;
+        }
+        .module-demo .app-header .container,
+        .module-demo .app-footer .container
+        {
+            max-width: 100%;
+        }
+        .logo {
+            padding-left: 1em;
+        }
+        .module-demo .nav-trigger {
+            left: auto;
+            margin: 1rem auto;
+            position: relative;
+            right: auto;
+            top: auto;
+        }
+        .responsive-square img, .responsive-circle img {
+            width: 100%;
+        }
+        .module-demo .app-header .nav-trigger {
+            display: none;
+        }
+        @media (min-width: 940px) {
+            .owl-item {
+                max-height: 400px;
+            }
+            .owl-item > img {
+                width: 100%;
+                position: relative;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
+        }
+        @media (max-width: 940px) {
+            [class*="alert"]:not(:last-child) {
+                margin-bottom: 1.5em;
+            }
+            .grid-system .row div {
+                margin-bottom: 1em;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="site-content"><!-- For Mobile Menu -->
+
+        <header class="app-header" id="app-header">
+            <div class="container">
+                <div class="header-wrapper">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="/">
+                            <img src="assets/images/logo.png" alt="One Nexus" />
+                        </a>
+                    </div>
+                    <!-- Main-Nav -->
+                    <nav class="main-nav">
+                        <ul>
+                            <li>
+                                <a href="#">Header Link 1</a>
+                                <ul>
+                                    <li><a href="#">Link 1</a></li>
+                                    <li><a href="#">Link 2</a></li>
+                                    <li><a href="#">Link 3</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Header Link 2</a></li>
+                            <li><a href="#">Header Link 3</a></li>
+                        </ul>
+                    </nav>
+                    <!-- Mobile Menu Trigger Button -->
+                    <a class="nav-trigger max-bp3" href="#"></a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="container" id="main">
+
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <ul>
+                    <li><a href="index.html">One Nexus</a></li>
+                    <li><a href="cheatsheet.html">Cheatsheet</a></li>
+                </ul>
+            </nav>
+
+            <p class="alert-success">Be sure to check out our <a target="blank" href="http://www.onenexusproject.com/documentation/">complete documentation</a> for more information.</p>
+
+            <h2 class="dotted">
+                <a href="http://www.onenexusproject.com/documentation/features/responsive-grid-system/" target="blank">
+                    <i><em>Responsive Grid system</em></i>
+                </a>
+            </h2>
+
+            <section class="grid-system">
+
+                <div class="row">
+                    <div class="span-1">1</div>
+                    <div class="span-1">1</div>
+                    <div class="span-1">1</div>
+                    <div class="span-1">1</div>
+                    <div class="span-1">1</div>
+                    <div class="span-1">1</div>
+                    <div class="span-1">1</div>
+                    <div class="span-1">1</div>
+                    <div class="span-1">1</div>
+                    <div class="span-1">1</div>
+                    <div class="span-1">1</div>
+                    <div class="span-1">1</div>
+                </div>
+                <br />
+                <div class="row">                    
+                    <div class="span-4">4</div>
+                    <div class="span-4">4</div>
+                    <div class="span-4">4</div>
+                </div>
+                <br />
+                <div class="row">                    
+                    <div class="span-3">3</div>
+                    <div class="span-9">9</div>
+                </div>              
+                <hr class="dotted" />
+                <div class="row text-center">
+                    <div class="span-6">centered</div>
+                </div>
+                <hr class="dotted" />
+                <div class="row">
+                    <div class="span-3">special positioning</div>
+                    <div class="span-6"></div>
+                    <div class="span-3">special positioning</div>
+                </div>
+                <hr class="dotted" />
+                <div class="row">
+                    <div class="span-3 va-top">
+                        <p>vertical align top</p>
+                    </div>
+                    <div class="span-3 va-middle">
+                        <p>vertical align middle</p>
+                    </div>
+                    <div class="span-3 va-bottom">
+                        <p>vertical align bottom</p>
+                    </div>
+                    <div class="span-3 va-middle" style="min-height: 175px;">
+                        <p>lorem ipsum dolor amet</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <br />
+
+            <h2 class="dotted">
+                <a href="http://www.onenexusproject.com/documentation/elements/general/" target="blank">
+                    <i><em>General Elements</em></i>
+                </a>
+            </h2>
+
+            <section>
+
+                <h4><strong>Alert Bars</strong></h4>
+
+                <div class="row">
+                    <div class="alert-help span-6">This is a <b>helpful</b> alert bar.</div>
+                    <div class="alert-danger span-6">This is a <b>dangerous</b> alert bar.</div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="alert-success span-6">This is a <b>successful</b> alert bar.</div>
+                    <div class="alert-info span-6">This is an <b>informative</b> alert bar.</div>
+                </div>
+
+                <br />
+
+                <div class="row">
+                    <div class="alt alert-help span-6">
+                        <h4 class="dotted"><strong><b>This is a helpful alert bar</b></strong></h4>
+                        <p>These alert bars are useful for displaying larger amounts of information to your visitors.</p>
+                    </div>
+                    <div class="alt alert-danger span-6">
+                        <h4 class="dotted"><strong><b>This is a dangerous alert bar</b></strong></h4>
+                        <p>These alert bars are useful for displaying larger amounts of information to your visitors.</p>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="alt alert-success span-6">
+                        <h4 class="dotted"><strong><b>This is a successful alert bar</b></strong></h4>
+                        <p>These alert bars are useful for displaying larger amounts of information to your visitors.</p>
+                    </div>
+                    <div class="alt alert-info span-6">
+                        <h4 class="dotted"><strong><b>This is an informative alert bar</b></strong></h4>
+                        <p>These alert bars are useful for displaying larger amounts of information to your visitors.</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <hr class="line" />
+
+            <section>
+
+                <h4><strong>Buttons</strong></h4>
+
+                <p class="module-demo">
+                    <a class="button brand-1" href="#">Brand-1 Button</a>
+                    <a class="button brand-2" href="#">Brand-2 Button</a>
+                    <a class="button brand-3" href="#">Brand-3 Button</a>
+                </p>
+
+                <p class="module-demo">
+                    <a class="button help" href="#">Help Button</a>
+                    <a class="button danger" href="#">Danger Button</a>
+                    <a class="button success" href="#">Success Button</a>
+                    <a class="button info" href="#">Info Button</a>
+                </p>
+
+                <p class="module-demo">
+                    <a class="button large round full-width disabled brand-1" href="#">Large Round Full-Width Disabled Brand-1 Button</a>
+                </p>
+
+            </section>
+
+            <hr class="line" />
+
+            <section>
+
+                <h4><strong>Forms</strong></h4>
+
+                <form>
+                    <section>
+                        <label>First Name</label>
+                        <input type="text" placeholder="Enter your first name" class="box">
+                    </section>
+                    <section>
+                        <label>Last Name</label>
+                        <input type="text" placeholder="Enter your last name" class="box">
+                    </section>
+                    <section>
+                        <label>Email</label>
+                        <input type="email" placeholder="Enter your email address" class="box">
+                    </section>
+                    <hr class="line">
+                    <div class="row">
+                        <section class="span-3">
+                            <span>Age</span>
+                            <select class="box">
+                                <option value="volvo">12-16</option>
+                                <option value="saab">17-21</option>
+                                <option value="opel">22-30</option>
+                                <option value="audi">31+</option>
+                            </select> 
+                        </section>
+                        <section class="span-9">
+                            <label>Favourite Animal</label>
+                            <input type="text" placeholder="Enter your favourite animal" class="box">
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="span-6">
+                            <label>Username</label>
+                            <input type="text" placeholder="Enter your desired username" class="box" required="">
+                        </section>
+                        <section class="span-6">
+                            <label>Password</label>
+                            <input type="password" placeholder="Enter your chosen password" class="box" required="">
+                        </section>
+                    </div>
+                    <section>
+                        <label>Volume</label>
+                        <input type="range" class="box">
+                    </section>
+                    <section class="row">
+                        <div class="span-9 va-middle">
+                            <label class="va-middle">
+                                <input type="checkbox"> Send me pointless newsletters
+                            </label>
+                        </div>
+                        <br class="margin-sep max-bp3">
+                        <div class="span-3 va-middle text-right">
+                            <input type="submit" value="Submit">
+                        </div>
+                    </section>
+                </form>
+            </section>
+
+            <hr class="line" />
+            
+            <section>
+
+                <h4><strong>Icons</strong> <small><a class="view-more" href="http://fortawesome.github.io/Font-Awesome/icons/" target="blank">view more</a></small></h4>
+
+                <div class="module-demo">
+                    <div class="row bp1 text-center fa-icons">
+                        <div class="span-1">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <div class="span-1">
+                            <i class="fa fa-download"></i>
+                        </div>
+                        <div class="span-1">
+                            <i class="fa fa-chevron-right"></i>
+                        </div>
+                        <div class="span-1">
+                            <i class="fa fa-twitter"></i>
+                        </div>
+                        <div class="span-1">
+                            <i class="fa fa-money"></i>
+                        </div>
+                        <div class="span-1">
+                            <i class="fa fa-dollar"></i>
+                        </div>
+                        <div class="span-1">
+                            <i class="fa fa-play"></i>
+                        </div>
+                        <div class="span-1">
+                            <i class="fa fa-picture-o"></i>
+                        </div>
+                        <div class="span-1">
+                            <i class="fa fa-bell"></i>
+                        </div>
+                        <div class="span-1">
+                            <i class="fa fa-pencil"></i>
+                        </div>
+                        <div class="span-1">
+                            <i class="fa fa-shopping-cart"></i>
+                        </div>
+                        <div class="span-1">
+                            <i class="fa fa-camera"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="module-demo">
+                    <a class="social facebook" href="#"></a>
+                    <a class="social twitter" href="#"></a>
+                    <a class="social linkedin" href="#"></a>
+                    <a class="social github" href="#"></a>
+                    <a class="social skype" href="#"></a>
+                    <a class="social pinterest" href="#"></a>
+                    <a class="social instagram" href="#"></a>
+                </p>
+
+                <p class="module-demo">
+                    <a href="#" class="social rss text"></a>
+                    <a href="#" class="social youtube text"></a>
+                    <a href="#" class="social flickr text"></a>
+                    <a href="#" class="social vimeo text"></a>
+                    <a href="#" class="social dribbble text"></a>
+                    <a href="#" class="social behance text"></a>
+                    <a href="#" class="social deviantart text"></a>
+                </p>
+
+                <p class="module-demo">
+                    <a href="#" class="social facebook small"></a>
+                    <a href="#" class="social twitter small"></a>
+                    <a href="#" class="social linkedin small"></a>
+                    <a href="#" class="social dribbble text small"></a>
+                    <a href="#" class="social deviantart text small"></a>
+                </p>
+
+                <p class="module-demo">
+                    <a href="#" class="social facebook large"></a>
+                    <a href="#" class="social twitter large"></a>
+                    <a href="#" class="social linkedin large"></a>
+                    <a href="#" class="social dribbble text large"></a>
+                    <a href="#" class="social deviantart text large"></a>
+                </p>
+
+            </section>
+
+            <hr class="line" />
+            
+            <section>
+
+                <h4><strong>Images</strong></h4>
+
+                <div class="row text-center">
+                    <div class="span-3">
+                        <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg" class="thumbnail">
+                    </div>
+                    <div class="span-3 min-bp3">
+                        <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg" class="thumbnail">
+                    </div>
+                    <div class="span-3 min-bp3">
+                        <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-3.jpg" class="thumbnail">
+                    </div>
+                    <div class="span-3 min-bp3">
+                        <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg" class="thumbnail">
+                    </div>
+                </div>
+                
+                <br />
+
+                <div class="row bp1 text-center">
+                    <div class="span-3">    
+                        <div class="responsive-square">     
+                            <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg">
+                        </div>
+                    </div>
+                    <div class="span-3">    
+                        <div class="responsive-circle">     
+                            <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg">
+                        </div>
+                    </div>
+                    <div class="span-3">    
+                        <div class="responsive-square">     
+                            <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-3.jpg">
+                        </div>
+                    </div>
+                    <div class="span-3">    
+                        <div class="responsive-circle">     
+                            <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg">
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <hr class="line" />
+
+            <section>
+
+                <h4><strong>Tables</strong></h4>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <td colspan="3">Optional Table Header</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>COLOR</td>
+                            <td>NUMBER</td>
+                            <td>VEHICLE</td>
+                        </tr>
+                        <tr>
+                            <td>blue</td>
+                            <td>24</td>
+                            <td>car</td>
+                        </tr>
+                        <tr>
+                            <td>green</td>
+                            <td>38</td>
+                            <td>bike</td>
+                        </tr>
+                        <tr>
+                            <td>red</td>
+                            <td>55</td>
+                            <td>train</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">Optional Table Footer</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <br />
+
+                <div class="module-demo">
+                    <table class="table-fixed">
+                        <tbody>
+                            <tr>
+                                <td>COLOR</td>
+                                <td>NUMBER</td>
+                                <td>VEHICLE</td>
+                            </tr>
+                            <tr>
+                                <td>blue</td>
+                                <td>24</td>
+                                <td>car</td>
+                            </tr>
+                            <tr>
+                                <td>green</td>
+                                <td>38</td>
+                                <td>bike</td>
+                            </tr>
+                            <tr>
+                                <td>red</td>
+                                <td>55</td>
+                                <td>train</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <br />
+
+            <h2 class="dotted">
+                <a href="http://www.onenexusproject.com/documentation/elements/interactive/" target="blank">
+                    <i><em>Interactive Elements</em></i>
+                </a>
+            </h2>
+
+            <section>
+
+                <h4><strong>Accordions</strong></h4>
+
+                <div class="accordion">
+                    <section>
+                        <h4>How much does a website cost?</h4>
+                        <article>
+                            <p>The cost of a website comes down to many factors. How many pages does it have? How much functionality does it require? How complex is it? Each case is unique, and once we've had the chance to properly analyse your requirements we can then provide an estimation.</p>
+                        </article>
+                    </section>
+                    <section>
+                        <h4>How long does a website take to make?</h4>
+                        <article>
+                            <p>The time taken to build a website can vary from a couple of weeks for small and simple websites, to a few months for large and complex ones. Once we've had chance to properly analyse your requirements, we can provide you with a closer estimate.</p>
+                        </article>
+                    </section>
+                    <section>
+                        <h4>Who is responsible for providing the content?</h4>
+                        <article>
+                            <p>Most jobs will require some form of content or media, particularly for websites. We currently do not offer media production or copywriting services. Although we can source stock images, photographs and videos, all other content which is not digital design (eg; icons) should be provided by you. In general, this includes product photos, videos and text content. We can layout the sitemap and structure of your web pages to help you with providing exactly the right content.</p>
+                        </article>
+                    </section>
+                    <section>
+                        <h4>Do you offer service x/y/z?</h4>
+                        <article>
+                            <p>If you have a requirement but are unsure if we can help you, feel free to <a href="/contact-us/">get in touch</a> with us anyway. We will happily look at each individual case and see if there's any way we can provide a benefit. If it's to do with websites or digital design, there's a good chance we'll be able to help.</p>
+                        </article>
+                    </section>
+                </div>
+
+            </section>
+
+            <hr class="line" />
+
+            <section>
+
+                <h4><strong>Modal Galleries</strong></h4>
+
+                <div class="module-demo">
+                    <div class="row modal-gallery">
+                        <div class="span-3">
+                            <a href="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg">
+                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg" class="thumbnail">
+                            </a>
+                        </div>
+                        <div class="span-3">
+                            <a href="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg">
+                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg" class="thumbnail">
+                            </a>
+                        </div>
+                        <div class="span-3">
+                            <a href="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-3.jpg">
+                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-3.jpg" class="thumbnail">
+                            </a>
+                        </div>
+                        <div class="span-3">
+                            <a href="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg">
+                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg" class="thumbnail">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <hr class="line" />
+
+            <section>
+
+                <h4><strong>Carousels</strong></h4>
+
+                <div class="module-demo">
+
+                    <div id="main-slider">
+                        <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg" />
+                        <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg" />
+                        <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg" />
+                    </div>
+
+                </div>
+
+            </section>
+
+            <hr class="line" />
+
+            <section>
+
+                <h4><strong>Tabs</strong></h4>
+
+                <div class="tabs">
+                    <ul class="nav">
+                        <li class="active">Tab 1</li>
+                        <li>Tab 2</li>
+                        <li>Tab 3</li>
+                    </ul>
+                    <section class="active">              
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in.</p>
+                    </section>
+                    <section>                    
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in.</p>                    
+                        <h4>Lorem Ipsum</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in.</p>
+                        <ul>
+                            <li>Lorem Ipsum</li>
+                            <li>Dolor Amet</li>
+                            <li>Aliquam Sodales</li>
+                        </ul>
+                        <p><em>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</em></p>
+                    </section>
+                    <section>                    
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in.</p>
+                    </section>
+                </div>
+
+            </section>
+
+            <hr class="line" />
+
+            <section>
+
+                <h4><strong>Tooltips</strong></h4>
+
+                <p class="module-demo">
+                    <a href="#" data-tip="Facebook" class="social facebook tooltip"></a>
+                    <a href="#" data-tip="Twitter" class="social twitter tooltip"></a>
+                    <a href="#" data-tip="LinkedIn" class="social linkedin tooltip"></a>
+                </p>
+
+            </section>
+
+            <br />
+
+            <h2 class="dotted">
+                <a href="http://www.onenexusproject.com/documentation/elements/typography/" target="blank">
+                    <i><em>Typographic Elements</em></i>
+                </a>
+            </h2>
+
+            <section>
+
+                <h4><strong>Headings</strong></h4>
+
+                <div style="padding: 2rem;" class="module-demo">
+                    <div class="row">
+                        <div class="span-4">
+                            <h4>Regular Heading</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
+                        </div>
+                        <div class="span-4">
+                            <h4><strong>Uppercase Heading</strong></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
+                        </div>
+                        <div class="span-4">
+                            <h4><em>Thin Text Heading</em></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="span-4">
+                            <h4 class="font-3">A heading with a custom font</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
+                        </div>
+                        <div class="span-4">
+                            <h4><i>Colourful Heading</i></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
+                        </div>
+                        <div class="span-4">
+                            <h4 class="highlight"><b>Highlighted Heading</b></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <hr class="line">
+
+            <section>
+
+                <h4><strong>Lists</strong></h4>
+
+                <div class="module-demo">
+                    <ul class="clear">
+                        <li>Lorem Ipsum</li>
+                        <li>Dolor Sit Amet</li>
+                        <li>Billy Madison</li>
+                    </ul>
+                </div>
+
+                <br />
+
+                <div class="module-demo">
+                    <ul class="reset">
+                        <li>Lorem Ipsum</li>
+                        <li>Dolor Sit Amet</li>
+                        <li>Billy Madison</li>
+                    </ul>
+                </div>
+    
+                <br />
+
+                <div class="module-demo">
+                    <ul class="block-list">
+                        <li>Eu nonummy condimentum fringilla</li>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Hac molestie amet justo quis pellentesque</li>
+                        <li>Eu nonummy condimentum fringilla</li>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Hac molestie amet justo quis pellentesque</li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <hr class="line" />
+
+            <section>
+
+                <h4><strong>Quotes</strong></h4>
+
+                <div class="module-demo">
+                    <blockquote>
+                        <p>Lorem ipsum dolor sit amet consectetuer mollis sapien urna ut a. Eu nonummy condimentum fringilla tempor pretium platea vel nibh netus Maecenas. <cite>- John Doe</cite></p>
+                    </blockquote>
+                </div>
+
+            </section>
+
+            <br />
+
+            <h2 class="dotted">
+                <a href="http://www.onenexusproject.com/documentation/modules/" target="blank">
+                    <i><em>Modules</em></i>
+                </a>
+            </h2>
+
+            <section>
+
+                <h4><strong>Breadcrumb</strong></h4>
+
+                <div class="module-demo">
+                    <nav class="breadcrumb">
+                        <ul>
+                            <li><a href="/">One Nexus</a></li>
+                            <li><a href="/documentation/">Documentation</a></li>
+                            <li><a href="/documentation/modules/">Modules</a></li>
+                            <li>Breadcrumb</li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </section>
+
+            <hr class="line" />
+
+            <section>
+
+                <h4><strong>Header</strong></h4>
+
+                <div class="module-demo">
+                    <header class="app-header">
+                        <div class="container">
+                            <div class="header-wrapper">
+                                <!-- Logo -->
+                                <div class="logo">
+                                    <a href="/">
+                                        <img src="assets/images/logo.png" alt="One Nexus" />
+                                    </a>
+                                </div>
+                                <!-- Main-Nav -->
+                                <nav class="main-nav">
+                                    <ul>
+                                        <li><a href="#">Header Link 1</a></li>
+                                        <li><a href="#">Header Link 2</a></li>
+                                        <li><a href="#">Header Link 3</a></li>
+                                    </ul>
+                                </nav>
+                                <!-- Mobile Menu Trigger Button -->
+                                <a class="nav-trigger max-bp3" href="#"></a>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+
+            </section>
+
+            <hr class="line" />
+
+            <section>
+
+                <h4><strong>Footer</strong></h4>
+
+                <div class="module-demo">
+                    <footer class="app-footer">
+                        <div class="container">
+                            <div class="footer-wrapper">
+                                <!-- Copyright Section -->
+                                <h4 class="copyright">© Your Website 2014</h4>
+                                <!-- Footer Navigation -->
+                                <nav class="footer-nav">                
+                                    <ul>
+                                        <li><a href="#">Footer Link 1</a></li>
+                                        <li><a href="#">Footer Link 2</a></li>
+                                        <li><a href="#">Footer Link 3</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+
+            </section>
+
+            <hr class="line" />
+
+            <section>
+
+                <h4><strong>Off-Canvas Nav</strong></h4>
+
+                <div class="module-demo">
+                    <div style="background: #111111; padding: 0;" class="module-demo">              
+                        <span class="icon-cta nav-trigger menu-btn"></span>
+                    </div>
+                </div>
+
+            </section>
+
+            <hr class="line" />
+
+            <p class="alert-success">Be sure to check out our <a target="blank" href="http://www.onenexusproject.com/documentation/">complete documentation</a> for more information.</p>
+
+            <hr class="line" />
+
+        </div>
+
+
+        <footer class="app-footer">
+            <div class="container">
+                <div class="footer-wrapper">
+                    <!-- Copyright Section -->
+                    <h4 class="copyright">© Your Website 2014</h4>
+                    <!-- Footer Navigation -->
+                    <nav class="footer-nav">                
+                        <ul>
+                            <li><a href="#">Footer Link 1</a></li>
+                            <li><a href="#">Footer Link 2</a></li>
+                            <li><a href="#">Footer Link 3</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </footer>
+
+    </div><!-- End #site-content -->
+
+    <!-- Scroll to top icon-->
+    <a class="fa fa-angle-up scroll-top" href="#site-content"></a> 
+
+    <!-- Off Canvas Menu -->
+    <nav class="off-canvas-nav">
+        <div id="off-canvas-nav"></div>
+    </nav>
+
+    <!-- Site Overlay -->
+    <div class="site-overlay"></div>
+
+    <!-- Scripts -->
+
+    <!-- jQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <!--<script src="assets/js/jquery.min.js"></script>-->
+
+    <!-- Interactive elements/Modules -->
+    <script src="assets/js/accordion.js"></script>
+    <script src="assets/js/carousel.js"></script>
+    <script src="assets/js/modal.js"></script>
+    <script src="assets/js/off-canvas-nav.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/tooltip.js"></script>
+
+    <!-- General -->
+    <script src="assets/js/global.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            /******************************************************************
+            Main Slider
+            ******************************************************************/
+
+            $("#main-slider").owlCarousel({ 
+                navigation : true, // Show next and prev buttons
+                slideSpeed : 600,
+                singleItem:true,
+                navigationText : false,
+                autoPlay : 10000,
+                stopOnHover : true,
+            });
+
+        }); // End document.ready
+    </script>
+
+</body>
+</html>

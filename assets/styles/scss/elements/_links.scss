@@ -1,0 +1,12 @@
+
+/* Links
+================================================================ */
+
+a {
+    color: $brand-1;
+    transition: all 0.5s;
+    text-decoration: none;
+    &:hover {
+    	text-decoration: underline;
+    }
+}

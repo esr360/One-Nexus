@@ -1,0 +1,60 @@
+
+/* Forms
+================================================================ */
+
+form {
+
+	section {
+		margin-bottom: 0.75em;
+	}
+	.box {
+		width: 100%;
+		border: 1px solid rgba(0,0,0,0.2);
+		transition: 0.4s;
+		padding: 0.515em;
+		background: rgba(0,0,0,0.05);
+		&:focus, &:hover {
+			border-color: $brand-1;
+		}
+		&:focus {
+			background: white;
+		}
+	}
+	label {
+		display: inline-block;
+	}
+	input {
+		display: block;
+		transition: 0.4s;
+		&[type="checkbox"],
+		&[type="radio"] {
+			display: inline;
+		}
+		&[type="submit"], button {
+			background: $brand-1;
+			border: none;
+			color: white;
+			padding: 0.5em 1em;
+			display: inline-block;
+			width: 100%;
+		}
+		&:required {
+			box-shadow: none;
+		}
+	}
+	select {		
+		color: $main-text-color;
+		&.box {			
+			padding: 0.44em;
+		}
+	}
+
+	@media (min-width: $breakpoint-3) {
+		input {
+			&[type="submit"], button {
+				width: auto;
+			}
+		}
+	}
+
+} /* End form */

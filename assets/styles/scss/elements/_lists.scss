@@ -1,0 +1,37 @@
+
+/* Lists
+================================================================ */
+
+ul.reset, ol.reset {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul.clear, ol.clear {
+	padding-left: 1em;
+}
+
+.block-list {
+	@extend .cf;
+	padding: 0;
+	list-style: none;
+	li {
+		background: rgba(0,0,0,0.05);
+		padding: 0.75em 1em;
+		margin-bottom: 0.5em;
+	}
+	.fa {
+		opacity: 0.75;
+		margin-right: 0.25em;
+	}
+	@media (min-width: $breakpoint-3) {
+		li {			
+			width: 48.75%;
+			float: left;
+			&:nth-child(even) {
+				margin-left: 2.5%;
+			}
+		}
+	}
+}

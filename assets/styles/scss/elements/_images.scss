@@ -1,0 +1,43 @@
+
+/* Images
+================================================================ */
+
+/******************************************************************
+Responsive Images
+******************************************************************/
+
+img {
+	max-width: 100%;
+	height: auto;
+} 
+
+/******************************************************************
+Style Variants
+******************************************************************/
+
+img.thumbnail {
+	border: 5px solid white;
+	box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+}
+
+/******************************************************************
+Shape Variants
+******************************************************************/
+
+.responsive-square, .responsive-circle {	
+	position: relative;
+	height: 0;
+	padding-top: 100%;
+	overflow: hidden;
+	img {
+		position: absolute;
+		top: 0;
+		display: block;
+		max-width: none;
+		height: 100%;
+	}
+}
+
+.responsive-circle {
+	border-radius: 50%;
+}

@@ -1,0 +1,86 @@
+
+/* Tooltips
+================================================================ */
+/*
+Tipr 1.0.1
+Copyright (c) 2013 Tipue
+Tipr is released under the MIT License
+http://www.tipue.com/tipr
+Converted to SCSS for One Nexus by Edmund Reed
+*/
+
+$tooltip-bg        :  rgba(0,0,0,0.6);
+$tooltip-max-width :  300px;
+
+.tipr_content {
+	padding: 0.35rem 1rem;
+	background: $tooltip-bg;
+	border-radius: 0.4rem;
+	color: #ffffff;
+	font-size: 1rem;
+}
+
+.tipr_container_bottom,
+.tipr_container_top {
+	display: none;
+	position: absolute;
+	max-width: $tooltip-max-width;
+	z-index: 1000;
+}
+
+.tipr_container_bottom {
+	margin-top: 13px;
+}
+
+.tipr_container_top {
+	margin-top: -90px;
+}
+
+.tipr_point_top, .tipr_point_bottom {
+	position: relative;
+	background: $tooltip-bg;
+	border-radius: 0.4rem;
+}
+.tipr_point_top, 
+.tipr_point_bottom {
+	&:after, &:before {
+		position: absolute;
+		pointer-events: none;
+		border: solid transparent;
+		content: "";
+		height: 0;
+		width: 0;
+	}
+	&:after {
+		left: 50%;
+		border-width: 8px;
+		margin-left: -8px;
+	}
+	&:before {
+		left: 50%;
+		border-width: 9px;
+		margin-left: -9px;
+	}
+}
+.tipr_point_top {
+	&:after, &:before {
+		top: 100%;
+	}
+	&:after {
+		border-top-color: $tooltip-bg;
+	}
+	&:before {
+		border-top-color: $tooltip-bg;
+	}
+}
+.tipr_point_bottom {
+	&:after, &:before {
+		bottom: 100%;
+	}
+	&:after {
+		border-bottom-color: $tooltip-bg;
+	}
+	&:before {
+		border-bottom-color: $tooltip-bg;
+	}
+}

@@ -1,0 +1,29 @@
+
+/* Header
+================================================================ */
+
+.app-header {
+
+/******************************************************************
+Start building the basic layout for lowest resoluton
+******************************************************************/
+
+	background-color: $dark-grey;
+
+/******************************************************************
+Start building for larger resolutions
+******************************************************************/
+
+	@media (min-width: $breakpoint-3) {
+		.header-wrapper {			
+			display: table;
+			width: 100%;
+		}	
+		.logo, .main-nav {
+			display: table-cell;
+			vertical-align: middle;
+		}
+	}
+
+} // End .app-header
+
