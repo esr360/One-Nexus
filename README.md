@@ -1436,6 +1436,157 @@ These general elements can be thought of as the basic user interface elements fo
 
 #### Alert Bars
 
+Alert bars are useful for displaying important messages to your visitors. One Nexus comes with two different types of alert bars, each with four different colors for different purposes. The alert-bars SCSS partial is located in the **elements** folder:
+
+```html
+assets > styles > scss > elements > _alert-bars.scss
+```
+
+##### Standard Alert Bars
+
+You can turn any block level HTML element into an alert bar by adding the class **alert-x**, where **x** is either **help**, **danger**, **success** or **info**. These are the default [alert color variables](http://www.onenexusproject.com/documentation/skeleton/variables/#color-palette) provided with One Nexus.
+
+```html
+<div class="alert-help">This is a <b>helpful</b> alert box.</div>
+```
+
+##### Alternative Alert Bars
+
+Follow the directions for a regular alert-bar, but this time add the **alt** class to the element as well.
+
+```html
+<div class="alert-help alt">
+	<h4 class="dotted"><strong><b>This is a helpful alert bar</b></strong></h4>
+	<p>These alert bars are useful for displaying larger amounts of information to your visitors.</p>
+</div>
+```
+
+---
+
+#### Buttons
+
+Buttons are one of the most common elements to appear on websites, so it is important to have a re-usable and intuitive means of creating them and including them on the front end of your websites. One Nexus comes with a load of different button styles for you to use in the various colors defined in the [variables](http://www.onenexusproject.com/documentation/skeleton/variables/#color-palette) partial. The buttons SCSS partial is located in the **elements** folder:
+
+```html
+assets > styles > scss > elements > _buttons.scss
+```
+
+##### Basic Example
+
+To create a button simply add the class **button** to any inline HTML element.
+
+```html
+<a class="button" href="#">Button</a>
+```
+
+---
+
+##### Size Variants
+
+By default One Nexus comes with three button sizes; **small**, **regular** and **large**. Adding additional sizes is simple; simply open up the _buttons.scss partial, find the **Size Variants** section and duplicate one of the rules with your new information. Since the buttons use **em**'s for padding, you can resize the entire button by changing only the button's **font-size**. 
+
+###### Large Buttons
+
+To create a large button simply add the class **large** to your button element.
+
+```html
+<a class="button large" href="#">Large Button</a>
+```
+
+###### Regular Buttons
+
+This is just the default button size, so no extra markup is required.
+
+```html
+<a class="button" href="#">Button</a>
+```
+
+###### Small Buttons
+
+To create a small button simply add the class **small** to your button element.
+
+```html
+<a class="button small" href="#">Small Button</a>
+```
+
+---
+
+##### Style Variants
+
+One Nexus comes with 4 additional button styles to accommodate the most common uses. To create a new button style for your project, simply open up the **_buttons.scss** partial, find the **Style Variants** section and duplicate one of the rules with your new information.
+
+###### Border Buttons
+
+To create a border button, simply add the class **border** to your button element.
+
+```html
+<a class="button border" href="#">Border Button</a>
+```
+
+###### Disabled Buttons
+
+To create a disabled button, simply add the class **disabled** to your button element.
+
+```html
+<a class="button disabled" href="#">Disabled Button</a>
+```
+
+###### Full-Width Buttons
+
+To create a full-width button, simply add the class **full-width** to your button element.
+
+```html
+<a class="button full-width" href="#">Full-Width Button</a>
+```
+
+###### Round Buttons
+
+To create a round button, simply add the class **round** to your button element.
+
+```html
+<a class="button round" href="#">Round Button</a>
+```
+
+---
+
+##### Color Variants
+
+One Nexus automatically generates a button for each color you have defined in the brand and alert Color Palettes. The easiest way to create a new colored button is to add your desired color to one of those palettes.
+
+###### Brand buttons
+
+To create a branded button, simply add the class brand-x to your button element, where x corresponds to your [brand color variable](http://www.onenexusproject.com/documentation/skeleton/variables/#color-palette).
+
+```html
+<a class="button brand-1" href="#">Brand-1 Button</a>
+```
+
+###### Alert buttons
+
+To create an alert button, simply add the class **help**, **danger**, **success** or **info** to your button element.
+
+```html
+<a class="button help" href="#">Help Button</a>
+```
+
+---
+
+##### Combining Styles
+
+To combine button styles, simply add your desired style classes to your button element.
+
+```html
+<a class="button large round full-width disabled brand-1" href="#">
+	Large Round Full-Width Disabled Brand-1 Button
+</a>
+```
+
+---
+
+#### Forms
+
+---
+
 ### Interactive Elements
 
 These are all the interactive elements that come with One Nexus. An interactive element is any element which requires user engagement and affects the page content. Typically an interative element will also have some accompanying [jQuery code](http://www.onenexusproject.com/documentation/features/jquery/).
@@ -1443,3 +1594,8 @@ These are all the interactive elements that come with One Nexus. An interactive 
 ### Typographic Elements
 
 Typographic elements are what make up the main written content for your website and is where you should place all elements relating to typography.
+
+
+```html
+assets > styles > scss > elements > _your-element.scss
+```
