@@ -939,7 +939,7 @@ N.B. Try to stay away from, and don't use the classes specified above for [keywo
 
 ---
 
-### .clearfix
+#### .clearfix
 
 
 ```css
@@ -963,7 +963,7 @@ Over the years there have been many variants of the clearfix hack, but currently
 
 ---
 
-### Vertically Align Columns
+#### Vertically Align Columns
 
 
 ```css
@@ -984,7 +984,7 @@ The **vertical align** classes allow you to easily control the vertical alignmen
 
 ---
 
-### Vertically Align Anything
+#### Vertically Align Anything
 
 
 ```css
@@ -1003,7 +1003,7 @@ The CSS property transform is usally used for rotating and scaling elements, but
 
 ---
 
-### .image-replacement
+#### .image-replacement
 
 ```css
 .image-replacement {
@@ -1020,7 +1020,7 @@ From [zeldman.com](http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-n
 
 ---
 
-### Horizontal Rules
+#### Horizontal Rules
 
 ```css
 hr.line {
@@ -1038,7 +1038,7 @@ One Nexus comes with an alternative horizontal rule which is less intrusive than
 
 ---
 
-### Horizontal Aligning
+#### Horizontal Aligning
 
 
 ```css
@@ -1066,7 +1066,7 @@ The above classes can be used to quickly and simply control the horizontal align
 
 ---
 
-### Responsive Visibility
+#### Responsive Visibility
 
 
 ```css
@@ -1116,11 +1116,11 @@ The above classes let you hide or show certain elements depending on the resolut
 
 ---
 
-#### Using Helper Classes Semantically
+### Using Helper Classes Semantically
 
 The easiest way to use these helper classes is by simply adding them straight to your HTML element, which is fine in most cases, but may result in [unsemantic code](http://css-tricks.com/semantic-class-names/). It is possible to use each of the following helper classes within another, semantically named class by [extending them](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#extend) with SASS.
 
-##### Example
+#### Example
 
 ```css
 /*********************
