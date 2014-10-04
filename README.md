@@ -1887,6 +1887,111 @@ To make it so each column in your table has fixed column widths for a more consi
 
 These are all the interactive elements that come with One Nexus. An interactive element is any element which requires user engagement and affects the page content. Typically an interative element will also have some accompanying [jQuery code](http://www.onenexusproject.com/documentation/features/jquery/).
 
+---
+
+#### Accordions
+
+Accordions are a great way to convey information without taking up too much space. Our custom accordions are dynamic, minimalistic and flexible. The accordions SCSS partial is located in the **elements** folder:
+
+
+```html
+assets > styles > scss > elements > _accordions.scss
+```
+
+The accordions also requires the **accordion.js** [jQuery file](http://www.onenexusproject.com/documentation/features/jquery/) to function.
+
+---
+
+##### Basic Example
+
+The One Nexus accordions are built to be as dynamic as possible - meaning they do not require any specific markup. They just need to be in the correct format and wrapped in a container with the class **accordion**. A typical accordion HTML strucutre may look something like this:
+
+```html
+<div class="accordion">
+	<section>
+		<h4>Accordion Title 1</i></h4>
+		<article>
+			<!-- accordion content -->
+		</article>
+	</section>
+	<section>
+		<h4>Accordion Title 2</h4>
+		<article>
+			<!-- accordion content -->
+		</article>
+	</section>
+	<section>
+		<h4>Accordion Title 3</h4>
+		<article>
+			<!-- accordion content -->
+		</article>
+	</section>
+	<section>
+		<h4>Accordion Title 4</h4>
+		<article>
+			<!-- accordion content -->
+		</article>
+	</section>
+</div>
+```
+Any of the above HTML tags (**div**, **section**, **h4**, **article** & **p**) can be anything, but for stability and semantics we recommend keeping the above strucutre as it is, or at the very least stick to **div**'s.
+
+---
+
+##### Open by Default
+
+To have an accordion item open by defalt, simply add the class **active** to the main item container, and add an **inline-style** of **display: block**; to the item content's container. Using the markup from our example, we would add the active class to the **section**, and the inline-style to the **article**. 
+
+```html
+<div class="accordion">
+	...
+	<section class="active">
+		<h4>Accordion Title 1</h4>
+		<article style="display: block;">
+			<p>Accordion Content.</p>
+		</article>
+	</section>
+	...
+</div>	
+```
+---
+
+##### Multiple Open Items
+
+To create accordions where you can have more then one item open at once, just put each item in a seperate container with the **accordion** class.
+
+```html
+<div class="accordion">
+	<section>
+		<h4>Accordion Title 1</h4>
+		<article>
+			<p>Accordion content.</p>
+		</article>
+	</section>
+</div>
+<div class="accordion">
+	<section>
+		<h4>Accordion Title 1</h4>
+		<article>
+			<p>Accordion content.</p>
+		</article>
+	</section>
+</div>
+<div class="accordion">
+	<section>
+		<h4>Accordion Title 1</h4>
+		<article>
+			<p>Accordion content.</p>
+		</article>
+	</section>
+</div>
+```
+---
+
+#### Modal Windows
+
+---
+
 ### Typographic Elements
 
 Typographic elements are what make up the main written content for your website and is where you should place all elements relating to typography.
