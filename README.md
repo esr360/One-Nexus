@@ -1988,7 +1988,271 @@ To create accordions where you can have more then one item open at once, just pu
 ```
 ---
 
+#### Carousels
+
+We chose to include the popular [Owl-Carousel](http://owlgraphic.com/owlcarousel/) jQuery plugin with One Nexus to handle all of your carousel needs, but you can easily swap this for another plugin of your choice. The accompanying carousels SCSS partial is located in the **elements** folder:
+
+```html
+assets > styles > scss > elements > _carousels.scss
+```
+
+The Owl-Carousel jQuery is located in the **slider.js** [jQuery file](http://www.onenexusproject.com/documentation/features/jquery/).
+
+Owl-Carousel is already very well documented on [their website](http://owlgraphic.com/owlcarousel/), so we will only cover the basics here.
+
+---
+
+##### Basic Example
+
+To create a carousel, simply create a set of HTML elements wrapped in a container:
+
+```html
+<div class="example-slider">
+    <section>
+        <!-- slide 1 content -->
+    </section>
+    <section>
+        <!-- slide 2 content -->
+    </section>
+    <section>
+        <!-- slide 3 content -->
+    </section>
+    <section>
+        <!-- slide 4 content -->
+    </section>
+</div>
+```
+You then need to call the jQuery plugin on your container, setting your desired carousel options:
+
+```javascript
+$(document).ready(function() {
+
+    $(".example-slider").owlCarousel({ 
+        navigation : true, 
+        slideSpeed : 600,
+        singleItem:true,
+        navigationText : false,
+        autoPlay : 10000,
+        stopOnHover : true,
+    });
+
+}); // End document.ready
+```
+
+Make sure to call the plugin inside a **document.ready** function as shown in the above example.
+
+For a full list of available options for your carousel (which there's a lot of!) visit the [Owl-Carousel](http://owlgraphic.com/owlcarousel/) homepage.
+
+---
+
+##### Replacing the Owl-Carousel Plugin
+
+You may prefer to use a different plugin for your carousels - that's fine, One Nexus has your back. Typically a third party jQuery plugin will come with some script and some CSS. To keep things intuitive, we want the carousel styles to be contained within the **_carousels.scss** partial. If your alternative carousel has its own CSS, simply overwrite the CSS in this partial with your carousel's CSS - regular CSS works just fine in .scss files. Next, do the same for your carousel's JS - copy and paste your new script into the **carousel.js** file, overwriting the old code. Your new carousel plugin is now installed!
+
+---
+
 #### Modal Windows
+
+Modals are always useful, and if used properly can really enhance the user experience of your website. They can be used to enlarge images, create image galleries, load content without loading another page etc. One Nexus uses the [Magnific Popup](http://dimsemenov.com/plugins/magnific-popup/) jQuery plugin but can easily be switched to another plugin of your choice. The modals SCSS partial is located in the **elements** folder:
+
+```html
+assets > styles > scss > elements > _modals.scss
+```
+
+The plugin's jQuery is located in the **modal.js** [jQuery file](http://www.onenexusproject.com/documentation/features/jquery/).
+
+This plugin is already well documented on its [homepage](http://dimsemenov.com/plugins/magnific-popup/), so only the basics will be covered here.
+
+---
+
+##### Modal Image
+
+To crate a modal image, simply wrap your image in anchor tags linking to the full-sized imag and add the **modal-image** class.
+
+```html
+<a class="modal-image" href="/assets/images/further-bg.jpg">
+	<img class="thumbnail" width="300" src="/assets/images/further-bg.jpg" />
+</a>
+```
+For added effect, we have added the [**thumbnail** class](http://www.onenexusproject.com/documentation/elements/general/images/) to our images in the above example.
+
+Alternativly, you can manually call the jQuery plugin on an image (so you don't need to add any extra markup). Again, make sure your image is wrapped in anchor tags linking to your main image, and target the anchor element like so:
+
+```javascript
+$("#your-link").magnificPopup({ 
+	type: "image"
+});
+```
+---
+
+##### Modal Gallery
+
+Using the modal plugin with the [responsive grid system](http://www.onenexusproject.com/documentation/features/responsive-grid-system/) that comes with One Nexus, you can create interactive modal galleries. Using our predefined calls, you can add the **modal-gallery** class to any container which contains the links to your images.
+
+```html
+<div class="row modal-gallery">
+	<div class="span-3">
+		<a href="/assets/images/further-bg.jpg">
+			<img class="thumbnail" src="/assets/images/further-bg.jpg" />
+		</a>
+	</div>
+	<div class="span-3">
+		<a href="/assets/images/further-bg.jpg">
+			<img class="thumbnail" src="/assets/images/further-bg.jpg" />
+		</a>
+	</div>
+	<div class="span-3">
+		<a href="/assets/images/further-bg.jpg">
+			<img class="thumbnail" src="/assets/images/further-bg.jpg" />
+		</a>
+	</div>
+	<div class="span-3">
+		<a href="/assets/images/further-bg.jpg">
+			<img class="thumbnail" src="/assets/images/further-bg.jpg" />
+		</a>
+	</div>
+</div>
+```
+
+Alternatively, you can manually convert a set of links into a modal gallery by calling the jQuery plugin on the container which contains the links to your images.
+
+```javascript
+$("#your-container").magnificPopup({ 
+	type: "image",
+	delegate: "a",
+	gallery: {
+		enabled: true
+	},
+});
+```
+For more available options please visit the [plugin's homepage](http://dimsemenov.com/plugins/magnific-popup/).
+
+---
+
+##### Inline Html Content
+
+To create a custom modal box with HTML content, you first need to create your modal box HTML content anywhere on the page where the modal is being called. It is recommended that you create the element at the top or bottom of your page, but as it will be hidden by default, it doesn't really matter where it's placed.
+
+The container for your HTML needs to be given a custom ID, unique to that element. In our example, we wil use #example-modal (pretty original, right?). The modal-content class also needs to be added to the same container - this hides the box by default and adds styles to our box.
+
+```html
+<div id="example-modal" class="modal-content">
+	<div>
+		<h2>Modal Content</h2>
+		<p><!-- modal content --></p>
+	</div>
+</div>
+```
+
+To call the modal and open it, you just need to create an anchor linking to the box using the custom ID you set before, and apply the **inline-modal** class.
+
+```html
+<a class="inline-modal" href="#example-modal">Open Modal</a>
+```
+
+To find out more about the **Magnific Popup** plugin and read about its other features, visit [their website](http://dimsemenov.com/plugins/magnific-popup/).
+
+---
+
+##### Replacing the Magnific Popup Plugin
+
+You may prefer to use a different plugin for your modals - that's fine, One Nexus has your back. Typically a third party jQuery plugin will come with some script and some CSS. To keep things intuitive, we want the modal styles to be contained within the _modals.scss partial. If your alternative modal plugin has its own CSS, simply overwrite the CSS in this partial with your modal's CSS - regular CSS works just fine in .scss files. Next, do the same for your modal's JS - copy and paste your new script into the modal.js file, overwriting the old code. Your new modal plugin is now installed!
+
+---
+
+#### Tabs
+
+Tabs are a great way to convey information without taking up too much space. Our custom tabs are dynamic, minimalistic and flexible. The tabs SCSS partial is located in the **elements** folder:
+
+
+```html
+assets > styles > scss > elements > _element.scss
+```
+
+The tabs also requires the **tabs.js** [jQuery file](http://www.onenexusproject.com/documentation/features/jquery/) to function.
+
+---
+
+##### Basic Example
+
+Creating a set of tabs requires two things; a tab navigation to switch between tabs, and the tab contents. The tab navigation is just an unordered list with the **nav** class. You should also add the **active** class to the item you want shown by default (typically the first item). Next, create a set of **section** tags, one for each tab item. You can than put any HTML content you desire for your tabs. Again, add the **active** class to the section you want shown by defauly. Finally, all of that needs to be wrapped up in a container with the **tabs** class.
+
+```html
+<div class="tabs">
+    <ul class="nav">
+        <li class="active">Tab 1</li>
+        <li>Tab 2</li>
+        <li>Tab 3</li>
+    </ul>
+    <section class="active">              
+        <!-- tab 1 content -->
+    </section>
+    <section>              
+        <!-- tab 1 content -->
+    </section>
+    <section>              
+        <!-- tab 1 content -->
+    </section>
+</div>
+```
+
+---
+
+##### Full-Width Navigation
+
+To create a set of tabs with full-width navigation items like in the above example, all you need to do is add the **full** class to your main tabs container:
+
+```html
+<div class="tabs full">
+    <ul class="nav">
+        <li class="active">Tab 1</li>
+        <li>Tab 2</li>
+        <li>Tab 3</li>
+    </ul>
+    <section class="active">              
+        <!-- tab 1 content -->
+    </section>
+    <section>              
+        <!-- tab 1 content -->
+    </section>
+    <section>              
+        <!-- tab 1 content -->
+    </section>
+</div>
+```
+---
+
+#### Tooltips
+
+Tooltips are always useful, and if used properly can really enhance the user experience. The simple tooltip plugin provided with One Nexus is called [Tipr](http://www.tipue.com/tipr/). The tooltips SCSS partial is located in the **elements** folder:
+
+```html
+assets > styles > scss > elements > _tooltips.scss
+```
+
+The tooltips also requires the **tooltip.js** [jQuery file](http://www.onenexusproject.com/documentation/features/jquery/) to function.
+
+---
+
+##### Basic Example
+
+To add a tooltip to an element, simply add the **tooltip** class along with a **data-tip** attribute containing your tooltip content.
+
+```html
+<a class="social facebook tooltip" data-tip="Facebook" href="#"></a>
+```
+
+**Tip:** You can include HTML inside the **data-tip** attribute.
+
+---
+
+##### Bottom Tooltip
+
+To create a tooltip undrneath your element, simply create a regular tooltip and add the **tooltip-bottom** class.
+
+```html
+<a class="social dribbble tooltip tooltip-bottom" data-tip="Dribbble" href="#"></a>
+```
 
 ---
 
