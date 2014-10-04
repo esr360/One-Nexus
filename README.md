@@ -363,3 +363,141 @@ By default the columns collapse to 100% width at **$breakpoint-3** so that they 
 To manually override the default collapsing of **$breakpoint-3** you can use the following classes: **bp1**, **bp2**, **bp3**, **bp4** and **bp5** to choose which breakpoint width you would like the columns to collapse at. Simply add your desired class to the main **row** which contains your columns. For example, if you wanted your columns to collapse at the width defined by the **$breakpoint-2** variable, you would add the **bp2** class to your row.
 
 ### HTML5 Boilerplate
+
+One Nexus is built off the popular [HTML5](http://html5boilerplate.com/) Boilerplate, making it a fast, robust and adaptable solution from the very beginning. Many native features of One Nexus are included as a result of using H5BP as a base template, including:
+
+* [Normalize.css](http://necolas.github.io/normalize.css/) for CSS normalizations and common bug fixes
+* [jQuery](http://jquery.com/) via CDN, with a local fallback
+* [Modernizr](http://modernizr.com/) build for feature detection
+* [Useful](http://www.onenexusproject.com/documentation/skeleton/helpers/) CSS Helper Classes
+* [Default](http://www.onenexusproject.com/documentation/skeleton/print/) print CSS, performance optimized
+
+
+### jQuery & Plugins
+
+One Nexus comes with with jQuery included out of the box. We use [Google's CDN version](https://developers.google.com/speed/libraries/devguide#jquery) by default, with the option to switch to a self hosted version instead. The scripts that come with One Nexus come in two types: complementary scripts for our Interactive Elements and Modules which each have ther own JS file, and scripts for general UI/UX enhancements which are found in global.js.
+
+By default, jQuery is included at the bottom of index.html, linking to [Google's hosted version](https://developers.google.com/speed/libraries/devguide#jquery).
+
+```html
+
+	...
+    
+	<body>
+
+		...
+
+		<!-- Scripts -->
+
+		<!-- jQuery -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+		<!--<script src="assets/scripts/jquery.1.10.0.min.js"></script>-->
+
+	    <!-- Interactive elements/Modules -->
+	    <script src="assets/js/accordion.js"></script>
+	    <script src="assets/js/carousel.js"></script>
+	    <script src="assets/js/modal.js"></script>
+	    <script src="assets/js/off-canvas-nav.js"></script>
+	    <script src="assets/js/tabs.js"></script>
+	    <script src="assets/js/tooltip.js"></script>
+
+		<!-- General -->
+		<script src="assets/scripts/global.js"></script>
+
+	</body>
+    
+    ...
+
+```
+
+It is essential that all jQuery scripts and plugins are included after the link to jQuery itself.
+
+By default we do not minify our JS files. When your project goes live, we recommend that you minify all of your assets.
+
+It is recommended that you use one of the jQuery copies from the [Google Hosted Libraries](https://developers.google.com/speed/libraries/), as included by default with One Nexus. However, should you decide to use your own hosted version, we have also provided the option for that too, directly underneath. Simply uncomment it out from the code, and delete the Google hosted version.
+
+#### Adding Your Own Scripts
+
+Due to the open nature of One Nexus, there is no set place for you to add your own scripts, it's completely up to you. The default structure of our scripts is based off what the script is for. For scripts which complement our [Interactive CSS Elements](http://www.onenexusproject.com/documentation/elements/interactive/) we have created a seperate JS file for each element. For general UI/UX enhancements, plugin initialisations and scripts that affect global modules we have put them in our global.js file.
+
+#### Interactive Elements & Modules
+
+Typically, most [Interactive CSS Elements](http://www.onenexusproject.com/documentation/elements/interactive/) require some additional jQuery code for their functionality. In these instances (which is the case for all the default interactive elements which come with One Nexus), each interactive element has its own JS file.
+
+##### Interactive Elements
+
+* [Accorsions](http://www.onenexusproject.com/documentation/elements/interactive/accordions)
+* [Carousels](http://www.onenexusproject.com/documentation/elements/interactive/carousels/)
+* [Modals](http://www.onenexusproject.com/documentation/elements/interactive/modal-windows/)
+* [Tabs](http://www.onenexusproject.com/documentation/elements/interactive/tabs/)
+* [Tooltips](http://www.onenexusproject.com/documentation/elements/interactive/tooltips/)
+
+##### Interactive Modules
+
+* [Off-Canvas Navigation](http://www.onenexusproject.com/documentation/modules/off-canvas-nav/)
+
+#### UI/UX Enhancements
+
+Found within our **global.js** file are a load of tasty jQuery treats to enhance your project's UI and UX. Some of the code here is required for some of the default [Modules](http://www.onenexusproject.com/documentation/modules/)' and [Interactive Elements](http://www.onenexusproject.com/documentation/elements/interactive/)' functionality, whereas the rest is for optional enhancements.
+
+##### Scroll to Top/Smooth Scrolling
+
+This nifty little feature is something we believe every website should have (which is why we've included it!). It displays a button in the bottom-right hand side of the page when the user has scrolled down more than **350px**, which scrolls the user back to the top of the page when clicked.
+
+```javascript
+$(window).bind("scroll", function() {
+    if ($(this).scrollTop() > 350) {
+        $(".scroll-top").addClass("active");
+    } else {
+        $(".scroll-top").stop().removeClass("active");
+    }
+});
+```
+
+The script works by adding/removing the **active** class from the button - the actual fade in/fade out animation effects are controlled by CSS in the following partial:
+
+```html
+assets > styles > scss > elements > _scroll-top.scss
+```
+
+The scroll-to-top button is included by default in the provided **index.html** file, and can be added to other pages by adding the following snippet to the bottom of your page:
+
+```html
+<a class="fa fa-angle-up scroll-top" href="#site-content"></a> 
+```
+
+In order for this feature to work properly, your **body** element must be wrapped in a container with an id of **#site-content** applied to it.
+
+The smooth page scrolling animation is achieved with the following script, which also works for all other same-page anchors:
+
+```javascript
+$("a[href*=#]"").click(function() {
+    if (location.pathname.replace(/^\//,"") == this.pathname.replace(/^\//,"") 
+        || location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $("[name=" + this.hash.slice(1) +"]");
+           if (target.length) {
+             $("html,body").animate({
+                 scrollTop: target.offset().top
+            }, 1200);
+            return false;
+        }
+    }
+});
+```
+
+#### Minifying Scripts
+
+Everyone has their own way of doing things, so we don't want to dictate how to organise your project. That's why all of our assets are un-minified by default - so you can have complete control over your project. We do not recommend serving un-minified assets (including both scripts and CSS) to your users as it can have negative impacts on performance. This is why we strongly suggest that you minify all scripts and CSS for production sites, leaving the un-minified assets for development purposes.
+
+Whilst we strongly recommend minifying your scripts and CSS, it is by no means required if you are not comfortable doing so.
+
+[Read our guide on minifying assets to improve your project's performance.](http://www.onenexusproject.com/tutorials/minify-your-assets-to-improve-performance/)
+
+### Google Fonts
+
+One Nexus comes ready to use with Google Fonts out of the box, allowing you to quickly and easily manage your website's typography. Your project is by no menas limited to using only Google Fonts, they are only included as a quick starting point, and switching them out for other web fonts or a self hosted soltion is simple.
+
+[Visit the google fonts homepage](https://www.google.com/fonts#).
+
+## Skeleton
