@@ -484,7 +484,7 @@ In order for this feature to work properly, your **body** element must be wrappe
 The smooth page scrolling animation is achieved with the following script, which also works for all other same-page anchors:
 
 ```javascript
-$("a[href*=#]"").click(function() {
+$("a[href*=#]").click(function() {
     if (location.pathname.replace(/^\//,"") == this.pathname.replace(/^\//,"") 
         || location.hostname == this.hostname) {
         var target = $(this.hash);
