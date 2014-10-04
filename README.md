@@ -1156,3 +1156,212 @@ Top Features
 ```
 
 This results in cleaner and more semantic HTML markup, and we recommend using all helper classes in this way where possible.
+
+---
+
+### Normalize
+
+[Normalize.css](https://github.com/necolas/normalize.css/) makes browsers render all elements more consistently and in line with modern standards. It precisely targets only the styles that need normalizing. It is a native feautre of the [HTML5 Boilerplate](http://html5boilerplate.com/), which One Nexus is built on. The normalize SCSS partial is located in the **skeleton** folder:
+
+```html
+assets > styles > scss > skeleton > _normalize.scss
+```
+
+---
+
+### Print Styles
+
+One Nexus comes with a custom stylesheet for printed media. It is a native feautre of the HTML5 Boilerplate, which One Nexus is built on. The print SCSS partial is located in the **skeleton** folder:
+
+```html
+assets > styles > scss > skeleton > _print.scss
+```
+
+From the [H5BP documentation](https://github.com/h5bp/html5-boilerplate/blob/v4.3.0/doc/css.md#print-styles):
+
+* We strip all background colors, change the font color to black and remove text-shadow. This is meant to help save printer ink and make the printing process much faster.
+* Anchors do not need colors to indicate they are linked. They are underlined to indicate so.
+* Anchors and Abbreviations are expanded to indicate where users reading the printed page can refer to.
+* But we do not want to show link text for image replaced elements (given that they are primarily images).
+
+---
+
+### Variables
+
+One of the most useful features of SASS is the ability to pass variables in your CSS. One Nexus contains all of its variables in one convenient location. The variables SCSS partial is located in the **skeleton** folder:
+
+```html
+assets > styles > scss > skeleton > _variables.scss
+```
+
+#### Skeleton
+
+The skeleton variables are the variables which control how your project's framework is built. To learn how these variables work with your project, read the [Responsive Grid System](http://www.onenexusproject.com/documentation/features/responsive-grid-system/) help page.
+
+```css
+/******************************************************************
+Skeleton
+******************************************************************/
+
+$main-width       :   1200px;
+$max-width        :   90%;
+
+$columns          :   12;
+$gutter           :   2.5%;
+
+/*****************************************************************/
+```
+
+##### Main Width ($main-width)
+
+This is where you set the width for the main site container - pretty self-explanatory. This variable can be any numeric value; pixels, percentage, em or rem.
+
+##### Max Width ($max-width)
+
+This variable sets the maximum allowed width for the main site container, and will override the previous **$main-width** variable where applicable. It is recommended you use a high percentage for this value, as this is what stops the page from being too wide on smaller resolutions.
+
+##### Columns ($columns)
+
+This is where you can set the number of columns for your grid. Twelve is popularly accepted as the number to use as it is divisible by 2, 3, 4 and 6, allowing for a more flexible system. Feel free to override this if you know what you're doing, our math will calculate your grid no matter the value you enter here.
+
+##### Gutter ($gutter)
+
+The gutter is the gap between each column. As our grid system uses percentage widths, the value you enter here must be a percentage and will not work if you enter a px value.
+
+---
+
+#### Breakpoints
+
+Breakpoints are what allow you to style your CSS for a specific selection of browser widths. They work by using **CSS media queries**. You can set as many of these as you like and set them to whatever values you think are suitable for your project.
+
+By default each column expands to 100% width when the resolution is less than **$breakpoint-3**.
+
+```css
+/******************************************************************
+Breakpoints
+******************************************************************/
+
+$breakpoint-0     :   0px;
+$breakpoint-1     :   460px;
+$breakpoint-2     :   720px;
+$breakpoint-3     :   940px;
+$breakpoint-4     :   1200px;
+$breakpoint-5     :   1400px;
+
+$bp-values        :   $breakpoint-0, $breakpoint-1, $breakpoint-2, $breakpoint-3, $breakpoint-4, $breakpoint-5;
+
+$bp-names         :   bp0, bp1, bp2, bp3, bp4, bp5;
+
+/*****************************************************************/
+```
+
+The **$bp-values** and **$bp-names** variables are used to generate classes for the [custom column collapsing](http://www.onenexusproject.com/documentation/features/responsive-grid-system/#custom-column-collapsing) feature. To read about how to customize and create your own mobile-first responsive modules using these breakpoint values, header over to the [modules](http://www.onenexusproject.com/documentation/modules) page.
+
+---
+
+#### Typography
+
+The **tyography** variables control your project's fonts and font sizes. By default the font-sizes are applied only to the main body element, with the **$small-font-size** being used for portable devices.
+
+Visit the [Base](http://www.onenexusproject.com/documentation/skeleton/base/) help page to learn more about how the body element uses these variables.
+
+```css
+/******************************************************************
+Typography
+******************************************************************/
+
+/* Fonts */
+
+$font-1           :   "Lato", sans-serif;
+$font-2           :   "Droid Serif", serif;
+
+$sans-serif       :   "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif            :   "Georgia", Cambria, Times New Roman, Times, serif;
+
+/* Font Sizes */
+
+$base-font-size   :   1rem;
+$small-font-size  :   $base-font-size * 0.85;
+
+******************************************************************/
+```
+
+Only the font names are defined here. You still need to load the actual [font files](http://www.onenexusproject.com/documentation/elements/typography/fonts/).
+
+---
+
+#### Color Palette
+
+These variables control the color scheme of yout project. You can quickly and simply change the entire color of your whole website just by changing a couple of variables. By default there are three different palettes - feel free to delete any you don't need.
+
+##### Greyscale Colors
+
+This palette has six different shades ranging from white to black.
+
+```css
+/* Greyscale Colors */
+
+$white            :   #ffffff;
+$dark-white       :   #f1f1f1;
+$light-grey       :   #b1b1b1;
+$grey             :   #707070;
+$dark-grey        :   #1C1C1C;
+$black            :   #000000;
+
+$greyscale-colors :   $white, $light-grey, $grey, $dark-grey, $black;
+$greyscale-names  :   white, light-grey, grey, dark-grey, black;
+```
+
+##### Brand Colors
+
+This palette is for your brand colors, which are typically used for the main theming and styling colors of your website.
+
+```css
+/* Brand Colors */
+
+$brand-1          :   #008db6;
+$brand-2          :   #0fa28c;
+$brand-3          :	  #b93362;
+
+$brand-colors     :   $brand-1, $brand-2, $brand-3;
+$brand-names      :   brand-1, brand-2, brand-3;
+```
+
+##### Alert Colors
+
+This palette contains a standard set of colors useful for various things such as our Alert Bars.
+
+```css
+/* Alert Colors */
+
+$help             :   #e7d16c;
+$danger           :   #CB8888;
+$success          :   #9cc079;
+$info             :   #79a9c0;
+
+$alert-colors     :   $help, $danger, $success, $info;
+$alert-names      :   help, danger, success, info;
+```
+
+The **x-colors** and **x-names** variables are used to generate the [button sets](http://www.onenexusproject.com/documentation/elements/general/buttons/) for your project.
+
+---
+
+#### Theming
+
+This is where all your theme-specific variables should be placed. By default we only provide you with a select handful of common/useful ones to get going.
+
+```css
+/******************************************************************
+Theming
+******************************************************************/
+
+$base-margin      :   1.5rem;
+
+$main-text-color  :   $grey;
+$background-color :   $dark-white;
+
+/*****************************************************************/
+```
+
+## Elements
