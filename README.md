@@ -1585,6 +1585,163 @@ To combine button styles, simply add your desired style classes to your button e
 
 #### Forms
 
+One Nexus makes use of the HTML5 input attribute types as well as other new HTML5 features. These features simply get ignored by older browsers meaning they will still work as they otherwise would. The forms SCSS partial is located in the **elements** folder:
+
+```html
+assets > styles > scss > elements > _forms.scss
+```
+
+##### Basic Example
+
+To apply the basic input field styles to a form element, simply add the class **box** to the element. You should add this class to every input/textarea/select etc. in your form.
+
+```html
+...
+<input type="text" class="box">
+<select class="box">
+    ...
+</select>
+...
+```
+
+You should group each label and input combination in **section** HTML tags.
+
+```html
+...
+<section>
+    <label>Last Name</label>
+    <input type="text" class="box">
+</section>
+...
+```
+
+---
+
+##### Framework Implementation
+
+Usng the One Nexus [Grid System](http://www.onenexusproject.com/documentation/features/responsive-grid-system/) you can get creative by making forms for various purposes.
+
+###### Login Form
+
+```html
+<form class="span-6">
+    <section class="row">
+        <label class="span-3 va-middle">Username:</label>
+        <div class="span-9 va-middle">
+            <input type="text" placeholder="Enter your username" class="box">
+        </div>
+    </section>
+    <section class="row">
+        <label class="span-3 va-middle">Password:</label>
+        <div class="span-9 va-middle">
+            <input type="password" placeholder="Enter your password" class="box">
+        </div>
+    </section>
+    <section class="row">
+        <label class="span-9 va-middle">
+          <input type="checkbox"> Remember Me
+        </label>
+        <br class="margin-sep max-bp3">
+        <div class="span-3 va-middle text-right">
+            <input type="submit" value="Login">
+        </div>
+    </section>
+</form>
+```
+
+---
+
+#### Icons
+
+One Nexus comes with [Font Awesome](http://fortawesome.github.io/Font-Awesome/) installed by default, giving you access to over 400 vector icons. The icons SCSS partial is located in the **elements** folder:
+
+
+```html
+assets > styles > scss > elements > _icons.scss
+```
+
+One Nexus references the [CDN version](http://www.bootstrapcdn.com/#fontawesome_tab) of Font Awesome by default, but also comes with an optional self hosted version.
+
+
+##### Basic Example
+
+Font Awesome is already well documented on their own website, so we won't go into too much detail about how to use it. If you do require more information about how to use Font Awesome, [visit their website](http://fortawesome.github.io/Font-Awesome/).
+
+```html
+<i class="fa fa-desktop"></i>
+```
+
+**Tip:** When targeting font-awesome icons in your custom CSS modules, use the .fa selector, not the i selector.
+
+---
+
+##### Using With Buttons
+
+One of the most common use cases of Font Awesome is for creating buttons with icons. Creating a basic button with an icon is simple with One Nexus, just add the icon markup inside your [button](http://www.onenexusproject.com/documentation/elements/general/buttons/) markup, next to the button text. 
+
+```html
+<a class="button brand-2" href="#">
+	<i class="fa fa-car"></i> Button With Icon
+</a>
+```
+
+---
+
+##### Social Buttons
+
+Thanks to the inclusion of various brand icons with Font Awesome, we have created a set of premade social buttons and icons for you to use on your website. We created them to be as minimal as possible whilst still being visually appealing, so you can either leave them as they are, or build on them to create your own.
+
+###### Default Social Buttons
+
+To create a social button simply add the social class to an HTML element, along with one of the following brand classes:
+
+* facebook
+* twitter
+* linkedin
+* github
+* skype
+* pinterest
+* instagram
+* rss
+* youtube
+* flickr
+* vimeo
+* dribbble
+* behance
+* deviantart
+
+```html
+<a href="#" class="social facebook"></a>
+```
+
+###### Social Buttons With Text
+
+To create a social button with text, create a regular social button and add the text class to your element.
+
+```html
+<a href="#" class="social facebook text"></a>
+```
+
+You do not need to add the brand text in your markup - it is handled through CSS pseudo selectors.
+
+###### Small Social Buttons
+
+To create a small social button, simply create your social button and add the **small** class to the element.
+
+```html
+<a href="#" class="social facebook small"></a>
+```
+
+###### Large Social Buttons
+
+To create a large social button, simply create your social button and add the large class to the element.
+
+```html
+<a href="#" class="social facebook large"></a>
+```
+
+The different social button sizes have been made to match those of the [regular buttons](http://www.onenexusproject.com/documentation/elements/general/buttons/).
+
 ---
 
 ### Interactive Elements
@@ -1597,5 +1754,5 @@ Typographic elements are what make up the main written content for your website 
 
 
 ```html
-assets > styles > scss > elements > _your-element.scss
+assets > styles > scss > elements > _element.scss
 ```
