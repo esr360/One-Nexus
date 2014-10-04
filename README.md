@@ -1202,6 +1202,7 @@ One of the most useful features of SASS is the ability to pass variables in your
 ```html
 assets > styles > scss > skeleton > _variables.scss
 ```
+---
 
 #### Skeleton
 
@@ -1748,6 +1749,67 @@ To create a large social button, simply create your social button and add the la
 ```
 
 The different social button sizes have been made to match those of the [regular buttons](http://www.onenexusproject.com/documentation/elements/general/buttons/).
+
+#### Images
+
+One of the most common elements for web pages is images, and they can come in all different shapes and sizes. There is nothing fancy here - just a few helpful classes to get you started. The images SCSS partial is located in the elements folder:
+
+```html
+assets > styles > scss > elements > _images.scss
+```
+
+---
+
+##### Responsive Images
+
+By default, any image you include on you page with One Nexus is responsive, thanks to the following CSS properties:
+
+```css
+max-width: 100%;
+height: auto;
+```
+
+---
+
+##### Style Variants
+
+###### Thumbnails
+
+To create a thumbnail, simply add the class **thumbnail** to your image element.
+
+```html
+<img class="thumbnail" width="250" src="/assets/images/further-bg.jpg">
+```
+
+Adding this class does not affect the size of the image.
+
+---
+
+##### Shape Variants
+
+###### Turn any image into a responsive square
+
+Creating a perfectly squared container which is also responsive to hold a rectangular image whilst preserving the aspect ratio can be tricky business. By creating a container for your image and adding the class **responsive-square** you no longer have to worry. This is useful for when you need to create squared images in your layout from rectangular images, such as the below example.
+
+```html
+<div class="responsive-square">		
+	<img src="/assets/images/further-bg.jpg">
+</div>
+```
+
+The **responsive-square** container will always be 100% width of its parent's container.
+
+###### Turn any image into a responsive circle
+
+Making any image render as a complete circle is extremely easy, even if the image is rectangular to begin with - just put your image inside a container element with the **responsive-circle** class.
+
+```html
+<div class="responsive-circle">		
+	<img src="/assets/images/further-bg.jpg">
+</div>
+```
+
+The **responsive-circle** container will always be 100% width of its parent's container.
 
 ---
 
