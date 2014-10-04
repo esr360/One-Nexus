@@ -1384,7 +1384,7 @@ Each main element has its own SASS partial which contains all variations of the 
 assets > styles > scss > elements > _your-element.scss
 ```
 
-Every element must be included in the main **app.scss** file. All provided elements are included by default, and you are encouraged to remove any you don't need and add your own where neccesser
+Every element must be included in the main **app.scss** file. All provided elements are included by default, and you are encouraged to remove any you don't need and add your own where necessary.
 
 ```css
 /******************************************************************
@@ -2489,8 +2489,135 @@ To create a blockquote (with optional **cite** tag), simply create a paragraph w
 
 ---
 
+## Modules
+
+Each web page can be considered to be a group of modules in a grid which contain the website's content. A module is typically the layout and structure of one or more [elements](http://www.onenexusproject.com/documentation/elements/) to form a specific section of a web page.
+
+The default modules which come with One Nexus are designed to be as minimal as possible, allowing you to build on them and add your own styles rather than having to removing a load of styles you don't need. Each module has its own SASS partial which is located in the **modules** folder located here:
 
 ```html
-assets > styles > scss > elements > _element.scss
+assets > styles > scss > modules > _your-module.scss
+```
+
+Every module must be included in the main app.scss file &#42;. All provided modules are included by default, and you are encouraged to remove any you don't need and add your own where neccessery.
+
+*&#42;Except for [Nexted Modules](http://www.onenexusproject.com/documentation/modules/#nested-modules)*
+
+```css
+/******************************************************************
+
+Site Name: Website name here
+Author: Your name/company here
+
+******************************************************************/
+
+/******************************************************************
+Skeleton
+******************************************************************/
+
+...
+
+/******************************************************************
+Elements
+******************************************************************/
+
+...
+
+/******************************************************************
+Modules
+******************************************************************/
+
+@import "modules/breadcrumb";
+@import "modules/footer";
+@import "modules/header";
+@import "modules/logo";
+@import "modules/main-nav";
+@import "modules/off-canvas-nav";
+@import "modules/scroll-top";
+```
+
+When referencing "_your-module.scss" in **app.scss** you don't need the "_" or ".scss", just "**your-module**".
+
+---
+
+### Nested Modules
+
+It is possible to nest smaller modules within larger modules. Sometimes this may be done out of personal preference, and in few cases may even be beneficial. The below is an example of the latter from the **main-nav** module from One Nexus. This module also contains nested within it the **dropdown-nav** module.
+
+```css
+.main-nav {
+
+	ul {
+	    li {
+			display: inline-block;
+			position: relative;
+	    	/* Import the dropdown nav */
+	    	@import "dropdown-nav";
+	    }
+	}
+
+} // End .main-nav 
+```
+
+Because the nested module is being included in the main module, it does not need to be included in **app.scss**.
+
+---
+
+### Creating a Mobile-First Responsive Module
+
+Below is an example of how to build a mobile first responsive module using our defined breakpoints. The concept is simple; start out with the core CSS for the module and then gradually add styles for larger resolutions.
+
+```css
+/* Main Slider
+================================================================ */
+
+.main-slider {
+
+/******************************************************************
+Start building the basic layout for lowest resoluton
+******************************************************************/
+
+	background-color: $grey;	
+	color: white;
+	position: relative;
+	section {		
+		height: 375px;
+		background-color: $brand-1;
+		background-image: url(../../images/slide-1-bg.jpg);
+		background-repeat: no-repeat;
+		background-position: center top;
+	}
+
+/******************************************************************
+Start building for larger resolutions
+******************************************************************/
+
+	/*These styles will take affect when the resolution is at least 
+	as wide as the value defined by the $breakpoint-3 variable */
+	@media (min-width: $breakpoint-3) {
+		section {
+			height: 450px;
+		}
+	}
+
+	/*These styles will take affect when the resolution is at least 
+	as wide as the value defined by the $breakpoint-4 variable */
+	@media (min-width: $breakpoint-4) {
+		section {
+			background-size: cover;
+		}
+	}
+
+} // End .main-slider
+```
+
+---
+
+### Breadcrumb
+
+---
+
+```html
+assets > styles > scss > modules > _element.scss
 ```
 
