@@ -2260,6 +2260,235 @@ To create a tooltip undrneath your element, simply create a regular tooltip and 
 
 Typographic elements are what make up the main written content for your website and is where you should place all elements relating to typography.
 
+---
+
+#### Fonts
+
+Whether your using a web font service like [Google Fonts](https://www.google.com/fonts) or self-hosting your fonts, you need to reference the font file somewhere. We chose to conduct this within our CSS by using **@import**. The fonts SCSS partial is located in the elements folder:
+
+
+```html
+assets > styles > scss > elements > _fonts.scss
+```
+
+The actual font-family names are declared in the project's [variables](http://www.onenexusproject.com/documentation/skeleton/variables/) by default, but feel free to move them here.
+
+---
+
+##### Adding/Replacing Fonts
+
+By default there are two fonts included with One Nexus. You should use the first option for your project's primary font (which in our case is the [Lato](https://www.google.com/fonts/specimen/Lato) Google Font), and then either delete/amend/add more fonts as desired.
+
+```css
+/******************************************************************
+Font 1
+******************************************************************/
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+
+.font-1 {
+    font-family: $font-1;
+}
+
+/*****************************************************************/
+```
+
+Then in the **[variables partial](http://www.onenexusproject.com/documentation/skeleton/variables/)**, we have the above **$font-1** variable, which we have assigned to a re-usable **font-1** class. You can of course then add the font to any element in your CSS by adding **font-family: $font-1;** as shown above.
+
+```css
+/******************************************************************
+Typography
+******************************************************************/
+
+/* Fonts */
+
+$font-1           :   "Lato", sans-serif;
+$font-2           :   "Droid Serif", serif;
+
+$sans-serif       :   "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif            :   "Georgia", Cambria, Times New Roman, Times, serif;
+
+/* Font Sizes */
+
+$base-font-size   :   1rem;
+$small-font-size  :   $base-font-size * 0.85;
+
+******************************************************************/
+```
+
+---
+
+#### Headings
+
+One Nexus takes a slightly different approach to handling headings. Rather than using the individual h1, h2, h3 etc. tags for different, specific types of headings, we leave them all unstyled by default (exscept for their size and weight as applied by default), and then apply different styles using semantic HTML tags (for the most part). The headings SCSS partial is located in the **elements** folder:
+
+
+```html
+assets > styles > scss > elements > _headings.scss
+```
+
+---
+
+##### Uppercase Heading
+
+To create an uppercase heading, simply wrap the text in your heading with **strong** HTML tags.
+
+```html
+<h3><strong>This is an uppercase H3 title</strong></h3>
+```
+
+---
+
+##### Thin Text Heading
+
+To create a heading with thin text, simply wrap the text in your heading with **em** HTML tags.
+
+```html
+<h3><em>This is a thin text H3 title</em></h3>
+```
+
+---
+
+##### Heading with Custom Font
+
+To create a heading with a custom font, simply add the class **font-x** to your heading element, replacing **x** with your desired font, as defined by the [fonts SCSS partial](http://www.onenexusproject.com/documentation/elements/typography/fonts/).
+
+This requires you to set up the [re-usable font classes](http://www.onenexusproject.com/documentation/elements/typography/fonts/) for your fonts, as done by the default fonts.
+
+```html
+<h3 class="font-2">This is an H3 title with a custom font</h3>
+```
+
+---
+##### Colorful Heading
+
+To create a heading with colored text, simply wrap the text in your heading with **i** HTML tags.
+
+```html
+<h3><i>This is a colorful H3 title</i></h3>
+```
+
+---
+##### Highlighted Heading
+
+To create a heading with a highlighted background, add the **highlight** class to your heading element, and then wrap the text in your heading with **b** HTML tags.
+
+```html
+<h3 class="highlight"><b>This is a highlighted H3 title</b></h3>
+```
+
+---
+
+##### Mixing & Matching
+
+By creating these basic predifined heading styles, we can then mix-and-match them to create even more variations.
+
+```html
+<h4 class="highlight"><b><em><strong>This is a highlighted heading with thin, uppercase text</strong></em></b></h4>
+```
+
+Of course, this may get a bit tedious, and to reduce the amount of required markup, you may wish to define your heading styles on a per-module basis.
+
+---
+
+#### Links
+
+Links need to be differenciated from regular text so your users know they are clikable. By default One Nexus only styles regular anchor tags, but you can use this partial to add any other link styles your project may require. The links SCSS partial is located in the **elements** folder:
+
+```html
+assets > styles > scss > elements > _links.scss
+```
+
+---
+
+##### Default Link Style
+
+By default, a link is styled the color of the [**brand-1** variable](http://www.onenexusproject.com/documentation/skeleton/variables/) with any **text-decoration** removed. When a link is hovered we then apply a **text-decoration** of **underline**.
+
+```html
+<p>Lorem ipsum dolor sit amet <a href="#">this is a link</a> consectetuer mollis sapien urna ut a. Eu nonummy <a href="#">this is another link</a> condimentum fringilla tempor pretium platea vel nibh netus Maecenas.</p>
+```
+
+It is common to use [button elements](http://www.onenexusproject.com/documentation/elements/general/buttons/) on anchor tags to create call-to-actions.
+
+---
+
+#### Lists
+
+Lists are one of the most common types of HTML element, and can be used for many different purposes. One Nexus comes with several different types of lists for different occasions. The lists SCSS partial is located in the **elements** folder:
+
+```html
+assets > styles > scss > elements > _lists.scss
+```
+
+---
+
+##### Reset Lists
+
+A **reset-list** is a list whose **ul** element has its margin, padding and list-style reset, ie - removed. This is useful when, for example, creating menus.
+
+```css
+ul.reset, ol.reset {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+```
+
+There are two ways to utilise this list. The best way is to use the [@extend](http://css-tricks.com/the-extend-concept/) feature of SASS, by extending the reset class into your module, as shown in the example below. The alternative way is to simply add the **reset** class to your **ul** or **ol** element.
+
+```css
+.your-module {
+
+	ul {
+		@extend ul.reset;
+		/* Your list styles */
+	}
+
+} /* End .your-module */
+```
+
+---
+
+##### Block Lists
+
+Block lists are a great way to make your items stand out. Perfect for things like a list of features or benefits of your product or services. Converting a regular list to a block list is extremely simple. Either use the [@extend](http://css-tricks.com/the-extend-concept/) SASS feature by extending the **block-list** class into your module, or add the **block-list class** to your list.
+
+```css
+.your-module {
+
+	ul {
+		@extend .block-list;
+		/* Your list styles */
+	}
+
+} /* End .your-module */
+```
+
+---
+
+#### Quotes
+
+One Nexus comes with a clean, default style for **blockquote** elements, ready for you to build upon. The blockquotes SCSS partial is located in the **elements** folder:
+
+```html
+assets > styles > scss > elements > _blockquotes.scss
+```
+
+---
+
+##### Basic Example
+
+To create a blockquote (with optional **cite** tag), simply create a paragraph with **p** HTML tags wrapped in **blockquote** html tags.
+
+```html
+<blockquote>
+	<p>Lorem ipsum dolor sit amet consectetuer mollis sapien urna ut a... <cite>- John Doe</cite></p>
+</blockquote>
+```
+
+---
+
 
 ```html
 assets > styles > scss > elements > _element.scss
