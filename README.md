@@ -450,8 +450,8 @@ One Nexus is built off the popular [HTML5](http://html5boilerplate.com/) Boilerp
 * [Normalize.css](http://necolas.github.io/normalize.css/) for CSS normalizations and common bug fixes
 * [jQuery](http://jquery.com/) via CDN, with a local fallback
 * [Modernizr](http://modernizr.com/) build for feature detection
-* [Useful](http://www.onenexusproject.com/documentation/skeleton/helpers/) CSS Helper Classes
-* [Default](http://www.onenexusproject.com/documentation/skeleton/print/) print CSS, performance optimized
+* Useful CSS [Helper Classes](http://www.onenexusproject.com/documentation/skeleton/helpers/)
+* Default [print CSS](http://www.onenexusproject.com/documentation/skeleton/print/), performance optimized
 
 
 ### jQuery & Plugins
@@ -550,6 +550,7 @@ The scroll-to-top button is included by default in the provided **index.html** f
 In order for this feature to work properly, your **body** element must be wrapped in a container with an id of **#site-content** applied to it.
 
 The smooth page scrolling animation is achieved with the following script, which also works for all other same-page anchors:
+cs
 
 ```javascript
 $("a[href*=#]").click(function() {
@@ -582,3 +583,250 @@ One Nexus comes ready to use with Google Fonts out of the box, allowing you to q
 [Visit the google fonts homepage](https://www.google.com/fonts#).
 
 ## Skeleton
+
+### Base
+
+This is where all the core CSS for your project is placed. It contains the main structural CSS as well as some other useful snippets. The base SCSS partial is located in the **skeleton** folder:
+
+
+```javascript
+assets > styles > scss > skeleton > _base.scss
+```
+
+#### The CSS
+
+We have broken the CSS down to individual chunks so we can analyse it more easily. Below you will find everything that appears in the default **_base.scss** partial, with a breif overview about what it does and why we've included it.
+
+```css
+html, body {
+	padding: 0;
+	margin: 0;
+}
+```
+
+We remove any default **padding** and **margin** applied by the browser.
+
+---
+
+```css
+    html {
+    overflow-x: hidden;
+    }
+```
+
+We set the HTML element to **overflow-x: hidden** to hide any unwated horizontal scroll.
+
+---
+
+```css
+body {
+    line-height: 1.4;
+    font-family: $font-1;
+    color: $main-text-color;
+	background-color: $background-color;
+	font-size: $small-font-size;
+    @media (min-width: $breakpoint-3) {
+    	font-size: $base-font-size;
+	}
+}
+```
+
+This is where we set the main styling for the **body** element; we set the typography and our main background. We apply the **$small-font-size** variable for lowest resolutions, and then apply the main **$base-font-size** variable in a media query set at the width defined by **$breakpoint-3**.
+
+---
+
+```css
+.container {
+	width: $main-width;
+	max-width: $max-width;
+	margin: 0 auto;
+}
+```
+
+This is our main **container** element. We set the **width** and **max-width** using our [variables](http://www.onenexusproject.com/documentation/skeleton/variables/), and horizontally center the container in the page with margin: 0 auto.
+
+---
+
+```css
+.row { 
+    letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
+    *letter-spacing: normal; /* reset IE < 8 */
+    *word-spacing: -0.43em; /* IE < 8: collapse white-space between units */
+    text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+}
+
+.opera-only :-o-prefocus,
+.row {
+    word-spacing: -0.43em;
+}
+```
+
+This code may look obscure and awkward, but it is the magic that allows us to use **inline-block** in a **cross-browser** environment for our columns. By default, adding **display: inline-block** to an element causes a natural [whitespace](http://css-tricks.com/fighting-the-space-between-inline-block-elements/) to appear between each element, which can vary in width from font to font and browser to browser. Indeed, this has [caused many people many problems](http://stackoverflow.com/search?q=inline-block+column), and there are plenty of go-to [hacky and impractical work arounds](http://davidwalsh.name/remove-whitespace-inline-block), none of which are really suitble for a production environment. However, the above code when combined with our grid [system](http://www.onenexusproject.com/documentation/skeleton/grid/) produces completely usable and functional columns which use **inline-block** and have **no white-space**. And to top it all off, it works on all modern browsers!
+
+---
+
+```css
+* {
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-rendering: auto;
+    box-sizing: border-box;
+}
+```
+
+The famous [&lowast; { box-sizing: border-box }](http://www.paulirish.com/2012/box-sizing-border-box-ftw/) has been included by default with One Nexus. We also apply a global reset of **letter-spacing**, **word-spacing** and **text-rendering** to make up for any effects caused by our column white-space removal.
+
+---
+
+```css
+h1, h2, h3, h4, h5, h6, hgroup, p, ul, ol, dd, figure, pre, table, fieldset, legend, hr {
+    margin: $base-margin 0;
+    &:first-child {
+    	margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+```
+
+The above code tackles the issue of the [spacing above and below modules](http://css-tricks.com/spacing-the-bottom-of-modules/). Generally, we want the majority of our HTML elements that form the main content to be equally spaced between each other in an intuitive manner. This means no spacing at the very top of the content, and none at the bottom, but an equal space between each main element. The above code does just that, and takes advantage of the collapsing behaviour of margins.
+
+---
+
+```css
+::selection {
+	background-color: $brand-1;
+	color: #fff;
+	text-shadow: none;
+}
+
+::-moz-selection {
+	background-color: $brand-1;
+	color: #fff;
+	text-shadow: none;
+}
+```
+
+This is where you can set the default appearance for highlighted text on your project. Many websites often miss this simple and subtle effect, but we think it is a definite must for any project.
+
+### Grid
+
+One of the most important features of One Nexus is the responsive grid system. It allows you to build highly reliable websites which work great on all devices and resolutions thanks to the use of percentages instead of fixed widths. The grid SCSS partial is located in the **skeleton** folder:
+
+
+```html
+assets > styles > scss > skeleton > _grid.scss
+```
+
+#### The CSS
+
+We have broken the CSS down to individual chunks so we can analyse it more easily. Below you will find everything that appears in the default **_grid.scss** partial, with a breif overview about what it does and why we've included it.
+
+---
+
+```css
+[class*="span"] {
+    display: inline-block;
+    zoom: 1; *display: inline; /* IE < 8: fake inline-block */
+    vertical-align: top;
+	margin-left: $gutter;
+	&:first-of-type {
+		margin-left: 0;
+	}
+}
+```
+
+This is the CSS for our individual columns. We add a display of **inline-block** so that they align next to each other, and set their vertical-align to **top**. We add a gutter between our columns by adding a **margin-left** using the value defined by the [$gutter variable](http://www.onenexusproject.com/documentation/skeleton/variables/), and then remove it from the first column (as it should sit flush with the container).
+
+---
+
+```css
+@for $i from 1 through $columns {
+	.span-#{$i} {			
+		width: ( (100/$columns) * $i) - ( ( ((100 / ((100/$columns) * $i)) - 1) * $gutter ) / ( $columns / $i ) )
+	}
+}
+```
+
+This beautiful equation calculcates and generates the CSS for each column width. It uses the **$columns** and **$gutter** [variables](http://www.onenexusproject.com/documentation/skeleton/variables/) to create the grid-system, and will create a grid for whatever values you set them as.
+
+---
+
+```css
+.row {
+
+/******************************************************************
+Default Column Stacking
+******************************************************************/
+
+	@media (max-width: $breakpoint-3) {
+		&:not([class*="bp"]) {
+			> [class*="span"] {
+				margin-left: 0;
+				width: 100%;
+			}
+			&.block-columns {
+				> [class*="span"] {
+					display: inline-block;
+				}
+			}
+		}
+	}
+
+/******************************************************************
+Custom Column Stacking
+******************************************************************/
+
+	@function bp($name) {
+		@return nth($bp-values, index($bp-names, $name))
+	}
+
+	@each $name in $bp-names {
+		@media (max-width: bp($name)) {
+			&.#{$name} {
+				[class*="span"] {
+					margin-left: 0;
+					width: 100%;
+				}
+				&.block-columns {
+					> [class*="span"] {
+						display: inline-block;
+					}
+				}
+			}
+		}
+	} 	
+
+	...
+
+} // End .row
+```
+
+This code allows for the [custom column collapsing](http://www.onenexusproject.com/documentation/features/responsive-grid-system/#advanced-usage) feature, and also sets the default point at which the columns should collapse to 100% width and stack on top of each other. The equation pulls the values from the [$breakpont variables](http://www.onenexusproject.com/documentation/skeleton/variables/) to create a class for each breakpoint. 
+
+To learn how to use this feature on your project, visit the [Responsive Grid System](http://www.onenexusproject.com/documentation/features/responsive-grid-system/) documentation page.
+
+---
+
+```css
+.row {
+	
+	&.block-columns {
+		> [class*="span"] {
+			display: table-cell;
+		}
+	}
+
+} /* End Row */
+```
+This code allows you to create [block columns](http://www.onenexusproject.com/documentation/features/responsive-grid-system/#advanced-usage) in your project. It's amazingly simple how it works, it simply adds the **display: table-cell** property to each column in the row, which removes the gutter and makes them all equal height.
+
+To learn how to use this feature on your project, visit the [Responsive Grid System](http://www.onenexusproject.com/documentation/features/responsive-grid-system/) documentation page.
+
+### Helpers
+
+```css
+
+```
+
