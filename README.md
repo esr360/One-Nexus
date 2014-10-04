@@ -1431,8 +1431,6 @@ Modules
 
 ```
 
-When referencing "_your-element.scss" in **app.scss** you don't need the "_" or ".scss", just "**your-element**".
-
 ---
 
 ### General Elements
@@ -2499,7 +2497,7 @@ The default modules which come with One Nexus are designed to be as minimal as p
 assets > styles > scss > modules > _your-module.scss
 ```
 
-Every module must be included in the main app.scss file &#42;. All provided modules are included by default, and you are encouraged to remove any you don't need and add your own where neccessery.
+Every module must be included in the main **app.scss** file &#42;. All provided modules are included by default, and you are encouraged to remove any you don't need and add your own where neccessery.
 
 *&#42;Except for [Nexted Modules](http://www.onenexusproject.com/documentation/modules/#nested-modules)*
 
@@ -2535,8 +2533,6 @@ Modules
 @import "modules/off-canvas-nav";
 @import "modules/scroll-top";
 ```
-
-When referencing "_your-module.scss" in **app.scss** you don't need the "_" or ".scss", just "**your-module**".
 
 ---
 
@@ -2614,6 +2610,76 @@ Start building for larger resolutions
 ---
 
 ### Breadcrumb
+
+Breadcrumbs are a simple and common feature of many websites. One Nexus comes with a basic breadcrumb module ready for you to build on. The breadcrumb SCSS partial is located in the **modules** folder:
+
+```html
+assets > styles > scss > modules > _breadcrumb.scss
+```
+
+---
+
+#### The HTML Markup
+
+```html
+<nav class="breadcrumb">
+	<ul>
+		<li><a href="/">One Nexus</a></li>
+		<li><a href="/documentation/">Documentation</a></li>
+		<li><a href="/documentation/modules/">Modules</a></li>
+		<li>Breadcrumb</li>
+	</ul>
+</nav>
+```
+
+The markup for a breadcrumb is a simple un-ordered list wrapped in an element with a **breadcrumb** class.
+
+---
+
+#### The CSS
+
+```css
+/* Breadcrumb
+======================================================================= */
+
+.breadcrumb {	
+
+	font-size: 0.9em;
+	margin-bottom: $base-margin;
+	ul {
+		@extend ul.reset;
+	}
+	li {
+		display: inline;
+		&:not(:last-child) {
+			margin-right: 0.2em;
+			&:after {
+				content: "\f105";
+				font-family: FontAwesome;
+				margin-left: 0.4em;
+			}
+		}
+	}
+
+} /* End .breadcrumb */
+```
+
+##### Code Analysis
+
+
+* We make the font size slightly smaller than the base font at **0.9em**, and apply a margin-bottom to match other block elments using the **$base-margin** variable.
+
+* We remove the default **padding**, **margin** and **list-style** from the **ul** by extending **[ul.reset](http://www.onenexusproject.com/documentation/elements/typography/lists/)**.
+
+* We make our list-items display **inline** to each other.
+
+* We space the list-items out by adding a **margin-right** of **0.2em** to all but the last list-item.
+
+* We add a divider icon uing the **fa-angle-right** [Font Awesome](http://www.onenexusproject.com/documentation/elements/general/icons/) icon to all but the last list-item.
+
+---
+
+### Header 
 
 ---
 
