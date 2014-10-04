@@ -1750,6 +1750,8 @@ To create a large social button, simply create your social button and add the la
 
 The different social button sizes have been made to match those of the [regular buttons](http://www.onenexusproject.com/documentation/elements/general/buttons/).
 
+---
+
 #### Images
 
 One of the most common elements for web pages is images, and they can come in all different shapes and sizes. There is nothing fancy here - just a few helpful classes to get you started. The images SCSS partial is located in the elements folder:
