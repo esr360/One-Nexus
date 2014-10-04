@@ -167,3 +167,69 @@ One Nexus comes with a sample **index.html** file which contains a basic example
 ## Features
 
 ### Responsive Grid system
+
+One of the most important features of One Nexus is the responsive grid system. It allows you to build highly reliable websites which work great on all devices and resolutions thanks to the use of percentages instead of fixed widths.
+
+Unlike most grid systems out there, our columns use inline-block display instead of floating them, making them more flexible.
+
+#### Grid Structure
+
+```html
+assets > styles > scss > skeleton > _variables.scss
+```
+
+This is where you set the main structural variables for your project's framework. Change these to any value you desire, or leave them as they are - the default values work well in most cases.
+
+```css
+/******************************************************************
+Skeleton
+******************************************************************/
+
+$main-width       :   1200px;
+$max-width        :   90%;
+
+$columns          :   12;
+$gutter           :   2.5%;
+
+/*****************************************************************/
+```
+
+##### Main Width ($main-width)
+
+This is where you set the width for the main site container - pretty self-explanatory. This variable can any numeric value; pixels, percentage, em or rem.
+
+##### Max Width ($max-width)
+
+This variable sets the maximum allowed width for the main site container, and will override the previous **$main-width** variable where applicable. It is recommended you use a high percentage for this value, as this is what stops the page from being too wide on smaller resolutions.
+
+##### Columns ($columns)
+
+This is where you can set the number of columns for your grid. Twelve is popularly accepted as the number to use as it is divisible by 2, 3, 4 and 6, allowing for a more flexible system. Feel free to override this if you know what you're doing, our math will calculate your grid no matter the value you enter here.
+
+##### Gutter ($gutter)
+
+The gutter is the gap between each column. As our grid system uses percentage widths, the value you enter here must be a percentage and will not work if you enter a px value.
+
+#### Example Using Default Values
+
+It is typical to wrap your website's content in a main **container** or wrapper class. The container class uses the width set by the **$main-width** variable.
+
+```htmml
+<div class="container">
+	...
+</div>
+```
+
+Each row of columns needs to be put in its own row class.
+
+```htmml
+<div class="container">
+	<div class="row">
+		...
+	</div>
+</div>
+```
+
+The total number of column spans should equate to the value defined by the **$columns** variable. Using our default example of 12, we have created a row consiting of an **8 column span** and a **4 column span**, which adds up to our total of 12 columns.
+
+#### Breakpoints
