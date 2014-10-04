@@ -1,3 +1,11 @@
+# About One Nexus
+
+One Nexus was created by [Edmund Reed](http://edmundreed.co.uk/), a UK based web/UX designer and front-end developer.
+
+Put simply, One Nexus is a front end solution to building modern and responsive websites fast and efficiently. It is a combination of tools, ideas, principles and existing resources to provide a sensible, intuitive and easy to customize solution to your front end needs. There are many reasons why it was created, but the main reason for its existance is to offer any one who uses it a useful headstart for their next project.
+
+Visit the [One Nexus homepage](http://www.onenexusproject.com/) for more help and information.
+
 # One Nexus Documentation
 
 For a more complete experience, visit the official [One Nexus documentaion](http://www.onenexusproject.com/documentation/) page.
@@ -30,6 +38,8 @@ For a more complete experience, visit the official [One Nexus documentaion](http
 	* [Grid]()
 	* [Helpers]()
 	* [Normalize]()
+	* [Print Styles]()
+	* [Variables]()
 * [Elements]()
 	* [General Elements]()
 	* [Interactive Elements]()
@@ -41,6 +51,8 @@ For a more complete experience, visit the official [One Nexus documentaion](http
 	* [Logo]()
 	* [Main Nav]()
 	* [Off-Canvas Navigation]()
+* [Credits]()
+* [Further Support]()
 
 ## Getting Started
 
