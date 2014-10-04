@@ -248,6 +248,8 @@ One of the most important features of One Nexus is the responsive grid system. I
 
 Unlike most grid systems out there, our columns use inline-block display instead of floating them, making them more flexible.
 
+---
+
 #### Grid Structure
 
 ```html
@@ -864,6 +866,8 @@ One of the benefits of the [HTML5 Boilerplate](http://html5boilerplate.com/) (wh
 assets > styles > scss > skeleton > _helpers.scss
 ```
 
+---
+
 #### .hidden
 
 ```css
@@ -1434,6 +1438,8 @@ When referencing "_your-element.scss" in **app.scss** you don't need the "_" or 
 
 These general elements can be thought of as the basic user interface elements for your website. Typically general elements are not used to present the main written content of a wesite (see [Typographic Elements](http://www.onenexusproject.com/elements/typography/)) but everything else a webpage is made up of.
 
+---
+
 #### Alert Bars
 
 Alert bars are useful for displaying important messages to your visitors. One Nexus comes with two different types of alert bars, each with four different colors for different purposes. The alert-bars SCSS partial is located in the **elements** folder:
@@ -1662,6 +1668,7 @@ assets > styles > scss > elements > _icons.scss
 
 One Nexus references the [CDN version](http://www.bootstrapcdn.com/#fontawesome_tab) of Font Awesome by default, but also comes with an optional self hosted version.
 
+---
 
 ##### Basic Example
 
