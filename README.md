@@ -43,6 +43,11 @@ For a more complete experience, visit the official [One Nexus documentaion](http
 	* [Normalize]()
 	* [Print Styles]()
 	* [Variables]()
+    	* [Skeleton]()
+    	* [Breakpoints]()
+    	* [Typography]()
+    	* [Color Palette]()
+    	* [Theming]()
 * [Elements]()
 	* [General Elements]()
 		* [Alert Bars]()
@@ -1365,3 +1370,76 @@ $background-color :   $dark-white;
 ```
 
 ## Elements
+
+We see websites as being made up of visual "elements". The styling of these elements plays as large part in creating the look and feel of your website. One Nexus comes with a load of pre-made common elements to help structure the UI of your project.
+
+Each main element has its own SASS partial which contains all variations of the element (where applicable). Any given element can be found in the **elements** folder located here:
+
+```html
+assets > styles > scss > elements > _your-element.scss
+```
+
+Every element must be included in the main **app.scss** file. All provided elements are included by default, and you are encouraged to remove any you don't need and add your own where neccesser
+
+```css
+/******************************************************************
+
+Site Name: Website name here
+Author: Your name/company here
+
+******************************************************************/
+
+/******************************************************************
+Skeleton
+******************************************************************/
+
+...
+
+/******************************************************************
+Elements
+******************************************************************/
+
+@import "elements/2x";
+@import "elements/accordions";
+@import "elements/alert-boxes";
+@import "elements/buttons";
+@import "elements/blockquotes";
+@import "elements/carousels";
+@import "elements/fonts";
+@import "elements/forms";
+@import "elements/headings";
+@import "elements/icons";
+@import "elements/images";
+@import "elements/links";
+@import "elements/lists";
+@import "elements/modals";
+@import "elements/progress-bars";
+@import "elements/tabs";
+@import "elements/tables";
+@import "elements/tooltips";
+
+/******************************************************************
+Modules
+******************************************************************/
+
+...
+
+```
+
+When referencing "_your-element.scss" in **app.scss** you don't need the "_" or ".scss", just "**your-element**".
+
+---
+
+### General Elements
+
+These general elements can be thought of as the basic user interface elements for your website. Typically general elements are not used to present the main written content of a wesite (see [Typographic Elements](http://www.onenexusproject.com/elements/typography/)) but everything else a webpage is made up of.
+
+#### Alert Bars
+
+### Interactive Elements
+
+These are all the interactive elements that come with One Nexus. An interactive element is any element which requires user engagement and affects the page content. Typically an interative element will also have some accompanying [jQuery code](http://www.onenexusproject.com/documentation/features/jquery/).
+
+### Typographic Elements
+
+Typographic elements are what make up the main written content for your website and is where you should place all elements relating to typography.
