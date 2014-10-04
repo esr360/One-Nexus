@@ -230,7 +230,20 @@ Each row of columns needs to be put in its own row class.
 </div>
 ```
 
+```html
 The total number of column spans should equate to the value defined by the **$columns** variable. Using our default example of 12, we have created a row consiting of an **8 column span** and a **4 column span**, which adds up to our total of 12 columns.
+
+<div class="container">
+	<div class="row">
+		<div class="span-8">
+			...
+		</div>
+		<div class="span-4">
+			...
+		</div>
+	</div>
+</div>
+```
 
 #### Breakpoints
 
