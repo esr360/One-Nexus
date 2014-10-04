@@ -1815,6 +1815,74 @@ The **responsive-circle** container will always be 100% width of its parent's co
 
 ---
 
+#### Tables
+
+Tables still hold an important role in modern websites, so we have provided you with a tables partial should you need it, which is located in the elements folder:
+
+```html
+assets > styles > scss > elements > _tables.scss
+```
+
+---
+
+##### Basic Example
+
+One Nexus comes with a minimalistic table styleset for you to build upon; but which still looks great by default. Without any special markup, this here's a default table example:
+
+```html
+<table>
+	<thead>
+		<tr>
+			<td colspan="3">Table Header</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>COLOR</td>
+			<td>NUMBER</td>
+			<td>VEHICLE</td>
+		</tr>
+		<tr>
+			<td>blue</td>
+			<td>24</td>
+			<td>car</td>
+		</tr>
+		<tr>
+			<td>green</td>
+			<td>38</td>
+			<td>bike</td>
+		</tr>
+		<tr>
+			<td>red</td>
+			<td>55</td>
+			<td>train</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="3">Table Footer</td>
+		</tr>
+	</tfoot>
+</table>
+```
+
+---
+
+##### Fixed columns
+
+To make it so each column in your table has fixed column widths for a more consistent look, simply add the class **table-fixed** to the main **table** element.
+
+```html
+<table class="table-fixed">
+	<tbody>
+		<!-- table content -->
+		...
+	</tbody>
+</table>
+```
+
+---
+
 ### Interactive Elements
 
 These are all the interactive elements that come with One Nexus. An interactive element is any element which requires user engagement and affects the page content. Typically an interative element will also have some accompanying [jQuery code](http://www.onenexusproject.com/documentation/features/jquery/).
@@ -1827,3 +1895,4 @@ Typographic elements are what make up the main written content for your website 
 ```html
 assets > styles > scss > elements > _element.scss
 ```
+
