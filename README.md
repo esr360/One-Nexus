@@ -6,6 +6,9 @@ Put simply, One Nexus is a front end solution to building modern and responsive 
 
 Visit the [One Nexus homepage](http://www.onenexusproject.com/) for more help and information.
 
+---
+
+
 # One Nexus Documentation
 
 For a more complete experience, visit the official [One Nexus documentaion](http://www.onenexusproject.com/documentation/) page.
@@ -140,7 +143,7 @@ Modules
 @import "modules/scroll-top";
 ```
 
-We like to think of websites as being made up of **pages**, which are made up of **modules**, which are made up of **elements**. Each [element](http://www.onenexusproject.com/documentation/elements/) and [module](http://www.onenexusproject.com/documentation/modules/) has its own SASS partial, with the option to easily create a partial for individual pages as well. Click the links below to read more about what they are and how to use them.
+We like to think of websites as being made up of **pages**, which are made up of **modules**, which are made up of **elements**. Each [element](http://www.onenexusproject.com/documentation/elements/) and [module](http://www.onenexusproject.com/documentation/modules/) has its own SASS partial, with the option to easily create a partial for individual pages as well.
 
 ## Building Your Website
 
@@ -278,6 +281,8 @@ This is where you can set the number of columns for your grid. Twelve is popular
 
 The gutter is the gap between each column. As our grid system uses percentage widths, the value you enter here must be a percentage and will not work if you enter a px value.
 
+---
+
 #### Example Using Default Values
 
 It is typical to wrap your website's content in a main **container** or wrapper class. The container class uses the width set by the **$main-width** variable.
@@ -313,6 +318,8 @@ The total number of column spans should equate to the value defined by the **$co
 </div>
 ```
 
+---
+
 #### Breakpoints
 
 Breakpoints are what allow you to style your CSS for a specific selection of browser widths. They work by using **CSS media queries**. You can set as many of these as you like and set them to whatever values you think are suitable for your project.
@@ -339,6 +346,8 @@ $bp-names         :   bp0, bp1, bp2, bp3, bp4, bp5;
 ```
 
 The **$bp-values** and **$bp-names** variables are used to generate classes for the [custom column collapsing](http://www.onenexusproject.com/documentation/features/responsive-grid-system/#custom-column-collapsing) feature. To read about how to customize and create your own mobile-first responsive modules using these breakpoint values, header over to the One Nexus [modules](http://www.onenexusproject.com/documentation/modules) page.
+
+---
 
 #### Advanced Usage
 
@@ -443,6 +452,8 @@ By default the columns collapse to 100% width at **$breakpoint-3** so that they 
 
 To manually override the default collapsing of **$breakpoint-3** you can use the following classes: **bp1**, **bp2**, **bp3**, **bp4** and **bp5** to choose which breakpoint width you would like the columns to collapse at. Simply add your desired class to the main **row** which contains your columns. For example, if you wanted your columns to collapse at the width defined by the **$breakpoint-2** variable, you would add the **bp2** class to your row.
 
+---
+
 ### HTML5 Boilerplate
 
 One Nexus is built off the popular [HTML5](http://html5boilerplate.com/) Boilerplate, making it a fast, robust and adaptable solution from the very beginning. Many native features of One Nexus are included as a result of using H5BP as a base template, including:
@@ -453,6 +464,8 @@ One Nexus is built off the popular [HTML5](http://html5boilerplate.com/) Boilerp
 * Useful CSS [Helper Classes](http://www.onenexusproject.com/documentation/skeleton/helpers/)
 * Default [print CSS](http://www.onenexusproject.com/documentation/skeleton/print/), performance optimized
 
+
+---
 
 ### jQuery & Plugins
 
@@ -497,13 +510,18 @@ By default we do not minify our JS files. When your project goes live, we recomm
 
 It is recommended that you use one of the jQuery copies from the [Google Hosted Libraries](https://developers.google.com/speed/libraries/), as included by default with One Nexus. However, should you decide to use your own hosted version, we have also provided the option for that too, directly underneath. Simply uncomment it out from the code, and delete the Google hosted version.
 
+---
+
 #### Adding Your Own Scripts
 
 Due to the open nature of One Nexus, there is no set place for you to add your own scripts, it's completely up to you. The default structure of our scripts is based off what the script is for. For scripts which complement our [Interactive CSS Elements](http://www.onenexusproject.com/documentation/elements/interactive/) we have created a seperate JS file for each element. For general UI/UX enhancements, plugin initialisations and scripts that affect global modules we have put them in our global.js file.
 
+---
+
 #### Interactive Elements & Modules
 
 Typically, most [Interactive CSS Elements](http://www.onenexusproject.com/documentation/elements/interactive/) require some additional jQuery code for their functionality. In these instances (which is the case for all the default interactive elements which come with One Nexus), each interactive element has its own JS file.
+
 
 ##### Interactive Elements
 
@@ -516,6 +534,8 @@ Typically, most [Interactive CSS Elements](http://www.onenexusproject.com/docume
 ##### Interactive Modules
 
 * [Off-Canvas Navigation](http://www.onenexusproject.com/documentation/modules/off-canvas-nav/)
+
+---
 
 #### UI/UX Enhancements
 
@@ -567,6 +587,7 @@ $("a[href*=#]").click(function() {
     }
 });
 ```
+---
 
 #### Minifying Scripts
 
@@ -575,6 +596,8 @@ Everyone has their own way of doing things, so we don't want to dictate how to o
 Whilst we strongly recommend minifying your scripts and CSS, it is by no means required if you are not comfortable doing so.
 
 [Read our guide on minifying assets to improve your project's performance.](http://www.onenexusproject.com/tutorials/minify-your-assets-to-improve-performance/)
+
+---
 
 ### Google Fonts
 
@@ -593,7 +616,7 @@ This is where all the core CSS for your project is placed. It contains the main 
 assets > styles > scss > skeleton > _base.scss
 ```
 
-#### The CSS
+#### The SASS/CSS
 
 We have broken the CSS down to individual chunks so we can analyse it more easily. Below you will find everything that appears in the default **_base.scss** partial, with a breif overview about what it does and why we've included it.
 
@@ -609,9 +632,9 @@ We remove any default **padding** and **margin** applied by the browser.
 ---
 
 ```css
-    html {
-    overflow-x: hidden;
-    }
+html {
+	overflow-x: hidden;
+}
 ```
 
 We set the HTML element to **overflow-x: hidden** to hide any unwated horizontal scroll.
@@ -710,6 +733,8 @@ The above code tackles the issue of the [spacing above and below modules](http:/
 
 This is where you can set the default appearance for highlighted text on your project. Many websites often miss this simple and subtle effect, but we think it is a definite must for any project.
 
+---
+
 ### Grid
 
 One of the most important features of One Nexus is the responsive grid system. It allows you to build highly reliable websites which work great on all devices and resolutions thanks to the use of percentages instead of fixed widths. The grid SCSS partial is located in the **skeleton** folder:
@@ -719,7 +744,7 @@ One of the most important features of One Nexus is the responsive grid system. I
 assets > styles > scss > skeleton > _grid.scss
 ```
 
-#### The CSS
+#### The SASS/CSS
 
 We have broken the CSS down to individual chunks so we can analyse it more easily. Below you will find everything that appears in the default **_grid.scss** partial, with a breif overview about what it does and why we've included it.
 
@@ -824,9 +849,310 @@ This code allows you to create [block columns](http://www.onenexusproject.com/do
 
 To learn how to use this feature on your project, visit the [Responsive Grid System](http://www.onenexusproject.com/documentation/features/responsive-grid-system/) documentation page.
 
+---
+
 ### Helpers
 
-```css
+One of the benefits of the [HTML5 Boilerplate](http://html5boilerplate.com/) (which One Nexus is built on) is the inclusion of a [common CSS helpers](https://github.com/h5bp/html5-boilerplate/blob/v4.3.0/doc/css.md#common-helpers) stylesheet. Our helpers stylesheet is built off this and contains some of our own additional helpers to enhance your project's framework. The helpers SCSS partial is located in the **skeleton** folder:
 
+```html
+assets > styles > scss > skeleton > _helpers.scss
 ```
 
+#### .hidden
+
+```css
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+```
+
+From the [H5BP documentation](https://github.com/h5bp/html5-boilerplate/blob/master/doc/css.md):
+
+The **hidden** class can be added to any element that you want to hide visually and from screen readers. It could be an element that will be populated and displayed later, or an element you will hide with JavaScript.
+
+---
+
+#### .visually-hidden
+
+```css
+.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    &.focusable {
+        &:active, &:focus {
+            clip: auto;
+            height: auto;
+            margin: 0;
+            overflow: visible;
+            position: static;
+            width: auto;
+        }
+    }
+}
+```
+
+From the [H5BP documentation](https://github.com/h5bp/html5-boilerplate/blob/master/doc/css.md):
+
+The **visually-hidden** class can be added to any element that you want to hide visually, while still have its content accessible to screen readers.
+
+See also:
+
+* [CSS in Action: Invisible Content Just for Screen Reader Users](http://www.webaim.org/techniques/css/invisiblecontent/)
+* [Hiding content for accessibility](http://snook.ca/archives/html_and_css/hiding-content-for-accessibility)
+* [HTML5 Boilerplate - Issue #194](https://github.com/h5bp/html5-boilerplate/issues/194/)
+
+
+---
+
+#### .invisible
+
+```css
+.invisible {
+    visibility: hidden;
+}
+```
+
+From the [H5BP documentation](https://github.com/h5bp/html5-boilerplate/blob/master/doc/css.md):
+
+The **invisible** class can be added to any element that you want to hide visually and from screen readers, but without affecting the layout.
+
+As opposed to the **hidden** class that effectively removes the element from the layout, the **invisible** class will simply make the element invisible while keeping it in the flow and not affecting the positioning of the surrounding content.
+
+N.B. Try to stay away from, and don't use the classes specified above for [keyword stuffing](http://en.wikipedia.org/wiki/Keyword_stuffing) as you will harm your site's ranking!
+
+---
+
+### .clearfix
+
+
+```css
+.clearfix, .cf {
+    zoom: 1;
+    &:before, &:after { 
+        content: ""; 
+        display: table; 
+    }
+    &:after { 
+        clear: both; 
+    }
+}
+```
+
+From the [H5BP documentation](https://github.com/h5bp/html5-boilerplate/blob/master/doc/css.md):
+
+The **clearfix** class can be added to any element to ensure that it always fully contains its floated children.
+
+Over the years there have been many variants of the clearfix hack, but currently, we use the [micro clearfix](http://nicolasgallagher.com/micro-clearfix-hack/).
+
+---
+
+### Vertically Align Columns
+
+
+```css
+.va-top {
+    vertical-align: top !important;
+}
+.va-middle {
+    vertical-align: middle !important;
+}
+.va-bottom {
+    vertical-align: bottom !important;
+}
+```
+
+The **vertical align** classes allow you to easily control the vertical alignment of your columns. Simply add the class to each column in a row that you want to edit the vertical alignment of.
+
+[Click here](http://www.onenexusproject.com/documentation/features/responsive-grid-system/#advanced-usage) to read more about how to control the vertical alignment of your columns.
+
+---
+
+### Vertically Align Anything
+
+
+```css
+.vam {    
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+```
+
+From [zerosixthree](http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/):
+
+With just 3 lines of CSS (excluding vendor prefixes) we can with the help of transform: translateY vertically center whatever we want, even if we don’t know its height.
+
+The CSS property transform is usally used for rotating and scaling elements, but with its translateY function we can now vertically align elements. Usually this must be done with absolute positioning or setting line-heights, but these require you to either know the height of the element or only works on single-line text etc.
+
+---
+
+### .image-replacement
+
+```css
+.image-replacement {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+```
+From [zeldman.com](http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/):
+
+* Really long strings of text will never flow into the container because they always flow away from the container.
+* Performance is dramatically improved because a 9999px box is not drawn. Noticeably so in animations on the iPad 1.
+
+
+---
+
+### Horizontal Rules
+
+```css
+hr.line {
+    color: rgba(0,0,0,0.2);
+    margin: $base-margin 0;
+}
+hr.dotted {
+    color: rgba(0,0,0,0.2);
+    border-top: 1px dotted;
+    margin: $base-margin 0;
+}
+```
+
+One Nexus comes with an alternative horizontal rule which is less intrusive than the default one, and can be used to easily section off the content of your page.
+
+---
+
+### Horizontal Aligning
+
+
+```css
+.text-left { 
+    text-align: left !important; 
+}
+.text-center { 
+    text-align: center !important; 
+}
+.text-right { 
+    text-align: right !important; 
+}
+
+.left  { 
+    float: left !important; 
+}
+.right { 
+    float: right !important; 
+}
+```
+
+The above classes can be used to quickly and simply control the horizontal alignment of your elements.
+
+[Click here](http://www.onenexusproject.com/documentation/features/responsive-grid-system/#advanced-usage) to read more about how to control the horizontal alignment of your columns.
+
+---
+
+### Responsive Visibility
+
+
+```css
+.min-bp1 { /* Show only when resolution is at least breakpoint-1 */
+    @media (max-width: $breakpoint-1) {
+        display: none !important;
+    }  
+}
+.max-bp1 { /* Show only when resolution is at most breakpoint-1 */
+    @media (min-width: $breakpoint-1) {
+        display: none !important;
+    }  
+}
+.min-bp2 { /* Show only when resolution is at least breakpoint-2 */
+    @media (max-width: $breakpoint-2) {
+        display: none !important;
+    }  
+}
+.max-bp2 { /* Show only when resolution is at most breakpoint-2 */
+    @media (min-width: $breakpoint-2) {
+        display: none !important;
+    }  
+}
+.min-bp3 { /* Show only when resolution is at least breakpoint-3 */
+    @media (max-width: $breakpoint-3) {
+        display: none !important;
+    }  
+}
+.max-bp3 { /* Show only when resolution is at most breakpoint-3 */
+    @media (min-width: $breakpoint-3) {
+        display: none !important;
+    }  
+}
+.min-bp4 { /* Show only when resolution is atleast breakpoint-4 */
+    @media (max-width: $breakpoint-4) {
+        display: none !important;
+    }  
+}
+.max-bp4 { /* Show only when resolution is at most breakpoint-4 */
+    @media (min-width: $breakpoint-4) {
+        display: none !important;
+    }  
+}
+```
+
+The above classes let you hide or show certain elements depending on the resolution. By default there are four values you can use, which are based off the values defined by the [breakpoint variables](http://www.onenexusproject.com/documentation/features/responsive-grid-system/#breakpoints). These can be useful for things such as hiding certain content from mobile users.
+
+---
+
+#### Using Helper Classes Semantically
+
+The easiest way to use these helper classes is by simply adding them straight to your HTML element, which is fine in most cases, but may result in [unsemantic code](http://css-tricks.com/semantic-class-names/). It is possible to use each of the following helper classes within another, semantically named class by [extending them](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#extend) with SASS.
+
+##### Example
+
+```css
+/*********************
+CLEARFIXIN
+*********************/
+
+.clearfix, .cf {
+    zoom: 1;
+    &:before, &:after { 
+    	content: ""; 
+    	display: table; 
+    }
+    &:after { 
+    	clear: both; 
+    }
+}
+```
+
+```html
+<div class="top-features cf">
+	...
+</div>
+```
+
+The above example shows the simplest case of using the provided [clearfix](http://nicolasgallagher.com/micro-clearfix-hack/) solution to handle floated elements. Whilst the above example is perfectly valid code, it is not semantic. To use this clearfix class (or any helper class) semantically, you should extend the class into your main class like so:
+
+```css
+/*********************
+Top Features
+*********************/
+
+.top-features {
+	...
+	@extend .cf;
+}
+```
+
+```html
+<div class="top-features">
+	...
+</div>
+```
+
+This results in cleaner and more semantic HTML markup, and we recommend using all helper classes in this way where possible.
