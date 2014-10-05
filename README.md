@@ -3233,4 +3233,19 @@ For more help and information about how to use this plugin, please visit the [pl
 
 ---
 
+## Credits
 
+* [HTML5 Boilerplate](http://html5boilerplate.com/)
+* [Modernizr](http://modernizr.com/)
+* [Normalize](http://necolas.github.io/normalize.css/)
+* [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
+* [Pushy](http://www.christopheryee.ca/pushy/)
+* [Owl Carousel](http://owlgraphic.com/owlcarousel/)
+* [Tipr](http://www.tipue.com/tipr/)
+* [Magnific Popup](http://dimsemenov.com/plugins/magnific-popup/)
+
+---
+
+## Further Support
+
+For further support please check out our [tutorials](http://www.onenexusproject.com/tutorials/) and [support forums](http://www.onenexusproject.com/forum).
