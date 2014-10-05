@@ -90,7 +90,12 @@ One Nexus is built in [SASS](http://sass-lang.com/) (Syntactically Awesome Style
 
 ## Project Architecture
 
-Once you have your copy of One Nexus set up for your new project, open the entire directory with your favourite text editor (we use [Sublime Text](http://www.sublimetext.com/)), and let's take a look at the structure of our files (don't worry if your copy looks slightly different).
+Once you have your copy of One Nexus set up for your new project, open the entire directory with your favourite text editor (we use [Sublime Text](http://www.sublimetext.com/)), and open the **app.scss** file located here:
+
+
+```html
+assets > styles > scss > app.scss
+```
 
 
 ```css
@@ -763,7 +768,7 @@ We have broken the CSS down to individual chunks so we can analyse it more easil
     zoom: 1; *display: inline; /* IE < 8: fake inline-block */
     vertical-align: top;
 	margin-left: $gutter;
-	&:first-of-type {
+	&:first-child {
 		margin-left: 0;
 	}
 }
