@@ -2879,7 +2879,7 @@ Start building for larger resolutions
 
 ### Logo
 
-Your project is almost certain to have its logo somewhere on the page, either in one or more places such as the [page header](http://www.onenexusproject.com/documentation/modules/header/). The logo SCSS partial is located in the modules folder:
+Your project is almost certain to have its logo somewhere on the page, either in one or more places such as the [page header](http://www.onenexusproject.com/documentation/modules/header/). The logo SCSS partial is located in the **modules** folder:
 
 ```html
 assets > styles > scss > modules > _logo.scss
@@ -2947,6 +2947,258 @@ The markup for the logo is simply an element with the **logo** class which conta
 * The code here is for **image** based logos, and set's the image as an **inline-block** that is vertically aligned to the **middle**. Set the height of your logo here.
 
 ---
+
+### Main Navigation
+
+For multi-paged websites your users will need a method of navigation. The default main nav module is highly flexible and customizable, and supports infinite multi-level dropdown menus. The main-nav SCSS partial is located in the **modules** folder:
+
+```html
+assets > styles > scss > modules > _main-nav.scss
+```
+
+This module also contains the **_dropdown-nav.scss** module.
+
+---
+
+##### The HTML Markup
+
+###### Basuc Example
+
+```html
+<nav class="main-nav">
+    <ul>
+        <li><a href="#">Lorem Ipsum</a></li>
+        <li><a href="#">Alpha Bravo</a></li>
+        <li><a href="#">Dolor Sit Amet</a></li>
+    </ul>
+</nav>
+```
+
+###### With Multi-Level Dropdown Menu
+
+```html
+<nav class="main-nav">
+    <ul>
+        <li><a href="#">Lorem Ipsum</a></li>
+        <li>
+            <a href="#">Dropdown Menu</a>
+            <ul>
+            	<li><a href="#">Alpha Alpha</a></li>
+            	<li><a href="#">Bravo Alpha</a></li>
+            	<li>
+            		<a href="#">Dropdown Alpha</a>
+            		<ul>
+		            	<li><a href="#">Alpha Bravo</a></li>
+		            	<li><a href="#">Bravo Bravo</a></li>
+		            	<li><a href="#">Charlie Bravo</a></li>
+		            </ul>
+            	</li>
+            </ul>
+        </li>
+        <li><a href="#">Dolor Sit Amet</a></li>
+    </ul>
+</nav>
+```
+
+The markup for the main navigation is a regular un-ordered list (which can accommodate an infinite number of sub-menus), wrapped up in an element with the **main-nav** class.
+
+For semantic purposes we recommend using the **&#60;nav>** HTML5 element for your **navigation**'s wrapper element.
+
+Whilst the mobile/off-canvas nav uses the same HTML markup as the main nav, it requires its own [seperate module](http://www.onenexusproject.com/documentation/modules/off-canvas-nav/) for the CSS.
+
+---
+
+##### The Main Nav CSS
+
+```css
+/* Main Navigation
+================================================================ */
+
+.main-nav {
+
+/******************************************************************
+Start building the basic layout for lowest resoluton
+******************************************************************/
+
+	ul {
+		@extend ul.reset;
+		display: none;
+		font-size: 0;
+	    li {
+		    @import "dropdown-nav";
+		    ul {
+		    	padding-left: 2em;
+		    }  
+		    &:hover {
+		    	> a {		    		
+					color: white;
+					background: darken($brand-1, 10%);
+		    	}
+		    }
+	    }
+    	a {
+			text-decoration: none;
+			display: block;	
+			line-height: 4em;
+			color: $grey;
+			padding: 0 1em;
+			font-size: 1rem;
+    	}
+	}
+
+/******************************************************************
+Start building for larger resolutions
+******************************************************************/
+
+	@media (min-width: $breakpoint-3) {
+		text-align: right;
+		ul {
+			white-space: nowrap;
+		    li {
+				display: inline-block;
+				position: relative;
+		    }
+		}
+		> ul {
+			display: block;
+		}
+	}
+
+} // End .main-nav
+```
+
+Note the inclusion of the **dropdown-nav** module in the above code.
+
+###### Code Analysis
+
+* We remove the default padding, margin and list-style from the ul by extending ul.reset.
+
+* Keep in mind we are still styling for the lowest resolution, we want to hide the menu by default, so we add display: none.
+
+* This is where we import the dropdown-nav module (see below). Because we have included it here, we do not need to include it in our main app.scss file.
+
+* This ul is the first-level deep sub-menu, and we set a padding-left of 2em.
+
+* The code here controls the hovered state of a menu link, and has some basic default styling applied.
+
+* We remove the underline text-decoration from the menu links.
+
+* We set the menu links to display: block.
+
+* This is where we set the line-height of the menu links. By default, this value also controls the height of the header itself.
+
+* We set the color of our menu links to $grey. Change this to whatever you want.
+
+* This is where we set the left and right padding for the links, to determine how much space there should be between each one.
+
+* We reset the font-size to 1em (after having set it to 0 on line 13).
+
+* Now that we have entered desktop territory, we align the menu to the right of the page by adding text-align: right.
+
+* We set the white-space to nowrap to stop our sub-menu links from breaking onto multiple lines.
+
+* We set our list-items to display: inline-block so that they align next to each other now that we are coding for desktops.
+
+* We set the positioning of our list-items to relative to contain any children sub-menus.
+
+* After having hidden the menu on line 12 for mobiles, we now reset the display to block so it becomes visible by default for desktops.
+
+---
+
+##### The Dropdown Nav CSS
+
+```css
+/* Dropdown Navigation
+   Used in: "modules/_main-nav.scss"
+================================================================ */
+
+ul {
+
+/******************************************************************
+Start building the basic layout for lowest resoluton
+******************************************************************/
+
+	@extend ul.reset;
+	display: none;
+	position: absolute;
+	z-index: 999;
+	min-width: 185px;
+	text-align: left;
+	li {
+		display: block;
+		a {
+			background: $dark-grey;
+			color: white;
+			line-height: 45px;
+		}
+		&:hover {
+			a {
+				background: darken($brand-1, 10%);
+			}
+			> ul {
+				display: block;
+				a:hover {
+					background: darken($brand-1, 20%);
+				}
+			}
+		}
+	}
+	ul {
+		top: 0;
+		right: 100%;
+	}
+
+/******************************************************************
+Start building for larger resolutions
+******************************************************************/
+
+	@media (min-width: $breakpoint-4) {
+		ul {
+			left: 100%;
+			right: auto;
+		}
+	}
+
+} // End dropdown ul
+
+&:hover > ul {
+	display: block;
+}
+```
+
+###### Code analysis
+
+We remove the default padding, margin and list-style from the ul by extending ul.reset.
+
+
+* We hide the dropdown menu by default by adding display: none;.
+
+* We take the dropdown menu out of the normal flow of the website with position: absolute; and give it a high z-index value so it alays appears above the main content.
+
+* We apply a min-width to the dropdown menu so it is never too narrow, and we ensure the text is aligned to the left.
+
+* We tell the list-items to behave as block elements.
+
+* We apply our basic styling properties to our menu links.
+
+* We set the background color of a hovered menu link.
+
+* We tell further nested dropdown menus to display when their parent list item is hovered.
+
+* We set the background color of further nested dropown menu links.
+
+* This is where we set the positioning of further nested dropdown menus.
+
+* We adjust the positioning of further nested dropdown menus for larger resolutions.
+
+* We tell the first-level dropdown menu to show when the parent menu item is hovered.
+
+---
+
+### Off-Canvas Navigation
+
+---
+
 
 ```html
 assets > styles > scss > modules > _element.scss
