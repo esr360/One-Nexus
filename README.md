@@ -2680,7 +2680,96 @@ The markup for a breadcrumb is a simple un-ordered list wrapped in an element wi
 
 ### Header 
 
+Most, if not all, websites have a header and footer; these are the two most common modules. One Nexus comes with a pre-made header ready for you to customize. The header SCSS partial is located in the **modules** folder:
+
+```html
+assets > styles > scss > modules > _header.scss
+```
+
+The **header** module makes use of two other modules: [_logo.scss](http://www.onenexusproject.com/documentation/modules/logo/) and [_main-nav.scss](http://www.onenexusproject.com/documentation/modules/main-nav/).
+
 ---
+
+##### The HTML Markup
+
+```html
+<header class="app-header" id="app-header">
+    <div class="container">
+        <div class="header-wrapper">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="/">
+                    <img src="assets/images/logo.png" alt="One Nexus" />
+                </a>
+            </div>
+            <!-- Main-Nav -->
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Header Link 1</a></li>
+                    <li><a href="#">Header Link 2</a></li>
+                    <li><a href="#">Header Link 3</a></li>
+                </ul>
+            </nav>
+            <!-- Mobile Menu Trigger Button -->
+            <a class="nav-trigger max-bp3" href="#"></a>
+        </div>
+    </div>
+</header>
+```
+
+The default header module consists of the [logo module](http://www.onenexusproject.com/documentation/modules/logo/), the [main-nav](http://www.onenexusproject.com/documentation/modules/logo/) module and the [off-canvas nav](http://www.onenexusproject.com/documentation/modules/off-canvas-nav/) trigger button for mobile displays, all wrapped within a **container** element which is wrapped in the main **app-header** element.
+
+The [off-canvas nav](http://www.onenexusproject.com/documentation/modules/off-canvas-nav/) trigger button is its own seperate module and has its own SCSS partial. By default we add a Helper Class of max-bp3 to hide it on desktops.
+
+For semantic purposes we recommend using the **&#60;header&#62** HTML5 element for your **header**'s wrapper element.
+
+---
+
+##### The CSS
+
+```css
+/* Header
+================================================================ */
+
+.app-header {
+
+/******************************************************************
+Start building the basic layout for lowest resoluton
+******************************************************************/
+
+	background-color: $dark-grey;
+
+/******************************************************************
+Start building for larger resolutions
+******************************************************************/
+
+	@media (min-width: $breakpoint-3) {
+		.header-wrapper {			
+			display: table;
+			width: 100%;
+		}	
+		.logo, .main-nav {
+			display: table-cell;
+			vertical-align: middle;
+		}
+	}
+
+} // End .app-header
+
+```
+Both the **[logo](http://www.onenexusproject.com/documentation/modules/logo/)** and **[main-nav](http://www.onenexusproject.com/documentation/modules/main-nav/)** each have their own SCSS file; they are **not** included in the header partial. 
+
+###### Code Analysis
+
+* We set the **background-color** for the entire header.
+
+* We set our **header-wrapper** to act as a table to hold our [logo](http://www.onenexusproject.com/documentation/modules/logo/) and [main-nav](http://www.onenexusproject.com/documentation/modules/main-nav/) pseudo "table-cells" (see **line 22**).
+
+* We align our [logo](http://www.onenexusproject.com/documentation/modules/logo/) and [main-nav](http://www.onenexusproject.com/documentation/modules/main-nav/) next to each other by adding **display: table-cell;** to them, and we set their **vertical-align** to **middle** (this is one of the bonuses of using display: table-cell over floating them).
+
+---
+
+### Footer
 
 ```html
 assets > styles > scss > modules > _element.scss
