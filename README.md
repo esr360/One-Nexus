@@ -3244,8 +3244,6 @@ For more help and information about how to use this plugin, please visit the [pl
 * [Tipr](http://www.tipue.com/tipr/)
 * [Magnific Popup](http://dimsemenov.com/plugins/magnific-popup/)
 
----
-
 ## Further Support
 
 For further support please check out our [tutorials](http://www.onenexusproject.com/tutorials/) and [support forums](http://www.onenexusproject.com/forum).
