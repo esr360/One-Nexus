@@ -2962,7 +2962,7 @@ This module also contains the **_dropdown-nav.scss** module.
 
 ##### The HTML Markup
 
-###### Basuc Example
+###### Basic Example
 
 ```html
 <nav class="main-nav">
@@ -3071,37 +3071,37 @@ Note the inclusion of the **dropdown-nav** module in the above code.
 
 ###### Code Analysis
 
-* We remove the default padding, margin and list-style from the ul by extending ul.reset.
+* We remove the default **padding**, **margin** and **list-style** from the **ul** by extending **[ul.reset](http://www.onenexusproject.com/documentation/elements/typography/lists/)**.
 
-* Keep in mind we are still styling for the lowest resolution, we want to hide the menu by default, so we add display: none.
+* Keep in mind we are still styling for the lowest resolution, we want to hide the menu by default, so we add **display: none**.
 
-* This is where we import the dropdown-nav module (see below). Because we have included it here, we do not need to include it in our main app.scss file.
+* This is where we import the **dropdown-nav** module (see below). Because we have included it here, we do not need to include it in our main **app.scss** file.
 
-* This ul is the first-level deep sub-menu, and we set a padding-left of 2em.
+* This ul is the first-level deep sub-menu, and we set a **padding-left** of **2em**.
 
-* The code here controls the hovered state of a menu link, and has some basic default styling applied.
+* The code here controls the **hovered** state of a menu link, and has some basic default styling applied.
 
-* We remove the underline text-decoration from the menu links.
+* We remove the underline **text-decoration** from the menu links.
 
-* We set the menu links to display: block.
+* We set the menu links to **display: block**.
 
-* This is where we set the line-height of the menu links. By default, this value also controls the height of the header itself.
+* This is where we set the **line-height** of the menu links. By default, this value also controls the height of the header itself.
 
-* We set the color of our menu links to $grey. Change this to whatever you want.
+* We set the color of our menu links to **$grey**. Change this to whatever you want.
 
-* This is where we set the left and right padding for the links, to determine how much space there should be between each one.
+* This is where we set the left and right **padding** for the links, to determine how much space there should be between each one.
 
-* We reset the font-size to 1em (after having set it to 0 on line 13).
+* We reset the font-size to **1em** (after having set it to 0 on line 13).
 
-* Now that we have entered desktop territory, we align the menu to the right of the page by adding text-align: right.
+* Now that we have entered desktop territory, we align the menu to the right of the page by adding **text-align: right;**.
 
-* We set the white-space to nowrap to stop our sub-menu links from breaking onto multiple lines.
+* We set the **white-space** to **nowrap** to stop our sub-menu links from breaking onto multiple lines.
 
-* We set our list-items to display: inline-block so that they align next to each other now that we are coding for desktops.
+* We set our list-items to **display: inline-block;** so that they align next to each other now that we are coding for desktops.
 
-* We set the positioning of our list-items to relative to contain any children sub-menus.
+* We set the positioning of our list-items to **relative** to contain any children sub-menus.
 
-* After having hidden the menu on line 12 for mobiles, we now reset the display to block so it becomes visible by default for desktops.
+* After having hidden the menu on line 12 for mobiles, we now reset the display to **block** so it becomes visible by default for desktops.
 
 ---
 
@@ -3168,24 +3168,23 @@ Start building for larger resolutions
 
 ###### Code analysis
 
-We remove the default padding, margin and list-style from the ul by extending ul.reset.
+* We remove the default **padding**, **margin** and **list-style** from the **ul** by extending **[ul.reset](http://www.onenexusproject.com/documentation/elements/typography/lists/)**.
 
+* We hide the dropdown menu by default by adding **display: none;**.
 
-* We hide the dropdown menu by default by adding display: none;.
+* We take the dropdown menu out of the normal flow of the website with **position: absolute;** and give it a high **z-index** value so it alays appears above the main content.
 
-* We take the dropdown menu out of the normal flow of the website with position: absolute; and give it a high z-index value so it alays appears above the main content.
+* We apply a **min-width** to the dropdown menu so it is never too narrow, and we ensure the text is aligned to the left.
 
-* We apply a min-width to the dropdown menu so it is never too narrow, and we ensure the text is aligned to the left.
-
-* We tell the list-items to behave as block elements.
+* We tell the list-items to behave as **block** elements.
 
 * We apply our basic styling properties to our menu links.
 
-* We set the background color of a hovered menu link.
+* We set the **background color** of a **hovered** menu link.
 
-* We tell further nested dropdown menus to display when their parent list item is hovered.
+* We tell further nested dropdown menus to display when their parent list item is **hovered**.
 
-* We set the background color of further nested dropown menu links.
+* We set the **background color** of further nested dropown menu links.
 
 * This is where we set the positioning of further nested dropdown menus.
 
@@ -3197,10 +3196,41 @@ We remove the default padding, margin and list-style from the ul by extending ul
 
 ### Off-Canvas Navigation
 
----
-
+One Nexus comes with an off-canvas mobile menu built using the [Pushy jQuery plugin](http://www.christopheryee.ca/pushy/). We use this by default to convert the main menu into an off-canvas menu for small/mobile displays. The Pushy SCSS partial is located in the **modules** folder, whilst the associated jQuery is located in the **js** folder.:
 
 ```html
-assets > styles > scss > modules > _element.scss
+assets > styles > scss > modules > _off-canvas.nav.scss
 ```
+
+```html
+assets > js > off-canvas-nav.js
+```
+---
+
+##### The HTML Markup
+
+In order for the mobile navigation to function properly, you need to add a few things to your markeup. The mobile menu works off of the main menu with the **main-nav** class, so you don't need to create a second menu. First you need is a container with the **off-canvas-nav** class (the main-nav section will be duplicated within this), and a target jQuery selector by creating a div with an id of **off-canvas-nav** inside the container. The below markup needs to be placed at the bottom of the page, just before the closing **body** tag, making sure it is outside the main **site-content** container.
+
+```html
+<nav class="off-canvas-nav">
+    <div id="off-canvas-nav"></div>
+</nav>
+```
+
+Finally, you need an element with the **site-overlay** class - this acts as a mechanism for closing the menu, allowing the user to click anywhere outside the menu to close it. This can be placed anywhere inside the main **site-content** wrapper.
+
+```html
+<div class="site-overlay"></div>
+```
+
+Finally, you need to create the button that actually opens the menu. This can be achieved by adding the **nav-trigger** class to your element that you wish to act as the open-menu trigger. This element can be placed anywhere inside the main **site-content** wrapper.
+
+```html
+<span class="nav-trigger"></span>
+```
+
+For more help and information about how to use this plugin, please visit the [plugin's homepage](http://www.christopheryee.ca/pushy/).
+
+---
+
 
