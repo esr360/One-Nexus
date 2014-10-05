@@ -2619,7 +2619,7 @@ assets > styles > scss > modules > _breadcrumb.scss
 
 ---
 
-#### The HTML Markup
+##### The HTML Markup
 
 ```html
 <nav class="breadcrumb">
@@ -2636,7 +2636,7 @@ The markup for a breadcrumb is a simple un-ordered list wrapped in an element wi
 
 ---
 
-#### The CSS
+##### The CSS
 
 ```css
 /* Breadcrumb
@@ -2661,11 +2661,10 @@ The markup for a breadcrumb is a simple un-ordered list wrapped in an element wi
 		}
 	}
 
-} /* End .breadcrumb */
+} // End .breadcrumb
 ```
 
-##### Code Analysis
-
+###### Code Analysis
 
 * We make the font size slightly smaller than the base font at **0.9em**, and apply a margin-bottom to match other block elments using the **$base-margin** variable.
 
