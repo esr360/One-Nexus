@@ -2879,6 +2879,73 @@ Start building for larger resolutions
 
 ### Logo
 
+Your project is almost certain to have its logo somewhere on the page, either in one or more places such as the [page header](http://www.onenexusproject.com/documentation/modules/header/). The logo SCSS partial is located in the modules folder:
+
+```html
+assets > styles > scss > modules > _logo.scss
+```
+
+---
+
+##### The HTML Markup
+
+The markup for the logo is simply an element with the **logo** class which containts either plain text or an **img** element referencing your logo file, wrapped in an anchor tag (which would typically link to your homepage).
+
+###### Plain Text Logo
+
+```html
+<div class="logo">
+    <a href="/">One Nexus</a>
+</div>
+```
+
+###### Image Logo
+
+```html
+<div class="logo">
+    <a href="/">				                
+		<img src="/assets/images/logo.png" alt="One Nexus" />
+    </a>
+</div>
+```
+
+---
+
+##### The CSS
+
+```css
+/* Logo
+======================================================================= */
+
+.logo {	
+
+	padding: 1em 0;
+	/* for plain text logos */
+	a {
+		color: white;
+		display: inline-block;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+	/* for image logos */
+	img {
+		height: 34px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+} // End .logo
+```
+
+###### Code Analysis
+
+* We add a top and bottom **padding** to create a gap between the logo and header edges.
+
+* The code here is for **plain-text** based logos, and by default has some basic styling applied.
+
+* The code here is for **image** based logos, and set's the image as an **inline-block** that is vertically aligned to the **middle**. Set the height of your logo here.
+
 ---
 
 ```html
