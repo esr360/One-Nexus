@@ -2721,7 +2721,7 @@ The default header module consists of the [logo module](http://www.onenexusproje
 
 The [off-canvas nav](http://www.onenexusproject.com/documentation/modules/off-canvas-nav/) trigger button is its own seperate module and has its own SCSS partial. By default we add a Helper Class of max-bp3 to hide it on desktops.
 
-For semantic purposes we recommend using the **&#60;header&#62** HTML5 element for your **header**'s wrapper element.
+For semantic purposes we recommend using the **&#60;header>** HTML5 element for your **header**'s wrapper element.
 
 ---
 
