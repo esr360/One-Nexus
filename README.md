@@ -2771,6 +2771,116 @@ Both the **[logo](http://www.onenexusproject.com/documentation/modules/logo/)** 
 
 ### Footer
 
+Most, if not all, websites have a header and footer; these are the two most common modules. One Nexus comes with a pre-made footer ready for you to customize. The footer SCSS partial is located in the **modules** folder:
+
+
+```html
+assets > styles > scss > modules > _footer.scss
+```
+
+---
+
+##### The HTML Markup
+
+```html
+<footer class="app-footer">
+    <div class="container">
+        <div class="footer-wrapper">
+            <!-- Copyright Section -->
+            <h4 class="copyright">© Your Website 2014</h4>
+            <!-- Footer Navigation -->
+            <nav class="footer-nav">                
+                <ul>
+                    <li><a href="#">Footer Link 1</a></li>
+                    <li><a href="#">Footer Link 2</a></li>
+                    <li><a href="#">Footer Link 3</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</footer>
+```
+
+The default footer module consists of a **class="copyright"** element and a **class="footer-nav"** element, all wrapped up in a **container** element inside the main **app-footer** element.
+
+For semantic purposes we recommend using the **&#60;footer>** HTML5 element for your footer's wrapper element.
+
+The **copyright** and **footer-nav** classes can be applied to any HTML element within **app-footer**.
+
+---
+
+##### The CSS
+
+```css
+/* Footer
+======================================================================= */
+
+.app-footer {
+
+/******************************************************************
+Start building the basic layout for lowest resoluton
+******************************************************************/
+
+	text-align: center;	
+	margin-bottom: $base-margin;
+	.footer-nav {
+		ul {
+		    @extend ul.reset;
+		}
+	    li {
+		    display: inline-block;
+		    &:not(:last-child) {
+				margin-right: 1em;
+		    }
+	    }
+	}
+
+/******************************************************************
+Start building for larger resolutions
+******************************************************************/
+
+	@media (min-width: $breakpoint-2) {
+		.footer-wrapper {			
+			display: table;
+			width: 100%;
+			text-align: left;
+		}
+		.copyright, .footer-nav {
+			display: table-cell;
+			vertical-align: middle;
+		}
+		.footer-nav {
+			text-align: right;
+		}
+	}
+
+} // End .app-footer
+```
+
+###### Code Analysis
+
+* We add text-align: center to center the contents of the footer for mobile displays.
+
+* We add margin-bottom: $base-margin to create space between the footer and the bottom of the page.
+
+* We remove the default padding, margin and list-style from the footer nav items by extending ul.reset.
+
+* We make our footer nav list-items display inline-block so that they align next to each other.
+
+* We space the list-items out by adding a margin-right of 1em to all but the last footer nav item.
+
+* We set our footer footer-wrapper to act as a table (to hold our copyright and footer nav pseudo "table-cells" (see line 35).
+
+* We align our copyright section and footer nav next to each other by adding display: table-cell to them, and we set their vertical-align to middle (this is one of the bonuses of using display: table-cell over floating them).
+
+* We align the menu to the right of the page by adding text-align: right to the footer nav.
+
+---
+
+### Logo
+
+---
+
 ```html
 assets > styles > scss > modules > _element.scss
 ```
