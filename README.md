@@ -577,7 +577,7 @@ The scroll-to-top button is included by default in the provided **index.html** f
 In order for this feature to work properly, your **body** element must be wrapped in a container with an id of **#site-content** applied to it.
 
 The smooth page scrolling animation is achieved with the following script, which also works for all other same-page anchors:
-cs
+
 
 ```javascript
 $("a[href*=#]").click(function() {
