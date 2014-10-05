@@ -4,6 +4,10 @@
 
 form {
 
+/******************************************************************
+Start building the basic layout for lowest resoluton
+******************************************************************/
+
 	section {
 		margin-bottom: 0.75em;
 	}
@@ -49,6 +53,10 @@ form {
 		}
 	}
 
+/******************************************************************
+Start building for larger resolutions
+******************************************************************/
+
 	@media (min-width: $breakpoint-3) {
 		input {
 			&[type="submit"], button {
@@ -57,4 +65,4 @@ form {
 		}
 	}
 
-} /* End form */
+} // End form

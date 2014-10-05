@@ -1,7 +1,5 @@
 @import url(//fonts.googleapis.com/css?family=Lato:400,300,700,900);
 
-@import url(//fonts.googleapis.com/css?family=Cookie);
-
 @import url(//fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700);
 
 @import url(../../icons/font-awesome/css/font-awesome.min.css);
@@ -1204,14 +1202,12 @@ Responsive Visibility
   }
 }
 
-/* End media-query */
-
 /******************************************************************
 Elements
 ******************************************************************/
 
 /* Accordions
-======================================================================= */
+================================================================ */
 
 .accordion {
   margin-bottom: 1.5rem;
@@ -1287,8 +1283,6 @@ Elements
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
-
-/* End .accordion */
 
 /* Alert Bars
 ================================================================ */
@@ -1541,8 +1535,6 @@ Elements
   background: #5693b0;
 }
 
-/* End [class^="button"] */
-
 /* Makes input, button and .button elements equal height in Firefox */
 
 input::-moz-focus-inner,
@@ -1560,7 +1552,7 @@ blockquote {
   margin: 0;
   border: 0;
   position: relative;
-  font-family: 'Droid Serif', 'serif';
+  font-family: "Droid Serif", serif;
   font-style: italic;
 }
 
@@ -1597,8 +1589,6 @@ blockquote cite {
   font-weight: bold;
   font-style: normal;
 }
-
-/* End blockquote */
 
 /* Carousels
 ================================================================ */
@@ -1853,19 +1843,20 @@ Font 2
 ******************************************************************/
 
 .font-2 {
-  font-family: "Cookie", cursive;
-}
-
-/******************************************************************
-Font 3
-******************************************************************/
-
-.font-3 {
   font-family: "Droid Serif", serif;
 }
 
 /* Forms
 ================================================================ */
+
+form {
+  /******************************************************************
+  Start building the basic layout for lowest resoluton
+  ******************************************************************/
+  /******************************************************************
+  Start building for larger resolutions
+  ******************************************************************/
+}
 
 form section {
   margin-bottom: 0.75em;
@@ -1933,8 +1924,6 @@ form select.box {
     width: auto;
   }
 }
-
-/* End form */
 
 /* Modal Windows
 ================================================================ */
@@ -2837,8 +2826,6 @@ Social Icons
   content: "DeviantArt";
 }
 
-/* End .social */
-
 /* Images
 ================================================================ */
 
@@ -3695,8 +3682,6 @@ Modules
   margin-left: 0.4em;
 }
 
-/* End .breadcrumb */
-
 /* Footer
 ======================================================================= */
 
@@ -4143,5 +4128,3 @@ Modules
     display: block;
   }
 }
-
-/* end .scroll-top */
