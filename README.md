@@ -229,7 +229,7 @@ One Nexus comes with a sample **index.html** file which contains a basic example
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
 		<!--<script src="assets/scripts/jquery.1.10.0.min.js"></script>-->
 
-	    <!-- Interactive elements/Modules -->
+	    <!-- Interactive Elements/Modules -->
 	    <script src="assets/js/accordion.js"></script>
 	    <script src="assets/js/carousel.js"></script>
 	    <script src="assets/js/modal.js"></script>
@@ -499,7 +499,7 @@ By default, jQuery is included at the bottom of index.html, linking to [Google's
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
 		<!--<script src="assets/scripts/jquery.1.10.0.min.js"></script>-->
 
-	    <!-- Interactive elements/Modules -->
+	    <!-- Interactive Elements/Modules -->
 	    <script src="assets/js/accordion.js"></script>
 	    <script src="assets/js/carousel.js"></script>
 	    <script src="assets/js/modal.js"></script>
