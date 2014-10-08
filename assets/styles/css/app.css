@@ -750,7 +750,7 @@ Individual Column
   margin-left: 2.5%;
 }
 
-[class*="span"]:first-of-type {
+[class*="span"]:first-child {
   margin-left: 0;
 }
 

@@ -5,7 +5,7 @@
 $(document).ready(function() {
 
 /******************************************************************
-Mobile Menu
+Off-Canvas/Mobile Menu
 ******************************************************************/
 
 $("#app-header .main-nav > ul").clone().appendTo("#off-canvas-nav");
@@ -67,8 +67,8 @@ Tooltip
 ******************************************************************/
 
  $('.tooltip').tipr({
-      'speed': 300,
-      'mode': 'top'
+    'speed': 300,
+    'mode': 'top'
  });
 
 }); // End document.ready

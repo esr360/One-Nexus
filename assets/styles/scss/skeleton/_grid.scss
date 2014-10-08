@@ -11,7 +11,7 @@ Individual Column
     zoom: 1; *display: inline; /* IE < 8: fake inline-block */
     vertical-align: top;
 	margin-left: $gutter;
-	&:first-of-type {
+	&:first-child {
 		margin-left: 0;
 	}
 }
