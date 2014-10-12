@@ -171,7 +171,7 @@ One Nexus comes with a sample **index.html** file which contains a basic example
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	    <title>One Nexus</title>
 	    <meta name="description" content="A mobile-first front end solution built in SASS.">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1" />
 	    <meta name="HandheldFriendly" content="True">
 	    <meta name="MobileOptimized" content="320">
 
