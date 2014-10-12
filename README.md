@@ -3251,4 +3251,4 @@ For more help and information about how to use this plugin, please visit the [pl
 
 ## Further Support
 
-For further support please check out our [tutorials](http://www.onenexusproject.com/tutorials/) and [support forums](http://www.onenexusproject.com/forum).
+For further support please check out our [tutorials](http://www.onenexusproject.com/tutorials/) or post a new [Issue](https://github.com/esr360/One-Nexus/issues) on Github.
