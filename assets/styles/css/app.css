@@ -1043,18 +1043,13 @@ Horizontal Aligning
 Responsive Visibility
 ******************************************************************/
 
-.min-bp1 {
-  /* Show only when resolution is at least breakpoint-1 */
-}
+/* Show only when resolution is at most X
+================================================================ */
 
-@media (max-width: 460px) {
-  .min-bp1 {
+@media (min-width: 0px) {
+  .max-bp0 {
     display: none !important;
   }
-}
-
-.max-bp1 {
-  /* Show only when resolution is at most breakpoint-1 */
 }
 
 @media (min-width: 460px) {
@@ -1063,38 +1058,10 @@ Responsive Visibility
   }
 }
 
-.min-bp2 {
-  /* Show only when resolution is at least breakpoint-2 */
-}
-
-@media (max-width: 720px) {
-  .min-bp2 {
-    display: none !important;
-  }
-}
-
-.max-bp2 {
-  /* Show only when resolution is at most breakpoint-2 */
-}
-
 @media (min-width: 720px) {
   .max-bp2 {
     display: none !important;
   }
-}
-
-.min-bp3 {
-  /* Show only when resolution is at least breakpoint-3 */
-}
-
-@media (max-width: 940px) {
-  .min-bp3 {
-    display: none !important;
-  }
-}
-
-.max-bp3 {
-  /* Show only when resolution is at most breakpoint-3 */
 }
 
 @media (min-width: 940px) {
@@ -1103,8 +1070,43 @@ Responsive Visibility
   }
 }
 
-.min-bp4 {
-  /* Show only when resolution is atleast breakpoint-4 */
+@media (min-width: 1200px) {
+  .max-bp4 {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1400px) {
+  .max-bp5 {
+    display: none !important;
+  }
+}
+
+/* Show only when resolution is at least X
+================================================================ */
+
+@media (max-width: 0px) {
+  .min-bp0 {
+    display: none !important;
+  }
+}
+
+@media (max-width: 460px) {
+  .min-bp1 {
+    display: none !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .min-bp2 {
+    display: none !important;
+  }
+}
+
+@media (max-width: 940px) {
+  .min-bp3 {
+    display: none !important;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -1113,12 +1115,8 @@ Responsive Visibility
   }
 }
 
-.max-bp4 {
-  /* Show only when resolution is at most breakpoint-4 */
-}
-
-@media (min-width: 1200px) {
-  .max-bp4 {
+@media (max-width: 1400px) {
+  .min-bp5 {
     display: none !important;
   }
 }

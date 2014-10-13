@@ -1075,49 +1075,82 @@ The above classes can be used to quickly and simply control the horizontal align
 
 
 ```css
-.min-bp1 { /* Show only when resolution is at least breakpoint-1 */
-    @media (max-width: $breakpoint-1) {
-        display: none !important;
-    }  
+/* Show only when resolution is at most X
+================================================================ */
+
+@function maxbp($name) {
+    @return nth($bp-values, index($bp-names, $name))
 }
-.max-bp1 { /* Show only when resolution is at most breakpoint-1 */
-    @media (min-width: $breakpoint-1) {
-        display: none !important;
-    }  
+
+@each $name in $bp-names {
+    .max-#{$name} {
+        @media (min-width: maxbp($name)) {
+            display: none !important;
+        }
+    }
 }
-.min-bp2 { /* Show only when resolution is at least breakpoint-2 */
-    @media (max-width: $breakpoint-2) {
-        display: none !important;
-    }  
+
+/* Show only when resolution is at least X
+================================================================ */
+
+@function minbp($name) {
+    @return nth($bp-values, index($bp-names, $name))
 }
-.max-bp2 { /* Show only when resolution is at most breakpoint-2 */
-    @media (min-width: $breakpoint-2) {
-        display: none !important;
-    }  
-}
-.min-bp3 { /* Show only when resolution is at least breakpoint-3 */
-    @media (max-width: $breakpoint-3) {
-        display: none !important;
-    }  
-}
-.max-bp3 { /* Show only when resolution is at most breakpoint-3 */
-    @media (min-width: $breakpoint-3) {
-        display: none !important;
-    }  
-}
-.min-bp4 { /* Show only when resolution is atleast breakpoint-4 */
-    @media (max-width: $breakpoint-4) {
-        display: none !important;
-    }  
-}
-.max-bp4 { /* Show only when resolution is at most breakpoint-4 */
-    @media (min-width: $breakpoint-4) {
-        display: none !important;
-    }  
+
+@each $name in $bp-names {
+    .min-#{$name} {
+        @media (max-width: minbp($name)) {
+            display: none !important;
+        }
+    }
 }
 ```
 
-The above classes let you hide or show certain elements depending on the resolution. By default there are four values you can use, which are based off the values defined by the [breakpoint variables](http://www.onenexusproject.com/documentation/features/responsive-grid-system/#breakpoints). These can be useful for things such as hiding certain content from mobile users.
+The above code generates a set of classes using using the [breakpoint variables](http://www.onenexusproject.com/documentation/features/responsive-grid-system/#breakpoints). These classes let you hide or show certain elements depending on the resolution. By default the above function generates two sets of six classes using the **$bp-names variables**.
+
+### Example CSS Output
+
+```css
+/* Show only when resolution is at most X
+================================================================ */
+
+@media (min-width: 0px) {
+  .max-bp0 {
+    display: none !important;
+  }
+}
+
+...
+
+@media (min-width: 1400px) {
+  .max-bp5 {
+    display: none !important;
+  }
+}
+```
+
+**Ex:** to show an element **only** when the resolution is **at most** the value definted by the **$breakpoint-3** variable, we would use the **.max-bp3** class.
+
+```css
+/* Show only when resolution is at least X
+================================================================ */
+
+@media (max-width: 0px) {
+  .min-bp0 {
+    display: none !important;
+  }
+}
+
+...
+
+@media (max-width: 1400px) {
+  .min-bp5 {
+    display: none !important;
+  }
+}
+```
+
+**Ex:** to show an element **only** when the resolution is **at least** the value defined by the **$breakpoint-3** variable, we would use the **.min-bp3** class.
 
 ---
 

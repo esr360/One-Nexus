@@ -128,43 +128,32 @@ Horizontal Aligning
 Responsive Visibility
 ******************************************************************/
 
-.min-bp1 { /* Show only when resolution is at least breakpoint-1 */
-    @media (max-width: $breakpoint-1) {
-        display: none !important;
-    }  
+/* Show only when resolution is at most X
+================================================================ */
+
+@function maxbp($name) {
+    @return nth($bp-values, index($bp-names, $name))
 }
-.max-bp1 { /* Show only when resolution is at most breakpoint-1 */
-    @media (min-width: $breakpoint-1) {
-        display: none !important;
-    }  
+
+@each $name in $bp-names {
+    .max-#{$name} {
+        @media (min-width: maxbp($name)) {
+            display: none !important;
+        }
+    }
 }
-.min-bp2 { /* Show only when resolution is at least breakpoint-2 */
-    @media (max-width: $breakpoint-2) {
-        display: none !important;
-    }  
+
+/* Show only when resolution is at least X
+================================================================ */
+
+@function minbp($name) {
+    @return nth($bp-values, index($bp-names, $name))
 }
-.max-bp2 { /* Show only when resolution is at most breakpoint-2 */
-    @media (min-width: $breakpoint-2) {
-        display: none !important;
-    }  
-}
-.min-bp3 { /* Show only when resolution is at least breakpoint-3 */
-    @media (max-width: $breakpoint-3) {
-        display: none !important;
-    }  
-}
-.max-bp3 { /* Show only when resolution is at most breakpoint-3 */
-    @media (min-width: $breakpoint-3) {
-        display: none !important;
-    }  
-}
-.min-bp4 { /* Show only when resolution is atleast breakpoint-4 */
-    @media (max-width: $breakpoint-4) {
-        display: none !important;
-    }  
-}
-.max-bp4 { /* Show only when resolution is at most breakpoint-4 */
-    @media (min-width: $breakpoint-4) {
-        display: none !important;
-    }  
+
+@each $name in $bp-names {
+    .min-#{$name} {
+        @media (max-width: minbp($name)) {
+            display: none !important;
+        }
+    }
 }
