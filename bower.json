@@ -4,14 +4,14 @@
     "version": "1.1.0",   
 	"keywords": [
 		"css",
-		"sass"
-		"js",,
+		"sass",
+		"js",
 		"responsive",
 		"mobile-first",
 		"front-end",
 		"framework",
 		"web",
-		"development",
+		"development"
 	],
 	"homepage": "http://www.onenexusproject.com/",
     "ignore": [
