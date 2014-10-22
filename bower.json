@@ -24,9 +24,5 @@
       "cheatsheet.html",
       "index.html",
       "README.md"
-   ],
-   "dependencies":[
-      "jquery: >=1.10.0",
-      "modernizr: >=2.8.3"
    ]
 }
