@@ -1,32 +1,3 @@
 {
-   "name": "one-nexus",
-   "description": "A sensible and intuitive front end solution.",
-   "version": "1.1.0",
-   "keywords": [
-      "css",
-      "sass",
-      "js",
-      "responsive",
-      "mobile-first",
-      "front-end",
-      "framework",
-      "web",
-      "development"
-   ],
-   "homepage": "http://www.onenexusproject.com/",
-   "ignore": [
-      "/assets/js/jquery.min.js",
-      "/assets/js/modernizr.min.js",
-      ".git",
-      ".gitattributes",
-      ".gitignore",
-      "bower.json",
-      "cheatsheet.html",
-      "index.html",
-      "README.md"
-   ],
-   "dependencies": {
-      "jquery": ">=1.10.0",
-      "modernizr": ">=2.8.3"
-   }
+   "name": "one-nexus"
 }
