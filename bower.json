@@ -1,28 +1,7 @@
 {
-  name: 'one-nexus',
-  version: '1.1.0',
-  authors: [
-    'Ed Reed <esr360@live.com>'
-  ],
-  description: 'A sensible and intuitive front end solution.',
-  keywords: [
-    'css',
-    'sass',
-    'js',
-    'responsive',
-    'mobile-first',
-    'front-end',
-    'framework',
-    'web',
-    'development'
-  ],
-  license: 'MIT',
-  homepage: 'http://onenexusproject.com',
-  ignore: [
-    '**/.*',
-    'node_modules',
-    'bower_components',
-    'test',
-    'tests'
-  ]
+    "name":  "One-Nexus",
+    "version": "1.1.0",
+    "dependencies": {
+        "jquery": "~1.10.0"
+    }
 }
