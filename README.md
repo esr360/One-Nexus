@@ -3247,7 +3247,7 @@ assets > js > off-canvas-nav.js
 
 ##### The HTML Markup
 
-In order for the mobile navigation to function properly, you need to add a few things to your markeup. The mobile menu works off of the main menu with the **main-nav** class, so you don't need to create a second menu. First you need is a container with the **off-canvas-nav** class (the main-nav section will be duplicated within this), and a target jQuery selector by creating a div with an id of **off-canvas-nav** inside the container. The below markup needs to be placed at the bottom of the page, just before the closing **body** tag, making sure it is outside the main **site-content** container.
+In order for the off-canvas navigation to function properly, you need to add a few things to your markup. The mobile menu works off of the main menu with the **main-nav** class, so you don't need to create a second menu. The first thing that is required is a container with the **off-canvas-nav** class (the main-nav section will be duplicated within this), and a target jQuery selector by creating a div with an id of **off-canvas-nav** inside the container. The below markup needs to be placed at the bottom of the page, just before the closing **body** tag, making sure it is outside the main **site-content** container.
 
 ```html
 <nav class="off-canvas-nav">
