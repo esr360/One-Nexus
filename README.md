@@ -1202,7 +1202,7 @@ Top Features
 </div>
 ```
 
-This results in cleaner and more semantic HTML markup, and we recommend using all helper classes in this way where possible.
+This results is cleaner and more semantic HTML markup, and we recommend using all helper classes in this way where possible.
 
 ---
 
