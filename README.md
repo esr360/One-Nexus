@@ -80,6 +80,16 @@ For a more complete experience, visit the official [One Nexus documentaion](http
 
 ## Getting Started
 
+### Option 1 - Classic Download
+
+To set One Nexus up with your new project the good old fashioned way, [download the latest copy](https://github.com/esr360/One-Nexus/archive/master.zip), extract the files and open with your favourite text editor.
+
+### Option 2 - Bower Installation
+
+```html
+bower install one-nexus
+```
+
 If you really don't want to use a CSS pre-processor you can still work directly on the regular, compiled CSS.
 
 One Nexus is built in [SASS](http://sass-lang.com/) (Syntactically Awesome Style Sheets), so to truly make the most from it you will need a way of pre-processing your CSS. Most front end developers are now familiar with pre-processing, so if you are, great! If you're not, check out these resources to learn how to get set up using a pre-processor.
