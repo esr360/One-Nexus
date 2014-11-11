@@ -1422,6 +1422,7 @@ Elements
   cursor: pointer;
   text-decoration: none;
   line-height: 2.4;
+  border: 2px solid transparent;
   /******************************************************************
   Size Variants
   ******************************************************************/
@@ -1849,7 +1850,7 @@ Font 2
 
 form {
   /******************************************************************
-  Start building the basic layout for lowest resoluton
+  Start building the basic layout
   ******************************************************************/
   /******************************************************************
   Start building for larger resolutions
@@ -3164,7 +3165,7 @@ Modules
 
 .app-footer {
   /******************************************************************
-  Start building the basic layout for lowest resoluton
+  Start building the basic layout
   ******************************************************************/
   text-align: center;
   margin-bottom: 1.5rem;
@@ -3204,7 +3205,7 @@ Modules
 
 .app-header {
   /******************************************************************
-  Start building the basic layout for lowest resoluton
+  Start building the basic layout
   ******************************************************************/
   background-color: #111111;
   /******************************************************************
@@ -3254,7 +3255,7 @@ Modules
 
 .main-nav {
   /******************************************************************
-  Start building the basic layout for lowest resoluton
+  Start building the basic layout
   ******************************************************************/
   /******************************************************************
   Start building for larger resolutions
@@ -3274,7 +3275,7 @@ Modules
 
 .main-nav ul li ul {
   /******************************************************************
-  Start building the basic layout for lowest resoluton
+  Start building the basic layout
   ******************************************************************/
   display: none;
   position: absolute;

@@ -15,6 +15,7 @@ Basic Structure
 	cursor: pointer;
 	text-decoration: none;
 	line-height: 2.4;
+    border: 2px solid transparent;
 	&:hover {
 		background: darken($grey, 10%);
 		text-decoration: none;
