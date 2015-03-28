@@ -1,226 +1,79 @@
 
 /* Icons
 ================================================================ */
+		
+//-----------------------------------------------------------------
+// Font Awesome
+//-----------------------------------------------------------------
 
-/******************************************************************
-Font Awesome
-******************************************************************/
+// CDN version
+//@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
 
-/* CDN version */
-//@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
-
-/* Self hosted version */
+// Self hosted version
 @import "../../icons/font-awesome/css/font-awesome.min.css";
 
 .fa {
 	cursor: default;
 }
-a.fa, a .fa {
+a.fa, 
+a .fa {
 	cursor: pointer;
 }
 
-/******************************************************************
-Social Icons
-******************************************************************/
+//-----------------------------------------------------------------
+// Icons
+//-----------------------------------------------------------------
 
-/* Variables
-******************************************************************/
+.icon,
+[class*="icon-"] {
 
-$facebook   :  #507CBD;
-$twitter    :  #63CEF2;
-$linkedin   :  #117BB8;
-$github     :  #1C1C1C;
-$skype      :  #63CEF2;
-$pinterest  :  #CD2129;
-$instagram  :  #5280A5;
-$rss        :  #FBA933;
-$youtube    :  #CB312E;
-$flickr     :  #ED1384;
-$vimeo      :  #1EB8EB;
-$dribbble   :  #EB4C89;
-$behance    :  #0595FC;
-$deviantart :  #B3C434;
-
-.social {
-
-/* Basic Structure
-******************************************************************/
-	
-	line-height: 2;
-	height: 2.37em;
-	width: 2.37em;	
-	display: inline-block;
-	background: $grey;
+	transition: 0.4s;
+	height: 2em;
+	width: 2em;
+	border: 0.125em solid;
+	background: $brand-1;
+	border-color: transparent;
+	color: white;
 	text-align: center;
-	&:before {
-		font-family: FontAwesome;
-		font-size: 1.15em;
-		color: white;
-		display: inline-block;
-	}
-	&:after {
-		color: white;
-		margin-left: 0.5em;
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+
+	.fa {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		left: 0;
+		right: 0;
 		font-size: 0.9em;
-		font-weight: bold;
-		position: relative;
-		top: -1px;
-		display: none;
-	}
-	&:hover {
-		text-decoration: none;
 	}
 
-/* Size Variants
-******************************************************************/
+	// size variants
 
-	&.small {
-		font-size: 0.82em;
+	&[class*="-lrg"] {
+		font-size: $font-size-2;		
+	}
+	&[class*="-xlrg"] {
+		font-size: $font-size-3;
 	}
 
-	&.large {
-		font-size: 1.2em;
-	}
+	// style variants
 
-/* Style Variants
-******************************************************************/
- 
-	&.text {
-		width: auto;
-		padding: 0 0.75em;
-		&:after {
-			display: inline;
+	&[class*="-border"],
+	&[class*="-plain"] {
+		background: none;
+		&:hover {
+			background: $brand-1;
+			border-color: $brand-1;
 		}
 	}
 
-/* Brand Variants
-******************************************************************/
-
-	&.facebook {
-		background: $facebook;
-		&:before {
-			content: "\f09a";
-		}
-		&:after {
-			content: "Facebook";
-		}
-	}
-	&.twitter {
-		background: $twitter;
-		&:before {
-			content: "\f099";
-		}
-		&:after {
-			content: "Twitter";
-		}
-	}
-	&.linkedin {
-		background: $linkedin;
-		&:before {
-			content: "\f0e1";
-		}
-		&:after {
-			content: "LinkedIn";
-		}
-	}
-	&.github {
-		background: $github;
-		&:before {
-			content: "\f09b";
-		}
-		&:after {
-			content: "Github";
-		}
-	}
-	&.skype {
-		background: $skype;
-		&:before {
-			content: "\f17e";
-		}
-		&:after {
-			content: "Skype";
-		}
-	}
-	&.pinterest {
-		background: $pinterest;
-		&:before {
-			content: "\f0d2";
-		}
-		&:after {
-			content: "Pinterest";
-		}
-	}
-	&.instagram {
-		background: $instagram;
-		&:before {
-			content: "\f16d";
-		}
-		&:after {
-			content: "Instagram";
-		}
-	}
-	&.rss {
-		background: $rss;
-		&:before {
-			content: "\f09e";
-		}
-		&:after {
-			content: "RSS";
-		}
-	}
-	&.youtube {
-		background: $youtube;
-		&:before {
-			content: "\f167";
-		}
-		&:after {
-			content: "YouTube";
-		}
-	}
-	&.flickr {
-		background: $flickr;
-		&:before {
-			content: "\f16e";
-		}
-		&:after {
-			content: "Flickr";
-		}
-	}
-	&.vimeo {
-		background: $vimeo;
-		&:before {
-			content: "\f194";
-		}
-		&:after {
-			content: "Vimeo";
-		}
-	}
-	&.dribbble {
-		background: $dribbble;
-		&:before {
-			content: "\f17d";
-		}
-		&:after {
-			content: "Dribbble";
-		}
-	}
-	&.behance {
-		background: $behance;
-		&:before {
-			content: "\f1b4";
-		}
-		&:after {
-			content: "Behance";
-		}
-	}
-	&.deviantart {
-		background: $deviantart;
-		&:before {
-			content: "\f1bd";
-		}
-		&:after {
-			content: "DeviantArt";
-		}
+	&[class*="-border"] {
+		border-color: white;
 	}
 
-} // End .social
+	&[class*="-round"] {
+		border-radius: 50%;
+	}
+
+} // end .[class^="icon"]
