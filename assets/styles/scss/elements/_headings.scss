@@ -2,28 +2,37 @@
 /* Headings
 ================================================================ */
 
-h1, h2, h3, h4, h5, h6 {
+.heading {
 
     line-height: 1;
-    b {
+    color: $heading-color;
+    font-family: $font-2;
+
+    b,
+    .heavy {
         font-weight: bolder;
+        font-weight: 900;
     }
-    i {
+
+    i,
+    .brand-1 {
         font-style: normal;
         color: $brand-1;
     }
-    strong {
+
+    strong,
+    .uppercase {
         text-transform: uppercase;
         font-weight: lighter;
     }
-    em {
+
+    em,
+    .light {
         font-weight: lighter;
         font-weight: 100;
         font-style: normal;
-    }
-    p {
-        font-weight: normal;
     } 
+
     &.highlight {
         margin-left: 0.3em;
         margin-right: 0.3em;
@@ -32,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
             background: $brand-1;
             color: white;
             font-weight: lighter;
-            padding-bottom: 3px;
+            padding-bottom: 1px;
             box-shadow: 0.3em 0 0 $brand-1, -0.3em 0 0 $brand-1;
             text-shadow: none;            
         }      
@@ -46,6 +55,7 @@ h1, h2, h3, h4, h5, h6 {
             }
         }
     }
+
     &.dotted {
         border-bottom: 1px dotted rgba(0,0,0,0.2);
         padding-bottom: 0.75rem;
@@ -54,4 +64,20 @@ h1, h2, h3, h4, h5, h6 {
         }
     }
 
-} // End h1, h2, h3, h4, h5, h6
+} // end .heading
+
+//-----------------------------------------------------------------
+// Hgroup
+//-----------------------------------------------------------------
+
+.hgroup {
+    .heading {
+        margin: 0.25em 0;
+        &:first-child {
+            margin-top: 0;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
