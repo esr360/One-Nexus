@@ -1024,7 +1024,7 @@ Elements
 
 /* Alert Bars
 ================================================================ */
-[class^="alert"] {
+[class*="alert-"] {
   padding: 0.85em;
   border: 1px solid;
   font-size: 0.9em;
@@ -1033,14 +1033,14 @@ Elements
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.15);
 }
-[class^="alert"] a {
+[class*="alert-"] a {
   color: inherit;
   border-bottom: 1px dotted;
 }
-[class^="alert"] a:hover {
+[class*="alert-"] a:hover {
   text-decoration: none;
 }
-[class^="alert"] .fa {
+[class*="alert-"] .fa {
   position: absolute;
   color: inherit;
   right: 0;
@@ -1049,19 +1049,19 @@ Elements
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
 }
-[class^="alert"][class*="-help"] {
+[class*="alert-"][class*="-help"] {
   background: #eee8cb !important;
   color: #9b8a38;
 }
-[class^="alert"][class*="-info"] {
+[class*="alert-"][class*="-info"] {
   background: #bed6e1 !important;
   color: #5d7f8f;
 }
-[class^="alert"][class*="-error"] {
+[class*="alert-"][class*="-error"] {
   background: #e3d6d6 !important;
   color: #b07070;
 }
-[class^="alert"][class*="-success"] {
+[class*="alert-"][class*="-success"] {
   background: #cfe1be !important;
   color: #768f5d;
 }
