@@ -2,39 +2,92 @@
 /* Forms
 ================================================================ */
 
-form {
+.form {
 
-/******************************************************************
-Start building the basic layout
-******************************************************************/
+//-----------------------------------------------------------------
+// Core Layout
+//-----------------------------------------------------------------
 
-	section {
-		margin-bottom: 0.75em;
-	}
-	.box {
-		width: 100%;
+	%input {		
+		padding: 0.5em 0.6em;
+		margin-top: 0.1em;
 		border: 1px solid rgba(0,0,0,0.2);
-		transition: 0.4s;
-		padding: 0.515em;
-		background: rgba(0,0,0,0.05);
-		&:focus, &:hover {
-			border-color: $brand-1;
-		}
-		&:focus {
-			background: white;
-		}
+		font-size: 1rem;
 	}
-	label {
+
+	.field {
 		display: inline-block;
+		font-size: $font-size-1;
+		&.inline {			
+			&:first-child {
+				margin-left: 0;
+			}
+		}
 	}
-	input {
+
+	fieldset {
+		padding: 0;
+		margin: 0;
+		border: none;
+	}
+
+	legend {
+		margin-bottom: 0;
+	}
+ 
+	input,
+	textarea,
+	select {	
+		width: 100%;
+	    transition: 0.4s;
+		outline: 0;
 		display: block;
-		transition: 0.4s;
+	    @include placeholder {
+	        font-weight: lighter;
+	        opacity: 1;
+	        transition: 0.4s;
+	    }
+		&:focus {
+			border-color: $brand-1;
+		    @include placeholder {
+		        opacity: 0.5;
+		        transition: 0s;
+		    }	
+			&:valid {
+				border-color: $valid;
+			}
+			&:invalid {
+				border-color: $invalid;
+			}		
+		}
+	}
+
+	textarea,
+	select {		
+		@extend %input;
+	}
+
+	input {
+
+		&[type="text"],
+		&[type="password"],
+		&[type="search"],
+		&[type="email"],
+		&[type="url"],
+		&[type="tel"],
+		&[type="number"] {
+			@extend %input;
+		}
+
 		&[type="checkbox"],
 		&[type="radio"] {
-			display: inline;
+			display: inline-block;
+			vertical-align: middle;
+			width: auto;
 		}
-		&[type="submit"], button {
+
+		&[type="submit"], 
+		button {
 			background: $brand-1;
 			border: none;
 			color: white;
@@ -42,27 +95,38 @@ Start building the basic layout
 			display: inline-block;
 			width: 100%;
 		}
+
 		&:required {
 			box-shadow: none;
 		}
-	}
-	select {		
-		color: $main-text-color;
-		&.box {			
-			padding: 0.44em;
+
+	} // end input
+
+	textarea {
+		@extend %input;
+		&:focus {
+			border-color: $brand-1;			
 		}
 	}
 
-/******************************************************************
-Start building for larger resolutions
-******************************************************************/
+	select {		
+		color: $base-text-color;
+	}
+
+	.boolean-list {
+		label {
+			cursor: pointer;
+		}
+		ul {
+			@extend ul.reset;
+		}
+	}
+
+//-----------------------------------------------------------------
+// Larger Resolutions
+//-----------------------------------------------------------------
 
 	@media (min-width: $breakpoint-3) {
-		input {
-			&[type="submit"], button {
-				width: auto;
-			}
-		}
 	}
 
-} // End form
+} // end form
