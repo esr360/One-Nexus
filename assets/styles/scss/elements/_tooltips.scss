@@ -1,86 +1,132 @@
 
 /* Tooltips
+// https://github.com/jaz303/tipsy
 ================================================================ */
-/*
-Tipr 1.0.1
-Copyright (c) 2013 Tipue
-Tipr is released under the MIT License
-http://www.tipue.com/tipr
-Converted to SCSS for One Nexus by Edmund Reed
+
+.tipsy {
+	position: absolute;
+	padding: 5px;
+	z-index: 999;
+}
+
+.tipsy-inner {
+	background-color: #000;
+	color: #FFF;
+	max-width: 250px;
+	padding: 0 1em;
+	line-height: 2.4em;
+	text-align: center;
+	border-radius: 0.4em;
+}
+
+/* Rounded corners */
+
+/* Uncomment for shadow
+.tipsy-inner { 
+	box-shadow: 0 0 5px #000000; 
+	-webkit-box-shadow: 0 0 5px #000000; 
+	-moz-box-shadow: 0 0 5px #000000;
+}
 */
 
-$tooltip-bg        :  rgba(0,0,0,0.6);
-$tooltip-max-width :  300px;
-
-.tipr_content {
-	padding: 0.35rem 1rem;
-	background: $tooltip-bg;
-	border-radius: 0.4rem;
-	color: #ffffff;
-	font-size: 1rem;
-}
-
-.tipr_container_bottom,
-.tipr_container_top {
-	display: none;
+.tipsy-arrow {
 	position: absolute;
-	max-width: $tooltip-max-width;
-	z-index: 1000;
+	width: 0;
+	height: 0;
+	line-height: 0;
+	border: 5px dashed #000;
 }
 
-.tipr_container_bottom {
-	margin-top: 13px;
+/* Rules to colour arrows */
+
+.tipsy-arrow-n {
+	border-bottom-color: #000;
 }
 
-.tipr_container_top {
-	margin-top: -90px;
+.tipsy-arrow-s {
+	border-top-color: #000;
 }
 
-.tipr_point_top, .tipr_point_bottom {
-	position: relative;
-	background: $tooltip-bg;
-	border-radius: 0.4rem;
+.tipsy-arrow-e {
+	border-left-color: #000;
 }
-.tipr_point_top, 
-.tipr_point_bottom {
-	&:after, &:before {
-		position: absolute;
-		pointer-events: none;
-		border: solid transparent;
-		content: "";
-		height: 0;
-		width: 0;
-	}
-	&:after {
-		left: 50%;
-		border-width: 8px;
-		margin-left: -8px;
-	}
-	&:before {
-		left: 50%;
-		border-width: 9px;
-		margin-left: -9px;
-	}
+
+.tipsy-arrow-w {
+	border-right-color: #000;
 }
-.tipr_point_top {
-	&:after, &:before {
-		top: 100%;
-	}
-	&:after {
-		border-top-color: $tooltip-bg;
-	}
-	&:before {
-		border-top-color: $tooltip-bg;
-	}
+
+.tipsy-n .tipsy-arrow {
+	top: 0px;
+	left: 50%;
+	margin-left: -5px;
+	border-bottom-style: solid;
+	border-top: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
 }
-.tipr_point_bottom {
-	&:after, &:before {
-		bottom: 100%;
-	}
-	&:after {
-		border-bottom-color: $tooltip-bg;
-	}
-	&:before {
-		border-bottom-color: $tooltip-bg;
-	}
+
+.tipsy-nw .tipsy-arrow {
+	top: 0;
+	left: 10px;
+	border-bottom-style: solid;
+	border-top: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+
+.tipsy-ne .tipsy-arrow {
+	top: 0;
+	right: 10px;
+	border-bottom-style: solid;
+	border-top: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+
+.tipsy-s .tipsy-arrow {
+	bottom: 0;
+	left: 50%;
+	margin-left: -5px;
+	border-top-style: solid;
+	border-bottom: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+
+.tipsy-sw .tipsy-arrow {
+	bottom: 0;
+	left: 10px;
+	border-top-style: solid;
+	border-bottom: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+
+.tipsy-se .tipsy-arrow {
+	bottom: 0;
+	right: 10px;
+	border-top-style: solid;
+	border-bottom: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+
+.tipsy-e .tipsy-arrow {
+	right: 0;
+	top: 50%;
+	margin-top: -5px;
+	border-left-style: solid;
+	border-right: none;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+}
+
+.tipsy-w .tipsy-arrow {
+	left: 0;
+	top: 50%;
+	margin-top: -5px;
+	border-right-style: solid;
+	border-left: none;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
 }
