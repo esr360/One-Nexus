@@ -2,11 +2,12 @@
 /* Buttons
 ================================================================ */
 
-.button {
+.button,
+[class*="button-"] {
 
-/******************************************************************
-Basic Structure
-******************************************************************/
+//-----------------------------------------------------------------
+// Basic Structure
+//-----------------------------------------------------------------
 
 	background: $grey;
 	display: inline-block;
@@ -14,30 +15,31 @@ Basic Structure
 	color: $white;
 	cursor: pointer;
 	text-decoration: none;
-	line-height: 2.4;
+	line-height: 2.4em;
+	transition: 0.4s;
     border: 2px solid transparent;
 	&:hover {
 		background: darken($grey, 10%);
 		text-decoration: none;
 	}
 
-/******************************************************************
-Size Variants
-******************************************************************/
+//-----------------------------------------------------------------
+// Sizes
+//-----------------------------------------------------------------
 
-	&.small {
+	&[class*="-small"] {
 		font-size: 0.8em;
 	}
 
-	&.large {
+	&[class*="-large"] {
 		font-size: 1.2em;
 	}
 
-/******************************************************************
-Style Variants
-******************************************************************/
+//-----------------------------------------------------------------
+// Styles
+//-----------------------------------------------------------------
  
-	&.border {
+	&[class*="-border"] {
 		background: none;
 		border: 2px solid;
 		color: $grey;
@@ -48,62 +50,41 @@ Style Variants
 		}
 	}
 
-	&.disabled {
+	&[class*="-disabled"] {
 		opacity: 0.6;
 		cursor: default;
 		transition-delay: 999s;
 	}
 
-	&.full-width {
+	&[class*="-block"] {
 		width: 100%;
 		text-align: center;
-		padding: 0.4em;
 	}
 
-	&.round {
-		border-radius: 0.25em;
+	&[class*="-round"] {
+		border-radius: 0.4em;
 	}
 
-/******************************************************************
-Color Variants
-******************************************************************/
+//-----------------------------------------------------------------
+// Colors
+//-----------------------------------------------------------------
  
-	/* Brand Colors */
+	// Brand Colors
 
-	@function brand($name) {
-		@return nth($brand-colors, index($brand-names, $name))
-	}
-
-	@each $name in $brand-names {
-		&.#{$name} {
-			background: brand($name);
+	@each $brand, $color in $colors-brand {
+		&[class*="-#{$brand}"] {
+			background: $color;
 			&:hover {
-				background: darken(brand($name), 10%);
-			}
-		}
-	} 
-
-	/* Emotional Colors */
-
-	@function emotional($name) {
-		@return nth($emotional-colors, index($emotional-names, $name))
-	}
-
-	@each $name in $emotional-names {
-		&.#{$name} {
-			background: emotional($name);
-			&:hover {
-				background: darken(emotional($name), 10%);
+				background: darken($color, 10%);
 			}
 		}
 	}
 
-} // End .button
+} // end .button
 
-/* Makes input, button and .button elements equal height in Firefox */
+// Makes input, button and .button elements equal height in Firefox
 input::-moz-focus-inner,
-button::-moz-focus-inner
-{ 
+button::-moz-focus-inner { 
     border: 0;
     padding: 0;
 	margin-top: 1px; 
