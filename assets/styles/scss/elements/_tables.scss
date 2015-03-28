@@ -2,22 +2,22 @@
 /* Tables
 ================================================================ */
 
-table {
+.table,
+[class*="table-"] {
 
 	width: 100%;
-	thead, tfoot {
-		color: white;
+
+	&[class*="-fixed"] {		
+		table-layout: fixed;
+	}
+	
+	thead, 
+	tfoot {
 		td {			
-			padding: 0 0.75rem;
 			line-height: 2.4;
 		}
 	}
-	thead {
-		background: $brand-1;
-	}
-	tfoot {
-		background: lighten($dark-grey, 5%);
-	}
+
 	tbody {
 		td {
 			line-height: 2;
@@ -37,8 +37,5 @@ table {
 			}
 		}
 	}
-	&.table-fixed {		
-		table-layout: fixed;
-	}
 
-} // End table
+} // end .table
