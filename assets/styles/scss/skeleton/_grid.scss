@@ -1,14 +1,33 @@
+@if $flex == false {
 
 /* Grid System
 ================================================================ */
 
-/******************************************************************
-Individual Column
-******************************************************************/
+.row { 
+    letter-spacing: -0.31em; // Webkit: collapse white-space between units
+    *letter-spacing: normal; // reset IE < 8
+    *word-spacing: -0.43em; // IE < 8: collapse white-space between units
+    text-rendering: optimizespeed; // Webkit: fixes text-rendering: optimizeLegibility
+}
+
+.opera-only :-o-prefocus,
+.row {
+    word-spacing: -0.43em;
+}
+
+* {        
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-rendering: auto;
+}
+
+//-----------------------------------------------------------------
+// Individual Column
+//-----------------------------------------------------------------
 
 [class*="span"] {
     display: inline-block;
-    zoom: 1; *display: inline; /* IE < 8: fake inline-block */
+    zoom: 1; *display: inline; // IE < 8: fake inline-block
     vertical-align: top;
 	margin-left: $gutter;
 	&:first-child {
@@ -16,9 +35,9 @@ Individual Column
 	}
 }
 
-/******************************************************************
-Custom Column Grid
-******************************************************************/
+//-----------------------------------------------------------------
+// Custom Column Grid
+//-----------------------------------------------------------------
 
 @for $i from 1 through $columns {
 	.span-#{$i} {			
@@ -28,11 +47,14 @@ Custom Column Grid
 
 .row {
 
-/******************************************************************
-Default Column Stacking
-******************************************************************/
+	display: table;
+	width: 100%;
 
-	@media (max-width: $breakpoint-3) {
+//-----------------------------------------------------------------
+// Default Column Stacking
+//-----------------------------------------------------------------
+
+	@media (max-width: $col-collapse) {
 		&:not([class*="bp"]) {
 			> [class*="span"] {
 				margin-left: 0;
@@ -46,17 +68,13 @@ Default Column Stacking
 		}
 	}
 
-/******************************************************************
-Custom Column Stacking
-******************************************************************/
+//-----------------------------------------------------------------
+// Custom Column Stacking
+//-----------------------------------------------------------------
 
-	@function bp($name) {
-		@return nth($bp-values, index($bp-names, $name))
-	}
-
-	@each $name in $bp-names {
-		@media (max-width: bp($name)) {
-			&.#{$name} {
+	@each $bp, $width in $breakpoints {
+		@media (max-width: $width) {
+			&.#{$bp} {
 				[class*="span"] {
 					margin-left: 0;
 					width: 100%;
@@ -70,14 +88,67 @@ Custom Column Stacking
 		}
 	} 	
 
-/******************************************************************
-Block Columns
-******************************************************************/
+//-----------------------------------------------------------------
+// Magic Columns
+//-----------------------------------------------------------------
+
+	@media (min-width: $col-collapse) {
+		.span-m {
+			&:first-child {
+				@for $i from 1 through $columns {
+					&:nth-last-child(#{$i}) {
+						&, ~ .span-m {		
+							width: (100/$i) - ( ( ( (100 / (100/$i) ) - 1) * $gutter ) / $i );
+						}
+					}
+				}
+			}
+		}
+	}
+	
+//-----------------------------------------------------------------
+// Adaptive Columns
+//-----------------------------------------------------------------
+
+	&.adaptive-columns {
+		.span {
+			width: 100%;
+			margin-left: 0;
+		}
+	}
+
+//-----------------------------------------------------------------
+// Flow Columns
+//-----------------------------------------------------------------
+
+	&.flow-columns {
+		margin-left: -$gutter;
+		width: 100% + $gutter;
+		[class*="span"] {
+			&:first-child {
+				margin-left: $gutter;
+			}
+		}
+		@for $i from 1 through $columns {
+			.span-#{$i} {		
+				width: ((100/12) * $i) - $gutter;
+			}
+		}
+	}
+
+//-----------------------------------------------------------------
+// Block Columns
+//-----------------------------------------------------------------
 
 	&.block-columns {
+		display: table;
+		width: 100%;
 		> [class*="span"] {
 			display: table-cell;
 		}
 	}
 
-} // End .row
+
+} // end .row
+
+} // end if $flex
