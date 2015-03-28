@@ -32,6 +32,12 @@
         h2 a:hover {
             text-decoration: none;
         }
+        #main > section {
+            margin-bottom: 2em;
+        }
+        #main > section:last-of-type {
+            margin-bottom: 0;
+        }
         .module-demo {
             background-color: #f9f9f9;
             border: 1px solid #e0e0e0;
@@ -39,7 +45,7 @@
             padding: 1em;
             position: relative;
         }
-        .grid-system .row div {
+        .grid-system .row [class*="span"] {
             background: rgba(0,0,0,0.1);
             text-align: center;
             line-height: 3;
@@ -65,38 +71,25 @@
         .module-demo .logo {
             padding-left: 1em;
         }
-        .module-demo .nav-trigger {
+        .module-demo .flyout-trigger {
             left: auto;
             margin: 1rem auto;
             position: relative;
             right: auto;
             top: auto;
+            display: block;
         }
-        .responsive-square img, .responsive-circle img {
-            width: 100%;
+        .progress-bars h4 {
+            margin-bottom: 0.25em;
         }
-        .module-demo .app-header .nav-trigger {
-            display: none;
+        .flow-columns [class*="span"] {
+            margin-bottom: 1.35rem;
         }
         @media (min-width: 940px) {
-            .owl-item {
-                max-height: 400px;
-            }
-            .owl-item > img {
-                width: 100%;
-                position: relative;
-                top: 50%;
-                -webkit-transform: translateY(-50%);
-                -ms-transform: translateY(-50%);
-                transform: translateY(-50%);
-            }
         }
         @media (max-width: 940px) {
             [class*="alert"]:not(:last-child) {
                 margin-bottom: 1.5em;
-            }
-            .grid-system .row div {
-                margin-bottom: 1em;
             }
         }
 
@@ -106,7 +99,7 @@
 
 <body>
 
-    <div id="site-content"><!-- For Mobile Menu -->
+    <div id="site-content">
 
         <header class="app-header" id="app-header">
             <div class="container">
@@ -118,7 +111,7 @@
                         </a>
                     </div>
                     <!-- Main-Nav -->
-                    <nav class="main-nav">
+                    <nav class="main-nav" id="app-nav">
                         <ul>
                             <li>
                                 <a href="#">Header Link 1</a>
@@ -132,13 +125,12 @@
                             <li><a href="#">Header Link 3</a></li>
                         </ul>
                     </nav>
-                    <!-- Mobile Menu Trigger Button -->
-                    <a class="nav-trigger max-bp3" href="#"></a>
                 </div>
             </div>
         </header>
 
-        <!-- Main Content -->
+        <!-- MAIN CONTENT -->
+
         <div class="container" id="main">
 
             <!-- Breadcrumb -->
@@ -151,7 +143,11 @@
 
             <p class="alert-success">Be sure to check out our <a target="blank" href="http://www.onenexusproject.com/documentation/">complete documentation</a> for more information.</p>
 
-            <h2 class="dotted">
+            <h1 class="heading">
+                One Nexus Cheatsheet
+            </h1>
+
+            <h2 class="heading">
                 <a href="http://www.onenexusproject.com/documentation/features/responsive-grid-system/" target="blank">
                     <i><em>Responsive Grid system</em></i>
                 </a>
@@ -159,42 +155,53 @@
 
             <section class="grid-system">
 
+                <h3 class="heading dotted">
+                    <a href="#" target="blank">
+                        Regular Columns
+                    </a>
+                </h3>
+
+                <div class="row">                    
+                    <div class="span-6">regular column</div>
+                    <div class="span-6">regular column</div>
+                </div> 
+                <br />
+                <div class="row">                    
+                    <div class="span-4">regular column</div>
+                    <div class="span-4">regular column</div>
+                    <div class="span-4">regular column</div>
+                </div> 
+                <br />
+                <div class="row">                    
+                    <div class="span-3">regular column</div>
+                    <div class="span-3">regular column</div>
+                    <div class="span-3">regular column</div>
+                    <div class="span-3">regular column</div>
+                </div> 
+                <br />
                 <div class="row">
-                    <div class="span-1">1</div>
-                    <div class="span-1">1</div>
-                    <div class="span-1">1</div>
-                    <div class="span-1">1</div>
-                    <div class="span-1">1</div>
-                    <div class="span-1">1</div>
-                    <div class="span-1">1</div>
-                    <div class="span-1">1</div>
-                    <div class="span-1">1</div>
-                    <div class="span-1">1</div>
-                    <div class="span-1">1</div>
-                    <div class="span-1">1</div>
-                </div>
-                <br />
-                <div class="row">                    
-                    <div class="span-4">4</div>
-                    <div class="span-4">4</div>
-                    <div class="span-4">4</div>
-                </div>
-                <br />
-                <div class="row">                    
-                    <div class="span-3">3</div>
-                    <div class="span-9">9</div>
-                </div>              
+                    <div class="span-1">RC</div>
+                    <div class="span-1">RC</div>
+                    <div class="span-1">RC</div>
+                    <div class="span-1">RC</div>
+                    <div class="span-1">RC</div>
+                    <div class="span-1">RC</div>
+                    <div class="span-1">RC</div>
+                    <div class="span-1">RC</div>
+                    <div class="span-1">RC</div>
+                    <div class="span-1">RC</div>
+                    <div class="span-1">RC</div>
+                    <div class="span-1">RC</div>
+                </div>  
+
                 <hr class="dotted" />
+
                 <div class="row text-center">
                     <div class="span-6">centered</div>
                 </div>
+
                 <hr class="dotted" />
-                <div class="row">
-                    <div class="span-3">special positioning</div>
-                    <div class="span-6"></div>
-                    <div class="span-3">special positioning</div>
-                </div>
-                <hr class="dotted" />
+
                 <div class="row">
                     <div class="span-3 va-top">
                         vertical align top
@@ -210,149 +217,340 @@
                     </div>
                 </div>
 
+                <h3 class="heading dotted">
+                    <a href="#" target="blank">
+                        Flow Columns
+                    </a>
+                </h3>
+
+                <div class="row flow-columns">
+                    <div class="span-6">Flow Column</div>
+                    <div class="span-6">Flow Column</div>
+                    <div class="span-4">Flow Column</div>
+                    <div class="span-4">Flow Column</div>
+                    <div class="span-4">Flow Column</div>
+                    <div class="span-3">Flow Column</div>
+                    <div class="span-3">Flow Column</div>
+                    <div class="span-3">Flow Column</div>
+                    <div class="span-3">Flow Column</div>
+                    <div class="span-1">FC</div>
+                    <div class="span-1">FC</div>
+                    <div class="span-1">FC</div>
+                    <div class="span-1">FC</div>
+                    <div class="span-1">FC</div>
+                    <div class="span-1">FC</div>
+                    <div class="span-1">FC</div>
+                    <div class="span-1">FC</div>
+                    <div class="span-1">FC</div>
+                    <div class="span-1">FC</div>
+                    <div class="span-1">FC</div>
+                    <div class="span-1">FC</div>
+                </div>
+
+                <h3 class="heading dotted">
+                    <a href="#" target="blank">
+                        Magic Columns
+                    </a>
+                </h3>
+
+                <div class="row">
+                    <div class="span-m">magic column</div>
+                    <div class="span-m">magic column</div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="span-m">magic column</div>
+                    <div class="span-m">magic column</div>
+                    <div class="span-m">magic column</div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="span-m">magic column</div>
+                    <div class="span-m">magic column</div>
+                    <div class="span-m">magic column</div>
+                    <div class="span-m">magic column</div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="span-m">MC</div>
+                    <div class="span-m">MC</div>
+                    <div class="span-m">MC</div>
+                    <div class="span-m">MC</div>
+                    <div class="span-m">MC</div>
+                    <div class="span-m">MC</div>
+                    <div class="span-m">MC</div>
+                    <div class="span-m">MC</div>
+                    <div class="span-m">MC</div>
+                    <div class="span-m">MC</div>
+                    <div class="span-m">MC</div>
+                    <div class="span-m">MC</div>
+                </div>
+
+                <h3 class="heading dotted">
+                    <a href="#" target="blank">
+                        Adaptive Columns
+                    </a>
+                </h3>
+
+                <div class="row adaptive-columns 2-cols carousel">
+                    <div class="span">adaptive column</div>
+                    <div class="span">adaptive column</div>
+                </div>
+                <br />
+                <div class="row adaptive-columns 3-cols carousel">
+                    <div class="span">adaptive column</div>
+                    <div class="span">adaptive column</div>
+                    <div class="span">adaptive column</div>
+                    <div class="span">adaptive column</div>
+                </div>
+                <br />
+                <div class="row adaptive-columns 4-cols carousel">
+                    <div class="span">adaptive column</div>
+                    <div class="span">adaptive column</div>
+                    <div class="span">adaptive column</div>
+                    <div class="span">adaptive column</div>
+                </div>
+                <br />
+                <div class="row adaptive-columns 12-cols carousel">
+                    <div class="span">AC</div>
+                    <div class="span">AC</div>
+                    <div class="span">AC</div>
+                    <div class="span">AC</div>
+                    <div class="span">AC</div>
+                    <div class="span">AC</div>
+                    <div class="span">AC</div>
+                    <div class="span">AC</div>
+                    <div class="span">AC</div>
+                    <div class="span">AC</div>
+                    <div class="span">AC</div>
+                    <div class="span">AC</div>
+                </div>
+
             </section>
 
-            <br />
+            <hr class="dotted" />
 
-            <h2 class="dotted">
+            <h2 class="heading">
                 <a href="http://www.onenexusproject.com/documentation/elements/general/" target="blank">
-                    <i><em>General Elements</em></i>
+                    <i><em>UI Elements</em></i>
                 </a>
             </h2>
 
             <section>
 
-                <h4><strong>Alert Bars</strong></h4>
+                <h3 class="heading dotted">
+                    Alert Bars
+                </h3>
 
                 <div class="row">
-                    <div class="alert-help span-6">This is a <b>helpful</b> alert bar.</div>
-                    <div class="alert-danger span-6">This is a <b>dangerous</b> alert bar.</div>
+                    <div class="alert-help span-6">This is a <b>help</b> alert bar.</div>
+                    <div class="alert-error span-6">This is an <b>error</b> alert bar.</div>
                 </div>
                 <br />
                 <div class="row">
-                    <div class="alert-success span-6">This is a <b>successful</b> alert bar.</div>
-                    <div class="alert-info span-6">This is an <b>informative</b> alert bar.</div>
+                    <div class="alert-success span-6">This is a <b>success</b> alert bar.</div>
+                    <div class="alert-info span-6">This is an <b>information</b> alert bar.</div>
                 </div>
 
-                <br />
+            </section>
 
-                <div class="row">
-                    <div class="alt alert-help span-6">
-                        <h4 class="dotted"><strong><b>This is a helpful alert bar</b></strong></h4>
-                        <p>These alert bars are useful for displaying larger amounts of information to your visitors.</p>
-                    </div>
-                    <div class="alt alert-danger span-6">
-                        <h4 class="dotted"><strong><b>This is a dangerous alert bar</b></strong></h4>
-                        <p>These alert bars are useful for displaying larger amounts of information to your visitors.</p>
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="alt alert-success span-6">
-                        <h4 class="dotted"><strong><b>This is a successful alert bar</b></strong></h4>
-                        <p>These alert bars are useful for displaying larger amounts of information to your visitors.</p>
-                    </div>
-                    <div class="alt alert-info span-6">
-                        <h4 class="dotted"><strong><b>This is an informative alert bar</b></strong></h4>
-                        <p>These alert bars are useful for displaying larger amounts of information to your visitors.</p>
+            <section>
+
+                <h3 class="heading dotted">
+                    HTML5 Progress Bars
+                </h3>
+
+                <div class="row progress-bars module-demo">
+                    <div class="span-6">
+                        <h4>Lorem Ipsum</h4>
+                        <progress max="100" value="50"></progress>
+                        <h4>Dolor Sit Amet</h4>
+                        <progress max="100" value="90"></progress>
+                        <h4>Maximus Iaculis</h4>
+                        <progress max="100" value="75"></progress>
+                        <h4>Lorem Ipsum</h4>
+                        <progress max="100" value="50"></progress>
                     </div>
                 </div>
 
             </section>
 
-            <hr class="line" />
-
             <section>
 
-                <h4><strong>Buttons</strong></h4>
+                <h3 class="heading dotted">
+                    Buttons
+                </h3>
 
                 <p class="module-demo">
-                    <a class="button brand-1" href="#">Brand-1 Button</a>
-                    <a class="button brand-2" href="#">Brand-2 Button</a>
-                    <a class="button brand-3" href="#">Brand-3 Button</a>
+                    <a class="button-brand-1" href="#">Brand-1 Button</a>
+                    <a class="button-brand-2" href="#">Brand-2 Button</a>
+                    <a class="button-brand-3" href="#">Brand-3 Button</a>
                 </p>
 
                 <p class="module-demo">
-                    <a class="button help" href="#">Help Button</a>
-                    <a class="button danger" href="#">Danger Button</a>
-                    <a class="button success" href="#">Success Button</a>
-                    <a class="button info" href="#">Info Button</a>
+                    <a class="button-small-brand-1" href="#">Brand-1 Button</a>
+                    <a class="button-small-brand-2" href="#">Brand-2 Button</a>
+                    <a class="button-small-brand-3" href="#">Brand-3 Button</a>
                 </p>
 
                 <p class="module-demo">
-                    <a class="button large round full-width disabled brand-1" href="#">Large Round Full-Width Disabled Brand-1 Button</a>
+                    <a class="button-large-round-block-disabled-brand-2" href="#">Large Round Block Disabled Brand-2 Button</a>
                 </p>
 
             </section>
 
-            <hr class="line" />
-
             <section>
 
-                <h4><strong>Forms</strong></h4>
+                <h3 class="heading dotted">
+                    HTML5 Forms
+                </h3>
 
-                <form>
-                    <section>
-                        <label>First Name</label>
-                        <input type="text" placeholder="Enter your first name" class="box">
-                    </section>
-                    <section>
-                        <label>Last Name</label>
-                        <input type="text" placeholder="Enter your last name" class="box">
-                    </section>
-                    <section>
-                        <label>Email</label>
-                        <input type="email" placeholder="Enter your email address" class="box">
-                    </section>
-                    <hr class="line">
-                    <div class="row">
-                        <section class="span-3">
-                            <span>Age</span>
-                            <select class="box">
-                                <option value="volvo">12-16</option>
-                                <option value="saab">17-21</option>
-                                <option value="opel">22-30</option>
-                                <option value="audi">31+</option>
-                            </select> 
-                        </section>
-                        <section class="span-9">
-                            <label>Favourite Animal</label>
-                            <input type="text" placeholder="Enter your favourite animal" class="box">
-                        </section>
-                    </div>
-                    <div class="row">
-                        <section class="span-6">
-                            <label>Username</label>
-                            <input type="text" placeholder="Enter your desired username" class="box" required="">
-                        </section>
-                        <section class="span-6">
-                            <label>Password</label>
-                            <input type="password" placeholder="Enter your chosen password" class="box" required="">
-                        </section>
-                    </div>
-                    <section>
-                        <label>Volume</label>
-                        <input type="range" class="box">
-                    </section>
-                    <section class="row">
-                        <div class="span-9 va-middle">
-                            <label class="va-middle">
-                                <input type="checkbox"> Send me pointless newsletters
+                <div class="row module-demo">
+                    <form class="span-5 form">
+                        <fieldset>
+                            <label class="field inline">
+                                Username
+                                <input type="text" required placeholder="example: username" />
                             </label>
-                        </div>
-                        <br class="margin-sep max-bp3">
-                        <div class="span-3 va-middle text-right">
-                            <input type="submit" value="Submit">
-                        </div>
-                    </section>
-                </form>
-            </section>
+                            <label class="field inline">
+                                Password
+                                <input type="password" pattern=".{3,}" required placeholder="example: 123" />
+                            </label>
+                        </fieldset>
+                        <br />
+                        <label class="field inline">
+                            Your Message
+                            <textarea rows="5" cols="50" required placeholder="enter your message..."></textarea>
+                        </label>
+                        <p class="row">
+                            <span class="span-3 va-middle">
+                                <button class="button-brand-1-block" type="submit">Submit</button>
+                            </span>
+                            <label class="span-9 va-middle boolean">                                
+                                <input type="checkbox" />
+                                <small>Subscribe to our SPAM newsletters?</small>
+                            </label>
+                        </p>
+                    </form>
+                    <form class="span-4 form">
+                    </form>
+                    <form class="span-3 form">
+                        <fieldset class="boolean-list">
+                            <legend>Checkbox List</legend>
+                            <br />
+                            <ul>
+                                <li>
+                                    <label class="boolean">                                
+                                        <input type="checkbox" />
+                                        Lorem ipsum dolor sit amet
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="boolean">                                
+                                        <input type="checkbox" />
+                                        Vestibulum vel nisl dictum
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="boolean">                                
+                                        <input type="checkbox" />
+                                        Duis lacinia enim nec nulla
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="boolean">                                
+                                        <input type="checkbox" />
+                                        Lorem ipsum dolor sit amet
+                                    </label>
+                                </li>
+                            </ul>
+                        </fieldset>
+                        <br />
+                        <fieldset class="boolean-list">
+                            <legend>Radio List</legend>
+                            <br />
+                            <ul>
+                                <li>
+                                    <label class="boolean">                                
+                                        <input type="radio" name="radio" />
+                                        Lorem ipsum dolor sit amet
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="boolean">                                
+                                        <input type="radio" name="radio" />
+                                        Vestibulum vel nisl dictum
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="boolean">                                
+                                        <input type="radio" name="radio" />
+                                        Duis lacinia enim nec nulla
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="boolean">                                
+                                        <input type="radio" name="radio" />
+                                        Lorem ipsum dolor sit amet
+                                    </label>
+                                </li>
+                            </ul>
+                        </fieldset>
+                    </form>
+                </div>
 
-            <hr class="line" />
+                <br />
+
+                <form class="module-demo form">
+                    <fieldset class="row">
+                        <label class="span-6 field">
+                            Username
+                            <input type="text" placeholder="example: username" />
+                        </label>
+                        <label class="span-6 field">
+                            Password
+                            <input type="password" placeholder="example: password" />
+                        </label>
+                    </fieldset>
+                    <br />
+                    <fieldset class="row">
+                        <label class="span-2 field">
+                            Twitter
+                            <input type="text" placeholder="example: esr360" />
+                        </label>
+                        <label class="span-4 field">
+                            URL
+                            <input type="url" placeholder="example: http://skyux.com" />
+                        </label>
+                        <label class="span-3 field">
+                            Dribbble
+                            <input type="text" placeholder="example: esr360" />
+                        </label>
+                        <label class="span-3 field">
+                            LinkedIn
+                            <input type="text" placeholder="example: SkyUX" />
+                        </label>
+                    </fieldset>
+                    <br />
+                    <div class="row">
+                        <label class="span-6 field">
+                            Your Message
+                            <textarea rows="6" placeholder="enter your message..."></textarea>
+                        </label>
+                        <label class="span-6 field">
+                            Your Message
+                            <textarea rows="6" placeholder="enter your message..."></textarea>
+                        </label>
+                    </div>
+                </form>
+
+            </section>
             
             <section>
-
-                <h4><strong>Icons</strong> <small><a class="view-more" href="http://fortawesome.github.io/Font-Awesome/icons/" target="blank">view more</a></small></h4>
+                
+                <h3 class="heading dotted">
+                    Icons
+                </h3>
 
                 <div class="module-demo">
                     <div class="row bp1 text-center fa-icons">
@@ -395,132 +593,108 @@
                     </div>
                 </div>
 
-                <p class="module-demo">
-                    <a class="social facebook" href="#"></a>
-                    <a class="social twitter" href="#"></a>
-                    <a class="social linkedin" href="#"></a>
-                    <a class="social github" href="#"></a>
-                    <a class="social skype" href="#"></a>
-                    <a class="social pinterest" href="#"></a>
-                    <a class="social instagram" href="#"></a>
-                </p>
-
-                <p class="module-demo">
-                    <a href="#" class="social rss text"></a>
-                    <a href="#" class="social youtube text"></a>
-                    <a href="#" class="social flickr text"></a>
-                    <a href="#" class="social vimeo text"></a>
-                    <a href="#" class="social dribbble text"></a>
-                    <a href="#" class="social behance text"></a>
-                    <a href="#" class="social deviantart text"></a>
-                </p>
-
-                <p class="module-demo">
-                    <a href="#" class="social facebook small"></a>
-                    <a href="#" class="social twitter small"></a>
-                    <a href="#" class="social linkedin small"></a>
-                    <a href="#" class="social dribbble text small"></a>
-                    <a href="#" class="social deviantart text small"></a>
-                </p>
-
-                <p class="module-demo">
-                    <a href="#" class="social facebook large"></a>
-                    <a href="#" class="social twitter large"></a>
-                    <a href="#" class="social linkedin large"></a>
-                    <a href="#" class="social dribbble text large"></a>
-                    <a href="#" class="social deviantart text large"></a>
-                </p>
-
             </section>
-
-            <hr class="line" />
             
             <section>
 
-                <h4><strong>Images</strong></h4>
+                <h3 class="heading dotted">
+                    Images
+                </h3>
 
-                <div class="row text-center">
-                    <div class="span-3">
-                        <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg" class="thumbnail">
-                    </div>
-                    <div class="span-3 min-bp3">
-                        <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg" class="thumbnail">
-                    </div>
-                    <div class="span-3 min-bp3">
-                        <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-3.jpg" class="thumbnail">
-                    </div>
-                    <div class="span-3 min-bp3">
-                        <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg" class="thumbnail">
-                    </div>
-                </div>
-                
-                <br />
-
-                <div class="row bp1 text-center">
-                    <div class="span-3">    
-                        <div class="responsive-square">     
-                            <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg">
+                    <div class="module-demo">
+                    <div class="row text-center">
+                        <div class="span-3">
+                            <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg" class="thumbnail">
+                        </div>
+                        <div class="span-3 min-bp3">
+                            <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg" class="thumbnail">
+                        </div>
+                        <div class="span-3 min-bp3">
+                            <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-3.jpg" class="thumbnail">
+                        </div>
+                        <div class="span-3 min-bp3">
+                            <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg" class="thumbnail">
                         </div>
                     </div>
-                    <div class="span-3">    
-                        <div class="responsive-circle">     
-                            <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg">
+                    <br />
+                    <div class="row text-center">
+                        <div class="span-2">
+                            <div class="square">
+                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-3.jpg">
+                            </div>
                         </div>
-                    </div>
-                    <div class="span-3">    
-                        <div class="responsive-square">     
-                            <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-3.jpg">
+                        <div class="span-2">
+                            <div class="square">
+                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg">
+                            </div>
                         </div>
-                    </div>
-                    <div class="span-3">    
-                        <div class="responsive-circle">     
-                            <img width="250" src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg">
+                        <div class="span-2">
+                            <div class="square">
+                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg">
+                            </div>
+                        </div>
+                        <div class="span-2">
+                            <div class="circle">
+                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg">
+                            </div>
+                        </div>
+                        <div class="span-2">
+                            <div class="circle">
+                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg">
+                            </div>
+                        </div>
+                        <div class="span-2">
+                            <div class="circle">
+                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg">
+                            </div>
                         </div>
                     </div>
                 </div>
 
             </section>
 
-            <hr class="line" />
-
             <section>
 
-                <h4><strong>Tables</strong></h4>
+                <h3 class="heading dotted">
+                    Tables
+                </h3>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <td colspan="3">Optional Table Header</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>COLOR</td>
-                            <td>NUMBER</td>
-                            <td>VEHICLE</td>
-                        </tr>
-                        <tr>
-                            <td>blue</td>
-                            <td>24</td>
-                            <td>car</td>
-                        </tr>
-                        <tr>
-                            <td>green</td>
-                            <td>38</td>
-                            <td>bike</td>
-                        </tr>
-                        <tr>
-                            <td>red</td>
-                            <td>55</td>
-                            <td>train</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="3">Optional Table Footer</td>
-                        </tr>
-                    </tfoot>
-                </table>
+                <div class="module-demo">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td colspan="3">Optional Table Header</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>COLOR</td>
+                                <td>DESCRIPTION</td>
+                                <td>COUNT</td>
+                            </tr>
+                            <tr>
+                                <td>blue</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin gravida diam at nisi auctor.</td>
+                                <td>12</td>
+                            </tr>
+                            <tr>
+                                <td>green</td>
+                                <td>Vestibulum vel nisl dictum, posuere lorem vitae. Maximus iaculis mauris bibendum ligula.</td>
+                                <td>108</td>
+                            </tr>
+                            <tr>
+                                <td>red</td>
+                                <td>Phasellus pulvinar varius nisi ut tristique. Morbi sed diam tortor massa tempor.</td>
+                                <td>65</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3"><small>Optional Table Footer</small></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
 
                 <br />
 
@@ -553,17 +727,11 @@
 
             </section>
 
-            <br />
-
-            <h2 class="dotted">
-                <a href="http://www.onenexusproject.com/documentation/elements/interactive/" target="blank">
-                    <i><em>Interactive Elements</em></i>
-                </a>
-            </h2>
-
             <section>
 
-                <h4><strong>Accordions</strong></h4>
+                <h3 class="heading dotted">
+                    Accordions
+                </h3>
 
                 <div class="accordion">
                     <section>
@@ -594,48 +762,39 @@
 
             </section>
 
-            <hr class="line" />
-
             <section>
 
-                <h4><strong>Modal Galleries</strong></h4>
+                <h3 class="heading dotted">
+                    Modal Windows
+                </h3>
+
+                <div id="demo-modal" class="modal-content">
+                    Demo modal!
+                    <div class="modal-close">
+                        <i class="fa fa-times"></i>
+                    </div>
+                </div>
 
                 <div class="module-demo">
-                    <div class="row modal-gallery">
-                        <div class="span-3">
-                            <a href="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg">
-                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg" class="thumbnail">
-                            </a>
-                        </div>
-                        <div class="span-3">
-                            <a href="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg">
-                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg" class="thumbnail">
-                            </a>
-                        </div>
-                        <div class="span-3">
-                            <a href="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-3.jpg">
-                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-3.jpg" class="thumbnail">
-                            </a>
-                        </div>
-                        <div class="span-3">
-                            <a href="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg">
-                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg" class="thumbnail">
-                            </a>
-                        </div>
+                    <div class=" modal-gallery">
+                        <a href="#demo-modal" rel="modal">Click Me</a>
                     </div>
                 </div>
 
             </section>
 
-            <hr class="line" />
-
             <section>
 
-                <h4><strong>Carousels</strong></h4>
+                <h3 class="heading dotted">
+                    Carousels
+                </h3>
 
                 <div class="module-demo">
 
-                    <div id="main-slider">
+                    <div id="demo-carousel" class="carousel">
+                        <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg" />
+                        <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg" />
+                        <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg" />
                         <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg" />
                         <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg" />
                         <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg" />
@@ -645,11 +804,11 @@
 
             </section>
 
-            <hr class="line" />
-
             <section>
 
-                <h4><strong>Tabs</strong></h4>
+                <h3 class="heading dotted">
+                    Tabs
+                </h3>
 
                 <div class="tabs">
                     <ul class="nav">
@@ -678,23 +837,19 @@
 
             </section>
 
-            <hr class="line" />
-
             <section>
 
-                <h4><strong>Tooltips</strong></h4>
+                <h3 class="heading dotted">
+                    Tooltips
+                </h3>
 
-                <p class="module-demo">
-                    <a href="#" data-tip="Facebook" class="social facebook tooltip"></a>
-                    <a href="#" data-tip="Twitter" class="social twitter tooltip"></a>
-                    <a href="#" data-tip="LinkedIn" class="social linkedin tooltip"></a>
-                </p>
+                <div class="module-demo">
+                    <a id="south" rel="tooltip" href="#" tooltip="Demo Tooltip">Hover Me</a>
+                </div>
 
             </section>
 
-            <br />
-
-            <h2 class="dotted">
+            <h2 class="heading">
                 <a href="http://www.onenexusproject.com/documentation/elements/typography/" target="blank">
                     <i><em>Typographic Elements</em></i>
                 </a>
@@ -702,35 +857,37 @@
 
             <section>
 
-                <h4><strong>Headings</strong></h4>
+                <h3 class="heading dotted">
+                    Headings
+                </h3>
 
                 <div style="padding: 2rem;" class="module-demo">
                     <div class="row">
                         <div class="span-4">
-                            <h4>Regular Heading</h4>
+                            <h4 class="heading">Regular Heading</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
                         </div>
                         <div class="span-4">
-                            <h4><strong>Uppercase Heading</strong></h4>
+                            <h4 class="heading"><strong>Uppercase Heading</strong></h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
                         </div>
                         <div class="span-4">
-                            <h4><em>Thin Text Heading</em></h4>
+                            <h4 class="heading"><em>Thin Text Heading</em></h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="span-4">
-                            <h4 class="font-2">A heading with a custom font</h4>
+                            <h4 class="heading font-1">A heading with a custom font</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
                         </div>
                         <div class="span-4">
-                            <h4><i>Colourful Heading</i></h4>
+                            <h4 class="heading"><i>Colourful Heading</i></h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
                         </div>
                         <div class="span-4">
-                            <h4 class="highlight"><b>Highlighted Heading</b></h4>
+                            <h4 class="heading highlight"><b>Highlighted Heading</b></h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
                         </div>
                     </div>
@@ -738,11 +895,11 @@
 
             </section>
 
-            <hr class="line">
-
             <section>
 
-                <h4><strong>Lists</strong></h4>
+                <h3 class="heading dotted">
+                    Lists
+                </h3>
 
                 <div class="module-demo">
                     <ul class="clear">
@@ -765,23 +922,23 @@
                 <br />
 
                 <div class="module-demo">
-                    <ul class="block-list">
-                        <li>Eu nonummy condimentum fringilla</li>
-                        <li>Lorem ipsum dolor sit amet</li>
-                        <li>Hac molestie amet justo quis pellentesque</li>
-                        <li>Eu nonummy condimentum fringilla</li>
-                        <li>Lorem ipsum dolor sit amet</li>
-                        <li>Hac molestie amet justo quis pellentesque</li>
+                    <ul class="row flow-columns arrow-list">
+                        <li class="span-4">Eu nonummy condimentum fringilla</li>
+                        <li class="span-4">Lorem ipsum dolor sit amet</li>
+                        <li class="span-4">Hac molestie amet justo quis pellentesque</li>
+                        <li class="span-4">Eu nonummy condimentum fringilla</li>
+                        <li class="span-4">Lorem ipsum dolor sit amet</li>
+                        <li class="span-4">Hac molestie amet justo quis pellentesque</li>
                     </ul>
                 </div>
 
             </section>
 
-            <hr class="line" />
-
             <section>
 
-                <h4><strong>Quotes</strong></h4>
+                <h3 class="heading dotted">
+                    Quotes
+                </h3>
 
                 <div class="module-demo">
                     <blockquote>
@@ -791,9 +948,7 @@
 
             </section>
 
-            <br />
-
-            <h2 class="dotted">
+            <h2 class="heading">
                 <a href="http://www.onenexusproject.com/documentation/modules/" target="blank">
                     <i><em>Modules</em></i>
                 </a>
@@ -801,7 +956,9 @@
 
             <section>
 
-                <h4><strong>Breadcrumb</strong></h4>
+                <h3 class="heading dotted">
+                    Breadcrumbs
+                </h3>
 
                 <div class="module-demo">
                     <nav class="breadcrumb">
@@ -816,11 +973,11 @@
 
             </section>
 
-            <hr class="line" />
-
             <section>
 
-                <h4><strong>Header</strong></h4>
+                <h3 class="heading dotted">
+                    Header
+                </h3>
 
                 <div class="module-demo">
                     <header class="app-header">
@@ -849,11 +1006,11 @@
 
             </section>
 
-            <hr class="line" />
-
             <section>
 
-                <h4><strong>Footer</strong></h4>
+                <h3 class="heading dotted">
+                    Footer
+                </h3>
 
                 <div class="module-demo">
                     <footer class="app-footer">
@@ -876,15 +1033,17 @@
 
             </section>
 
-            <hr class="line" />
-
             <section>
 
-                <h4><strong>Off-Canvas Nav</strong></h4>
+                <h3 class="heading dotted">
+                    Flyout Navigation
+                </h3>
 
                 <div class="module-demo">
                     <div style="background: #111111; padding: 0;" class="module-demo">              
-                        <span class="icon-cta nav-trigger menu-btn"></span>
+                        <span class="icon-lrg nav-trigger flyout-trigger" id="flyout-trigger-demo">
+                            <i class="fa fa-bars"></i>
+                        </span>
                     </div>
                 </div>
 
@@ -897,7 +1056,6 @@
             <hr class="line" />
 
         </div>
-
 
         <footer class="app-footer">
             <div class="container">
@@ -918,51 +1076,113 @@
 
     </div><!-- End #site-content -->
 
+    <!-- UI -->
+
     <!-- Scroll to top icon-->
     <a class="fa fa-angle-up scroll-top" href="#site-content"></a> 
 
-    <!-- Off Canvas Menu -->
-    <nav class="off-canvas-nav">
-        <div id="off-canvas-nav"></div>
-    </nav>
+    <!-- Flyout Nav Trigger -->
+    <span class="icon-lrg nav-trigger flyout-trigger" id="flyout-trigger">
+        <i class="fa fa-bars"></i>
+    </span>
+
+    <!-- Flyout Nav -->
+    <nav class="flyout-container" id="flyout"></nav>
 
     <!-- Site Overlay -->
-    <div class="site-overlay"></div>
+    <div class="site-overlay" id="site-overlay"></div>
 
-    <!-- Scripts -->
+    <!-- SCRIPTS -->
 
     <!-- jQuery -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
-    <!--<script src="assets/js/jquery.min.js"></script>-->
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>-->
+    <script src="assets/js/jquery.min.js"></script>
 
     <!-- Interactive Elements/Modules -->
     <script src="assets/js/accordion.js"></script>
     <script src="assets/js/carousel.js"></script>
     <script src="assets/js/modal.js"></script>
-    <script src="assets/js/off-canvas-nav.js"></script>
+    <script src="assets/js/flyout-nav.js"></script>
     <script src="assets/js/tabs.js"></script>
     <script src="assets/js/tooltip.js"></script>
 
     <!-- General -->
+    <script src="assets/js/adaptive-columns.js"></script>
     <script src="assets/js/global.js"></script>
 
     <script>
-        $(document).ready(function() {
+        $(window).load(function(){
 
-            /******************************************************************
-            Main Slider
-            ******************************************************************/
+            //-----------------------------------------------------------------
+            // Demo Carousel
+            //-----------------------------------------------------------------
 
-            $("#main-slider").owlCarousel({ 
-                navigation : true, // Show next and prev buttons
-                slideSpeed : 600,
-                singleItem:true,
-                navigationText : false,
-                autoPlay : 10000,
-                stopOnHover : true,
+            var demoCarousel = $('#demo-carousel');
+
+            demoCarousel.owlCarousel({
+                items: 1,
+                loop: true,
+                dots: true,
+                nav: true,
+                margin: 31,
+                slideBy: 1,
+                navText: [],
+                responsive:{
+                    460 :{                
+                        items: 2
+                    },
+                    720 :{                
+                        items: 3
+                    },
+                    940 :{                
+                        items: 4
+                    }
+                }
             });
 
-        }); // End document.ready
+            //-----------------------------------------------------------------
+            // Demo Flyout Nav
+            //-----------------------------------------------------------------
+
+            function toggleFlyout(state) {
+
+                function flyoutEvents(){
+                    $('body').toggleClass('flyout-active');
+                    $('#flyout-trigger-demo').toggleClass('nav-trigger-animate');
+                    $('#site-overlay').toggleClass('visible');
+                }
+
+                if($('body').hasClass('flyout-active')) {  // is the flyout nav currently toggled?
+                    // yes we are
+                    if(state != 1) {
+                        flyoutEvents();
+                    }
+                } else {
+                    // no, we are not
+                    if(state != 0) {
+                        flyoutEvents();
+                    }
+                }
+
+            } // end toggleFlyout()
+
+            // toggle the flyout nav
+            $('#flyout-trigger-demo').click(function() {
+                toggleFlyout();
+            });
+
+            //-----------------------------------------------------------------
+            // Demo Tooltip
+            //-----------------------------------------------------------------
+
+            $(function() {
+                $('a[rel*="tooltip"]').tipsy({
+                    fade: true, 
+                    gravity: 's'
+                });
+            });
+
+        }); // end window.load
     </script>
 
 </body>
