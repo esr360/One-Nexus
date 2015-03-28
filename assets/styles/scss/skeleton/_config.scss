@@ -1,0 +1,138 @@
+
+/* Config
+// Global configuration only; some .scss files may also contain 
+// module-specific configuration
+================================================================ */
+
+//-----------------------------------------------------------------
+// Skeleton
+//-----------------------------------------------------------------
+
+$base-width            :   1200px;
+$max-width             :   90%;
+$small-container-width :   960px;
+
+$columns               :   12;
+$gutter                :   2.5%;
+
+// leave as false if you require the support of old browsers
+// FLEX IS CURRENTLY NOT SUPPORTED IN ONE NEXUS, LEAVE AS FALSE!
+$flex                  :   false !default;
+
+//-----------------------------------------------------------------
+// Breakpoints
+//-----------------------------------------------------------------
+
+$breakpoint-0          :   0px;
+$breakpoint-1          :   460px;
+$breakpoint-2          :   720px;
+$breakpoint-3          :   940px;
+$breakpoint-4          :   1200px;
+$breakpoint-5          :   1400px;
+
+$col-collapse          :   $breakpoint-3;
+
+$breakpoints: (
+	break-1            :   $breakpoint-1,
+	break-2            :   $breakpoint-2,
+	break-3            :   $breakpoint-3,
+	break-4            :   $breakpoint-4,
+	break-5            :   $breakpoint-5
+);
+
+//-----------------------------------------------------------------
+// Typography
+//-----------------------------------------------------------------
+
+// Fonts
+
+$font-1                :   'Lato', sans-serif;
+$font-2                :   'Raleway', sans-serif;
+
+// Font Sizes
+
+$base-font-size        :   1rem;
+
+$font-size-1           :   0.9rem;
+$font-size-2           :   1rem;
+$font-size-3           :   1.2rem;
+$font-size-4           :   1.4rem;
+$font-size-5           :   1.8rem;
+$font-size-6           :   2.25rem;
+$font-size-7           :   2.85rem;
+$font-size-8           :   3.5rem;
+
+//-----------------------------------------------------------------
+// Color Palettes
+//-----------------------------------------------------------------
+
+// Greyscale Colors
+
+$white                 :   #ffffff;
+$dark-white            :   #f1f1f1;
+$light-grey            :   #b1b1b1;
+$grey                  :   #707070;
+$dark-grey             :   #111111;
+$black                 :   #000000;
+
+// Branding Colors
+
+$brand-1               :   #F62459;
+$brand-2               :   #22A7F0;
+$brand-3               :   #03C9A9;
+
+$colors-brand: (
+	brand-1            :   $brand-1,
+	brand-2            :   $brand-2,
+	brand-3            :   $brand-3
+);
+
+// Alert Colors
+
+$alert-error           :   #CB8888;
+$alert-help            :   #e7d16c;
+$alert-info            :   #79a9c0;
+$alert-success         :   #9cc079;
+
+$colors-alert: (
+	error              :   $alert-error,
+	help               :   $alert-help,
+	info               :   $alert-info,
+	success            :   $alert-success
+);
+
+// Validation Colors
+
+$valid                 :   #00B16A;
+$invalid               :   #D91E18;
+
+// Social Network Colors
+
+$facebook              :     #507CBD;
+$twitter               :     #63CEF2;
+$linkedin              :     #117BB8;
+$github                :     #1C1C1C;
+$skype                 :     #63CEF2;
+$pinterest             :     #CD2129;
+$instagram             :     #5280A5;
+$rss                   :     #FBA933;
+$youtube               :     #CB312E;
+$flickr                :     #ED1384;
+$vimeo                 :     #1EB8EB;
+$dribbble              :     #EB4C89;
+$behance               :     #0595FC;
+$deviantart            :     #B3C434;
+$reddit                :     #0D7CCD;
+$google-plus           :     #dd4b39;
+
+//-----------------------------------------------------------------
+// Theming
+//-----------------------------------------------------------------
+
+$base-margin           :   2rem;
+$base-line-height      :   1.4;
+
+$base-text-color       :   $grey;
+$background-color      :   $dark-white;
+
+$heading-color         :   $dark-grey;
