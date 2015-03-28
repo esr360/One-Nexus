@@ -12,12 +12,10 @@ blockquote {
 	p {
 		margin: 0;
 		padding: 0 3rem;
-		&:before, &:after {
+		&:before {
 			position: absolute;
 			font-family: FontAwesome;
 			font-size: 1.75rem;
-		}
-		&:before, &:after {
 			color: rgba(0,0,0,0.3);
 		}
 		&:before {
@@ -25,15 +23,10 @@ blockquote {
 			top: -0.25rem;
 			left: 0;
 		}
-		&:after {
-			content: "\f10e";
-			right: 0;
-			bottom: -0.25rem;
-		}
 	}
 	cite {
 		font-weight: bold;
 		font-style: normal;
 	}
 
-} // End blockquote
+} // end blockquote
