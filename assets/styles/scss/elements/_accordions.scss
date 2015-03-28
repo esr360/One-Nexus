@@ -41,7 +41,8 @@
 				}					
 			}
 		}	
-		&:hover, &.active {
+		&:hover, 
+		&.active {
 			> *:first-child {
 				background: $brand-1;
 				color: white;
@@ -64,4 +65,4 @@
 		}
 	}
 
-} // End .accordion
+} // end .accordion
