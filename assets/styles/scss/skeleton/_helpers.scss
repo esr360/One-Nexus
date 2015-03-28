@@ -2,14 +2,9 @@
 /* Helper Classes
 ================================================================ */
 
-/******************************************************************
-Visibility
-******************************************************************/
-
-.hidden {
-    display: none !important;
-    visibility: hidden;
-}
+//-----------------------------------------------------------------
+// Visibility
+//-----------------------------------------------------------------
 
 .visually-hidden {
     border: 0;
@@ -32,17 +27,15 @@ Visibility
     }
 }
 
-.invisible {
-    visibility: hidden;
-}
+//-----------------------------------------------------------------
+// Clearfix
+//-----------------------------------------------------------------
 
-/******************************************************************
-Clearfix
-******************************************************************/
-
-.clearfix, .cf {
+.cf,
+.clearfix {
     zoom: 1;
-    &:before, &:after { 
+    &:before, 
+    &:after { 
         content: ""; 
         display: table; 
     }
@@ -51,61 +44,11 @@ Clearfix
     }
 }
 
-/******************************************************************
-Column Vertical Align
-******************************************************************/
+//-----------------------------------------------------------------
+// Aligning
+//-----------------------------------------------------------------
 
-.va-top {
-    vertical-align: top !important;
-}
-.va-middle {
-    vertical-align: middle !important;
-}
-.va-bottom {
-    vertical-align: bottom !important;
-}
-
-/******************************************************************
-Vertically Align Anything
-******************************************************************/
-
-//http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
-
-.vam {    
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-/******************************************************************
-Image Replacement
-******************************************************************/
-
-// http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
-
-.image-replacement {
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-/******************************************************************
-Horizontal Rules
-******************************************************************/
-
-hr.line {
-    color: rgba(0,0,0,0.2);
-    margin: $base-margin 0;
-}
-hr.dotted {
-    color: rgba(0,0,0,0.2);
-    border-top: 1px dotted;
-    margin: $base-margin 0;
-}
-
-/******************************************************************
-Horizontal Aligning
-******************************************************************/
+// Text Aligning
 
 .text-left { 
     text-align: left !important; 
@@ -117,42 +60,64 @@ Horizontal Aligning
     text-align: right !important; 
 }
 
-.left  { 
-    float: left !important; 
+// Vertical Aligning
+
+.va-top {
+    vertical-align: top !important;
 }
-.right { 
-    float: right !important; 
+.va-middle {
+    vertical-align: middle !important;
 }
-
-/******************************************************************
-Responsive Visibility
-******************************************************************/
-
-/* Show only when resolution is at most X
-================================================================ */
-
-@function maxbp($name) {
-    @return nth($bp-values, index($bp-names, $name))
+.va-bottom {
+    vertical-align: bottom !important;
 }
 
-@each $name in $bp-names {
-    .max-#{$name} {
-        @media (min-width: maxbp($name)) {
+//-----------------------------------------------------------------
+// Positioning
+//-----------------------------------------------------------------
+
+// Vertical Centering
+//http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+
+%vam {    
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+//-----------------------------------------------------------------
+// Horizontal Rules
+//-----------------------------------------------------------------
+
+hr.line {
+    color: rgba(0,0,0,0.2);
+    margin: $base-margin 0;
+}
+hr.dotted {
+    color: rgba(0,0,0,0.2);
+    border-top: 1px dotted;
+    margin: $base-margin 0;
+}
+
+//-----------------------------------------------------------------
+// Responsive Visiblity
+//-----------------------------------------------------------------
+
+// Show only when resolution is at most X
+
+@each $bp, $width in $breakpoints {
+    .max-#{$bp} {
+        @media (min-width: $width) {
             display: none !important;
         }
     }
 }
 
-/* Show only when resolution is at least X
-================================================================ */
+// Show only when resolution is at least X
 
-@function minbp($name) {
-    @return nth($bp-values, index($bp-names, $name))
-}
-
-@each $name in $bp-names {
-    .min-#{$name} {
-        @media (max-width: minbp($name)) {
+@each $bp, $width in $breakpoints {
+    .min-#{$bp} {
+        @media (max-width: $width) {
             display: none !important;
         }
     }
