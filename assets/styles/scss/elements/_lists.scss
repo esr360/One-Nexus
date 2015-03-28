@@ -2,36 +2,26 @@
 /* Lists
 ================================================================ */
 
-ul.reset, ol.reset {
+ul.reset, 
+ol.reset {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-ul.clear, ol.clear {
+ul.clear, 
+ol.clear {
 	padding-left: 1em;
 }
 
-.block-list {
-	@extend .cf;
-	padding: 0;
-	list-style: none;
+.arrow-list {
+	@extend ul.reset;
 	li {
-		background: rgba(0,0,0,0.05);
-		padding: 0.75em 1em;
-		margin-bottom: 0.5em;
-	}
-	.fa {
-		opacity: 0.75;
-		margin-right: 0.25em;
-	}
-	@media (min-width: $breakpoint-3) {
-		li {			
-			width: 48.75%;
-			float: left;
-			&:nth-child(even) {
-				margin-left: 2.5%;
-			}
+		line-height: 1.8;
+		&:before {
+			content: "\f138";
+			font-family: FontAwesome;
+			margin-right: 0.5em;
 		}
 	}
 }
