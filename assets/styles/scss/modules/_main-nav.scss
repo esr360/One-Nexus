@@ -4,26 +4,20 @@
 
 .main-nav {
 
-/******************************************************************
-Start building the basic layout
-******************************************************************/
+//-----------------------------------------------------------------
+// Core Layout
+//-----------------------------------------------------------------
 
 	ul {
 		@extend ul.reset;
 		display: none;
 		font-size: 0;
-	    li {
-		    @import "dropdown-nav";
-		    ul {
-		    	padding-left: 2em;
-		    }  
-		    &:hover {
-		    	> a {		    		
-					color: white;
-					background: darken($brand-1, 10%);
-		    	}
-		    }
-	    }
+	}
+    li {
+	    @import "dropdown-nav";
+	    ul {
+	    	padding-left: 2em;
+	    }  
     	a {
 			text-decoration: none;
 			display: block;	
@@ -32,11 +26,17 @@ Start building the basic layout
 			padding: 0 1em;
 			font-size: 1rem;
     	}
-	}
+	    &:hover {
+	    	> a {		    		
+				color: white;
+				background: darken($brand-1, 10%);
+	    	}
+	    }
+    }
 
-/******************************************************************
-Start building for larger resolutions
-******************************************************************/
+//-----------------------------------------------------------------
+// Larger Resolutions
+//-----------------------------------------------------------------
 
 	@media (min-width: $breakpoint-3) {
 		text-align: right;
@@ -52,4 +52,4 @@ Start building for larger resolutions
 		}
 	}
 
-} // End .main-nav
+} // end .main-nav

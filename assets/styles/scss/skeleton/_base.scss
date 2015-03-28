@@ -2,6 +2,10 @@
 /* Base
 ================================================================ */
 
+//-----------------------------------------------------------------
+// General
+//-----------------------------------------------------------------
+
 html, body {
 	padding: 0;
 	margin: 0;
@@ -12,42 +16,69 @@ html {
 }
 
 body {
-    line-height: 1.4;
+    line-height: $base-line-height;
     font-family: $font-1;
-    color: $main-text-color;
+    color: $base-text-color;
 	background-color: $background-color;
-	font-size: $small-font-size;
-    @media (min-width: $breakpoint-3) {
-    	font-size: $base-font-size;
-	}
+    font-size: $base-font-size;
 }
 
+//-----------------------------------------------------------------
+// Structure
+//-----------------------------------------------------------------
+
 .container {
-	width: $main-width;
+	width: $base-width;
 	max-width: $max-width;
 	margin: 0 auto;
 }
 
-.row { 
-    letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
-    *letter-spacing: normal; /* reset IE < 8 */
-    *word-spacing: -0.43em; /* IE < 8: collapse white-space between units */
-    text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+.small-container {
+    width: $small-container-width;
 }
 
-.opera-only :-o-prefocus,
-.row {
-    word-spacing: -0.43em;
+.site-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    background: rgba(0,0,0,0.4);
+    transform: translateZ(0);
+    transition: 0.4s;
+    z-index: 10;
+    visibility: hidden;
+    opacity: 0;
+    &.visible {
+        visibility: visible;
+        opacity: 1;
+    }
 }
+
+//-----------------------------------------------------------------
+// Layout
+//-----------------------------------------------------------------
 
 * {
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-rendering: auto;
     box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, hgroup, p, ul, ol, dd, figure, pre, table, fieldset, legend, hr {
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6, 
+p, 
+ul, 
+ol, 
+figure, 
+pre, 
+table, 
+fieldset, 
+legend, 
+hr {
     margin: $base-margin 0;
     &:first-child {
     	margin-top: 0;
@@ -58,12 +89,6 @@ h1, h2, h3, h4, h5, h6, hgroup, p, ul, ol, dd, figure, pre, table, fieldset, leg
 }
 
 ::selection {
-	background-color: $brand-1;
-	color: #fff;
-	text-shadow: none;
-}
-
-::-moz-selection {
 	background-color: $brand-1;
 	color: #fff;
 	text-shadow: none;

@@ -1,11 +1,11 @@
 
 /* Logo
-======================================================================= */
+================================================================ */
 
 .logo {	
 
 	padding: 1em 0;
-	/* for plain text logos */
+	// for plain text logos
 	a {
 		color: white;
 		display: inline-block;
@@ -13,11 +13,11 @@
 			text-decoration: none;
 		}
 	}
-	/* for image logos */
+	// for image logos
 	img {
 		height: 34px;
 		display: inline-block;
 		vertical-align: middle;
 	}
 
-} // End .logo
+} // end .logo

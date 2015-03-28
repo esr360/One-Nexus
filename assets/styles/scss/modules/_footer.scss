@@ -1,44 +1,44 @@
 
 /* Footer
-======================================================================= */
+================================================================ */
+
+//-----------------------------------------------------------------
+// Core Layout
+//-----------------------------------------------------------------
 
 .app-footer {
-
-/******************************************************************
-Start building the basic layout
-******************************************************************/
-
 	text-align: center;	
 	margin-bottom: $base-margin;
-	.footer-nav {
-		ul {
-		    @extend ul.reset;
-		}
-	    li {
-		    display: inline-block;
-		    &:not(:last-child) {
-				margin-right: 1em;
-		    }
+}
+
+.footer-nav {
+	ul {
+	    @extend ul.reset;
+	}
+    li {
+	    display: inline-block;
+	    &:not(:last-child) {
+			margin-right: 1em;
 	    }
+    }
+}
+
+//-----------------------------------------------------------------
+// Larger Resolutions
+//-----------------------------------------------------------------
+
+@media (min-width: $breakpoint-2) {
+	.footer-wrapper {			
+		display: table;
+		width: 100%;
+		text-align: left;
 	}
-
-/******************************************************************
-Start building for larger resolutions
-******************************************************************/
-
-	@media (min-width: $breakpoint-2) {
-		.footer-wrapper {			
-			display: table;
-			width: 100%;
-			text-align: left;
-		}
-		.copyright, .footer-nav {
-			display: table-cell;
-			vertical-align: middle;
-		}
-		.footer-nav {
-			text-align: right;
-		}
+	.copyright, 
+	.footer-nav {
+		display: table-cell;
+		vertical-align: middle;
 	}
-
-} // End .app-footer
+	.footer-nav {
+		text-align: right;
+	}
+}
