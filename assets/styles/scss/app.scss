@@ -1,10 +1,7 @@
 /******************************************************************
 
-Site Name: Website name here
-Author: Your name/company here
-
-One Nexus Framework by Edmund Reed of bluenexusmedia.com
-http://onenexusproject.com - http://edmundreed.co.uk
+Site Name: One Nrxus Framework
+Author: http://skyux.com
 
 ******************************************************************/
 
@@ -13,10 +10,11 @@ Skeleton
 ******************************************************************/
 
 @import "skeleton/normalize";
-@import "skeleton/variables";
+@import "skeleton/config";
 @import "skeleton/base";
 @import "skeleton/grid";
 @import "skeleton/helpers";
+@import "skeleton/utilities";
 @import "skeleton/print";
 
 /******************************************************************
@@ -36,19 +34,20 @@ Elements
 @import "elements/links";
 @import "elements/lists";
 @import "elements/modals";
+@import "elements/progress-bars";
 @import "elements/tables";
 @import "elements/tabs";
 @import "elements/tooltips";
+@import "elements/wells";
 
 /******************************************************************
 Modules
 ******************************************************************/
 
 @import "modules/breadcrumb";
+@import "modules/flyout-nav";
 @import "modules/footer";
 @import "modules/header";
 @import "modules/logo";
 @import "modules/main-nav";
-@import "modules/nav-trigger";
-@import "modules/off-canvas-nav";
 @import "modules/scroll-top";
