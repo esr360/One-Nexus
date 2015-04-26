@@ -89,9 +89,7 @@ For a more complete experience, visit the official [One Nexus documentaion](http
 
 Download the latest copy of One Nexus, extract the files to your desired location, and open the folder with your favourite text editor.
 
-```html
-[Download](https://github.com/esr360/One-Nexus/archive/master.zip)
-```
+>[Download](https://github.com/esr360/One-Nexus/archive/master.zip)
 
 ##### Option 2 - Bower Installation
 
