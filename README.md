@@ -456,7 +456,7 @@ Flow columns work exactly like regular columns except that each row of columns d
 </div>
 ```
 
-#### Magic Columns
+##### Magic Columns
 
 "Magic" columns are so named as each row of magic columns can automatically detect the number of columns within its row, and set the width of each column accordingly (without using any JavaScript!). Each column in a row of magic columns will always be the same width, and will always add up to **100%** width. Perfect for cases where you know each column will always be the same width, or where you need any "[widow](http://en.wikipedia.org/wiki/Widows_and_orphans)" columns to take up any remaining space.
 
