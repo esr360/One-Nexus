@@ -38,7 +38,10 @@
 				background: lighten($dark-white, 4%);
 				*:last-child {
 					margin-bottom: 0;
-				}					
+				}	
+				&.active {
+					display: block;
+				}				
 			}
 		}	
 		&:hover, 
