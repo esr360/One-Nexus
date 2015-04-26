@@ -85,7 +85,7 @@ For a more complete experience, visit the official [One Nexus documentaion](http
 
 ## Getting Started
 
-#### Option 1 - Classic Download
+##### Option 1 - Classic Download
 
 Download the latest copy of One Nexus, extract the files to your desired location, and open the folder with your favourite text editor.
 
@@ -93,17 +93,17 @@ Download the latest copy of One Nexus, extract the files to your desired locatio
 [Download](https://github.com/esr360/One-Nexus/archive/master.zip)
 ```
 
-#### Option 2 - Bower Installation
+##### Option 2 - Bower Installation
 
 ```html
 bower install one-nexus
 ```
 
-## Built in Sass!
+### Built in Sass!
 
 One Nexus is built in [Sass](http://sass-lang.com/) (Syntactically Awesome Style Sheets), so to truly make the most from it you will need a way of pre-processing your CSS from **.scss** files.
 
-## Project Architecture
+### Project Architecture
 
 One Nexus follows OOCSS principles, promoting a sensible CSS architecture out-the-box. All individual **scss** files are controlled by one main file; **app.scss**, which compiles into **app.css**.
 
@@ -163,7 +163,7 @@ Modules
 
 We like to think of websites as being made up of **pages**, which are made up of **modules**, which are made up of **elements**. Each [element](http://www.onenexusproject.com/documentation/elements/) and [module](http://www.onenexusproject.com/documentation/modules/) has its own SASS partial, with the option to easily create a partial for individual pages as well.
 
-## Building Your Website
+### Building Your Website
 
 One Nexus comes with a sample **index.html** file which contains a basic example page using the One Nexus assets. Feel free to use this as your starting point, or go ahead and create your own page from scratch.
 
