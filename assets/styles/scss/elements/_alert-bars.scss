@@ -2,6 +2,7 @@
 /* Alert Bars
 ================================================================ */
 
+.alert,
 [class*="alert-"] {
 
 	padding: 0.85em;
@@ -11,6 +12,9 @@
 	font-weight: lighter;
 	position: relative;
 	border: 1px solid rgba(0,0,0,0.15);
+	&:hover {
+		text-decoration: none;
+	}
 
 	a {
 		color: inherit;
