@@ -210,20 +210,18 @@
         width: 100%;
         .owl-prev,
         .owl-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
             float: none;
             opacity: 0.35;
+            @include vam(absolute);
             &:hover {
                 opacity: 1;
             }
         }
         .owl-prev {
-            left: 0.5rem;
+            left: -2.5rem;
         }
         .owl-next {
-            right: 0.5rem;
+            right: -2.5rem;
         }
     }
 }
