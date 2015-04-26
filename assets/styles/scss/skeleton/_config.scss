@@ -10,7 +10,6 @@
 
 $base-width            :   1200px;
 $max-width             :   90%;
-$small-container-width :   960px;
 
 $columns               :   12;
 $gutter                :   2.5%;
@@ -57,10 +56,8 @@ $font-size-1           :   0.9rem;
 $font-size-2           :   1rem;
 $font-size-3           :   1.2rem;
 $font-size-4           :   1.4rem;
-$font-size-5           :   1.8rem;
-$font-size-6           :   2.25rem;
-$font-size-7           :   2.85rem;
-$font-size-8           :   3.5rem;
+$font-size-5           :   1.6rem;
+$font-size-6           :   2rem; 
 
 //-----------------------------------------------------------------
 // Color Palettes
@@ -108,22 +105,22 @@ $invalid               :   #D91E18;
 
 // Social Network Colors
 
-$facebook              :     #507CBD;
-$twitter               :     #63CEF2;
-$linkedin              :     #117BB8;
-$github                :     #1C1C1C;
-$skype                 :     #63CEF2;
-$pinterest             :     #CD2129;
-$instagram             :     #5280A5;
-$rss                   :     #FBA933;
-$youtube               :     #CB312E;
-$flickr                :     #ED1384;
-$vimeo                 :     #1EB8EB;
-$dribbble              :     #EB4C89;
-$behance               :     #0595FC;
-$deviantart            :     #B3C434;
-$reddit                :     #0D7CCD;
-$google-plus           :     #dd4b39;
+$facebook              :    #507CBD;
+$twitter               :    #63CEF2;
+$linkedin              :    #117BB8;
+$github                :    #1C1C1C;
+$skype                 :    #63CEF2;
+$pinterest             :    #CD2129;
+$instagram             :    #5280A5;
+$rss                   :    #FBA933;
+$youtube               :    #CB312E;
+$flickr                :    #ED1384;
+$vimeo                 :    #1EB8EB;
+$dribbble              :    #EB4C89;
+$behance               :    #0595FC;
+$deviantart            :    #B3C434;
+$reddit                :    #0D7CCD;
+$google-plus           :    #dd4b39;
 
 //-----------------------------------------------------------------
 // Theming
@@ -132,7 +129,6 @@ $google-plus           :     #dd4b39;
 $base-margin           :   2rem;
 $base-line-height      :   1.4;
 
-$base-text-color       :   $grey;
 $background-color      :   $dark-white;
-
+$base-text-color       :   $grey;
 $heading-color         :   $dark-grey;
