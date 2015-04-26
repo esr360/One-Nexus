@@ -2,41 +2,39 @@
 /* Headings
 ================================================================ */
 
-.heading {
+.heading,
+[class*="heading-"] {
 
     line-height: 1;
-    color: $heading-color;
     font-family: $font-2;
 
     b,
-    .heavy {
+    &[class*="-heavy"] {
         font-weight: bolder;
         font-weight: 900;
     }
 
     i,
-    .brand-1 {
+    &[class*="-brand-1"] {
         font-style: normal;
         color: $brand-1;
     }
 
     strong,
-    .uppercase {
+    &[class*="-uppercase"] {
         text-transform: uppercase;
-        font-weight: lighter;
     }
 
     em,
-    .light {
+    &[class*="-light"] {
         font-weight: lighter;
         font-weight: 100;
         font-style: normal;
     } 
 
-    &.highlight {
+    &[class*="-highlight"] {
         margin-left: 0.3em;
         margin-right: 0.3em;
-        line-height: 1.45;
         > b {
             background: $brand-1;
             color: white;
@@ -71,8 +69,10 @@
 //-----------------------------------------------------------------
 
 .hgroup {
-    .heading {
+    .heading,
+    [class*="heading-"] {
         margin: 0.25em 0;
+        line-height: 0.8;
         &:first-child {
             margin-top: 0;
         }
