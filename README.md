@@ -568,7 +568,7 @@ Simply add your desired class to the main **row** which contains your columns. F
 
 ### HTML5 Boilerplate
 
-One Nexus is built off the popular [HTML5](http://html5boilerplate.com/) Boilerplate, making it a fast, robust and adaptable solution from the very beginning. Many native features of One Nexus are included as a result of using H5BP as a base template, including:
+One Nexus is built off the popular [HTML5 Boilerplate](http://html5boilerplate.com/), making it a fast, robust and adaptable solution from the very beginning. Many native features of One Nexus are included as a result of using H5BP as a base template, including:
 
 * [Normalize.css](http://necolas.github.io/normalize.css/) for CSS normalizations and common bug fixes
 * [jQuery](http://jquery.com/) via CDN, with a local fallback
@@ -583,7 +583,7 @@ One Nexus is built off the popular [HTML5](http://html5boilerplate.com/) Boilerp
 
 One Nexus comes with with jQuery included out of the box. We use [Google's CDN version](https://developers.google.com/speed/libraries/devguide#jquery), with the ability to easily switch to the included self hosted version instead.
 
-One Nexus uses jQuery v1.10.0.
+> One Nexus uses jQuery v1.10.0.
 
 ```html
 <head>
@@ -619,18 +619,12 @@ One Nexus uses jQuery v1.10.0.
 
 Some of the [UI Elements](http://onenexusproject.com/documentation/elements/) and [Modules](http://onenexusproject.com/documentation/modules/) require some additional jQuery code for their functionality. In these instances, there is a separate JavaScript file for each element/module.
 
----
-
-##### Interactive Elements
 
 * [Accorsions](http://www.onenexusproject.com/documentation/elements/accordions)
 * [Carousels](http://www.onenexusproject.com/documentation/elements/carousels/)
 * [Modals](http://www.onenexusproject.com/documentation/elements/modal-windows/)
 * [Tabs](http://www.onenexusproject.com/documentation/elements/tabs/)
 * [Tooltips](http://www.onenexusproject.com/documentation/elements/tooltips/)
-
-##### Interactive Modules
-
 * [Flyout Navigation](http://www.onenexusproject.com/documentation/flyout-nav/)
 
 ---
