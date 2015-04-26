@@ -31,7 +31,6 @@ Elements
 @import "elements/headings";
 @import "elements/icons";
 @import "elements/images";
-@import "elements/links";
 @import "elements/lists";
 @import "elements/modals";
 @import "elements/progress-bars";
@@ -45,9 +44,9 @@ Modules
 ******************************************************************/
 
 @import "modules/breadcrumb";
-@import "modules/flyout-nav";
+@import "modules/flyout-navigation";
 @import "modules/footer";
 @import "modules/header";
 @import "modules/logo";
-@import "modules/main-nav";
+@import "modules/navigation";
 @import "modules/scroll-top";
