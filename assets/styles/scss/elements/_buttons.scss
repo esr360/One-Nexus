@@ -11,6 +11,7 @@
 
 	background: $grey;
 	display: inline-block;
+	vertical-align: middle;
 	padding: 0 1em;
 	color: $white;
 	cursor: pointer;
@@ -38,31 +39,30 @@
 //-----------------------------------------------------------------
 // Styles
 //-----------------------------------------------------------------
- 
-	&[class*="-border"] {
-		background: none;
-		border: 2px solid;
-		color: $grey;
-		&:hover {
-			background: $brand-1;
-			border-color: $brand-1;
-			color: white;
-		}
-	}
-
-	&[class*="-disabled"] {
-		opacity: 0.6;
-		cursor: default;
-		transition-delay: 999s;
-	}
 
 	&[class*="-block"] {
 		width: 100%;
 		text-align: center;
+	} 
+
+	&[class*="-border"] {
+		background: none;
+		border: 2px solid;
+		color: $grey;
+	}
+
+	&[class*="-disabled"] {
+		opacity: 0.6;
+		cursor: not-allowed;
+		transition-delay: 999s;
 	}
 
 	&[class*="-round"] {
 		border-radius: 0.4em;
+	}
+
+	&[class*="-oval"] {
+		border-radius: 1.5em;
 	}
 
 //-----------------------------------------------------------------
@@ -77,10 +77,30 @@
 			&:hover {
 				background: darken($color, 10%);
 			}
+			&[class*="-border"] {
+				background: transparent;
+				border-color: $color;
+				color: $color;
+				&:hover {
+					background: $color;
+					color: $white;
+				}
+			}
 		}
 	}
 
 } // end .button
+
+// Button Group
+.buttons {
+	.button,
+	[class*="button-"] {
+		margin-left: 0.5em;
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+}
 
 // Makes input, button and .button elements equal height in Firefox
 input::-moz-focus-inner,
