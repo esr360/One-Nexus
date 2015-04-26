@@ -7,8 +7,18 @@
 //-----------------------------------------------------------------
 
 @mixin placeholder {
-  &::-webkit-input-placeholder {@content}
-  &:-moz-placeholder           {@content}
-  &::-moz-placeholder          {@content}
-  &:-ms-input-placeholder      {@content}  
+	&::-webkit-input-placeholder {@content};
+	&:-moz-placeholder           {@content};
+	&::-moz-placeholder          {@content};
+	&:-ms-input-placeholder      {@content};
+}
+
+//-----------------------------------------------------------------
+// Vertical Positioning
+//-----------------------------------------------------------------
+
+@mixin vam ($position) {
+    position: $position;
+    top: 50%;
+    transform: translateY(-50%);
 }
