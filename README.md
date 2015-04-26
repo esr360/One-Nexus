@@ -627,8 +627,6 @@ Some of the [UI Elements](http://onenexusproject.com/documentation/elements/) an
 * [Tooltips](http://www.onenexusproject.com/documentation/elements/tooltips/)
 * [Flyout Navigation](http://www.onenexusproject.com/documentation/flyout-nav/)
 
----
-
 #### Global Scripts
 
 For general UI/UX enhancements, plugin initialisations and scripts that affect global modules we have provided **global.js**.
@@ -675,7 +673,7 @@ The below code is the HTML for the default scroll-to-top button.
 </a> 
 ```
 
-#### Modal Initialisation
+##### Modal Initialisation
 
 This is the **initilization** for the [Modal Window](http://onenexusproject.com/documentation/elements/modal-windows/) elements. It targets all elements which have a **rel** value of **modal**. It then looks for the element wih the **modal-close** class to act as the close button.
 
@@ -685,7 +683,7 @@ $("[rel*="modal"]").leanModal({
 });
 ```
 
-#### Progress Bars
+##### Progress Bars
 
 This is the acompanying JavaScript for the [Progress Bar](http://onenexusproject.com/documentation/elements/progress-bars/) elements. The code grabs the **data-progress** attribute value from the HTML and applies it as an **inline-style** to set the width, keeping your source code clean and inline-style free.
 
@@ -696,7 +694,7 @@ $(".progress").each(function() {
 });
 ```
 
-#### Tooltip Initialisation
+##### Tooltip Initialisation
 
 This is the **initilization** for the [Tooltip](http://onenexusproject.com/documentation/elements/tooltips/) elements. They use the [Tipsy](http://onehackoranother.com/projects/jquery/tipsy/) jQuery plugin, make sure to check out all the available options on their website. By default, we only provide a northward (top/above) tooltip. It targets all elements with a **rel** value of **tooltip**.
 
@@ -708,8 +706,6 @@ $(function() {
     });
 });
 ```
-
----
 
 #### Minifying Scripts
 
