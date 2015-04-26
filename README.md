@@ -440,7 +440,7 @@ By default, the columns have their vertical align set to top.
 
 ##### Flow Columns
 
-Flow columns work exactly like regular columns except that each row of columns doesn't need to be placed in it's own **row* wrapper - you can wrap all of your columns for every row inside just one main **row** container.
+Flow columns work exactly like regular columns except that each row of columns doesn't need to be placed in it's own **row** wrapper - you can wrap all of your columns for every row inside just one main **row** container.
 
 ```html
 <div class="row flow-columns">
@@ -1048,7 +1048,7 @@ This is our main **container** element. We set the **width** and **max-width** u
 }
 ```
 
-This is the opaque mask overlay that is used to enhance the [Flyout Nav module](http://onenexus/documentation/modules/flyout-nav).
+This is the opaque mask overlay that is used to enhance the [Flyout Nav module](http://onenexusproject.com/documentation/modules/flyout-nav).
 
 ---
 
@@ -1264,7 +1264,7 @@ Magic Columns work by using the **nth-last-child** CSS3 selector. By using this 
 } // end .row
 ```
 
-The bulk of the Adaptive Columns functionality is handled by the [Carousel](http://onenexus/documentation/elements/carousels/) plugin (Owl-Carousel). The only custom CSS we use is to ensure that the columns are the correct width within their dynamically created carousel column wrappers, and ensure that the columns have no left margin, as this is now handled by the carousel plugin.
+The bulk of the Adaptive Columns functionality is handled by the [Carousel](http://onenexusproject.com/documentation/elements/carousels/) plugin (Owl-Carousel). The only custom CSS we use is to ensure that the columns are the correct width within their dynamically created carousel column wrappers, and ensure that the columns have no left margin, as this is now handled by the carousel plugin.
 
 ---
 
@@ -1290,7 +1290,7 @@ The bulk of the Adaptive Columns functionality is handled by the [Carousel](http
 } // end .row
 ```
 
-This code allows you to create [block columns](http://onenexus/documentation/features/responsive-grid-system/#anchor-block-columns) in your project. It's amazingly simple how it works, it simply adds the **display: table-cell** property to each column in the row, which removes the gutter and makes them all equal height.
+This code allows you to create [block columns](http://onenexusproject.com/documentation/features/responsive-grid-system/#anchor-block-columns) in your project. It's amazingly simple how it works, it simply adds the **display: table-cell** property to each column in the row, which removes the gutter and makes them all equal height.
 
 ---
 
