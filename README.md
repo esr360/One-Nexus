@@ -306,8 +306,6 @@ This is where you can set the number of columns for your grid. Twelve is popular
 
 The gutter is the gap between each column. As our grid system uses percentage widths, the value you enter here must be a percentage and will not work if you enter a px value.
 
----
-
 #### Example Using Default Values
 
 It is typical to wrap your website's content in a main **container** or wrapper class. The container class uses the width set by the **$main-width** variable.
@@ -343,8 +341,6 @@ With the default columns, the total number of column spans should not exceed the
 </div>
 ```
 
----
-
 #### Breakpoints
 
 Breakpoints are what allow you to style your CSS for a specific selection of browser widths. They work by using **CSS media queries**. You can set as many of these as you like and set them to whatever values you think are suitable for your project.
@@ -377,8 +373,6 @@ $breakpoints: (
 ```
 
 The **$breakpoints** Sass map is used in various mixins to generate the different types of columns and rows. The **$col-collapse** variable controls the default width at which the columns vertically stack on top of each other.
-
----
 
 #### Column Types
 
