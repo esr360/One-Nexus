@@ -1,0 +1,102 @@
+
+/* Flyout Nav
+================================================================ */
+
+.flyout-trigger {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	z-index: 11;
+	&, .fa {
+		cursor: pointer;
+	}
+	.fa {
+		transition: 0.4s;
+		transform-origin: 50% 0;
+	}
+	.nav-close {
+		transform: scale(0) translateY(-50%);
+	}
+	&.active {
+		.nav-open {
+			transform: scale(0) translateY(-50%);
+		}
+		.nav-close {
+			transform: scale(1) translateY(-50%);
+		}
+	}
+}
+
+.flyout-container {
+
+    position: fixed;
+    width: 250px;
+    left: -250px;
+    height: 100%;
+    top: 0;
+    z-index: 9999;
+    font-size: $font-size-1;
+    font-weight: bold;
+    overflow: auto;
+    background: $dark-grey;
+    transition: 0.4s;
+    transform: translate3d(0,0,0);
+    box-shadow: inset -10px 0 6px -9px rgba(0, 0, 0, 0.7);
+
+	ul {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		a {
+		    display: block;
+		    padding: 1em 1.6em;
+		    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		    border-top: 1px solid rgba(255, 255, 255, 0.05);
+		    border-left: 5px solid rgba(0,0,0,0.3);
+		    text-decoration: none;
+			color: $light-grey;
+		    &:hover {
+			    background: $brand-1;
+			    color: white;
+			}
+		}   
+		ul {
+			ul {
+				padding-left: 1.5em;
+				font-weight: lighter;
+				li {
+					&:hover {
+						> a {
+							background: rgba(0,0,0,0.2);
+							color: white;
+							border-left-color: $brand-1;
+						}
+					}
+				}
+			}
+			li {
+				&:hover {
+					> a {
+						background: $brand-1;
+						color: white;
+					}
+				}
+			}
+		}
+	}
+
+	> ul {		
+		> li {
+			> a {
+				color: white;
+				border-left-color: $brand-1;
+				background: rgba(0,0,0,0.15);
+			}
+		}
+	}
+
+    .flyout-active & {
+    	left: 0;
+    }
+
+} // end .flyout-nav-container
