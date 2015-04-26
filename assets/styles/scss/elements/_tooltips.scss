@@ -3,14 +3,17 @@
 // https://github.com/jaz303/tipsy
 ================================================================ */
 
+$tooltip-bg: rgba($black, 0.85);
+
 .tipsy {
 	position: absolute;
+	margin-top: -0.5rem;
 	padding: 5px;
 	z-index: 999;
 }
 
 .tipsy-inner {
-	background-color: #000;
+	background-color: $tooltip-bg;
 	color: #FFF;
 	max-width: 250px;
 	padding: 0 1em;
@@ -21,38 +24,30 @@
 
 /* Rounded corners */
 
-/* Uncomment for shadow
-.tipsy-inner { 
-	box-shadow: 0 0 5px #000000; 
-	-webkit-box-shadow: 0 0 5px #000000; 
-	-moz-box-shadow: 0 0 5px #000000;
-}
-*/
-
 .tipsy-arrow {
 	position: absolute;
 	width: 0;
 	height: 0;
 	line-height: 0;
-	border: 5px dashed #000;
+	border: 5px dashed $tooltip-bg;
 }
 
 /* Rules to colour arrows */
 
 .tipsy-arrow-n {
-	border-bottom-color: #000;
+	border-bottom-color: $tooltip-bg;
 }
 
 .tipsy-arrow-s {
-	border-top-color: #000;
+	border-top-color: $tooltip-bg;
 }
 
 .tipsy-arrow-e {
-	border-left-color: #000;
+	border-left-color: $tooltip-bg;
 }
 
 .tipsy-arrow-w {
-	border-right-color: #000;
+	border-right-color: $tooltip-bg;
 }
 
 .tipsy-n .tipsy-arrow {
