@@ -89,7 +89,7 @@ For a more complete experience, visit the official [One Nexus documentaion](http
 
 Download the latest copy of One Nexus, extract the files to your desired location, and open the folder with your favourite text editor.
 
->[Download](https://github.com/esr360/One-Nexus/archive/master.zip)
+>[Download v2.0](https://github.com/esr360/One-Nexus/archive/master.zip)
 
 ##### Option 2 - Bower Installation
 
@@ -165,7 +165,7 @@ We like to think of websites as being made up of **pages**, which are made up of
 
 One Nexus comes with a sample **index.html** file which contains a basic example page using the One Nexus assets. Feel free to use this as your starting point, or go ahead and create your own page from scratch.
 
-The below code is just a sample, and not the complete content of the provided **index.html** file.
+> The below code is just a sample, and not the complete content of the provided **index.html** file.
 
 ```html
 <!doctype html>
@@ -267,8 +267,6 @@ The below code is just a sample, and not the complete content of the provided **
 One of the key features of One Nexus is the responsive grid system we provide. It's completely dynamic, generated from the settings you enter - our custom Sass function calculates everything for you, and churns out various different types of columns for you to use.
 
 Unlike most grid systems out there, our columns use **inline-block** display instead of floating them, making them more flexible.
-
----
 
 #### Grid Structure
 
