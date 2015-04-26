@@ -266,7 +266,7 @@ One Nexus comes with a sample **index.html** file which contains a basic example
 
 One of the key features of One Nexus is the responsive grid system we provide. It's completely dynamic, generated from the settings you enter - our custom Sass function calculates everything for you, and churns out various different types of columns for you to use.
 
-Unlike most grid systems out there, our columns use **inline-block** display instead of floating them, making them more flexible.
+> Unlike most grid systems out there, our columns use **inline-block** display instead of floating them, making them more flexible.
 
 #### Grid Structure
 
