@@ -2,33 +2,54 @@
 /* Forms
 ================================================================ */
 
+//-----------------------------------------------------------------
+// Configuration
+//-----------------------------------------------------------------
+
+$field-height : 2.6em;
+
+// resets
+
+input,
+textarea,
+select {	
+	width: 100%;
+}
+
+fieldset {
+	padding: 0;
+	margin: 0;
+	border: none;
+}
+
 .form {
 
 //-----------------------------------------------------------------
-// Core Layout
+// Core Styles
 //-----------------------------------------------------------------
 
 	%input {		
 		padding: 0.5em 0.6em;
-		margin-top: 0.1em;
 		border: 1px solid rgba(0,0,0,0.2);
 		font-size: 1rem;
 	}
 
-	.field {
-		display: inline-block;
-		font-size: $font-size-1;
-		&.inline {			
-			&:first-child {
-				margin-left: 0;
-			}
+	.inline-field {	
+		margin-left: 0.5rem;
+		&:first-child {
+			margin-left: 0;
+		}
+		&, 
+		label,
+		input {
+			display: inline-block;
+			vertical-align: middle;
+			width: auto;
 		}
 	}
 
-	fieldset {
-		padding: 0;
-		margin: 0;
-		border: none;
+	label {
+		font-size: $font-size-1;
 	}
 
 	legend {
@@ -38,7 +59,6 @@
 	input,
 	textarea,
 	select {	
-		width: 100%;
 	    transition: 0.4s;
 		outline: 0;
 		display: block;
@@ -75,8 +95,19 @@
 		&[type="email"],
 		&[type="url"],
 		&[type="tel"],
+		&[type="range"],
+		&[type="date"],
+		&[type="time"],
 		&[type="number"] {
 			@extend %input;
+			height: $field-height;
+		}
+
+		&[type="color"] {
+			display: inline-block;
+			padding: 0.25em 0.3em;
+			width: 50px;
+			height: $field-height;
 		}
 
 		&[type="checkbox"],
@@ -111,22 +142,13 @@
 
 	select {		
 		color: $base-text-color;
-	}
-
-	.boolean-list {
-		label {
-			cursor: pointer;
-		}
-		ul {
-			@extend ul.reset;
-		}
+		height: $field-height;
 	}
 
 //-----------------------------------------------------------------
 // Larger Resolutions
 //-----------------------------------------------------------------
 
-	@media (min-width: $breakpoint-3) {
-	}
+	@media (min-width: $breakpoint-3) {}
 
 } // end form
