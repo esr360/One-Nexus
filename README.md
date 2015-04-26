@@ -345,7 +345,7 @@ With the default columns, the total number of column spans should not exceed the
 
 Breakpoints are what allow you to style your CSS for a specific selection of browser widths. They work by using **CSS media queries**. You can set as many of these as you like and set them to whatever values you think are suitable for your project.
 
-By default each column expands to 100% width when the resolution is less than the value defined by $breakpoint-3.
+> By default each column expands to 100% width when the resolution is less than the value defined by $breakpoint-3.
 
 ```css
 //-----------------------------------------------------------------
