@@ -4,9 +4,9 @@
 
 function tabs() {
 
-	$('.tabs .nav li').click(function() {
+	$('.tabs .nav li, [class*="tabs-"] .nav li').click(function() {
 
-		var $section = $(this).parents('.tabs').find('section');
+		var $section = $(this).parents('.tabs, [class*="tabs-"]').find('> *:not(.nav)');
 
 		$(this).siblings().removeClass('active');
 		$(this).addClass('active');

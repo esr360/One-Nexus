@@ -2,7 +2,8 @@
 /* Tabs
 ================================================================ */
 
-.tabs {
+.tabs,
+[class*="tabs-"] {
 
 	.nav {
 		display: block;
@@ -30,7 +31,7 @@
 			}
 		}
 	}
-	section {	
+	> *:not(.nav) {	
 		background: lighten($dark-white, 4%);
 		margin-top: -1px;
 		display: none;
@@ -42,7 +43,7 @@
 		}
 	}
 	// Full width tab buttons
-	&.full {
+	&[class*="full"] {
 		.nav {
 			display: table;
 			width: 100%;
