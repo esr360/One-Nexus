@@ -4,10 +4,16 @@
 ================================================================ */
 
 .row { 
-    letter-spacing: -0.31em; // Webkit: collapse white-space between units
-    *letter-spacing: normal; // reset IE < 8
-    *word-spacing: -0.43em; // IE < 8: collapse white-space between units
-    text-rendering: optimizespeed; // Webkit: fixes text-rendering: optimizeLegibility
+    // IE < 8 collapse white-space
+    *letter-spacing: normal;
+    *word-spacing: -0.43em;
+	// Firefox/IE collapse white-space
+    letter-spacing: -0.31em;
+    // Webkit collapse white-space
+	display: table;
+	width: 100%;
+	// for Owl-Carousel functionality
+	table-layout: fixed;
 }
 
 .opera-only :-o-prefocus,
@@ -46,9 +52,6 @@
 }
 
 .row {
-
-	display: table;
-	width: 100%;
 
 //-----------------------------------------------------------------
 // Default Column Stacking
@@ -89,6 +92,27 @@
 	} 	
 
 //-----------------------------------------------------------------
+// Flow Columns
+//-----------------------------------------------------------------
+
+	@media (min-width: $col-collapse) {
+		&.flow-columns {
+			margin-left: -$gutter;
+			width: 100% + $gutter;
+			[class*="span"] {
+				&, &:first-child {
+					margin-left: $gutter;
+				}
+			}
+			@for $i from 1 through $columns {
+				.span-#{$i} {		
+					width: ((100/$columns) * $i) - $gutter;
+				}
+			}
+		}
+	}
+
+//-----------------------------------------------------------------
 // Magic Columns
 //-----------------------------------------------------------------
 
@@ -118,31 +142,10 @@
 	}
 
 //-----------------------------------------------------------------
-// Flow Columns
-//-----------------------------------------------------------------
-
-	&.flow-columns {
-		margin-left: -$gutter;
-		width: 100% + $gutter;
-		[class*="span"] {
-			&:first-child {
-				margin-left: $gutter;
-			}
-		}
-		@for $i from 1 through $columns {
-			.span-#{$i} {		
-				width: ((100/12) * $i) - $gutter;
-			}
-		}
-	}
-
-//-----------------------------------------------------------------
 // Block Columns
 //-----------------------------------------------------------------
 
 	&.block-columns {
-		display: table;
-		width: 100%;
 		> [class*="span"] {
 			display: table-cell;
 		}
