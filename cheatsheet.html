@@ -32,8 +32,14 @@
         h2 a:hover {
             text-decoration: none;
         }
+        h4 span {
+            font-weight: lighter;
+        }
+        p {
+            font-weight: lighter;
+        }
         #main > section {
-            margin-bottom: 2em;
+            margin-bottom: 4em;
         }
         #main > section:last-of-type {
             margin-bottom: 0;
@@ -50,12 +56,6 @@
             text-align: center;
             line-height: 3;
             border-radius: 4px;
-        }
-        .view-more {
-            margin-left: 5px;
-        }
-        .thumbnail {
-            width: 100%;
         }
         .module-demo .breadcrumb {
             margin: 0;
@@ -85,6 +85,21 @@
         .flow-columns [class*="span"] {
             margin-bottom: 1.35rem;
         }
+        code:not([class*="language"]) {
+            background: #f3e8eb;
+            color: #F62459;
+            padding: 0.1em 0.2em;
+            font-weight: 400;
+            font-family: "Lato", sans-serif;
+        }
+        pre[class*="language-"] {
+            border-left-color: #F62459 !important;
+            box-shadow: -1px 0px 0px 0px #F62459, 0px 0px 0px 1px #dfdfdf !important;
+            padding: 1.5em;
+        }
+        section > ul {
+            font-weight: lighter;
+        }
         @media (min-width: 940px) {
         }
         @media (max-width: 940px) {
@@ -98,10 +113,14 @@
 </head>
 
 <body>
+        
+    <!-- SITE CONTENT -->
 
     <div id="site-content">
 
-        <header class="app-header" id="app-header">
+        <!-- Website Header -->
+
+        <header class="app-header">
             <div class="container">
                 <div class="header-wrapper">
                     <!-- Logo -->
@@ -111,7 +130,7 @@
                         </a>
                     </div>
                     <!-- Main-Nav -->
-                    <nav class="main-nav" id="app-nav">
+                    <nav class="app-nav" id="app-nav">
                         <ul>
                             <li>
                                 <a href="#">Header Link 1</a>
@@ -129,7 +148,7 @@
             </div>
         </header>
 
-        <!-- MAIN CONTENT -->
+        <!-- Main Content -->
 
         <div class="container" id="main">
 
@@ -141,7 +160,7 @@
                 </ul>
             </nav>
 
-            <p class="alert-success">Be sure to check out our <a target="blank" href="http://www.onenexusproject.com/documentation/">complete documentation</a> for more information.</p>
+            <p class="alert-info">Be sure to check out our <a target="blank" href="http://www.onenexusproject.com/documentation/">complete documentation</a> for more information.</p>
 
             <h1 class="heading">
                 One Nexus Cheatsheet
@@ -161,46 +180,107 @@
                     </a>
                 </h3>
 
+                <p>A row of regular columns can contain any number of columns with different span widths so long as the total number doesn't exceed the value defined by the <code>$columns</code> variable. By default, this number is set to <b>12</b>, so our column-spans should add up to this number.</p>
+
                 <div class="row">                    
-                    <div class="span-6">regular column</div>
-                    <div class="span-6">regular column</div>
+                    <div class="span-6">span-6</div>
+                    <div class="span-6">span-6</div>
                 </div> 
+
                 <br />
+
                 <div class="row">                    
-                    <div class="span-4">regular column</div>
-                    <div class="span-4">regular column</div>
-                    <div class="span-4">regular column</div>
-                </div> 
+                    <div class="span-4">span-4</div>
+                    <div class="span-4">span-4</div>
+                    <div class="span-4">span-4</div>
+                </div>
+
                 <br />
+
                 <div class="row">                    
-                    <div class="span-3">regular column</div>
-                    <div class="span-3">regular column</div>
-                    <div class="span-3">regular column</div>
-                    <div class="span-3">regular column</div>
-                </div> 
+                    <div class="span-3">span-3</div>
+                    <div class="span-3">span-3</div>
+                    <div class="span-3">span-3</div>
+                    <div class="span-3">span-3</div>
+                </div>
+
                 <br />
+
                 <div class="row">
-                    <div class="span-1">RC</div>
-                    <div class="span-1">RC</div>
-                    <div class="span-1">RC</div>
-                    <div class="span-1">RC</div>
-                    <div class="span-1">RC</div>
-                    <div class="span-1">RC</div>
-                    <div class="span-1">RC</div>
-                    <div class="span-1">RC</div>
-                    <div class="span-1">RC</div>
-                    <div class="span-1">RC</div>
-                    <div class="span-1">RC</div>
-                    <div class="span-1">RC</div>
-                </div>  
+                    <div class="span-1">span-1</div>
+                    <div class="span-1">span-1</div>
+                    <div class="span-1">span-1</div>
+                    <div class="span-1">span-1</div>
+                    <div class="span-1">span-1</div>
+                    <div class="span-1">span-1</div>
+                    <div class="span-1">span-1</div>
+                    <div class="span-1">span-1</div>
+                    <div class="span-1">span-1</div>
+                    <div class="span-1">span-1</div>
+                    <div class="span-1">span-1</div>
+                    <div class="span-1">span-1</div>
+                </div>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;div class="row"&gt; 
+    &lt;div class="span-4"&gt;regular column&lt;/div&gt;
+    &lt;div class="span-4"&gt;regular column&lt;/div&gt;
+    &lt;div class="span-4"&gt;regular column&lt;/div&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+&lt;div class="row"&gt; 
+    &lt;div class="span-3"&gt;regular column&lt;/div&gt;
+    &lt;div class="span-3"&gt;regular column&lt;/div&gt;
+    &lt;div class="span-3"&gt;regular column&lt;/div&gt;
+    &lt;div class="span-3"&gt;regular column&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 
                 <hr class="dotted" />
+
+                <h4>Horizontal Aligning</h4>
+
+                <p>It is possible to set the horizontal aligning of your columns by changing the <code>text-align</code> property of the <code>row</code> that contains your columns. Alternatively, you can use one of the following helper classes:</p>
+
+                <div class="module-demo">
+                    <ul class="clear">
+                        <li>text-left</li>
+                        <li>text-center</li>
+                        <li>text-right</li>
+                    </ul>
+                </div>
+
+                <br />
 
                 <div class="row text-center">
                     <div class="span-6">centered</div>
                 </div>
 
+                <br />
+
+<pre><code class="language-markup">
+&lt;div class="row text-center"&gt;
+    &lt;div class="span-6"&gt;centered&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
                 <hr class="dotted" />
+
+                <h4>Vertical Aligning</h4>
+
+                <p>You can also set the vertical aligning of your columns (relative to the tallest column in the row). This is achieved by setting the <code>vertical-align</code> property of each column in your row. This can also be done by adding one of our helper classes to your column:</p>
+
+                <div class="module-demo">
+                    <ul class="clear">
+                        <li>va-top</li>
+                        <li>va-middle</li>
+                        <li>va-bottom</li>
+                    </ul>
+                </div>
+
+                <br />
 
                 <div class="row">
                     <div class="span-3 va-top">
@@ -212,16 +292,40 @@
                     <div class="span-3 va-bottom">
                         vertical align bottom
                     </div>
-                    <div class="span-3 va-middle" style="min-height: 175px;">
+                    <div class="span-3 va-middle" style="height: 175px;">
                         lorem ipsum dolor amet
                     </div>
                 </div>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;div class="row"&gt;
+    &lt;div class="span-3 va-top"&gt;
+        vertical align top
+    &lt;/div&gt;
+    &lt;div class="span-3 va-middle"&gt;
+        vertical align middle
+    &lt;/div&gt;
+    &lt;div class="span-3 va-bottom"&gt;
+        vertical align bottom
+    &lt;/div&gt;
+    &lt;div class="span-3 va-middle" style="height: 175px;"&gt;
+        lorem ipsum dolor amet
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+            </section>
+
+            <section class="grid-system">
 
                 <h3 class="heading dotted">
                     <a href="#" target="blank">
                         Flow Columns
                     </a>
                 </h3>
+
+                <p>Flow columns work exactly like regular columns except that each row of columns doesn't need to be placed in it's own <code>row</code> wrapper - you can wrap all of your columns for every row inside just one main <code>row</code> container.</p> 
 
                 <div class="row flow-columns">
                     <div class="span-6">Flow Column</div>
@@ -247,12 +351,34 @@
                     <div class="span-1">FC</div>
                 </div>
 
+                <br />
+
+<pre><code class="language-markup">
+&lt;div class="row flow-columns"&gt;
+    &lt;div class="span-6"&gt;Flow Column&lt;/div&gt;
+    &lt;div class="span-6"&gt;Flow Column&lt;/div&gt;
+    &lt;div class="span-4"&gt;Flow Column&lt;/div&gt;
+    &lt;div class="span-4"&gt;Flow Column&lt;/div&gt;
+    &lt;div class="span-4"&gt;Flow Column&lt;/div&gt;
+    &lt;div class="span-3"&gt;Flow Column&lt;/div&gt;
+    &lt;div class="span-3"&gt;Flow Column&lt;/div&gt;
+    &lt;div class="span-3"&gt;Flow Column&lt;/div&gt;
+    &lt;div class="span-3"&gt;Flow Column&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+            </section>
+            
+            <section class="grid-system">
+
                 <h3 class="heading dotted">
                     <a href="#" target="blank">
                         Magic Columns
                     </a>
                 </h3>
 
+                <p>"Magic" columns are so named as each row of magic columns can automatically detect the number of columns within its row, and set the width of each column accordingly (without using any JavaScript!). Each column in a row of magic columns will always be the same width, and will always add up to <b>100%</b> width. Perfect for cases where you know each column will always be the same width, or where you need any "<a href="http://en.wikipedia.org/wiki/Widows_and_orphans" target="blank">widow</a>" columns to take up any remaining space.</p> 
+
                 <div class="row">
                     <div class="span-m">magic column</div>
                     <div class="span-m">magic column</div>
@@ -262,9 +388,14 @@
                     <div class="span-m">magic column</div>
                     <div class="span-m">magic column</div>
                     <div class="span-m">magic column</div>
+                    <div class="span-m">magic column</div>
+                    <div class="span-m">magic column</div>
                 </div>
                 <br />
                 <div class="row">
+                    <div class="span-m">magic column</div>
+                    <div class="span-m">magic column</div>
+                    <div class="span-m">magic column</div>
                     <div class="span-m">magic column</div>
                     <div class="span-m">magic column</div>
                     <div class="span-m">magic column</div>
@@ -286,11 +417,44 @@
                     <div class="span-m">MC</div>
                 </div>
 
+                <br />
+
+<pre><code class="language-markup">
+&lt;div class="row"&gt;
+    &lt;div class="span-m"&gt;magic column&lt;/div&gt;
+    &lt;div class="span-m"&gt;magic column&lt;/div&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+&lt;div class="row"&gt;
+    &lt;div class="span-m"&gt;magic column&lt;/div&gt;
+    &lt;div class="span-m"&gt;magic column&lt;/div&gt;
+    &lt;div class="span-m"&gt;magic column&lt;/div&gt;
+    &lt;div class="span-m"&gt;magic column&lt;/div&gt;
+    &lt;div class="span-m"&gt;magic column&lt;/div&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+&lt;div class="row"&gt;
+    &lt;div class="span-m"&gt;magic column&lt;/div&gt;
+    &lt;div class="span-m"&gt;magic column&lt;/div&gt;
+    &lt;div class="span-m"&gt;magic column&lt;/div&gt;
+    &lt;div class="span-m"&gt;magic column&lt;/div&gt;
+    &lt;div class="span-m"&gt;magic column&lt;/div&gt;
+    &lt;div class="span-m"&gt;magic column&lt;/div&gt;
+    &lt;div class="span-m"&gt;magic column&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+            </section>
+            
+            <section class="grid-system">
+
                 <h3 class="heading dotted">
                     <a href="#" target="blank">
                         Adaptive Columns
                     </a>
                 </h3>
+
+                <p>Adaptive columns, insteadng of stacking vertically on-top of each other on small resolutions, transform into a carousel when the number of columns in the row exceeds the limit. They work off the <a href="#" target="blank">Owl-Carousel</a> plugin, and are a great way to present your information to users on mobiles, allowing them to swipe horizontally instead of vertically.</p>
 
                 <div class="row adaptive-columns 2-cols carousel">
                     <div class="span">adaptive column</div>
@@ -326,9 +490,28 @@
                     <div class="span">AC</div>
                 </div>
 
-            </section>
+                <br />
+
+<pre><code class="language-markup">
+&lt;!-- this row will turn into a carousel on mobiles/tablets --&gt;
+&lt;div class="row adaptive-columns 4-cols carousel"&gt;
+    &lt;div class="span"&gt;adaptive column&lt;/div&gt;
+    &lt;div class="span"&gt;adaptive column&lt;/div&gt;
+    &lt;div class="span"&gt;adaptive column&lt;/div&gt;
+    &lt;div class="span"&gt;adaptive column&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- this row will turn into a carousel on desktops --&gt;
+&lt;div class="row adaptive-columns 3-cols carousel"&gt;
+    &lt;div class="span"&gt;adaptive column&lt;/div&gt;
+    &lt;div class="span"&gt;adaptive column&lt;/div&gt;
+    &lt;div class="span"&gt;adaptive column&lt;/div&gt;
+    &lt;div class="span"&gt;adaptive column&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 
             <hr class="dotted" />
+
+            </section>
 
             <h2 class="heading">
                 <a href="http://www.onenexusproject.com/documentation/elements/general/" target="blank">
@@ -342,25 +525,71 @@
                     Alert Bars
                 </h3>
 
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>elements</b></li>
+                        <li>_alert-bars.scss</li>
+                    </ul>
+                </nav>
+
+                <p>Alert bars are a great way to draw your users to important bits of information. One Nexus comes with four different styles of alert bars to use for different scenarios. To use each alert bar, simply add one of the following classes to any element:</p>
+
+                <div class="module-demo">
+                    <ul class="clear">
+                        <li>alert-help</li>
+                        <li>alert-error</li>
+                        <li>alert-success</li>
+                        <li>alert-info</li>
+                    </ul>
+                </div>
+
+                <br />
+
                 <div class="row">
                     <div class="alert-help span-6">This is a <b>help</b> alert bar.</div>
                     <div class="alert-error span-6">This is an <b>error</b> alert bar.</div>
                 </div>
+
                 <br />
+
                 <div class="row">
                     <div class="alert-success span-6">This is a <b>success</b> alert bar.</div>
                     <div class="alert-info span-6">This is an <b>information</b> alert bar.</div>
                 </div>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;div class="alert-help"&gt;
+    This is a &lt;b&gt;help&lt;/b&gt; alert bar.
+&lt;/div&gt;
+</code></pre>
+
 
             </section>
 
             <section>
 
                 <h3 class="heading dotted">
-                    HTML5 Progress Bars
+                    HTML5 Progress Bars <span>(Experimental)</span>
                 </h3>
 
-                <div class="row progress-bars module-demo">
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>elements</b></li>
+                        <li>_progress-bars.scss</li>
+                    </ul>
+                </nav>
+
+                <p>HTML5 progress bars are a new concept which are only partially supported by modern browsers. <i>So why have they been included?&nbsp;</i> Well, they require minimal CSS, and frankly, they're just pretty cool and work on enough browsers to warrant their use in certain cases.</p>
+
+                <div class="row progress-bars">
                     <div class="span-6">
                         <h4>Lorem Ipsum</h4>
                         <progress max="100" value="50"></progress>
@@ -371,7 +600,23 @@
                         <h4>Lorem Ipsum</h4>
                         <progress max="100" value="50"></progress>
                     </div>
+                    <div class="span-6">
+                        <h4>Lorem Ipsum</h4>
+                        <progress class="progress-alt" max="100" value="65"></progress>
+                        <h4>Dolor Sit Amet</h4>
+                        <progress class="progress-alt" max="100" value="90"></progress>
+                        <h4>Maximus Iaculis</h4>
+                        <progress class="progress-alt" max="100" value="45"></progress>
+                        <h4>Lorem Ipsum</h4>
+                        <progress class="progress-alt" max="100" value="75"></progress>
+                    </div>
                 </div>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;progress max="100" value="65"&gt;&lt;/progress&gt;
+</code></pre>
 
             </section>
 
@@ -381,11 +626,50 @@
                     Buttons
                 </h3>
 
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>elements</b></li>
+                        <li>_buttons.scss</li>
+                    </ul>
+                </nav>
+
+                <p>One Nexus makes it easy to create your own custom reusable buttons, and comes with a generous set of prepared buttons in different shapes, sizes and colors for you to use out-the-box. To create a basic button, add the <code>button</code> class your element (usually an <code>a</code> or <code>button</code> HTML tag). The following parameters can be chained to the end of your <code>button</code> class to create a styled button:</p>
+
+                <h4>Color Variants</h4>
+
+                <p class="alert-help">
+                    If you add more <b>brand</b> colors in the <a href="#" target="blank">configuration</a> file, they will automatically be available to use in your buttons.</p>
+                </p>
+
+                <div class="module-demo">
+                    <ul>
+                        <li>-brand-1</li>
+                        <li>-brand-2</li>
+                        <li>-brand-3</li>
+                    </ul>
+                </div>
+
                 <p class="module-demo">
                     <a class="button-brand-1" href="#">Brand-1 Button</a>
                     <a class="button-brand-2" href="#">Brand-2 Button</a>
                     <a class="button-brand-3" href="#">Brand-3 Button</a>
                 </p>
+
+<pre><code class="language-markup">
+&lt;a class="button-brand-1" href="#"&gt;Brand-1 Button&lt;/a&gt;
+</code></pre>
+
+                <h4>Size Variants</h4>
+
+                <div class="module-demo">
+                    <ul>
+                        <li>-small</li>
+                        <li>-large</li>
+                    </ul>
+                </div>
 
                 <p class="module-demo">
                     <a class="button-small-brand-1" href="#">Brand-1 Button</a>
@@ -393,103 +677,544 @@
                     <a class="button-small-brand-3" href="#">Brand-3 Button</a>
                 </p>
 
+<pre><code class="language-markup">
+&lt;a class="button-small" href="#"&gt;Brand-1 Button&lt;/a&gt;
+</code></pre>
+
+                <h4>Style Variants</h4>
+
+                <div class="module-demo">
+                    <ul>
+                        <li>-block</li>
+                        <li>-border</li>
+                        <li>-disabled</li>
+                        <li>-round</li>
+                    </ul>
+                </div>
+
                 <p class="module-demo">
-                    <a class="button-large-round-block-disabled-brand-2" href="#">Large Round Block Disabled Brand-2 Button</a>
+                    <a class="button-block-brand-1" href="#">Block Button</a>
                 </p>
+
+                <p class="module-demo">
+                    <a class="button-border-brand-1" href="#">Border Button</a>
+                    <a class="button-disabled-brand-2" href="#">Disabled Button</a>
+                    <a class="button-round-brand-3" href="#">Round Button</a>
+                </p>
+
+<pre><code class="language-markup">
+&lt;a class="button-round" href="#"&gt;Brand-1 Button&lt;/a&gt;
+</code></pre>
+
+                <h4>Combining Parameters</h4>
+
+                <p>It is possible to combine parameters in whatever combination or order you desire. If you're feeling crazy, you can do something like this:</p>
+
+                <p class="module-demo">
+                    <a class="button-large-round-block-disabled-brand-3" href="#">Large Round Block Disabled Brand-3 Button</a>
+                </p>
+
+<pre><code class="language-markup">
+&lt;a class="button-large-round-block-disabled-brand-3" href="#"&gt;Large Round Block Disabled Brand-3 Button&lt;/a&gt;
+</code></pre>
 
             </section>
 
             <section>
 
                 <h3 class="heading dotted">
-                    HTML5 Forms
+                    Forms
                 </h3>
 
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>elements</b></li>
+                        <li>_forms.scss</li>
+                    </ul>
+                </nav>
+
+                <p>One Nexus makes use of the new available HTML5 input attribute types as well as other new HTML5 features. These new elements will get ignored by older browser, and will render as plain text input fields. By default, each field's width is set to <b>100%</b>, but this can be overriden by simply adding a class.</p>
+
+                <p class="alert-error">Please note that the below examples are for visual demonstration only, and do not have any <b>name</b> or <b>ID</b> attributes.</p>
+
                 <div class="row module-demo">
-                    <form class="span-5 form">
+                    <form class="form">
                         <fieldset>
-                            <label class="field inline">
+                            <label>
                                 Username
                                 <input type="text" required placeholder="example: username" />
                             </label>
-                            <label class="field inline">
+                            <br />
+                            <label>
                                 Password
                                 <input type="password" pattern=".{3,}" required placeholder="example: 123" />
                             </label>
+                            <br />
+                            <label>
+                                Select Dropdown
+                                <select name="browser" required>
+                                    <option value="" disabled="disabled" selected="selected">
+                                        select browser
+                                    </option>
+                                    <optgroup label="Desktop Browsers">
+                                        <option value="chrome">Chrome</option>
+                                        <option value="firefox">Firefox</option>
+                                        <option value="safari">Safari</option>
+                                        <option value="opera">Opera</option>
+                                    </optgroup>
+                                    <optgroup label="Internet Explorer">
+                                        <option value="11">Internet Explorer 11</option>
+                                        <option value="10">Internet Explorer 10</option>
+                                        <option value="9">Internet Explorer 9</option>
+                                        <option value="8">Internet Explorer 8</option>
+                                    </optgroup>
+                                    <optgroup label="Mobile Device">
+                                        <option value="ios">iOS</option>
+                                        <option value="android">Android</option>
+                                        <option value="windows">Windows</option>
+                                    </optgroup>
+                                </select>
+                            </label>
                         </fieldset>
                         <br />
-                        <label class="field inline">
+                        <label>
                             Your Message
                             <textarea rows="5" cols="50" required placeholder="enter your message..."></textarea>
                         </label>
-                        <p class="row">
-                            <span class="span-3 va-middle">
+                        <br />
+                        <fieldset class="row">
+                            <span class="span va-middle">
                                 <button class="button-brand-1-block" type="submit">Submit</button>
                             </span>
-                            <label class="span-9 va-middle boolean">                                
+                            <label class="span va-middle">                                
                                 <input type="checkbox" />
-                                <small>Subscribe to our SPAM newsletters?</small>
+                                Subscribe to our SPAM newsletters?
                             </label>
-                        </p>
+                        </fieldset>
                     </form>
-                    <form class="span-4 form">
+                </div>       
+            
+                <br />
+
+<pre><code class="language-markup">
+&lt;form class="form"&gt;
+    &lt;fieldset&gt;
+        &lt;label&gt;
+            Username
+            &lt;input type="text" required placeholder="example: username" /&gt;
+        &lt;/label&gt;
+        &lt;br /&gt;
+        &lt;label&gt;
+            Password
+            &lt;input type="password" pattern=".{3,}" required placeholder="example: 123" /&gt;
+        &lt;/label&gt;
+        &lt;br /&gt;
+        &lt;label&gt;
+            Select Dropdown
+            &lt;select name="browser" required&gt;
+                ...
+            &lt;/select&gt;
+        &lt;/label&gt;
+    &lt;/fieldset&gt;
+    &lt;br /&gt;
+    &lt;label&gt;
+        Your Message
+        &lt;textarea rows="5" cols="50" required placeholder="enter your message..."&gt;&lt;/textarea&gt;
+    &lt;/label&gt;
+    &lt;fieldset class="row"&gt;
+        &lt;span class="span va-middle"&gt;
+            &lt;button class="button-brand-1-block" type="submit"&gt;Submit&lt;/button&gt;
+        &lt;/span&gt;
+        &lt;label class="span va-middle"&gt; 
+            &lt;input type="checkbox" /&gt;
+            Subscribe to our SPAM newsletters?
+        &lt;/label&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;    
+</code></pre>
+
+                <p>To manually set the width of the field, you can use the <code>span-x</code> class, where <b>x</b> is any integer between <b>1</b> and <b>12</b> (or whatever value you have set for <code>$columns</code>). This doesn't transform the field into a column, it merely inherits the class's width.</p> 
+
+                <div class="row module-demo">
+                    <form class="form">
+                        <fieldset>
+                            <label>
+                                Username
+                                <input class="span-3" type="text" required placeholder="example: username" />
+                            </label>
+                            <br />
+                            <label>
+                                Password
+                                <input class="span-3" type="password" pattern=".{3,}" required placeholder="example: 123" />
+                            </label>
+                            <br />
+                            <label>
+                                Select Dropdown
+                                <select class="span-3" name="browser" required>
+                                    <option value="" disabled="disabled" selected="selected">
+                                        select browser
+                                    </option>
+                                    <optgroup label="Desktop Browsers">
+                                        <option value="chrome">Chrome</option>
+                                        <option value="firefox">Firefox</option>
+                                        <option value="safari">Safari</option>
+                                        <option value="opera">Opera</option>
+                                    </optgroup>
+                                    <optgroup label="Internet Explorer">
+                                        <option value="11">Internet Explorer 11</option>
+                                        <option value="10">Internet Explorer 10</option>
+                                        <option value="9">Internet Explorer 9</option>
+                                        <option value="8">Internet Explorer 8</option>
+                                    </optgroup>
+                                    <optgroup label="Mobile Device">
+                                        <option value="ios">iOS</option>
+                                        <option value="android">Android</option>
+                                        <option value="windows">Windows</option>
+                                    </optgroup>
+                                </select>
+                            </label>
+                        </fieldset>
+                        <br />
+                        <label>
+                            Your Message
+                            <textarea class="span-5" rows="5" cols="50" required placeholder="enter your message..."></textarea>
+                        </label>
+                        <br />
+                        <fieldset class="row">
+                            <span class="span va-middle">
+                                <button class="button-brand-1-block" type="submit">Submit</button>
+                            </span>
+                            <label class="span va-middle">                                
+                                <input type="checkbox" />
+                                Subscribe to our SPAM newsletters?
+                            </label>
+                        </fieldset>
                     </form>
-                    <form class="span-3 form">
-                        <fieldset class="boolean-list">
+                </div>    
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;form class="form"&gt;
+    &lt;fieldset&gt;
+        &lt;label&gt;
+            Username
+            &lt;input class="span-5" type="text" required placeholder="example: username" /&gt;
+        &lt;/label&gt;
+        &lt;br /&gt;
+        &lt;label&gt;
+            Password
+            &lt;input class="span-5" type="password" pattern=".{3,}" required placeholder="example: 123" /&gt;
+        &lt;/label&gt;
+        ...
+    &lt;/fieldset&gt;
+    &lt;br /&gt;
+    &lt;label&gt;
+        Your Message
+        &lt;textarea class="span-8" rows="5" cols="50" required placeholder="enter your message..."&gt;&lt;/textarea&gt;
+    &lt;/label&gt;
+    ...
+&lt;/form&gt;    
+</code></pre>                
+
+                <h4>Inline Form</h4>
+
+                <p>You can easily create an inline <b>form</b> or <b>fieldset</b> group by wrapping each field in an HTML tag that has the <code>inline-field</code> class.
+
+                <div class="module-demo">
+                    <form class="form">                    
+                        <fieldset>
+                            <div class="inline-field">
+                                <label>Username</label>
+                                <input type="text" required placeholder="example: username" />
+                            </div>
+                            <div class="inline-field">
+                                <label>Password</label>
+                                <input type="password" pattern=".{3,}" required placeholder="example: 123" />
+                            </div>
+                            <div class="inline-field">
+                                <button class="button-brand-1-block" type="submit">Submit</button>
+                            </div>
+                            <div class="inline-field">                             
+                                <input type="checkbox" />
+                                <label>Remember Me?</label>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;form class="form"&gt; 
+    &lt;fieldset&gt;
+        &lt;div class="inline-field"&gt;
+            &lt;label&gt;Username&lt;/label&gt;
+            &lt;input type="text" required placeholder="example: username" /&gt;
+        &lt;/div&gt;
+        &lt;div class="inline-field"&gt;
+        &lt;label&gt;Password&lt;/label&gt;
+            &lt;input type="password" pattern=".{3,}" required placeholder="example: 123" /&gt;
+        &lt;/div&gt;
+        &lt;div class="inline-field"&gt;
+            &lt;button class="button-brand-1-block" type="submit"&gt;Submit&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="inline-field"&gt; 
+            &lt;input type="checkbox" /&gt;
+            &lt;label&gt;Remember Me?&lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;   
+</code></pre>
+
+                <h4>Grid System Integration</h4>
+
+                <p>The most reliable and efficient way to structure your form is by integrating it with our grid system. By doing so, you can create a form layout for pretty much any purpose. See the below examples for some common layouts:</p>
+
+                <div class="module-demo">
+                    <div class="roW">
+                        <form class="span-6 form">
+                            <fieldset class="row">
+                                <label class="span-3 va-middle">
+                                    Username
+                                </label>
+                                <div class="span-9 va-middle">
+                                    <input type="text" required placeholder="example: username">
+                                </div>
+                            </fieldset>
+                            <br />
+                            <fieldset class="row">
+                                <label class="span-3 va-middle">
+                                    Password
+                                </label>
+                                <div class="span-9 va-middle">
+                                    <input type="password" required placeholder="example: 123">
+                                </div>
+                            </fieldset>
+                            <br />
+                            <fieldset class="row">
+                                <label class="span-10 va-middle">                                
+                                    <input type="checkbox">
+                                    Remember Me
+                                </label>
+                                <span class="span-2 va-middle text-right">
+                                    <button class="button-brand-1-block" type="submit">Submit</button>
+                                </span>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;form class="form"&gt;
+    &lt;fieldset class="row"&gt;
+        &lt;label class="span-3 va-middle"&gt;
+            Username
+        &lt;/label&gt;
+        &lt;div class="span-9 va-middle"&gt;
+            &lt;input type="text" required placeholder="example: username"&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+    &lt;br /&gt;
+    &lt;fieldset class="row"&gt;
+        &lt;label class="span-3 va-middle"&gt;
+            Password
+        &lt;/label&gt;
+        &lt;div class="span-9 va-middle"&gt;
+            &lt;input type="password" required placeholder="example: 123"&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+    &lt;br /&gt;
+    &lt;fieldset class="row"&gt;
+        &lt;label class="span-10 va-middle"&gt; 
+            &lt;input type="checkbox"&gt;
+            Remember Me
+        &lt;/label&gt;
+        &lt;span class="span-2 va-middle text-right"&gt;
+            &lt;button class="button-brand-1-block" type="submit"&gt;Submit&lt;/button&gt;
+        &lt;/span&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;
+</code></pre>
+
+                <br />
+
+                <div class="module-demo">
+                    <div class="row">
+                        <form class="span-6 form">
+                            <fieldset class="row">
+                                <label class="span-6">
+                                    Username
+                                    <input type="text" required placeholder="example: username">
+                                </label>
+                                <label class="span-6">
+                                    Password
+                                    <input type="password" required placeholder="example: 123">
+                                </label>
+                             </fieldset>  
+                             <br />    
+                            <fieldset class="row">
+                                <label class="span-6">
+                                    Email
+                                    <input type="email" required placeholder="example: contact@skyux.com">
+                                </label>
+                                <label class="span-6">
+                                    Website
+                                    <input type="url" required placeholder="example: http://skyux.com">
+                                </label>
+                             </fieldset>  
+                             <br />                           
+                            <fieldset>
+                                <label>
+                                    Select Dropdown
+                                    <select name="browser" required="">
+                                        <option value="" disabled="disabled" selected="selected">
+                                            select browser
+                                        </option>
+                                        <optgroup label="Desktop Browsers">
+                                            <option value="chrome">Chrome</option>
+                                            <option value="firefox">Firefox</option>
+                                            <option value="safari">Safari</option>
+                                            <option value="opera">Opera</option>
+                                        </optgroup>
+                                        <optgroup label="Internet Explorer">
+                                            <option value="11">Internet Explorer 11</option>
+                                            <option value="10">Internet Explorer 10</option>
+                                            <option value="9">Internet Explorer 9</option>
+                                            <option value="8">Internet Explorer 8</option>
+                                        </optgroup>
+                                        <optgroup label="Mobile Device">
+                                            <option value="ios">iOS</option>
+                                            <option value="android">Android</option>
+                                            <option value="windows">Windows</option>
+                                        </optgroup>
+                                    </select>
+                                </label>   
+                                <br />                             
+                                <label>
+                                    Your Message
+                                    <textarea rows="5" cols="50" required placeholder="enter your message..."></textarea>
+                                </label>
+                            </fieldset>
+                            <br />
+                            <fieldset class="row">
+                                <label class="span-10 va-middle">                                
+                                    <input type="checkbox" />
+                                    Subscribe to our SPAM newsletters?
+                                </label>
+                                <span class="span-2 va-middle">
+                                    <button class="button-brand-1-block" type="submit">Submit</button>
+                                </span>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;form class="form"&gt;
+    &lt;fieldset class="row"&gt;
+        &lt;label class="span-6"&gt;
+            Username
+            &lt;input type="text" required placeholder="example: username"&gt;
+        &lt;/label&gt;
+        &lt;label class="span-6"&gt;
+            Password
+            &lt;input type="password" required placeholder="example: 123"&gt;
+        &lt;/label&gt;
+    &lt;/fieldset&gt; 
+    ... 
+    &lt;br /&gt; 
+    &lt;fieldset&gt;
+        &lt;label&gt;
+            Select Dropdown
+            &lt;select name="browser" required=""&gt;
+                ...
+            &lt;/select&gt;
+        &lt;/label&gt; 
+        &lt;br /&gt; 
+        &lt;label&gt;
+            Your Message
+            &lt;textarea rows="5" cols="50" required placeholder="enter your message..."&gt;&lt;/textarea&gt;
+        &lt;/label&gt;
+    &lt;/fieldset&gt;
+    &lt;br /&gt;
+    &lt;fieldset class="row"&gt;
+        &lt;label class="span-10 va-middle"&gt; 
+            &lt;input type="checkbox" /&gt;
+            Subscribe to our SPAM newsletters?
+        &lt;/label&gt;
+        &lt;span class="span-2 va-middle"&gt;
+            &lt;button class="button-brand-1-block" type="submit"&gt;Submit&lt;/button&gt;
+        &lt;/span&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;
+</code></pre>
+
+                <h4>Radio & Checkbox Lists</h4>
+
+                <div class="module-demo">
+                    <form class="row form">
+                        <fieldset class="span-3">
                             <legend>Checkbox List</legend>
                             <br />
-                            <ul>
+                            <ul class="reset">
                                 <li>
-                                    <label class="boolean">                                
-                                        <input type="checkbox" />
+                                    <label>                                
+                                        <input type="checkbox" checked />
                                         Lorem ipsum dolor sit amet
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="boolean">                                
-                                        <input type="checkbox" />
+                                    <label>                                
+                                        <input type="checkbox" checked />
                                         Vestibulum vel nisl dictum
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="boolean">                                
+                                    <label>                                
                                         <input type="checkbox" />
                                         Duis lacinia enim nec nulla
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="boolean">                                
+                                    <label>                                
                                         <input type="checkbox" />
                                         Lorem ipsum dolor sit amet
                                     </label>
                                 </li>
                             </ul>
                         </fieldset>
-                        <br />
-                        <fieldset class="boolean-list">
+                        <fieldset class="span-3">
                             <legend>Radio List</legend>
                             <br />
-                            <ul>
+                            <ul class="reset">
                                 <li>
-                                    <label class="boolean">                                
+                                    <label>                                
                                         <input type="radio" name="radio" />
                                         Lorem ipsum dolor sit amet
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="boolean">                                
-                                        <input type="radio" name="radio" />
+                                    <label>                                
+                                        <input type="radio" name="radio" checked />
                                         Vestibulum vel nisl dictum
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="boolean">                                
+                                    <label>                                
                                         <input type="radio" name="radio" />
                                         Duis lacinia enim nec nulla
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="boolean">                                
+                                    <label>                                
                                         <input type="radio" name="radio" />
                                         Lorem ipsum dolor sit amet
                                     </label>
@@ -501,48 +1226,84 @@
 
                 <br />
 
-                <form class="module-demo form">
-                    <fieldset class="row">
-                        <label class="span-6 field">
-                            Username
-                            <input type="text" placeholder="example: username" />
-                        </label>
-                        <label class="span-6 field">
-                            Password
-                            <input type="password" placeholder="example: password" />
-                        </label>
-                    </fieldset>
-                    <br />
-                    <fieldset class="row">
-                        <label class="span-2 field">
-                            Twitter
-                            <input type="text" placeholder="example: esr360" />
-                        </label>
-                        <label class="span-4 field">
-                            URL
-                            <input type="url" placeholder="example: http://skyux.com" />
-                        </label>
-                        <label class="span-3 field">
-                            Dribbble
-                            <input type="text" placeholder="example: esr360" />
-                        </label>
-                        <label class="span-3 field">
-                            LinkedIn
-                            <input type="text" placeholder="example: SkyUX" />
-                        </label>
-                    </fieldset>
-                    <br />
-                    <div class="row">
-                        <label class="span-6 field">
-                            Your Message
-                            <textarea rows="6" placeholder="enter your message..."></textarea>
-                        </label>
-                        <label class="span-6 field">
-                            Your Message
-                            <textarea rows="6" placeholder="enter your message..."></textarea>
-                        </label>
-                    </div>
-                </form>
+<pre><code class="language-markup">
+&lt;form class="form"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Checkbox List&lt;/legend&gt;
+        &lt;br /&gt;
+        &lt;ul class="reset"&gt;
+            &lt;li&gt;
+                &lt;label&gt; 
+                    &lt;input type="checkbox" checked /&gt;
+                    Lorem ipsum dolor sit amet
+                &lt;/label&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;label&gt; 
+                    &lt;input type="checkbox" checked /&gt;
+                    Vestibulum vel nisl dictum
+                &lt;/label&gt;
+            &lt;/li&gt;
+            ...
+        &lt;/ul&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;
+</code></pre>
+
+                <h4>HTML5 Elements <span>(Experimental)</span></h4>
+
+                <p>The below elements are only partially supported by modern browsers, but we have included them as they require practically no extra markup, and supporting new elements is alaways good moving forward (where appropriate), even if you don't intend to use them.</p>
+
+                <div class="module-demo">
+                    <form class="row form">
+                        <fieldset class="span-4">           
+                            <label>
+                                Pick Date
+                                <input type="date" min="2015-01-01" max="2020-01-01">
+                            </label>      
+                        </fieldset>
+                        <fieldset class="span-4">
+                            <label>
+                                Range Input
+                                <input type="range" min="0" value="10" max="100" step="10">
+                            </label>
+                        </fieldset>    
+                        <fieldset class="span-4">         
+                            <div><label>Pick Color</label></div>
+                            <input type="color" value="#F62459">
+                            <input type="color" value="#22A7F0">
+                            <input type="color" value="#03C9A9">
+                        </fieldset>
+                    </form>
+                </div>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;form class="form"&gt;
+    &lt;!-- Date Picker --&gt;
+    &lt;fieldset&gt; 
+        &lt;label&gt;
+            Pick Date
+            &lt;input type="date" min="2015-01-01" max="2020-01-01"&gt;
+        &lt;/label&gt; 
+    &lt;/fieldset&gt;
+    &lt;!-- Range Input --&gt;
+    &lt;fieldset&gt;
+        &lt;label&gt;
+            Range Input
+            &lt;input type="range" min="0" value="10" max="100" step="10"&gt;
+        &lt;/label&gt;
+    &lt;/fieldset&gt; 
+    &lt;!-- Color Picker --&gt; 
+    &lt;fieldset&gt; 
+        &lt;div&gt;&lt;label&gt;Pick Color&lt;/label&gt;&lt;/div&gt;
+        &lt;input type="color" value="#F62459"&gt;
+        &lt;input type="color" value="#22A7F0"&gt;
+        &lt;input type="color" value="#03C9A9"&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;
+</code></pre>
 
             </section>
             
@@ -551,6 +1312,18 @@
                 <h3 class="heading dotted">
                     Icons
                 </h3>
+
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>elements</b></li>
+                        <li>_icons.scss</li>
+                    </ul>
+                </nav>
+
+                <p>One Nexus comes equipped with the <a href="http://fortawesome.github.io/Font-Awesome/" target="blank">Font Awesome</a> icon font set, giving you instant access to over 500 vector icons to use as you please. These items can easily be resized, reshaped and recolored using CSS. Visit the Font Awesome <a href="http://fortawesome.github.io/Font-Awesome/" target="blank">homepage</a> for more information.</p>
 
                 <div class="module-demo">
                     <div class="row bp1 text-center fa-icons">
@@ -593,6 +1366,12 @@
                     </div>
                 </div>
 
+                <br />
+
+<pre><code class="language-markup">
+&lt;i class="fa fa-money"&gt;&lt;/i&gt;
+</code></pre>
+
             </section>
             
             <section>
@@ -601,55 +1380,93 @@
                     Images
                 </h3>
 
-                    <div class="module-demo">
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>elements</b></li>
+                        <li>_images.scss</li>
+                    </ul>
+                </nav>
+
+                <p>By default, all images are responsive thanks to the addition of <code>max-width: 100%;</code> in the CSS, meaning they will never be larger than their container. One Nexus comes with a small set of classes for you to style your images.</p>
+        
+                <h4>Thumbnails</h4>
+
+                <div class="module-demo">
                     <div class="row text-center">
                         <div class="span-3">
-                            <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg" class="thumbnail">
+                            <img src="http://skyux.com/stock-photos/stock1.jpg" class="thumbnail">
                         </div>
                         <div class="span-3 min-bp3">
-                            <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg" class="thumbnail">
+                            <img src="http://skyux.com/stock-photos/stock3.jpg" class="thumbnail">
                         </div>
                         <div class="span-3 min-bp3">
-                            <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-3.jpg" class="thumbnail">
+                            <img src="http://skyux.com/stock-photos/stock7.jpg" class="thumbnail">
                         </div>
                         <div class="span-3 min-bp3">
-                            <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg" class="thumbnail">
+                            <img src="http://skyux.com/stock-photos/stock4.jpg" class="thumbnail">
                         </div>
                     </div>
-                    <br />
+                </div>
+                
+                <br />
+
+<pre><code class="language-markup">
+&lt;img src="http://skyux.com/stock-photos/stock1.jpg" class="thumbnail"&gt;
+</code></pre>
+
+                <h4>Image Shapes</h4>
+
+                <div class="module-demo">
                     <div class="row text-center">
                         <div class="span-2">
                             <div class="square">
-                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-3.jpg">
+                                <img src="http://skyux.com/stock-photos/stock6.jpg">
                             </div>
                         </div>
                         <div class="span-2">
                             <div class="square">
-                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg">
+                                <img src="http://skyux.com/stock-photos/stock16.jpg">
                             </div>
                         </div>
                         <div class="span-2">
                             <div class="square">
-                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg">
+                                <img src="http://skyux.com/stock-photos/stock2.jpg">
                             </div>
                         </div>
                         <div class="span-2">
                             <div class="circle">
-                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg">
+                                <img src="http://skyux.com/stock-photos/stock13.jpg">
                             </div>
                         </div>
                         <div class="span-2">
                             <div class="circle">
-                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg">
+                                <img src="http://skyux.com/stock-photos/stock11.jpg">
                             </div>
                         </div>
                         <div class="span-2">
                             <div class="circle">
-                                <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg">
+                                <img src="http://skyux.com/stock-photos/stock14.jpg">
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;!-- Square Image --&gt;
+&lt;div class="square"&gt;
+    &lt;img src="http://skyux.com/stock-photos/stock2.jpg"&gt;
+&lt;/div&gt;
+
+&lt;!-- Circle Image --&gt;
+&lt;div class="circle"&gt;
+    &lt;img src="http://skyux.com/stock-photos/stock14.jpg"&gt;
+&lt;/div&gt;
+</code></pre>
 
             </section>
 
@@ -658,6 +1475,16 @@
                 <h3 class="heading dotted">
                     Tables
                 </h3>
+
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>elements</b></li>
+                        <li>_tables.scss</li>
+                    </ul>
+                </nav>
 
                 <div class="module-demo">
                     <table class="table">
@@ -698,6 +1525,36 @@
 
                 <br />
 
+<pre><code class="language-markup">
+&lt;table class="table"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;td colspan="3"&gt;Optional Table Header&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;COLOR&lt;/td&gt;
+            &lt;td&gt;DESCRIPTION&lt;/td&gt;
+            &lt;td&gt;COUNT&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;blue&lt;/td&gt;
+            &lt;td&gt;Lorem ipsum dolor sit amet...&lt;/td&gt;
+            &lt;td&gt;12&lt;/td&gt;
+        &lt;/tr&gt;
+        ...
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;
+            &lt;td colspan="3"&gt;&lt;small&gt;Optional Table Footer&lt;/small&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;
+</code></pre>
+
+                <br />
+
                 <div class="module-demo">
                     <table class="table-fixed">
                         <tbody>
@@ -725,6 +1582,14 @@
                     </table>
                 </div>
 
+                <br />
+
+<pre><code class="language-markup">
+&lt;table class="table-fixed"&gt;
+    ...
+&lt;/table&gt;
+</code></pre>
+
             </section>
 
             <section>
@@ -733,6 +1598,26 @@
                     Accordions
                 </h3>
 
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>elements</b></li>
+                        <li>_accordions.scss</li>
+                    </ul>
+                </nav>
+
+                <nav class="breadcrumb alert-success">
+                    <ul>
+                        <li>assets</li>
+                        <li><b>js</b></li>
+                        <li>accordion.js</li>
+                    </ul>
+                </nav>
+
+                <p>The One Nexus accordions are built to be as dynamic as possible - meaning they do not require any specific or additional markup - they just need to be in the correct format and wrapped in a container with the <code>accordion</code> class. If you want a section to be open be default, you need to add the <code>active</code> class to the appropriate tags (see below).</p>
+
                 <div class="accordion">
                     <section>
                         <h4>How much does a website cost?</h4>
@@ -740,9 +1625,9 @@
                             <p>The cost of a website comes down to many factors. How many pages does it have? How much functionality does it require? How complex is it? Each case is unique, and once we've had the chance to properly analyse your requirements we can then provide an estimation.</p>
                         </article>
                     </section>
-                    <section>
+                    <section class="active">
                         <h4>How long does a website take to make?</h4>
-                        <article>
+                        <article class="active">
                             <p>The time taken to build a website can vary from a couple of weeks for small and simple websites, to a few months for large and complex ones. Once we've had chance to properly analyse your requirements, we can provide you with a closer estimate.</p>
                         </article>
                     </section>
@@ -760,6 +1645,68 @@
                     </section>
                 </div>
 
+<pre><code class="language-markup">
+&lt;div class="accordion"&gt;
+    &lt;section&gt;
+        &lt;h4&gt;Accordion Title 1&lt;/h4&gt;
+        &lt;article&gt;
+            &lt;!-- accordion content --&gt;
+        &lt;/article&gt;
+    &lt;/section&gt;
+    &lt;!-- open by default --&gt;
+    &lt;section class="active"&gt;
+        &lt;h4&gt;Accordion Title 2&lt;/h4&gt;
+        &lt;article class="active"&gt;
+            &lt;!-- accordion content --&gt;
+        &lt;/article&gt;
+    &lt;/section&gt;
+    &lt;section&gt;
+        &lt;h4&gt;Accordion Title 3&lt;/h4&gt;
+        &lt;article&gt;
+            &lt;!-- accordion content --&gt;
+        &lt;/article&gt;
+    &lt;/section&gt;
+    &lt;section&gt;
+        &lt;h4&gt;Accordion Title 4&lt;/h4&gt;
+        &lt;article&gt;
+            &lt;!-- accordion content --&gt;
+        &lt;/article&gt;
+    &lt;/section&gt;
+&lt;/div&gt;
+</code></pre>
+
+                <h4>This will also work...</h4>
+
+<pre><code class="language-markup">
+&lt;div class="accordion"&gt;
+    &lt;div&gt;
+        &lt;div&gt;Accordion Title 1&lt;/div&gt;
+        &lt;div&gt;
+            &lt;!-- accordion content --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- open by default --&gt;
+    &lt;div class="active"&gt;
+        &lt;div&gt;Accordion Title 2&lt;/div&gt;
+        &lt;div class="active"&gt;
+            &lt;!-- accordion content --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;div&gt;Accordion Title 3&lt;/div&gt;
+        &lt;div&gt;
+            &lt;!-- accordion content --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;div&gt;Accordion Title 4&lt;/div&gt;
+        &lt;div&gt;
+            &lt;!-- accordion content --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
             </section>
 
             <section>
@@ -767,6 +1714,26 @@
                 <h3 class="heading dotted">
                     Modal Windows
                 </h3>
+
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>elements</b></li>
+                        <li>_modals.scss</li>
+                    </ul>
+                </nav>
+
+                <nav class="breadcrumb alert-success">
+                    <ul>
+                        <li>assets</li>
+                        <li><b>js</b></li>
+                        <li>modal.js</li>
+                    </ul>
+                </nav>
+
+                <p>As of version 2.0, One Nexus now uses <a href="http://leanmodal.finelysliced.com.au/" target="blank">LeanModal.js</a>, an extremely simple and lightweight modal jQuery plugin. To create a modal popup, create your content inside an element with the <code>modal-content</code> class, and assign it a unique <b>ID</b>. To load the content in a modal popup, create an <b>anchor</b> tag with <code>rel="modal"</code> and <code>href="#YOURID"</code>, replacing <b>#YOURID</b> with the <b>ID</b> of your custom modal content.</p>
 
                 <div id="demo-modal" class="modal-content">
                     Demo modal!
@@ -776,10 +1743,21 @@
                 </div>
 
                 <div class="module-demo">
-                    <div class=" modal-gallery">
-                        <a href="#demo-modal" rel="modal">Click Me</a>
-                    </div>
+                    <a href="#demo-modal" rel="modal">Click Me</a>
                 </div>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;div id="demo-modal" class="modal-content"&gt;
+    Demo modal!
+    &lt;div class="modal-close"&gt;
+        &lt;i class="fa fa-times"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;a href="#demo-modal" rel="modal"&gt;Click Me&lt;/a&gt;
+</code></pre>
 
             </section>
 
@@ -789,18 +1767,83 @@
                     Carousels
                 </h3>
 
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>elements</b></li>
+                        <li>_carousels.scss</li>
+                    </ul>
+                </nav>
+
+                <nav class="breadcrumb alert-success">
+                    <ul>
+                        <li>assets</li>
+                        <li><b>js</b></li>
+                        <li>carousel.js</li>
+                    </ul>
+                </nav>
+
+                <p>The popular <a href="#" target="blank">Owl-Carousel</a> jQuery plugin is used for carousels - make sure to visit their homepage for the full documentation, only the most basic example will be covered here. To create a basic carousel, create a container of similar elements (ie same HTML tag) and add the <code>carousel</code> class and assign a unique <b>ID</b> to the container. You then need to call the plugin on your container, as shown below.</p>
+
                 <div class="module-demo">
 
                     <div id="demo-carousel" class="carousel">
-                        <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg" />
-                        <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg" />
-                        <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg" />
-                        <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-1.jpg" />
-                        <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-2.jpg" />
-                        <img src="http://onenexusproject.com/wp-content/themes/onenexus/assets/images/stock-4.jpg" />
+                        <img src="http://skyux.com/stock-photos/stock6.jpg">
+                        <img src="http://skyux.com/stock-photos/stock16.jpg">
+                        <img src="http://skyux.com/stock-photos/stock2.jpg">
+                        <img src="http://skyux.com/stock-photos/stock13.jpg">
+                        <img src="http://skyux.com/stock-photos/stock11.jpg">
+                        <img src="http://skyux.com/stock-photos/stock14.jpg">
                     </div>
 
                 </div>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;div id="demo-carousel" class="carousel"&gt;
+    &lt;img src="http://skyux.com/stock-photos/stock6.jpg"&gt;
+    &lt;img src="http://skyux.com/stock-photos/stock16.jpg"&gt;
+    &lt;img src="http://skyux.com/stock-photos/stock2.jpg"&gt;
+&lt;/div&gt;
+</code></pre>
+
+<br />
+
+<pre><code class="language-javascript">
+$(document).ready(function() {
+
+    //-----------------------------------------------------------------
+    // Demo Carousel
+    //-----------------------------------------------------------------
+
+    var demoCarousel = $('#demo-carousel');
+
+    demoCarousel.owlCarousel({
+        items: 1,
+        loop: true,
+        dots: true,
+        nav: true,
+        margin: 31,
+        slideBy: 1,
+        navText: [],
+        responsive:{
+            460 :{                
+                items: 2
+            },
+            720 :{                
+                items: 3
+            },
+            940 :{                
+                items: 4
+            }
+        }
+    });
+
+}); // end document.ready  
+</code></pre>
 
             </section>
 
@@ -809,6 +1852,26 @@
                 <h3 class="heading dotted">
                     Tabs
                 </h3>
+
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>elements</b></li>
+                        <li>_tabs.scss</li>
+                    </ul>
+                </nav>
+
+                <nav class="breadcrumb alert-success">
+                    <ul>
+                        <li>assets</li>
+                        <li><b>js</b></li>
+                        <li>tab.js</li>
+                    </ul>
+                </nav>
+
+                <p><p>Creating a set of tabs requires two things; a tab navigation to switch between tabs, and the tab contents. The tab navigation is an unordered list with the <code>nav</code> class. You should also add the <code>active</code> class to the item you want shown by default (typically the first item). Next, create a set of <code>section</code> tags, one for each tab item. You can than put any HTML content you desire for your tabs. Again, add the <code>active</code> class to the section you want shown by defauly. Finally, all of that needs to be wrapped up in a container with the <code>tabs</code> class.</p>
 
                 <div class="tabs">
                     <ul class="nav">
@@ -835,6 +1898,66 @@
                     </section>
                 </div>
 
+                <br />
+
+<pre><code class="language-markup">
+&lt;div class="tabs"&gt;
+    &lt;ul class="nav"&gt;
+        &lt;li class="active"&gt;Tab 1&lt;/li&gt;
+        &lt;li&gt;Tab 2&lt;/li&gt;
+        &lt;li&gt;Tab 3&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;section class="active"&gt; 
+        &lt;!-- tab content --&gt;
+    &lt;/section&gt;
+    &lt;section&gt; 
+        &lt;!-- tab content --&gt;
+    &lt;/section&gt;
+    &lt;section&gt; 
+        &lt;!-- tab content --&gt;
+    &lt;/section&gt;
+&lt;/div&gt;
+</code></pre>
+
+                <p>To create a set of tabs with full-width navigation items like in the above example, use the <code>tabs-full</code> class.</p>
+
+                <div class="tabs-full">
+                    <ul class="nav">
+                        <li class="active">Tab 1</li>
+                        <li>Tab 2</li>
+                        <li>Tab 3</li>
+                        <li>Tab 4</li>
+                    </ul>
+                    <section class="active">              
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in.</p>
+                    </section>
+                    <section>                    
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in.</p>                    
+                        <h4>Lorem Ipsum</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in.</p>
+                        <ul>
+                            <li>Lorem Ipsum</li>
+                            <li>Dolor Amet</li>
+                            <li>Aliquam Sodales</li>
+                        </ul>
+                        <p><em>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</em></p>
+                    </section>
+                    <section>                    
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in.</p>
+                    </section>
+                    <section>                    
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in.</p>
+                    </section>
+                </div>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;div class="tabs-full"&gt;
+    ...
+&lt;/div&gt;
+</code></pre>
+
             </section>
 
             <section>
@@ -843,23 +1966,55 @@
                     Tooltips
                 </h3>
 
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>elements</b></li>
+                        <li>_tooltips.scss</li>
+                    </ul>
+                </nav>
+
+                <nav class="breadcrumb alert-success">
+                    <ul>
+                        <li>assets</li>
+                        <li><b>js</b></li>
+                        <li>tooltip.js</li>
+                    </ul>
+                </nav>
+
+                <p>As of version 2.0, One Nexus now uses the <a href="http://onehackoranother.com/projects/jquery/tipsy/" target="blank">tipsy</a> jQuery plugin to handle tooltips. Make sure to visit the plugin's homepage for the full documentation.</p>
+
                 <div class="module-demo">
-                    <a id="south" rel="tooltip" href="#" tooltip="Demo Tooltip">Hover Me</a>
+                    <a rel="tooltip" href="#" tooltip="Demo Tooltip">Hover Me</a>
                 </div>
 
-            </section>
+                <br />
 
-            <h2 class="heading">
-                <a href="http://www.onenexusproject.com/documentation/elements/typography/" target="blank">
-                    <i><em>Typographic Elements</em></i>
-                </a>
-            </h2>
+<pre><code class="language-markup">
+&lt;a rel="tooltip" href="#" tooltip="Demo Tooltip"&gt;Hover Me&lt;/a&gt;
+</code></pre>
+
+            </section>
 
             <section>
 
                 <h3 class="heading dotted">
                     Headings
                 </h3>
+
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>elements</b></li>
+                        <li>_headings.scss</li>
+                    </ul>
+                </nav>
+
+                <p>One Nexus takes a slightly different approach to handling headings. Rather than using the individual h1, h2, h3 etc. tags for different, specific types of headings, we leave them all unstyled by default (except for the default styles applied by the browser), and then apply different styles using semantic HTML tags (for the most part). CSS classes can alternatively be used instead of the HTML tag.</p>
 
                 <div style="padding: 2rem;" class="module-demo">
                     <div class="row">
@@ -876,10 +2031,10 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
                         </div>
                     </div>
-                    <br>
+                    <br /><br />
                     <div class="row">
                         <div class="span-4">
-                            <h4 class="heading font-1">A heading with a custom font</h4>
+                            <h4 class="heading"><b>Heavy Text Heading</b></h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
                         </div>
                         <div class="span-4">
@@ -887,11 +2042,39 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
                         </div>
                         <div class="span-4">
-                            <h4 class="heading highlight"><b>Highlighted Heading</b></h4>
+                            <h4 class="heading-highlight"><b>Highlighted Heading</b></h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
                         </div>
                     </div>
                 </div>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;h4 class="heading"&gt;Regular Heading&lt;/h4&gt;
+
+&lt;h4 class="heading"&gt;&lt;strong&gt;Uppercase Heading&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;h4 class="heading"&gt;&lt;em&gt;Thin Text Heading&lt;/em&gt;&lt;/h4&gt;
+
+&lt;h4 class="heading"&gt;&lt;b&gt;Heavy Text Heading&lt;b&gt;&lt;/h4&gt;
+
+&lt;h4 class="heading"&gt;&lt;i&gt;Colourful Heading&lt;/i&gt;&lt;/h4&gt;
+
+&lt;h4 class="heading-highlight"&gt;&lt;b&gt;Highlighted Heading&lt;/b&gt;&lt;/h4&gt;
+</code></pre>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;h4 class="heading-uppercase"&gt;Uppercase Heading&lt;/h4&gt;
+
+&lt;h4 class="heading-light"&gt;Thin Text Heading&lt;/h4&gt;
+
+&lt;h4 class="heading-heavy"&gt;Heavy Text Heading&lt;/h4&gt;
+
+&lt;h4 class="heading-brand-1"&gt;Colourful Heading&lt;/h4&gt;
+</code></pre>
 
             </section>
 
@@ -900,6 +2083,18 @@
                 <h3 class="heading dotted">
                     Lists
                 </h3>
+
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>elements</b></li>
+                        <li>_lists.scss</li>
+                    </ul>
+                </nav>
+
+                <h4>List With No Padding and Margin</h4>
 
                 <div class="module-demo">
                     <ul class="clear">
@@ -911,6 +2106,16 @@
 
                 <br />
 
+<pre><code class="language-markup">
+&lt;ul class="clear"&gt;
+    &lt;li&gt;Lorem Ipsum&lt;/li&gt;
+    &lt;li&gt;Dolor Sit Amet&lt;/li&gt;
+    &lt;li&gt;Billy Madison&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+                <h4>List With No Padding, Margin and List-Style</h4>
+
                 <div class="module-demo">
                     <ul class="reset">
                         <li>Lorem Ipsum</li>
@@ -918,8 +2123,38 @@
                         <li>Billy Madison</li>
                     </ul>
                 </div>
-    
+
                 <br />
+
+<pre><code class="language-markup">
+&lt;ul class="reset"&gt;
+    &lt;li&gt;Lorem Ipsum&lt;/li&gt;
+    &lt;li&gt;Dolor Sit Amet&lt;/li&gt;
+    &lt;li&gt;Billy Madison&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+    
+                <h4>Arrow List</h4>
+
+                <div class="module-demo">
+                    <ul class="arrow-list">
+                        <li>Lorem Ipsum</li>
+                        <li>Dolor Sit Amet</li>
+                        <li>Billy Madison</li>
+                    </ul>
+                </div>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;ul class="arrow-list"&gt;
+    &lt;li&gt;Lorem Ipsum&lt;/li&gt;
+    &lt;li&gt;Dolor Sit Amet&lt;/li&gt;
+    &lt;li&gt;Billy Madison&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+    
+                <h4>Grid System Integration</h4>
 
                 <div class="module-demo">
                     <ul class="row flow-columns arrow-list">
@@ -932,19 +2167,52 @@
                     </ul>
                 </div>
 
+                <br />
+
+<pre><code class="language-markup">
+&lt;ul class="row flow-columns arrow-list"&gt;
+    &lt;li class="span-4"&gt;Eu nonummy condimentum fringilla&lt;/li&gt;
+    &lt;li class="span-4"&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+    &lt;li class="span-4"&gt;Hac molestie amet justo quis pellentesque&lt;/li&gt;
+    &lt;li class="span-4"&gt;Eu nonummy condimentum fringilla&lt;/li&gt;
+    &lt;li class="span-4"&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+    &lt;li class="span-4"&gt;Hac molestie amet justo quis pellentesque&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
             </section>
 
             <section>
 
                 <h3 class="heading dotted">
-                    Quotes
+                    Blockquotes
                 </h3>
+
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>elements</b></li>
+                        <li>_blockquotes.scss</li>
+                    </ul>
+                </nav>
+
+                <p>One Nexus comes with a clean, default style for <b>blockquote</b> elements, ready for you to build upon. To create a blockquote (with optional <code>cite</code> tag), simply create a paragraph with <code>p</code> HTML tags wrapped in <code>blockquote</code> html tags.</p>
 
                 <div class="module-demo">
                     <blockquote>
                         <p>Lorem ipsum dolor sit amet consectetuer mollis sapien urna ut a. Eu nonummy condimentum fringilla tempor pretium platea vel nibh netus Maecenas. <cite>- John Doe</cite></p>
                     </blockquote>
                 </div>
+
+                <br />
+
+<pre><code class="language-markup">
+&lt;blockquote&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet... &lt;cite&gt;- John Doe&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</code></pre>
 
             </section>
 
@@ -960,6 +2228,18 @@
                     Breadcrumbs
                 </h3>
 
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>modules</b></li>
+                        <li>_breadcrumb.scss</li>
+                    </ul>
+                </nav>
+
+                <p>One Nexus comes with a basic breadcrumb module ready to build upon. The markup for a breadcrumb is an un-ordered list wrapped in an element with the <code>breadcrumb</code> class.</p>
+
                 <div class="module-demo">
                     <nav class="breadcrumb">
                         <ul>
@@ -971,6 +2251,21 @@
                     </nav>
                 </div>
 
+                <br />
+
+<pre><code class="language-markup">
+&lt;nav class="breadcrumb"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;One Nexus&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/documentation/"&gt;Documentation&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/documentation/modules/"&gt;Modules&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;Breadcrumb&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+
+                <p class="alert-success">For semantic purposes we recommend using the <b>&lt;nav&gt;</b> HTML5 element for your <b>breadcrumb</b>'s wrapper element.</p>
+
             </section>
 
             <section>
@@ -978,6 +2273,18 @@
                 <h3 class="heading dotted">
                     Header
                 </h3>
+
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>modules</b></li>
+                        <li>_header.scss</li>
+                    </ul>
+                </nav>
+
+                <p>The <b>header</b> module by default consists of the <a href="#">logo</a> module and the <a href="#">app-nav</a> module (note that these modules are <b>not</b> imported in the header SCSS file). The header has been designd to be as simple to build upon as possible whilst still retaining all traditional concepts of a website header.</p>
 
                 <div class="module-demo">
                     <header class="app-header">
@@ -990,19 +2297,48 @@
                                     </a>
                                 </div>
                                 <!-- Main-Nav -->
-                                <nav class="main-nav">
+                                <nav class="app-nav">
                                     <ul>
                                         <li><a href="#">Header Link 1</a></li>
                                         <li><a href="#">Header Link 2</a></li>
                                         <li><a href="#">Header Link 3</a></li>
                                     </ul>
                                 </nav>
-                                <!-- Mobile Menu Trigger Button -->
-                                <a class="nav-trigger max-bp3" href="#"></a>
                             </div>
                         </div>
                     </header>
                 </div>
+
+                <h4>Key Points</h4>
+
+                <ul class="clear">
+                    <li>The ID of <code>app-nav</code> is used as a jQuery selector for creating the <a href="#">Flyout Navigation</a>.</li>
+                    <li>The <code>header-wrapper</code> class acts as a faux <b>table</b>, providing flexibility for the logo and navigation's positioning.</li>
+                    <li>Both the <b>logo</b> and <b>app-nav</b> elements are displayed as faux <b>table-cells</b>, so they can be both horizontally and vertically aligned whilst retianing full scalability.</li>
+                </ul>
+
+<pre><code class="language-markup">
+&lt;header class="app-header"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="header-wrapper"&gt;
+            &lt;!-- Logo --&gt;
+            &lt;div class="logo"&gt;
+                &lt;a href="/"&gt;
+                    &lt;img src="assets/images/logo.png" alt="One Nexus" /&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+            &lt;!-- Main-Nav --&gt;
+            &lt;nav class="app-nav" id="app-nav"&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Header Link 1&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Header Link 2&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Header Link 3&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/nav&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+</code></pre>
 
             </section>
 
@@ -1011,6 +2347,16 @@
                 <h3 class="heading dotted">
                     Footer
                 </h3>
+
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>modules</b></li>
+                        <li>_footer.scss</li>
+                    </ul>
+                </nav>
 
                 <div class="module-demo">
                     <footer class="app-footer">
@@ -1031,6 +2377,32 @@
                     </footer>
                 </div>
 
+                <h4>Key Points</h4>
+
+                <ul class="clear">
+                    <li>The <code>footer-wrapper</code> class acts as a faux <b>table</b>, providing flexibility for the logo and navigation's positioning.</li>
+                    <li>Both the <b>copyright</b> and <b>footer-nav</b> sections are displayed as faux <b>table-cells</b>, so they can be both horizontally and vertically aligned whilst retianing full scalability.</li>
+                </ul>
+
+<pre><code class="language-markup">
+&lt;footer class="app-footer"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="footer-wrapper"&gt;
+            &lt;!-- Copyright Section --&gt;
+            &lt;h4 class="copyright"&gt;&copy; Your Website 2014&lt;/h4&gt;
+            &lt;!-- Footer Navigation --&gt;
+            &lt;nav class="footer-nav"&gt; 
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Footer Link 1&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Footer Link 2&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Footer Link 3&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/nav&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;
+</code></pre>
+
             </section>
 
             <section>
@@ -1039,21 +2411,59 @@
                     Flyout Navigation
                 </h3>
 
+                <nav class="breadcrumb alert-info">
+                    <ul>
+                        <li>assets</li>
+                        <li>styles</li>
+                        <li>scss</li>
+                        <li><b>modules</b></li>
+                        <li>_flyout-navigation.scss</li>
+                    </ul>
+                </nav>
+
+                <nav class="breadcrumb alert-success">
+                    <ul>
+                        <li>assets</li>
+                        <li><b>js</b></li>
+                        <li>flyout-navigation.js</li>
+                    </ul>
+                </nav>
+
+                <p>The flyout navigation is a <b>clone</b> of the <b>app-navigation</b>, which is located off-canvas by default. It's visibility can be toggled by creating an element with an ID of <code>flyout-trigger</code> (the navigation is toggled when this element is clicked). The reason this module has been included is because it is perfect for use on mobile devices, and we feel every website should have such a solution.</p>
+
                 <div class="module-demo">
                     <div style="background: #111111; padding: 0;" class="module-demo">              
-                        <span class="icon-lrg nav-trigger flyout-trigger" id="flyout-trigger-demo">
-                            <i class="fa fa-bars"></i>
+                        <span class="icon-lrg flyout-trigger" id="flyout-trigger-demo">
+                            <i class="fa fa-bars nav-open"></i>
+                            <i class="fa fa-times nav-close"></i>
                         </span>
                     </div>
                 </div>
 
+                <p>We have provided a default navigation trigger button for you to use - to avoid having extra CSS to create a unique icon, the provided icon is built using our framework classes. The class <code>max-break-3</code> means <b>only</b> show the element when the resolution is <b>at most</b> the value defined by <code>$breakpoint-3</code>.</p> 
+
+<pre><code class="language-markup">
+&lt;span class="icon-lrg flyout-trigger max-break-3" id="flyout-trigger"&gt;
+    &lt;i class="fa fa-bars nav-open"&gt;&lt;/i&gt;
+    &lt;i class="fa fa-times nav-close"&gt;&lt;/i&gt;
+&lt;/span&gt;
+</code></pre>
+
+                <p>The below code is neccessery so the flyout-navigation script has a place to clone the <b>app-navigation</b> into.</p>
+
+<pre><code class="language-markup">
+&lt;nav class="flyout-container" id="flyout"&gt;&lt;/nav&gt;
+</code></pre>
+
+                <p>Finally, the site-overlay, which is hidden by defauly and made visible when the flyout-navigation is triggered. It is used as a physical mask to focus attention to the flayout-navigation and also acts as a clickable trigger to close the menu.</p>
+
+<pre><code class="language-markup">
+&lt;div class="site-overlay" id="site-overlay"&gt;&lt;/div&gt;
+</code></pre>
+
             </section>
 
-            <hr class="line" />
-
-            <p class="alert-success">Be sure to check out our <a target="blank" href="http://www.onenexusproject.com/documentation/">complete documentation</a> for more information.</p>
-
-            <hr class="line" />
+            <hr class="dotted" />
 
         </div>
 
@@ -1082,8 +2492,9 @@
     <a class="fa fa-angle-up scroll-top" href="#site-content"></a> 
 
     <!-- Flyout Nav Trigger -->
-    <span class="icon-lrg nav-trigger flyout-trigger" id="flyout-trigger">
-        <i class="fa fa-bars"></i>
+    <span class="icon-lrg flyout-trigger max-break-3" id="flyout-trigger">
+        <i class="fa fa-bars nav-open"></i>
+        <i class="fa fa-times nav-close"></i>
     </span>
 
     <!-- Flyout Nav -->
@@ -1102,13 +2513,18 @@
     <script src="assets/js/accordion.js"></script>
     <script src="assets/js/carousel.js"></script>
     <script src="assets/js/modal.js"></script>
-    <script src="assets/js/flyout-nav.js"></script>
+    <script src="assets/js/flyout-navigation.js"></script>
     <script src="assets/js/tabs.js"></script>
     <script src="assets/js/tooltip.js"></script>
 
     <!-- General -->
     <script src="assets/js/adaptive-columns.js"></script>
     <script src="assets/js/global.js"></script>
+
+    <!-- Syntax Highlighter -->
+
+    <script src="http://skyux.com/libraries/syntax-highlighter/syntax-highlighter.js"></script>    
+    <link rel="stylesheet" href="http://skyux.com/libraries/syntax-highlighter/syntax-highlighter.css">
 
     <script>
         $(window).load(function(){
@@ -1148,7 +2564,7 @@
 
                 function flyoutEvents(){
                     $('body').toggleClass('flyout-active');
-                    $('#flyout-trigger-demo').toggleClass('nav-trigger-animate');
+                    $('#flyout-trigger-demo').toggleClass('active');
                     $('#site-overlay').toggleClass('visible');
                 }
 
@@ -1171,15 +2587,8 @@
                 toggleFlyout();
             });
 
-            //-----------------------------------------------------------------
-            // Demo Tooltip
-            //-----------------------------------------------------------------
-
-            $(function() {
-                $('a[rel*="tooltip"]').tipsy({
-                    fade: true, 
-                    gravity: 's'
-                });
+            $('#flyout-nav a, .site-overlay').click(function() {
+                $('#flyout-trigger-demo').toggleClass('active');
             });
 
         }); // end window.load
