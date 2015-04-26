@@ -18,6 +18,7 @@ ol.clear {
 	@extend ul.reset;
 	li {
 		line-height: 1.8;
+		margin-bottom: 0 !important;
 		&:before {
 			content: "\f138";
 			font-family: FontAwesome;
