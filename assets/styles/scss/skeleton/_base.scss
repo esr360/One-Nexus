@@ -23,6 +23,15 @@ body {
     font-size: $base-font-size;
 }
 
+a {
+    color: $brand-1;
+    transition: 0.4s;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 //-----------------------------------------------------------------
 // Structure
 //-----------------------------------------------------------------
@@ -31,10 +40,6 @@ body {
 	width: $base-width;
 	max-width: $max-width;
 	margin: 0 auto;
-}
-
-.small-container {
-    width: $small-container-width;
 }
 
 .site-overlay {
@@ -61,23 +66,16 @@ body {
 //-----------------------------------------------------------------
 
 * {
-    box-sizing: border-box;
+    &, &:before, &:after {
+        box-sizing: border-box;
+    }
 }
 
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
-h6, 
-p, 
-ul, 
-ol, 
-figure, 
+h1, h2, h3, h4, h5, h6, 
+p, ul, ol, 
+fieldset, legend, 
+figure, table, 
 pre, 
-table, 
-fieldset, 
-legend, 
 hr {
     margin: $base-margin 0;
     &:first-child {
@@ -90,6 +88,6 @@ hr {
 
 ::selection {
 	background-color: $brand-1;
-	color: #fff;
+	color: $white;
 	text-shadow: none;
 }
