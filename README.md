@@ -11,7 +11,6 @@ One Nexus was created by [Edmund Reed](http://edmundreed.co.uk/), a UK based UX 
 
 Visit the [One Nexus homepage](http://www.onenexusproject.com/) for more help and information.
 
----
 
 # One Nexus Documentation
 
