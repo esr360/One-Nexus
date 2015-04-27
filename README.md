@@ -271,7 +271,7 @@ One of the key features of One Nexus is the responsive grid system we provide. I
 #### Grid Structure
 
 ```html
-assets > styles > scss > skeleton > _variables.scss
+assets > styles > scss > skeleton > _config.scss
 ```
 
 This is where you set the main structural variables for your project's framework. Change these to any value you desire, or leave them as they are - the default values work well in most cases.
@@ -308,7 +308,7 @@ The gutter is the gap between each column. As our grid system uses percentage wi
 
 #### Example Using Default Values
 
-It is typical to wrap your website's content in a main **container** or wrapper class. The container class uses the width set by the **$main-width** variable.
+It is typical to wrap your website's content in a main **container** or wrapper class. The container class uses the width set by the **$base-width** variable.
 
 ```html
 <div class="container">
@@ -419,6 +419,8 @@ You can also set the vertical aligning of your columns (relative to the tallest 
 * va-middle
 * va-bottom
 
+> By default, the columns have their vertical align set to top.
+
 ```html
 <div class="row">
 	<div class="span-3 va-top">
@@ -435,8 +437,6 @@ You can also set the vertical aligning of your columns (relative to the tallest 
 	</div>
 </div>
 ```
-
-By default, the columns have their vertical align set to top.
 
 ##### Flow Columns
 
@@ -728,7 +728,7 @@ One Nexus comes ready to use with Google Fonts out of the box, allowing you to q
 One of the most useful features of Sass is the ability to pass variables in your CSS. By using variables we can configure our application in many ways. One Nexus contains all of its variables in one convenient location. The config SCSS partial is located in the **skeleton** folder:
 
 ```html
-assets > styles > scss > skeleton > _variables.scss
+assets > styles > scss > skeleton > _config.scss
 ```
 
 #### Skeleton
@@ -755,7 +755,7 @@ This is where you set the width for the main site container - pretty self-explan
 
 ##### Max Width ($max-width)
 
-This variable sets the maximum allowed width for the main site container, and will override the previous **$main-width** variable where applicable. It is recommended you use a high percentage for this value, as this is what stops the page from being too wide on smaller resolutions.
+This variable sets the maximum allowed width for the main site container, and will override the previous **$base-width** variable where applicable. It is recommended you use a high percentage for this value, as this is what stops the page from being too wide on smaller resolutions.
 
 ##### Columns ($columns)
 
@@ -2683,9 +2683,7 @@ Modules
 @import "modules/scroll-top";
 ```
 
----
-
-### Nested Modules
+#### Nested Modules
 
 It is possible to nest smaller modules within larger modules. Sometimes this may be done out of personal preference, and in few cases may even be beneficial. The below is an example of the latter from the **main-nav** module from One Nexus. This module also contains nested within it the **dropdown-nav** module.
 
@@ -2706,9 +2704,7 @@ It is possible to nest smaller modules within larger modules. Sometimes this may
 
 > Because the nested module is being included in the main module, it does not need to be included in **app.scss**.
 
----
-
-### Creating a Mobile-First Responsive Module
+#### Creating a Mobile-First Responsive Module
 
 Below is an example of how to build a mobile first responsive module using our defined breakpoints. The concept is simple; start out with the core CSS for the module and then gradually add styles for larger resolutions.
 
