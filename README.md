@@ -528,7 +528,7 @@ To create a row of block columns, simply add the **block-columns** class to your
 </div>
 ```
 
-##### Custom Column Collapsing
+#### Custom Column Collapsing
 
 By default the columns collapse to 100% width at **$breakpoint-3** (**$col-collapse**) so that they are stacked vertically. Sometimes you may have a row of colums which you need to collapse at a larger or smaller resolution than others. Setting the width to collapse your row of columns is made simple with One Nexus.
 
@@ -622,10 +622,10 @@ Some of the [UI Elements](http://onenexusproject.com/documentation/elements/) an
 
 * [Accorsions](http://www.onenexusproject.com/documentation/elements/accordions)
 * [Carousels](http://www.onenexusproject.com/documentation/elements/carousels/)
+* [Flyout Navigation](http://www.onenexusproject.com/documentation/flyout-nav/)
 * [Modals](http://www.onenexusproject.com/documentation/elements/modal-windows/)
 * [Tabs](http://www.onenexusproject.com/documentation/elements/tabs/)
 * [Tooltips](http://www.onenexusproject.com/documentation/elements/tooltips/)
-* [Flyout Navigation](http://www.onenexusproject.com/documentation/flyout-nav/)
 
 #### Global Scripts
 
@@ -711,7 +711,7 @@ $(function() {
 
 Everyone has their own way of doing things, so we don't want to dictate how to organise your project. That's why all of our assets are un-minified by default - so you can have complete control over your project. We do not recommend serving un-minified assets (including both scripts and CSS) to your users as it can have negative impacts on performance. This is why we strongly suggest that you minify all scripts and CSS for production sites, leaving the un-minified assets for development purposes.
 
-Whilst we strongly recommend minifying your scripts and CSS, it is by no means required if you are not comfortable doing so.
+> Whilst we strongly recommend minifying your scripts and CSS, it is by no means required if you are not comfortable doing so.
 
 ---
 
@@ -719,7 +719,7 @@ Whilst we strongly recommend minifying your scripts and CSS, it is by no means r
 
 One Nexus comes ready to use with Google Fonts out of the box, allowing you to quickly and easily manage your website's typography. Your project is by no menas limited to using only Google Fonts, they are only included as a quick starting point, and switching them out for other web fonts or a self hosted soltion is simple.
 
-[Visit the google fonts homepage](https://www.google.com/fonts#).
+> [Visit the google fonts homepage](https://www.google.com/fonts#).
 
 ## Skeleton
 
@@ -730,7 +730,6 @@ One of the most useful features of Sass is the ability to pass variables in your
 ```html
 assets > styles > scss > skeleton > _variables.scss
 ```
----
 
 #### Skeleton
 
@@ -766,13 +765,11 @@ This is where you can set the number of columns for your grid. Twelve is popular
 
 The gutter is the gap between each column. As our grid system uses percentage widths, the value you enter here must be a percentage and will not work if you enter a px value.
 
----
-
 #### Breakpoints
 
 Breakpoints are what allow you to style your CSS for a specific selection of browser widths. They work by using **CSS media queries**. You can set as many of these as you like and set them to whatever values you think are suitable for your project.
 
-By default each column expands to 100% width when the resolution is less than **$breakpoint-3**.
+> By default each column expands to 100% width when the resolution is less than **$breakpoint-3**.
 
 ```css
 //-----------------------------------------------------------------
@@ -801,13 +798,11 @@ $breakpoints: (
 
 The **$breakpoints** Sass map is used in various mixins to generate the different types of columns and rows. The **$col-collapse** variable controls the default width at which the columns vertically stack on top of each other.
 
----
-
 #### Typography
 
 The tyography variables control your project's fonts and font sizes. By default two font-families and six font-sizes are provided.
 
-Only the font names are defined here. You still need to load the actual [font files](http://onenexusproject.com/documentation/elements/fonts/).
+> Only the font names are defined here. You still need to load the actual [font files](http://onenexusproject.com/documentation/elements/fonts/).
 
 ```css
 //-----------------------------------------------------------------
@@ -832,8 +827,6 @@ $font-size-6           :   2rem;
 
 //-----------------------------------------------------------------
 ```
-
----
 
 #### Color Palette
 
@@ -924,8 +917,6 @@ This palette contains the validation colors for the [HTML5 Forms](http://onenexu
 
 This palette can be used in conjunction with the [Font Awesome Icons](http://onenexusproject.com/documentation/elements/icons/) to create your set of social-networking buttons.
 
----
-
 #### Theming
 
 This is where all your theme-specific variables should be placed. By default we only provide you with a select handful of common/useful ones to get going.
@@ -951,14 +942,13 @@ $heading-color         :   $dark-grey;
 
 This is where all the core CSS for your project is placed. It contains the main structural CSS as well as some other useful snippets. The base SCSS partial is located in the **skeleton** folder:
 
-
 ```javascript
 assets > styles > scss > skeleton > _base.scss
 ```
 
 ##### The CSS
 
-We have broken the CSS down to individual chunks so we can analyse it more easily. Below you will find everything that appears in the default **_base.scss** partial, with a breif overview about what it does and why we've included it.
+We have broken the CSS down to individual chunks so we can analyse it more easily. Below you will find everything that appears in the default **_base.scss** file, with a breif overview about what it does and why we've included it.
 
 ```css
 html, body {
@@ -1060,7 +1050,7 @@ This is the opaque mask overlay that is used to enhance the [Flyout Nav module](
 }
 ```
 
-The famous [* { box-sizing: border-box }](http://www.paulirish.com/2012/box-sizing-border-box-ftw/) has been included by default with One Nexus. This is to ensure that all CSS values for height and width are not affected by padding.
+The famous [* { box-sizing: border-box }](http://www.paulirish.com/2012/box-sizing-border-box-ftw/) has been included by default with One Nexus. This is to ensure that all CSS values for **height** and **width** are not affected by padding.
 
 ---
 
@@ -1108,7 +1098,7 @@ assets > styles > scss > skeleton > _grid.scss
 
 ##### The CSS
 
-We have broken the CSS down to individual chunks so we can analyse it more easily. Below you will find everything that appears in the default **_grid.scss** partial, with a breif overview about what it does and why we've included it.
+We have broken the CSS down to individual chunks so we can analyse it more easily. Below you will find everything that appears in the default **_grid.scss** file, with a breif overview about what it does and why we've included it.
 
 ---
 
@@ -1545,7 +1535,7 @@ The above classes can be used to quickly and simply control the horizontal align
 
 The above code generates a set of classes using using the [breakpoint variables](http://www.onenexusproject.com/documentation/features/responsive-grid-system/#breakpoints). These classes let you hide or show certain elements depending on the resolution. By default the above function generates two sets of six classes.
 
-### Example CSS Output
+##### Example CSS Output
 
 ```css
 /* Show only when resolution is at most X
@@ -1589,13 +1579,11 @@ The above code generates a set of classes using using the [breakpoint variables]
 
 **Ex:** to show an element **only** when the resolution is **at least** the value defined by the **$breakpoint-3** variable, we would use the **.min-bp3** class.
 
----
-
-### Using Helper Classes Semantically
+#### Using Helper Classes Semantically
 
 The easiest way to use these helper classes is by simply adding them straight to your HTML element, which is fine in most cases, but may result in [unsemantic code](http://css-tricks.com/semantic-class-names/). It is possible to use the helper classes within another, semantically named class by [extending them](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#extend) with SASS.
 
-#### Example
+##### Example
 
 ```css
 /*********************
@@ -1645,13 +1633,17 @@ This results is cleaner and more semantic HTML markup, and we recommend using al
 
 ### Utilities
 
+```html
+assets > styles > scss > skeleton > _utilities.scss
+```
+
 The provided utilities are used to offer reusable support in your styles. By default there are only a couple of mixins but this file is useful to store any other mixins you may need for your project.
 
 #### Placeholder
 
 The **placeholder** mixin is used to style the **placeholder** HTML5 input attribute.
 
-We don't provide any other vendor-prefixed mixins as we recommend using [Autoprefixer](https://github.com/postcss/autoprefixer) on your projects.
+> We don't provide any other vendor-prefixed mixins as we recommend using [Autoprefixer](https://github.com/postcss/autoprefixer) on your projects.
 
 ```css
 @mixin placeholder {
@@ -1734,7 +1726,7 @@ From the [H5BP documentation](https://github.com/h5bp/html5-boilerplate/blob/v4.
 
 ## UI Elements
 
-We see websites as being made up of visual "elements". The styling of these elements plays as large part in creating the look and feel of your website. One Nexus comes with a load of pre-made common elements to help structure the UI of your project.
+We see websites as being made up of visual "elements". The styling of these elements plays as large part in creating the look and feel of your website. One Nexus comes with a generous amount of pre-made common elements to help structure the UI of your project.
 
 Each main element has its own Sass partial which contains all variations of the element (where applicable). Any given element can be found in the **elements** folder:
 
@@ -1790,7 +1782,7 @@ assets > styles > scss > elements > _accordions.scss
 ```
 
 ```html
-assets > ja > accordion.js
+assets > js > accordion.js
 ```
 
 The One Nexus accordions are built to be as dynamic as possible - meaning they do not require any specific markup or classes (other than the main **accordion** class on the parent) - they just need to be in the correct format and wrapped in a container with the **accordion class**. If you want a section to be open be default, you need to add the **active** class to the appropriate tags (see below).
@@ -1911,7 +1903,7 @@ One Nexus makes it easy to create your own custom reusable buttons, and comes wi
 
 ##### Color Variants
 
-If you add more brand colors in the [config](http://onenexusproject.com/documentation/skeleton/config/) file, they will automatically be available to use in your buttons.
+> If you add more brand colors in the [config](http://onenexusproject.com/documentation/skeleton/config/) file, they will automatically be available to use in your buttons.
 
 * -brand-1
 * -brand-2
@@ -1961,7 +1953,7 @@ assets > styles > scss > elements > _carousels.scss
 ```
 
 ```html
-assets > ja > carousel.js
+assets > js > carousel.js
 ```
 
 The popular [Owl-Carousel](http://www.owlcarousel.owlgraphic.com/) jQuery plugin is used for carousels - visit their homepage for the full documentation, only the most basic example will be covered here. To create a basic carousel, create a container of similar elements (ie same HTML tag) and add the **carousel** class and assign a unique **ID** to the container. You then need to call the plugin on your container, as shown below.
@@ -2007,9 +1999,9 @@ $(document).ready(function() {
 }); // end document.ready  
 ```
 
-*Make sure to call the plugin inside a **document.ready** function as shown in the above example.*
+> Make sure to call the plugin inside a **document.ready** function as shown in the above example.
 
-*For a full list of available options for your carousel (which there's a lot of!) visit the [Owl-Carousel](http://owlgraphic.com/owlcarousel/) homepage.*
+> For a full list of available options for your carousel (which there's a lot of!) visit the [Owl-Carousel](http://owlgraphic.com/owlcarousel/) homepage.
 
 ---
 
@@ -2019,7 +2011,7 @@ $(document).ready(function() {
 assets > styles > scss > elements > _fonts.scss
 ```
 
-The actual font-family names are declared in the project's [config](http://www.onenexusproject.com/documentation/skeleton/config/) by default, but feel free to move them here.
+> The actual font-family names are declared in the project's [config](http://www.onenexusproject.com/documentation/skeleton/config/) by default, but feel free to move them here.
 
 ##### Adding/Replacing Fonts
 
@@ -2075,7 +2067,7 @@ assets > styles > scss > elements > _forms.scss
 
 One Nexus makes use of the new available HTML5 input attribute types as well as other new HTML5 features. These new elements will get ignored by older browser, and will render as plain text input fields. To create a form (or any form element), create a container with the **form** class.
 
-*Please note that the below examples are for visual demonstration only, and do not have any **name** or **ID** attributes.*
+> Please note that the below examples are for visual demonstration only, and do not have any **name** or **ID** attributes.
 
 ##### Basic Example
 
@@ -2364,11 +2356,9 @@ One Nexus comes equipped with the [Font Awesome](http://fortawesome.github.io/Fo
 assets > styles > scss > elements > _icons.scss
 ```
 
-*One Nexus references the [CDN version](http://www.bootstrapcdn.com/#fontawesome_tab) of Font Awesome by default, but also comes with an optional self hosted version.*
+> One Nexus references the [CDN version](http://www.bootstrapcdn.com/#fontawesome_tab) of Font Awesome by default, but also comes with an optional self hosted version.
 
-*One Nexus uses Font Awesome 4.3.0.*
-
----
+> One Nexus uses Font Awesome 4.3.0.
 
 ##### Single Icon Example
 
@@ -2376,8 +2366,6 @@ assets > styles > scss > elements > _icons.scss
 ```html
 <i class="fa fa-desktop"></i>
 ```
-
----
 
 ##### Using With Buttons
 
@@ -2482,7 +2470,7 @@ assets > styles > scss > elements > _modals.scss
 ```
 
 ```html
-assets > ja > modal.js
+assets > js > modal.js
 ```
 
 To create a modal popup, create your content inside an element with the **modal-content** class, and assign it a unique **ID**. To load the content in a modal popup, create an **anchor** tag with **rel="modal"** and **href="#YOURID"**, replacing **#YOURID** with the **ID** of your custom modal content.
@@ -2576,7 +2564,7 @@ To create a styled **table**, add the **table** class to your main table element
 </table>
 ```
 
-Width fixed-layout@
+Width fixed-layout
 
 ```html
 <table class="table-fixed">
@@ -2593,7 +2581,7 @@ assets > styles > scss > elements > _element.scss
 ```
 
 ```html
-assets > ja > tabs.js
+assets > js > tabs.js
 ```
 
 Creating a set of tabs requires two things; a tab navigation , and the tab contents. The tab navigation is an unordered list with the **nav** class. Next, create a set of **section** tags, one for each tab item. You can than put any HTML content you desire for your tabs. To choose the default **active** tab, add the **active** class to the appropriate tags (see below). Finally, all of that needs to be wrapped up in a container with the **tabs** class.
@@ -2636,7 +2624,7 @@ assets > styles > scss > elements > _tooltips.scss
 ```
 
 ```html
-assets > ja > tooltip.js
+assets > js > tooltip.js
 ```
 
 ```html
@@ -2716,7 +2704,7 @@ It is possible to nest smaller modules within larger modules. Sometimes this may
 } // end .main-nav 
 ```
 
-Because the nested module is being included in the main module, it does not need to be included in **app.scss**.
+> Because the nested module is being included in the main module, it does not need to be included in **app.scss**.
 
 ---
 
@@ -2807,7 +2795,7 @@ The **header** module by default consists of the [logo](http://onenexusproject.c
 </header>
 ```
 
-*For semantic purposes we recommend using the **&#60;header>** HTML5 element for your **header**'s wrapper element.*
+> For semantic purposes we recommend using the **&#60;header>** HTML5 element for your **header**'s wrapper element.
 
 ---
 
@@ -2842,7 +2830,7 @@ assets > styles > scss > modules > _footer.scss
 </footer>
 ```
 
-*For semantic purposes we recommend using the **&#60;footer>** HTML5 element for your footer's wrapper element.*
+> For semantic purposes we recommend using the **&#60;footer>** HTML5 element for your footer's wrapper element.
 
 ---
 
@@ -2852,9 +2840,7 @@ assets > styles > scss > modules > _footer.scss
 assets > styles > scss > modules > _navigation.scss
 ```
 
-*This module also contains the **_dropdown-nav.scss** module.*
-
----
+> This module also contains the **_dropdown-nav.scss** module.
 
 The markup for the main navigation is a regular un-ordered list (which can accommodate an infinite number of sub-menus), wrapped up in an element with the **app-nav** class.
 
@@ -2896,7 +2882,7 @@ The markup for the main navigation is a regular un-ordered list (which can accom
 </nav>
 ```
 
-*For semantic purposes we recommend using the **&#60;nav>** HTML5 element for your **navigation**'s wrapper element.*
+> For semantic purposes we recommend using the **&#60;nav>** HTML5 element for your **navigation**'s wrapper element.
 
 ---
 
@@ -2906,7 +2892,7 @@ The markup for the main navigation is a regular un-ordered list (which can accom
 assets > styles > scss > modules > _logo.scss
 ```
 
-#### Plain Text Logo
+##### Plain Text Logo
 
 ```html
 <div class="logo">
@@ -2914,7 +2900,7 @@ assets > styles > scss > modules > _logo.scss
 </div>
 ```
 
-#### Image Logo
+##### Image Logo
 
 ```html
 <div class="logo">
@@ -2945,7 +2931,7 @@ One Nexus comes with a basic breadcrumb module ready to build upon. The markup f
 </nav>
 ```
 
-*For semantic purposes we recommend using the **&lt;nav>** HTML5 element for your breadcrumb's wrapper element.*
+> For semantic purposes we recommend using the **&lt;nav>** HTML5 element for your breadcrumb's wrapper element.
 
 ---
 
@@ -2958,7 +2944,6 @@ assets > styles > scss > modules > _off-canvas.nav.scss
 ```html
 assets > js > flyout-navigation.js
 ```
----
 
 The flyout navigation is a **clone** of the **app-navigation**, which is located off-canvas by default. It's visibility can be toggled by creating an element with an ID of **flyout-trigger** (the navigation is toggled when this element is clicked). The reason this module has been included is because it is perfect for use on mobile devices, and we feel every website should have such a solution.
 
