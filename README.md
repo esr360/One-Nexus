@@ -1351,8 +1351,6 @@ From the [H5BP documentation](https://github.com/h5bp/html5-boilerplate/blob/mas
 
 The **hidden** class can be added to any element that you want to hide visually and from screen readers. It could be an element that will be populated and displayed later, or an element you will hide with JavaScript.
 
----
-
 #### .visually-hidden
 
 ```css
@@ -1388,9 +1386,6 @@ See also:
 * [Hiding content for accessibility](http://snook.ca/archives/html_and_css/hiding-content-for-accessibility)
 * [HTML5 Boilerplate - Issue #194](https://github.com/h5bp/html5-boilerplate/issues/194/)
 
-
----
-
 #### .invisible
 
 ```css
@@ -1406,8 +1401,6 @@ The **invisible** class can be added to any element that you want to hide visual
 As opposed to the **hidden** class that effectively removes the element from the layout, the **invisible** class will simply make the element invisible while keeping it in the flow and not affecting the positioning of the surrounding content.
 
 N.B. Try to stay away from, and don't use the classes specified above for [keyword stuffing](http://en.wikipedia.org/wiki/Keyword_stuffing) as you will harm your site's ranking!
-
----
 
 #### .clearfix
 
@@ -1431,10 +1424,7 @@ The **clearfix** class can be added to any element to ensure that it always full
 
 Over the years there have been many variants of the clearfix hack, but currently, we use the [micro clearfix](http://nicolasgallagher.com/micro-clearfix-hack/).
 
----
-
 #### Vertically Align Columns
-
 
 ```css
 .va-top {
@@ -1452,8 +1442,6 @@ The **vertical align** classes allow you to easily control the vertical alignmen
 
 [Click here](http://www.onenexusproject.com/documentation/features/responsive-grid-system/#advanced-usage) to read more about how to control the vertical alignment of your columns.
 
----
-
 #### Horizontal Rules
 
 ```css
@@ -1464,8 +1452,6 @@ hr.line {
 ```
 
 One Nexus comes with an alternative horizontal rule which is less intrusive than the default one, and can be used to easily section off the content of your page.
-
----
 
 #### Horizontal Aligning
 
@@ -1492,8 +1478,6 @@ One Nexus comes with an alternative horizontal rule which is less intrusive than
 The above classes can be used to quickly and simply control the horizontal alignment of your elements.
 
 [Click here](http://onenexusproject.com/documentation/features/responsive-grid-system/#anchor-horizontal-aligning) to read more about how to control the horizontal alignment of your columns.
-
----
 
 #### Responsive Visibility
 
