@@ -9,7 +9,7 @@ One Nexus was created by [Edmund Reed](http://edmundreed.co.uk/), a UK based UX 
 * [Modernizr](https://github.com/esr360/One-Nexus#html5-boilerplate)
 * ...and more
 
-Visit the [One Nexus homepage](http://www.onenexusproject.com/) for more help and information.
+> Visit the [One Nexus homepage](http://www.onenexusproject.com/) for more help and information.
 
 
 # One Nexus Documentation
