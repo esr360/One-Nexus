@@ -20,4 +20,8 @@
 		opacity: 1;
 	}
 
+	@media (min-width: $breakpoint-5) {
+		display: block;
+	}
+
 } // end .scroll-top
