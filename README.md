@@ -1101,7 +1101,7 @@ assets > styles > scss > skeleton > _grid.scss
 
 We have broken the CSS down to individual chunks so we can analyse it more easily. Below you will find everything that appears in the default **_grid.scss** file, with a breif overview about what it does and why we've included it.
 
----
+###### Column Row
 
 ```css
 .row { 
@@ -1131,7 +1131,7 @@ We have broken the CSS down to individual chunks so we can analyse it more easil
 
 This code may look obscure and awkward, but it is the magic that allows us to use the **inline-block** property for our columns. By default, adding **display: inline-block** to an element causes a natural [whitespace](http://css-tricks.com/fighting-the-space-between-inline-block-elements/) to appear between each element, which can vary in width from font to font and browser to browser. Indeed, this has caused [many people many problems](http://stackoverflow.com/search?q=inline-block+column), and there are plenty of go-to [hacky and impractical](http://davidwalsh.name/remove-whitespace-inline-block) work arounds, none of which are really suitble for a production environment. However, the above code allows for the use of completely usable and functional columns which use **inline-block** and have no **white-space**. And to top it all off, it works on all browsers, **including Internet Explorer 6**!
 
----
+###### Single Column
 
 ```css
 [class*="span"] {
@@ -1147,7 +1147,7 @@ This code may look obscure and awkward, but it is the magic that allows us to us
 
 This is the CSS for our individual columns. We add a display of **inline-block** so that they align next to each other, and set their vertical-align to **top**. We add a gutter between our columns by adding a **margin-left** using the value defined by the [$gutter variable](http://www.onenexusproject.com/documentation/skeleton/config/), and then remove it from the first column (as it should sit flush with the container).
 
----
+###### Column Width
 
 ```css
 @for $i from 1 through $columns {
@@ -1158,8 +1158,6 @@ This is the CSS for our individual columns. We add a display of **inline-block**
 ```
 
 This beautiful equation calculcates and generates the CSS for each column width. It uses the **$columns** and **$gutter** [variables](http://www.onenexusproject.com/documentation/skeleton/variables/) to create the grid-system, and will create a grid for whatever values you set them as.
-
----
 
 ###### Flow Columns
 
