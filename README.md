@@ -27,7 +27,7 @@ For a more complete experience, visit the official [One Nexus documentaion](http
     	* [Grid Structure](https://github.com/esr360/One-Nexus#grid-structure)
         * [Example](https://github.com/esr360/One-Nexus#example-using-default-values)
         * [Breakpoints](https://github.com/esr360/One-Nexus#breakpoints)
-        * [Column Typese](https://github.com/esr360/One-Nexus#column-types)
+        * [Column Types](https://github.com/esr360/One-Nexus#column-types)
         	* [Regular Columns](https://github.com/esr360/One-Nexus#regular-columns)
         	* [Flow Columns](https://github.com/esr360/One-Nexus#flow-columns)
         	* [Magic Columns](https://github.com/esr360/One-Nexus#magic-columns)
