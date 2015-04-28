@@ -1337,8 +1337,6 @@ One of the benefits of the [HTML5 Boilerplate](http://html5boilerplate.com/) (wh
 assets > styles > scss > skeleton > _helpers.scss
 ```
 
----
-
 #### .hidden
 
 ```css
