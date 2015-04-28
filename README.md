@@ -276,17 +276,17 @@ assets > styles > scss > skeleton > _config.scss
 This is where you set the main structural variables for your project's framework. Change these to any value you desire, or leave them as they are - the default values work well in most cases.
 
 ```css
-/******************************************************************
-Skeleton
-******************************************************************/
+//-----------------------------------------------------------------
+// Skeleton
+//-----------------------------------------------------------------
 
-$base-width       :   1200px;
-$max-width        :   90%;
+$base-width            :   1200px;
+$max-width             :   90%;
 
-$columns          :   12;
-$gutter           :   2.5%;
+$columns               :   12;
+$gutter                :   2.5%;
 
-/*****************************************************************/
+//-----------------------------------------------------------------
 ```
 
 ##### Base Width ($base-width)
