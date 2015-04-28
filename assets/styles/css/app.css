@@ -2373,3 +2373,8 @@ Modules
   text-decoration: none;
   opacity: 1;
 }
+@media (min-width: 1400px) {
+  .scroll-top {
+    display: block;
+  }
+}
