@@ -949,6 +949,8 @@ assets > styles > scss > skeleton > _base.scss
 
 We have broken the CSS down to individual chunks so we can analyse it more easily. Below you will find everything that appears in the default **_base.scss** file, with a breif overview about what it does and why we've included it.
 
+###### Reset
+
 ```css
 html, body {
 	padding: 0;
@@ -958,7 +960,7 @@ html, body {
 
 We remove any default **padding** and **margins** applied by the browser to the **html** and **body** elements.
 
----
+###### Prevent Horizontal Scroll
 
 ```css
 html {
@@ -968,7 +970,7 @@ html {
 
 We set the HTML element to **overflow-x: hidden** to hide any unwated horizontal scroll.
 
----
+###### Body Element
 
 ```css
 body {
@@ -987,7 +989,7 @@ This is where we set the main styling for the **body** element; we set the typog
 * $background-color
 * $base-font-szize
 
----
+###### Hyperlinks
 
 ```css
 a {
@@ -1002,7 +1004,7 @@ a {
 
 This is where we style our basic **hyperlinks**/**anchor** tags. We set their **color**, remove the default **text-decoration** of **underline** and apply it back when the elment is hovered using a transition of **0.4s**.
 
----
+###### Container
 
 ```css
 .container {
@@ -1014,7 +1016,7 @@ This is where we style our basic **hyperlinks**/**anchor** tags. We set their **
 
 This is our main **container** element. We set the **width** and **max-width** using our [variables](http://www.onenexusproject.com/documentation/skeleton/variables/), and horizontally center the container in the page with **margin: 0 auto**.
 
----
+###### Site Overlay
 
 ```css
 .site-overlay {
@@ -1039,7 +1041,7 @@ This is our main **container** element. We set the **width** and **max-width** u
 
 This is the opaque mask overlay that is used to enhance the [Flyout Nav module](http://onenexusproject.com/documentation/modules/flyout-nav).
 
----
+###### Box-Sizing
 
 ```css
 * {
@@ -1051,7 +1053,7 @@ This is the opaque mask overlay that is used to enhance the [Flyout Nav module](
 
 The famous [* { box-sizing: border-box }](http://www.paulirish.com/2012/box-sizing-border-box-ftw/) has been included by default with One Nexus. This is to ensure that all CSS values for **height** and **width** are not affected by padding.
 
----
+###### Vertical Rhythm
 
 ```css
 h1, h2, h3, h4, h5, h6, 
@@ -1072,7 +1074,7 @@ hr {
 
 The above code tackles the issue of the [spacing above and below modules](http://css-tricks.com/spacing-the-bottom-of-modules/). Generally, we want the majority of our HTML elements that form the main content to be equally spaced between each other in an intuitive manner. This means no spacing at the very top of the content, and none at the bottom, but an equal space between each main element. The above code does just that, and takes advantage of the collapsing behaviour of margins.
 
----
+###### Highlighted Text
 
 ```css
 ::selection {
