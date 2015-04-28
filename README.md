@@ -1275,7 +1275,7 @@ The bulk of the Adaptive Columns functionality is handled by the [Carousel](http
 
 This code allows you to create [block columns](http://onenexusproject.com/documentation/features/responsive-grid-system/#anchor-block-columns) in your project. It's amazingly simple how it works, it simply adds the **display: table-cell** property to each column in the row, which removes the gutter and makes them all equal height.
 
-##### Column Collapsing
+###### Column Collapsing
 
 ```css
 .row {
