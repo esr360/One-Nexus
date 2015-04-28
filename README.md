@@ -1194,8 +1194,6 @@ This beautiful equation calculcates and generates the CSS for each column width.
 
 Flow Columns are laid out slightly differently to regular columns. In order for the columns to sit flush with the container, rather than removing the left margin from the first-child we add a negative left margin of equal value to the entire row to displace the column margin, and add this width back to the row to make up for the lost space.
 
----
-
 ###### Magic Columns
 
 ```css
@@ -1228,8 +1226,6 @@ Flow Columns are laid out slightly differently to regular columns. In order for 
 
 Magic Columns work by using the **nth-last-child** CSS3 selector. By using this selector along with the **general sibling combinator** (~), we can create sets of columns with equal width, depending on how many columns (or siblings) the row has.
 
----
-
 ###### Adaptive columns
 
 ```css
@@ -1255,8 +1251,6 @@ Magic Columns work by using the **nth-last-child** CSS3 selector. By using this 
 
 The bulk of the Adaptive Columns functionality is handled by the [Carousel](http://onenexusproject.com/documentation/elements/carousels/) plugin (Owl-Carousel). The only custom CSS we use is to ensure that the columns are the correct width within their dynamically created carousel column wrappers, and ensure that the columns have no left margin, as this is now handled by the carousel plugin.
 
----
-
 ###### Block Columns
 
 ```css
@@ -1281,9 +1275,7 @@ The bulk of the Adaptive Columns functionality is handled by the [Carousel](http
 
 This code allows you to create [block columns](http://onenexusproject.com/documentation/features/responsive-grid-system/#anchor-block-columns) in your project. It's amazingly simple how it works, it simply adds the **display: table-cell** property to each column in the row, which removes the gutter and makes them all equal height.
 
----
-
-###### Column Collapsing
+##### Column Collapsing
 
 ```css
 .row {
