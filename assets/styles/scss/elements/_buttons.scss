@@ -6,21 +6,23 @@
 [class*="button-"] {
 
 //-----------------------------------------------------------------
-// Basic Structure
+// Core Layout
 //-----------------------------------------------------------------
 
 	background: $grey;
+	color: $white;
 	display: inline-block;
 	vertical-align: middle;
-	padding: 0 1em;
-	color: $white;
-	cursor: pointer;
-	text-decoration: none;
+	padding: 0 1.2em;
 	line-height: 2.4em;
 	transition: 0.4s;
-    border: 2px solid transparent;
+    border: 1px solid;
+    border-color: transparent;
+	cursor: pointer;
+	text-decoration: none;
 	&:hover {
 		background: darken($grey, 10%);
+		color: $white;
 		text-decoration: none;
 	}
 
@@ -47,8 +49,11 @@
 
 	&[class*="-border"] {
 		background: none;
-		border: 2px solid;
 		color: $grey;
+		border-color: $grey;
+		&:hover {
+			color: $white;
+		}
 	}
 
 	&[class*="-disabled"] {
