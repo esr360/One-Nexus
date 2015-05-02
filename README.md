@@ -177,7 +177,7 @@ One Nexus comes with a sample **index.html** file which contains a basic example
 	    <meta name="HandheldFriendly" content="True">
 	    <meta name="MobileOptimized" content="320">
 
-	    <!-- Icons & fFvicons -->
+	    <!-- Icons & Favicons -->
 	    <link rel="apple-touch-icon" href="assets/images/apple-icon-touch.png">
 	    <link rel="icon" href="assets/images/favicon.png">
 	    <!--[if IE]>
@@ -484,7 +484,19 @@ Flow columns work exactly like regular columns except that each row of columns d
 
 ##### Adaptive Columns
 
-Adaptive columns, insteadng of stacking vertically on-top of each other on small resolutions, transform into a carousel when the number of columns in the row exceeds the limit. They work off the [Owl-Carousel](http://www.owlcarousel.owlgraphic.com/) plugin, and are a great way to present your information to users on mobiles, allowing them to swipe horizontally instead of vertically.
+```html
+assets > js > adaptive-columns.js
+```
+
+Adaptive columns, instead of stacking vertically on-top of each other on small resolutions, transform into a carousel when the number of columns in the row exceeds the limit. They work off the [Owl-Carousel](http://www.owlcarousel.owlgraphic.com/) plugin, and are a great way to present your information to users on mobiles, allowing them to swipe horizontally instead of vertically.
+
+A row of adaptive columns can contain any number of columns, but only the number you specify will be visible in the carousel container by default. To create a row of adaptive columns, you need to add the following 3 classes to your row:
+
+* **adaptive-columns** - this is required to style the individual columns
+* **span-x** - this is number of columns your row should show by default; replace <b>x</b> with any number between **1** and **12**.
+* **carousel** - this is required for the carousel functonality
+
+> The adaptive columns do **not** work off the **$columns** variable; they are hard-coded to allow a maximum of <b>12</b> columns.
 
 ```html
 <!-- this row will turn into a carousel on mobiles/tablets -->
@@ -1285,7 +1297,7 @@ This code allows you to create [block columns](http://onenexusproject.com/docume
 //-----------------------------------------------------------------
 
 	@media (max-width: $col-collapse) {
-		&:not([class*="bp"]) {
+		&:not([class*="break-"]) {
 			> [class*="span"] {
 				margin-left: 0;
 				width: 100%;
@@ -1323,7 +1335,7 @@ This code allows you to create [block columns](http://onenexusproject.com/docume
 } // end .row
 ```
 
-This code allows for the [custom column collapsing](http://www.onenexusproject.com/documentation/features/responsive-grid-system/#advanced-usage) feature, and also sets the default point at which the columns should collapse to 100% width and stack on top of each other. The equation pulls the values from the [$breakpont variables](http://www.onenexusproject.com/documentation/skeleton/variables/) to create a class for each breakpoint. 
+This code allows for the [custom column collapsing](http://www.onenexusproject.com/documentation/features/responsive-grid-system/#anchor-custom-column-collapsing) feature, and also sets the default point at which the columns should collapse to 100% width and stack on top of each other. The equation pulls the values from the [$breakpont variables](http://www.onenexusproject.com/documentation/skeleton/variables/) to create a class for each breakpoint. 
 
 ---
 
@@ -1436,7 +1448,7 @@ Over the years there have been many variants of the clearfix hack, but currently
 
 The **vertical align** classes allow you to easily control the vertical alignment of your columns. Simply add the class to each column in a row that you want to edit the vertical alignment of.
 
-[Click here](http://www.onenexusproject.com/documentation/features/responsive-grid-system/#advanced-usage) to read more about how to control the vertical alignment of your columns.
+[Click here](http://www.onenexusproject.com/documentation/features/responsive-grid-system/#anchor-vertical-align) to read more about how to control the vertical alignment of your columns.
 
 #### Horizontal Rules
 
@@ -1642,7 +1654,7 @@ input {
 This mixin is used to **vertically center** any element using the method popularized by [Zerosizthree](http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/).
 
 ```css
-@mixin vam ($position) {
+@mixin vertical-center ($position) {
     position: $position;
     top: 50%;
     transform: translateY(-50%);
@@ -1651,17 +1663,17 @@ This mixin is used to **vertically center** any element using the method popular
 
 ##### Usage
 
-This mixin allows you to set the **position** attribute when calling it. Normally, depending on your context, yo would use either **relative** or **absolute** here.
+This mixin allows you to set the **position** attribute when calling it. Normally, depending on your context, you would use either **relative** or **absolute** here.
 
 ```css
 .container {
-	@include vam(relative);
+	@include vertical-center(relative);
 }
 ```
 
 ```css
 .container {
-	@include vam(absolute);
+	@include vertical-center(absolute);
 }
 ```
 
@@ -2348,6 +2360,62 @@ One of the most common use cases of Font Awesome is for creating buttons with ic
 </a>
 ```
 
+##### Styled Icons
+
+To create a styled icon, create a wrapper element with the **icon** class, and place the regular Font Awesome code within. You can then chain extra paremeters onto the end of your class to add further styles.
+
+```html
+<a class="icon" href="#">
+    <i class="fa fa-facebook"></i>
+</a>
+```
+
+###### Color Variants
+
+> If you add more **brand** colors in the [config](http://onenexusproject.com/documentation/skeleton/config/) file, they will automatically be available to use in your buttons.
+
+* -brand-1
+* -brand-2
+* -brand-3
+
+```html
+<a class="icon-brand-1" href="#">
+    <i class="fa fa-desktop"></i>
+</a>
+```
+
+###### Size Variants
+
+* -small
+* -large
+
+```html
+<a class="icon-small" href="#">
+    <i class="fa fa-facebook"></i>
+</a>
+```
+
+###### Style Variants
+
+* -border
+* -round
+* -circle
+
+```html
+<a class="icon-round" href="#">
+    <i class="fa fa-linkedin"></i>
+</a>
+```
+###### Combining Parameters
+
+It is possible to combine parameters in whatever combination or order you desire to create a whole new style:
+
+```html
+<a class="icon-large-brand-2-circle-border" href="#">
+    <i class="fa fa-facebook"></i>
+</a> 
+```
+
 ---
 
 #### Images
@@ -2656,10 +2724,10 @@ Modules
 
 #### Nested Modules
 
-It is possible to nest smaller modules within larger modules. Sometimes this may be done out of personal preference, and in few cases may even be beneficial. The below is an example of the latter from the **main-nav** module from One Nexus. This module also contains nested within it the **dropdown-nav** module.
+It is possible to nest smaller modules within larger modules. Sometimes this may be done out of personal preference, and in few cases may even be beneficial. The below is an example of the latter from the **main nav** module from One Nexus. This module also contains nested within it the **dropdown-nav** module.
 
 ```css
-.main-nav {
+.app-nav {
 
 	ul {
 	    li {
@@ -2670,7 +2738,7 @@ It is possible to nest smaller modules within larger modules. Sometimes this may
 	    }
 	}
 
-} // end .main-nav 
+} // end .app-nav 
 ```
 
 > Because the nested module is being included in the main module, it does not need to be included in **app.scss**.
