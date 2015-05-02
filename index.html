@@ -13,7 +13,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
-    <!-- Icons & fFvicons -->
+    <!-- Icons & Favicons -->
     <link rel="apple-touch-icon" href="assets/images/apple-icon-touch.png">
     <link rel="icon" href="assets/images/favicon.png">
     <!--[if IE]>
@@ -40,7 +40,7 @@
                         </a>
                     </div>
                     <!-- Main-Nav -->
-                    <nav class="main-nav">
+                    <nav class="app-nav" id="app-nav">
                         <ul>
                             <li>
                                 <a href="#">Header Link 1</a>
@@ -98,34 +98,43 @@
             </div>
         </footer>
 
-    </div><!-- End #site-content -->
+    </div><!-- end #site-content -->
+
+    <!-- UI -->
 
     <!-- Scroll to top icon-->
-    <a class="fa fa-angle-up scroll-top" href="#site-content"></a> 
+    <a class="icon-border scroll-top" href="#site-content">
+        <i class="fa fa-angle-up"></i>
+    </a> 
 
-    <!-- Off Canvas Menu -->
-    <nav class="off-canvas-nav">
-        <div id="off-canvas-nav"></div>
-    </nav>
+    <!-- Flyout Nav Trigger -->
+    <span class="icon-brand-1 flyout-trigger max-break-3" id="flyout-trigger">
+        <i class="fa fa-bars nav-open"></i>
+        <i class="fa fa-times nav-close"></i>
+    </span>
+
+    <!-- Flyout Nav -->
+    <nav class="flyout-container" id="flyout"></nav>
 
     <!-- Site Overlay -->
-    <div class="site-overlay"></div>
+    <div class="site-overlay" id="site-overlay"></div>
 
-    <!-- Scripts -->
+    <!-- SCRIPTS -->
 
     <!-- jQuery -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
-    <!--<script src="assets/js/jquery.min.js"></script>-->
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>-->
+    <script src="assets/js/jquery.min.js"></script>
 
     <!-- Interactive Elements/Modules -->
     <script src="assets/js/accordion.js"></script>
     <script src="assets/js/carousel.js"></script>
     <script src="assets/js/modal.js"></script>
-    <script src="assets/js/off-canvas-nav.js"></script>
+    <script src="assets/js/flyout-navigation.js"></script>
     <script src="assets/js/tabs.js"></script>
     <script src="assets/js/tooltip.js"></script>
 
     <!-- General -->
+    <script src="assets/js/adaptive-columns.js"></script>
     <script src="assets/js/global.js"></script>
 
 </body>
