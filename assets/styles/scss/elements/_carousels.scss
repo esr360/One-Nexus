@@ -212,7 +212,7 @@
         .owl-next {
             float: none;
             opacity: 0.35;
-            @include vam(absolute);
+            @include vertical-center(absolute);
             &:hover {
                 opacity: 1;
             }
