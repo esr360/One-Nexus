@@ -586,11 +586,11 @@ hr:last-child {
 }
 
 @media (max-width: 940px) {
-  .row:not([class*="bp"]) > [class*="span"] {
+  .row:not([class*="break-"]) > [class*="span"] {
     margin-left: 0;
     width: 100%;
   }
-  .row:not([class*="bp"]).block-columns > [class*="span"] {
+  .row:not([class*="break-"]).block-columns > [class*="span"] {
     display: inline-block;
   }
 }
@@ -1062,19 +1062,21 @@ Elements
 .button,
 [class*="button-"] {
   background: #707070;
+  color: #ffffff;
   display: inline-block;
   vertical-align: middle;
-  padding: 0 1em;
-  color: #ffffff;
-  cursor: pointer;
-  text-decoration: none;
+  padding: 0 1.2em;
   line-height: 2.4em;
   transition: 0.4s;
-  border: 2px solid transparent;
+  border: 1px solid;
+  border-color: transparent;
+  cursor: pointer;
+  text-decoration: none;
 }
 .button:hover,
 [class*="button-"]:hover {
   background: #575757;
+  color: #ffffff;
   text-decoration: none;
 }
 .button[class*="-small"],
@@ -1093,8 +1095,12 @@ Elements
 .button[class*="-border"],
 [class*="button-"][class*="-border"] {
   background: none;
-  border: 2px solid;
   color: #707070;
+  border-color: #707070;
+}
+.button[class*="-border"]:hover,
+[class*="button-"][class*="-border"]:hover {
+  color: #ffffff;
 }
 .button[class*="-disabled"],
 [class*="button-"][class*="-disabled"] {
@@ -1666,17 +1672,23 @@ a .fa {
 
 .icon,
 [class*="icon-"] {
+  background: #707070;
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
   transition: 0.4s;
   height: 2em;
   width: 2em;
-  border: 0.125em solid;
-  background: #F62459;
+  border: 1px solid;
   border-color: transparent;
-  color: white;
-  text-align: center;
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
+}
+.icon:hover,
+[class*="icon-"]:hover {
+  background: #575757;
+  color: #ffffff;
+  text-decoration: none;
 }
 .icon .fa,
 [class*="icon-"] .fa {
@@ -1689,17 +1701,13 @@ a .fa {
   right: 0;
   font-size: 0.9em;
 }
-.icon[class*="-size-2"],
-[class*="icon-"][class*="-size-2"] {
-  font-size: 1rem;
+.icon[class*="-small"],
+[class*="icon-"][class*="-small"] {
+  font-size: 0.8em;
 }
-.icon[class*="-size-3"],
-[class*="icon-"][class*="-size-3"] {
-  font-size: 1.2rem;
-}
-.icon[class*="-size-4"],
-[class*="icon-"][class*="-size-4"] {
-  font-size: 1.4rem;
+.icon[class*="-large"],
+[class*="icon-"][class*="-large"] {
+  font-size: 1.2em;
 }
 .icon[class*="-border"], .icon[class*="-plain"],
 [class*="icon-"][class*="-border"],
@@ -1714,7 +1722,13 @@ a .fa {
 }
 .icon[class*="-border"],
 [class*="icon-"][class*="-border"] {
-  border-color: white;
+  background: none;
+  color: #707070;
+  border-color: #707070;
+}
+.icon[class*="-border"]:hover,
+[class*="icon-"][class*="-border"]:hover {
+  color: #ffffff;
 }
 .icon[class*="-round"],
 [class*="icon-"][class*="-round"] {
@@ -1723,6 +1737,63 @@ a .fa {
 .icon[class*="-circle"],
 [class*="icon-"][class*="-circle"] {
   border-radius: 50%;
+}
+.icon[class*="-brand-1"],
+[class*="icon-"][class*="-brand-1"] {
+  background: #F62459;
+}
+.icon[class*="-brand-1"]:hover,
+[class*="icon-"][class*="-brand-1"]:hover {
+  background: #de093f;
+}
+.icon[class*="-brand-1"][class*="-border"],
+[class*="icon-"][class*="-brand-1"][class*="-border"] {
+  background: transparent;
+  border-color: #F62459;
+  color: #F62459;
+}
+.icon[class*="-brand-1"][class*="-border"]:hover,
+[class*="icon-"][class*="-brand-1"][class*="-border"]:hover {
+  background: #F62459;
+  color: #ffffff;
+}
+.icon[class*="-brand-2"],
+[class*="icon-"][class*="-brand-2"] {
+  background: #22A7F0;
+}
+.icon[class*="-brand-2"]:hover,
+[class*="icon-"][class*="-brand-2"]:hover {
+  background: #0e8cd1;
+}
+.icon[class*="-brand-2"][class*="-border"],
+[class*="icon-"][class*="-brand-2"][class*="-border"] {
+  background: transparent;
+  border-color: #22A7F0;
+  color: #22A7F0;
+}
+.icon[class*="-brand-2"][class*="-border"]:hover,
+[class*="icon-"][class*="-brand-2"][class*="-border"]:hover {
+  background: #22A7F0;
+  color: #ffffff;
+}
+.icon[class*="-brand-3"],
+[class*="icon-"][class*="-brand-3"] {
+  background: #03C9A9;
+}
+.icon[class*="-brand-3"]:hover,
+[class*="icon-"][class*="-brand-3"]:hover {
+  background: #02977f;
+}
+.icon[class*="-brand-3"][class*="-border"],
+[class*="icon-"][class*="-brand-3"][class*="-border"] {
+  background: transparent;
+  border-color: #03C9A9;
+  color: #03C9A9;
+}
+.icon[class*="-brand-3"][class*="-border"]:hover,
+[class*="icon-"][class*="-brand-3"][class*="-border"]:hover {
+  background: #03C9A9;
+  color: #ffffff;
 }
 
 .icons .icon,
@@ -2177,6 +2248,9 @@ Modules
   margin: 0;
   list-style: none;
 }
+.flyout-container ul li:hover > a {
+  border-left-color: #F62459;
+}
 .flyout-container ul a {
   display: block;
   padding: 1em 1.6em;
@@ -2186,27 +2260,18 @@ Modules
   text-decoration: none;
   color: #b1b1b1;
 }
-.flyout-container ul a:hover {
-  background: #F62459;
-  color: white;
-}
 .flyout-container ul ul ul {
   padding-left: 1.5em;
   font-weight: lighter;
-}
-.flyout-container ul ul ul li:hover > a {
-  background: rgba(0, 0, 0, 0.2);
-  color: white;
-  border-left-color: #F62459;
-}
-.flyout-container ul ul li:hover > a {
-  background: #F62459;
-  color: white;
 }
 .flyout-container > ul > li > a {
   color: white;
   border-left-color: #F62459;
   background: rgba(0, 0, 0, 0.15);
+}
+.flyout-container > ul > li:hover > a {
+  background: #F62459;
+  color: white;
 }
 .flyout-active .flyout-container {
   left: 0;
