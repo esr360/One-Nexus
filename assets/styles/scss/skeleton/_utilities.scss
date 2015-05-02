@@ -17,7 +17,7 @@
 // Vertical Positioning
 //-----------------------------------------------------------------
 
-@mixin vam ($position) {
+@mixin vertical-center ($position) {
     position: $position;
     top: 50%;
     transform: translateY(-50%);
