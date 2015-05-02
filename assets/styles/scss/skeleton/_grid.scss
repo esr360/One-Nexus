@@ -58,7 +58,7 @@
 //-----------------------------------------------------------------
 
 	@media (max-width: $col-collapse) {
-		&:not([class*="bp"]) {
+		&:not([class*="break-"]) {
 			> [class*="span"] {
 				margin-left: 0;
 				width: 100%;
