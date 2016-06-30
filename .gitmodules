@@ -1,0 +1,6 @@
+[submodule "src/assets/vendor/Synergy"]
+	path = src/assets/vendor/Synergy
+	url = https://github.com/esr360/Synergy.git
+[submodule "src/assets/vendor/Kayzen-GS"]
+	path = src/assets/vendor/Kayzen-GS
+	url = https://github.com/esr360/Kayzen-GS.git
