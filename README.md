@@ -1,4 +1,4 @@
-<img src="https://github.com/favicon.ico" width="270">
+<img src="https://raw.githubusercontent.com/esr360/One-Nexus/gh-pages/logo.png" width="270">
 
 # About One Nexus
 
