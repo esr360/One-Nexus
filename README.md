@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/esr360/One-Nexus/gh-pages/logo.png =270x)
+<img src="https://github.com/favicon.ico" width="270">
 
 # About One Nexus
 
