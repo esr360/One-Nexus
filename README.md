@@ -1,8 +1,6 @@
 <img src="https://raw.githubusercontent.com/esr360/One-Nexus/gh-pages/logo.png" width="270">
 
-# About One Nexus
-
-One Nexus was created by [Edmund Reed](http://edmundreed.co.uk/), a UK based UX designer and front-end developer. It is a library of CSS/Sass and JavaScript/jQuery files, consisting of useful tools for building modern and responive websites such as:
+> A unique, modular approach to front end development
 
 * [Responsive Grid system](https://github.com/esr360/One-Nexus#responsive-grid-system)
 * [Elements](https://github.com/esr360/One-Nexus#elements)
