@@ -1,0 +1,15 @@
+[submodule "assets/vendor/Synergy"]
+	path = assets/vendor/Synergy
+	url = https://github.com/esr360/Synergy.git
+[submodule "assets/vendor/Owl-Carousel"]
+	path = assets/vendor/Owl-Carousel
+	url = https://github.com/OwlCarousel2/OwlCarousel2.git
+[submodule "assets/vendor/normalize-scss"]
+	path = assets/vendor/normalize-scss
+	url = https://github.com/JohnAlbin/normalize-scss.git
+[submodule "assets/vendor/Kayzen-GS"]
+	path = assets/vendor/Kayzen-GS
+	url = https://github.com/esr360/Kayzen-GS.git
+[submodule "assets/vendor/Font-Awesome"]
+	path = assets/vendor/Font-Awesome
+	url = https://github.com/FortAwesome/Font-Awesome.git
