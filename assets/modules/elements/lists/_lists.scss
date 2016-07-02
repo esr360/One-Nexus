@@ -1,0 +1,206 @@
+//=================================================================
+// Lists
+//=================================================================
+
+@mixin lists($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $lists: config((
+        'name'               : list,
+        'small-size'         : font-size('size-1'),
+        'inline-spacing'     : 1em,
+        'arrow-icon'         : "\f138",
+        'arrow-color'        : color('brand', 'primary'),
+        'tag-bg-color'       : color('greyscale', 'grey-4'),
+        'tag-border-color'   : transparent,
+        'tag-color'          : white,
+        'tag-radius'         : 0,
+        'tag-hover-bg-color' : color('brand', 'primary'),
+        'tag-hover-color'    : white
+    ), $custom);
+
+    //-------------------------------------------------------------
+    // Module
+    //-------------------------------------------------------------
+
+    @include module {
+
+    // Modifiers
+    //-------------------------------------------------------------
+
+        @include modifier('reset') {
+            @extend %list-reset;
+        }
+        
+        @include modifier('small') {
+            font-size: this('small-size');
+        }
+        
+        @include modifier('interactive') {
+            li {
+                cursor: pointer;
+            }
+        }
+        
+        @include modifier('inline') {
+            > li {
+                display: inline-block;
+                + li {
+                    margin-left: this('inline-spacing');
+                }
+            }
+        }
+        
+        @include modifier('clear') {
+            padding-left: 1em;
+        }
+        
+        @include modifier('divider') {
+            > li {
+                &:not(:last-child) {
+                    padding-bottom: 1em;
+                    margin-bottom: 1em;
+                    border-bottom: 1px dotted rgba(black, 0.2);
+                }
+            }
+        }
+        
+        @include modifier('arrow') {
+            @include extend('reset');
+            > li {
+                position: relative;
+                line-height: 1.7;
+                margin-bottom: 0;
+                padding-left: 1.5em;
+                &:before {
+                    @include vertical-center(absolute);
+                    content: this('arrow-icon');
+                    display: inline-block;
+                    left: 0;
+                    font-family: FontAwesome;
+                    margin-right: 0.5em;
+                    color: this('arrow-color');
+                }
+            }
+            .text-right & {
+                > li {
+                    padding: 0.2em 1.5em 0.2em 0;
+                    &:before {
+                        left: auto;
+                        right: 0;
+                        margin-left: 0.5em;
+                        margin-right: 0;
+                        transform: rotate(180deg) translateY(50%);
+                    }
+                }
+            }
+        }
+        
+        @include modifier('blocks') {
+            margin-bottom: -0.5em;
+            > li {
+                margin-bottom: 0.5em;
+                padding-left: 0;
+                &:before {
+                    left: 1em;
+                    pointer-events: none;
+                    transition: base('transition');
+                    color: rgba(black, 0.2);
+                }
+                &:hover {
+                    &:before {
+                        color: color('greyscale', 'white');
+                    }
+                }
+                a {
+                    display: block;
+                    background: color('greyscale', 'white');
+                    padding: 0.5em 0.75em 0.5em 2em;
+                    border-left: 5px solid rgba(black, 0.15);
+                    &:hover {
+                        background: color('brand', 'primary');
+                        color: color('greyscale', 'white');
+                        border-bottom-color: transparent;
+                    }
+                }
+            }
+        }
+        
+        @include modifier('tags') {
+            
+            @include extend('reset');
+            margin: 0;
+            transition: 0s;
+            > li {
+                display: inline-block;
+                font-size: font-size('size-2');
+                &.title {
+                    color: inherit;
+                }
+                &.plain {
+                    a, span {
+                        background-color: transparent;
+                        border: 1px solid rgba(black, 0.1);
+                        color: inherit;
+                    }
+                }
+                span, a {
+                    background: color('greyscale', 'grey-4');
+                    padding: 0.1em 0.4em;
+                    color: white;
+                    border: 1px solid this('tag-border-color');
+                    border-radius: this('tag-radius');
+                }
+                &:hover {
+                    a {
+                        background: this('tag-hover-bg-color');
+                        border-color: this('tag-hover-bg-color');
+                        color: this('tag-hover-color');
+                        text-decoration: none;
+                    }
+                }
+            
+                // Ensure tags render correctly when inside mega-menu
+                [class*="mega-menu"] & {
+                    span, a {
+                        padding: 0.1em 0.4em !important;
+                    }
+                    &:hover {
+                        a {
+                            background: this('tag-hover-bg-color') !important;
+                            border-color: this('tag-hover-bg-color') !important;
+                            color: this('tag-hover-color') !important;
+                        }
+                    }
+                }
+            
+            }	
+            
+        }
+        
+        @include modifier('overflow') {
+            overflow: auto;
+            &[data-list-height="6"] {
+                max-height: (1.9em) * 6;
+            }
+        }
+        
+        @include modifier('group') {
+            > li + li {
+                margin-top: 1em;
+            }
+        }
+        
+    } // module
+
+    .pagination {
+        margin-top: (base('margin') * 2);
+        .row-waffle + & {
+            margin-top: calc(#{(base('margin') * 2)} + 3%);
+        }
+    }
+
+} // @mixin lists

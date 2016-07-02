@@ -1,0 +1,177 @@
+//=================================================================
+// Side Navigation
+//=================================================================
+
+@mixin side-nav($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $side-nav: config((
+        'name'                     : 'side-nav',
+        'output-JSON'              : true,
+        // parent-item
+        'parent-color'             : color('greyscale', 'white'),
+        'parent-background'        : rgba(black, 0.15),
+        'parent-left-border'       : 5px solid color('brand', 'primary'),
+        // parent-item:hover
+        'parent-hover-background'  : color('brand', 'primary'),
+        // parent-item.active
+        'parent-active-background' : color('brand', 'primary'),
+        // list-item
+        'item-padding'             : 1.2em,
+        'item-color'               : color('greyscale', 'grey-3'),
+        'item-bg'                  : rgba(black, 0.15),
+        'item-top-border'          : 1px solid rgba(white, 0.05),
+        'item-bottom-border'       : 1px solid rgba(black, 0.1),
+        'item-left-border'         : 5px solid rgba(black, 0.3),
+        'item-right-border'        : none,
+        // list-item:hover
+        'item-hover-left-border'   : 5px solid color('brand', 'primary'),
+        'item-hover-color'         : color('greyscale', 'white'),
+        'item-hover-bg'            : color('brand', 'primary'),
+        // settings
+        'show-y-scrollbar'         : false,
+        'collapsible'              : (
+            'enabled'              : true,
+            'open-by-default'      : true,
+            'icon'                 : 'fa-chevron-circle-down'
+        )
+    ), $custom) !global;
+
+    //-------------------------------------------------------------
+    // Component
+    //-------------------------------------------------------------
+
+    @include module {
+        
+        overflow: auto;
+        
+        @include option('show-y-scrollbar') {
+           overflow-y: scroll;
+        }
+            
+        nav {
+            
+            ul {
+                @extend %list-reset;
+                text-align: left;
+                margin-top: 0;
+                width: 100%;
+                position: relative;
+                opacity: 1;
+                visibility: visible;
+                li {
+                    display: block;
+                    margin-left: 0;
+                    &:hover {
+                        > a, a:not(:only-child) {
+                            border-right: none;
+                            background: this('item-hover-bg');
+                            border-left: this('item-hover-left-border');
+                            color: this('item-hover-color');
+                        }
+                    }
+                }
+                a {
+                    display: block;
+                    position: relative;
+                    text-decoration: none;
+                    border-radius: 0;
+                    
+                    padding: this('item-padding');
+                    color: this('item-color');
+                    border-top: this('item-top-border');
+                    border-bottom: this('item-bottom-border');
+                    border-left: this('item-left-border');
+                    border-right: this('item-right-border');
+                    &:after {
+                        display: none;
+                    }
+                }   
+                ul {
+                    li {
+                        &:hover {
+                            a {
+                                color: this('item-hover-color');
+                                background: transparent;
+                                border-top: this('item-top-border');
+                                border-bottom: this('item-bottom-border');
+                            }
+                        }
+                    }
+                    ul {
+                        padding-left: 1.5em;
+                    }
+                }
+            }
+        
+            // Parent Items
+            > ul {		
+                > li {
+                    > a {
+                        color: this('parent-color');
+                        border-left: this('parent-left-border');
+                        background: this('parent-background');
+                        &.active {
+                            background: this('parent-active-background');
+                        }
+                    }
+                    &:hover {
+                        > a {
+                            border-color: transparent;
+                            border-right: none;
+                            background: this('parent-hover-background');
+                        }
+                    }
+                }
+            }
+        
+        } // nav
+        
+        &::-webkit-scrollbar {
+            width: 14px;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-left: 1px solid rgba(white, 0.075);
+            background-image: linear-gradient(
+                to right, rgba(white, 0.025), rgba(black, 0.5)
+            );
+        }
+
+        // hide the mega-menu
+        @include overwrite('mega-menu') {
+            display: none !important;
+        }
+            
+        @include overwrite(('logo', 'navigation')) {
+            display: block;
+        }
+        
+    // Components
+    //-------------------------------------------------------------
+
+        // @TODO perhaps rename to 'toggle'?
+        @include component('openClose') {
+            position: absolute;
+            top: -1px;
+            right: 0;
+            padding: 1.45em;
+            cursor: pointer;
+            transition: base('transition');
+            opacity: 0.6;
+            display: none;
+            &:hover {
+                background: rgba(color('greyscale', 'black'), 0.2);
+                opacity: 1;
+            }
+        }
+        
+        @include overwrite-component('openClose') {
+            display: block;
+        }
+
+    } // module
+	
+} // @mixin side-nav

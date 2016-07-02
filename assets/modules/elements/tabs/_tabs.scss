@@ -1,0 +1,163 @@
+//=================================================================
+// Tabs
+//=================================================================
+
+//-----------------------------------------------------------------
+// Mixin
+//-----------------------------------------------------------------
+
+@mixin tabs($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $tabs: config((
+        'name'                       : 'tabs',
+        'output-JSON'                : true,
+        'navItem-transition'         : base('transition'),
+        'navItem-color'              : base('text-color'),
+        'navItem-background'         : transparent,
+        'navItem-radius'             : 0.6em,
+        'navItem-padding'            : 0.75em 1.25em,
+        'navItem-borderColor'        : color('greyscale', 'grey-3'),
+        'navItem-hover-color'        : color('greyscale', 'grey-5'),
+        'navItem-hover-background'   : darken(color('greyscale', 'grey-1'), 4%),
+        'navItem-active-color'       : color('greyscale', 'white'),
+        'navItem-active-background'  : color('brand', 'primary'),
+        'navItem-active-borderColor' : color('brand', 'primary'),
+        'contentBlock-color'         : base('text-color'),
+        'contentBlock-background'    : color('greyscale', 'white'),
+        'contentBlock-borderColor'   : color('greyscale', 'grey-2'),
+        'contentBlock-padding'       : 1.5em,
+        'contentBlock-glueHeight'    : 6px,
+        'contentBlock-glueColor'     : color('brand', 'primary'),
+        'contentBlock-deepPadding'   : 2.5em
+    ), $custom);
+
+    //-------------------------------------------------------------
+    // Component
+    //-------------------------------------------------------------
+
+    @include module {
+            
+    // Child Components
+    //-------------------------------------------------------------
+            
+        @include component('nav') {
+            
+            @extend %list-reset;
+            display: table;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 2;
+            
+            @include modifier('round') {
+                @include overwrite-component('item', $parent: 'tabs_nav') {
+                    &:first-child {
+                        border-top-left-radius: this('navItem-radius');
+                    }
+                    &:last-child {
+                        border-top-right-radius: this('navItem-radius');
+                    }
+                }
+            }
+            
+            @include component('item') {
+                color: this('navItem-color');
+                padding: this('navItem-padding');
+                background: this('navItem-background');
+                border: 1px solid this('navItem-borderColor');
+                transition: this('navItem-transition');
+                display: table-cell;
+                cursor: pointer;
+                &.active {
+                    color: this('navItem-active-color');
+                    border-color: this('navItem-active-borderColor');
+                    background: this('navItem-active-background');
+                    + li {
+                        border-left-color: this('navItem-active-borderColor');
+                    }
+                    &:hover {
+                        color: this('navItem-active-color');
+                    }
+                }
+                &:hover:not(.active) {
+                    background: this('navItem-hover-background');
+                }
+                &:not(:last-child) {
+                    border-right: none;
+                }
+                @include modifier('round') {
+                    &:first-child {
+                        border-radius: this('navItem-radius') 0 0 this('navItem-radius');
+                    }
+                    &:last-child {
+                        border-radius: 0 this('navItem-radius') this('navItem-radius') 0;
+                    }
+                }
+            }
+            
+            @include modifier('center') {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            @include modifier('left') {
+                margin-right: auto;
+            }
+            
+            @include modifier('right') {
+                margin-left: auto;
+            }
+            
+            @include modifier('full') {
+                width: 100%;
+            }
+            
+            @include modifier('large') {
+                margin-bottom: (base('margin') * 2);
+            }
+            
+        } // component(nav)
+        
+        @include component('content') {
+            @include modifier('block') {
+                background: this('contentBlock-background');
+                color: this('contentBlock-color');
+                padding: this('contentBlock-padding');
+                border: 1px solid this('contentBlock-borderColor');
+                position: relative;
+                top: -1px;
+                @include modifier('glue') {
+                    $tabs-glue: this('contentBlock-glueHeight');
+                    margin-top: $tabs-glue;
+                    top: -2px;
+                    z-index: 2;
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        left: -1px;
+                        top: -$tabs-glue;
+                        height: $tabs-glue;
+                        width: calc(100% + 2px);
+                        border: 1px solid this('contentBlock-glueColor');
+                        background: this('contentBlock-glueColor');
+                    }
+                }
+                @include modifier('deep') {
+                    padding: this('contentBlock-deepPadding');
+                }
+            }
+        }
+        
+        @include component('item') {
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+
+    } // module
+
+} // @mixin tabs

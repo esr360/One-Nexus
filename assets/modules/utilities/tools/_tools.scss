@@ -1,0 +1,295 @@
+//=================================================================
+// Tools
+//=================================================================
+
+@mixin tools() {
+
+//-----------------------------------------------------------------
+// Horizontal Centering
+//-----------------------------------------------------------------
+
+	%horizontal-center {
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+
+//-----------------------------------------------------------------
+// Reset List Styles
+//-----------------------------------------------------------------
+
+	%list-reset {
+		padding-left: 0;
+		list-style: none;
+	}
+
+//-----------------------------------------------------------------
+// Fill Parent Element
+//-----------------------------------------------------------------
+	
+	%fill-parent {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+	}
+
+//-----------------------------------------------------------------
+// Iframe
+//-----------------------------------------------------------------
+	
+	.auto-resizable-iframe {
+		margin-left: auto;
+		margin-right: auto;
+        position: relative;
+        background: rgba(black, 0.2);
+		> div { 
+			position: relative;
+			padding-bottom: 58.5%;
+			height: 0px;           
+		}
+		iframe {
+			position: absolute;
+			border: 0px;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	
+//-----------------------------------------------------------------
+// Vertical Seperator
+//-----------------------------------------------------------------
+
+	.v-sep {
+		height: 100%;
+		position: relative;
+		&:before {
+			@extend %horizontal-center;
+			content: "";
+			height: 100%;
+			width: 0;
+			border-left: 1px solid rgba(white, 0.75);
+			border-right: 1px solid rgba(black, 0.05);
+			position: absolute;
+		}
+		&:after {
+			@include vertical-center(absolute);
+			@extend %horizontal-center;
+            text-align: center;
+			content: "Or";
+			font-size: font-size('size-1');
+			font-weight: lighter;
+			height: 2.5em;
+			width: 2.5em;
+			line-height: 2.5em;
+			border-radius: 50%;
+			color: color('greyscale', 'white');
+			background: color('brand', 'primary');
+		}
+        @media (max-width: breakpoint('break-3')) {
+            margin: 2.5em 0;
+			border-top: 1px solid rgba(white, 0.75);
+			border-bottom: 1px solid rgba(black, 0.05);
+        }
+	}
+	
+	//-------------------------------------------------------------
+	// Horizontal Rules
+	//-------------------------------------------------------------
+	
+	@include module('hrule') {
+		margin: base('margin') 0;
+        border-color: rgba(black, 0.15);
+		@include modifier('line') {
+			border-top: 1px solid rgba(0, 0, 0, 0.15);
+			border-bottom: 0;
+		}
+		@include modifier('dotted') {
+			border-top: 1px dotted rgba(0, 0, 0, 0.15);
+			border-bottom: 0;
+		}
+		@include modifier('stripes') {
+			height: 10px;    
+			background-image: url("#{$asset-path}/images/stripe-overlay.png");
+			background-repeat: repeat;
+			opacity: 0.3;
+			border: none;
+		}
+		@include modifier('gutter') {
+			$hr-gutter: option($grid, options, gutter);
+			margin: $hr-gutter 0 ($hr-gutter * 2);
+		}
+		@include modifier('small') {
+			margin: 1.5em 0;
+		}
+		@include modifier('large') {
+			margin: (base('margin') * 1.5) 0;
+		}
+	}
+    
+//-----------------------------------------------------------------
+// Infinite Ajax Scroll
+//-----------------------------------------------------------------
+
+    .ias-spinner, .ias-noneleft {
+        margin-top: 4em;
+        text-align: center;
+        // offset flow row gutter
+        [class*="-flow"] & {
+            margin-left: option($grid, 'options', 'gutter');
+        }
+        .row-ias & {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -6em;
+        }
+        .row-waffle & {
+            margin-top: calc(4em - 3%);
+            margin-bottom: 3%;
+        }
+        .row-waffle-large & {  
+            margin-top: 0;
+            margin-bottom: 6%;
+        }
+    }
+    
+    .ias-spinner { 
+        img {
+            margin: auto;
+        }
+    }
+
+//-----------------------------------------------------------------
+// Keyframes
+//-----------------------------------------------------------------
+
+	@keyframes spin { 
+		0% {
+			transform: rotate(0deg); 
+		}
+		100% { 
+			transform: rotate(360deg); 
+		} 
+	}
+
+} // @mixin tools
+
+//=================================================================
+// Mixins
+//=================================================================
+
+//-----------------------------------------------------------------
+// Vertical Rhythm
+//-----------------------------------------------------------------
+
+// Remove top spacing 
+@mixin top-rhythm {
+    &:first-child {
+        margin-top: 0;
+    }   
+}
+
+// Remove bottom spacing 
+@mixin bottom-rhythm {
+    &:last-child {
+        margin-bottom: 0;
+    }  
+}
+    
+@mixin vertical-rhythm($position: null) {  
+	@if $position == 'top' { 
+		@include top-rhythm;
+	} @else if $position == 'bottom' {
+		@include bottom-rhythm;
+	} @else {
+		@include top-rhythm;
+		@include bottom-rhythm;
+	}
+}
+
+//-----------------------------------------------------------------
+// Vertical Centering
+//-----------------------------------------------------------------
+
+@mixin vertical-center($position: relative) {
+	position: $position;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+//-----------------------------------------------------------------
+// Overlay
+//-----------------------------------------------------------------
+
+@mixin bg-overlay($background) {
+	position: relative;
+	&:before {
+		content: "";
+		z-index: 0;
+		background: $background;
+		@extend %fill-parent;
+	}
+}
+
+//-----------------------------------------------------------------
+// CSS Triangle
+//-----------------------------------------------------------------
+
+@mixin triangle-core {
+	&:after {
+		content:'';
+		position: absolute;
+		width: 0;
+		height: 0;
+	}
+}
+
+@mixin triangle($config: ()) {
+	
+	$config: map-merge((
+		'core'     : true, 
+		'position' : top, 
+		'color'    : rgba(black, 0.8),
+		'size'     : 0.5em
+	), $config);
+	
+	@if map-get($config, 'core') {
+		@include triangle-core;
+	}
+		
+	&:after {
+		margin-left: -#{map-get($config, size)};
+		@if map-get($config, 'position') == top {
+			top: 100%;
+			left: 50%;
+			border-left: solid map-get($config, 'size') transparent;
+			border-right: solid map-get($config, 'size') transparent;
+			border-top: solid map-get($config, 'size') map-get($config, 'color');
+		} @else if map-get($config, 'position') == bottom {
+			bottom: 100%;
+			left: 50%;
+			border-left: solid map-get($config, 'size') transparent;
+			border-right: solid map-get($config, 'size') transparent;
+			border-bottom: solid map-get($config, 'size') map-get($config, 'color');
+		} @else if map-get($config, 'position') == left {
+			top: 50%;
+			right: -#{map-get($config, size)};
+			transform: translateY(-50%);
+			border-top: solid map-get($config, 'size') transparent;
+			border-bottom: solid map-get($config, 'size') transparent;
+			border-left: solid map-get($config, 'size') map-get($config, 'color');
+		} @else if map-get($config, 'position') == right {
+			top: 50%;
+			right: 100%;
+			transform: translateY(-50%);
+			border-top: solid map-get($config, 'size') transparent;
+			border-bottom: solid map-get($config, 'size') transparent;
+			border-right: solid map-get($config, 'size') map-get($config, 'color');
+		}
+	}
+	
+} // triangle

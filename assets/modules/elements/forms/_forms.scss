@@ -1,0 +1,177 @@
+//=================================================================
+// Forms
+//=================================================================
+
+@mixin forms($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $forms: config((
+        'name'             : 'form',
+        'output-JSON'      : true,
+        'weight'           : lighter,
+        'input-color'      : base('text-color'),
+        'input-border'     : 1px solid color('greyscale', 'grey-3'),
+        'input-padding'    : 0.65em,
+        'bg-color'         : rgba(black, 0.025),
+        'bg-focus-color'   : white,
+        'valid-color'      : color('validation', 'valid'),
+        'invalid-color'    : color('validation', 'invalid'),
+        'group-small-size' : font-size('size-2')
+    ), $custom);
+
+    //-------------------------------------------------------------
+    // Module
+    //-------------------------------------------------------------
+
+    @include module {
+
+    // Core Styles
+    //-------------------------------------------------------------
+
+        font-weight: this('weight');
+        
+        label {
+            transition: base('transition');
+            cursor: pointer;
+        }
+        
+    // Modifiers
+    //-------------------------------------------------------------
+
+        @include modifier('fauxPlaceholders') {
+            @include overwrite-component('group') {
+                margin-bottom: base('margin');
+                @include vertical-rhythm('bottom');
+            }
+            @include overwrite-component('group') {
+                label {
+                    @include vertical-center(absolute);
+                    left: this('input-padding');
+                    color: this('input-color');
+                    cursor: text;
+                }
+            }
+            @include overwrite-component('input') {
+                &::placeholder {
+                    opacity: 0;
+                }
+                &:focus {
+                    ~ label {
+                        top: -0.8em;
+                        left: 0;
+                        cursor: pointer;
+                        font-size: 0.9em;
+                    }
+                    &::placeholder {
+                        opacity: 0.5;
+                        transition: 0s;
+                    }
+                }
+            }
+            @include overwrite-component('group') {
+                textarea {
+                    ~ label {
+                        top: 1.4em;
+                    }
+                }
+            }
+            @include overwrite-component('icon') {
+                color: this('input-color');
+                ~ label {
+                    left: 2em;
+                }
+            }
+        }
+        
+        @include modifier('html5') {
+            @include overwrite-component('input') {
+                &:focus {
+                    &:invalid {
+                        &, ~ label, ~ .form_icon, &::placeholder {
+                            border-color: this('invalid-color');
+                            color: this('invalid-color');
+                        }
+                    }
+                    &:valid {
+                        &, ~ label, ~ .form_icon, &::placeholder {
+                            border-color: this('valid-color');
+                            color: this('valid-color');
+                        }
+                    }
+                }
+            }
+        }
+
+    // Components
+    //-------------------------------------------------------------
+
+        @include component('group') {
+            position: relative;
+            margin-bottom: (base('margin') / 2);
+            @include vertical-rhythm('bottom');
+            [type="submit"] {
+                position: absolute;
+                line-height: 1;
+                right: 0;
+                height: 100%;
+                @include overwrite-component(input, $special: 'general-sibling') {
+                    padding-right: 3em;
+                }
+            }
+            @include modifier('small') {
+                font-size: this('group-small-size');
+            }
+            @include modifier('compound') {
+                margin-bottom: 0.5em;
+            }
+            @include modifier('has-icon') {
+                @include overwrite-component('input') {
+                    padding-left: 2em;
+                }
+            }
+        }
+
+        @include component('icon') {
+            @include vertical-center(absolute);
+            position: absolute;
+            left: 0.75em;
+        }
+
+        @include component('input') {
+            display: block;
+            width: 100%;
+            padding: this('input-padding');
+            border: this('input-border');
+            transition: base('transition');
+            color: this('input-color');
+            &::placeholder {
+                color: this('input-color');
+                transition: base('transition');
+            }
+            &:focus {
+                outline: 0;
+            }
+            @include modifier('plain') {
+                border-color: transparent;
+            }
+            @include modifier('bg') {
+                background-color: this('background-color');
+                &:focus {
+                    background-color: this('bg-focus-color');
+                }
+            }
+            @include modifier('quantity') {
+                max-width: 50px;
+                display: inline-block;
+                vertical-align: bottom;
+                text-align: center;
+                padding: 0.6em;
+            }
+        }
+        
+    } // module
+
+} // @mixin forms

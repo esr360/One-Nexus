@@ -1,0 +1,204 @@
+//=================================================================
+// Base
+//=================================================================
+
+@mixin base($custom: ()) {
+
+	//-------------------------------------------------------------
+	// Config
+	//-------------------------------------------------------------
+
+	$base: config((
+		'name'             : 'base',
+		'output-JSON'      : true,
+		'background'       : color('greyscale', 'grey-1'),
+		'font-family'      : typography('typefaces', 'primary'),
+		'text-color'       : typography('colors', 'base'),
+		'font-size'        : typography('sizes', 'base'),
+		'margin'           : 2rem,
+		'line-height'      : 1.4,
+		'radius'           : 0.4em,
+		'oval-radius'      : 1.5em,
+		'transition'       : 0.4s
+	), $custom) !global;
+
+	//-------------------------------------------------------------
+	// General
+	//-------------------------------------------------------------
+	
+	html, body {
+		padding: 0;
+		margin: 0;
+	    height: 100%;
+	}
+	
+	html {
+	    overflow-x: hidden;
+	}
+	
+	body {
+		background: base('background');
+	    font-family: base('font-family');
+	    color: base('text-color');
+	    font-size: base('font-size');
+	    line-height: base('line-height');
+	}
+	
+	ins {
+		font-weight: bold;
+		color: color('brand', 'primary');
+		text-decoration: none;
+	}
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-size: base('font-size');
+    }
+    
+    // code tags
+    code {
+        background: white;
+        border: 1px solid color('greyscale', 'grey-2');
+        border-radius: 0.3em;
+        //color: #C7254F;
+        font-family: typography('typefaces', 'primary');
+        font-size: font-size('size-2', $rem: true);
+        font-weight: 300;
+        padding: 0.1em 0.3em;
+        &.value {
+            color: inherit;
+        }
+    }
+
+	// animate data-manipulate.js elements
+	[data-trigger],
+	[data-trigger-reverse],
+	[data-hover] {
+		transition: base('transition');
+	}
+    
+    #site-content {
+		transition: base('transition');
+    }
+
+	//-------------------------------------------------------------
+	// Structure
+	//-------------------------------------------------------------
+	
+	@include module('container') {
+	
+        width: option($grid, 'options', 'base-width');
+        max-width: option($grid, 'options', 'max-width');
+        margin: 0 auto;
+		position: relative;
+	
+	    @include modifier('small') {
+	        width: option($grid, 'options', 'small-width');
+			max-width: (option($grid, 'options', 'max-width') * 0.85);
+	    }
+	
+	    @include modifier('full') {
+	        width: option($grid, 'options', 'full-width');
+	        max-width: option($grid, 'options', 'full-width');
+	    }
+		
+		@include modifier('section') {
+            @media (min-width: breakpoint('break-3')) {
+			    padding: 4em 0;
+            }
+		}
+	
+	} // module('container')
+
+	.wrapper {
+	    padding: 0 option($grid, 'options', 'gutter');
+	}
+
+	//-------------------------------------------------------------
+	// Layout
+	//-------------------------------------------------------------
+	
+	* {
+	    &, &:before, &:after {
+	        box-sizing: border-box;
+	    }
+	}
+	
+	h1, h2, h3, h4, h5, h6, 
+	p, ul, ol, 
+	form, fieldset, legend, figure, table, 
+	pre, hr,
+	.object {
+	    margin: base('margin') 0;
+	    @include vertical-rhythm;
+	}
+    
+    .object-small {
+	    margin: (base('margin') / 2) 0;
+	    @include vertical-rhythm;
+    }
+    
+    .object-large {
+	    margin: (base('margin') * 2) 0;
+	    @include vertical-rhythm;
+    }
+	
+	::selection {
+		background-color: color('brand', 'primary');
+		color: color('greyscale', 'white');
+		text-shadow: none;
+	}
+
+} // @mixin base
+
+//-----------------------------------------------------------------
+// Utilities
+//-----------------------------------------------------------------
+
+@function base($key) {
+    @return map-get($base, $key);
+}
+
+//-----------------------------------------------------------------
+// Hacks - if this gets big move to seperate file
+//-----------------------------------------------------------------
+
+#showcase-carousel .owl-dots,
+#showcase-thumbnails .owl-dots {
+    display: none;
+}
+
+span.enlighterEnlighterJS {
+    white-space: nowrap;
+}
+
+.owl-carousel .owl-item img {
+    transform-style: flat;
+    width: auto;
+}
+
+.owl-carousel .owl-item > img {
+    transform-style: preserve-3d;
+    width: 100%;
+}
+	
+iframe[src*="soundcloud"] {
+	width: 100%;
+}
+
+button.mfp-close, button.mfp-arrow {
+	width: 90px;
+}
+
+body {
+	::-webkit-scrollbar {
+		width: 10px;
+	}
+	::-webkit-scrollbar-thumb {
+		border-radius: 8px;
+		background-clip: content-box;
+		background-color: rgba(black, 0.2);
+	}
+	::-webkit-scrollbar-corner {
+		background-color: transparent;
+	}
+}

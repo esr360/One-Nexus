@@ -1,0 +1,95 @@
+//=================================================================
+// Wells
+//=================================================================
+
+@mixin wells($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $wells: config((
+        'name'             : 'well',
+        'background'       : white,
+        'border'           : 1px solid rgba(black, 0.15),
+        'radius'           : 0.4em,
+        'padding'          : 1em,
+        'color'            : typography('colors', 'base'),
+        'dark-background'  : rgba(black, 0.4),
+        'dark-border'      : none,
+        'dark-color'       : white,
+        'deep-padding'     : 1.5em 2em,
+        'comment-padding'  : 1.5em,
+        'thumb-height'     : 76px,
+        'hover-background' : color('brand', 'primary'),
+        'hover-color'      : color('greyscale', 'white')
+    ), $custom);
+
+    //-------------------------------------------------------------
+    // Component
+    //-------------------------------------------------------------
+
+    @include module {
+        
+    // Core Styles
+    //-------------------------------------------------------------
+
+        background: this('background');
+        border: this('border');
+        border-radius: this('radius');
+        padding: this('padding');
+        color: this('color');
+        position: relative;
+        
+    // Modifiers
+    //-------------------------------------------------------------
+        
+        @include modifier('dark') {
+            background: this('dark-background');
+            border: this('dark-border');
+            color: this('dark-color');
+        }
+        
+        @include modifier('deep') {
+            padding: this('deep-padding');
+        }
+        
+        @include modifier('comment') {
+            position: relative;
+            padding: this('comment-padding');
+            @media (min-width: breakpoint('break-2')) {
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: calc(50% + 4px);
+                    left: -8px;
+                    height: 14px;
+                    width: 14px;
+                    transform: rotate(45deg) translate(-50%, -50%);
+                    background: lighten(color('greyscale', 'grey-1'), 5%);
+                    border-left: 1px solid rgba(black, 0.15);
+                    border-bottom: 1px solid rgba(black, 0.15);
+                }
+            }
+        }
+        
+        @include modifier('thumb') {
+            height: this('thumb-height');
+            display: block;
+            transition: background-color base('transition');
+            &:hover {
+                background: this('hover-background');
+                color: this('hover-color');
+            }
+        }
+        
+    // Components
+    //-------------------------------------------------------------
+
+        @include component('content') {
+            @include vertical-center;
+        }
+        
+    } // module
+        
+} // @mixin wells

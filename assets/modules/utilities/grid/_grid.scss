@@ -1,0 +1,33 @@
+//=================================================================
+// Grid
+//=================================================================
+
+@mixin grid($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $grid: map-merge-deep((
+        'name'                : 'grid',
+        'output-JSON'         : true,
+        'options': (
+            'base-width'      : 1200px,
+            'max-width'       : 95%,
+            'small-width'     : 940px,
+            'full-width'      : 100%
+        ),
+        'breakpoints': (
+            'break-5'         : 1400px
+        )
+    ), $kayzenGS);
+
+    $grid: config($grid, $custom) !global;
+
+    @include kayzen-gs($grid);
+
+} // @mixin grid
+
+@function breakpoint($breakpoint) {
+    @return kgs-breakpoint($breakpoint);
+}

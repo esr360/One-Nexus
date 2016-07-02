@@ -1,0 +1,297 @@
+//=================================================================
+// Buttons
+//=================================================================
+
+@mixin buttons($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $buttons: config((
+        'name'             : button,
+        'background'       : color('greyscale', 'grey-4'),
+        'color'            : color('greyscale', 'white'),
+        'side-padding'     : 1em,
+        'line-height'      : 2.4,
+        'weight'           : lighter,
+        'border-width'     : 1px,
+        'disabled-opacity' : 0.6,
+        'round-radius'     : 0.4em,
+        'fat-height'       : 2.8,
+        'thin-height'      : 2,
+        'group-spacing'    : 0.5em,
+        'group-stack'      : 'break-1',
+        'modifiers'        : ()
+    ), $custom);
+
+    //-------------------------------------------------------------
+    // Module
+    //-------------------------------------------------------------
+
+    @include module {
+
+    // Core Styles
+    //-------------------------------------------------------------
+
+        background: this('background');
+        color: this('color');
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0 this('side-padding');
+        line-height: this('line-height');
+        font-weight: this('weight');
+        transition: base('transition');
+        border: this('border-width') solid;
+        border-color: transparent;
+        cursor: pointer;
+        text-decoration: none;
+
+        &:hover {
+            background: darken(this('background'), 10%);
+            color: this('color');
+            text-decoration: none;
+        }
+        
+        &:focus {
+            outline: 0;
+        }
+
+    // Default Modifiers
+    //-------------------------------------------------------------
+    
+        @include extend(this('modifiers'));
+
+    // Sizes
+    //-------------------------------------------------------------
+
+        @include font-sizes(
+            $responsive-values: (
+                'sizes' : ('size-4', 'size-6'),
+                'breakpoints' : (
+                    'break-3' : 0.85
+                )
+            )
+        );
+
+    // Modifiers
+    //-------------------------------------------------------------
+
+        @include modifier('block') {
+            width: 100%;
+            text-align: center;
+            @include overwrite($special: 'adjacent-sibling') {
+                margin-top: (base('margin') / 2);
+            }
+        } 
+
+        @include modifier('border') {
+            background: none;
+            color: base('text-color');
+            border-color: base('text-color');
+            &:hover {
+                color: color('greyscale', 'white');
+                background: color('brand', 'primary');
+                border-color: color('brand', 'primary');
+            }
+        }
+        
+        @include modifier('pill') {
+            display: table-cell;
+            @include modifier('round') {
+                border-radius: 0;
+                &:first-child {
+                    border-radius: this('round-radius') 0 0 this('round-radius');
+                }
+                &:last-child {
+                    border-radius: 0 this('round-radius') this('round-radius') 0;
+                }
+            }
+        }
+
+        @include modifier('disabled') {
+            opacity: this('disabled-opacity');
+            cursor: not-allowed;
+            transition-delay: 999s;
+        }
+
+        @include modifier('round') {
+            border-radius: this('round-radius');
+        }
+
+        @include modifiers(('oval', 'circle')) {
+            border-radius: 1.5em;
+        }
+
+        @include modifier('acute') {
+            border-radius: 0;
+        }
+        
+        @include modifier('fat') {
+            line-height: this('fat-height');
+        }
+        
+        @include modifier('thin') {
+            line-height: this('thin-height');
+        }
+        
+        @include modifier('icon') {
+            padding: 0;
+            width: 2.5em;
+            text-align: center;
+            .fa {
+                width: 1em;
+            }
+            @include modifier('plain') {
+                width: 1.5em;
+            }
+        }
+        
+        @include modifier('plain') {
+            background: none;
+            line-height: 1.25em;
+        }
+        
+    // Colors
+    //-------------------------------------------------------------
+
+        // Brand Colors
+        @each $brand, $color in palette('brand') {
+            @include modifier($brand) {
+                background: $color;
+                &:hover {
+                    background: darken($color, 10%);
+                }
+                @include modifier('border') {
+                    background: transparent;
+                    border-color: $color;
+                    color: $color;
+                    &:hover {
+                        background: $color;
+                        color: color('greyscale', 'white');
+                    }
+                }
+            }
+        }
+
+        // Greyscale Colors
+        @each $greyscale, $color in palette('greyscale') {
+            @include modifier($greyscale) {
+                background: $color;
+                @if (lightness($color) > 50) {
+                    color: color('brand', 'primary');
+                }
+                &:hover {
+                    background: darken($color, 10%);
+                }
+                @include modifier('border') {
+                    background: transparent;
+                    border-color: $color;
+                    color: $color;
+                    &:hover {
+                        background: $color;
+                        @if (lightness($color) > 80) {
+                            color: color('brand', 'primary');
+                        } @else {
+                            color: color('greyscale', 'white');
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Alert Colos
+        @each $name, $color in palette('validation') {
+            @include modifier($name) {
+                background: $color;
+                &:hover {
+                    background: darken($color, 10%);
+                }
+            }
+        }
+        
+        // Social Colors
+        
+        $social-colors: (
+            'facebook'    : option($palettes, 'social', 'facebook'),
+            'twitter'     : option($palettes, 'social', 'twitter'),
+            'google-plus' : option($palettes, 'social', 'google-plus'),
+        );
+        
+        @each $social, $color in $social-colors {
+            @include modifier($social) {
+                background: $color;
+                &:hover {
+                    background: darken($color, 10%);
+                }
+            }
+        }
+        
+        // Active Button
+
+        &.active {
+            background: color('brand', 'primary');
+            color: color('greyscale', 'white');
+            &:hover {
+                background: color('brand', 'primary');;
+            }
+        }
+
+    // Styles
+    //-------------------------------------------------------------
+
+    //		@include modifier('primary') {
+    //			@include extend('round', 'size-4', 'brand-1');
+    //		}	
+
+    // Components
+    //-------------------------------------------------------------
+
+        @include component('group') {
+
+            @include overwrite('button') {
+                margin-left: this('group-spacing');
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+
+            > a, .text-sep {
+                margin-left: this('group-spacing');
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+
+            @include modifier('stack') {
+                @media (max-width: breakpoint(this('group-stack'))) {
+                    @include overwrite('button') {
+                        margin-left: 0;
+                        display: block;
+                        width: 100%;
+                        margin-bottom: 1rem;
+                        text-align: center;
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }		
+                }
+            }
+        }
+
+    } // module
+
+    //-------------------------------------------------------------
+    // Browser Hacks
+    //-------------------------------------------------------------
+
+    // Makes input, button and .button elements equal height in Firefox
+    input::-moz-focus-inner,
+    button::-moz-focus-inner { 
+        border: 0;
+        padding: 0;
+        margin-top: 1px; 
+        margin-bottom: 1px;
+    }
+
+} // @mixin buttons

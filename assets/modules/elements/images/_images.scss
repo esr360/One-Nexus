@@ -1,0 +1,154 @@
+//=================================================================
+// Images
+//=================================================================
+
+@mixin images($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $images: config((
+        'name' : 'image'
+    ), $custom);
+
+    //-------------------------------------------------------------
+    // Responsive Images
+    //-------------------------------------------------------------
+
+    img {
+        max-width: 100%;
+        display: block;
+    } 
+
+    //-------------------------------------------------------------
+    // Desktop Graphic
+    //-------------------------------------------------------------
+
+    @include module('desktop-graphic') {
+
+        position: relative;
+        cursor: pointer;
+        display: block;
+
+        img {
+            position: relative;
+            z-index: 1;		
+        }
+
+        @include component('image') {
+            position: absolute;
+            background-size: 100%;
+            background-position: center 0%;
+            transition: 3s;
+            height: 58.35%;
+            width: 92.25%;
+            top: 3.9%;
+            left: 3.9%;
+            z-index: 0;	
+        }
+
+        @include modifier('scroll') {
+            &:hover {
+                @include overwrite-component('image') {
+                    background-position: center 100%;	
+                    transition: 20s;		
+                }
+            }
+        }
+        
+        // owl-carousel
+        
+        + .slide-nav {
+            .slide-next, .slide-prev {
+                top: 35%;
+            }
+        }
+        
+        // Why is this needed? >:|
+        @at-root [class*="desktop-graphic"] {
+            .owl-stage-outer, .owl-stage, 
+            .owl-item, .owl-item > div {
+                height: 100%;
+            }
+        }
+        
+        .owl-carousel {
+            z-index: 2;
+        }
+
+    } // module(desktop-graphic)
+
+    //-------------------------------------------------------------
+    // Mobile Graphic
+    //-------------------------------------------------------------
+
+    @include module('mobile-graphic') {
+
+        background-size: 100% 100%;
+        padding: 30% 8%;
+        // fix for animations
+        transform: translateZ(0);
+
+    // Mobile Colors
+    //-------------------------------------------------------------
+
+        $phone-colors: (
+            'blue', 'green', 'purple', 'red', 'white', 'yellow'
+        );
+
+        @each $color in $phone-colors {
+            @include modifier(#{$color}) {
+                background-image: url("#{$asset-path}/images/mobile-base-#{$color}.png");
+            }
+        }
+        
+        //Default
+        background-image: url("#{$asset-path}/images/mobile-base-blue.png");
+
+    } // module(mobile-graphic)
+        
+    //-------------------------------------------------------------
+    // Horizontal & Vertical Centered Images
+    //-------------------------------------------------------------
+
+    .center-xy {
+        position: relative;
+        > img {
+            @include vertical-center(absolute);
+            @extend %horizontal-center;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+    }
+
+    //-------------------------------------------------------------
+    // Square Image
+    //-------------------------------------------------------------
+
+    .image-square {
+        position: relative;
+        height: 0;
+        padding-top: 20%;
+        overflow: hidden;
+        > img {
+            position: absolute;
+            top: -25%;
+        }
+    }
+
+    //-------------------------------------------------------------
+    // Background Image
+    //-------------------------------------------------------------
+
+    .bg-img {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-size: cover;
+        transition: base('transition');
+    }
+
+} // @mixin images

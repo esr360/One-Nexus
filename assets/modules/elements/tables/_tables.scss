@@ -1,0 +1,90 @@
+//=================================================================
+// Tables
+//=================================================================
+
+@mixin tables($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $tables: config((
+        'name'            : 'table',
+        'weight'          : lighter,
+        'cell-padding'    : 0.6em,
+        'small-font-size' : 0.85em
+    ), $custom);
+
+    //-------------------------------------------------------------
+    // Component
+    //-------------------------------------------------------------
+
+    @include module {
+
+    // Core Styles
+    //-------------------------------------------------------------
+
+        width: 100%;
+        font-weight: this('weight');
+        
+        th, td {
+            padding: this('cell-padding');
+            text-align: left;
+            border-bottom: 1px solid rgba(black, 0.1);
+            border-left: 1px solid rgba(black, 0.1);
+            vertical-align: top;
+            &:first-child {
+                border-left: none;
+                padding-left: 0;
+            }
+        }
+
+        tbody {
+            tr {
+                &:last-child {
+                    td {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+        
+        code {
+            white-space: nowrap;
+        }
+
+    // Modifiers
+    //-------------------------------------------------------------
+
+        @include modifier('fixed') {		
+            table-layout: fixed;
+        }
+        
+        @include modifier('small') {
+            font-size: this('small-font-size');
+        }
+        
+        @include modifier('style-1') {
+            td {
+                &:nth-child(1) {
+                    width: 20%;
+                }
+                &:nth-child(2) {
+                    width: 25%;
+                }
+                &:nth-child(3) {
+                    width: 55%;
+                }
+            }
+            tr {
+                &:hover {
+                    td {
+                        background-color: color('greyscale', 'white');
+                    }
+                }
+            }
+        }
+
+    } // module
+
+} // @mixin tables

@@ -1,0 +1,180 @@
+//=================================================================
+// Top Bar
+//=================================================================
+
+@mixin top-bar($custom: ()) {
+
+	//-------------------------------------------------------------
+	// Config
+	//-------------------------------------------------------------
+
+	$top-bar: config((
+		'name'             : 'top-bar',
+		'output-JSON'      : true,
+		'height'           : 60px,
+		'background'       : color('greyscale', 'grey-6'),
+		'padding'          : 1em 0,
+		'link-color'       : color('greyscale', 'grey-3'),
+		'link-hover-color' : color('greyscale', 'white'),
+		'z-index'          : 6,
+		'fixed-z-index'    : 12,
+		'fixed'            : false
+	), $custom) !global;
+
+	//-------------------------------------------------------------
+	// Module
+	//-------------------------------------------------------------
+	
+	@include module {
+	
+		background: this('background');
+		position: relative;
+		font-weight: lighter;
+		z-index: this('z-index');
+        transition: base('transition');
+		
+		a:not([class*="button"]) {
+			color: this('link-color');
+			&:hover {
+				color: this('link-hover-color');
+				text-decoration: none;
+			}
+		}
+		
+		@include component('item') {
+			vertical-align: middle;
+			width: auto;
+		}
+		
+		@include component('nav') {
+			
+			height: this('height');
+			margin: 0 1em;
+            
+            @include component('action') {
+                padding: 0 1em;
+                display: table-cell;
+                vertical-align: middle;
+                cursor: pointer;
+                transition: base('transition');
+                color: this('link-color');
+                &:hover {
+                    color: this('link-hover-color');
+                }
+            }
+			
+			&:first-child {
+				margin-left: 0;
+			}
+			&:last-child {
+				margin-right: 0;
+			}
+            
+			ul {
+				@extend %list-reset;
+                margin-top: 0;
+                &.list-cart {
+                    padding: 1.5em;
+                    min-width: 250px;
+                    li {
+                        padding-left: 0;
+                    }
+					@media (max-width: breakpoint('break-2')) {
+						transform: translateX(calc(4em - 100%));
+						&:after {
+							margin-left: 0;
+							left: calc(100% - 4em);
+						}
+					}
+                }
+                li {
+                    &.title {
+                        cursor: auto;
+                        &:hover {
+                            color: inherit;
+                        }
+                    }
+                }
+			}
+			
+			> ul {
+				&, > li {
+					height: 100%;
+				}
+				> li {
+					position: relative;
+					float: left;
+					display: table;
+					margin-left: 0;
+					border-left: 1px solid rgba(black, 0.85);
+					box-shadow: inset 1px 0px 0px 0px rgba(white, 0.05);
+					&:hover {
+						ul {
+							opacity: 1;
+							visibility: visible;
+							top: 100%;
+						}
+					}
+				}
+				// Dropdown nav
+                ul {
+					@include triangle((
+						'position' : 'bottom',
+						'color'    : color('greyscale', 'grey-1')
+					));
+					font-size: font-size('size-2');
+                    padding: 1em;
+					text-align: left;
+					position: absolute;
+					background: color('greyscale', 'grey-1');
+					transition: base('transition');
+					opacity: 0;
+					visibility: hidden;
+					z-index: 5;
+					left: 50%;
+                    transform: translateX(-50%);
+					top: 115%;
+					min-width: 150px;
+                    li {
+                        transition: base('transition');
+                        &:hover {
+                            color: color('brand', 'primary');
+                        }
+                    }
+                    @media (max-width: breakpoint('break-3')) {
+                        left: 0;
+                    }
+				}
+			}
+            &:first-child {
+                > ul {
+                    > li {
+                        &:first-child {
+                            border-left: none;
+                            box-shadow: none;
+                            > a, > .span {
+                                padding-left: 0;
+                            }
+                        }
+                    }
+                }
+            }
+			
+		} // component(nav)
+		
+	// Settings
+	//-------------------------------------------------------------
+	
+		// Fixed Bar
+		//---------------------------------------------------------
+		
+		@include option('fixed') {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			z-index: this('fixed-z-index');
+		}
+		
+	} // module
+	
+} // @mixin top-bar

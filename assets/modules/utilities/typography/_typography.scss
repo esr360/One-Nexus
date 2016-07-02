@@ -1,0 +1,97 @@
+//=================================================================
+// Typography
+//=================================================================
+
+@mixin typography($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+    
+    $typography: config((
+        'name'                : 'typography',
+        'typefaces': (
+            'primary'         : ('Lato', 'Lato:300,400,700,900'),
+            'secondary'       : ('Raleway', 'Raleway:100,300,700,900')
+        ),
+        'colors': (
+            'base'            : color('greyscale', 'grey-4'),
+            'heading'         : color('greyscale', 'grey-5'),
+            'heavy'           : color('greyscale', 'grey-5')
+        ),
+        'sizes': (
+            'base'            : 1em,
+            'size-1'          : 0.67em,
+            'size-2'          : 0.83em,
+            'size-3'          : 1.17em,
+            'size-4'          : 1.25em,
+            'size-5'          : 1.5em,
+            'size-6'          : 2em,
+            'size-7'          : 2.4em,
+            'size-8'          : 3em,
+            'size-9'          : 3.4em
+        )
+    ), $custom) !global;
+    
+	//-------------------------------------------------------------
+	// Fonts
+	//-------------------------------------------------------------
+
+    @for $i from 1 through length(this('typefaces')) {
+        $google-font: nth(nth(nth(this('typefaces'), $i), 2), 2);
+        @import url(http://fonts.googleapis.com/css?family=#{$google-font});
+        .font-#{$i} {
+            font-family: nth(nth(nth(this('typefaces'), $i), 2), 1);
+        }
+    }
+    
+	//-------------------------------------------------------------
+	// Styles
+	//-------------------------------------------------------------
+	
+    a {
+        color: color('brand', 'primary');
+        transition: 0.4s;
+        text-decoration: none;
+        p > &, .text & {
+            border-bottom: 1px dotted transparent;
+            &:hover {
+                border-bottom-color: inherit;
+            }
+        }
+    }
+	
+    p, ul, ol {
+        font-weight: lighter;
+        strong {
+            color: typography('colors', 'heavy');
+        }
+    }
+    
+    .lede {
+        font-size: font-size('size-4');
+    }
+	
+} // @mixin typography
+
+//-----------------------------------------------------------------
+// Utilities
+//-----------------------------------------------------------------
+
+@function typography-config($key) {
+    @return map-get($typography, $key);
+}
+
+@function typography($group, $key) {
+	@return map-get(typography-config($group), $key);
+}
+
+@function font-size($size, $rem: false) {
+	$size: map-get(typography-config('sizes'), $size);
+	@if not $rem {
+		@return $size;
+	} @else {
+		$size: $size / ($size * 0 + 1);
+		@return #{$size}rem;
+	}
+}

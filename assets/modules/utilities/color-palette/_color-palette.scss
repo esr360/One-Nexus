@@ -1,0 +1,74 @@
+//=================================================================
+// Color Palettes
+//=================================================================
+
+@mixin palettes($custom: ()) {
+    
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+    
+    $palettes: config((	
+        'name'            : 'palettes',	
+        'greyscale': (
+            'white'       : #ffffff,
+            'grey-1'      : #f8f8f8,
+            'grey-2'      : #dee0e2,
+            'grey-3'      : #bfc1c3,
+            'grey-4'      : #6f777b,
+            'grey-5'      : #232627,
+            'grey-6'      : #161819,
+            'black'       : #000000
+        ),
+        'brand': (
+            'primary'     : #1795C5,
+            'secondary'   : #1CBB9B,
+            'brand-3'     : #bb1c4d
+        ),
+        'alert': (
+            'error'       : #FECCCB,
+            'help'        : #FDEAAD,
+            'info'        : #BFE3F9,
+            'success'     : #DEE3AB
+        ),
+        'validation': (
+            'valid'       : #00B16A,
+            'invalid'     : #D91E18	
+        ),
+        'social' : (
+            'facebook'    : #507CBD,
+            'twitter'     : #63CEF2,
+            'linkedin'    : #117BB8,
+            'github'      : #1C1C1C,
+            'skype'       : #63CEF2,
+            'pinterest'   : #C92228,
+            'instagram'   : #5280A5,
+            'rss'         : #FBA933,
+            'youtube'     : #CB312E,
+            'flickr'      : #ED1384,
+            'vimeo'       : #1EB8EB,
+            'dribbble'    : #EB4C89,
+            'behance'     : #0595FC,
+            'deviantart'  : #B3C434,
+            'reddit'      : #0D7CCD,
+            'google-plus' : #dd4b39,
+            'email'       : #6cb42c,
+            'stumbleupon' : #47AD20
+        )
+    ), $custom) !global;
+    
+    $component: $palettes !global;
+
+} // @mixin palettes
+
+//-----------------------------------------------------------------
+// Utilities
+//-----------------------------------------------------------------
+
+@function palette($key) {
+    @return map-get($palettes, $key);
+}
+
+@function color($group, $key) {
+	@return map-get(map-get($palettes, $group), $key);
+}

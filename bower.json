@@ -1,17 +1,21 @@
  {
     "name":"One-Nexus",
-    "description":"A sensible and intuitive front end solution.",
-    "version":"2.0.0",
+    "description":"A modular approach to front-end development.",
+    "version":"3.0.0",
     "keywords":[
-       "css",
-       "sass",
-       "js",
-       "responsive",
-       "mobile-first",
-       "front-end",
-       "framework",
-       "web",
-       "development"
+        "css",
+        "sass",
+        "js",
+        "responsive",
+        "mobile-first",
+        "front-end",
+        "framework",
+        "web",
+        "development",
+        "theme",
+        "themes",
+        "html",
+        "html5"
     ],
     "homepage":"http://www.onenexusproject.com/",
     "ignore":[

@@ -1,0 +1,83 @@
+//=================================================================
+// Search
+//=================================================================
+
+@mixin search($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $site-overlay: config((
+        'name'               : 'search-box',
+        'output-JSON'        : true,
+        'background'         : color('greyscale', 'grey-5'),
+        'height'             : option($top-bar, 'height'),
+        'input-background'   : color('greyscale', 'grey-5'),
+        'input-color'        : color('greyscale', 'white'),
+        'input-weight'       : lighter,
+        'placeholder-color'  : base('text-color'),
+        'placeholder-weight' : lighter
+    ), $custom);
+
+    //-------------------------------------------------------------
+    // Module
+    //-------------------------------------------------------------
+
+    @include module {
+        
+        position: fixed;
+        background: this('background');
+        height: this('height');
+        width: 100%;
+        top: 0;
+        z-index: 16;
+        text-align: center;
+        transform: translateY(-100%);
+        transition: base('transition');
+        
+        [type="search"] {
+            background: this('input-background');
+            color: this('input-color');
+            font-weight: this('input-weight');
+            height: 100%;
+            width: 100%;
+            border: none;
+            padding: 0;
+            outline: 0;
+            &:focus {
+                &::placeholder {
+                    //opacity: 0;
+                }
+            }
+        }
+                
+        @include modifier('visible') {
+            transform: translateY(0);
+        }
+        
+        @include components(('go', 'close')) {
+            cursor: pointer;
+            &:focus {
+                outline: 0;
+            }
+        }
+        
+        @include overwrite('container') {
+            height: 100%;
+        }
+        
+        @include overwrite-component('group', $parent: 'button') {
+            @include vertical-center(absolute);
+            right: 0;
+        }
+        
+        ::placeholder {
+            font-weight: this('placeholder-weight');
+            color: this('placeholder-color');
+            transition: base('transition');
+        }
+        
+    } // module
+		
+} // @mixin search

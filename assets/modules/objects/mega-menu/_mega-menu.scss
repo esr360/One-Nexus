@@ -1,0 +1,153 @@
+//=================================================================
+// Mega Menu
+//=================================================================
+
+@mixin mega-menu($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $mega-menu: config((
+        'name'                  : 'mega-menu',
+        'output-JSON'           : true,
+        'background'            : color('greyscale', 'grey-1'),
+        'bottom-border'         : 0.6em solid color('brand', 'primary'),
+        'link-hover-color'      : color('brand', 'primary'),
+        'title-color'           : lighten(color('greyscale', 'grey-4'), 15%)
+    ), $custom) !global;
+
+    //-------------------------------------------------------------
+    // Module
+    //-------------------------------------------------------------
+    
+    @include module {
+        @include component('heading') {
+            margin-top: 0;
+            margin-bottom: 1em;
+            padding-bottom: 0.5em;
+            border-bottom: 1px solid color('greyscale', 'grey-2');
+        }
+        @include component('title') {
+            margin-bottom: 0.5em;
+            padding-bottom: 0.5em;
+            padding-left: 0;
+            margin-right: 1.5em;
+            color: this('title-color');
+            border-bottom: 1px dotted color('greyscale', 'grey-2');
+        } 
+        @include overwrite(#{option($grid, 'options', 'row-namespace')}) {
+            display: table;
+        }
+    }
+
+    [class*="#{option($navigation, name)}"] {
+            
+        @include module { 
+        
+            width: 100%;
+            left: 0;
+            right: 0;
+            position: absolute;
+            margin: auto;
+            padding: 1.5em;
+            background: this('background');
+            border-bottom: this('bottom-border');
+
+            ul {
+                position: relative;
+                left: 0;
+                display: block;
+                opacity: 1;
+                visibility: visible;
+                min-width: 0;
+                // prevent unwanted showing of mega-menu
+                pointer-events: none;
+                li {
+                    > a {
+                        padding: 0;
+                        border-color: transparent;
+                        background: transparent;
+                    }
+                    &:hover {
+                        > a {
+                            background: transparent;
+                            border-color: transparent;
+                            color: this('link-hover-color');
+                        }
+                    }
+                    a:not(:only-child) {
+                        padding: 0;
+                    }
+                }
+            }
+            
+            p {
+                margin: 1em 0;
+                @include vertical-rhythm;
+            }
+            
+            .link {
+                display: inline;
+                padding: 0;
+                border: none;
+                color: color('brand', 'primary');
+                transition: none;
+                &:hover {
+                    border-bottom: 1px dotted;
+                }
+            }
+        
+        } // module
+        
+        // parent list
+        ul {
+            margin: 0;
+            li {
+                // reset pointer events
+                &:hover {
+                    @include overwrite('mega-menu') {
+                        ul {
+                            pointer-events: auto;
+                        }
+                    }
+                }
+            }
+        }
+
+        @include overwrite('widget') {
+            &[class*="#{option($grid, 'options', 'col-namespace')}"] {
+                display: inline-block;
+                &:after {
+                    display: none;
+                }
+            }
+            a {
+                padding: 0;
+                border: none;
+                color: inherit;
+                &:after {
+                    display: none;
+                }
+            }
+        }
+        
+        @include overwrite-component('group', $parent: 'widget') {
+            &:not(:last-child) {
+                margin-bottom: 3%;
+            }
+        }
+        
+        @include overwrite-component('group', $parent: 'heading') {
+            color: typography('colors', 'heading');
+        }
+        
+        // reset lightbox links
+        [data-lightbox] {
+            border: none;
+            padding: 0;
+        }
+
+    } // [class*="#{option($navigation, name)}"]
+	
+} // @mixin dropdown

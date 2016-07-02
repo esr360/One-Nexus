@@ -1,0 +1,106 @@
+//-----------------------------------------------------------------
+// Font Sizes
+//-----------------------------------------------------------------
+
+@mixin font-sizes($responsive: true, $mobile-first: false, $responsive-values: ()) {
+	
+	$responsive-values: map-merge((
+        'sizes' : map-keys(typography-config('sizes')),
+        'optional-sizes' : (),
+        'breakpoints' : (
+            'break-2' : 0.75,
+            'break-3' : 0.9
+        )
+	), $responsive-values);
+       
+    // remove the desired values from the original list
+    $font-sizes: map-remove(
+        typography-config('sizes'), 
+        map-get($responsive-values, 'sizes')...
+    );
+    
+    // now using the new list, we can remove those from the 
+    // original list to leave us with with our desired values
+    $font-sizes: map-remove(
+        typography-config('sizes'), 
+        map-keys($font-sizes)...
+    );
+    
+    // if mobile-first we need to reverse the breakpoint order
+    $new-font-sizes: if(
+        $mobile-first, 
+        map-get($responsive-values, 'breakpoints'), 
+        reverse-map(map-get($responsive-values, 'breakpoints'))
+    );
+       
+    // remove the desired values from the original list
+    $optional-font-sizes: map-remove(
+        typography-config('sizes'), 
+        map-get($responsive-values, 'optional-sizes')...
+    );
+    
+    // now using the new list, we can remove those from the 
+    // original list to leave us with with our desired values
+    $optional-font-sizes: map-remove(
+        typography-config('sizes'), 
+        map-keys($optional-font-sizes)...
+    );
+    
+    // if mobile-first we need to reverse the breakpoint order
+    $new-optional-font-sizes: if(
+        $mobile-first, 
+        map-get($responsive-values, 'breakpoints'), 
+        reverse-map(map-get($responsive-values, 'breakpoints'))
+    );
+    
+    // create the base font-size for each modifier
+	@each $size, $value in typography-config('sizes') {   
+        @include modifier($size) {
+            @if not $mobile-first {
+                font-size: $value; 
+            }
+        }
+	}
+    
+    // modify the font-size at varying breakpoints
+	@each $size, $value in $font-sizes {
+        @include modifier($size) {
+            @if $responsive {
+                @each $breakpoint, $new-size in $new-font-sizes {
+                    @if $mobile-first {
+                        @media (min-width: breakpoint($breakpoint)) {
+                            font-size: ($value * $new-size);
+                        }
+                    } @else {
+                        @media (max-width: breakpoint($breakpoint)) {
+                            font-size: ($value * $new-size);
+                        }
+                    }
+                }
+            }
+        }
+	}
+    
+    // modify the font-size at varying breakpoints only if the 
+    // element has the 'responsive' modifier
+    @include modifier('responsive') {
+        @each $size, $value in $optional-font-sizes {
+            @include modifier($size) {
+                @if $responsive {
+                    @each $breakpoint, $new-size in $new-optional-font-sizes {
+                        @if $mobile-first {
+                            @media (min-width: breakpoint($breakpoint)) {
+                                font-size: ($value * $new-size);
+                            }
+                        } @else {
+                            @media (max-width: breakpoint($breakpoint)) {
+                                font-size: ($value * $new-size);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
