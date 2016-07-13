@@ -1,86 +1,165 @@
-//=================================================================
-// Buttons
-//=================================================================
+////****************************************************************
+/// One Nexus
+/// modules\elements\buttons
+///
+/// @author Edmund Reed
+/// @access public
+/// @group elements
+/// @param {Arglist} $custom - where custom config will be passed
+
+/// @require {mixin} palettes
+///
+/// @example
+/// @include buttons((
+///     'color'  : blue,
+///     'weight' : bold
+/// ));
+///****************************************************************
 
 @mixin buttons($custom: ()) {
 
-    //-------------------------------------------------------------
-    // Config
-    //-------------------------------------------------------------
+    ///************************************************************
+    /// Configuration
+    /// @type map
+    /// @access private
+    ///************************************************************
 
     $buttons: config((
-        'name'             : button,
-        'background'       : color('greyscale', 'grey-4'),
+        'name'             : 'button',
         'color'            : color('greyscale', 'white'),
+        'background'       : color('greyscale', 'grey-4'),
+        'transition'       : base('transition'),
         'side-padding'     : 1em,
         'line-height'      : 2.4,
         'weight'           : lighter,
         'border-width'     : 1px,
+        'border-style'     : solid,
         'disabled-opacity' : 0.6,
         'round-radius'     : 0.4em,
-        'fat-height'       : 2.8,
-        'thin-height'      : 2,
         'group-spacing'    : 0.5em,
         'group-stack'      : 'break-1',
         'modifiers'        : ()
     ), $custom);
 
-    //-------------------------------------------------------------
-    // Module
-    //-------------------------------------------------------------
-
+    ///************************************************************
+    /// Module
+    ///************************************************************
+     
     @include module {
 
-    // Core Styles
-    //-------------------------------------------------------------
-
-        background: this('background');
-        color: this('color');
+        ///********************************************************
+        /// Core Styles
+        ///********************************************************
+        
+        // Private styles 
         display: inline-block;
         vertical-align: middle;
-        padding: 0 this('side-padding');
-        line-height: this('line-height');
-        font-weight: this('weight');
-        transition: base('transition');
-        border: this('border-width') solid;
         border-color: transparent;
         cursor: pointer;
         text-decoration: none;
 
+        // Public styles
+        color: this('color');
+        background: this('background');
+        transition: this('transition');
+        padding-left: this('side-padding');
+        padding-right: this('side-padding');
+        line-height: this('line-height');
+        font-weight: this('weight');
+        border-width: this('border-width');
+        border-style: this('border-style');
+
+        // Default modifiers
+        @include extend(this('modifiers'));
+
+        /// Pseudo States
+        ///********************************************************
+
         &:hover {
+            text-decoration: none;
             background: darken(this('background'), 10%);
             color: this('color');
-            text-decoration: none;
         }
         
         &:focus {
             outline: 0;
         }
 
-    // Default Modifiers
-    //-------------------------------------------------------------
-    
-        @include extend(this('modifiers'));
+        ///********************************************************
+        /// Sizes
+        ///********************************************************
 
-    // Sizes
-    //-------------------------------------------------------------
-
-        @include font-sizes(
-            $responsive-values: (
-                'sizes' : ('size-4', 'size-6'),
-                'breakpoints' : (
-                    'break-3' : 0.85
-                )
+        @include font-sizes((
+            'breakpoints' : (
+                'break-3' : 0.85
             )
-        );
+        ));
 
-    // Modifiers
-    //-------------------------------------------------------------
+        ///********************************************************
+        /// Colors
+        ///********************************************************
+
+        /// Brand Colors
+        @each $brand, $color in palette('brand') {
+            @include modifier($brand) {
+                background: $color;
+                &:hover { background: darken($color, 10%) }
+                @include modifier('border') {
+                    color: $color;
+                    &:hover {
+                        background: $color;
+                        color: color('greyscale', 'white');
+                    }
+                }
+            }
+        }
+
+        /// Greyscale Colors
+        @each $greyscale, $color in palette('greyscale') {
+            @include modifier($greyscale) {
+                background: $color;
+                @if (lightness($color) > 50) { 
+                    color: color('brand', 'primary'); 
+                }
+                &:hover { background: darken($color, 10%) }
+                @include modifier('border') {
+                    color: $color;
+                    &:hover {
+                        background: $color;
+                        @if (lightness($color) > 80) {
+                            color: color('brand', 'primary');
+                        } @else {
+                            color: color('greyscale', 'white');
+                        }
+                    }
+                }
+            }
+        }
+        
+        /// Alert Colors
+        @each $name, $color in palette('alert') {
+            @include modifier($name) {
+                background: $color;
+                &:hover { background: darken($color, 10%) }
+            }
+        }
+        
+        /// Social Colors   
+        @each $social, $color in option($palettes, 'social') {
+            @include modifier($social) {
+                background: $color;
+                &:hover { background: darken($color, 10%) }
+            }
+        }
+
+        ///********************************************************
+        /// Modifiers
+        ///********************************************************
 
         @include modifier('block') {
             width: 100%;
             text-align: center;
-            @include overwrite($special: 'adjacent-sibling') {
+            & + & {
                 margin-top: (base('margin') / 2);
             }
         } 
@@ -88,7 +167,7 @@
         @include modifier('border') {
             background: none;
             color: base('text-color');
-            border-color: base('text-color');
+            border-color: currentColor;
             &:hover {
                 color: color('greyscale', 'white');
                 background: color('brand', 'primary');
@@ -123,16 +202,8 @@
             border-radius: 1.5em;
         }
 
-        @include modifier('acute') {
+        @include modifier('sharp') {
             border-radius: 0;
-        }
-        
-        @include modifier('fat') {
-            line-height: this('fat-height');
-        }
-        
-        @include modifier('thin') {
-            line-height: this('thin-height');
         }
         
         @include modifier('icon') {
@@ -152,140 +223,45 @@
             line-height: 1.25em;
         }
         
-    // Colors
-    //-------------------------------------------------------------
-
-        // Brand Colors
-        @each $brand, $color in palette('brand') {
-            @include modifier($brand) {
-                background: $color;
-                &:hover {
-                    background: darken($color, 10%);
-                }
-                @include modifier('border') {
-                    background: transparent;
-                    border-color: $color;
-                    color: $color;
-                    &:hover {
-                        background: $color;
-                        color: color('greyscale', 'white');
-                    }
-                }
-            }
-        }
-
-        // Greyscale Colors
-        @each $greyscale, $color in palette('greyscale') {
-            @include modifier($greyscale) {
-                background: $color;
-                @if (lightness($color) > 50) {
-                    color: color('brand', 'primary');
-                }
-                &:hover {
-                    background: darken($color, 10%);
-                }
-                @include modifier('border') {
-                    background: transparent;
-                    border-color: $color;
-                    color: $color;
-                    &:hover {
-                        background: $color;
-                        @if (lightness($color) > 80) {
-                            color: color('brand', 'primary');
-                        } @else {
-                            color: color('greyscale', 'white');
-                        }
-                    }
-                }
-            }
-        }
-        
-        // Alert Colos
-        @each $name, $color in palette('validation') {
-            @include modifier($name) {
-                background: $color;
-                &:hover {
-                    background: darken($color, 10%);
-                }
-            }
-        }
-        
-        // Social Colors
-        
-        $social-colors: (
-            'facebook'    : option($palettes, 'social', 'facebook'),
-            'twitter'     : option($palettes, 'social', 'twitter'),
-            'google-plus' : option($palettes, 'social', 'google-plus'),
-        );
-        
-        @each $social, $color in $social-colors {
-            @include modifier($social) {
-                background: $color;
-                &:hover {
-                    background: darken($color, 10%);
-                }
-            }
-        }
-        
-        // Active Button
-
-        &.active {
+        @include modifier('active') {
             background: color('brand', 'primary');
             color: color('greyscale', 'white');
             &:hover {
-                background: color('brand', 'primary');;
+                background: color('brand', 'primary');
             }
         }
 
-    // Styles
-    //-------------------------------------------------------------
+        /// Custom Styles
+        ///********************************************************
 
-    //		@include modifier('primary') {
-    //			@include extend('round', 'size-4', 'brand-1');
-    //		}	
+		@include modifier('primary') {
+			@include extend(('round', 'size-4', 'brand-1'));
+		}
 
-    // Components
-    //-------------------------------------------------------------
+		@include modifier('secondary') {
+			@include extend(('sharp', 'size-4', 'brand-2'));
+		}
+
+        ///********************************************************
+        /// Components
+        ///********************************************************
 
         @include component('group') {
-
             @include overwrite('button') {
                 margin-left: this('group-spacing');
                 &:first-child {
                     margin-left: 0;
                 }
             }
-
-            > a, .text-sep {
-                margin-left: this('group-spacing');
-                &:first-child {
-                    margin-left: 0;
-                }
-            }
-
-            @include modifier('stack') {
-                @media (max-width: breakpoint(this('group-stack'))) {
-                    @include overwrite('button') {
-                        margin-left: 0;
-                        display: block;
-                        width: 100%;
-                        margin-bottom: 1rem;
-                        text-align: center;
-                        &:last-child {
-                            margin-bottom: 0;
-                        }
-                    }		
-                }
-            }
         }
 
-    } // module
+    } // @include module
 
-    //-------------------------------------------------------------
-    // Browser Hacks
-    //-------------------------------------------------------------
+    ///************************************************************
+    /// Hacks
+    ///************************************************************
 
-    // Makes input, button and .button elements equal height in Firefox
+    /// Makes input & button elements equal height in Firefox
     input::-moz-focus-inner,
     button::-moz-focus-inner { 
         border: 0;
