@@ -11,7 +11,7 @@
     $headings: config((
         'name'                     : 'heading',
         'output-JSON'              : true,
-        'highlight-color'          : color('brand', 'primary'),
+        'highlight-color'          : color('brand', 'brand-1'),
         'highlight-dark-color'     : color('greyscale', 'grey-6'),
         'highlight-opaque-color'   : rgba(black, 0.6),
         'strikethrough-width'      : 75px,
@@ -50,7 +50,7 @@
 
         @include modifier('brand-1') {
             font-style: normal;
-            color: color('brand', 'primary');
+            color: color('brand', 'brand-1');
         }
 
         @include modifier('uppercase') {
@@ -134,7 +134,7 @@
             @include overwrite {
                 a {
                     &:hover {
-                        color: color('brand', 'primary');
+                        color: color('brand', 'brand-1');
                     }
                 }
             }
@@ -196,7 +196,7 @@
                 line-height: 0.85em;
                 font-size: font-size('size-4');
                 color: color('greyscale', 'grey-5');
-                border: 1px solid color('brand', 'primary');
+                border: 1px solid color('brand', 'brand-1');
                 border-radius: 50%;
                 &:before {
                     position: absolute;
@@ -209,7 +209,7 @@
             &:after {
                 content: "";
                 width: 2em;
-                border-bottom: 1px solid color('brand', 'primary');
+                border-bottom: 1px solid color('brand', 'brand-1');
                 @include vertical-center(absolute);
             }
         
@@ -233,7 +233,7 @@
                 width: 45px;
                 div {
                     &:first-child {
-                        background: color('brand', 'primary');
+                        background: color('brand', 'brand-1');
                         color: white;
                         font-size: font-size('size-2');
                     }

@@ -12,8 +12,8 @@
         'name'                  : 'mega-menu',
         'output-JSON'           : true,
         'background'            : color('greyscale', 'grey-1'),
-        'bottom-border'         : 0.6em solid color('brand', 'primary'),
-        'link-hover-color'      : color('brand', 'primary'),
+        'bottom-border'         : 0.6em solid color('brand', 'brand-1'),
+        'link-hover-color'      : color('brand', 'brand-1'),
         'title-color'           : lighten(color('greyscale', 'grey-4'), 15%)
     ), $custom) !global;
 
@@ -91,7 +91,7 @@
                 display: inline;
                 padding: 0;
                 border: none;
-                color: color('brand', 'primary');
+                color: color('brand', 'brand-1');
                 transition: none;
                 &:hover {
                     border-bottom: 1px dotted;

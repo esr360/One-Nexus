@@ -11,7 +11,7 @@
     $progress-bars: config((
         'name'            : 'progress-bar',
         'background'      : rgba(black, 0.15),
-        'fill-background' : color('brand', 'primary'),
+        'fill-background' : color('brand', 'brand-1'),
         'bar-height'      : 1.5em,
         'bar-radius'      : 0.25em,
         'value-color'     : color('greyscale', 'white'),

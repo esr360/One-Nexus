@@ -20,7 +20,7 @@
         'link-bg-color'        : color('greyscale', 'grey-1'),
         'link-padding'         : 0.6rem,
         'link-hover-color'     : color('greyscale', 'white'),
-        'link-hover-bg-color'  : color('brand', 'primary'),
+        'link-hover-bg-color'  : color('brand', 'brand-1'),
         'link-active-color'    : option($navigation, 'a-has-child-color'),
         'link-active-bg-color' : option($navigation, 'a-has-child-color')
     ), $custom) !global;
@@ -100,7 +100,7 @@
                         > a {
                             color: this('link-hover-color');
                             background: this('link-hover-bg-color');
-                            border-color: color('brand', 'primary');
+                            border-color: color('brand', 'brand-1');
                         }
                         + li {
                             > a {

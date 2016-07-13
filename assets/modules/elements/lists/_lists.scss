@@ -13,12 +13,12 @@
         'small-size'         : font-size('size-1'),
         'inline-spacing'     : 1em,
         'arrow-icon'         : "\f138",
-        'arrow-color'        : color('brand', 'primary'),
+        'arrow-color'        : color('brand', 'brand-1'),
         'tag-bg-color'       : color('greyscale', 'grey-4'),
         'tag-border-color'   : transparent,
         'tag-color'          : white,
         'tag-radius'         : 0,
-        'tag-hover-bg-color' : color('brand', 'primary'),
+        'tag-hover-bg-color' : color('brand', 'brand-1'),
         'tag-hover-color'    : white
     ), $custom);
 
@@ -121,7 +121,7 @@
                     padding: 0.5em 0.75em 0.5em 2em;
                     border-left: 5px solid rgba(black, 0.15);
                     &:hover {
-                        background: color('brand', 'primary');
+                        background: color('brand', 'brand-1');
                         color: color('greyscale', 'white');
                         border-bottom-color: transparent;
                     }

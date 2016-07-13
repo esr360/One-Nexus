@@ -102,7 +102,7 @@
         //---------------------------------------------------------
         
         @include modifier('brand') {
-            background-color: color('brand', 'primary');
+            background-color: color('brand', 'brand-1');
         }
         
         // Sticky Header

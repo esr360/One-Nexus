@@ -6,13 +6,13 @@
 /// @access public
 /// @group elements
 /// @param {Arglist} $custom - where custom config will be passed
-
+///
 /// @require {mixin} palettes
 ///
 /// @example
 /// @include buttons((
-///     'color'  : blue,
-///     'weight' : bold
+///     'round-radius' : 4px,
+///     'weight'       : bold
 /// ));
 ///****************************************************************
 
@@ -119,7 +119,7 @@
             @include modifier($greyscale) {
                 background: $color;
                 @if (lightness($color) > 50) { 
-                    color: color('brand', 'primary'); 
+                    color: color('brand', 'brand-1'); 
                 }
                 &:hover { background: darken($color, 10%) }
                 @include modifier('border') {
@@ -127,7 +127,7 @@
                     &:hover {
                         background: $color;
                         @if (lightness($color) > 80) {
-                            color: color('brand', 'primary');
+                            color: color('brand', 'brand-1');
                         } @else {
                             color: color('greyscale', 'white');
                         }
@@ -170,8 +170,8 @@
             border-color: currentColor;
             &:hover {
                 color: color('greyscale', 'white');
-                background: color('brand', 'primary');
-                border-color: color('brand', 'primary');
+                background: color('brand', 'brand-1');
+                border-color: color('brand', 'brand-1');
             }
         }
         
@@ -224,10 +224,10 @@
         }
         
         @include modifier('active') {
-            background: color('brand', 'primary');
+            background: color('brand', 'brand-1');
             color: color('greyscale', 'white');
             &:hover {
-                background: color('brand', 'primary');
+                background: color('brand', 'brand-1');
             }
         }
 

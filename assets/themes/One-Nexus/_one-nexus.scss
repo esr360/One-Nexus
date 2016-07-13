@@ -1,39 +1,36 @@
-//=================================================================
-// Nexus
-//=================================================================
+///****************************************************************
+/// One Nexus
+/// themes\One-Nexus\one-nexus
+///
+/// @author Edmund Reed
+/// @access public
+/// @group utilities
+/// @param {Arglist} $custom - where custom config will be passed
+///****************************************************************
 
 @if $theme == 'One-Nexus' {
     
-    @include normalize();
+    @include normalize;
 
-//-----------------------------------------------------------------
-// Skeleton
-//-----------------------------------------------------------------
+    ///************************************************************
+    /// Skeleton
+    ///************************************************************
 
-	@include palettes((
-		'brand': (
-			'primary' : #1795C5
-		)
-	));
-	
+	@include palettes;
 	@include typography;
 	@include grid;
 	@include base;
 	@include tools;
 	@include helpers;
 
-//-----------------------------------------------------------------
-// Elements
-//-----------------------------------------------------------------
+    ///************************************************************
+    /// Elements
+    ///************************************************************
 
 	@include accordions;
 	@include alert-bars;
 	@include blockquotes;
-	
-	@include buttons((
-		'modifiers' : ('oval')
-	));
-	
+	@include buttons;
 	@include carousels;
 	@include forms;
 	@include headings;
@@ -42,65 +39,37 @@
 	@include modals;
 	@include progress-bars;
 	@include tables;
-    
-	@include tabs((
-        'navItem-radius' : 0.75em
-    ));
-    
+	@include tabs;
 	@include thumbnails;
 	@include tooltips;
 	@include wells;
 	@include widgets;
 
-//-----------------------------------------------------------------
-// Objects
-//-----------------------------------------------------------------
+    ///************************************************************
+    /// Objects
+    ///************************************************************
 
 	@include top-bar;
 	@include breadcrumb;
 	@include footer;
 	@include google-map;
-	
-	@include header((
-		'background'     : transparent,
-		'font-size'      : 0.9em,
-        'bar'            : true,
-        'absolute'       : (
-            'enabled'    : true
-        ),
-        'sticky'         : (
-            'enabled'    : true
-        ),
-        'dark'           : (
-            'enabled'    : true,
-			'background' : rgba(black, 0.3),
-        )
-	));
-	
+	@include header;
 	@include logo;
-	
-	@include navigation((
-		'link-color'   : color('greyscale', 'white'),
-        'item-radius'  : 1.5em,
-        'item-padding' : 0.5rem 1rem
-	));
-	
+	@include navigation;
 	@include dropdown;
 	@include side-nav;
 	@include flyout-nav;
-	
 	@include mega-menu;
-	
 	@include scroll-top;
 	@include search;
 	@include site-overlay;
 	@include twitter-feed;
-	
-//-----------------------------------------------------------------
-// Sections
-//-----------------------------------------------------------------
+
+    ///************************************************************
+    /// Sections
+    ///************************************************************
 
 	@include sections;
-	@include billboard();
+	@include billboard;
 
-} // Kayzen
+}

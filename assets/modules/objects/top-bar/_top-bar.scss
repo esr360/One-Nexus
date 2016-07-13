@@ -138,7 +138,7 @@
                     li {
                         transition: base('transition');
                         &:hover {
-                            color: color('brand', 'primary');
+                            color: color('brand', 'brand-1');
                         }
                     }
                     @media (max-width: breakpoint('break-3')) {

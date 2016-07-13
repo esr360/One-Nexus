@@ -24,14 +24,14 @@
         'navItem-hover-color'        : color('greyscale', 'grey-5'),
         'navItem-hover-background'   : darken(color('greyscale', 'grey-1'), 4%),
         'navItem-active-color'       : color('greyscale', 'white'),
-        'navItem-active-background'  : color('brand', 'primary'),
-        'navItem-active-borderColor' : color('brand', 'primary'),
+        'navItem-active-background'  : color('brand', 'brand-1'),
+        'navItem-active-borderColor' : color('brand', 'brand-1'),
         'contentBlock-color'         : base('text-color'),
         'contentBlock-background'    : color('greyscale', 'white'),
         'contentBlock-borderColor'   : color('greyscale', 'grey-2'),
         'contentBlock-padding'       : 1.5em,
         'contentBlock-glueHeight'    : 6px,
-        'contentBlock-glueColor'     : color('brand', 'primary'),
+        'contentBlock-glueColor'     : color('brand', 'brand-1'),
         'contentBlock-deepPadding'   : 2.5em
     ), $custom);
 

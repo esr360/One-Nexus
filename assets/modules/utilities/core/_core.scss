@@ -46,7 +46,7 @@
 	
 	ins {
 		font-weight: bold;
-		color: color('brand', 'primary');
+		color: color('brand', 'brand-1');
 		text-decoration: none;
 	}
     
@@ -143,7 +143,7 @@
     }
 	
 	::selection {
-		background-color: color('brand', 'primary');
+		background-color: color('brand', 'brand-1');
 		color: color('greyscale', 'white');
 		text-shadow: none;
 	}

@@ -16,11 +16,11 @@
         'banner-padding'          : 5em 0,
         'block-padding'           : 7%,
         'panel-background'        : color('greyscale', 'white'),
-        'secondary-background'    : color('brand', 'primary'),
+        'secondary-background'    : color('brand', 'brand-1'),
         'secondary-color'         : color('greyscale', 'white'),
         'overlay-color'           : color('greyscale', 'white'),
-        'overlay-background'      : rgba(color('brand', 'primary'), 0.4),
-        'overlay-deep-background' : rgba(color('brand', 'primary'), 0.75),
+        'overlay-background'      : rgba(color('brand', 'brand-1'), 0.4),
+        'overlay-deep-background' : rgba(color('brand', 'brand-1'), 0.75),
         'overlay-dark-background' : rgba(color('greyscale', 'grey-5'), 0.75),
         'overlay-alt-background'  : rgba(color('greyscale', 'grey-5'), 0.5)
  	), $custom);

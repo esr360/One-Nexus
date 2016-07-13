@@ -104,7 +104,7 @@
 			margin-left: 0.5em;
 			&:hover {
 				a {
-					background: color('brand', 'primary');
+					background: color('brand', 'brand-1');
 					color: color('greyscale', 'white');
 					text-decoration: none;
 				}
@@ -141,7 +141,7 @@
 	.tweet-prev, .tweet-next {
 		cursor: pointer;
 		&:hover {
-			background: color('brand', 'primary');
+			background: color('brand', 'brand-1');
 		}
 	}
 			

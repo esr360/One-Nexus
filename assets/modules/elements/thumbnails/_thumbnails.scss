@@ -17,7 +17,7 @@
         'xlarge-profile-size'          : 95px,
         'mask-background'              : rgba(black, 0.6),
         'mask-title-color'             : color('greyscale', 'white'),
-        'mask-border-color'            : color('brand', 'primary'),
+        'mask-border-color'            : color('brand', 'brand-1'),
         'featureContent-background'    : rgba(black, 0.5),
         'featureContent-color'         : color('greyscale', 'white'),
         'featureContent-padding'       : 1.5em,
@@ -247,7 +247,7 @@
             .slide-prev, .slide-next {
                 background: rgba(black, 0.4);
                 &:hover {
-                    background: color('brand', 'primary');
+                    background: color('brand', 'brand-1');
                 }
             }
             .slide-prev {

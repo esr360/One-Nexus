@@ -170,7 +170,7 @@
             position: absolute;
             z-index: 3;
             transform: translateY(-50%) translateX(-50%);
-            background: color('brand', 'primary');
+            background: color('brand', 'brand-1');
             padding: 0.5em;
             [class*="slide-"] {
                 position: relative;
@@ -188,7 +188,7 @@
                     width: 9999px;
                     left: -4999px;
                     height: 10px;
-                    background-color: color('brand', 'primary');
+                    background-color: color('brand', 'brand-1');
                     @include vertical-center(absolute);
                 }   
             }
