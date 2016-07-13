@@ -86,15 +86,6 @@
             @extend %horizontal-center;
             @include vertical-center(absolute);
             color: this('color');
-            @at-root {
-                @include overwrite('app-header', $is: 'absolute') {
-                    @include overwrite('billboard', $not: 'full-screen', $special: 'adjacent-sibling') {
-                        @include overwrite-component('wrapper') {
-                            transform: translateY(-15%);
-                        }
-                    }
-                }
-            }
         }
 
     } // module

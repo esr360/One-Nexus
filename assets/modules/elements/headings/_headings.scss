@@ -38,12 +38,7 @@
     // Sizes
     //-------------------------------------------------------------
 
-        @include font-sizes(
-            $responsive-values: (
-                'sizes' : ('size-7', 'size-8', 'size-9'),
-                'optional-sizes' : ('size-4', 'size-5')
-            )
-        );
+        @include font-sizes();
 
     // Patterns
     //-------------------------------------------------------------
@@ -93,88 +88,19 @@
                     box-decoration-break: clone;
                 }
             }
-            @include modifier('dark') {
-                > b {
-                    background: this('highlight-dark-color');
-                    box-shadow: $highlight-dimensions 0 0 this('highlight-dark-color'), -$highlight-dimensions 0 0 this('highlight-dark-color');
-                }
-            }
-            @include modifier('opaque') {
-                > b {
-                    background: this('highlight-opaque-color');
-                    box-shadow: $highlight-dimensions 0 0 this('highlight-opaque-color'), -$highlight-dimensions 0 0 this('highlight-opaque-color');
-                }
-            }
-        }
-
-        @include modifier('strikethrough') {
-            > span {
-                position: relative;
-                &:before,
-                &:after {
-                    content: "";
-                    position: absolute;
-                    width: this('strikethrough-width');
-                    border-bottom: 1px solid;
-                    opacity: 0.75;
-                    top: 50%;
-                    color: inherit;
-                    transform: translateY(-50%) translateZ(0);
-                }
-                &:before {
-                    left: calc(-#{this('strikethrough-width')} - 1rem);
-                }
-                &:after {
-                    right: calc(-#{this('strikethrough-width')} - 1rem);
-                }
-            }
-            @include modifier('dots') {
-                > span {
-                    &:before, &:after {
-                        border-bottom-style: dotted;
-                        opacity: 0.5;
-                    }
-                }
-            }
-        }
-
-        @include modifier('spaced') {
-            text-indent: this('spaced-spacing');
-            &, span {            
-                letter-spacing: this('spaced-spacing');
-            }
-            @include modifier('strikethrough') {
-                span {
-                    &:after {
-                        right: calc(-75px - 1rem + #{this('spaced-spacing')});
-                    }
-                }
-            } 
-        }
-
-        @include modifier('border') {
-            border-bottom: this('border');
-            padding-bottom: 0.75rem;
-            a {
-                color: inherit;
-            }
         }
         
         @include modifier('flush') {
             margin-top: 0 !important;
             margin-bottom: 0 !important;
         }
-        
-        @include modifier('sub') {
-            color: color('greyscale', 'grey-4');
-        }
 
     // Styles
     //-------------------------------------------------------------
 
-    //		@include modifier('primary') {
-    //			@include extend('heavy', 'size-4', 'uppercase');
-    //		}  
+//		@include modifier('primary') {
+//			@include extend('heavy', 'size-4', 'uppercase');
+//		}  
 
     // Components
     //-------------------------------------------------------------

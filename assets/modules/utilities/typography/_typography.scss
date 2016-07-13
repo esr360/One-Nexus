@@ -9,27 +9,27 @@
     //-------------------------------------------------------------
     
     $typography: config((
-        'name'                : 'typography',
-        'typefaces': (
-            'primary'         : ('Lato', 'Lato:300,400,700,900'),
-            'secondary'       : ('Raleway', 'Raleway:100,300,700,900')
+        'name'          : 'typography',
+        'typefaces':(
+            'primary'   : ('Lato', '300,400,700,900'),
+            'secondary' : ('Raleway', '100,300,700,900')
         ),
-        'colors': (
-            'base'            : color('greyscale', 'grey-4'),
-            'heading'         : color('greyscale', 'grey-5'),
-            'heavy'           : color('greyscale', 'grey-5')
+        'colors':(
+            'base'      : color('greyscale', 'grey-4'),
+            'heading'   : color('greyscale', 'grey-5'),
+            'heavy'     : color('greyscale', 'grey-5')
         ),
-        'sizes': (
-            'base'            : 1em,
-            'size-1'          : 0.67em,
-            'size-2'          : 0.83em,
-            'size-3'          : 1.17em,
-            'size-4'          : 1.25em,
-            'size-5'          : 1.5em,
-            'size-6'          : 2em,
-            'size-7'          : 2.4em,
-            'size-8'          : 3em,
-            'size-9'          : 3.4em
+        'sizes':(
+            'base'      : 1em,
+            'size-1'    : 0.67em,
+            'size-2'    : 0.83em,
+            'size-3'    : 1.17em,
+            'size-4'    : 1.25em,
+            'size-5'    : 1.5em,
+            'size-6'    : 2em,
+            'size-7'    : 2.4em,
+            'size-8'    : 3em,
+            'size-9'    : 3.4em
         )
     ), $custom) !global;
     
@@ -63,13 +63,6 @@
 	
     p, ul, ol {
         font-weight: lighter;
-        strong {
-            color: typography('colors', 'heavy');
-        }
-    }
-    
-    .lede {
-        font-size: font-size('size-4');
     }
 	
 } // @mixin typography
