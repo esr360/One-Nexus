@@ -1,106 +1,147 @@
-//-----------------------------------------------------------------
-// Font Sizes
-//-----------------------------------------------------------------
+///****************************************************************
+/// One Nexus
+/// modules\utilities\font-sizes
+///
+/// @author Edmund Reed
+/// @access public
+/// @group utilities
+/// @param {Arglist} $custom - where custom config will be passed
+///
+/// @require {function} reverse-map
+/// @require {mixin} typography
+/// @require {mixin} grid
+///
+/// @example
+/// @include font-sizes((
+///     'default-sizes'  : ('size-2', 'sze-4'),
+///     'optional-sizes' : ('size-5'),
+///     'breakpoints'    : (
+///         'break-3'    : 0.85
+///     )
+/// ));
+///****************************************************************
 
-@mixin font-sizes($responsive: true, $mobile-first: false, $responsive-values: ()) {
+@mixin font-sizes($custom: ()) {
+
+    ///************************************************************
+    /// Configuration
+    /// @type map
+    /// @access private
+    ///************************************************************
 	
-	$responsive-values: map-merge((
-        'sizes' : map-keys(typography-config('sizes')),
-        'optional-sizes' : (),
-        'breakpoints' : (
-            'break-2' : 0.75,
-            'break-3' : 0.9
+	$config: map-merge((
+        'responsive'     : true,
+        'mobile-first'   : false,
+        'default-sizes'  : (),
+        'optional-sizes' : typography-config('sizes'),
+        'breakpoints':(
+            'break-2'    : 0.75,
+            'break-3'    : 0.9
         )
-	), $responsive-values);
+	), $custom);
        
-    // remove the desired values from the original list
-    $font-sizes: map-remove(
-        typography-config('sizes'), 
-        map-get($responsive-values, 'sizes')...
+    /// Map containing desired default responsive font values
+    /// @type map
+    /// @access private
+    $font-sizes: get-font-sizes(
+        typography-config('sizes'), map-get($config, 'default-sizes')
     );
-    
-    // now using the new list, we can remove those from the 
-    // original list to leave us with with our desired values
-    $font-sizes: map-remove(
-        typography-config('sizes'), 
-        map-keys($font-sizes)...
-    );
-    
-    // if mobile-first we need to reverse the breakpoint order
-    $new-font-sizes: if(
-        $mobile-first, 
-        map-get($responsive-values, 'breakpoints'), 
-        reverse-map(map-get($responsive-values, 'breakpoints'))
+
+    /// Sizes to be used when responding
+    /// @type map
+    /// @access private
+    $responsive-font-sizes: if(
+        map-get($config, 'mobile-first'), 
+        map-get($config, 'breakpoints'), 
+        reverse-map(map-get($config, 'breakpoints'))
     );
        
-    // remove the desired values from the original list
-    $optional-font-sizes: map-remove(
-        typography-config('sizes'), 
-        map-get($responsive-values, 'optional-sizes')...
+    /// Map containing desired optional responsive font values
+    /// @type map
+    /// @access private
+    $optional-font-sizes: get-font-sizes(
+        typography-config('sizes'), map-get($config, 'optional-sizes')
     );
     
-    // now using the new list, we can remove those from the 
-    // original list to leave us with with our desired values
-    $optional-font-sizes: map-remove(
-        typography-config('sizes'), 
-        map-keys($optional-font-sizes)...
-    );
-    
-    // if mobile-first we need to reverse the breakpoint order
-    $new-optional-font-sizes: if(
-        $mobile-first, 
-        map-get($responsive-values, 'breakpoints'), 
-        reverse-map(map-get($responsive-values, 'breakpoints'))
+    /// Sizes to be used when responding
+    /// @type map
+    /// @access private
+    $responsive-optional-font-sizes: if(
+        map-get($config, 'mobile-first'), 
+        map-get($config, 'breakpoints'),
+        reverse-map(map-get($config, 'breakpoints'))
     );
     
     // create the base font-size for each modifier
 	@each $size, $value in typography-config('sizes') {   
         @include modifier($size) {
-            @if not $mobile-first {
+            @if not map-get($config, 'mobile-first') {
                 font-size: $value; 
             }
         }
 	}
-    
-    // modify the font-size at varying breakpoints
-	@each $size, $value in $font-sizes {
-        @include modifier($size) {
-            @if $responsive {
-                @each $breakpoint, $new-size in $new-font-sizes {
-                    @if $mobile-first {
-                        @media (min-width: breakpoint($breakpoint)) {
-                            font-size: ($value * $new-size);
-                        }
-                    } @else {
-                        @media (max-width: breakpoint($breakpoint)) {
-                            font-size: ($value * $new-size);
-                        }
-                    }
-                }
-            }
-        }
-	}
-    
-    // modify the font-size at varying breakpoints only if the 
-    // element has the 'responsive' modifier
+
+    // Respond the default font-sizes
+    @include respond-font-sizes($font-sizes, $responsive-font-sizes);
+
+    // Respond the optional font-sizes
     @include modifier('responsive') {
-        @each $size, $value in $optional-font-sizes {
-            @include modifier($size) {
-                @if $responsive {
-                    @each $breakpoint, $new-size in $new-optional-font-sizes {
-                        @if $mobile-first {
-                            @media (min-width: breakpoint($breakpoint)) {
-                                font-size: ($value * $new-size);
-                            }
-                        } @else {
-                            @media (max-width: breakpoint($breakpoint)) {
-                                font-size: ($value * $new-size);
-                            }
-                        }
+        @include respond-font-sizes($optional-font-sizes, $responsive-optional-font-sizes);
+    }
+    
+}
+
+///****************************************************************
+/// Tools & Utilities
+///****************************************************************
+
+/// Function to get desired font-size values
+/// @access private
+/// @param {Map} $original-sizes - the original map of font-sizes
+/// @param {List} $new-values - the keys you are interested in
+/// @return - new map containing only desired values
+@function get-font-sizes($original-sizes, $new-values) {
+
+    /// Get the keys of the desired new values
+    /// @access private
+    /// @type [map|list|string]
+    $keys: if(type-of($new-values) == 'map',
+        map-keys($new-values), $new-values
+    );
+
+    /// Remove the desired values from the original list
+    /// @access private
+    /// @type map
+    $new-sizes: map-remove($original-sizes, $keys...);
+    
+    /// Now using the new list, we can remove those from the 
+    /// original list to leave us with with our desired values
+    /// @access private
+    /// @type map
+    $new-sizes: map-remove($original-sizes, map-keys($new-sizes)...);
+
+    @return $new-sizes;
+}
+
+/// Mixin to modify font-sizes at varying breakpoints
+/// @access private
+/// @param {Map} $sizes - desired font-sizes
+/// @param {Map} $values - desired breakpoints to respond to
+/// @return - new map containing only desired values
+@mixin respond-font-sizes($sizes, $values) {
+    @each $key, $value in $sizes {
+        @include modifier($key) {
+            @each $breakpoint, $new-size in $values {
+                @if map-get($config, 'mobile-first') {
+                    @media (min-width: breakpoint($breakpoint)) {
+                        font-size: ($value * $new-size);
+                    }
+                } @else {
+                    @media (max-width: breakpoint($breakpoint)) {
+                        font-size: ($value * $new-size);
                     }
                 }
             }
         }
     }
-    
 }
