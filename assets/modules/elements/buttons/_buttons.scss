@@ -30,7 +30,7 @@
         'background'       : color('greyscale', 'grey-4'),
         'transition'       : base('transition'),
         'side-padding'     : 1em,
-        'line-height'      : 2.4,
+        'line-height'      : 2.2,
         'weight'           : lighter,
         'border-width'     : 1px,
         'border-style'     : solid,
@@ -44,7 +44,7 @@
     ///************************************************************
     /// Module
     ///************************************************************
-     
+        
     @include module {
 
         ///********************************************************
@@ -99,7 +99,7 @@
         /// Colors
         ///********************************************************
 
-        /// Brand Colors
+        // Brand Colors
         @each $brand, $color in palette('brand') {
             @include modifier($brand) {
                 background: $color;
@@ -114,12 +114,12 @@
             }
         }
 
-        /// Greyscale Colors
+        // Greyscale Colors
         @each $greyscale, $color in palette('greyscale') {
             @include modifier($greyscale) {
                 background: $color;
                 @if (lightness($color) > 50) { 
-                    color: color('brand', 'brand-1'); 
+                    color: typography('colors', 'base'); 
                 }
                 &:hover { background: darken($color, 10%) }
                 @include modifier('border') {
@@ -127,7 +127,7 @@
                     &:hover {
                         background: $color;
                         @if (lightness($color) > 80) {
-                            color: color('brand', 'brand-1');
+                            color: typography('colors', 'base');
                         } @else {
                             color: color('greyscale', 'white');
                         }
@@ -136,7 +136,7 @@
             }
         }
         
-        /// Alert Colors
+        // Alert Colors
         @each $name, $color in palette('alert') {
             @include modifier($name) {
                 background: $color;
@@ -144,7 +144,7 @@
             }
         }
         
-        /// Social Colors   
+        // Social Colors   
         @each $social, $color in option($palettes, 'social') {
             @include modifier($social) {
                 background: $color;
@@ -234,13 +234,13 @@
         /// Custom Styles
         ///********************************************************
 
-		@include modifier('primary') {
-			@include extend(('round', 'size-4', 'brand-1'));
-		}
+        @include modifier('primary') {
+            @include extend(('round', 'size-4', 'brand-1'));
+        }
 
-		@include modifier('secondary') {
-			@include extend(('sharp', 'size-4', 'brand-2'));
-		}
+        @include modifier('secondary') {
+            @include extend(('sharp', 'size-4', 'brand-2'));
+        }
 
         ///********************************************************
         /// Components
