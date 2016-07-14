@@ -28,8 +28,8 @@
     /// @type map
     /// @access private
     ///************************************************************
-	
-	$config: map-merge((
+
+    $config: map-merge((
         'responsive'     : true,
         'mobile-first'   : false,
         'default-sizes'  : (),
@@ -38,8 +38,8 @@
             'break-2'    : 0.75,
             'break-3'    : 0.9
         )
-	), $custom);
-       
+    ), $custom);
+        
     /// Map containing desired default responsive font values
     /// @type map
     /// @access private
@@ -55,14 +55,14 @@
         map-get($config, 'breakpoints'), 
         reverse-map(map-get($config, 'breakpoints'))
     );
-       
+        
     /// Map containing desired optional responsive font values
     /// @type map
     /// @access private
     $optional-font-sizes: get-font-sizes(
         typography-config('sizes'), map-get($config, 'optional-sizes')
     );
-    
+
     /// Sizes to be used when responding
     /// @type map
     /// @access private
@@ -71,15 +71,15 @@
         map-get($config, 'breakpoints'),
         reverse-map(map-get($config, 'breakpoints'))
     );
-    
+
     // create the base font-size for each modifier
-	@each $size, $value in typography-config('sizes') {   
+    @each $size, $value in typography-config('sizes') {   
         @include modifier($size) {
             @if not map-get($config, 'mobile-first') {
                 font-size: $value; 
             }
         }
-	}
+    }
 
     // Respond the default font-sizes
     @include respond-font-sizes($font-sizes, $responsive-font-sizes);
@@ -88,19 +88,19 @@
     @include modifier('responsive') {
         @include respond-font-sizes($optional-font-sizes, $responsive-optional-font-sizes);
     }
-    
-}
 
-///****************************************************************
-/// Tools & Utilities
-///****************************************************************
+    }
 
-/// Function to get desired font-size values
-/// @access private
-/// @param {Map} $original-sizes - the original map of font-sizes
-/// @param {List} $new-values - the keys you are interested in
-/// @return - new map containing only desired values
-@function get-font-sizes($original-sizes, $new-values) {
+    ///****************************************************************
+    /// Tools & Utilities
+    ///****************************************************************
+
+    /// Function to get desired font-size values
+    /// @access private
+    /// @param {Map} $original-sizes - the original map of font-sizes
+    /// @param {List} $new-values - the keys you are interested in
+    /// @return - new map containing only desired values
+    @function get-font-sizes($original-sizes, $new-values) {
 
     /// Get the keys of the desired new values
     /// @access private
@@ -113,7 +113,7 @@
     /// @access private
     /// @type map
     $new-sizes: map-remove($original-sizes, $keys...);
-    
+
     /// Now using the new list, we can remove those from the 
     /// original list to leave us with with our desired values
     /// @access private
