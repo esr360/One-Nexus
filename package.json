@@ -38,6 +38,7 @@
     "grunt-postcss": "^0.6.0",
     "grunt-run-grunt": "^0.1.4",
     "grunt-sass": "^1.2.0-beta",
+    "grunt-sassdoc": "^2.0.2",
     "grunt-scss-lint": "^0.3.8",
     "grunt-text-replace": "^0.4.0",
     "nopt-grunt-fix": "^1.0.0",
