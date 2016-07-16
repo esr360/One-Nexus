@@ -42,7 +42,7 @@
             height: this('image-height');
             display: inline-block;
             vertical-align: middle;
-            transition: base('transition');
+            transition: core('transition');
         }
 
     } // component

@@ -16,7 +16,7 @@
         'input-background'   : color('greyscale', 'grey-5'),
         'input-color'        : color('greyscale', 'white'),
         'input-weight'       : lighter,
-        'placeholder-color'  : base('text-color'),
+        'placeholder-color'  : core('text-color'),
         'placeholder-weight' : lighter
     ), $custom);
 
@@ -34,7 +34,7 @@
         z-index: 16;
         text-align: center;
         transform: translateY(-100%);
-        transition: base('transition');
+        transition: core('transition');
         
         [type="search"] {
             background: this('input-background');
@@ -75,7 +75,7 @@
         ::placeholder {
             font-weight: this('placeholder-weight');
             color: this('placeholder-color');
-            transition: base('transition');
+            transition: core('transition');
         }
         
     } // module

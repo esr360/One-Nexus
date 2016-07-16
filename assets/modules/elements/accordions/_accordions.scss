@@ -19,7 +19,7 @@
         'section-margin'        : 0,
         // title (clickable part)
         'title-bg'              : transparent,
-        'title-color'           : base('text-color'),
+        'title-color'           : core('text-color'),
         'title-border'          : 1px solid rgba(black, 0.15),
         'title-radius'          : 0,
         'title-padding'         : 1em,
@@ -30,7 +30,7 @@
         'title-active-radius'   : 0,
         // content
         'content-bg'            : color('greyscale', 'white'),
-        'content-color'         : base('text-color'),
+        'content-color'         : core('text-color'),
         'content-border'        : 1px solid rgba(black, 0.15),
         'content-radius'        : 0,
         'content-padding'       : 1.5em
@@ -45,7 +45,7 @@
     // Core Styles
     //-------------------------------------------------------------
 
-        margin-bottom: base('margin');
+        margin-bottom: core('margin');
         @include vertical-rhythm('bottom');
 
     // Components
@@ -94,14 +94,14 @@
             border-radius: this('title-radius');
             font-weight: normal;	
             line-height: 1;		
-            transition: base('transition');
+            transition: core('transition');
             backface-visibility: hidden;
             &:after { // open/close icon
                 content: this('icon');
                 font-family: FontAwesome;
                 float: right;
                 color: this('icon-color');
-                transition: base('transition');
+                transition: core('transition');
             }
         }
         
@@ -142,7 +142,7 @@
                         right: 0;
                         top: -0.25em;
                         color: this('icon-color');
-                        transition: base('transition');
+                        transition: core('transition');
                     }			
                 }
                 &.active {

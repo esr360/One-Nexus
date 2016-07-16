@@ -33,7 +33,7 @@
     //-------------------------------------------------------------
 
         line-height: 1;
-        transition: base('transition');
+        transition: core('transition');
 
     // Sizes
     //-------------------------------------------------------------
@@ -115,7 +115,7 @@
             //-----------------------------------------------------
         
             @include vertical-rhythm('bottom');
-            margin-bottom: base('margin');
+            margin-bottom: core('margin');
             font-size: 1rem;
             position: relative;
             background-size: cover;
@@ -168,12 +168,12 @@
             
             @include modifier('small') {
                 @include vertical-rhythm;
-                margin-top: (base('margin') / 2);
-                margin-bottom: (base('margin') / 2);
+                margin-top: (core('margin') / 2);
+                margin-bottom: (core('margin') / 2);
             }
         
             @include modifier('large') {
-                margin-bottom: (base('margin') * 2);
+                margin-bottom: (core('margin') * 2);
                 @include vertical-rhythm('bottom');
             }
         

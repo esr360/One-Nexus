@@ -34,7 +34,7 @@ https://github.com/esr360/K-Tooltips
         'text-transform' : none,
         'font-weight'    : normal,
         // Other
-        'transition'     : base('transition'),
+        'transition'     : core('transition'),
         'z-index'        : 9999
     ), $custom) !global;
 

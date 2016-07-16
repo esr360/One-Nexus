@@ -13,7 +13,7 @@
         'output-JSON'            : true,
         'dafault-animation'      : left,
         'background'             : color('greyscale', 'grey-1'),
-        'text-color'             : base('text-color'),
+        'text-color'             : core('text-color'),
         'radius'                 : 0,
         'z-index'                : 14,
         'content-padding'        : 2em,
@@ -39,7 +39,7 @@
         color: this('text-color');
         position: fixed;
         z-index: this('z-index');
-        transition: base('transition');
+        transition: core('transition');
         border-radius: this('radius');
         // hide by default
         opacity: 0;
@@ -52,7 +52,7 @@
         
         @include modifier('animate') {
             
-            transition: base('transition');
+            transition: core('transition');
             
             @include modifiers(('top', 'bottom')) {
                 @include modifier('visible') {
@@ -111,7 +111,7 @@
             cursor: pointer;
             top: nth(this('close-icon-position'), 1);
             right: nth(this('close-icon-position'), 2);
-            transition: base('transition');
+            transition: core('transition');
             color: this('close-icon-color');
             font-size: this('close-icon-size');
             &:hover {

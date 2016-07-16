@@ -12,7 +12,7 @@
         'name'                 : 'app-header',
         'output-JSON'          : true,
         // Options
-        'background'           : base('background'),
+        'background'           : core('background'),
         'height'               : 100px,
         'font-size'            : 1em,
         'z-index'              : 5,
@@ -134,7 +134,7 @@
 
         @include component('wrapper') {
             height: this('height');
-            transition: height base('transition');
+            transition: height core('transition');
         }
         
     } // module

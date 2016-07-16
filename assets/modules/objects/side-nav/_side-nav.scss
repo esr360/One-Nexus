@@ -159,7 +159,7 @@
             right: 0;
             padding: 1.45em;
             cursor: pointer;
-            transition: base('transition');
+            transition: core('transition');
             opacity: 0.6;
             display: none;
             &:hover {

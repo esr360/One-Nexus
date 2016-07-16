@@ -76,7 +76,7 @@
         
         @include component('copyright') {
             @media (max-width: this('bar-responsive')) {		
-                margin-bottom: base('margin');
+                margin-bottom: core('margin');
             }
             h4 {
                 font-weight: lighter;

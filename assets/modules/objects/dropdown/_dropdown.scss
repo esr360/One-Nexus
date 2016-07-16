@@ -51,7 +51,7 @@
                 @extend %list-reset;
                 min-width: this('width');
                 text-align: this('text-align');
-                transition: base('transition');
+                transition: core('transition');
                 font-size: this('font-size');
                 position: absolute;
                 z-index: 7;

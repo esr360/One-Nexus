@@ -16,7 +16,7 @@
         'font-size'           : font-size('size-2'),
         'background'          : color('greyscale', 'grey-5'),
         'box-shadow'          : 1px 0 25px 0px rgba(black, 0.4),
-        'transition'          : base('transition'),
+        'transition'          : core('transition'),
         'z-index'             : 14,
         // Settings
         'show-y-scrollbar'    : option($side-nav, 'show-y-scrollbar'),
@@ -35,7 +35,7 @@
         position: fixed;
         top: 0;
         height: 100%;
-        transition: base('transition');
+        transition: core('transition');
         background: this('background');
         width: this('width');
         font-size: this('font-size');

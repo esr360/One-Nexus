@@ -42,7 +42,7 @@
 
         position: relative;
         overflow: hidden;
-        margin-bottom: base('margin');
+        margin-bottom: core('margin');
         @include vertical-rhythm;
         
         .text-center > & {
@@ -55,7 +55,7 @@
         }
         
         img {
-            transition: base('transition');
+            transition: core('transition');
             min-width: 100%;
             display: block;
         }
@@ -167,7 +167,7 @@
             text-align: center;
             opacity: 0;
             visibility: hidden;
-            transition: base('transition');
+            transition: core('transition');
             &:before {
                 content: "";
                 position: absolute;
@@ -179,7 +179,7 @@
                 z-index: 4;
                 opacity: 0;
                 transform: scale(1.15);		   
-                transition: base('transition');
+                transition: core('transition');
             }
             @include overwrite-component('group', $parent: 'heading') {
                 &[class*="thumbnail_title"] { 
@@ -207,7 +207,7 @@
         @include components(('controls', 'title')) {
             position: absolute;
             z-index: 6;
-            transition: base('transition');
+            transition: core('transition');
         }
         
         @include component('controls') {
@@ -264,7 +264,7 @@
                 img {
                     opacity: 0.65;
                     cursor: pointer;
-                    transition: base('transition');
+                    transition: core('transition');
                     transform: translateZ(0);
                     &:hover, &.active {
                         opacity: 1;
@@ -287,7 +287,7 @@
             z-index: 3;
             top: 8%;
             left: -0.5em;
-            transition: base('transition');
+            transition: core('transition');
         }
         
     } // module

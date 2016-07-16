@@ -31,7 +31,7 @@
 		position: relative;
 		font-weight: lighter;
 		z-index: this('z-index');
-        transition: base('transition');
+        transition: core('transition');
 		
 		a:not([class*="button"]) {
 			color: this('link-color');
@@ -56,7 +56,7 @@
                 display: table-cell;
                 vertical-align: middle;
                 cursor: pointer;
-                transition: base('transition');
+                transition: core('transition');
                 color: this('link-color');
                 &:hover {
                     color: this('link-hover-color');
@@ -127,7 +127,7 @@
 					text-align: left;
 					position: absolute;
 					background: color('greyscale', 'grey-1');
-					transition: base('transition');
+					transition: core('transition');
 					opacity: 0;
 					visibility: hidden;
 					z-index: 5;
@@ -136,7 +136,7 @@
 					top: 115%;
 					min-width: 150px;
                     li {
-                        transition: base('transition');
+                        transition: core('transition');
                         &:hover {
                             color: color('brand', 'brand-1');
                         }

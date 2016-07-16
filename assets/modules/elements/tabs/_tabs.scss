@@ -15,8 +15,8 @@
     $tabs: config((
         'name'                       : 'tabs',
         'output-JSON'                : true,
-        'navItem-transition'         : base('transition'),
-        'navItem-color'              : base('text-color'),
+        'navItem-transition'         : core('transition'),
+        'navItem-color'              : core('text-color'),
         'navItem-background'         : transparent,
         'navItem-radius'             : 0.6em,
         'navItem-padding'            : 0.75em 1.25em,
@@ -26,7 +26,7 @@
         'navItem-active-color'       : color('greyscale', 'white'),
         'navItem-active-background'  : color('brand', 'brand-1'),
         'navItem-active-borderColor' : color('brand', 'brand-1'),
-        'contentBlock-color'         : base('text-color'),
+        'contentBlock-color'         : core('text-color'),
         'contentBlock-background'    : color('greyscale', 'white'),
         'contentBlock-borderColor'   : color('greyscale', 'grey-2'),
         'contentBlock-padding'       : 1.5em,
@@ -116,7 +116,7 @@
             }
             
             @include modifier('large') {
-                margin-bottom: (base('margin') * 2);
+                margin-bottom: (core('margin') * 2);
             }
             
         } // component(nav)

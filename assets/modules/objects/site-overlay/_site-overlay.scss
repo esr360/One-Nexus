@@ -12,7 +12,7 @@
 		'name'            : 'site-overlay',
         'background'      : rgba(black, 0.4),
         'z-index'         : 11,
-        'transition'      : base('transition')
+        'transition'      : core('transition')
 	), $custom);
 	
 	//-------------------------------------------------------------

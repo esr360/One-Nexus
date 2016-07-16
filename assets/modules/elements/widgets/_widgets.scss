@@ -46,7 +46,7 @@
     // Core Styles
     //-------------------------------------------------------------
 
-        transition: base('transition');
+        transition: core('transition');
         
         &:hover {
             text-decoration: none;
@@ -72,7 +72,7 @@
             @include modifier('small') {
                 padding: this('block-small-padding');
                 @include overwrite-component('icon') {
-                    margin-bottom: base('margin') * 0.57; // magic number 1 of 1
+                    margin-bottom: core('margin') * 0.57; // magic number 1 of 1
                 }
             }
             
@@ -108,7 +108,7 @@
             
             a {
                 border-bottom: 1px dotted;
-                transition: base('transition');
+                transition: core('transition');
             }
             
             &:hover {
@@ -140,7 +140,7 @@
                     content: "";
                     position: absolute;
                     top: -1px;
-                    transition: base('transition');
+                    transition: core('transition');
                     background: color('greyscale', 'grey-2');
                 }
                 &:before {
@@ -204,7 +204,7 @@
             @include overwrite-component('content') {
                 border: 1px solid rgba(black, 0.1);
                 border-top: 0;
-                padding: base('margin');
+                padding: core('margin');
             }
             @include overwrite('thumbnail') {
                 margin-bottom: 0;
@@ -216,10 +216,10 @@
         //---------------------------------------------------------
         
         @include modifier('stacked') {
-            margin-bottom: base('margin');
+            margin-bottom: core('margin');
             @include vertical-rhythm('bottom');
             p {
-                margin-top: (base('margin') / 2);
+                margin-top: (core('margin') / 2);
             }
             @media (max-width: breakpoint('break-2')) {
                 .text-right-break-2 > & {
@@ -273,33 +273,6 @@
         }
         
         //---------------------------------------------------------
-        // Spectrum
-        //---------------------------------------------------------
-        
-        @include modifier('spectrum-quarter') {
-            padding: this('spectrum-quarter-padding');
-            color: color('greyscale', 'white');
-            &:nth-child(1) {
-                background: darken(color('brand', 'primary'), 6%);
-            }
-            &:nth-child(2) {
-                background: darken(color('brand', 'primary'), 2%);
-            }
-            &:nth-child(3) {
-                background: lighten(color('brand', 'primary'), 2%);
-            }
-            &:nth-child(4) {
-                background: lighten(color('brand', 'primary'), 6%);
-            }
-            @include overwrite-component('group', $parent: 'heading') {
-                color: color('greyscale', 'white');
-            }
-            @include modifier('large') {
-                padding: this('spectrum-quarter-large-padding');
-            }
-        }
-        
-        //---------------------------------------------------------
         // Tub
         //---------------------------------------------------------
 
@@ -327,7 +300,7 @@
                 position: absolute;
                 top: calc(50% - 1em);
                 width: 80%;
-                transition: base('transition');
+                transition: core('transition');
                 left: 0;
                 right: 0;
                 margin: auto;
@@ -359,7 +332,7 @@
         @include component('lid') {
             background-color: inherit;
             position: relative;
-            transition: base('transition');
+            transition: core('transition');
             padding-top: 80%;
             height: 0;
             z-index: 2;
@@ -370,7 +343,7 @@
         
         @include component('sticker') {
             position: absolute;
-            transition: base('transition');
+            transition: core('transition');
             top: calc(50% - 1.5rem);
             transform: translateY(-50%);
             left: 0;
@@ -419,12 +392,12 @@
         }
         
         @include modifier('article') {
-            margin-bottom: base('margin');
+            margin-bottom: core('margin');
             &:not([class*="span"]) {
                 &:after {
                     content: "";
                     display: block;
-                    margin-top: base('margin');
+                    margin-top: core('margin');
                     @include extend(
                         $parent: 'hrule', 
                         $modifiers: 'stripes'
@@ -451,7 +424,7 @@
                 vertical-align: middle;
                 margin-bottom: 0 !important;
                 + p {
-                    margin-top: (base('margin') / 2);
+                    margin-top: (core('margin') / 2);
                 }
             }
         }
@@ -462,7 +435,7 @@
         
         @include component('content') {
             display: block;
-            transition: base('transition');
+            transition: core('transition');
         }
         
         //---------------------------------------------------------
@@ -471,7 +444,7 @@
         
         @include component('group') {
             @include modifier('large') {
-                margin-bottom: (base('margin') * 2);
+                margin-bottom: (core('margin') * 2);
                 @include vertical-rhythm('bottom');
             }
             @include modifier('grid') {
@@ -498,9 +471,9 @@
         
         @include component('icon') {
             color: this('icon-color');
-            margin-bottom: (base('margin') / 2);
+            margin-bottom: (core('margin') / 2);
             @media (min-width: breakpoint('break-3')) {
-                margin-bottom: base('margin');
+                margin-bottom: core('margin');
             }
             @include modifier('inline') {
                 margin-right: 0.5rem;
@@ -513,12 +486,6 @@
             }
             @include context('parent-hovered') {
                 color: color('brand', 'primary');
-            }
-            #mobile-optimized &,
-            #why-choose-us & {
-                @media (min-width: nth(this('targeted-icon-visibility'), 1)) and (max-width: nth(this('targeted-icon-visibility'), 2)) {
-                    display: none;
-                }
             }
         }
         

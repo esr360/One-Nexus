@@ -31,7 +31,7 @@
     //-------------------------------------------------------------
 
         @include modifier('scale') {
-            margin-top: base('margin');
+            margin-top: core('margin');
             @include modifier(1) {
                 .center {
                     transform: scale(this('scale-1-size'));
@@ -55,7 +55,7 @@
             }
             .owl-item {
                 z-index: 0;
-                transition: base('transition');
+                transition: core('transition');
                 transform-origin: bottom;
                 &:hover {
                     cursor: pointer;
@@ -200,7 +200,7 @@
     //-------------------------------------------------------------
 
     .owl-prev, .owl-next {
-        transition: base('transition');
+        transition: core('transition');
     }
             
     .owl-dots {
@@ -229,7 +229,7 @@
         }
         span {
             display: block;
-            transition: base('transition');
+            transition: core('transition');
             border-radius: 50%;
             height: 10px;
             width: 10px;

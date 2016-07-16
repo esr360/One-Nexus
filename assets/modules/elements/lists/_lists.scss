@@ -107,7 +107,7 @@
                 &:before {
                     left: 1em;
                     pointer-events: none;
-                    transition: base('transition');
+                    transition: core('transition');
                     color: rgba(black, 0.2);
                 }
                 &:hover {
@@ -197,9 +197,9 @@
     } // module
 
     .pagination {
-        margin-top: (base('margin') * 2);
+        margin-top: (core('margin') * 2);
         .row-waffle + & {
-            margin-top: calc(#{(base('margin') * 2)} + 3%);
+            margin-top: calc(#{(core('margin') * 2)} + 3%);
         }
     }
 

@@ -12,7 +12,7 @@
         'name'             : 'form',
         'output-JSON'      : true,
         'weight'           : lighter,
-        'input-color'      : base('text-color'),
+        'input-color'      : core('text-color'),
         'input-border'     : 1px solid color('greyscale', 'grey-3'),
         'input-padding'    : 0.65em,
         'bg-color'         : rgba(black, 0.025),
@@ -34,7 +34,7 @@
         font-weight: this('weight');
         
         label {
-            transition: base('transition');
+            transition: core('transition');
             cursor: pointer;
         }
         
@@ -43,7 +43,7 @@
 
         @include modifier('fauxPlaceholders') {
             @include overwrite-component('group') {
-                margin-bottom: base('margin');
+                margin-bottom: core('margin');
                 @include vertical-rhythm('bottom');
             }
             @include overwrite-component('group') {
@@ -110,7 +110,7 @@
 
         @include component('group') {
             position: relative;
-            margin-bottom: (base('margin') / 2);
+            margin-bottom: (core('margin') / 2);
             @include vertical-rhythm('bottom');
             [type="submit"] {
                 position: absolute;
@@ -145,11 +145,11 @@
             width: 100%;
             padding: this('input-padding');
             border: this('input-border');
-            transition: base('transition');
+            transition: core('transition');
             color: this('input-color');
             &::placeholder {
                 color: this('input-color');
-                transition: base('transition');
+                transition: core('transition');
             }
             &:focus {
                 outline: 0;

@@ -76,7 +76,7 @@
         @include modifier('thumb') {
             height: this('thumb-height');
             display: block;
-            transition: background-color base('transition');
+            transition: background-color core('transition');
             &:hover {
                 background: this('hover-background');
                 color: this('hover-color');
