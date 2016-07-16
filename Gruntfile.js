@@ -361,6 +361,18 @@ module.exports = function(grunt) {
         },
       
         //---------------------------------------------------------
+        // SassDoc
+        // https://github.com/SassDoc/grunt-sassdoc
+        //---------------------------------------------------------
+
+        sassdoc: {
+            default: {
+                src: 'assets',
+                dest: 'docs',
+            },
+        },
+      
+        //---------------------------------------------------------
         // Notify
         // https://github.com/dylang/grunt-notify
         //---------------------------------------------------------
@@ -403,6 +415,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-notify');
     grunt.loadNpmTasks('grunt-postcss');
+    grunt.loadNpmTasks('grunt-sassdoc');
     grunt.loadNpmTasks('grunt-scss-lint');
     grunt.loadNpmTasks('grunt-text-replace');
     
