@@ -1,13 +1,26 @@
-//=================================================================
-// Typography
-//=================================================================
-
+/// One Nexus
+/// modules\utilities\typography
+///
+/// @author Edmund Reed
+/// @access public
+/// @group utilities
+/// @param {map} $custom - where custom config will be passed
+/// @example
+///     @include typography((
+///         'typefaces':(
+///             'secondary' : ('Roboto', '400,700,900italic')
+///         ),
+///         'sizes':(
+///             'size-3' : 1.1em,
+///             'size-5' : 24px
+///         )
+///     ));
 @mixin typography($custom: ()) {
 
-    //-------------------------------------------------------------
-    // Config
-    //-------------------------------------------------------------
-    
+    //*************************************************************
+    // Configuration
+    //*************************************************************
+
     $typography: config((
         'name'          : 'typography',
         'typefaces':(
@@ -32,23 +45,36 @@
             'size-9'    : 3.4em
         )
     ), $custom) !global;
-    
-	//-------------------------------------------------------------
-	// Fonts
-	//-------------------------------------------------------------
+
+    //*************************************************************
+    // Fonts
+    //*************************************************************
 
     @for $i from 1 through length(this('typefaces')) {
-        $google-font: nth(nth(nth(this('typefaces'), $i), 2), 2);
+        
+        // Name of desired font family
+        $font-family: nth(nth(nth(this('typefaces'), $i), 2), 1);
+        
+        // Desired font styles
+        $font-styles: nth(nth(nth(this('typefaces'), $i), 2), 2);
+        
+        // String to be appended to Google Fonts url
+        $google-font: $font-family + ':' + $font-styles;
+
+        // import the font from the Google Fonts API
         @import url(http://fonts.googleapis.com/css?family=#{$google-font});
+
         .font-#{$i} {
-            font-family: nth(nth(nth(this('typefaces'), $i), 2), 1);
+            font-family: $font-family;
         }
+
     }
-    
-	//-------------------------------------------------------------
-	// Styles
-	//-------------------------------------------------------------
+
+    //*************************************************************
+    // Styles
+    //*************************************************************
 	
+    // Links
     a {
         color: color('brand', 'brand-1');
         transition: 0.4s;
@@ -61,26 +87,44 @@
         }
     }
 	
+    // Text Elements
     p, ul, ol {
         font-weight: lighter;
     }
 	
 } // @mixin typography
 
-//-----------------------------------------------------------------
-// Utilities
-//-----------------------------------------------------------------
+//*****************************************************************
+// Tools & Utilities
+//*****************************************************************
 
-@function typography-config($key) {
-    @return map-get($typography, $key);
+/// Function to get configuration group
+/// @access public
+/// @group utilities
+/// @param {map} $group - the group you are interested in
+/// @return {map} - new map containing desired group
+@function typography-config($group) {
+    @return map-get($typography, $group);
 }
 
+/// Function to get desired value from configuration group
+/// @access public
+/// @group utilities
+/// @param {map} $group - the configuration group you are interested in
+/// @param {string} $key - the key of the value you are interested in
+/// @return {*} - the desired value
 @function typography($group, $key) {
 	@return map-get(typography-config($group), $key);
 }
 
+/// Function to get value from 'sizes' group
+/// @access public
+/// @group utilities
+/// @param {string} $size - the key of the size you are interested in
+/// @param {bool} $rem - whether the returned value should use rem units
+/// @return {number} - the desired font size
 @function font-size($size, $rem: false) {
-	$size: map-get(typography-config('sizes'), $size);
+	$size: typography('sizes', $size);
 	@if not $rem {
 		@return $size;
 	} @else {

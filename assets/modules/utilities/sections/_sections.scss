@@ -219,7 +219,7 @@
 	
 		@include component('block') {
 			position: relative;
-			transition: base('transition');
+			transition: core('transition');
 			padding: 5em this('block-padding');
 			background-size: cover;
             @media (min-width: breakpoint('break-2')) {

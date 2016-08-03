@@ -5,7 +5,7 @@
 /// @author Edmund Reed
 /// @access public
 /// @group utilities
-/// @param {Arglist} $custom - where custom config will be passed
+/// @param {map} $custom - where custom config will be passed
 ///****************************************************************
 
 @if $theme == 'One-Nexus' {
@@ -19,7 +19,7 @@
 	@include palettes;
 	@include typography;
 	@include grid;
-	@include base;
+	@include core;
 	@include tools;
 	@include helpers;
 

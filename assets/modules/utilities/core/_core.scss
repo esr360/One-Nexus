@@ -1,30 +1,40 @@
-//=================================================================
-// Base
-//=================================================================
+/// One Nexus - modules\utilities\core
+///
+/// @author Edmund Reed
+/// @access public
+/// @group utilities
+/// @param {map} $custom - where custom config will be passed
+/// @example
+///     @include core((
+///         'default-sizes'  : ('size-2', 'sze-4'),
+///         'optional-sizes' : ('size-5'),
+///         'breakpoints'    : (
+///             'break-3'    : 0.85
+///         )
+///     ));
+@mixin core($custom: ()) {
 
-@mixin base($custom: ()) {
+    //*************************************************************
+    // Configuration
+    //*************************************************************
 
-	//-------------------------------------------------------------
-	// Config
-	//-------------------------------------------------------------
-
-	$base: config((
-		'name'             : 'base',
-		'output-JSON'      : true,
-		'background'       : color('greyscale', 'grey-1'),
-		'font-family'      : typography('typefaces', 'primary'),
-		'text-color'       : typography('colors', 'base'),
-		'font-size'        : typography('sizes', 'base'),
-		'margin'           : 2rem,
-		'line-height'      : 1.4,
-		'radius'           : 0.4em,
-		'oval-radius'      : 1.5em,
-		'transition'       : 0.4s
+	$core: config((
+		'name'        : 'base',
+		'output-JSON' : true,
+		'background'  : color('greyscale', 'grey-1'),
+		'font-family' : typography('typefaces', 'primary'),
+		'text-color'  : typography('colors', 'base'),
+		'font-size'   : typography('sizes', 'base'),
+		'margin'      : 2rem,
+		'line-height' : 1.4,
+		'radius'      : 0.4em,
+		'oval-radius' : 1.5em,
+		'transition'  : 0.4s
 	), $custom) !global;
 
-	//-------------------------------------------------------------
-	// General
-	//-------------------------------------------------------------
+    //*************************************************************
+    // General
+    //*************************************************************
 	
 	html, body {
 		padding: 0;
@@ -37,11 +47,11 @@
 	}
 	
 	body {
-		background: base('background');
-	    font-family: base('font-family');
-	    color: base('text-color');
-	    font-size: base('font-size');
-	    line-height: base('line-height');
+		background: core('background');
+	    font-family: core('font-family');
+	    color: core('text-color');
+	    font-size: core('font-size');
+	    line-height: core('line-height');
 	}
 	
 	ins {
@@ -51,7 +61,7 @@
 	}
     
     h1, h2, h3, h4, h5, h6 {
-        font-size: base('font-size');
+        font-size: core('font-size');
     }
     
     // code tags
@@ -73,16 +83,16 @@
 	[data-trigger],
 	[data-trigger-reverse],
 	[data-hover] {
-		transition: base('transition');
+		transition: core('transition');
 	}
     
     #site-content {
-		transition: base('transition');
+		transition: core('transition');
     }
 
-	//-------------------------------------------------------------
-	// Structure
-	//-------------------------------------------------------------
+    //*************************************************************
+    // Structure
+    //*************************************************************
 	
 	@include module('container') {
 	
@@ -113,9 +123,9 @@
 	    padding: 0 option($grid, 'options', 'gutter');
 	}
 
-	//-------------------------------------------------------------
-	// Layout
-	//-------------------------------------------------------------
+    //*************************************************************
+    // Layout
+    //*************************************************************
 	
 	* {
 	    &, &:before, &:after {
@@ -128,17 +138,17 @@
 	form, fieldset, legend, figure, table, 
 	pre, hr,
 	.object {
-	    margin: base('margin') 0;
+	    margin: core('margin') 0;
 	    @include vertical-rhythm;
 	}
     
     .object-small {
-	    margin: (base('margin') / 2) 0;
+	    margin: (core('margin') / 2) 0;
 	    @include vertical-rhythm;
     }
     
     .object-large {
-	    margin: (base('margin') * 2) 0;
+	    margin: (core('margin') * 2) 0;
 	    @include vertical-rhythm;
     }
 	
@@ -150,17 +160,22 @@
 
 } // @mixin base
 
-//-----------------------------------------------------------------
-// Utilities
-//-----------------------------------------------------------------
+//*****************************************************************
+// Tools & Utilities
+//*****************************************************************
 
-@function base($key) {
-    @return map-get($base, $key);
+/// Function to get configuration group
+/// @access public
+/// @group utilities
+/// @param {map} $group - the group you are interested in
+/// @return {map} - new map containing desired group
+@function core($key) {
+    @return map-get($core, $key);
 }
 
-//-----------------------------------------------------------------
-// Hacks - if this gets big move to seperate file
-//-----------------------------------------------------------------
+//*****************************************************************
+// Hacks
+//*****************************************************************
 
 #showcase-carousel .owl-dots,
 #showcase-thumbnails .owl-dots {

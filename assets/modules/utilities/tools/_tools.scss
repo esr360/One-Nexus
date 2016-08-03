@@ -101,7 +101,7 @@
 	//-------------------------------------------------------------
 	
 	@include module('hrule') {
-		margin: base('margin') 0;
+		margin: core('margin') 0;
         border-color: rgba(black, 0.15);
 		@include modifier('line') {
 			border-top: 1px solid rgba(0, 0, 0, 0.15);
@@ -126,7 +126,7 @@
 			margin: 1.5em 0;
 		}
 		@include modifier('large') {
-			margin: (base('margin') * 1.5) 0;
+			margin: (core('margin') * 1.5) 0;
 		}
 	}
     

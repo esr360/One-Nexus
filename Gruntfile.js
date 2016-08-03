@@ -320,12 +320,15 @@ module.exports = function(grunt) {
             },
             css: {
                 files: [
-                    'assets/**/*.scss',
-                    '!assets/vendor/',
+                    'assets/modules/**/*.scss',
+                    'assets/themes/**/*.scss',
+                    'assets/vendor/Synergy/**/*.scss',
+                    'assets/vendor/Kayzen-GS/**/*.scss'
                 ],
                 tasks: [ 
                     'sass:' + env, 
                     'postcss',
+                    'sassdoc',
                     'notify:css'
                 ],
                 options: {
@@ -368,7 +371,9 @@ module.exports = function(grunt) {
         sassdoc: {
             default: {
                 src: 'assets',
-                dest: 'docs',
+                options: {
+                    dest: 'docs/sass'
+                }
             },
         },
       
@@ -432,7 +437,8 @@ module.exports = function(grunt) {
             'copy:app',
             'concat',
             'sass:' + environment,
-            'postcss'
+            'postcss',
+            'sassdoc'
         ];
         if (environment == 'prod') {
             assetTasks.push(
@@ -449,8 +455,7 @@ module.exports = function(grunt) {
     //Default
     grunt.registerTask('default', [
         'compile',
-        'notify:app',
-        'watch',
+        'watch'
     ]);
     
     // Compile the app

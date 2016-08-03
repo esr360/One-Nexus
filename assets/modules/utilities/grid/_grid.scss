@@ -1,33 +1,54 @@
-//=================================================================
-// Grid
-//=================================================================
-
+/// One Nexus - modules\utilities\grid
+///
+/// @author Edmund Reed
+/// @access public
+/// @group utilities
+/// @param {map} $custom - where custom config will be passed
+///
+/// @require {mixin} kayzen-gs
+///
+/// @example
+///     @include grid((
+///         'options':(
+///             'max-width' : 90% 
+///         ),
+///         'breakpoints':(
+///             'break-3'   : 840px,
+///             'break-5'   : 1600px
+///         )
+///     ));
 @mixin grid($custom: ()) {
 
-    //-------------------------------------------------------------
-    // Config
-    //-------------------------------------------------------------
+    //*************************************************************
+    // Configuration
+    //*************************************************************
 
     $grid: map-merge-deep((
-        'name'                : 'grid',
-        'output-JSON'         : true,
-        'options': (
-            'base-width'      : 1200px,
-            'max-width'       : 95%,
-            'small-width'     : 940px,
-            'full-width'      : 100%
+        'name'            : 'grid',
+        'output-JSON'     : true,
+        'options':(
+            'base-width'  : 1200px,
+            'max-width'   : 95%,
+            'small-width' : 940px,
+            'full-width'  : 100%
         ),
-        'breakpoints': (
-            'break-5'         : 1400px
+        'breakpoints':(
+            'break-5'     : 1400px
         )
     ), $kayzenGS);
 
+    // Merge default config with custom options
     $grid: config($grid, $custom) !global;
 
     @include kayzen-gs($grid);
 
 } // @mixin grid
 
+/// Alias for 'kgs-breakpoint' function
+/// @access public
+/// @group utilities
+/// @param {string} $breakpoint - the key of your desired breakpoint
+/// @return {number} - your desired breakpoint value
 @function breakpoint($breakpoint) {
     @return kgs-breakpoint($breakpoint);
 }

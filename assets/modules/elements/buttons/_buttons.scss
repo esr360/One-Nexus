@@ -1,34 +1,27 @@
-////****************************************************************
-/// One Nexus
-/// modules\elements\buttons
+/// One Nexus - modules\elements\buttons
 ///
-/// @author Edmund Reed
+/// @author [@esr360](http://twitter.com/esr360)
 /// @access public
 /// @group elements
-/// @param {Arglist} $custom - where custom config will be passed
-///
-/// @require {mixin} palettes
+/// @param {map} $custom - where custom config will be passed
+/// @outputs all button styles
 ///
 /// @example
-/// @include buttons((
-///     'round-radius' : 4px,
-///     'weight'       : bold
-/// ));
-///****************************************************************
-
+///     @include buttons((
+///         'round-radius' : 4px,
+///         'weight'       : bold
+///     ));
 @mixin buttons($custom: ()) {
 
-    ///************************************************************
-    /// Configuration
-    /// @type map
-    /// @access private
-    ///************************************************************
+    //*************************************************************
+    // Configuration
+    //*************************************************************
 
     $buttons: config((
         'name'             : 'button',
         'color'            : color('greyscale', 'white'),
         'background'       : color('greyscale', 'grey-4'),
-        'transition'       : base('transition'),
+        'transition'       : core('transition'),
         'side-padding'     : 1em,
         'line-height'      : 2.2,
         'weight'           : lighter,
@@ -41,15 +34,15 @@
         'modifiers'        : ()
     ), $custom);
 
-    ///************************************************************
-    /// Module
-    ///************************************************************
+    //*************************************************************
+    // Module
+    //*************************************************************
         
     @include module {
 
-        ///********************************************************
-        /// Core Styles
-        ///********************************************************
+        //*********************************************************
+        // Core Styles
+        //*********************************************************
         
         // Private styles 
         display: inline-block;
@@ -72,8 +65,8 @@
         // Default modifiers
         @include extend(this('modifiers'));
 
-        /// Pseudo States
-        ///********************************************************
+        // Pseudo States
+        //*********************************************************
 
         &:hover {
             text-decoration: none;
@@ -85,9 +78,9 @@
             outline: 0;
         }
 
-        ///********************************************************
-        /// Sizes
-        ///********************************************************
+        //*********************************************************
+        // Sizes
+        //*********************************************************
 
         @include font-sizes((
             'breakpoints' : (
@@ -95,9 +88,9 @@
             )
         ));
 
-        ///********************************************************
-        /// Colors
-        ///********************************************************
+        //*********************************************************
+        // Colors
+        //*********************************************************
 
         // Brand Colors
         @each $brand, $color in palette('brand') {
@@ -116,9 +109,13 @@
 
         // Greyscale Colors
         @each $greyscale, $color in palette('greyscale') {
+            
+            // Point at which light/dark background changes
+            $threshold: 80;
+
             @include modifier($greyscale) {
                 background: $color;
-                @if (lightness($color) > 50) { 
+                @if (lightness($color) > $threshold) { 
                     color: typography('colors', 'base'); 
                 }
                 &:hover { background: darken($color, 10%) }
@@ -126,7 +123,7 @@
                     color: $color;
                     &:hover {
                         background: $color;
-                        @if (lightness($color) > 80) {
+                        @if (lightness($color) > $threshold) {
                             color: typography('colors', 'base');
                         } @else {
                             color: color('greyscale', 'white');
@@ -134,6 +131,7 @@
                     }
                 }
             }
+
         }
         
         // Alert Colors
@@ -152,39 +150,26 @@
             }
         }
 
-        ///********************************************************
-        /// Modifiers
-        ///********************************************************
+        //*********************************************************
+        // Modifiers
+        //*********************************************************
 
         @include modifier('block') {
             width: 100%;
             text-align: center;
             & + & {
-                margin-top: (base('margin') / 2);
+                margin-top: (core('margin') / 2);
             }
         } 
 
         @include modifier('border') {
             background: none;
-            color: base('text-color');
+            color: this('background');
             border-color: currentColor;
             &:hover {
                 color: color('greyscale', 'white');
-                background: color('brand', 'brand-1');
-                border-color: color('brand', 'brand-1');
-            }
-        }
-        
-        @include modifier('pill') {
-            display: table-cell;
-            @include modifier('round') {
-                border-radius: 0;
-                &:first-child {
-                    border-radius: this('round-radius') 0 0 this('round-radius');
-                }
-                &:last-child {
-                    border-radius: 0 this('round-radius') this('round-radius') 0;
-                }
+                background: this('background');
+                border-color: this('background');
             }
         }
 
@@ -231,8 +216,8 @@
             }
         }
 
-        /// Custom Styles
-        ///********************************************************
+        // Custom Styles
+        //*********************************************************
 
         @include modifier('primary') {
             @include extend(('round', 'size-4', 'brand-1'));
@@ -242,26 +227,45 @@
             @include extend(('sharp', 'size-4', 'brand-2'));
         }
 
-        ///********************************************************
-        /// Components
-        ///********************************************************
+        //*********************************************************
+        // Components
+        //*********************************************************
 
         @include component('group') {
+
             @include overwrite('button') {
                 margin-left: this('group-spacing');
                 &:first-child {
                     margin-left: 0;
                 }
             }
+        
+            @include modifier('pills') {
+                display: table;
+                @include overwrite('button') {
+                    display: table-cell;
+                    margin-left: 0;
+                    @include modifier('round') {
+                        border-radius: 0;
+                        &:first-child {
+                            border-radius: this('round-radius') 0 0 this('round-radius');
+                        }
+                        &:last-child {
+                            border-radius: 0 this('round-radius') this('round-radius') 0;
+                        }
+                    }
+                }
+            }
+
         }
 
     } // @include module
 
-    ///************************************************************
-    /// Hacks
-    ///************************************************************
+    //*************************************************************
+    // Hacks
+    //*************************************************************
 
-    /// Makes input & button elements equal height in Firefox
+    // Makes input & button elements equal height in Firefox
     input::-moz-focus-inner,
     button::-moz-focus-inner { 
         border: 0;
