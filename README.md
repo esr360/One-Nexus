@@ -12,9 +12,6 @@
 * [Modernizr](https://github.com/esr360/One-Nexus#html5-boilerplate)
 * ...and more
 
-> Visit the [One Nexus homepage](http://www.onenexusproject.com/) for more help and information.
-
-
 # One Nexus Documentation
 
 For a more complete experience, visit the official [One Nexus documentaion](http://www.onenexusproject.com/documentation/) page.
