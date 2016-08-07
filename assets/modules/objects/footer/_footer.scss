@@ -1,0 +1,151 @@
+//=================================================================
+// Footer
+//=================================================================
+
+@mixin footer($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $footer: config((
+        'name'                 : 'footer',
+        'output-JSON'          : true,
+        'background'           : color('greyscale', 'grey-6'),
+        'wrapper-padding'      : 4em 0,
+        'wrapper-font-size'    : 0.9em,
+        'wrapper-background'   : color('greyscale', 'grey-5'),
+        'wrapper-color'        : color('greyscale', 'grey-3'),
+        'wrapper-strong-color' : color('greyscale', 'white'),
+        'logo-height'          : 34px,
+        'title-color'          : color('greyscale', 'white'),
+        'bar-padding'          : 2em 0,
+        'bar-font-size'        : 0.9em,
+        'bar-responsive'       : breakpoint('break-2'),
+        'nav-link-color'       : color('greyscale', 'grey-3'),
+        'nav-link-hover-color' : color('greyscale', 'white')
+    ), $custom);
+
+    //-------------------------------------------------------------
+    // Module
+    //-------------------------------------------------------------
+
+    @include module {
+
+    // Core Styles
+    //-------------------------------------------------------------
+
+        background: this('background');
+        
+    // Components
+    //-------------------------------------------------------------
+
+        @include component('wrapper') {
+            padding: this('wrapper-padding');
+            font-size: this('wrapper-font-size');
+            background: this('wrapper-background');
+            color: this('wrapper-color');
+            @include overwrite('logo') {
+                padding: 0;
+                border: 0;
+                img {
+                    height: this('logo-height');
+                }
+            }
+            b {
+                color: this('wrapper-strong-color');
+            }
+        }
+        
+        @include component('title') {
+            color: this('title-color');
+        }
+
+        @include component('bar') {
+            padding: this('bar-padding');
+            font-size: this('bar-font-size');
+            @media (min-width: this('bar-responsive')) {		
+                display: table;
+                width: 100%;
+                text-align: left;
+            }
+            @media (max-width: this('bar-responsive')) {		
+                text-align: center;
+            }
+        }
+        
+        @include component('copyright') {
+            @media (max-width: this('bar-responsive')) {		
+                margin-bottom: core('margin');
+            }
+            h4 {
+                font-weight: lighter;
+            }
+        }
+
+        @include component('nav') {
+            ul {
+                @extend %list-reset;
+            }
+            li {
+                display: inline-block;
+                &:not(:last-child) {
+                    margin-right: 1em;
+                }
+            }
+            a {
+                color: this('nav-link-color');
+                &:hover {
+                    text-decoration: none;
+                    color: this('nav-link-hover-color');
+                }
+            }
+            @media (min-width: this('bar-responsive')) {
+                text-align: right;
+            }
+        }
+        
+        @include components(('nav', 'copyright')) {
+            @media (min-width: this('bar-responsive')) {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+        
+        @include component {
+            @include modifier('nav') {
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+        
+    // Twitter Feed
+    //-------------------------------------------------------------
+
+        .tweet-content {
+            margin-top: -0.25em;
+        }
+        
+        .tweet {
+            > .tweet-avatar {
+                display: none;
+            }
+        }
+        
+        .tweet-actions {
+            float: right;
+            margin-top: 0.25em;
+        }
+        
+        .tweet-avatar {
+            width: 40px;
+        }
+        
+        .tweet-text {
+            margin-bottom: 1em;
+        }
+
+    } // module
+
+} // @mixin footer

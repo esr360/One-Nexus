@@ -1,0 +1,134 @@
+/// One Nexus
+/// modules\utilities\typography
+///
+/// @author Edmund Reed
+/// @access public
+/// @group utilities
+/// @param {map} $custom - where custom config will be passed
+/// @example
+///     @include typography((
+///         'typefaces':(
+///             'secondary' : ('Roboto', '400,700,900italic')
+///         ),
+///         'sizes':(
+///             'size-3' : 1.1em,
+///             'size-5' : 24px
+///         )
+///     ));
+@mixin typography($custom: ()) {
+
+    //*************************************************************
+    // Configuration
+    //*************************************************************
+
+    $typography: config((
+        'name'          : 'typography',
+        'typefaces':(
+            'primary'   : ('Lato', '300,400,700,900'),
+            'secondary' : ('Raleway', '100,300,700,900')
+        ),
+        'colors':(
+            'base'      : color('greyscale', 'grey-4'),
+            'heading'   : color('greyscale', 'grey-5'),
+            'heavy'     : color('greyscale', 'grey-5')
+        ),
+        'sizes':(
+            'base'      : 1em,
+            'size-1'    : 0.67em,
+            'size-2'    : 0.83em,
+            'size-3'    : 1.17em,
+            'size-4'    : 1.25em,
+            'size-5'    : 1.5em,
+            'size-6'    : 2em,
+            'size-7'    : 2.4em,
+            'size-8'    : 3em,
+            'size-9'    : 3.4em
+        )
+    ), $custom) !global;
+
+    //*************************************************************
+    // Fonts
+    //*************************************************************
+
+    @for $i from 1 through length(this('typefaces')) {
+        
+        // Name of desired font family
+        $font-family: nth(nth(nth(this('typefaces'), $i), 2), 1);
+        
+        // Desired font styles
+        $font-styles: nth(nth(nth(this('typefaces'), $i), 2), 2);
+        
+        // String to be appended to Google Fonts url
+        $google-font: $font-family + ':' + $font-styles;
+
+        // import the font from the Google Fonts API
+        @import url(http://fonts.googleapis.com/css?family=#{$google-font});
+
+        .font-#{$i} {
+            font-family: $font-family;
+        }
+
+    }
+
+    //*************************************************************
+    // Styles
+    //*************************************************************
+	
+    // Links
+    a {
+        color: color('brand', 'brand-1');
+        transition: 0.4s;
+        text-decoration: none;
+        p > &, .text & {
+            border-bottom: 1px dotted transparent;
+            &:hover {
+                border-bottom-color: inherit;
+            }
+        }
+    }
+	
+    // Text Elements
+    p, ul, ol {
+        font-weight: lighter;
+    }
+	
+} // @mixin typography
+
+//*****************************************************************
+// Tools & Utilities
+//*****************************************************************
+
+/// Function to get configuration group
+/// @access public
+/// @group utilities
+/// @param {map} $group - the group you are interested in
+/// @return {map} - new map containing desired group
+@function typography-config($group) {
+    @return map-get($typography, $group);
+}
+
+/// Function to get desired value from configuration group
+/// @access public
+/// @group utilities
+/// @param {map} $group - the configuration group you are interested in
+/// @param {string} $key - the key of the value you are interested in
+/// @return {*} - the desired value
+@function typography($group, $key) {
+	@return map-get(typography-config($group), $key);
+}
+
+/// Function to get value from 'sizes' group
+/// @access public
+/// @group utilities
+/// @param {string} $size - the key of the size you are interested in
+/// @param {bool} $rem - whether the returned value should use rem units
+/// @return {number} - the desired font size
+@function font-size($size, $rem: false) {
+	$size: typography('sizes', $size);
+	@if not $rem {
+		@return $size;
+	} @else {
+		$size: $size / ($size * 0 + 1);
+		@return #{$size}rem;
+	}
+}

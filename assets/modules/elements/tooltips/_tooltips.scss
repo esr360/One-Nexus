@@ -1,0 +1,152 @@
+//=================================================================
+// Tooltips
+//=================================================================
+
+/*-----------------------------------------------------------------
+
+K-Tooltips
+Made by @esr360
+https://github.com/esr360/K-Tooltips
+	
+-----------------------------------------------------------------*/
+
+@mixin tooltips($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $tooltips: config((
+        'name'           : 'tooltip',
+        'output-JSON'    : true,
+        // Size & Appearance
+        'max-width'      : 500px,
+        'padding'        : 0.5em 0.75em,
+        'distance'       : -1em,
+        'background'     : rgba(black, 0.75),
+        'border-radius'  : 0,
+        'arrow-size'     : 0.5em,
+        'arrow-color'    : rgba(black, 0.75),
+        // Typography
+        'font-size'      : font-size('size-2', $rem: true),
+        'font-family'    : typography('typefaces', 'primary'),
+        'color'          : white,
+        'text-transform' : none,
+        'font-weight'    : normal,
+        // Other
+        'transition'     : core('transition'),
+        'z-index'        : 9999
+    ), $custom) !global;
+
+    //-------------------------------------------------------------
+    // Positions
+    //-------------------------------------------------------------
+
+    $tooltip-positions: (
+        'top', 'bottom', 'left', 'right'
+    );
+
+    //-------------------------------------------------------------
+    // Component
+    //-------------------------------------------------------------
+
+    @include module {
+                
+    // Core Styles
+    //-------------------------------------------------------------
+
+        cursor: pointer;	
+        position: relative;
+        
+    // Modifiers
+    //-------------------------------------------------------------
+
+        @include modifier('light') {}
+
+    // Components
+    //-------------------------------------------------------------
+
+        @at-root .inline-tooltip {
+            display: inline-block;
+        }
+        
+        @include component('wrapper') {
+            text-align: center;
+        }
+
+        @include component('content') {
+                
+            // Size & Appearance
+            max-width: this('max-width');
+            padding: this('padding');
+            background: this('background');
+            border-radius: this('border-radius');
+            line-height: 1.75;
+            position: absolute;
+            display: inline-block;
+            
+            // Typography
+            font-size: this('font-size');
+            font-family: this('font-family');
+            color: this('color');
+            text-transform: this('text-transform');
+            font-weight: this('font-weight');
+            
+            // Other
+            transition: this('transition');
+            z-index: this('z-index');
+            white-space: nowrap;
+            
+            // Hide by default
+            opacity: 0;
+            visibility: hidden;
+            
+            // Show when parent component is hovered
+            [data-tooltip]:hover & {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            // Show when parent component is touched
+            [data-tooltip]:active & {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            // Direction Arrow
+            @include triangle-core;
+            
+            // Inline-Tooltip styles
+            .inline-tooltip & {
+                white-space: nowrap;
+            }
+                
+            // Positions
+            @each $tooltip-position in $tooltip-positions {
+                [class*="tooltip_wrapper"][class*="-#{$tooltip-position}"] & {
+                    #{$tooltip-position}: this('distance');
+                    @include triangle((
+                        'core'     : false, 
+                        'position' : #{$tooltip-position}, 
+                        'color'    : this('arrow-color'),
+                        'size'     : this('arrow-size')
+                    ));
+                    @if $tooltip-position == top {
+                        transform: translateX(-50%) translateY(-100%);
+                    } @else if $tooltip-position == bottom {
+                        transform: translateX(-50%) translateY(100%);
+                    } @else if $tooltip-position == left {
+                        top: 50%;
+                        transform: translateX(-100%) translateY(-50%);
+                    } @else if $tooltip-position == right {
+                        top: 50%;
+                        transform: translateX(100%) translateY(-50%);
+                    }
+                }	
+            }
+            
+        } // component('content')
+
+    } // module
+
+} // @mixin tooltips

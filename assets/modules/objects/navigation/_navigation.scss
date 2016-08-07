@@ -1,0 +1,153 @@
+//=================================================================
+// Navigation
+//=================================================================
+
+@mixin navigation($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $navigation: config((
+        
+        'name'                     : 'navigation',
+        'output-JSON'              : true,
+        
+    // Options
+    //-------------------------------------------------------------
+
+        'text-align'               : right,
+        'font-size'                : 1em,
+        'dropdown-icon'            : "\f107",
+        //list-item
+        'item-gutter'              : 0.5em,
+        'item-padding'             : 0.5rem 0.75rem,
+        'item-color'               : color('greyscale', 'white'),
+        'item-bg'                  : transparent,
+        'item-border'              : 1px solid transparent,
+        'item-radius'              : 0,
+        // list-item:hover
+        'item-hover-bg'            : transparent,
+        'item-hover-border'        : 1px solid color('greyscale', 'white'),
+        // list-item:has-child
+        'has-child-hover-color'    : color('brand', 'brand-1'),
+        'has-child-hover-bg'       : color('greyscale', 'grey-1'),
+        'has-child-hover-border'   : 1px solid transparent,
+        
+    // Settings
+    //-------------------------------------------------------------
+
+        'no-icons'                 : false
+        
+    ), $custom) !global;
+
+    //-------------------------------------------------------------
+    // Module
+    //-------------------------------------------------------------
+
+    @include module {
+
+    // Core Styles
+    //-------------------------------------------------------------
+        
+        font-size: this('font-size');
+        text-align: this('text-align');
+        
+        // all levels
+        li {    
+            a {
+                display: block;
+                padding: this('item-padding');
+                color: this('item-color');
+                border: this('item-border');
+                &:hover {
+                    text-decoration: none;
+                }
+                // icon
+                @include overwrite-component('icon') {
+                    margin-right: 0.5em;
+                }
+            }   
+        }
+
+        // parent level only
+        > ul {
+
+            @extend %list-reset;
+            vertical-align: middle;
+
+            > li {
+
+                // add gap between items
+                margin-left: option($navigation, 'item-gutter');
+                &:first-child {
+                    margin-left: 0;
+                }
+
+                > a {
+                    background: option($navigation, 'item-bg');
+                    border-radius: this('item-radius');
+                    // if item has child menu
+                    &:not(:only-child) {
+                        border-bottom-color: transparent;
+                        border-radius: 0;
+                        &:after {
+                            content: option($navigation, 'dropdown-icon');
+                            font-family: FontAwesome;
+                            margin-left: 0.5em;
+                        }
+                    }
+                }
+
+                &:hover {
+                    > a {
+                        color: this('link-hover-color');
+                        background: this('item-hover-bg');
+                        border: this('item-hover-border');
+                        // if item has child menu
+                        &:not(:only-child) {
+                            color: this('has-child-hover-color');
+                            background: this('has-child-hover-bg');
+                            border: this('has-child-hover-border');
+                            border-bottom-color: transparent;
+                        }
+                    }
+                }
+
+                &.active {
+                    > a {
+                        color: this('link-active-color');
+                    }
+                    &:hover {
+                        // if item is active and hovered
+                        // > a {}
+                    }
+                }
+
+            } // > li
+
+        } // > ul
+
+        // Larger Resolutions
+        @media (min-width: breakpoint('break-3')) {
+            > ul {
+                display: inline-block;
+                > li {
+                    display: inline-block;
+                    //position: relative;
+                }
+            }
+        }
+
+    // Settings
+    //-------------------------------------------------------------
+
+        @include option('noIcons') {
+            @include overwrite-component('icon') {
+                display: none;
+            }
+        }
+
+    } // module
+
+} // @mixin navigation

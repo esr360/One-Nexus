@@ -1,0 +1,130 @@
+//=================================================================
+// Modals
+//=================================================================
+
+@mixin modals($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $modals: config((
+        'name'                   : 'modal',
+        'output-JSON'            : true,
+        'dafault-animation'      : left,
+        'background'             : color('greyscale', 'grey-1'),
+        'text-color'             : core('text-color'),
+        'radius'                 : 0,
+        'z-index'                : 14,
+        'content-padding'        : 2em,
+        'close-icon-size'        : font-size('size-5'),
+        'close-icon-color'       : color('greyscale', 'grey-3'),
+        'close-icon-hover-color' : color('brand', 'brand-1'),
+        'close-icon-position'    : (1rem, 1rem)
+    ), $custom);
+
+    //-------------------------------------------------------------
+    // Module
+    //-------------------------------------------------------------
+
+    @include module {
+        
+        @include vertical-center(absolute);
+        @extend %horizontal-center;
+        width: 650px;
+        max-width: 90%;
+        max-height: 90%;
+        overflow: auto;
+        background: this('background');
+        color: this('text-color');
+        position: fixed;
+        z-index: this('z-index');
+        transition: core('transition');
+        border-radius: this('radius');
+        // hide by default
+        opacity: 0;
+        visibility: hidden;
+        
+        @include modifier('visible') {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        @include modifier('animate') {
+            
+            transition: core('transition');
+            
+            @include modifiers(('top', 'bottom')) {
+                @include modifier('visible') {
+                    top: 50%;
+                }
+            }
+            
+            @include modifier('top') {
+                top: 45%;
+            }
+            
+            @include modifier('bottom') {
+                top: 55%;
+            }
+            
+            @include modifiers(('left', 'right')) {
+                @include modifier('visible') {
+                    transform: translateX(0) translateY(-50%);
+                }
+            }
+            
+            @include modifier('left') {
+                transform: translateX(-15%) translateY(-50%);
+            }
+            
+            @include modifier('right') {
+                transform: translateX(15%) translateY(-50%);
+            }
+            
+            @include modifier('zoom') {
+                transform: scale(0.5) translateY(-75%);
+                @include modifier('visible') {
+                    transform: scale(1) translateY(-50%);
+                }
+            }
+            
+            @include modifier('spin') {
+                transform: scale(1) rotate(-360deg) translateY(-50%);
+                transform-origin: 50% 50%;
+                @include modifier('zoom') {
+                    transform: scale(0.5) rotate(-360deg) translateY(-50%);
+                }
+                @include modifier('visible') {
+                    transform: scale(1) rotate(0) translateY(-50%);
+                }
+            }
+            
+        }
+        
+        @include component('content') {
+            padding: this('content-padding');
+        }
+        
+        @include component('close') {
+            position: absolute;
+            cursor: pointer;
+            top: nth(this('close-icon-position'), 1);
+            right: nth(this('close-icon-position'), 2);
+            transition: core('transition');
+            color: this('close-icon-color');
+            font-size: this('close-icon-size');
+            &:hover {
+                color: this('close-icon-hover-color');
+            }	
+        }
+        
+    } // module
+    
+    @include overwrite('site-overlay') {
+        &[class*="dialog-visible"] {
+            z-index: 12;
+        }
+    }
+
+} // @mixin modals

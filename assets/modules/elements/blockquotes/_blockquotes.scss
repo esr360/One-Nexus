@@ -1,0 +1,170 @@
+//=================================================================
+// Blockquotes
+//=================================================================
+
+@mixin blockquotes($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $blockquotes: config((
+        'name'                  : 'blockquote',
+        'font'                  : typography('typefaces', 'secondary'),
+        'icon-size'             : 1.75rem,
+        'pull-width'            : 340px,
+        'pull-max-width'        : 50%,
+        'pull-font-style'       : italic,
+        'pull-margin'           : 1em,
+        'bubble-padding'        : 1em 3em,
+        'bubble-background'     : color('brand', 'brand-1'),
+        'bubble-radius'         : 0.6em,
+        'bubble-color'          : color('greyscale', 'white'),
+        'testimonial-icon-size' : 1.5rem,
+    ), $custom);
+
+    //-------------------------------------------------------------
+    // Module
+    //-------------------------------------------------------------
+
+    @include module {
+
+    // Core Styles
+    //-------------------------------------------------------------
+            
+        margin: 0;
+        border: 0;
+        padding: 0 2.5em;
+        position: relative;
+        font-family: this('font');
+        
+    // Modifiers
+    //-------------------------------------------------------------
+
+        @include modifier('testimonial') {
+            
+            padding: 0;
+            
+            @include overwrite-component('content') {
+                &:before,
+                &:after {
+                    font-size: this('testimonial-icon-size');
+                }
+            }
+            
+        }
+        
+        @include modifiers(('pull-left', 'pull-right')) {
+            font-style: this('pull-font-style');
+            margin: this('pull-margin');
+            @media (min-width: breakpoint('break-2')) {
+                width: this('pull-width');
+                max-width: this('pull-max-width');
+                text-align: left;
+            }
+            @include modifier('top') {
+                margin-top: 0;
+            }
+            @include modifier('bottom') {
+                margin-bottom: 0;
+            }
+        }
+        
+        @include modifier('pull-left') {
+            float: left;
+            margin-left: 0;
+        }
+        
+        @include modifier('pull-right') {
+            float: right;
+            margin-right: 0;
+        }
+        
+    // Components
+    //-------------------------------------------------------------
+
+        @include component('bubble') {
+            
+            padding: this('bubble-padding');
+            background: this('bubble-background');
+            border-radius: this('bubble-radius');
+            color: this('bubble-color');
+            
+            position: relative;
+            
+            @include triangle((
+                'position' : top,
+                'color'    : this('bubble-background')
+            ));
+            
+            @include overwrite-component('content') {
+                position: relative;
+                &:before {
+                    left: -1.35em;
+                }
+                &:after {
+                    right: -1.35em;
+                }
+            }
+            
+            &:after {
+                left: 20%;
+            }
+            
+        } // bubble
+        
+        @include components(('avatar', 'cite')) {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        @include component('content') {
+            position: relative;
+            display: inline-block;
+            &:before,
+            &:after {
+                position: absolute;
+                font-family: FontAwesome;
+                font-size: this('icon-size');
+                color: rgba(black, 0.3);
+            }
+            &:before {
+                content: "\f10d";
+                top: -0.2em;
+                left: -1.25em;
+            }
+            &:after {
+                content: "\f10e";
+                bottom: -0.2em;
+                right: -1em;
+            }
+            @include overwrite-component('cite', $special: 'adjacent-sibling') {
+                margin-top: 1.5em;
+            }
+        }
+        
+        @include component('avatar') {
+            @include extend($parent: 'thumbnail', $modifiers: ('profile', 'round'));
+            @include overwrite-component('content', $special: 'adjacent-sibling') {
+                margin-top: 1.5em;
+            }
+        }
+        
+        @include component('cite') {
+            margin-left: 0.5em;
+            color: color('greyscale', 'white');
+        }
+        
+        @include component('footer') {
+            margin-top: 1em;			
+        }
+            
+    } // module
+
+    q {
+        &:before, &:after {
+            content: "";
+        }
+    }
+
+} // @mixin blockquotes

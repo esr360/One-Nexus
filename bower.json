@@ -1,0 +1,37 @@
+ {
+    "name":"One-Nexus",
+    "description":"A modular approach to front-end development.",
+    "version":"3.0.0",
+    "keywords":[
+        "css",
+        "sass",
+        "js",
+        "responsive",
+        "mobile-first",
+        "front-end",
+        "framework",
+        "web",
+        "development",
+        "theme",
+        "themes",
+        "html",
+        "html5"
+    ],
+    "homepage":"http://www.onenexusproject.com/",
+    "ignore":[
+       "/assets/js/jquery.min.js",
+       "/assets/js/modernizr.min.js",
+       ".git",
+       ".gitattributes",
+       ".gitignore",
+       "bower.json",
+       "cheatsheet.html",
+       "index.html",
+       "LICENSE.md",
+       "README.md"
+    ],
+    "dependencies":{
+       "jquery": ">=1.10.0",
+       "modernizr": ">=2.6.2"
+    }
+ }

@@ -1,0 +1,255 @@
+//=================================================================
+// Headings
+//=================================================================
+
+@mixin headings($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $headings: config((
+        'name'                     : 'heading',
+        'output-JSON'              : true,
+        'highlight-color'          : color('brand', 'brand-1'),
+        'highlight-dark-color'     : color('greyscale', 'grey-6'),
+        'highlight-opaque-color'   : rgba(black, 0.6),
+        'strikethrough-width'      : 75px,
+        'spaced-spacing'           : 0.35em,
+        'border'                   : 1px dotted rgba(black, 0.2),
+        'group-dots-color'         : rgba(black, 0.4),
+        'group-dots-size'          : 24px,
+        'group-block-padding'      : 6em,
+        'group_heading-lineHeight' : 0.8
+    ), $custom);
+
+    //-------------------------------------------------------------
+    // Module
+    //-------------------------------------------------------------
+
+    @include module {
+
+    // Core Styles
+    //-------------------------------------------------------------
+
+        line-height: 1;
+        transition: core('transition');
+
+    // Sizes
+    //-------------------------------------------------------------
+
+        @include font-sizes();
+
+    // Patterns
+    //-------------------------------------------------------------
+
+        @include modifier('heavy') {
+            font-weight: bolder;
+            font-weight: 900;
+        }
+
+        @include modifier('brand-1') {
+            font-style: normal;
+            color: color('brand', 'brand-1');
+        }
+
+        @include modifier('uppercase') {
+            text-transform: uppercase;
+        }
+
+        @include modifier('light') {
+            font-weight: lighter;
+            font-weight: 100;
+            font-style: normal;
+        } 
+
+        @include modifier('highlight') {
+            $highlight-dimensions: 0.3em;
+            margin-left: $highlight-dimensions;
+            margin-right: $highlight-dimensions;
+            line-height: 1.5;
+            > b {
+                background: this('highlight-color');
+                color: white;
+                padding: 0.1em 0;
+                font-weight: inherit;
+                box-shadow: $highlight-dimensions 0 0 this('highlight-color'), -$highlight-dimensions 0 0 this('highlight-color');
+                text-shadow: none;    
+                &:not(:first-child) {
+                    margin-top: ($highlight-dimensions / 2);
+                }        
+            }      
+            @-moz-document url-prefix() {
+                box-shadow: none;
+                margin-left: 0;
+                margin-right: 0;
+                padding: 0 $highlight-dimensions;
+                > b {                
+                    box-decoration-break: clone;
+                }
+            }
+        }
+        
+        @include modifier('flush') {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+
+    // Styles
+    //-------------------------------------------------------------
+
+//		@include modifier('primary') {
+//			@include extend('heavy', 'size-4', 'uppercase');
+//		}  
+
+    // Components
+    //-------------------------------------------------------------
+
+        //---------------------------------------------------------
+        // Heading Group
+        //---------------------------------------------------------
+
+        @include component('group') {
+        
+            // Core Styles
+            //-----------------------------------------------------
+        
+            @include vertical-rhythm('bottom');
+            margin-bottom: core('margin');
+            font-size: 1rem;
+            position: relative;
+            background-size: cover;
+
+            @include overwrite('heading') {
+                @include vertical-rhythm;
+                margin-top: 0.5em;
+                margin-bottom: 0.5em;
+                line-height: this('group_heading-lineHeight');
+            }
+
+            p {
+                color: color('greyscale', 'grey-4');
+            }
+            
+            @include overwrite {
+                a {
+                    &:hover {
+                        color: color('brand', 'brand-1');
+                    }
+                }
+            }
+
+            // Modifiers
+            //-----------------------------------------------------
+        
+            @include modifier('dots') {
+                position: relative;
+                margin-bottom: 3em;
+                &:after {
+                    content: "• • •";
+                    position: absolute;
+                    color: this('group-dots-color');
+                    font-size: this('group-dots-size');
+                    font-weight: 600;
+                    bottom: -2.25em;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                }
+            }
+        
+            @include modifier('block') {
+                padding: this('group-block-padding') 0;
+                margin-bottom: 0;
+                &.has-icon {
+                    padding-bottom: 5em;
+                }
+            }
+            
+            @include modifier('small') {
+                @include vertical-rhythm;
+                margin-top: (core('margin') / 2);
+                margin-bottom: (core('margin') / 2);
+            }
+        
+            @include modifier('large') {
+                margin-bottom: (core('margin') * 2);
+                @include vertical-rhythm('bottom');
+            }
+        
+        } // sub-component(group)
+
+        //---------------------------------------------------------
+        // Heading Icon
+        //---------------------------------------------------------
+        
+        @include component('icon') {
+        
+            display: inline-block;
+            position: relative;
+            font-size: font-size('size-5');
+        
+            .fa {
+                position: relative;
+                width: 0.85em;
+                height: 0.85em;
+                line-height: 0.85em;
+                font-size: font-size('size-4');
+                color: color('greyscale', 'grey-5');
+                border: 1px solid color('brand', 'brand-1');
+                border-radius: 50%;
+                &:before {
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        
+            &:before,
+            &:after {
+                content: "";
+                width: 2em;
+                border-bottom: 1px solid color('brand', 'brand-1');
+                @include vertical-center(absolute);
+            }
+        
+            &:before {
+                left: -2em;
+            }
+            
+            &:after {
+                right: -2em;
+            }
+        
+        } // sub-component(icon)
+        
+        //---------------------------------------------------------
+        // Heading Date
+        //---------------------------------------------------------
+            
+            @include component('date') {
+                float: right;
+                text-align: center;
+                width: 45px;
+                div {
+                    &:first-child {
+                        background: color('brand', 'brand-1');
+                        color: white;
+                        font-size: font-size('size-2');
+                    }
+                    &:last-child {
+                        background: color('greyscale', 'white');
+                        font-weight: lighter;
+                        color: color('greyscale', 'grey-4');
+                        border: 1px solid rgba(black, 0.1);
+                        line-height: 2;
+                    }
+                }
+                + [class*="heading"] {
+                    margin-top: 0;
+                }
+            }
+
+    } // module
+
+} // @mixin headings

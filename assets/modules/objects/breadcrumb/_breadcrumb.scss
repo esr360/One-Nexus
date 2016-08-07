@@ -1,0 +1,46 @@
+//=================================================================
+// Breadcrumb
+//=================================================================
+
+@mixin breadcrumb($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $breadcrumb: config((
+        'name'         : 'breadcrumb',
+        'font-size'    : 0.9em,
+        'divider-icon' : "\f105",
+        'icon-color'   : core('text-color')
+    ), $custom);
+
+    //-------------------------------------------------------------
+    // Component
+    //-------------------------------------------------------------
+
+    .breadcrumb {	
+
+        font-size: 0.9em;
+        
+        ul {
+            @extend %list-reset;
+            margin: 0;
+        }
+        
+        li {
+            display: inline;
+            &:not(:last-child) {
+                margin-right: 0.2em;
+                &:after {
+                    content: "\f105";
+                    font-family: FontAwesome;
+                    margin-left: 0.4em;
+                    color: core('text-color');
+                }
+            }
+        }
+
+    } // .breadcrumb
+
+} // @mixin breadcrumb

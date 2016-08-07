@@ -1,0 +1,93 @@
+//=================================================================
+// Billboard
+//=================================================================
+
+@mixin billboard($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $billboard: config((
+        'name'            : 'billboard',
+        'output-JSON'     : true,
+        // Settings
+        'full-screen'     : false,
+        'overlay'         : false,
+        // Options
+        'bg-color'        : color('greyscale', 'grey-5'),
+        'bg-image'        : "",
+        'overlay-color'   : color('brand', 'brand-1'),
+        'overlay-opacity' : 0.6,
+        'color'           : color('greyscale', 'white'),
+        'min-height'      : 500px
+    ), $custom) !global;
+
+    //-------------------------------------------------------------
+    // Component
+    //-------------------------------------------------------------
+
+    @include module {
+
+    // Core Styles
+    //-------------------------------------------------------------
+
+        min-height: this('min-height');
+        background-color: this('bg-color');
+        position: relative;
+        padding: 6em 0;
+        
+        // only apply a bg image if there is one to apply
+        @if this('bg-image') != "" {
+            background-image: url(this('bg-image'));
+            background-size: cover;
+        }
+
+    // Settings
+    //-------------------------------------------------------------
+        
+        //---------------------------------------------------------
+        // Full Screen
+        //---------------------------------------------------------
+        
+        // Conditionals
+        //---------------------------------------------------------
+        
+        @if this('full-screen') {
+            height: calc(100% - #{option($header, 'height')});
+            height: calc(100vh - #{option($header, 'height')});
+            min-height: 700px; // @TODO add to config
+        } // full-screen
+        
+        // Modifiers
+        //---------------------------------------------------------
+        
+        @include modifier('full-screen') {
+            height: calc(100% - #{option($header, 'height')});
+            height: calc(100vh - #{option($header, 'height')});
+            min-height: 700px; // @TODO add to config
+        }
+
+        //---------------------------------------------------------
+        // Overlay
+        //---------------------------------------------------------
+        
+        @include option('overlay') {
+            @include bg-overlay(rgba(
+                this('overlay-color'), 
+                this('overlay-opacity')
+            ));
+        }
+        
+    // Components
+    //-------------------------------------------------------------
+
+        @include component('wrapper') {
+            @extend %horizontal-center;
+            @include vertical-center(absolute);
+            color: this('color');
+        }
+
+    } // module
+
+} // @mixin billboard

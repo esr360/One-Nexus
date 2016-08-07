@@ -1,0 +1,150 @@
+/******************************************************************
+ * Kayzen
+ * https://github.com/esr360/Kayzen
+ * @module preloader
+ *****************************************************************/
+
+@mixin preloader($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Configuration
+    //-------------------------------------------------------------
+
+    $preloader: config((
+        'name'        : 'preloader',
+        'output-JSON' : true,
+        'preloader'   : 'clock',
+        'background'  : color('greyscale', 'grey-1'),
+        'z-index'     : 99,
+        'transition'  : core('transition'),
+        'visible-at'  : breakpoint('break-2')
+    ), $custom);
+
+    //-------------------------------------------------------------
+    // Module
+    //-------------------------------------------------------------
+
+    @include module {
+
+        //---------------------------------------------------------
+        // Core Styles
+        //---------------------------------------------------------
+        
+        background: this('background');
+        z-index: this('z-index');
+        transition: this('transition');
+        transform: scale(1);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        
+        @media (max-width: this('visible-at')) {
+            display: none;
+        }
+        
+        //---------------------------------------------------------
+        // Component
+        //---------------------------------------------------------
+
+        @include component('close') {
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            margin: auto;
+            bottom: 4rem;
+        }
+        
+        //---------------------------------------------------------
+        // Modifiers
+        //---------------------------------------------------------
+
+        @include modifier('loaded') {
+            transform: scale(0);
+        }
+        
+    } // module
+    
+    //-------------------------------------------------------------
+    // Preloaders
+    //-------------------------------------------------------------
+    
+    @if this('preloader') == 'balloons' {
+        @include awd_balloons();
+    }
+    
+    @if this('preloader') == 'bounce' {
+        @include awd_bounce();
+    }
+    
+    @if this('preloader') == 'carousel' {
+        @include awd_carousel();
+    }
+    
+    @if this('preloader') == 'clock' {
+        @include awd_clock();
+    }
+    
+    @if this('preloader') == 'disc' {
+        @include awd_disc();
+    }
+    
+    @if this('preloader') == 'hourglass' {
+        @include awd_hourglass();
+    }
+    
+    @if this('preloader') == 'newton' {
+        @include awd_newton();
+    }
+    
+    @if this('preloader') == 'pacman' {
+        @include awd_pacman();
+    }
+    
+    @if this('preloader') == 'ripple' {
+        @include awd_ripple();
+    }
+    
+    @if this('preloader') == 'snake' {
+        @include awd_snake();
+    }
+    
+    @if this('preloader') == 'steps' {
+        @include awd_steps();
+    }
+    
+    @if this('preloader') == 'wave' {
+        @include awd_wave();
+    }
+    
+    @if this('preloader') == 'nexus' {
+        .spinner {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            right: 0;
+            margin: auto;
+            display: block;
+            height:30px;
+            width:30px;
+            animation: rotation 0.7s infinite linear;
+            border-left: 7px solid rgba(black, 0.20);
+            border-right: 7px solid rgba(black, 0.20);
+            border-bottom: 7px solid rgba(black, 0.20);
+            border-top: 7px solid color('brand', 'brand-1');
+            border-radius:100%;
+        }
+        @keyframes rotation {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(359deg);
+            }
+        }
+    }
+
+} // @mixin foo

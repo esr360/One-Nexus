@@ -1,0 +1,142 @@
+//=================================================================
+// Dropdown
+//=================================================================
+
+@mixin dropdown($custom: ()) {
+
+    //-------------------------------------------------------------
+    // Config
+    //-------------------------------------------------------------
+
+    $dropdown: config((
+        'name'                 : 'dropdown',
+        'text-align'           : left,
+        'width'                : 175px,
+        'top-position'         : 0,
+        'dropdown-icon'        : "\f105",
+        'low-level-icon'       : "\f105",
+        'font-size'            : font-size('size-2', true),
+        'link-color'           : color('greyscale', 'grey-4'),
+        'link-bg-color'        : color('greyscale', 'grey-1'),
+        'link-padding'         : 0.6rem,
+        'link-hover-color'     : color('greyscale', 'white'),
+        'link-hover-bg-color'  : color('brand', 'brand-1'),
+        'link-active-color'    : option($navigation, 'a-has-child-color'),
+        'link-active-bg-color' : option($navigation, 'a-has-child-color')
+    ), $custom) !global;
+
+    //-------------------------------------------------------------
+    // Module
+    //-------------------------------------------------------------
+
+    @include module(#{option($navigation, 'name')}) {
+
+        // parent list
+        ul {
+            
+            // show the dropdown
+            li {	
+                &:hover {
+                    > ul {
+                        opacity: 1;
+                        visibility: visible;
+                        z-index: 8;
+                    }
+                }
+            }
+            
+            // dropdown
+            ul {
+            
+                @extend %list-reset;
+                min-width: this('width');
+                text-align: this('text-align');
+                transition: core('transition');
+                font-size: this('font-size');
+                position: absolute;
+                z-index: 7;
+                // hide until required
+                opacity: 0;
+                visibility: hidden;
+            
+                li {
+            
+                    position: relative;
+            
+                    a {
+                        background: this('link-bg-color');
+                        color: this('link-color');
+                        padding: this('link-padding');
+                        border-top: 1px solid color('greyscale', 'grey-2'); 
+                        &:before, 
+                        &:after {
+                            font-family: FontAwesome;		
+                        }
+                        &:not(:only-child) {
+                            padding-right: this('link-padding') + 1rem;
+                            &:after {
+                                content: this('dropdown-icon');
+                                right: 0.75em;
+                                @include vertical-center(absolute);
+                            }
+                        }
+                    }
+            
+                    // remove top border on first item
+                    &:first-child {
+                        > a {
+                            border-top-color: transparent;
+                        }
+                    }
+                    
+                    // remove bottom border on last item
+                    &:last-child {
+                        > a {
+                            // border-bottom-color: transparent;
+                        }
+                    }
+            
+                    &:hover {
+                        > a {
+                            color: this('link-hover-color');
+                            background: this('link-hover-bg-color');
+                            border-color: color('brand', 'brand-1');
+                        }
+                        + li {
+                            > a {
+                                border-top-color: color('greyscale', 'grey-1');
+                            }
+                        }
+                    }
+            
+                    &.active {
+                        > a {
+                            color: this('link-active-color');
+                            background: this('link-active-bg-color');
+                        }
+                    }
+            
+                    ul {
+                        left: 100%;
+                        top: 0;
+                        li {
+                            a {
+                                border-left: 1px solid color('greyscale', 'grey-2');
+                            }
+                        }
+                    }
+            
+                } // li
+            
+            } // ul
+            
+            // first level only
+            > ul {
+                padding-top: this('top-position');
+            }
+        
+        } // ul (parent)
+        
+    } // module
+
+} // @mixin dropdown

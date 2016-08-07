@@ -1,0 +1,148 @@
+//=================================================================
+// Twitter Feed
+//=================================================================
+
+@mixin twitter-feed($custom: ()) {
+
+	//-------------------------------------------------------------
+	// Config
+	//-------------------------------------------------------------
+
+	$twitter-feed: config((
+		'name'            : 'twitter-feed',
+        'output-JSON'     : true,
+        'background'      : darken(color('greyscale', 'grey-1'), 3%),
+		'dark'            : false,
+        'dark-background' : color('greyscale', 'grey-5'),
+        'dark-color'      : color('greyscale', 'white')
+	), $custom);
+	
+	//-------------------------------------------------------------
+	// Component
+	//-------------------------------------------------------------
+	
+	@include module {
+
+	// Core Styles
+	//-------------------------------------------------------------
+	
+		padding: 3em 0;
+		background: darken(color('greyscale', 'grey-1'), 3%);
+		position: relative;
+	
+		.tweet-content {
+			width: calc(100% - 50px - 5em);
+			padding-left: 1em;
+		}
+	
+		.tweet-avatar, .tweet-content {
+			vertical-align: middle;
+		}
+		
+		.tweet-meta {
+			.tweet-avatar {
+				display: none;
+			}
+		}
+	
+	// Modifiers
+	//-------------------------------------------------------------
+	
+		@include option('dark') {
+			background: color('greyscale', 'grey-5');
+			color: color('greyscale', 'white');
+		}
+		
+	} // component()
+			
+	.tweets {
+		@extend %list-reset;
+        margin-top: 0;
+	}
+	
+	.tweet-avatar, .tweet-content,
+	.tweet-actions, .tweet-actions li {
+		display: inline-block;
+	}
+	
+	.tweet-avatar, .tweet-content {
+		vertical-align: top;
+	}
+	
+	.tweet-meta, .tweet-actions {
+		vertical-align: middle;
+	}
+	
+	.tweet-meta {
+		.tweet-avatar {
+			width: 1.65em;
+			margin-right: 0.5em;
+		}
+	}
+	
+	.tweet-avatar {
+		width: 50px;
+		> img {
+			border-radius: 50%;
+		}
+	}
+	
+	.tweet-user {
+		font-weight: normal;
+	}
+	
+	.tweet-text {
+		margin: 0;
+	}
+	
+	.tweet-actions {
+		@extend %list-reset;
+        margin-top: 0;
+		font-size: 0.7em;
+		margin-left: 0.5em;
+		li {
+			margin-left: 0.5em;
+			&:hover {
+				a {
+					background: color('brand', 'brand-1');
+					color: color('greyscale', 'white');
+					text-decoration: none;
+				}
+			}
+		}
+		a {
+			display: block;
+			position: relative;
+			background: color('greyscale', 'grey-2');
+			color: color('greyscale', 'grey-4');
+			padding: 0 0.5em;
+			line-height: 1.9;
+			border-radius: 0.3em;
+			font-weight: normal;
+		}
+	}
+
+	.loading-tweets {
+		@include vertical-center(absolute);
+		@extend %horizontal-center;
+		opacity: 0.5;
+		font-size: 2em;
+		color: core(text-color);
+	}
+	
+	.tweets-nav {
+		@include vertical-center(absolute);
+		right: 0;
+		z-index: 2;
+		// hide until tweets loaded
+		display: none;
+	}
+	
+	.tweet-prev, .tweet-next {
+		cursor: pointer;
+		&:hover {
+			background: color('brand', 'brand-1');
+		}
+	}
+			
+} // @mixin twitter-feed
