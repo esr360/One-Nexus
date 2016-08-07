@@ -3155,26 +3155,18 @@ for (var moduleCamelCase in modulesCamelCase) {
     moduleNamesCamelCase.push(modulesCamelCase[moduleCamelCase].name);
 }
 
-for (var i = 0; i < moduleNames.length; i++) {
+for (var i = 0, moduleNamesLength = moduleNames.length; i < moduleNamesLength; i++) {
     window['_' + moduleNamesCamelCase[i]] = '.' + moduleNames[i] + ', [class*="' + moduleNames[i] + '-"]' ;
 }
 /**
+ * Get the computed value of a module's option
+ * 
  * @function _option
- * 
- * @description Get the computed value of a module's option
- * 
- * @param module - The module which you wish to get an option from
- * @param option - The module's option which you are interested in
+ * @param {object} module - The module which you wish to get an option from
+ * @param {object} option - The module's option which you are interested in
  */
-
-//  Usage
-//
-//  if(_option('navigation', 'sticky')) {
-//      ...
-//  }
-
 function _option(module, option) {
-    
+
     if (Element && !Element.prototype.matches) {
         var proto = Element.prototype;
         proto.matches = proto.matchesSelector || proto.msMatchesSelector;
@@ -3188,12 +3180,14 @@ function _option(module, option) {
     var selector = (target !== null && target.length !== 0) ? target.matches(modifier) : false;
     
     if (typeof value == 'boolean') {
-        return selector || _option['enabled'] != false;
+        return selector || _option.enabled !== false;
     } else {
-        return selector || _option != false;
+        return selector || _option !== false;
     }
 
 }
+
+module.exports = _option;
 /**
  *
  * Tools
