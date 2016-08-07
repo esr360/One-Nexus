@@ -5,6 +5,11 @@
 
 > A unique, modular approach to front end development
 
+[View Demo](http://esr360.github.io/One-Nexus/) | 
+[View Sass Documentation](http://esr360.github.io/One-Nexus/docs/sass)
+
+[![Kayzen - Premium HTML Theme Framework](http://skyux.com/images/kayzen-gh.png)](http://preview.themeforest.net/item/kayzen-multipurpose-html5-template/full_screen_preview/16768920)
+
 * [Responsive Grid system](https://github.com/esr360/One-Nexus#responsive-grid-system)
 * [Elements](https://github.com/esr360/One-Nexus#elements)
 * [Modules](https://github.com/esr360/One-Nexus#modules)
