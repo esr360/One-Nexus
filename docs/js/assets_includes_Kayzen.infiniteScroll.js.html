@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: assets/includes/Kayzen.infiniteScroll.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: assets/includes/Kayzen.infiniteScroll.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function ($) {
+    
+    /**
+     *
+     * Kayzen.infiniteScroll
+     * @author @esr360
+     * @description Uses "Isotope" (optional) and "Infinite Ajax Scroll" plugins
+     *
+     */
+ 
+    $.fn.KayenInfiniteScroll = function(custom, callback) {
+        
+        // Options
+        var options = $.extend({
+            
+            isotopeGrid : true,
+            loadSpinner : true,
+            delay       : 600,
+            pagination  : '#pagination',
+            next        : '.next a',
+            endText     : 'You have reached the end!'
+            
+        }, custom);
+        
+        // Run the code on each occurance of the element
+        return this.each(function() {
+            
+            var row = this.id;
+            var col = $(this).children().attr('class').split(' ')[0];
+            
+            // Convert the passed element into an Isotope grid
+            if (options.isotopeGrid) {
+                var isotopeGrid = new Isotope(this, {
+                    itemSelector     : '.' + col
+                });
+            }
+            
+            // Set the infinite scroll options
+            var ias = $.ias({
+                container  : '#' + row,
+                item       : '.' + col,
+                pagination : options.pagination,
+                next       : options.next,
+                delay      : options.delay
+            });
+                
+            // Hide the items to allow them to animate in
+            ias.on('render', function(items) {
+                $(items).css({ opacity: 0 });
+            });
+            
+            // Pass any callback functions to the newly loaded items
+            if (callback) {
+                ias.on('rendered', function(items) {
+                    if (typeof(callback) == 'object') {
+                        callback.forEach(function (func) {
+                            func();
+                        });
+                    } else if (typeof(callback) == 'function') {
+                        callback();
+                    }
+                });
+            }
+        
+            if (options.isotopeGrid) {
+                // Append new items to Isotope grid
+                ias.on('rendered', function(items) {
+                    isotopeGrid.appended(items);
+                });
+            } else {
+                ias.on('rendered', function(items) {
+                    // Show the items
+                    $(items).css({ opacity: 1 });  
+                    // Re-call the iframeHeight plugin
+                    $('.auto-resizable-iframe').iframeHeight();
+                    // Re-call the lightbox plugin
+                    $('[rel="lightbox"]').magnificPopup({
+                        type : 'image'
+                    });             
+                });
+            }
+            
+            // Add a loading spinner image
+            if (options.loadSpinner) {
+                ias.extension(new IASSpinnerExtension());
+            }
+            
+            // Add some end of scroll text
+            if (options.endText) {
+                ias.extension(new IASNoneLeftExtension({
+                    html: '&lt;div class="ias-noneleft">&lt;p>' + options.endText + '&lt;/p>&lt;/div>'
+                }));
+            }
+            
+        }); // this.each
+ 
+    }; // KayenInfiniteScroll()
+ 
+}(jQuery));</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#_globalScripts">_globalScripts</a></li><li><a href="global.html#_globalStyles">_globalStyles</a></li><li><a href="global.html#_owl">_owl</a></li><li><a href="global.html#_scripts">_scripts</a></li><li><a href="global.html#buildScripts">buildScripts</a></li><li><a href="global.html#buildStyles">buildStyles</a></li><li><a href="global.html#clean">clean</a></li><li><a href="global.html#concat">concat</a></li><li><a href="global.html#copy">copy</a></li><li><a href="global.html#cssmin">cssmin</a></li><li><a href="global.html#dev">dev</a></li><li><a href="global.html#jsdoc">jsdoc</a></li><li><a href="global.html#jshint">jshint</a></li><li><a href="global.html#mochacli">mochacli</a></li><li><a href="global.html#notify">notify</a></li><li><a href="global.html#owlPath">owlPath</a></li><li><a href="global.html#postcss">postcss</a></li><li><a href="global.html#replace">replace</a></li><li><a href="global.html#sass">sass</a></li><li><a href="global.html#sassdoc">sassdoc</a></li><li><a href="global.html#scsslint">scsslint</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#themePath">themePath</a></li><li><a href="global.html#uglify">uglify</a></li><li><a href="global.html#watch">watch</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Aug 07 2016 23:15:46 GMT+0100 (BST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

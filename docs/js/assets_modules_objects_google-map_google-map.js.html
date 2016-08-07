@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: assets/modules/objects/google-map/google-map.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: assets/modules/objects/google-map/google-map.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function ($) {
+    
+    /**
+     * 
+     * KAYZEN
+     * @module: 'google-map'
+     * @author: @esr360
+     * 
+     */
+ 
+    $.fn.googleMap = function(custom) {
+        
+        // Options
+        
+        // Fetch the map colors from the CSS
+        var _mapColor = _modules['google-map']['colors'];
+        
+        var options = $.extend({
+            styles: [
+                {
+                    "featureType" : "water", 
+                    "elementType" : "geometry",
+                    "stylers" : [{
+                        "color" : _mapColor['water']
+                    }]
+                },
+                {
+                    "featureType" : "landscape",
+                    "elementType" : "geometry",
+                    "stylers" : [{
+                        "color" : _mapColor['landscape']
+                    }]
+                },
+                {
+                    "featureType" : "road",
+                    "elementType" : "geometry",
+                    "stylers" : [
+                        { "color" : _mapColor['road'] },
+                        { "lightness" : -37 }
+                    ]
+                },
+                {
+                    "featureType" : "poi",
+                    "elementType" : "geometry",
+                    "stylers" : [{
+                        "color" : _mapColor['poi']
+                    }]
+                },
+                {
+                    "featureType" : "transit",
+                    "elementType" : "geometry",
+                    "stylers" : [{
+                        "color" : _mapColor['transit']
+                    }]
+                },
+                {
+                    "elementType" : "labels.text.stroke",
+                    "stylers" : [
+                        { "visibility" : "on" },
+                        { "color" : _mapColor['stroke'] },
+                        { "weight" : 2 },
+                        { "gamma" : 0.84 }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry",
+                    "stylers": [
+                        { "color": _mapColor['highway'] }
+                    ]
+                },
+                {
+                    "elementType" : "labels.text.fill",
+                    "stylers" : [{
+                        "color" : "#ffffff"
+                    }]
+                },
+                {
+                    "featureType" : "administrative",
+                    "elementType" : "geometry",
+                    "stylers" : [
+                        { "weight" : 0.6 },
+                        { "color" : _mapColor['administrative'] }
+                    ]
+                },
+                {
+                    "elementType" : "labels.icon",
+                    "stylers" : [{
+                        "visibility" : "off"
+                    }]
+                },
+                {
+                    "featureType" : "poi.park",
+                    "elementType" : "geometry",
+                    "stylers" : [{
+                        "color" : _mapColor['park']
+                    }]
+                }
+            ],
+            longitude: _modules['google-map']['location'][0],
+            latitude: _modules['google-map']['location'][1],
+            zoom: 14,
+            headerTrigger : '#toggleHeader'
+        }, custom);
+        
+        // Run the code on each occurance of the element
+        return this.each(function() {
+
+            // When the window has finished loading create our google map
+            google.maps.event.addDomListener(window, 'load', init);
+
+            // Get the HTML DOM element that will contain your map 
+            var mapElement = $(this)[0];
+            
+            function init() {
+            
+                // When the window has finished loading create our google map
+                if($(this).length == 1) {
+                    google.maps.event.addDomListener(window, 'load', init);
+                }
+                    
+                // Basic options for a simple Google Map
+                // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+                var mapOptions = {
+                    
+                    // How zoomed in you want the map to start at (always required)
+                    zoom: options.zoom,
+
+                    // Disable scroll-wheel zoom
+                    scrollwheel: false,
+
+                    draggable: false,
+
+                    // The latitude and longitude to center the map (always required)
+                    center: new google.maps.LatLng(options.longitude, options.latitude), 
+
+                    // How you would like to style the map? 
+                    // This is where you would paste any style found on Snazzy Maps.
+                    
+                    styles: options.styles
+                    
+                };
+
+                // Create the Google Map using our element and options defined above
+                var map = new google.maps.Map(mapElement, mapOptions);
+                
+            } // init()
+
+        }); // this.each
+ 
+    }; // googleMap()
+ 
+}(jQuery));</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#_globalScripts">_globalScripts</a></li><li><a href="global.html#_globalStyles">_globalStyles</a></li><li><a href="global.html#_owl">_owl</a></li><li><a href="global.html#_scripts">_scripts</a></li><li><a href="global.html#buildScripts">buildScripts</a></li><li><a href="global.html#buildStyles">buildStyles</a></li><li><a href="global.html#clean">clean</a></li><li><a href="global.html#concat">concat</a></li><li><a href="global.html#copy">copy</a></li><li><a href="global.html#cssmin">cssmin</a></li><li><a href="global.html#dev">dev</a></li><li><a href="global.html#jsdoc">jsdoc</a></li><li><a href="global.html#jshint">jshint</a></li><li><a href="global.html#mochacli">mochacli</a></li><li><a href="global.html#notify">notify</a></li><li><a href="global.html#owlPath">owlPath</a></li><li><a href="global.html#postcss">postcss</a></li><li><a href="global.html#replace">replace</a></li><li><a href="global.html#sass">sass</a></li><li><a href="global.html#sassdoc">sassdoc</a></li><li><a href="global.html#scsslint">scsslint</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#themePath">themePath</a></li><li><a href="global.html#uglify">uglify</a></li><li><a href="global.html#watch">watch</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Aug 07 2016 23:15:46 GMT+0100 (BST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
