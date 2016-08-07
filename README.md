@@ -10,7 +10,7 @@
 
 [![Kayzen - Premium HTML Theme Framework](http://skyux.com/images/kayzen-gh.png)](http://preview.themeforest.net/item/kayzen-multipurpose-html5-template/full_screen_preview/16768920)
 
-#### Features
+### Features
 
 * [Responsive Grid system](https://github.com/esr360/One-Nexus#responsive-grid-system)
 * [Elements](https://github.com/esr360/One-Nexus#elements)
