@@ -1,12 +1,22 @@
-//=================================================================
-// Headings
-//=================================================================
-
+/// Headings
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group elements
+///
+/// @param {map} $custom - where custom config will be passed
+/// @outputs all heading styles
+///
+/// @example
+///     @include headings((
+///         'font'      : 'Times New Roman',
+///         'icon-size' : 24px
+///     ));
 @mixin headings($custom: ()) {
 
-    //-------------------------------------------------------------
-    // Config
-    //-------------------------------------------------------------
+    //*************************************************************
+    // Configuration
+    //*************************************************************
 
     $headings: config((
         'name'                     : 'heading',
@@ -23,25 +33,28 @@
         'group_heading-lineHeight' : 0.8
     ), $custom);
 
-    //-------------------------------------------------------------
+    //*************************************************************
     // Module
-    //-------------------------------------------------------------
+    //*************************************************************
 
     @include module {
 
-    // Core Styles
-    //-------------------------------------------------------------
+        //*********************************************************
+        // Core Styles
+        //*********************************************************
 
         line-height: 1;
         transition: core('transition');
 
-    // Sizes
-    //-------------------------------------------------------------
+        //*********************************************************
+        // Sizes
+        //*********************************************************
 
         @include font-sizes();
 
-    // Patterns
-    //-------------------------------------------------------------
+        //*********************************************************
+        // Modifiers
+        //*********************************************************
 
         @include modifier('heavy') {
             font-weight: bolder;
@@ -95,24 +108,18 @@
             margin-bottom: 0 !important;
         }
 
-    // Styles
-    //-------------------------------------------------------------
+        // Custom Styles
+        //*********************************************************
 
-//		@include modifier('primary') {
-//			@include extend('heavy', 'size-4', 'uppercase');
-//		}  
+		@include modifier('primary') {
+			@include extend('heavy', 'size-4', 'uppercase');
+		}  
 
-    // Components
-    //-------------------------------------------------------------
-
-        //---------------------------------------------------------
-        // Heading Group
-        //---------------------------------------------------------
+        //*********************************************************
+        // Components
+        //*********************************************************
 
         @include component('group') {
-        
-            // Core Styles
-            //-----------------------------------------------------
         
             @include vertical-rhythm('bottom');
             margin-bottom: core('margin');
@@ -138,50 +145,8 @@
                     }
                 }
             }
-
-            // Modifiers
-            //-----------------------------------------------------
         
-            @include modifier('dots') {
-                position: relative;
-                margin-bottom: 3em;
-                &:after {
-                    content: "• • •";
-                    position: absolute;
-                    color: this('group-dots-color');
-                    font-size: this('group-dots-size');
-                    font-weight: 600;
-                    bottom: -2.25em;
-                    left: 0;
-                    right: 0;
-                    margin: auto;
-                }
-            }
-        
-            @include modifier('block') {
-                padding: this('group-block-padding') 0;
-                margin-bottom: 0;
-                &.has-icon {
-                    padding-bottom: 5em;
-                }
-            }
-            
-            @include modifier('small') {
-                @include vertical-rhythm;
-                margin-top: (core('margin') / 2);
-                margin-bottom: (core('margin') / 2);
-            }
-        
-            @include modifier('large') {
-                margin-bottom: (core('margin') * 2);
-                @include vertical-rhythm('bottom');
-            }
-        
-        } // sub-component(group)
-
-        //---------------------------------------------------------
-        // Heading Icon
-        //---------------------------------------------------------
+        }
         
         @include component('icon') {
         
@@ -221,34 +186,7 @@
                 right: -2em;
             }
         
-        } // sub-component(icon)
-        
-        //---------------------------------------------------------
-        // Heading Date
-        //---------------------------------------------------------
-            
-            @include component('date') {
-                float: right;
-                text-align: center;
-                width: 45px;
-                div {
-                    &:first-child {
-                        background: color('brand', 'brand-1');
-                        color: white;
-                        font-size: font-size('size-2');
-                    }
-                    &:last-child {
-                        background: color('greyscale', 'white');
-                        font-weight: lighter;
-                        color: color('greyscale', 'grey-4');
-                        border: 1px solid rgba(black, 0.1);
-                        line-height: 2;
-                    }
-                }
-                + [class*="heading"] {
-                    margin-top: 0;
-                }
-            }
+        }
 
     } // module
 

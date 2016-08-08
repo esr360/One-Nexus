@@ -1,12 +1,22 @@
-//=================================================================
-// Forms
-//=================================================================
-
+/// Forms
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group elements
+///
+/// @param {map} $custom - where custom config will be passed
+/// @outputs all form styles
+///
+/// @example
+///     @include forms((
+///         'font'      : 'Times New Roman',
+///         'icon-size' : 24px
+///     ));
 @mixin forms($custom: ()) {
 
-    //-------------------------------------------------------------
-    // Config
-    //-------------------------------------------------------------
+    //*************************************************************
+    // Configuration
+    //*************************************************************
 
     $forms: config((
         'name'             : 'form',
@@ -18,18 +28,18 @@
         'bg-color'         : rgba(black, 0.025),
         'bg-focus-color'   : white,
         'valid-color'      : color('validation', 'valid'),
-        'invalid-color'    : color('validation', 'invalid'),
-        'group-small-size' : font-size('size-2')
+        'invalid-color'    : color('validation', 'invalid')
     ), $custom);
 
-    //-------------------------------------------------------------
+    //*************************************************************
     // Module
-    //-------------------------------------------------------------
+    //*************************************************************
 
     @include module {
 
-    // Core Styles
-    //-------------------------------------------------------------
+        //*********************************************************
+        // Core Styles
+        //*********************************************************
 
         font-weight: this('weight');
         
@@ -37,93 +47,15 @@
             transition: core('transition');
             cursor: pointer;
         }
-        
-    // Modifiers
-    //-------------------------------------------------------------
 
-        @include modifier('fauxPlaceholders') {
-            @include overwrite-component('group') {
-                margin-bottom: core('margin');
-                @include vertical-rhythm('bottom');
-            }
-            @include overwrite-component('group') {
-                label {
-                    @include vertical-center(absolute);
-                    left: this('input-padding');
-                    color: this('input-color');
-                    cursor: text;
-                }
-            }
-            @include overwrite-component('input') {
-                &::placeholder {
-                    opacity: 0;
-                }
-                &:focus {
-                    ~ label {
-                        top: -0.8em;
-                        left: 0;
-                        cursor: pointer;
-                        font-size: 0.9em;
-                    }
-                    &::placeholder {
-                        opacity: 0.5;
-                        transition: 0s;
-                    }
-                }
-            }
-            @include overwrite-component('group') {
-                textarea {
-                    ~ label {
-                        top: 1.4em;
-                    }
-                }
-            }
-            @include overwrite-component('icon') {
-                color: this('input-color');
-                ~ label {
-                    left: 2em;
-                }
-            }
-        }
-        
-        @include modifier('html5') {
-            @include overwrite-component('input') {
-                &:focus {
-                    &:invalid {
-                        &, ~ label, ~ .form_icon, &::placeholder {
-                            border-color: this('invalid-color');
-                            color: this('invalid-color');
-                        }
-                    }
-                    &:valid {
-                        &, ~ label, ~ .form_icon, &::placeholder {
-                            border-color: this('valid-color');
-                            color: this('valid-color');
-                        }
-                    }
-                }
-            }
-        }
-
-    // Components
-    //-------------------------------------------------------------
+        //*********************************************************
+        // Components
+        //*********************************************************
 
         @include component('group') {
             position: relative;
             margin-bottom: (core('margin') / 2);
             @include vertical-rhythm('bottom');
-            [type="submit"] {
-                position: absolute;
-                line-height: 1;
-                right: 0;
-                height: 100%;
-                @include overwrite-component(input, $special: 'general-sibling') {
-                    padding-right: 3em;
-                }
-            }
-            @include modifier('small') {
-                font-size: this('group-small-size');
-            }
             @include modifier('compound') {
                 margin-bottom: 0.5em;
             }
@@ -154,21 +86,21 @@
             &:focus {
                 outline: 0;
             }
-            @include modifier('plain') {
-                border-color: transparent;
-            }
-            @include modifier('bg') {
-                background-color: this('background-color');
+            @include modifier('validate') {
                 &:focus {
-                    background-color: this('bg-focus-color');
+                    &:invalid {
+                        &, ~ label, ~ .form_icon, &::placeholder {
+                            border-color: this('invalid-color');
+                            color: this('invalid-color');
+                        }
+                    }
+                    &:valid {
+                        &, ~ label, ~ .form_icon, &::placeholder {
+                            border-color: this('valid-color');
+                            color: this('valid-color');
+                        }
+                    }
                 }
-            }
-            @include modifier('quantity') {
-                max-width: 50px;
-                display: inline-block;
-                vertical-align: bottom;
-                text-align: center;
-                padding: 0.6em;
             }
         }
         
