@@ -1,34 +1,39 @@
-//=================================================================
-// Accordions
-//=================================================================
-
+/// Accordions
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group elements
+///
+/// @param {map} $custom - where custom config will be passed
+/// @outputs all accordion styles
+///
+/// @example
+///     @include accordions((
+///         'title-bg'    : blue,
+///         'title-color' : white
+///     ));
 @mixin accordions($custom: ()) {
 
-    //-------------------------------------------------------------
-    // Config
-    //-------------------------------------------------------------
+    //*************************************************************
+    // Configuration
+    //*************************************************************
 
     $accordions: config((
         'name'                  : 'accordion',
-        'output-JSON'           : true,
-        // icon (open/close)
-        'icon'                  : '\f138', // FontAwesome value
+        'output-json'           : true,
+        'icon'                  : '\f138',
         'icon-color'            : rgba(color('greyscale', 'grey-3'), 0.6),
         'icon-active-color'     : color('greyscale', 'white'),
-        // each section
         'section-margin'        : 0,
-        // title (clickable part)
         'title-bg'              : transparent,
         'title-color'           : core('text-color'),
         'title-border'          : 1px solid rgba(black, 0.15),
         'title-radius'          : 0,
         'title-padding'         : 1em,
-        // title.active
         'title-active-bg'       : color('brand', 'brand-1'),
         'title-active-color'    : color('greyscale', 'white'),
         'title-active-border'   : transparent,
         'title-active-radius'   : 0,
-        // content
         'content-bg'            : color('greyscale', 'white'),
         'content-color'         : core('text-color'),
         'content-border'        : 1px solid rgba(black, 0.15),
@@ -36,20 +41,34 @@
         'content-padding'       : 1.5em
     ), $custom);
 
-    //-------------------------------------------------------------
+    //*************************************************************
     // Module
-    //-------------------------------------------------------------
+    //*************************************************************
 
     @include module {
 
-    // Core Styles
-    //-------------------------------------------------------------
+        //*********************************************************
+        // Core Styles
+        //*********************************************************
 
         margin-bottom: core('margin');
         @include vertical-rhythm('bottom');
+        
+        > * {
+            > *:first-child { 
+                cursor: pointer;			
+            }
+            > *:last-child { 
+                display: none;	
+                &.active {
+                    display: block;
+                }			
+            }
+        }
 
-    // Components
-    //-------------------------------------------------------------
+        //*********************************************************
+        // Components
+        //*********************************************************
 
         @include component('section') {
             margin: 0;
@@ -113,46 +132,6 @@
             margin-top: -1px;	
             font-weight: lighter;
             background: this('content-bg');
-        }
-        
-        > * {
-            > *:first-child { 
-                cursor: pointer;			
-            }
-            > *:last-child { 
-                display: none;	
-                &.active {
-                    display: block;
-                }			
-            }
-        }
-        
-    // Modifiers
-    //-------------------------------------------------------------
-
-        @include modifier('minimal') {
-            > * {
-                > *:first-child { 
-                    position: relative;
-                    &:after { // open/close icon
-                        content: '\f105';
-                        font-family: FontAwesome;
-                        position: absolute;
-                        font-size: font-size('size-4');
-                        right: 0;
-                        top: -0.25em;
-                        color: this('icon-color');
-                        transition: core('transition');
-                    }			
-                }
-                &.active {
-                    > *:first-child { 
-                        &:after {
-                            transform: rotate(90deg);
-                        }
-                    }
-                }
-            }
         }
 
     } // module

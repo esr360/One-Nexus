@@ -1,15 +1,26 @@
-//=================================================================
-// Alert Bars
-//=================================================================
-
+/// Alert Bars
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group elements
+///
+/// @param {map} $custom - where custom config will be passed
+/// @outputs all alert bar styles
+///
+/// @example
+///     @include alert-bars((
+///         'title-bg'    : blue,
+///         'title-color' : white
+///     ));
 @mixin alert-bars($custom: ()) {
 
-    //-------------------------------------------------------------
-    // Config
-    //-------------------------------------------------------------
+    //*************************************************************
+    // Configuration
+    //*************************************************************
 
     $alert-bars: config((
         'name'          : 'alert-bar',
+        'colors'        : palette('alert'),
         'border-radius' : 0.25em,
         'border-width'  : 1px,
         'padding'       : 0.85em,
@@ -17,27 +28,36 @@
         'font-weight'   : lighter
     ), $custom);
 
-    //-------------------------------------------------------------
+    //*************************************************************
     // Module
-    //-------------------------------------------------------------
+    //*************************************************************
 
     @include module {
 
-    // Core Styles
-    //-------------------------------------------------------------
+        //*********************************************************
+        // Core Styles
+        //*********************************************************
+        
+        // Private styles
+        position: relative;
 
+        // Public styles
+        border-color: rgba(black, 0.15); // @TODO add to config
         padding: this('padding');
         border: this('border-width') solid;
         font-size: this('font-size');
         border-radius: this('border-radius');
         font-weight: this('font-weight');
-        
-        border-color: rgba(black, 0.15);
-        position: relative;
+
+        // Pseudo States
+        //*********************************************************
 
         &:hover {
             text-decoration: none;
         }
+
+        // Child Elements
+        //*********************************************************
 
         a {
             border-bottom: 1px dotted;
@@ -50,10 +70,11 @@
             color: inherit;
         }
 
-    // Modifiers
-    //-------------------------------------------------------------
+        //*********************************************************
+        // Modifiers
+        //*********************************************************
 
-        @each $name, $color in palette('alert') {
+        @each $name, $color in this('colors') {
             @include modifier($name) {
                 background-color: $color;
                 color: alert-text($color);
@@ -65,14 +86,26 @@
 
 } // @mixin alert-bars
 
-//-----------------------------------------------------------------
+//*****************************************************************
 // Utilities
-//-----------------------------------------------------------------
+//*****************************************************************
 
+/// Function to get color for alert text
+///
+/// @access private
+/// @group elements
+/// @param {color} $color - the alert color to be adjusted for text
+/// @return {color} - the new color for alert text
 @function alert-text($color) {
     @return desaturate(darken($color, 50%), 25%);
-}   
+}
   
+/// Function to get color for alert borders
+///
+/// @access private
+/// @group elements
+/// @param {string} $color - the alert color to be adjusted for borders
+/// @return {color} - the new color for alert borders
 @function alert-border($color) {
     @return desaturate(darken($color, 30%), 25%);
 }

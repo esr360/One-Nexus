@@ -10,7 +10,7 @@
 
     $site-overlay: config((
         'name'               : 'search-box',
-        'output-JSON'        : true,
+        'output-json'        : true,
         'background'         : color('greyscale', 'grey-5'),
         'height'             : option($top-bar, 'height'),
         'input-background'   : color('greyscale', 'grey-5'),

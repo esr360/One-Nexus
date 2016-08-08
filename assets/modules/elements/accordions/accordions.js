@@ -1,25 +1,20 @@
 (function ($) {
 
     /**
-     * 
      * KAYZEN
      * @module: 'accordion'
      * @author: @esr360
-     * 
      */
-
     $.fn.accordion = function(custom) {
         
         // Options
         var options = $.extend({
-            
             activeClass      : 'active',
             animationSpeed   : baseTransition,
             keepOpenSelector : '[class*="-keep-open"]'
-            
         }, custom);
         
-        // Run the code on each occurance of the element
+        // Run the code on each occurance of the target
         return this.each(function() {
             
             // Add active class to the target content section

@@ -3186,13 +3186,9 @@ function _option(module, option) {
     }
 
 }
-
-module.exports = _option;
 /**
- *
  * Tools
  * @description general JS tools, helpers and plugin inits
- *
  */
 
 // Create a global variable for base transition duration
@@ -3209,87 +3205,20 @@ function breakpoint(media, value) {
 
 $(document).ready(function() {
 
-    // Set Iframe Height
-    $('.auto-resizable-iframe').iframeHeight();
-
-    // Animated Numbers
-    $('[id^="stat-"]').scrollStats();
-
-    // Masonry Grid
-    $('.js-masonry').masonryGrid();
-
-    // Data Background Images
-    $('[data-bg]').dataBg();
-
-    // Parallax Init
-    if (breakpoint('min-width', 'break-4')) {
-        $.stellar({
-            horizontalScrolling : false
-        });
-    }
-
     // Owl Carousel Init
     $('.carousel').each(function() {
         $(this).addClass('owl-carousel');
         $(this).owlCarousel();
     });
 
-    // Magnific Popup Init
-    $('[rel="lightbox"]').magnificPopup({
-        type : 'image'
-    });
-
-    // Magnific Popup Init
-    $('.lightbox-gallery').each(function() {
-        $(this).magnificPopup({
-            delegate : 'a',
-            type : 'image',
-            gallery: {
-                enabled : true
-            }
-        });
-    });
-
 }); // document.ready
-/**
- *
- * Kayzen.carouselColumns
- * @author @esr360
- * @description convert row into responsive carousel
- *
- */
-
-$(document).ready(function() {
-
-    var twoCols = $('.2-cols');
-    
-    twoCols.owlCarousel({
-        items: 1,
-        loop: false,
-        dots: false,
-        nav: true,
-        navText: [],
-        margin: 31,
-        slideBy: 1,
-        mouseDrag: false,
-        responsive:{
-            460: {                
-                items: 2
-            }
-        }
-    });
-
-});
-/**
- *
- * Kayzen.carouselCustomPager
- * @author @esr360
- * @description Uses "Owl Carousel" plugin
- *
- */
-
 (function ($) {
- 
+    
+    /**
+     * Kayzen.carouselCustomPager
+     * @author @esr360
+     * @description Uses "Owl Carousel" plugin
+     */
     $.fn.kCarousel = function(custom) {
         
         // Options
@@ -3356,19 +3285,16 @@ $(document).ready(function() {
             
         }); // this.each
  
-    }; // KayenInfiniteScroll()
+    };
  
 }(jQuery));
 (function ($) {
     
     /**
-     *
      * Kayzen.clckHelper
      * @author @esr360
      * @description Add class to element & remove from siblings
-     *
      */
- 
     $.fn.KayzenClickHelper = function(custom) {
         
         // Options
@@ -3398,46 +3324,9 @@ $(document).ready(function() {
 (function ($) {
     
     /**
-     *
-     * Kayzen.dataBg
-     * @author @esr360
-     *
-     */
- 
-    $.fn.dataBg = function(custom) {
-        
-        // Options
-        var options = $.extend({
-            prependClass : 'bg-img'
-        }, custom);
-        
-        // Run the code on each occurance of the element
-        return this.each(function() {
-            
-            var object = $(this);
-            
-            var bg = object.attr('data-bg');
-            
-            if (object.is('a') && object.attr('href') == '#') {
-                object.attr('href', bg)
-            }
-            
-            object.prepend('<div class="' + options.prependClass + '" style="background-image: url(' + bg + ')"></div>');
-                            
-        }); // this.each
- 
-    }; // dataBg()
- 
-}(jQuery));
-(function ($) {
-    
-    /**
-     *
      * Kayzen.equalHeight
      * @author @esr360
-     *
      */
- 
     $.fn.equalHeight = function(custom) {
         
         // Options
@@ -3471,258 +3360,45 @@ $(document).ready(function() {
  
 }(jQuery));
 (function ($) {
-    
-    /**
-     *
-     * Kayzen.filterGrid
-     * @author @esr360
-     *
-     */
- 
-    $.fn.filterGrid = function(custom) {
-        
-        // Options
-        var options = $.extend({
-            items      : '#portfolio-items'
-        }, custom);
-        
-        // Run the code on each occurance of the element
-        return this.each(function() {
-            
-            var cats  = $(this);
-            var items = $(options.items);
-            
-            cats.KayzenClickHelper();
-                
-            items.isotope();
-            
-            cats.on('click', 'li', function() {
-                var filterValue = $(this).attr('data-filter');
-                items.isotope({ 
-                    filter: filterValue 
-                });
-            });
-            
-            $(window).load(function() {
-                setTimeout(function() {
-                    items.isotope('layout');  
-                }, baseTransition);
-            });
-            
-            $('#toggleHeader').click(function() {
-                setTimeout(function() {
-                    items.isotope('layout');  
-                }, baseTransition);
-            });     
-                         
-        }); // this.each
- 
-    }; // masonryGrid()
- 
-}(jQuery));
-(function ($) {
-    
-    /**
-     *
-     * Kayzen.iframeHeight
-     * @author @esr360
-     *
-     */
- 
-    $.fn.iframeHeight = function(custom) {
-        
-        // Options
-        var options = $.extend({
-            dataAttr : 'data-iframe-height'
-        }, custom);
-        
-        // Run the code on each occurance of the element
-        return this.each(function() {
-                
-            var height = $(this).attr(options.dataAttr);
-            
-            $(this).find('> div').css({
-                paddingBottom : height
-            })
-                            
-        }); // this.each
- 
-    }; // iframeHeight()
- 
-}(jQuery));
-(function ($) {
-    
-    /**
-     *
-     * Kayzen.infiniteScroll
-     * @author @esr360
-     * @description Uses "Isotope" (optional) and "Infinite Ajax Scroll" plugins
-     *
-     */
- 
-    $.fn.KayenInfiniteScroll = function(custom, callback) {
-        
-        // Options
-        var options = $.extend({
-            
-            isotopeGrid : true,
-            loadSpinner : true,
-            delay       : 600,
-            pagination  : '#pagination',
-            next        : '.next a',
-            endText     : 'You have reached the end!'
-            
-        }, custom);
-        
-        // Run the code on each occurance of the element
-        return this.each(function() {
-            
-            var row = this.id;
-            var col = $(this).children().attr('class').split(' ')[0];
-            
-            // Convert the passed element into an Isotope grid
-            if (options.isotopeGrid) {
-                var isotopeGrid = new Isotope(this, {
-                    itemSelector     : '.' + col
-                });
-            }
-            
-            // Set the infinite scroll options
-            var ias = $.ias({
-                container  : '#' + row,
-                item       : '.' + col,
-                pagination : options.pagination,
-                next       : options.next,
-                delay      : options.delay
-            });
-                
-            // Hide the items to allow them to animate in
-            ias.on('render', function(items) {
-                $(items).css({ opacity: 0 });
-            });
-            
-            // Pass any callback functions to the newly loaded items
-            if (callback) {
-                ias.on('rendered', function(items) {
-                    if (typeof(callback) == 'object') {
-                        callback.forEach(function (func) {
-                            func();
-                        });
-                    } else if (typeof(callback) == 'function') {
-                        callback();
-                    }
-                });
-            }
-        
-            if (options.isotopeGrid) {
-                // Append new items to Isotope grid
-                ias.on('rendered', function(items) {
-                    isotopeGrid.appended(items);
-                });
-            } else {
-                ias.on('rendered', function(items) {
-                    // Show the items
-                    $(items).css({ opacity: 1 });  
-                    // Re-call the iframeHeight plugin
-                    $('.auto-resizable-iframe').iframeHeight();
-                    // Re-call the lightbox plugin
-                    $('[rel="lightbox"]').magnificPopup({
-                        type : 'image'
-                    });             
-                });
-            }
-            
-            // Add a loading spinner image
-            if (options.loadSpinner) {
-                ias.extension(new IASSpinnerExtension());
-            }
-            
-            // Add some end of scroll text
-            if (options.endText) {
-                ias.extension(new IASNoneLeftExtension({
-                    html: '<div class="ias-noneleft"><p>' + options.endText + '</p></div>'
-                }));
-            }
-            
-        }); // this.each
- 
-    }; // KayenInfiniteScroll()
- 
-}(jQuery));
-(function ($) {
-    
-    /**
-     *
-     * Kayzen.masonryGrid
-     * @author @esr360
-     *
-     */
- 
-    $.fn.masonryGrid = function(custom) {
-        
-        // Options
-        var options = $.extend({
-            responsive : _modules['grid']['options']['col-break']
-        }, custom);
-        
-        // Run the code on each occurance of the element
-        return this.each(function() {
-                
-            var $break = (options.responsive).replace(/[^-\d\.]/g, '');
-            var grid = $(this);
-          
-            $(window).bind("load resize", function() {
-                    
-                if (($(document).width()) < $break) {
-                    grid.masonry('destroy');
-                } else {
-                    grid.masonry();
-                }
 
-            });  
-                            
-        }); // this.each
- 
-    }; // masonryGrid()
- 
-}(jQuery));
-(function ($) {
-    
     /**
-     *
      * Kayzen.navDropdown
      * @author @esr360
-     *
      */
- 
     $.fn.navDropdown = function(custom) {
-        
+
         // Options
         var options = $.extend({
             toggleIcon      : _modules['side-nav']['collapsible']['icon'],
-            slideTransition : baseTransition
+            toggleIconClass : 'side-nav_openClose',
+            slideTransition : baseTransition,
+            megaMenuName    : 'mega-menu'
         }, custom);
-        
+
         // Run the code on each occurance of the element
         return this.each(function() { 
-            
+
             var navParent = $(this);
-                        
+
             // Create open/close icon
-            var openClose = '<i class="side-nav_openClose fa ' + options.toggleIcon + '"></i>';
-            
+            var openClose = '<i class="' + options.toggleIconClass + ' fa ' + options.toggleIcon + '"></i>';
+
             // Add icon to appropriate menu items
             navParent.find('a:not(:only-child)').prepend(openClose);
-        
+
             // Remove icon from any mega-menu items
-            navParent.find('li > [class*="mega-menu"]').parent().find('.side-nav_openClose').remove();
-                
+            navParent.find(
+                'li > [class*="' + options.megaMenuName + '"]'
+            ).parent().find(
+                '.' + options.toggleIconClass
+            ).remove();
+
             // Hide/show child menus
-            navParent.on('click', '.side-nav_openClose', function(e) {
+            navParent.on('click', '.' + options.toggleIconClass, function(e) {
                 $(this).parent('a').find('+ ul').slideToggle(options.slideTransition);
                 return false;
             });
-                         
+
         }); // this.each
  
     }; // navDropdown()
@@ -3731,17 +3407,13 @@ $(document).ready(function() {
 (function ($) {
     
     /**
-     * 
      * KAYZEN
      * Kayzen.scrollSpy
      * @author: @esr360
-     * 
      */
- 
     $.fn.scrollSpy = function(custom) {
         
-        // Options
-        
+        // Options  
         var options = $.extend({
             itemSelector : 'li'
         }, custom);
@@ -3815,63 +3487,15 @@ $(document).ready(function() {
 (function ($) {
     
     /**
-     *
-     * Kayzen.scrollStats
-     * @author @esr360
-     *
-     */
- 
-    $.fn.scrollStats = function(custom) {
-        
-        // Options
-        var options = $.extend({
-            dataAttr : 'data-val'
-        }, custom);
-        
-        // Run the code on each occurance of the element
-        return this.each(function() {
-                    
-            var object = $(this);
-
-            $(window).on("load scroll", function(d,h) {
-                
-                a = object.offset().top + object.height();
-                b = $(window).scrollTop() + $(window).height();
-                
-                var statSep = $.animateNumber.numberStepFactories.separator(',');
-                var attrStat = object.attr(options.dataAttr);
-                
-                if (a < b) {
-                    object.animateNumber({ 
-                        number : attrStat,
-                        numberStep : statSep
-                    }, 2000);
-                }
-                
-            }); 
-                            
-        }); // this.each
- 
-    }; // scrollstats()
- 
-}(jQuery));
-(function ($) {
-    
-    /**
-     *
      * Kayzen.smoothScroll
      * @author @esr360
-     *
      */
- 
     $.fn.smoothScroll = function(custom) {
         
         // Options
         var options = $.extend({
-            
             offsetTop    : 80,
-            animateSpeed : 1200
-            
+            animateSpeed : 1200  
         }, custom);
         
         // Run the code on each occurance of the element
@@ -3904,20 +3528,16 @@ $(document).ready(function() {
  
 }(jQuery));
 /**
- *
  * Kayzen.socialShareCount
  * @author @esr360
  * @description Get the count of shares for given page
- *
  */
-
 (function ($) {
  
     $.fn.KayzenSocialShareCount = function(custom) {
         
         // Options
         var options = $.extend({
-            
             url                : window.location.href,
             facebookCountID    : '#facebookShareCount',
             twitterCountID     : '#twitterShareCount',
@@ -3926,7 +3546,6 @@ $(document).ready(function() {
             stumbleUponCountID : '#stumbleUponShareCount',
             pinterestCountID   : '#pinterestShareCount',
             redditCountID      : '#redditShareCount'
-            
         }, custom);
         
         // Convert numbers > 1,000 to 1k format
@@ -3999,25 +3618,20 @@ $(document).ready(function() {
 (function ($) {
 
     /**
-     * 
      * KAYZEN
      * @module: 'accordion'
      * @author: @esr360
-     * 
      */
-
     $.fn.accordion = function(custom) {
         
         // Options
         var options = $.extend({
-            
             activeClass      : 'active',
             animationSpeed   : baseTransition,
             keepOpenSelector : '[class*="-keep-open"]'
-            
         }, custom);
         
-        // Run the code on each occurance of the element
+        // Run the code on each occurance of the target
         return this.each(function() {
             
             // Add active class to the target content section

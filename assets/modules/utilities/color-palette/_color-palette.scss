@@ -77,6 +77,7 @@
 //*****************************************************************
 
 /// Function to get desired color palette
+///
 /// @access public
 /// @group utilities
 /// @param {string} $palette - the key of the palette you are interested in
@@ -86,6 +87,7 @@
 }
 
 /// Function to get desired color from specific palette
+///
 /// @access public
 /// @group utilities
 /// @param {map} $palette - the palette which contains your desired color

@@ -1,203 +1,42 @@
-//=================================================================
-// Carousels
-//=================================================================
-
+/// Carousels
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group elements
+///
+/// @param {map} $custom - where custom config will be passed
+/// @outputs all carousel styles
+///
+/// @example
+///     @include carousels((
+///     ));
 @mixin carousels($custom: ()) {
 
-    //-------------------------------------------------------------
-    // Config
-    //-------------------------------------------------------------
+    //*************************************************************
+    // Configuration
+    //*************************************************************
 
     $carousels: config((
-        'name'             : 'carousel',
-        'scale-1-size'     : 1.1,
-        'scale-2-size'     : 1.25,
-        'scale-3-size'     : 1.4,
-        'stage-background' : color('greyscale', 'grey-3')
+        'name'             : 'carousel'
     ), $custom);
 
-    //-------------------------------------------------------------
+    //*************************************************************
     // Module
-    //-------------------------------------------------------------
+    //*************************************************************
 
     @include module {
 
-    // Core Styles
-    //-------------------------------------------------------------
+        //*********************************************************
+        // Core Styles
+        //*********************************************************
 
         position: relative;
 
-    // Modifiers
-    //-------------------------------------------------------------
-
-        @include modifier('scale') {
-            margin-top: core('margin');
-            @include modifier(1) {
-                .center {
-                    transform: scale(this('scale-1-size'));
-                }            
-            }
-            @include modifier(2) {
-                .center {
-                    transform: scale(this('scale-2-size'));
-                }      
-                .owl-stage-outer {
-                    padding-bottom: 3em;
-                }      
-            }
-            @include modifier(3) {
-                .center {
-                    transform: scale(this('scale-3-size'));
-                }            
-            }
-            .owl-stage-outer {
-                overflow: visible;
-            }
-            .owl-item {
-                z-index: 0;
-                transition: core('transition');
-                transform-origin: bottom;
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-            .center {
-                z-index: 2;
-            } 
-        }
-        
-        @include modifier('stageBg') {
-            .owl-stage-outer {
-                background: this('stage-background');
-            }
-        }
-        
-        @include modifier('cornerDots') {
-            .owl-dots {
-                position: absolute;
-                top: 0;
-                left: auto;
-                right: 1.25em;
-            }
-            .owl-dot {
-                &.active {
-                    span {
-                        background-color: color('greyscale', 'white');
-                    }
-                }
-            }
-        }
-        
-        @include modifier('revealNav') {
-            overflow: hidden;
-            .owl-prev, .owl-next {
-                position: absolute;
-                top: calc(50% - 1em - 0.4em);
-                transform: translateY(-50%);
-                padding: 0 1em;
-                color: color('greyscale', 'white');
-                text-shadow: 0px 0px 1px rgba(black, 0.4);
-                opacity: 0.5;
-                &:hover {
-                    opacity: 1;
-                }
-            }
-            .owl-prev {
-                left: -3em;
-            }
-            .owl-next {
-                right: -3em;
-            }
-            &:hover {
-                .owl-prev {
-                    left: 0.25em;
-                }
-                .owl-next {
-                    right: 0.25em;
-                }
-            }
-            @include modifier('cornerDots') {
-                .owl-prev, .owl-next {
-                    top: 50%;
-                }
-            }
-        }
-
     } // module
 
-    // Carousel Tools
-    //-------------------------------------------------------------
-
-    .slide-nav {
-
-        .slide-prev,
-        .slide-next {
-            z-index: 5;
-            @include vertical-center(absolute);
-            &:focus {
-                outline: none;
-            }
-            @at-root #{selector-replace(&, '.slide-nav', '.full-nav')} {
-                @media (max-width: breakpoint('break-4')) {
-                    top: auto;
-                    bottom: 9.7rem;
-                }
-            }
-        }
-
-        .slide-prev {
-            left: 2rem;
-            [class*="container"] & {
-                left: 0;
-            }
-            @media (min-width: breakpoint('break-2')) {
-                left: 2rem;
-            }
-        }
-
-        .slide-next {
-            right: 2rem;
-            [class*="container"] & {
-                right: 0;
-            }
-            @media (min-width: breakpoint('break-2')) {
-                right: 2rem;
-            }
-        }
-
-        &.twin-nav {
-            display: inline-block;
-            position: absolute;
-            z-index: 3;
-            transform: translateY(-50%) translateX(-50%);
-            background: color('brand', 'brand-1');
-            padding: 0.5em;
-            [class*="slide-"] {
-                position: relative;
-                left: auto;
-                right: auto;
-                transform: none;
-                margin-left: 0.25em;
-                &:first-child {
-                    margin-left: 0;
-                }
-            }
-            &.strikethrough {
-                &:before {
-                    content: "";
-                    width: 9999px;
-                    left: -4999px;
-                    height: 10px;
-                    background-color: color('brand', 'brand-1');
-                    @include vertical-center(absolute);
-                }   
-            }
-        }
-
-    } // .slide-nav
-
-    // Custom Owl-Carousel styles
-    //-------------------------------------------------------------
+    //*************************************************************
+    // Owl-Carousel Overwrites
+    //*************************************************************
 
     .owl-prev, .owl-next {
         transition: core('transition');

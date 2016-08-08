@@ -10,7 +10,7 @@
 
 	$twitter-feed: config((
 		'name'            : 'twitter-feed',
-        'output-JSON'     : true,
+        'output-json'     : true,
         'background'      : darken(color('greyscale', 'grey-1'), 3%),
 		'dark'            : false,
         'dark-background' : color('greyscale', 'grey-5'),

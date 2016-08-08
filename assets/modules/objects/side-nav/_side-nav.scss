@@ -10,7 +10,7 @@
 
     $side-nav: config((
         'name'                     : 'side-nav',
-        'output-JSON'              : true,
+        'output-json'              : true,
         // parent-item
         'parent-color'             : color('greyscale', 'white'),
         'parent-background'        : rgba(black, 0.15),

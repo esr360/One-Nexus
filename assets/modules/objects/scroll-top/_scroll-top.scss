@@ -10,7 +10,7 @@
 
     $scroll-top: config((
         'name'            : 'scroll-top',
-        'output-JSON'     : true,
+        'output-json'     : true,
         'position'        : (auto, 2rem, 2rem, auto),
         'hide-below'      : breakpoint('break-5')
     ), $custom);
