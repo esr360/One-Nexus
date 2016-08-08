@@ -1,17 +1,13 @@
 (function ($) {
     
     /**
-     * 
      * KAYZEN
      * Kayzen.scrollSpy
      * @author: @esr360
-     * 
      */
- 
     $.fn.scrollSpy = function(custom) {
         
-        // Options
-        
+        // Options  
         var options = $.extend({
             itemSelector : 'li'
         }, custom);

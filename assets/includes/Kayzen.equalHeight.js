@@ -1,12 +1,9 @@
 (function ($) {
     
     /**
-     *
      * Kayzen.equalHeight
      * @author @esr360
-     *
      */
- 
     $.fn.equalHeight = function(custom) {
         
         // Options

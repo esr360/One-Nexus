@@ -1,20 +1,15 @@
 (function ($) {
     
     /**
-     *
      * Kayzen.smoothScroll
      * @author @esr360
-     *
      */
- 
     $.fn.smoothScroll = function(custom) {
         
         // Options
         var options = $.extend({
-            
             offsetTop    : 80,
-            animateSpeed : 1200
-            
+            animateSpeed : 1200  
         }, custom);
         
         // Run the code on each occurance of the element

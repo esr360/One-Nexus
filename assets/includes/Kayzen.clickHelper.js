@@ -1,13 +1,10 @@
 (function ($) {
     
     /**
-     *
      * Kayzen.clckHelper
      * @author @esr360
      * @description Add class to element & remove from siblings
-     *
      */
- 
     $.fn.KayzenClickHelper = function(custom) {
         
         // Options

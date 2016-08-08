@@ -1,18 +1,14 @@
 /**
- *
  * Kayzen.socialShareCount
  * @author @esr360
  * @description Get the count of shares for given page
- *
  */
-
 (function ($) {
  
     $.fn.KayzenSocialShareCount = function(custom) {
         
         // Options
         var options = $.extend({
-            
             url                : window.location.href,
             facebookCountID    : '#facebookShareCount',
             twitterCountID     : '#twitterShareCount',
@@ -21,7 +17,6 @@
             stumbleUponCountID : '#stumbleUponShareCount',
             pinterestCountID   : '#pinterestShareCount',
             redditCountID      : '#redditShareCount'
-            
         }, custom);
         
         // Convert numbers > 1,000 to 1k format

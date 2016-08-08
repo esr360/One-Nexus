@@ -3273,13 +3273,13 @@ $(document).ready(function() {
         slideBy: 1,
         mouseDrag: false,
         responsive:{
-            460 :{                
+            460: {                
                 items: 2
             }
         }
     });
 
-}); // document.ready
+});
 /**
  *
  * Kayzen.carouselCustomPager

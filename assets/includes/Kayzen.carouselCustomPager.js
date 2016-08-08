@@ -1,13 +1,10 @@
-/**
- *
- * Kayzen.carouselCustomPager
- * @author @esr360
- * @description Uses "Owl Carousel" plugin
- *
- */
-
 (function ($) {
- 
+    
+    /**
+     * Kayzen.carouselCustomPager
+     * @author @esr360
+     * @description Uses "Owl Carousel" plugin
+     */
     $.fn.kCarousel = function(custom) {
         
         // Options
@@ -74,6 +71,6 @@
             
         }); // this.each
  
-    }; // KayenInfiniteScroll()
+    };
  
 }(jQuery));
