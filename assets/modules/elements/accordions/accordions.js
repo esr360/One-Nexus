@@ -35,7 +35,7 @@
 
             });
             
-        }); // this.each
+        });
 
     }; // accordion()
 

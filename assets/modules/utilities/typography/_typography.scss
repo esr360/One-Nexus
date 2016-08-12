@@ -99,29 +99,38 @@
 //*****************************************************************
 
 /// Function to get configuration group
+///
 /// @access public
 /// @group utilities
+///
 /// @param {map} $group - the group you are interested in
+///
 /// @return {map} - new map containing desired group
 @function typography-config($group) {
     @return map-get($typography, $group);
 }
 
 /// Function to get desired value from configuration group
+///
 /// @access public
 /// @group utilities
+///
 /// @param {map} $group - the configuration group you are interested in
 /// @param {string} $key - the key of the value you are interested in
+///
 /// @return {*} - the desired value
 @function typography($group, $key) {
 	@return map-get(typography-config($group), $key);
 }
 
 /// Function to get value from 'sizes' group
+///
 /// @access public
 /// @group utilities
+///
 /// @param {string} $size - the key of the size you are interested in
 /// @param {bool} $rem - whether the returned value should use rem units
+///
 /// @return {number} - the desired font size
 @function font-size($size, $rem: false) {
 	$size: typography('sizes', $size);

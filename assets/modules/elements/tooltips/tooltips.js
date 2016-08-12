@@ -1,13 +1,10 @@
 (function ($) {
     
     /**
-     * 
      * KAYZEN
      * @module: 'tooltip'
      * @author: @esr360
-     * 
      */
-
     $.fn.tooltip = function(custom) {
         
         // Options

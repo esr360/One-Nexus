@@ -3652,7 +3652,7 @@ $(document).ready(function() {
 
             });
             
-        }); // this.each
+        });
 
     }; // accordion()
 
@@ -3663,7 +3663,6 @@ $(document).ready(function() {
      * @module: 'form'
      * @author: @esr360
      */
- 
     $.fn.form = function(custom) {
         
         // Options
@@ -3675,9 +3674,8 @@ $(document).ready(function() {
         // Ensure an input is always focused when its corresponding label is clicked
         $('label').unbind().click(function() {
             var labelID = $(this).attr('for');
-            console.log($('#' + labelID))
             setTimeout(function(){
-            $('#' + labelID).get(0).focus();
+                $('#' + labelID).get(0).focus();
             }, 1);
         });
         
@@ -3713,14 +3711,10 @@ $(document).ready(function() {
 (function ($) {
         
     /**
-     * 
      * KAYZEN
      * @module: 'modal'
      * @author: @esr360
-     * 
      */
-
-    // create any dynamic modals
     $('[data-modal]').each(function() {
         
         if($(this).attr('data-modal') == '') {
@@ -3753,7 +3747,11 @@ $(document).ready(function() {
         
     });
 
-    // Call the function on each modal
+    /**
+     * KAYZEN
+     * @module: 'modal'
+     * @author: @esr360
+     */
     $.fn.modal = function(custom) {
         
         // Options
@@ -3805,19 +3803,16 @@ $(document).ready(function() {
             
         });
             
-    } // modal
+    } // modal()
 
 }(jQuery));
 (function ($) {
     
     /**
-     * 
      * KAYZEN
      * @module: 'progress-bar'
      * @author: @esr360
-     * 
      */
- 
     $.fn.progressBar = function(custom) {
         
         // Options
@@ -3836,7 +3831,7 @@ $(document).ready(function() {
                 width : attrProgress 
             }); 
 
-        }); // this.each
+        });
  
     }; // progressBar()
  
@@ -3844,24 +3839,19 @@ $(document).ready(function() {
 (function ($) {
  
     /**
-     * 
      * KAYZEN
      * @module: 'tabs'
      * @author: @esr360
-     * 
      */
-    
     $.fn.tabs = function(custom) {
         
         // Options
         var options = $.extend({
-            
             navParent   : '[class*="tabs_nav"]',
             navItem     : 'li',
             item        : '[class*="tabs_item"]',
             activeClass : 'active',
             transition  : baseTransition/2
-            
         }, custom);
         
         // Run the code on each occurance of the element
@@ -3902,7 +3892,7 @@ $(document).ready(function() {
         
             });
             
-        }); // this.each
+        });
  
     }; // tabs()
  
@@ -3910,13 +3900,10 @@ $(document).ready(function() {
 (function ($) {
     
     /**
-     * 
      * KAYZEN
      * @module: 'tooltip'
      * @author: @esr360
-     * 
      */
-
     $.fn.tooltip = function(custom) {
         
         // Options

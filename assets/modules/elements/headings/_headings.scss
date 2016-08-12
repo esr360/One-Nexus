@@ -112,8 +112,8 @@
         //*********************************************************
 
 		@include modifier('primary') {
-			@include extend('heavy', 'size-4', 'uppercase');
-		}  
+			@include extend(('heavy', 'size-4', 'uppercase'));
+		}
 
         //*********************************************************
         // Components

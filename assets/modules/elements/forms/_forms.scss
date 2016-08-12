@@ -45,7 +45,11 @@
         
         label {
             transition: core('transition');
-            cursor: pointer;
+        }
+
+        fieldset {
+            padding: 0;
+            border: none;
         }
 
         //*********************************************************
@@ -53,17 +57,49 @@
         //*********************************************************
 
         @include component('group') {
+
             position: relative;
             margin-bottom: (core('margin') / 2);
             @include vertical-rhythm('bottom');
+
             @include modifier('compound') {
-                margin-bottom: 0.5em;
+                margin-bottom: (core('margin') / 4);
             }
+
             @include modifier('has-icon') {
                 @include overwrite-component('input') {
                     padding-left: 2em;
                 }
             }
+
+            @include modifier('validate') {
+
+                display: inline-table;
+                
+                label { 
+                    display: table-header-group; 
+                }
+
+                @include overwrite-component('input') {
+                    display: table-footer-group;
+                    &:focus {
+                        &:invalid {
+                            &, ~ label, ~ .form_icon, &::placeholder {
+                                border-color: this('invalid-color');
+                                color: this('invalid-color');
+                            }
+                        }
+                        &:valid {
+                            &, ~ label, ~ .form_icon, &::placeholder {
+                                border-color: this('valid-color');
+                                color: this('valid-color');
+                            }
+                        }
+                    }
+                }
+
+            }
+
         }
 
         @include component('icon') {
@@ -85,22 +121,6 @@
             }
             &:focus {
                 outline: 0;
-            }
-            @include modifier('validate') {
-                &:focus {
-                    &:invalid {
-                        &, ~ label, ~ .form_icon, &::placeholder {
-                            border-color: this('invalid-color');
-                            color: this('invalid-color');
-                        }
-                    }
-                    &:valid {
-                        &, ~ label, ~ .form_icon, &::placeholder {
-                            border-color: this('valid-color');
-                            color: this('valid-color');
-                        }
-                    }
-                }
             }
         }
         

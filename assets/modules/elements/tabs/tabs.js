@@ -1,24 +1,19 @@
 (function ($) {
  
     /**
-     * 
      * KAYZEN
      * @module: 'tabs'
      * @author: @esr360
-     * 
      */
-    
     $.fn.tabs = function(custom) {
         
         // Options
         var options = $.extend({
-            
             navParent   : '[class*="tabs_nav"]',
             navItem     : 'li',
             item        : '[class*="tabs_item"]',
             activeClass : 'active',
             transition  : baseTransition/2
-            
         }, custom);
         
         // Run the code on each occurance of the element
@@ -59,7 +54,7 @@
         
             });
             
-        }); // this.each
+        });
  
     }; // tabs()
  

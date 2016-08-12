@@ -1,14 +1,10 @@
 (function ($) {
         
     /**
-     * 
      * KAYZEN
      * @module: 'modal'
      * @author: @esr360
-     * 
      */
-
-    // create any dynamic modals
     $('[data-modal]').each(function() {
         
         if($(this).attr('data-modal') == '') {
@@ -41,7 +37,11 @@
         
     });
 
-    // Call the function on each modal
+    /**
+     * KAYZEN
+     * @module: 'modal'
+     * @author: @esr360
+     */
     $.fn.modal = function(custom) {
         
         // Options
@@ -93,6 +93,6 @@
             
         });
             
-    } // modal
+    } // modal()
 
 }(jQuery));

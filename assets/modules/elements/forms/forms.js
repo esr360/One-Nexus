@@ -4,7 +4,6 @@
      * @module: 'form'
      * @author: @esr360
      */
- 
     $.fn.form = function(custom) {
         
         // Options
@@ -16,9 +15,8 @@
         // Ensure an input is always focused when its corresponding label is clicked
         $('label').unbind().click(function() {
             var labelID = $(this).attr('for');
-            console.log($('#' + labelID))
             setTimeout(function(){
-            $('#' + labelID).get(0).focus();
+                $('#' + labelID).get(0).focus();
             }, 1);
         });
         

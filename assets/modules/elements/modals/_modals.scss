@@ -1,12 +1,22 @@
-//=================================================================
-// Modals
-//=================================================================
-
+/// Buttons
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group elements
+///
+/// @param {map} $custom - where custom config will be passed
+/// @outputs all button styles
+///
+/// @example
+///     @include buttons((
+///         'round-radius' : 4px,
+///         'weight'       : bold
+///     ));
 @mixin modals($custom: ()) {
 
-    //-------------------------------------------------------------
-    // Config
-    //-------------------------------------------------------------
+    //*************************************************************
+    // Configuration
+    //*************************************************************
 
     $modals: config((
         'name'                   : 'modal',
@@ -23,9 +33,9 @@
         'close-icon-position'    : (1rem, 1rem)
     ), $custom);
 
-    //-------------------------------------------------------------
+    //*************************************************************
     // Module
-    //-------------------------------------------------------------
+    //*************************************************************
 
     @include module {
         
@@ -34,6 +44,10 @@
         width: 650px;
         max-width: 90%;
         max-height: 90%;
+        // hide by default
+        opacity: 0;
+        visibility: hidden;
+
         overflow: auto;
         background: this('background');
         color: this('text-color');
@@ -41,9 +55,10 @@
         z-index: this('z-index');
         transition: core('transition');
         border-radius: this('radius');
-        // hide by default
-        opacity: 0;
-        visibility: hidden;
+
+        //*********************************************************
+        // Modifiers
+        //*********************************************************
         
         @include modifier('visible') {
             opacity: 1;
@@ -89,18 +104,11 @@
                 }
             }
             
-            @include modifier('spin') {
-                transform: scale(1) rotate(-360deg) translateY(-50%);
-                transform-origin: 50% 50%;
-                @include modifier('zoom') {
-                    transform: scale(0.5) rotate(-360deg) translateY(-50%);
-                }
-                @include modifier('visible') {
-                    transform: scale(1) rotate(0) translateY(-50%);
-                }
-            }
-            
         }
+
+        //*********************************************************
+        // Components
+        //*********************************************************
         
         @include component('content') {
             padding: this('content-padding');

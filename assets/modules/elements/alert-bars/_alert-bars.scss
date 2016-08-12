@@ -76,7 +76,7 @@
 
         @each $name, $color in this('colors') {
             @include modifier($name) {
-                background-color: $color;
+                background-color: alert-bg($color);
                 color: alert-text($color);
                 border-color: alert-border($color);
             }
@@ -90,6 +90,16 @@
 // Utilities
 //*****************************************************************
 
+/// Function to get color for alert background
+///
+/// @access private
+/// @group elements
+/// @param {color} $color - the alert color to be adjusted for the background
+/// @return {color} - the new color for alert background
+@function alert-bg($color) {
+    @return desaturate(lighten($color, 40%), 30%);
+}
+
 /// Function to get color for alert text
 ///
 /// @access private
@@ -97,7 +107,7 @@
 /// @param {color} $color - the alert color to be adjusted for text
 /// @return {color} - the new color for alert text
 @function alert-text($color) {
-    @return desaturate(darken($color, 50%), 25%);
+    @return desaturate(darken($color, 20%), 25%);
 }
   
 /// Function to get color for alert borders

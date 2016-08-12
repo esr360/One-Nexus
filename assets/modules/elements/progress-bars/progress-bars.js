@@ -1,13 +1,10 @@
 (function ($) {
     
     /**
-     * 
      * KAYZEN
      * @module: 'progress-bar'
      * @author: @esr360
-     * 
      */
- 
     $.fn.progressBar = function(custom) {
         
         // Options
@@ -26,7 +23,7 @@
                 width : attrProgress 
             }); 
 
-        }); // this.each
+        });
  
     }; // progressBar()
  
