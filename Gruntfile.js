@@ -1,7 +1,7 @@
 /******************************************************************
  * One Nexus
  * Grunt Setup
- * @uthor Edmund Reed | @esr360
+ * @uthor [@esr360](http://twitter.com/esr360)
  ******************************************************************/
 
 module.exports = function(grunt) {
@@ -14,16 +14,28 @@ module.exports = function(grunt) {
      *************************************************************/
     
     /**
-     * Set which theme you would like to build assets for
+     * Set the version of your project
+     * @var {string} version
+     */
+    var version = grunt.option('tag') || '3.0.0';
+
+    /**
+     * Set the default theme to compile assets for
      * @var {string} theme
-     * @example $ grunt compile --theme=Foo
      */
     var theme = grunt.option('theme') || 'One-Nexus';
+
+    /**
+     * List of all themes used by the project
+     * @var {object} themes
+     */
+    var themes = grunt.option('themes') || [
+        'One-Nexus'
+    ]
     
     /**
      * Set your desired development environment
      * @var {('dev'|'prod')} [dev] env
-     * @example $ grunt compile --env=prod
      */
     var env = grunt.option('env') || 'dev';
     
@@ -31,7 +43,7 @@ module.exports = function(grunt) {
      * Set the relative path to the current theme's source assets
      * @var {string} themePath
      */
-    var themePath = 'themes/' + theme + '/';
+    var themePath = 'themes/<%= theme %>/';
 
     /**
      * Set the path to the compiled global scripts directory
@@ -57,47 +69,40 @@ module.exports = function(grunt) {
      */
     var themeBuildStyles  = 'app/' + themePath;
 
-    /**
-     * Set the root path to Owl-Carousel js files
-     * @var {string} owlPath
-     */
-    var owlPath = 'assets/vendor/Owl-Carousel/src/js/'; 
 
     /**
      * Set which Owl-Carousel modules you would like to use
-     * @var {object} _owl
      * @see https://git.io/v6ssU
      */
-    var _owl = [
-        owlPath + 'owl.carousel.js',
-        owlPath + 'owl.animate.js',
-        owlPath + 'owl.autoheight.js',
-        owlPath + 'owl.autoplay.js',
-        owlPath + 'owl.compiled.js',
-        owlPath + 'owl.hash.js',
-        owlPath + 'owl.lazyload.js',
-        owlPath + 'owl.navigation.js',
-        owlPath + 'owl.video.js',
-    ];
+    var _owl = function() {
+        var owlPath = 'assets/vendor/Owl-Carousel/src/js/'; 
+        var owlModules = [
+            owlPath + 'owl.carousel.js',
+            owlPath + 'owl.animate.js',
+            owlPath + 'owl.autoheight.js',
+            owlPath + 'owl.autoplay.js',
+            owlPath + 'owl.compiled.js',
+            owlPath + 'owl.hash.js',
+            owlPath + 'owl.lazyload.js',
+            owlPath + 'owl.navigation.js',
+            owlPath + 'owl.video.js'
+        ]
+        return owlModules;
+    };
 
     /**
      * Set the scripts to be included in your theme's main js file
      * @var {object} _scripts
      */
     var _scripts = [
-        _owl,
+        _owl(),
         'assets/vendor/matchMedia/matchMedia.js',
         'assets/vendor/Synergy/dist/synergy.js',
-        'assets/vendor/jquery-animateNumber/jquery.animateNumber.js',
-        'assets/vendor/Kayzen.ScrollSpy/src/Kayzen.ScrollSpy.js',
-        'assets/vendor/ScrollTrigger/src/ScrollTrigger.js',
-        'assets/vendor/Stellar/src/jquery.stellar.js',
-        'assets/vendor/TweeCool/src/tweecool.js',
         'assets/modules/utilities/core/core.js',
         'assets/includes/*.js',
         'assets/modules/elements/**/*.js',
         'assets/modules/objects/**/*.js',
-        'assets/themes/' + theme + '/' + theme + '.js'
+        'assets/themes/<%= theme %>/<%= theme %>.js'
     ];
 
     /**
@@ -107,21 +112,14 @@ module.exports = function(grunt) {
     var _globalScripts = [
         'assets/vendor/jQuery/dist/jquery.js',
         'assets/vendor/pseudojQuery/src/pseudojQuery-start.js',
-        'assets/vendor/pseudojQuery/src/pseudojQuery-end.js',
-        'assets/vendor/Masonry/dist/masonry.pkgd.js',
-        'assets/vendor/Isotope/dist/isotope.pkgd.js',
-        'assets/vendor/Infinite-AJAX-Scroll/dist/jquery-ias.js',
-        'assets/vendor/Enlighter/Build/EnlighterJS.js',
-        'assets/vendor/MooTools-Core/build/mootools-core.js'
+        'assets/vendor/pseudojQuery/src/pseudojQuery-end.js'
     ];
 
     /**
      * Set all global styles to be used by the project
      * @var {object} _globalStyles
      */
-    var _globalStyles = [
-        'assets/vendor/Enlighter/Build/EnlighterJS.css'
-    ];
+    var _globalStyles = [];
     
     /**************************************************************
      * Packages
@@ -141,7 +139,7 @@ module.exports = function(grunt) {
                 overwrite: true, 
                 replacements: [{
                     from: /\$theme(.*?);/g,
-                    to: '$theme : \'' + theme + '\';'
+                    to: '$theme : \'<%= theme %>\';'
                 }]
             }
         },
@@ -156,13 +154,6 @@ module.exports = function(grunt) {
                 '!app/themes/**', 
                 '!app/images/**'
             ],
-            theme: {
-                src: 'app/themes/' + theme
-            },
-            themeScripts: [
-                'app/themes/' + theme + '/**/*.js', 
-                '!app/themes/' + theme + '/**/*.min.js'
-            ],
             scripts: [
                 'app/scripts/**/*.js', 
                 '!app/**/*.min.js'
@@ -173,7 +164,14 @@ module.exports = function(grunt) {
             ],
             images: {
                 src: 'app/images'
-            }
+            },
+            theme: {
+                src: 'app/themes/<%= theme %>'
+            },
+            themeScripts: [
+                'app/themes/<%= theme %>/**/*.js', 
+                '!app/themes/<%= theme %>/**/*.min.js'
+            ]
         },
         
         /**
@@ -238,7 +236,7 @@ module.exports = function(grunt) {
         },
 
         /**
-         * grunt-contrib-cssmin
+         * CSSMin
          * @see https://github.com/gruntjs/grunt-contrib-cssmin
          */
         cssmin: {
@@ -365,6 +363,27 @@ module.exports = function(grunt) {
         },
 
         /**
+         * Assemble
+         * @see https://github.com/assemble/grunt-assemble
+         */
+        assemble: {
+            options: {
+                //helpers: ['handlebars-helper-repeat']
+            },
+            app: {
+                options: {
+                    layout: 'base.hbs',
+                    layoutdir: 'templates/layouts/',
+                    partials: 'templates/partials/*.hbs'
+                },
+                cwd: 'templates/pages/',
+                dest: 'prototype/',
+                expand: true,
+                src: '**/*.hbs'
+            }
+        },
+
+        /**
          * SassDoc
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
@@ -469,14 +488,14 @@ module.exports = function(grunt) {
      * Load NPM Tasks
      *************************************************************/
     
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-jsdoc');
     grunt.loadNpmTasks('grunt-mocha-cli');
     grunt.loadNpmTasks('grunt-notify');
@@ -520,24 +539,25 @@ module.exports = function(grunt) {
     
     // Default Grunt task
     grunt.registerTask('default', [
-        'compile',
+        'theme:' + theme,
         'watch'
     ]);
-    
+      
     // Compile the app
-    grunt.registerTask('compile', 
-        gruntCompile(env)
-    );
-    
-    // Compile the app for a development environment
-    grunt.registerTask('compile:dev', 
-        gruntCompile('dev')
-    );
-    
-    // Compile the app for a production environment
-    grunt.registerTask('compile:prod',
-        gruntCompile('prod')
-    );
+    grunt.registerTask('compile', gruntCompile(env));
+
+    // Compile a specific theme
+    grunt.registerTask('theme', function(theme) {
+        grunt.config('theme', theme);
+        grunt.task.run('compile');
+    });
+
+    // Compile all themes
+    grunt.registerTask('themes', function() {
+        themes.forEach(function(theme) {
+            grunt.task.run('theme:' + theme);
+        });
+    });
         
     // Lint
     grunt.registerTask('lint', [
