@@ -1,17 +1,14 @@
 (function ($) {
     
     /**
-     * 
      * KAYZEN
      * @module: 'flyout-nav'
      * @dependencies: 'side-nav' (, 'site-overlay')
      * @author: @esr360
-     * 
      */
-        
-    var $module = 'flyout-nav';
-        
     $.fn.flyoutNav = function(custom) {
+        
+        var $module = 'flyout-nav';
         
         // Options
         var options = $.extend({

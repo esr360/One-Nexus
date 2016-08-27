@@ -1,20 +1,17 @@
 (function ($) {
     
     /**
-     * 
      * KAYZEN
      * @module: 'footer'
      * @dependencies: 'twitter-feed', OwlCarousel
      * @author: @esr360
-     * 
      */
- 
     $.fn.footer = function(custom) {
         
         // Options
         var options = $.extend({
-            twitterFeedSelector  : '#footer-twitter-feed',
-            twitterFeed          : {
+            twitterFeedSelector : '#footer-twitter-feed',
+            twitterFeed : {
                 username  : 'esr360',
                 tweets    : 8,
                 container : '.twitter-feed_content'

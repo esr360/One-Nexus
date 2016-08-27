@@ -1,13 +1,10 @@
 (function ($) {
     
     /**
-     * 
      * KAYZEN
      * @module: 'site-overlay'
      * @author: @esr360
-     * 
      */
-
     $.fn.siteOverlay = function(state, flag, custom) {
         
         // Options

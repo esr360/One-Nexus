@@ -5,7 +5,6 @@
      * @dependencies: Aloads
      * @author: @esr360
      */
- 
     $.fn.preloader = function(custom) {
         
         // Options
@@ -23,7 +22,7 @@
             }, baseTransition);
         }
         
-        $(window).bind("load", function() {
+        $(window).bind('load', function() {
             hidePreloader();
         });
         
