@@ -5244,7 +5244,8 @@ pre:last-child, hr:last-child,
   font-weight: normal;
   line-height: 1;
   transition: 0.4s;
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 .accordion_title:after, [class*="accordion_title-"]:after {
   content: "";
@@ -5287,22 +5288,18 @@ pre:last-child, hr:last-child,
 [class*="alert-bar-"][class*="-error"] {
   background-color: #f1dfde;
   color: #722f2b;
-  border-color: #4d1f1d;
 }
 [class*="alert-bar-"][class*="-help"] {
   background-color: #f6edc9;
   color: #7b6712;
-  border-color: #4f420b;
 }
 [class*="alert-bar-"][class*="-info"] {
   background-color: #e8f0f5;
   color: #2f5d7c;
-  border-color: #214157;
 }
 [class*="alert-bar-"][class*="-success"] {
   background-color: #d0e6db;
   color: #2a5a43;
-  border-color: #1a3729;
 }
 
 .blockquote, [class*="blockquote-"] {
