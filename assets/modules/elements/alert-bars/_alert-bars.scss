@@ -78,7 +78,6 @@
             @include modifier($name) {
                 background-color: alert-bg($color);
                 color: alert-text($color);
-                border-color: alert-border($color);
             }
         }
 
@@ -108,14 +107,4 @@
 /// @return {color} - the new color for alert text
 @function alert-text($color) {
     @return desaturate(darken($color, 20%), 25%);
-}
-  
-/// Function to get color for alert borders
-///
-/// @access private
-/// @group elements
-/// @param {string} $color - the alert color to be adjusted for borders
-/// @return {color} - the new color for alert borders
-@function alert-border($color) {
-    @return desaturate(darken($color, 30%), 25%);
 }
