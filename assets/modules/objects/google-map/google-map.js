@@ -1,13 +1,10 @@
 (function ($) {
     
     /**
-     * 
      * KAYZEN
      * @module: 'google-map'
      * @author: @esr360
-     * 
      */
- 
     $.fn.googleMap = function(custom) {
         
         // Options
@@ -99,8 +96,7 @@
             ],
             longitude: _modules['google-map']['location'][0],
             latitude: _modules['google-map']['location'][1],
-            zoom: 14,
-            headerTrigger : '#toggleHeader'
+            zoom: 14
         }, custom);
         
         // Run the code on each occurance of the element
@@ -136,7 +132,6 @@
 
                     // How you would like to style the map? 
                     // This is where you would paste any style found on Snazzy Maps.
-                    
                     styles: options.styles
                     
                 };
