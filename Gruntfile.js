@@ -454,7 +454,7 @@ module.exports = function(grunt) {
                     'clean:images',
                     'copy:images'
                 ]
-            },
+            }
         },
 
         /**
