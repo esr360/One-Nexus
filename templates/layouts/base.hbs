@@ -1,7 +1,7 @@
 ---
 title: One Nexus
-bodyClass: 'index'
-assetPath: '../../'
+bodyClass: ''
+contentID: 'site-content'
 ---
 
 <!DOCTYPE html>
@@ -15,20 +15,26 @@ assetPath: '../../'
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="{{assetPath}}styles/selfserve.css" media="all" rel="stylesheet" type="text/css">
-        <script src="{{assetPath}}js/selfserve.js" type="text/javascript"></script>
+        {{#is environment "dev"}}
+            <link href="{{assets}}/app.css" rel="stylesheet">
+            <script src="{{assets}}/app.js"></script>
+        {{/is}}
+        {{#is environment "prod"}}
+            <link href="{{assets}}/app.min.css" rel="stylesheet">
+            <script src="{{assets}}/app.min.js"></script>
+        {{/is}}
     </head>
 
     <body class="{{bodyClass}}">
 
         {{> header}}
 
-        <main id="site-content">
+        <main id="{{contentID}}">
             {{> body}}
         </main>
 
         {{> footer}}
-      
+
     </body>
 
 </html>

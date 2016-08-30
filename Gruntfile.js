@@ -368,13 +368,14 @@ module.exports = function(grunt) {
          */
         assemble: {
             options: {
-                //helpers: ['handlebars-helper-repeat']
+                layout: 'base.hbs',
+                layoutdir: 'templates/layouts/',
+                partials: 'templates/partials/*.hbs',
+                assets: 'assets'
             },
             app: {
                 options: {
-                    layout: 'base.hbs',
-                    layoutdir: 'templates/layouts/',
-                    partials: 'templates/partials/*.hbs'
+                    environment: env
                 },
                 cwd: 'templates/pages/',
                 dest: 'prototype/',
