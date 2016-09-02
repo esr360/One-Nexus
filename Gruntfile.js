@@ -69,7 +69,6 @@ module.exports = function(grunt) {
      */
     var themeBuildStyles  = 'app/' + themePath;
 
-
     /**
      * Set which Owl-Carousel modules you would like to use
      * @see https://git.io/v6ssU
@@ -371,10 +370,10 @@ module.exports = function(grunt) {
                 layout: 'base.hbs',
                 layoutdir: 'templates/layouts/',
                 partials: 'templates/partials/*.hbs',
-                assets: 'assets'
             },
             app: {
                 options: {
+                    assets: 'app/' + themePath,
                     environment: env
                 },
                 cwd: 'templates/pages/',
@@ -525,6 +524,7 @@ module.exports = function(grunt) {
             'postcss',
             //'lint',
             //'test',
+            'assemble',
             'docs'
         ];
         if (environment == 'prod') {
@@ -549,8 +549,9 @@ module.exports = function(grunt) {
     grunt.registerTask('compile', gruntCompile(env));
 
     // Compile a specific theme
-    grunt.registerTask('theme', function(theme) {
-        grunt.config('theme', theme);
+    grunt.registerTask('theme', function(targetTheme) {
+        targetTheme = targetTheme || theme;
+        grunt.config('theme', targetTheme);
         grunt.task.run('compile');
     });
 
