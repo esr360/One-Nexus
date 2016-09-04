@@ -369,7 +369,8 @@ module.exports = function(grunt) {
             options: {
                 layout: 'base.hbs',
                 layoutdir: 'templates/layouts/',
-                partials: 'templates/partials/*.hbs',
+                partials: 'templates/partials/**/*.hbs',
+                helpers: ['templates/helpers/*.js']
             },
             app: {
                 options: {
