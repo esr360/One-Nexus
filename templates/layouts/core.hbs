@@ -1,0 +1,39 @@
+---
+title: One Nexus
+bodyClass: ''
+contentID: 'site-content'
+---
+<!DOCTYPE html>
+<html lang="en-GB">
+
+    <head>
+        <title>{{title}}</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {{#is environment "dev"}}
+            <link href="{{assets}}app.css" rel="stylesheet">
+            <script src="{{assets}}app.js"></script>
+        {{/is}}
+        {{#is environment "prod"}}
+            <link href="{{assets}}app.min.css" rel="stylesheet">
+            <script src="{{assets}}app.min.js"></script>
+        {{/is}}
+    </head>
+
+    <body class="{{bodyClass}}">
+
+        {{> header}}
+
+        <main id="{{contentID}}">
+            {{> body}}
+        </main>
+
+        {{> footer}}
+
+    </body>
+
+</html>

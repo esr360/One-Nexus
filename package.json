@@ -45,7 +45,5 @@
     "nopt-grunt-fix": "^1.0.0",
     "sass-true": "^2.1.3"
   },
-  "dependencies": {
-    "webpack": "^1.13.2"
-  }
+  "dependencies": {}
 }

@@ -367,7 +367,7 @@ module.exports = function(grunt) {
          */
         assemble: {
             options: {
-                layout: 'base.hbs',
+                layout: 'core.hbs',
                 layoutdir: 'templates/layouts/',
                 partials: 'templates/partials/**/*.hbs',
                 helpers: ['templates/helpers/*.js']
@@ -375,7 +375,8 @@ module.exports = function(grunt) {
             app: {
                 options: {
                     assets: 'app/' + themePath,
-                    environment: env
+                    environment: env,
+                    theme: theme
                 },
                 cwd: 'templates/pages/',
                 dest: 'prototype/',
@@ -455,6 +456,13 @@ module.exports = function(grunt) {
                     'clean:images',
                     'copy:images'
                 ]
+            },
+            templates: {
+                files: 'templates/**/*',
+                tasks: [
+                    'assemble',
+                    'notify:templates'
+                ]
             }
         },
 
@@ -473,6 +481,12 @@ module.exports = function(grunt) {
                 options: {
                     title: 'Styles Compiled',
                     message: 'All styles have been successfully compiled!'
+                }
+            },
+            templates: {
+                options: {
+                    title: 'Templates Compiled',
+                    message: 'All templates have been successfully compiled!'
                 }
             },
             app: {
