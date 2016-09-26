@@ -87,7 +87,8 @@
                 @include overwrite-component('title') {
                     background: this('title-active-bg');
                     color: this('title-active-color');
-                    &:after { // open/close icon
+                    // open/close icon
+                    &:after {
                         color: this('icon-active-color');
                     }
                 }
@@ -96,7 +97,8 @@
                 @include overwrite-component('title') {
                     border-color: this('title-active-border');
                     border-radius: this('title-active-radius');
-                    &:after { // open/close icon		
+                    // open/close icon
+                    &:after {		
                         transform: rotate(90deg) translateZ(0);
                     }
                 }
@@ -115,7 +117,8 @@
             line-height: 1;		
             transition: core('transition');
             backface-visibility: hidden;
-            &:after { // open/close icon
+            // open/close icon
+            &:after {
                 content: this('icon');
                 font-family: FontAwesome;
                 float: right;

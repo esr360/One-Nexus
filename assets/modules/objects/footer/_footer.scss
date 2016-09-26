@@ -16,12 +16,7 @@
         'wrapper-font-size'    : 0.9em,
         'wrapper-background'   : color('greyscale', 'grey-5'),
         'wrapper-color'        : color('greyscale', 'grey-3'),
-        'wrapper-strong-color' : color('greyscale', 'white'),
         'logo-height'          : 34px,
-        'title-color'          : color('greyscale', 'white'),
-        'bar-padding'          : 2em 0,
-        'bar-font-size'        : 0.9em,
-        'bar-responsive'       : breakpoint('break-2'),
         'nav-link-color'       : color('greyscale', 'grey-3'),
         'nav-link-hover-color' : color('greyscale', 'white')
     ), $custom);
@@ -41,10 +36,14 @@
     //-------------------------------------------------------------
 
         @include component('wrapper') {
+
+            @include row();
+
             padding: this('wrapper-padding');
             font-size: this('wrapper-font-size');
             background: this('wrapper-background');
             color: this('wrapper-color');
+
             @include overwrite('logo') {
                 padding: 0;
                 border: 0;
@@ -52,26 +51,7 @@
                     height: this('logo-height');
                 }
             }
-            b {
-                color: this('wrapper-strong-color');
-            }
-        }
-        
-        @include component('title') {
-            color: this('title-color');
-        }
 
-        @include component('bar') {
-            padding: this('bar-padding');
-            font-size: this('bar-font-size');
-            @media (min-width: this('bar-responsive')) {		
-                display: table;
-                width: 100%;
-                text-align: left;
-            }
-            @media (max-width: this('bar-responsive')) {		
-                text-align: center;
-            }
         }
         
         @include component('copyright') {

@@ -355,6 +355,7 @@ module.exports = function(grunt) {
 
         /**
          * Mocha Cli
+         * @note used for Scss unit testing
          * @see https://github.com/Rowno/grunt-mocha-cli
          */
         mochacli: {

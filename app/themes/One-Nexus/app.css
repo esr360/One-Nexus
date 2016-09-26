@@ -7383,10 +7383,16 @@ progress::-moz-progress-bar {
   background: #161819;
 }
 .footer_wrapper, [class*="footer_wrapper-"] {
+  letter-spacing: -1em;
+  display: table;
+  width: 100%;
   padding: 4em 0;
   font-size: 0.9em;
   background: #232627;
   color: #bfc1c3;
+}
+.opera-only :-o-prefocus, .footer_wrapper, [class*="footer_wrapper-"] {
+  word-spacing: -0.43em;
 }
 .footer_wrapper .logo, .footer_wrapper [class*="logo-"], [class*="footer_wrapper-"] .logo, [class*="footer_wrapper-"] [class*="logo-"] {
   padding: 0;
