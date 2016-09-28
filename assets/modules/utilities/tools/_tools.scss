@@ -59,43 +59,6 @@
 		}
 	}
 	
-//-----------------------------------------------------------------
-// Vertical Seperator
-//-----------------------------------------------------------------
-
-	.v-sep {
-		height: 100%;
-		position: relative;
-		&:before {
-			@extend %horizontal-center;
-			content: "";
-			height: 100%;
-			width: 0;
-			border-left: 1px solid rgba(white, 0.75);
-			border-right: 1px solid rgba(black, 0.05);
-			position: absolute;
-		}
-		&:after {
-			@include vertical-center(absolute);
-			@extend %horizontal-center;
-            text-align: center;
-			content: "Or";
-			font-size: font-size('size-1');
-			font-weight: lighter;
-			height: 2.5em;
-			width: 2.5em;
-			line-height: 2.5em;
-			border-radius: 50%;
-			color: color('greyscale', 'white');
-			background: color('brand', 'brand-1');
-		}
-        @media (max-width: breakpoint('break-3')) {
-            margin: 2.5em 0;
-			border-top: 1px solid rgba(white, 0.75);
-			border-bottom: 1px solid rgba(black, 0.05);
-        }
-	}
-	
 	//-------------------------------------------------------------
 	// Horizontal Rules
 	//-------------------------------------------------------------
@@ -111,57 +74,7 @@
 			border-top: 1px dotted rgba(0, 0, 0, 0.15);
 			border-bottom: 0;
 		}
-		@include modifier('stripes') {
-			height: 10px;    
-			background-image: url("#{$asset-path}/images/stripe-overlay.png");
-			background-repeat: repeat;
-			opacity: 0.3;
-			border: none;
-		}
-		@include modifier('gutter') {
-			$hr-gutter: option($grid, options, gutter);
-			margin: $hr-gutter 0 ($hr-gutter * 2);
-		}
-		@include modifier('small') {
-			margin: 1.5em 0;
-		}
-		@include modifier('large') {
-			margin: (core('margin') * 1.5) 0;
-		}
 	}
-    
-//-----------------------------------------------------------------
-// Infinite Ajax Scroll
-//-----------------------------------------------------------------
-
-    .ias-spinner, .ias-noneleft {
-        margin-top: 4em;
-        text-align: center;
-        // offset flow row gutter
-        [class*="-flow"] & {
-            margin-left: option($grid, 'options', 'gutter');
-        }
-        .row-ias & {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: -6em;
-        }
-        .row-waffle & {
-            margin-top: calc(4em - 3%);
-            margin-bottom: 3%;
-        }
-        .row-waffle-large & {  
-            margin-top: 0;
-            margin-bottom: 6%;
-        }
-    }
-    
-    .ias-spinner { 
-        img {
-            margin: auto;
-        }
-    }
 
 //-----------------------------------------------------------------
 // Keyframes
