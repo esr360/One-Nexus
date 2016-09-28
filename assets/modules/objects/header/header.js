@@ -1,17 +1,14 @@
 (function ($) {
     
     /**
-     * 
      * KAYZEN
      * @module: 'app-header'
      * @requires: 'navigation', 'side-nav', 'site-overlay'
      * @author: @esr360
-     * 
      */
-    
-    var $module = 'app-header';
- 
     $.fn.header = function(custom) {
+    
+        var $module = 'app-header';
         
         // Options
         var options = $.extend({
@@ -21,8 +18,6 @@
             side            : _option($module, 'side'),
             toggleIcon      : _modules['side-nav']['collapsible']['icon'],
             toggleHeader    : '#toggleHeader',
-            sideNavClass    : 'side-nav',
-            sideVisibleAt   : _modules[$module]['side']['visible-at'],
             collapsible     : _option('side-nav', 'collapsible'),
             navOpenDefault  : _modules['side-nav']['collapsible']['open-by-default'],
             nonSideModifier : 'absolute-opaque'
@@ -67,77 +62,9 @@
                 });
             
             }
-            
-            function sideHeader() {
-                
-                // if the header is not correctly located in the DOM, make it so
-                if (!$('body > [class*="' + $module + '"]').length) {
-                    header.prependTo('body');
-                }
-                
-                // Add collapsible functionality
-                if (options.collapsible) {
-                    navigation.navDropdown({
-                        toggleIcon : options.toggleIcon
-                    });
-                } else {
-                    navigation.find('.' + options.sideNavClass + '_openClose').remove();
-                }
-
-                // collapse by default
-                if (!options.navOpenDefault) {
-                    navigation.find('a:not(:only-child) ~ ul').hide();
-                }
-                
-                // toggle side header
-                $(options.toggleHeader).click(function(e) {
-                    $('body').toggleClass('hide-sideHeader');
-                    // reload any scripts
-                    setTimeout(function() {
-                        // reload owl-carousels
-                        $('.owl-carousel').each(function() {
-                           $(this).owlCarousel('invalidate', 'all').owlCarousel('refresh'); 
-                        });
-                        // reload isotope grids
-                        $('.isotope-container').each(function() {
-                            $(this).isotope();   
-                        });
-                        // reload google map
-                        if ('google' in window) {
-                            google.maps.event.trigger($('#google-map')[0], 'resize');
-                        }
-                    }, baseTransition); 
-                    e.preventDefault();
-                });
-                
-                // handle responsineness
-                var navClasses = navigation.attr('class');
-                $(window).bind('load resize', function() {
-                    if (breakpoint('min-width', options.sideVisibleAt)) {
-                        header.removeClass($module + '-' + options.nonSideModifier + '-js').addClass(options.sideNavClass);
-                        navigation.removeAttr('class');
-                        // if the header is not correctly located in the DOM, make it so
-                        if (!$('body > [class*="' + $module + '"]').length) {
-                            header.prependTo('body');
-                        }
-                    } else {
-                        header.removeClass(options.sideNavClass);
-                        navigation.addClass(navClasses);
-                        // relocate to below top-bar if top-bar exists
-                        if(_topBar.length) {
-                            header.insertAfter(_topBar).addClass($module + '-' + options.nonSideModifier + '-js');
-                        }
-                    }
-                });
-                
-            }
                 
             if (options.sticky)  {
                 stickyHeader();
-            }
-                
-            if (options.side) {	
-                sideHeader();
             }
 
         }); // this.each

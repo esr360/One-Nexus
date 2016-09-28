@@ -34,6 +34,7 @@
     //*************************************************************
 
     @include module {
+
         height: this('bar-height');
         border-radius: this('bar-radius');
         background: this('background');
@@ -42,6 +43,7 @@
         width: 100%;
         border: none;
         overflow: hidden;
+        
         &:before {
             @include vertical-center(absolute);
             left: 0.5em;

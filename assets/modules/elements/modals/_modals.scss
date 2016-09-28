@@ -41,17 +41,21 @@
         
         @include vertical-center(absolute);
         @extend %horizontal-center;
+        
+        // Private styles 
+        position: fixed;
+        overflow: auto;
         width: 650px;
         max-width: 90%;
         max-height: 90%;
+
         // hide by default
         opacity: 0;
         visibility: hidden;
 
-        overflow: auto;
+        // Public styles
         background: this('background');
         color: this('text-color');
-        position: fixed;
         z-index: this('z-index');
         transition: core('transition');
         border-radius: this('radius');
