@@ -1,76 +1,81 @@
-//=================================================================
-// Billboard
-//=================================================================
-
+/// Billboard
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group objects
+///
+/// @param {map} $custom - where custom config will be passed
+/// @outputs all billboard styles
+///
+/// @example
+///     @include billboard((
+///         'round-radius' : 4px,
+///         'weight'       : bold
+///     ));
 @mixin billboard($custom: ()) {
 
-    //-------------------------------------------------------------
-    // Config
-    //-------------------------------------------------------------
+    //*************************************************************
+    // Configuration
+    //*************************************************************
 
     $billboard: config((
-        'name'            : 'billboard',
-        'output-json'     : true,
-        // Settings
-        'full-screen'     : false,
-        'overlay'         : false,
-        // Options
-        'bg-color'        : color('greyscale', 'grey-5'),
-        'bg-image'        : "",
-        'overlay-color'   : color('brand', 'brand-1'),
-        'overlay-opacity' : 0.6,
-        'color'           : color('greyscale', 'white'),
-        'min-height'      : 500px
+        'name'                : 'billboard',
+        'output-json'         : true,
+        'min-height'          : 500px,
+        'padding'             : 6em 0,
+        'color'               : color('greyscale', 'white'),
+        'bg-color'            : color('greyscale', 'grey-5'),
+        'bg-image'            : '',
+        'full-screen':(
+            'enabled'         : 'displace', // {bool} | 'displace'
+            'min-height'      : 700px,
+            'height-displace' : option($header, 'height')
+        ),
+        'overlay'             : false,
+        'overlay-color'       : color('brand', 'brand-1'),
+        'overlay-opacity'     : 0.6
     ), $custom) !global;
 
-    //-------------------------------------------------------------
-    // Component
-    //-------------------------------------------------------------
+    //*************************************************************
+    // Module
+    //*************************************************************
 
     @include module {
 
-    // Core Styles
-    //-------------------------------------------------------------
+        //*********************************************************
+        // Core Styles
+        //*********************************************************
 
+        position: relative;
         min-height: this('min-height');
         background-color: this('bg-color');
-        position: relative;
-        padding: 6em 0;
+        padding: this('padding');
         
-        // only apply a bg image if there is one to apply
-        @if this('bg-image') != "" {
+        @if this('bg-image') {
             background-image: url(this('bg-image'));
             background-size: cover;
         }
 
-    // Settings
-    //-------------------------------------------------------------
+        //*********************************************************
+        // Options
+        //*********************************************************
         
-        //---------------------------------------------------------
-        // Full Screen
-        //---------------------------------------------------------
-        
-        // Conditionals
-        //---------------------------------------------------------
-        
-        @if this('full-screen') {
-            height: calc(100% - #{option($header, 'height')});
-            height: calc(100vh - #{option($header, 'height')});
-            min-height: 700px; // @TODO add to config
-        } // full-screen
-        
-        // Modifiers
-        //---------------------------------------------------------
-        
-        @include modifier('full-screen') {
-            height: calc(100% - #{option($header, 'height')});
-            height: calc(100vh - #{option($header, 'height')});
-            min-height: 700px; // @TODO add to config
-        }
+        @include option('full-screen') {
 
-        //---------------------------------------------------------
-        // Overlay
-        //---------------------------------------------------------
+            height: 100%;
+            height: 100vh;
+            min-height: this('full-screen', 'min-height');
+
+            @include value('displace') {
+                height: calc(100% - #{
+                    this('full-screen', 'height-displace')
+                });
+                height: calc(100vh - #{
+                    this('full-screen', 'height-displace')
+                });
+            }
+
+        }
         
         @include option('overlay') {
             @include bg-overlay(rgba(
@@ -78,9 +83,10 @@
                 this('overlay-opacity')
             ));
         }
-        
-    // Components
-    //-------------------------------------------------------------
+
+        //*********************************************************
+        // Components
+        //*********************************************************
 
         @include component('wrapper') {
             @extend %horizontal-center;
