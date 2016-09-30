@@ -47,12 +47,6 @@
 	.invisible {
 		visibility: hidden;
 	}
-	
-	// Hide Overflow
-	.hide-overflow {
-		position: relative;
-		overflow: hidden;
-	}
 
     //*************************************************************
     // Clearfix
@@ -82,10 +76,6 @@
         table-layout: fixed;
     }
     
-    .rating {
-        margin-top: 0.5em;
-    }
-    
     .flush {
         margin-top: 0 !important;
     }
@@ -110,24 +100,6 @@
     }
 
     //*************************************************************
-    // Sizing
-    //*************************************************************
-	
-	.short {
-        @media (min-width: option($grid, 'options', 'col-break')) {
-		    width: 75%;
-        }
-	}
-	
-	.col-full {
-        @media (min-width: breakpoint('break-3')) {
-		    position: absolute !important;
-            z-index: 3;
-            height: 100%;
-        }
-	}
-
-    //*************************************************************
     // Aligning
     //*************************************************************
     
@@ -146,23 +118,6 @@
 	.text-right { 
 		text-align: right !important; 
 	}
-    .text-justify {
-		@media (min-width: breakpoint('break-2')) {
-        	text-align: justify;
-		}
-    }
-    
-    .text-right-desktop {
-        @media (min-width: option($grid, 'options', 'col-break')) {
-		    text-align: right !important; 
-        }
-    }
-    
-    .text-right-break-2 {
-        @media (min-width: breakpoint('break-2')) {
-		    text-align: right !important; 
-        }
-    }
     
     .center-mobile {
         @media (max-width: option($grid, 'options', 'col-break')) {

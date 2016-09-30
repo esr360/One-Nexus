@@ -21,26 +21,20 @@
     $header: config((
         'name'                 : 'app-header',
         'output-json'          : true,
-        // Options
         'background'           : core('background'),
         'height'               : 100px,
         'font-size'            : 1em,
         'z-index'              : 5,
-        // Settings
         'bar'                  : true,
-        'absolute'             : (
+        'absolute':(
             'enabled'          : false,
             'top-position'     : 0
         ),
-        'dark'                 : (
+        'dark':(
             'enabled'          : true,
             'background'       : color('greyscale', 'grey-6')
         ),
-        'opaque'               : (
-            'enabled'          : false,
-            'background'       : rgba(black, 0.3)
-        ),
-        'sticky'               : (
+        'sticky':(
             'enabled'          : false,
             'background'       : color('greyscale', 'grey-6'),
             'height'           : 70px,
@@ -62,11 +56,6 @@
         overflow: visible;
         font-size: this('font-size');
         background: this('background');
-        
-        // @TODO: sort this out
-        @if this('fixed') {
-            margin-top: this('height');
-        }
 
         //*********************************************************
         // Settings
@@ -96,25 +85,11 @@
             width: 100%;
         }
         
-        // Opaque Header
-        //*********************************************************
-
-        @include option('opaque') {
-            background-color: this('opaque', 'background');
-        }
-        
         // Dark Header
         //*********************************************************
 
         @include option('dark') {
             background-color: this('dark', 'background');
-        }
-        
-        // Brand Header
-        //*********************************************************
-        
-        @include modifier('brand') {
-            background-color: color('brand', 'brand-1');
         }
         
         // Sticky Header

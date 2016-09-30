@@ -1,12 +1,22 @@
-//=================================================================
-// Footer
-//=================================================================
-
+/// Footer
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group objects
+///
+/// @param {map} $custom - where custom config will be passed
+/// @outputs all footer styles
+///
+/// @example
+///     @include footer((
+///         'round-radius' : 4px,
+///         'weight'       : bold
+///     ));
 @mixin footer($custom: ()) {
 
-    //-------------------------------------------------------------
-    // Config
-    //-------------------------------------------------------------
+    //*************************************************************
+    // Configuration
+    //*************************************************************
 
     $footer: config((
         'name'                 : 'footer',
@@ -21,19 +31,21 @@
         'nav-link-hover-color' : color('greyscale', 'white')
     ), $custom);
 
-    //-------------------------------------------------------------
+    //*************************************************************
     // Module
-    //-------------------------------------------------------------
+    //*************************************************************
 
     @include module {
 
-    // Core Styles
-    //-------------------------------------------------------------
+        //*********************************************************
+        // Core Styles
+        //*********************************************************
 
         background: this('background');
-        
-    // Components
-    //-------------------------------------------------------------
+
+        //*********************************************************
+        // Components
+        //*********************************************************
 
         @include component('wrapper') {
 
@@ -45,22 +57,11 @@
             color: this('wrapper-color');
 
             @include overwrite('logo') {
-                padding: 0;
-                border: 0;
                 img {
                     height: this('logo-height');
                 }
             }
 
-        }
-        
-        @include component('copyright') {
-            @media (max-width: this('bar-responsive')) {		
-                margin-bottom: core('margin');
-            }
-            h4 {
-                font-weight: lighter;
-            }
         }
 
         @include component('nav') {
@@ -80,50 +81,6 @@
                     color: this('nav-link-hover-color');
                 }
             }
-            @media (min-width: this('bar-responsive')) {
-                text-align: right;
-            }
-        }
-        
-        @include components(('nav', 'copyright')) {
-            @media (min-width: this('bar-responsive')) {
-                display: table-cell;
-                vertical-align: middle;
-            }
-        }
-        
-        @include component {
-            @include modifier('nav') {
-                position: absolute;
-                top: 0;
-                right: 0;
-            }
-        }
-        
-    // Twitter Feed
-    //-------------------------------------------------------------
-
-        .tweet-content {
-            margin-top: -0.25em;
-        }
-        
-        .tweet {
-            > .tweet-avatar {
-                display: none;
-            }
-        }
-        
-        .tweet-actions {
-            float: right;
-            margin-top: 0.25em;
-        }
-        
-        .tweet-avatar {
-            width: 40px;
-        }
-        
-        .tweet-text {
-            margin-bottom: 1em;
         }
 
     } // module

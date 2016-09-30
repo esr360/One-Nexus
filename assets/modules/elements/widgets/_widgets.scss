@@ -293,30 +293,6 @@
                 display: block;
             }
         }
-        
-        @include modifier('article') {
-            margin-bottom: core('margin');
-            &:not([class*="span"]) {
-                &:after {
-                    content: "";
-                    display: block;
-                    margin-top: core('margin');
-                    @include extend(
-                        $parent: 'hrule', 
-                        $modifiers: 'stripes'
-                    );
-                }
-            }
-            &:last-of-type,  {
-                margin-bottom: 0;
-                &:after {
-                    display: none;
-                }
-            }
-            > .owl-carousel {
-                @extend .object;
-            }
-        }
 
         //*********************************************************
         // Components
