@@ -31,9 +31,11 @@
             'min-height'      : 700px,
             'height-displace' : option($header, 'height')
         ),
-        'overlay'             : false,
-        'overlay-color'       : color('brand', 'brand-1'),
-        'overlay-opacity'     : 0.6
+        'overlay':(
+            'enabled'         : false,
+            'text-color'      : color('brand', 'brand-1'),
+            'opacity'         : 0.6
+        )
     ), $custom) !global;
 
     //*************************************************************
@@ -79,8 +81,8 @@
         
         @include option('overlay') {
             @include bg-overlay(rgba(
-                this('overlay-color'), 
-                this('overlay-opacity')
+                this('overlay', 'text-color'), 
+                this('overlay', 'opacity')
             ));
         }
 
