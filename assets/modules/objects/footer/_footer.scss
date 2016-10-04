@@ -22,7 +22,8 @@
         'name'                 : 'footer',
         'output-json'          : true,
         'background'           : color('greyscale', 'grey-6'),
-        'wrapper-padding'      : 4em $gutter,
+        'wrapper-slug'         : 4em,
+        'wrapper-gutter'       : option($grid, 'options', 'gutter'),
         'wrapper-font-size'    : 0.9em,
         'wrapper-background'   : color('greyscale', 'grey-5'),
         'wrapper-color'        : color('greyscale', 'grey-3'),
@@ -50,8 +51,10 @@
         @include component('wrapper') {
 
             @include row();
+            @include content-guttter();
 
-            padding: this('wrapper-padding');
+            padding-top: this('wrapper-slug');
+            padding-bottom: this('wrapper-slug');
             font-size: this('wrapper-font-size');
             background: this('wrapper-background');
             color: this('wrapper-color');
@@ -67,7 +70,7 @@
         @include component('nav') {
             ul {
                 @include extend(
-                    $parent: 'list', $modifiers: 'reset'
+                    $parent: 'list', $modifiers: ('reset', 'inline')
                 );
             }
             a {

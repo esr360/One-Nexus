@@ -25,7 +25,7 @@
         'height'               : 100px,
         'font-size'            : 1em,
         'z-index'              : 5,
-        'wrapper-gutter'       : $gutter,
+        'wrapper-gutter'       : option($grid, 'options', 'gutter'),
         'bar'                  : true,
         'absolute':(
             'enabled'          : false,
@@ -121,9 +121,7 @@
         //*********************************************************
 
         @include component('wrapper') {
-            @include content-guttter(
-                $gutter: this('wrapper-gutter')
-            );
+            @include content-guttter();
             height: this('height');
             transition: height core('transition');
         }

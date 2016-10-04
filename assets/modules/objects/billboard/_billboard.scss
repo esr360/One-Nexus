@@ -26,7 +26,7 @@
         'color'               : color('greyscale', 'white'),
         'bg-color'            : color('brand', 'brand-1'),
         'bg-image'            : '',
-        'wrapper-gutter'      : $gutter,
+        'wrapper-gutter'      : option($grid, 'options', 'gutter'),
         'fullscreen':(
             'enabled'         : false, // {bool} | 'displace'
             'min-height'      : 700px,
@@ -94,7 +94,7 @@
         @include component('wrapper') {
             @extend %horizontal-center;
             @include vertical-center(absolute);
-            @include content-guttter(this('wrapper-gutter'));
+            @include content-guttter();
             color: this('color');
         }
 
