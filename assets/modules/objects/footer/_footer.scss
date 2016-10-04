@@ -67,10 +67,7 @@
 
         @include component('nav') {
             ul {
-                @include extend(
-                    $parent: 'list', 
-                    $modifiers: ('reset', 'inline')
-                )
+                @include extend('list', ('reset', 'inline'))
             }
             a {
                 color: this('nav-link-color');
