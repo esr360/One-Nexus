@@ -22,10 +22,11 @@
         'name'                 : 'footer',
         'output-json'          : true,
         'background'           : color('greyscale', 'grey-6'),
-        'wrapper-padding'      : 4em 0,
+        'wrapper-padding'      : 4em $gutter,
         'wrapper-font-size'    : 0.9em,
         'wrapper-background'   : color('greyscale', 'grey-5'),
         'wrapper-color'        : color('greyscale', 'grey-3'),
+        'wrapper-gutter'       : $gutter,
         'logo-height'          : 34px,
         'nav-link-color'       : color('greyscale', 'grey-3'),
         'nav-link-hover-color' : color('greyscale', 'white')
@@ -66,13 +67,10 @@
 
         @include component('nav') {
             ul {
-                @extend %list-reset;
-            }
-            li {
-                display: inline-block;
-                &:not(:last-child) {
-                    margin-right: 1em;
-                }
+                @include extend(
+                    $parent: 'list', 
+                    $modifiers: ('reset', 'inline')
+                )
             }
             a {
                 color: this('nav-link-color');

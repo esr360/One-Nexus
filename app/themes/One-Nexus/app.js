@@ -3721,18 +3721,14 @@ $(document).ready(function() {
 (function ($) {
  
     /**
-     * 
      * KAYZEN
      * @module: 'billboard'
      * @author: @esr360
-     * 
      */
-    
     $.fn.billboard = function(custom) {
         
         // Options
         var options = $.extend({
-            parallaxBg: false,
             carousel: {
                 selector: '.billboard_carousel',
                 next: '.slide-next',
@@ -3744,10 +3740,6 @@ $(document).ready(function() {
                     loop: true,
                     stagePadding : 0
                 }
-            },
-            fadeParallax: {
-                selector: '#billboard-fade-parallax',
-                breakpoint: 'break-4'
             }
         }, custom);
         
@@ -3755,25 +3747,6 @@ $(document).ready(function() {
         return this.each(function() {
             
             var billboard = $(this);
-            
-            // Fade Parallax Scroll
-            
-            var heroTitle = $(options.fadeParallax.selector);
-                    
-            if (breakpoint('min-width', options.fadeParallax.breakpoint)) {
-                
-                $(window).on('scroll', function() {
-
-                    var scrollTop = $(this).scrollTop();
-
-                    heroTitle.css({ 
-                        'transform' : 'translate3d(0px,' + (scrollTop/2.5) + 'px, 0px)',
-                        'opacity' : 1 - scrollTop/600
-                    }); 
-
-                });
-                
-            }
             
             // Carousel
             

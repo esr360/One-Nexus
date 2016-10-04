@@ -5,20 +5,11 @@ Made by @esr360
 
 ******************************************************************/
 
-// Asset Path
-$asset-path : "../.." !default;
-
-// Output configuration data to JSON
-$to-JSON : true;
-
-// Theme
-$theme : 'One-Nexus';
+@import "config";
 
 //-----------------------------------------------------------------
 // Vendor Files
 //-----------------------------------------------------------------
-
-$fa-font-path: "#{$asset-path}/fonts";
     
 @import "vendor/normalize-scss/sass/normalize";
 @import "vendor/Kayzen-GS/src/kayzen-gs";

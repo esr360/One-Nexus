@@ -206,3 +206,12 @@
 	}
 	
 } // triangle
+
+//-----------------------------------------------------------------
+// Content Gutter
+//-----------------------------------------------------------------
+	
+@mixin content-guttter($gutter: $gutter) {
+	padding-left: $gutter;
+	padding-right: $gutter;
+}

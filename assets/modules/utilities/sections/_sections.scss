@@ -99,7 +99,7 @@
 		// Full Screen
 		//---------------------------------------------------------
 		
-		@include modifier('full-screen') {
+		@include modifier('fullscreen') {
 			height: 100vh;
 			@if option($top-bar, 'fixed') {
 				height: calc(100vh - #{option($top-bar, 'height')});
@@ -111,7 +111,7 @@
 		
 		@at-root {
 			@include overwrite('top-bar', $is: 'fixed') {
-				@include overwrite($special: 'general-sibling', $is: 'full-screen') {
+				@include overwrite($special: 'general-sibling', $is: 'fullscreen') {
 					height: calc(100vh - #{option($top-bar, 'height')});
 				}
 			}
@@ -119,7 +119,7 @@
 		
 		@at-root {
 			@include overwrite('app-header', $is: 'sticky') {
-				@include overwrite($special: 'general-sibling', $is: 'full-screen') {
+				@include overwrite($special: 'general-sibling', $is: 'fullscreen') {
 					height: calc(100vh - #{option($header, height)});
 				}
 			}

@@ -1,0 +1,14 @@
+// Asset Path
+$asset-path: "../.." !default;
+
+// Output configuration data to JSON
+$to-JSON: true;
+
+// Theme
+$theme: 'One-Nexus';
+
+// Path to FontAwesome
+$fa-font-path: "#{$asset-path}/fonts";
+
+// Gutter
+$gutter: 3%;

@@ -24,16 +24,17 @@
         'min-height'          : 500px,
         'padding'             : 6em 0,
         'color'               : color('greyscale', 'white'),
-        'bg-color'            : color('greyscale', 'grey-5'),
+        'bg-color'            : color('brand', 'brand-1'),
         'bg-image'            : '',
-        'full-screen':(
-            'enabled'         : 'displace', // {bool} | 'displace'
+        'wrapper-gutter'      : $gutter,
+        'fullscreen':(
+            'enabled'         : false, // {bool} | 'displace'
             'min-height'      : 700px,
             'height-displace' : option($header, 'height')
         ),
         'overlay':(
             'enabled'         : false,
-            'text-color'      : color('brand', 'brand-1'),
+            'color'           : color('brand', 'brand-1'),
             'opacity'         : 0.6
         )
     ), $custom) !global;
@@ -62,18 +63,18 @@
         // Options
         //*********************************************************
         
-        @include option('full-screen') {
+        @include option('fullscreen') {
 
             height: 100%;
             height: 100vh;
-            min-height: this('full-screen', 'min-height');
+            min-height: this('fullscreen', 'min-height');
 
             @include value('displace') {
                 height: calc(100% - #{
-                    this('full-screen', 'height-displace')
+                    this('fullscreen', 'height-displace')
                 });
                 height: calc(100vh - #{
-                    this('full-screen', 'height-displace')
+                    this('fullscreen', 'height-displace')
                 });
             }
 
@@ -81,7 +82,7 @@
         
         @include option('overlay') {
             @include bg-overlay(rgba(
-                this('overlay', 'text-color'), 
+                this('overlay', 'color'), 
                 this('overlay', 'opacity')
             ));
         }
@@ -93,6 +94,9 @@
         @include component('wrapper') {
             @extend %horizontal-center;
             @include vertical-center(absolute);
+            @include content-guttter(
+                $gutter: this('wrapper-gutter')
+            );
             color: this('color');
         }
 
