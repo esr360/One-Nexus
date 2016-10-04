@@ -55,7 +55,9 @@
         nav {
             
             ul {
-                @extend %list-reset;
+                @include extend(
+                    $parent: 'list', $modifiers: 'reset'
+                );
                 text-align: left;
                 margin-top: 0;
                 width: 100%;

@@ -56,7 +56,7 @@
 	} // component()
 			
 	.tweets {
-		@extend %list-reset;
+		@include extend($parent: 'list', $modifiers: 'reset');
         margin-top: 0;
 	}
 	
@@ -96,7 +96,7 @@
 	}
 	
 	.tweet-actions {
-		@extend %list-reset;
+		@include extend($parent: 'list', $modifiers: 'reset');
         margin-top: 0;
 		font-size: 0.7em;
 		margin-left: 0.5em;

@@ -24,7 +24,7 @@
         font-size: 0.9em;
         
         ul {
-            @extend %list-reset;
+            @include extend($parent: 'list', $modifiers: 'reset');
             margin: 0;
         }
         

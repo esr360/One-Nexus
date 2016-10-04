@@ -71,7 +71,9 @@
 			}
             
 			ul {
-				@extend %list-reset;
+				@include extend(
+					$parent: 'list', $modifiers: 'reset'
+				);
                 margin-top: 0;
                 &.list-cart {
                     padding: 1.5em;
@@ -107,7 +109,9 @@
 					display: table;
 					margin-left: 0;
 					border-left: 1px solid rgba(black, 0.85);
-					box-shadow: inset 1px 0px 0px 0px rgba(white, 0.05);
+					box-shadow: inset 1px 0px 0px 0px rgba(
+						white, 0.05
+					);
 					&:hover {
 						ul {
 							opacity: 1;

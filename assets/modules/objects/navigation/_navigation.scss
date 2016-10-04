@@ -60,7 +60,7 @@
         // parent level only
         > ul {
 
-            @extend %list-reset;
+            @include extend($parent: 'list', $modifiers: 'reset');
             vertical-align: middle;
 
             > li {
