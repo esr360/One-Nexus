@@ -4122,10 +4122,10 @@ $(document).ready(function() {
                 function stickHeader() {
                     header.addClass('fixed');
                     navDropdown.hover(
-                        function(){ 
+                        function() { 
                             $(options.overlay).siteOverlay('show', 'navDropdown');
                         },
-                        function(){ 
+                        function() { 
                             $(options.overlay).siteOverlay('hide', 'navDropdown');
                         }
                     );

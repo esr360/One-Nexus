@@ -26,7 +26,6 @@
         'wrapper-font-size'    : 0.9em,
         'wrapper-background'   : color('greyscale', 'grey-5'),
         'wrapper-color'        : color('greyscale', 'grey-3'),
-        'wrapper-gutter'       : $gutter,
         'logo-height'          : 34px,
         'nav-link-color'       : color('greyscale', 'grey-3'),
         'nav-link-hover-color' : color('greyscale', 'white')
@@ -67,7 +66,9 @@
 
         @include component('nav') {
             ul {
-                @include extend('list', ('reset', 'inline'))
+                @include extend(
+                    $parent: 'list', $modifiers: 'reset'
+                );
             }
             a {
                 color: this('nav-link-color');

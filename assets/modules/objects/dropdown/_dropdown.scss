@@ -48,7 +48,7 @@
             // dropdown
             ul {
             
-                @extend %list-reset;
+                @include extend($parent: 'list', $modifiers: 'reset');
                 min-width: this('width');
                 text-align: this('text-align');
                 transition: core('transition');

@@ -53,7 +53,8 @@
             
         @include component('nav') {
             
-            @extend %list-reset;
+            @include extend($parent: 'list', $modifiers: 'reset');
+
             display: table;
             margin-bottom: 0;
             position: relative;
