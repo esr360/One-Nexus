@@ -94,9 +94,7 @@
         @include component('wrapper') {
             @extend %horizontal-center;
             @include vertical-center(absolute);
-            @include content-guttter(
-                $gutter: this('wrapper-gutter')
-            );
+            @include content-guttter(this('wrapper-gutter'));
             color: this('color');
         }
 
