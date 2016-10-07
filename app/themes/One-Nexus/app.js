@@ -3078,7 +3078,6 @@
  * @version 3.2
  * @license The MIT License (MIT)
  * @see http://github.com/esr360/Modular/
- */
 
 /**
  * @var modularSelector
@@ -3111,7 +3110,6 @@ function camelCase(arg) {
  * @param toCamelCase - Convert the parsed JSON to camelCase?
  */
 function parseJSON(toCamelCase) {
-
     var style = null;
 
     style = window.getComputedStyle(modularSelector, '::before');
@@ -3123,14 +3121,13 @@ function parseJSON(toCamelCase) {
     }
 
     return JSON.parse(style);
-
 }
 
 /**
  * @var _module
  * @description Holds all configuration data for all modules
  */
-var _modules = parseJSON();
+window._modules = parseJSON();
 
 /**
  * @var modulesCamelCase
@@ -3727,10 +3724,12 @@ $(document).ready(function() {
      */
     $.fn.billboard = function(custom) {
         
+        var $module = 'billboard';
+        
         // Options
         var options = $.extend({
             carousel: {
-                selector: '.billboard_carousel',
+                selector: '.' + $module + '_carousel',
                 next: '.slide-next',
                 prev: '.slide-prev',
                 options: {
@@ -3749,31 +3748,38 @@ $(document).ready(function() {
             var billboard = $(this);
             
             // Carousel
-            
-            var slideNext = billboard.find(options.carousel.next);
-            var slidePrev = billboard.find(options.carousel.prev);
-            var billboardCarousel = billboard.find(options.carousel.selector);
-            var initialBg = billboard.css('background-image');
-            
-            billboardCarousel.owlCarousel(options.carousel.options);
-            
-            billboardCarousel.on('changed.owl.carousel', function(event) {
-                var currentItem = $(event.target).find('.owl-item').eq(event.item.index);
-                var bg = currentItem.find('.billboard_wrapper').data('billboard-bg');
-                if (bg) {
-                    billboard.css('background-image', 'url(' + bg + ')');
-                } else {
-                    billboard.css('background-image', initialBg)
-                }
-            });
-            
-            slideNext.click(function() {
-                billboardCarousel.trigger('next.owl.carousel');
-            });
-            
-            slidePrev.click(function() {
-                billboardCarousel.trigger('prev.owl.carousel');
-            });
+            function carousel() {
+
+                var slideNext = billboard.find(options.carousel.next);
+                var slidePrev = billboard.find(options.carousel.prev);
+                var billboardCarousel = billboard.find(options.carousel.selector);
+                var initialBg = billboard.css('background-image');
+                
+                billboardCarousel.owlCarousel(options.carousel.options);
+                
+                billboardCarousel.on('changed.owl.carousel', function(event) {
+                    var currentItem = $(event.target).find('.owl-item').eq(event.item.index);
+                    var bg = currentItem.find('.' + $module + '_wrapper').data($module + '-bg');
+                    if (bg) {
+                        billboard.css('background-image', 'url(' + bg + ')');
+                    } else {
+                        billboard.css('background-image', initialBg)
+                    }
+                });
+                
+                slideNext.click(function() {
+                    billboardCarousel.trigger('next.owl.carousel');
+                });
+                
+                slidePrev.click(function() {
+                    billboardCarousel.trigger('prev.owl.carousel');
+                });
+
+            }
+
+            if (options.carousel) {
+                carousel();
+            }
             
         }); // this.each
  
@@ -3822,7 +3828,7 @@ $(document).ready(function() {
                 
             // Add collapsible functionality
             if (_option($module, 'collapsible')) {
-                flyoutContainer.navDropdown();
+                //flyoutContainer.navDropdown();
             } else {
                 $(_flyoutNav).find('.' + options.sideNavClass + '_openClose').remove();
             }
@@ -4099,11 +4105,11 @@ $(document).ready(function() {
         var options = $.extend({
             navigation      : _navigation,
             overlay         : '#site-overlay',
-            sticky          : _option($module, 'sticky'),
-            side            : _option($module, 'side'),
+            //sticky          : _option($module, 'sticky'),
+            //side            : _option($module, 'side'),
             toggleIcon      : _modules['side-nav']['collapsible']['icon'],
             toggleHeader    : '#toggleHeader',
-            collapsible     : _option('side-nav', 'collapsible'),
+            //collapsible     : _option('side-nav', 'collapsible'),
             navOpenDefault  : _modules['side-nav']['collapsible']['open-by-default'],
             nonSideModifier : 'absolute-opaque'
         }, custom);
@@ -4516,25 +4522,23 @@ $(document).ready(function() {
 
     $(_billboard).billboard();
     
-    $('#google-map').googleMap();
+    //$('#google-map').googleMap();
 
     $(_footer).footer();
 
-    $(_navigation).flyoutNav();
+    //$(_navigation).flyoutNav();
     
     $(_appHeader).header();
     
-    $('#page-overview').pageOverview();
+    //$(_preloader).preloader();
     
-    $(_preloader).preloader();
+    //$(_scrollTop).scrollToTop();
     
-    $(_scrollTop).scrollToTop();
+    //$('#search-trigger').searchBox();
     
-    $('#search-trigger').searchBox();
+    //$(_topBar).topBar();
     
-    $(_topBar).topBar();
-    
-    $(_twitterFeed).twitterFeed();
+    //$(_twitterFeed).twitterFeed();
 
 //-----------------------------------------------------------------
 // Tools

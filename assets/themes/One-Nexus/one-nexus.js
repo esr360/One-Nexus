@@ -56,25 +56,23 @@ $(document).ready(function() {
 
     $(_billboard).billboard();
     
-    $('#google-map').googleMap();
+    //$('#google-map').googleMap();
 
     $(_footer).footer();
 
-    $(_navigation).flyoutNav();
+    //$(_navigation).flyoutNav();
     
     $(_appHeader).header();
     
-    $('#page-overview').pageOverview();
+    //$(_preloader).preloader();
     
-    $(_preloader).preloader();
+    //$(_scrollTop).scrollToTop();
     
-    $(_scrollTop).scrollToTop();
+    //$('#search-trigger').searchBox();
     
-    $('#search-trigger').searchBox();
+    //$(_topBar).topBar();
     
-    $(_topBar).topBar();
-    
-    $(_twitterFeed).twitterFeed();
+    //$(_twitterFeed).twitterFeed();
 
 //-----------------------------------------------------------------
 // Tools

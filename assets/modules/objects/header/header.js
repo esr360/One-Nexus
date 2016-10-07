@@ -14,11 +14,11 @@
         var options = $.extend({
             navigation      : _navigation,
             overlay         : '#site-overlay',
-            sticky          : _option($module, 'sticky'),
-            side            : _option($module, 'side'),
+            //sticky          : _option($module, 'sticky'),
+            //side            : _option($module, 'side'),
             toggleIcon      : _modules['side-nav']['collapsible']['icon'],
             toggleHeader    : '#toggleHeader',
-            collapsible     : _option('side-nav', 'collapsible'),
+            //collapsible     : _option('side-nav', 'collapsible'),
             navOpenDefault  : _modules['side-nav']['collapsible']['open-by-default'],
             nonSideModifier : 'absolute-opaque'
         }, custom);

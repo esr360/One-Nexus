@@ -375,7 +375,7 @@ module.exports = function(grunt) {
             },
             app: {
                 options: {
-                    assets: 'app/' + themePath,
+                    assets: 'app/',
                     environment: env,
                     theme: theme
                 },
@@ -446,7 +446,7 @@ module.exports = function(grunt) {
                 files: _scripts,
                 tasks: [
                     'concat',
-                    'jshint',
+                    //'jshint',
                     'jsdoc',
                     'notify:scripts'
                 ]
@@ -535,6 +535,7 @@ module.exports = function(grunt) {
             'clean:theme',
             'replace:sassTheme',
             'copy:app',
+            'copy:images',
             'concat',
             'sass:' + environment,
             'postcss',

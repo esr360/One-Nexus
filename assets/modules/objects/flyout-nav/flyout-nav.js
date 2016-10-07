@@ -40,7 +40,7 @@
                 
             // Add collapsible functionality
             if (_option($module, 'collapsible')) {
-                flyoutContainer.navDropdown();
+                //flyoutContainer.navDropdown();
             } else {
                 $(_flyoutNav).find('.' + options.sideNavClass + '_openClose').remove();
             }

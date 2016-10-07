@@ -15,17 +15,14 @@ contentID: 'site-content'
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         {{#is environment "dev"}}
-            <link href="{{assets}}app.css" rel="stylesheet">
-            <script src="{{assets}}app.js"></script>
+            <link href="{{assets}}themes/{{theme}}/app.css" rel="stylesheet">
         {{/is}}
         {{#is environment "prod"}}
-            <link href="{{assets}}app.min.css" rel="stylesheet">
-            <script src="{{assets}}app.min.js"></script>
+            <link href="{{assets}}themes/{{theme}}/app.min.css" rel="stylesheet">
         {{/is}}
     </head>
 
     <body class="{{bodyClass}}">
-
         {{> header}}
 
         <main id="{{contentID}}">
@@ -33,7 +30,17 @@ contentID: 'site-content'
         </main>
 
         {{> footer}}
-
     </body>
+
+    <div id="modulesConfigJSON"></div>
+
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js" crossorigin="anonymous"></script>
+
+    {{#is environment "dev"}}
+        <script src="{{assets}}themes/{{theme}}/app.js"></script>
+    {{/is}}
+    {{#is environment "prod"}}
+        <script src="{{assets}}themes/{{theme}}/app.min.js"></script>
+    {{/is}}
 
 </html>
