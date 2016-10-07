@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - "4.4"
 before_install: 
+    - gem install bundler
     - gem install sass
     - npm install -g grunt-cli 
 install: npm install
