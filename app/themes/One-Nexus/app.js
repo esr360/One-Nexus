@@ -3127,7 +3127,7 @@ function parseJSON(toCamelCase) {
  * @var _module
  * @description Holds all configuration data for all modules
  */
-window._modules = parseJSON();
+var _modules = parseJSON();
 
 /**
  * @var modulesCamelCase
