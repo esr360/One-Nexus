@@ -138,6 +138,6 @@
 		@return $size;
 	} @else {
 		$size: $size / ($size * 0 + 1);
-		@return #{$size}rem;
+		@return '#{$size}rem';
 	}
 }

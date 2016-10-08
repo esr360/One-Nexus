@@ -4653,7 +4653,7 @@ code {
   border: 1px solid #dee0e2;
   border-radius: 0.3em;
   font-family: "Lato", "300,400,700,900";
-  font-size: 0.83rem;
+  font-size: "0.83rem";
   font-weight: 300;
   padding: 0.1em 0.3em;
 }
@@ -6656,7 +6656,7 @@ progress::-moz-progress-bar {
   line-height: 1.75;
   position: absolute;
   display: inline-block;
-  font-size: 0.83rem;
+  font-size: "0.83rem";
   font-family: "Lato", "300,400,700,900";
   color: white;
   text-transform: none;
@@ -7415,7 +7415,7 @@ progress::-moz-progress-bar {
   min-width: 175px;
   text-align: left;
   transition: 0.4s;
-  font-size: 0.83rem;
+  font-size: "0.83rem";
   position: absolute;
   z-index: 7;
   opacity: 0;

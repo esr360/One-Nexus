@@ -36,7 +36,7 @@
             color: this('title-color');
             border-bottom: 1px dotted color('greyscale', 'grey-2');
         } 
-        @include overwrite(#{option($grid, 'options', 'row-namespace')}) {
+        @include overwrite('#{option($grid, 'options', 'row-namespace')}') {
             display: table;
         }
     }
