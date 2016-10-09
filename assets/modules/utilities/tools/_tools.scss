@@ -197,16 +197,3 @@
 	}
 	
 } // triangle
-
-//-----------------------------------------------------------------
-// Content Gutter
-//-----------------------------------------------------------------
-	
-@mixin content-guttter($gutter: if(
-	option($config, 'wrapper-gutter'), 
-	option($config, 'wrapper-gutter'), 
-	option($grid, 'options', 'gutter')
-)) {
-	padding-left: $gutter;
-	padding-right: $gutter;
-}

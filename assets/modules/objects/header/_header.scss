@@ -25,7 +25,6 @@
         'height'               : 85px,
         'font-size'            : 1em,
         'z-index'              : 5,
-        'wrapper-gutter'       : option($grid, 'options', 'gutter'),
         'bar'                  : true,
         'absolute':(
             'enabled'          : false,
@@ -68,7 +67,6 @@
         @include option('bar') {
             @include overwrite-component('wrapper') {	
                 display: table;
-                width: 100%;
             }
             @include overwrite(('logo', 'navigation')) {
                 display: table-cell;
@@ -121,7 +119,7 @@
         //*********************************************************
 
         @include component('wrapper') {
-            @include content-guttter();
+            @include _module('container', 'large');
             height: this('height');
             transition: height core('transition');
         }

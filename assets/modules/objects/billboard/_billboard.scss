@@ -9,8 +9,12 @@
 ///
 /// @example
 ///     @include billboard((
-///         'round-radius' : 4px,
-///         'weight'       : bold
+///         'min-height'     : 350px,
+///         'bg-image'       : 'images/billboard.jpg'
+///         'fullscreen':(
+///             'enabled'    : true,
+///             'min-height' : 500px
+///         )
 ///     ));
 @mixin billboard($custom: ()) {
 
@@ -26,7 +30,6 @@
         'color'               : color('greyscale', 'white'),
         'bg-color'            : color('brand', 'brand-1'),
         'bg-image'            : '',
-        'wrapper-gutter'      : option($grid, 'options', 'gutter'),
         'fullscreen':(
             'enabled'         : false, // {bool} | 'displace'
             'min-height'      : 700px,
@@ -94,7 +97,7 @@
         @include component('wrapper') {
             @extend %horizontal-center;
             @include vertical-center(absolute);
-            @include content-guttter();
+            @include _module('container', 'large');
             color: this('color');
         }
 

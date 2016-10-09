@@ -97,30 +97,24 @@
 	@include module('container') {
 	
         width: option($grid, 'options', 'base-width');
-        max-width: option($grid, 'options', 'max-width');
+        max-width: option($grid, 'options', 'medium-width');
         margin: 0 auto;
 		position: relative;
 	
-	    @include modifier('small') {
-	        width: option($grid, 'options', 'small-width');
-			max-width: (option($grid, 'options', 'max-width') * 0.85);
-	    }
-	
-	    @include modifier('full') {
-	        width: option($grid, 'options', 'full-width');
-	        max-width: option($grid, 'options', 'full-width');
+	    @include modifier('large') {
+	        max-width: option($grid, 'options', 'large-width');
 	    }
 		
 		@include modifier('section') {
-            @media (min-width: breakpoint('break-3')) {
-			    padding: 4em 0;
-            }
+			padding-top: 4em;
+			padding-bottom: 4em;
 		}
 	
 	} // module('container')
 
 	.wrapper {
-	    padding: 0 option($grid, 'options', 'gutter');
+	    padding-left: option($grid, 'options', 'gutter');
+		padding-right: option($grid, 'options', 'gutter');
 	}
 
     //*************************************************************

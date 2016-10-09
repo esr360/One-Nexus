@@ -1,12 +1,21 @@
-//=================================================================
-// Breadcrumb
-//=================================================================
-
+/// Breadcrumb
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group objects
+///
+/// @param {map} $custom - where custom config will be passed
+/// @outputs all breadcrumb styles
+///
+/// @example
+///     @include breadcrumb((
+///         'min-height'     : 350px
+///     ));
 @mixin breadcrumb($custom: ()) {
 
-    //-------------------------------------------------------------
-    // Config
-    //-------------------------------------------------------------
+    //*************************************************************
+    // Configuration
+    //*************************************************************
 
     $breadcrumb: config((
         'name'         : 'breadcrumb',
@@ -15,15 +24,16 @@
         'icon-color'   : core('text-color')
     ), $custom);
 
-    //-------------------------------------------------------------
-    // Component
-    //-------------------------------------------------------------
+    //*************************************************************
+    // Module
+    //*************************************************************
 
-    .breadcrumb {	
+    @include module {
 
         font-size: 0.9em;
         
-        ul {
+        // the breadcrumb may or may not be a ul itself
+        &, & > ul {
             @include extend($parent: 'list', $modifiers: 'reset');
             margin: 0;
         }
@@ -41,6 +51,6 @@
             }
         }
 
-    } // .breadcrumb
+    } // module
 
 } // @mixin breadcrumb
