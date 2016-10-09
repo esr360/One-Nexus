@@ -1,12 +1,22 @@
 ---
 layout: core.hbs
-billboardContent: 'foobar'
+header: 
+    modifiers:
+    - absolute
+    - sticky
+billboard:
+    modifiers:
+    - fullscreen
+    heading: Lorem Ipsum Dolor Sit Amet
 breadcrumb: true
 ---
+
 {{> billboard}}
 
-<div class="container-large-section">
-    {{#if 'breadcrumb'}}
-        {{> breadcrumb}}
-    {{/if}}
-</div>
+<main id="{{contentID}}">
+    <div class="container-large-section">
+        {{#if 'breadcrumb'}}
+            {{> breadcrumb}}
+        {{/if}}
+    </div>
+</main>

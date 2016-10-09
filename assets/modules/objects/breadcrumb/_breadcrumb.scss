@@ -20,7 +20,7 @@
     $breadcrumb: config((
         'name'         : 'breadcrumb',
         'font-size'    : 0.9em,
-        'divider-icon' : "\f105",
+        'divider-icon' : '\f105',
         'icon-color'   : core('text-color')
     ), $custom);
 
@@ -30,7 +30,7 @@
 
     @include module {
 
-        font-size: 0.9em;
+        font-size: this('font-size');
         
         // the breadcrumb may or may not be a ul itself
         &, & > ul {
@@ -43,10 +43,10 @@
             &:not(:last-child) {
                 margin-right: 0.2em;
                 &:after {
-                    content: "\f105";
                     font-family: FontAwesome;
+                    content: this('divider-icon');
+                    color: this('icon-color');
                     margin-left: 0.4em;
-                    color: core('text-color');
                 }
             }
         }

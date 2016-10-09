@@ -24,8 +24,8 @@
     $typography: config((
         'name'          : 'typography',
         'typefaces':(
-            'primary'   : ('Lato', '300,400,700,900'),
-            'secondary' : ('Raleway', '100,300,700,900')
+            'primary'   : ('Raleway', '100,300,700,900'),
+            'secondary' : ('Arapey', '400,400i')
         ),
         'colors':(
             'base'      : color('greyscale', 'grey-4'),
@@ -85,11 +85,6 @@
                 border-bottom-color: inherit;
             }
         }
-    }
-	
-    // Text Elements
-    p, ul, ol {
-        font-weight: lighter;
     }
 	
 } // @mixin typography

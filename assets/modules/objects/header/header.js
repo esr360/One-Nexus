@@ -14,13 +14,7 @@
         var options = $.extend({
             navigation      : _navigation,
             overlay         : '#site-overlay',
-            //sticky          : _option($module, 'sticky'),
-            //side            : _option($module, 'side'),
-            toggleIcon      : _modules['side-nav']['collapsible']['icon'],
-            toggleHeader    : '#toggleHeader',
-            //collapsible     : _option('side-nav', 'collapsible'),
-            navOpenDefault  : _modules['side-nav']['collapsible']['open-by-default'],
-            nonSideModifier : 'absolute-opaque'
+            sticky          : _option($module, 'sticky'),
         }, custom);
         
         // Run the code on each occurance of the element

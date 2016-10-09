@@ -1,11 +1,11 @@
 ///****************************************************************
 /// One Nexus
-/// themes\One-Nexus\one-nexus
+/// themes\default\default
 ///
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-@if $theme == 'One-Nexus' {
+@if $theme == 'default' {
     
     @include normalize;
 
@@ -19,12 +19,6 @@
 	@include core;
 	@include tools;
 	@include helpers;
-	
-    $brand-gradient: linear-gradient(135deg,
-        color('brand', 'brand-1') 0%, 
-        color('brand', 'brand-2') 30%,
-        color('brand', 'brand-3') 100%
-    ) !global;
 
     ///************************************************************
     /// Elements
@@ -56,9 +50,7 @@
 	@include breadcrumb;
 	@include footer;
 	@include google-map;
-	@include header((
-		'background' : transparent
-	));
+	@include header;
 	@include logo;
 	@include navigation;
 	@include dropdown;
@@ -75,8 +67,6 @@
     ///************************************************************
 
 	@include sections;
-	@include billboard((
-		'background' : $brand-gradient
-	));
+	@include billboard;
 
 }

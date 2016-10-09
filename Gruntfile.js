@@ -30,6 +30,7 @@ module.exports = function(grunt) {
      * @var {object} themes
      */
     var themes = grunt.option('themes') || [
+        'default',
         'One-Nexus'
     ]
     

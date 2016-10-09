@@ -151,6 +151,13 @@
             }
         }
 
+        // Gradient
+        @if variable-exists('brand-gradient') {
+            @include modifier('gradient') {
+                background: $brand-gradient;
+            }
+        }
+
         //*********************************************************
         // Modifiers
         //*********************************************************

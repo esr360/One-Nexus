@@ -29,7 +29,7 @@
         'padding'             : 6em 0,
         'color'               : color('greyscale', 'white'),
         'bg-color'            : color('brand', 'brand-1'),
-        'bg-image'            : '',
+        'bg-image'            : null,
         'fullscreen':(
             'enabled'         : false, // {bool} | 'displace'
             'min-height'      : 700px,
@@ -54,6 +54,7 @@
 
         position: relative;
         min-height: this('min-height');
+        background: this('background');
         background-color: this('bg-color');
         padding: this('padding');
         
