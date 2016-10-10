@@ -28,8 +28,11 @@
         'min-height'          : 500px,
         'padding'             : 6em 0,
         'color'               : color('greyscale', 'white'),
-        'bg-color'            : color('brand', 'brand-1'),
-        'bg-image'            : null,
+        'background':(
+            'default'         : null,
+            'color'           : color('brand', 'brand-1'),
+            'image'           : null
+        ),
         'fullscreen':(
             'enabled'         : false, // {bool} | 'displace'
             'min-height'      : 700px,
@@ -52,19 +55,11 @@
         // Core Styles
         //*********************************************************
 
+        @include background();
+
         position: relative;
         min-height: this('min-height');
-        background: this('background');
-        background-color: this('bg-color');
         padding: this('padding');
-        
-        // Background
-        //*********************************************************
-
-        @if this('bg-image') {
-            background-image: url(this('bg-image'));
-            background-size: cover;
-        }
 
         //*********************************************************
         // Options

@@ -21,7 +21,6 @@
 	));
 	@include grid;
 	@include core;
-	@include tools;
 	@include helpers;
 	
     $brand-gradient: linear-gradient(135deg,
@@ -80,7 +79,9 @@
 
 	@include sections;
 	@include billboard((
-		'background' : $brand-gradient
+		'background':(
+			'default' : $brand-gradient
+		)
 	));
 
 }

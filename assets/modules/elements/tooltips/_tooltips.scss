@@ -107,13 +107,8 @@
             opacity: 0;
             visibility: hidden;
             
-            // Show when parent component is hovered
-            [data-tooltip]:hover & {
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            // Show when parent component is touched
+            // Show when parent component is hovered/touched
+            [data-tooltip]:hover &,
             [data-tooltip]:active & {
                 opacity: 1;
                 visibility: visible;

@@ -37,11 +37,23 @@ $fa-font-path: "#{$asset-path}/fonts";
 @import "vendor/Synergy/vendor/SassyJSON/src/SassyJSON";
 
 //-----------------------------------------------------------------
+// Tools
+//-----------------------------------------------------------------
+
+@import "tools/scss/animations";
+@import "tools/scss/background";
+@import "tools/scss/fill-parent";
+@import "tools/scss/font-sizes";
+@import "tools/scss/horizontal-center";
+@import "tools/scss/overlay";
+@import "tools/scss/triangle";
+@import "tools/scss/vertical-center";
+@import "tools/scss/vertical-rhythm";
+
+//-----------------------------------------------------------------
 // Utilities
 //-----------------------------------------------------------------
 
-@import "modules/utilities/font-sizes/font-sizes";
-@import "modules/utilities/tools/tools";
 @import "modules/utilities/grid/grid";
 @import "modules/utilities/color-palette/color-palette";
 @import "modules/utilities/typography/typography";

@@ -78,13 +78,6 @@
             color: inherit;
         }
     }
-
-	// animate data-manipulate.js elements
-	[data-trigger],
-	[data-trigger-reverse],
-	[data-hover] {
-		transition: core('transition');
-	}
     
     #site-content {
 		transition: core('transition');
@@ -95,22 +88,31 @@
     //*************************************************************
 	
 	@include module('container') {
-	
         width: option($grid, 'options', 'base-width');
         max-width: option($grid, 'options', 'medium-width');
         margin: 0 auto;
 		position: relative;
-	
 	    @include modifier('large') {
 	        max-width: option($grid, 'options', 'large-width');
 	    }
-		
 		@include modifier('section') {
 			padding-top: 4em;
 			padding-bottom: 4em;
 		}
+	}
 	
-	} // module('container')
+	@include module('hrule') {
+		margin: core('margin') 0;
+        border-color: rgba(black, 0.15);
+		@include modifier('line') {
+			border-top: 1px solid rgba(0, 0, 0, 0.15);
+			border-bottom: 0;
+		}
+		@include modifier('dotted') {
+			border-top: 1px dotted rgba(0, 0, 0, 0.15);
+			border-bottom: 0;
+		}
+	}
 
 	.wrapper {
 	    padding-left: option($grid, 'options', 'gutter');
@@ -167,14 +169,29 @@
     @return map-get($core, $key);
 }
 
+.auto-resizable-iframe {
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	background: rgba(black, 0.2);
+	> div { 
+		position: relative;
+		padding-bottom: 58.5%;
+		height: 0px;           
+	}
+	iframe {
+		position: absolute;
+		border: 0px;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+	}
+}
+
 //*****************************************************************
 // Hacks
 //*****************************************************************
-
-#showcase-carousel .owl-dots,
-#showcase-thumbnails .owl-dots {
-    display: none;
-}
 
 span.enlighterEnlighterJS {
     white-space: nowrap;
@@ -188,26 +205,4 @@ span.enlighterEnlighterJS {
 .owl-carousel .owl-item > img {
     transform-style: preserve-3d;
     width: 100%;
-}
-	
-iframe[src*="soundcloud"] {
-	width: 100%;
-}
-
-button.mfp-close, button.mfp-arrow {
-	width: 90px;
-}
-
-body {
-	::-webkit-scrollbar {
-		width: 10px;
-	}
-	::-webkit-scrollbar-thumb {
-		border-radius: 8px;
-		background-clip: content-box;
-		background-color: rgba(black, 0.2);
-	}
-	::-webkit-scrollbar-corner {
-		background-color: transparent;
-	}
 }

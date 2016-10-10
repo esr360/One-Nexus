@@ -99,7 +99,7 @@ module.exports = function(grunt) {
         'assets/vendor/matchMedia/matchMedia.js',
         'assets/vendor/Synergy/dist/synergy.js',
         'assets/modules/utilities/core/core.js',
-        'assets/includes/*.js',
+        'assets/tools/**/*.js',
         'assets/modules/elements/**/*.js',
         'assets/modules/objects/**/*.js',
         'assets/themes/<%= theme %>/<%= theme %>.js'

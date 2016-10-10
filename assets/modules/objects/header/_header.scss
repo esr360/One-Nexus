@@ -56,6 +56,7 @@
         overflow: visible;
         font-size: this('font-size');
         background: this('background');
+        transition: background core('transition');
 
         //*********************************************************
         // Settings

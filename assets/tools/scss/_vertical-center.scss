@@ -1,0 +1,15 @@
+/// Vertical Center
+///
+/// @author [@esr360](http://twitter.com/esr360)
+///
+/// @access public
+/// @group Tools
+///
+/// @param {map} $custom - where custom config will be passed
+///
+/// @outputs styles for an element's background
+@mixin vertical-center($position: relative) {
+	position: $position;
+	top: 50%;
+	transform: translateY(-50%);
+}

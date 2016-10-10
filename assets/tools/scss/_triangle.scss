@@ -1,0 +1,72 @@
+/// Triangle Core
+///
+/// @author [@esr360](http://twitter.com/esr360)
+///
+/// @access public
+/// @group Tools
+///
+/// @outputs core styles for a CSS triangle
+@mixin triangle-core {
+	&:after {
+		content:'';
+		position: absolute;
+		width: 0;
+		height: 0;
+	}
+}
+
+/// Triangle
+///
+/// @author [@esr360](http://twitter.com/esr360)
+///
+/// @access public
+/// @group Tools
+///
+/// @param {map} $custom - where custom config will be passed
+///
+/// @outputs styles for an element's background
+@mixin triangle($config: ()) {
+	
+	$config: map-merge((
+		'core'     : true, 
+		'position' : top, 
+		'color'    : rgba(black, 0.8),
+		'size'     : 0.5em
+	), $config);
+	
+	@if map-get($config, 'core') {
+		@include triangle-core;
+	}
+		
+	&:after {
+		margin-left: -#{map-get($config, size)};
+		@if map-get($config, 'position') == top {
+			top: 100%;
+			left: 50%;
+			border-left: solid map-get($config, 'size') transparent;
+			border-right: solid map-get($config, 'size') transparent;
+			border-top: solid map-get($config, 'size') map-get($config, 'color');
+		} @else if map-get($config, 'position') == bottom {
+			bottom: 100%;
+			left: 50%;
+			border-left: solid map-get($config, 'size') transparent;
+			border-right: solid map-get($config, 'size') transparent;
+			border-bottom: solid map-get($config, 'size') map-get($config, 'color');
+		} @else if map-get($config, 'position') == left {
+			top: 50%;
+			right: -#{map-get($config, size)};
+			transform: translateY(-50%);
+			border-top: solid map-get($config, 'size') transparent;
+			border-bottom: solid map-get($config, 'size') transparent;
+			border-left: solid map-get($config, 'size') map-get($config, 'color');
+		} @else if map-get($config, 'position') == right {
+			top: 50%;
+			right: 100%;
+			transform: translateY(-50%);
+			border-top: solid map-get($config, 'size') transparent;
+			border-bottom: solid map-get($config, 'size') transparent;
+			border-right: solid map-get($config, 'size') map-get($config, 'color');
+		}
+	}
+	
+}

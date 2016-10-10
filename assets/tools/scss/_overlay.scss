@@ -1,0 +1,19 @@
+/// Background Overlay
+///
+/// @author [@esr360](http://twitter.com/esr360)
+///
+/// @access public
+/// @group Tools
+///
+/// @param {map} $custom - where custom config will be passed
+///
+/// @outputs styles for an element's background
+@mixin bg-overlay($background) {
+	position: relative;
+	&:before {
+		content: "";
+		z-index: 0;
+		background: $background;
+		@extend %fill-parent;
+	}
+}

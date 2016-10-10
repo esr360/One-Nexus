@@ -1,0 +1,46 @@
+/// Background
+///
+/// @author [@esr360](http://twitter.com/esr360)
+///
+/// @access public
+/// @group Tools
+///
+/// @param {map} $custom - where custom config will be passed
+///
+/// @outputs styles for an element's background
+@mixin background($custom: if(this('background'), this('background'), ())) {
+
+    $_default: if(
+        this('background', 'default'), this('background', 'default'), ''
+    );
+
+    $_color: if(
+        this('background', 'color'), this('background', 'color'), ''
+    );
+
+    $_image: if(
+        this('background', 'image'), this('background', 'image'), ''
+    );
+
+    $config: map-merge((
+        'default' : $_default,
+        'color'   : $_color,
+        'image'   : $_image
+    ), $custom);
+
+    @if map-get($config, 'default') {
+        background: map-get($config, 'default');
+    } @else {
+        @if map-get($config, 'color') {
+            background-color: map-get($config, 'color');
+        }
+        @if map-get($config, 'image') {
+            background-image: map-get($config, 'image');
+        }
+    }
+
+    @if map-get($config, 'image') {
+        background-size: cover;
+    }
+
+}
