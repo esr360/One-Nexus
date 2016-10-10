@@ -58,6 +58,9 @@
         background-color: this('bg-color');
         padding: this('padding');
         
+        // Background
+        //*********************************************************
+
         @if this('bg-image') {
             background-image: url(this('bg-image'));
             background-size: cover;

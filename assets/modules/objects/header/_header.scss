@@ -79,9 +79,9 @@
         
         @include option('absolute') {
             position: absolute;
+            width: 100%;
             margin-top: this('absolute', 'top-position');
             z-index: this('z-index');
-            width: 100%;
         }
         
         // Dark Header
@@ -98,7 +98,6 @@
             &.fixed {
                 position: fixed;
                 margin-top: 0;
-                top: 0;
                 width: 100%;
                 z-index: 12;
                 background: this('sticky', 'background');

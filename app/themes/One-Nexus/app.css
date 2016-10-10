@@ -3585,15 +3585,12 @@ textarea {
 }
 
 a {
-  color: #86f4d1;
-  transition: 0.4s;
+  color: #06d2ff;
   text-decoration: none;
+  transition: 0.4s;
 }
-p > a, .text a {
-  border-bottom: 1px dotted transparent;
-}
-p > a:hover, .text a:hover {
-  border-bottom-color: inherit;
+p > a {
+  border-bottom: 1px solid;
 }
 
 .row,
@@ -7282,9 +7279,9 @@ progress::-moz-progress-bar {
 }
 [class*="app-header-"][class*="-absolute"] {
   position: absolute;
+  width: 100%;
   margin-top: 0;
   z-index: 5;
-  width: 100%;
 }
 [class*="app-header-"][class*="-dark"] {
   background-color: #161819;
@@ -7292,7 +7289,6 @@ progress::-moz-progress-bar {
 .fixed[class*="app-header-"][class*="-sticky"] {
   position: fixed;
   margin-top: 0;
-  top: 0;
   width: 100%;
   z-index: 12;
   background: #161819;

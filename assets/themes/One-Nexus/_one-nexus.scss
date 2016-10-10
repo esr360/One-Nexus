@@ -14,7 +14,11 @@
     ///************************************************************
 
 	@include palettes;
-	@include typography;
+	@include typography((
+		'colors':(
+			'link' : color('brand', 'brand-2')
+		)
+	));
 	@include grid;
 	@include core;
 	@include tools;

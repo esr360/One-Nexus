@@ -30,7 +30,8 @@
         'colors':(
             'base'      : color('greyscale', 'grey-4'),
             'heading'   : color('greyscale', 'grey-5'),
-            'heavy'     : color('greyscale', 'grey-5')
+            'heavy'     : color('greyscale', 'grey-5'),
+            'link'      : color('brand', 'brand-1')
         ),
         'sizes':(
             'base'      : 1em,
@@ -76,14 +77,11 @@
 	
     // Links
     a {
-        color: color('brand', 'brand-1');
-        transition: 0.4s;
+        color: this('colors', 'link');
         text-decoration: none;
-        p > &, .text & {
-            border-bottom: 1px dotted transparent;
-            &:hover {
-                border-bottom-color: inherit;
-            }
+        transition: 0.4s;
+        p > & {
+            border-bottom: 1px solid;
         }
     }
 	
