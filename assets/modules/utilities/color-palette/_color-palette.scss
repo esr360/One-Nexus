@@ -19,51 +19,61 @@
     //*************************************************************
 
     $palettes: config((	
-        'name'            : 'palettes',	
-        'greyscale': (
-            'white'       : #ffffff,
-            'grey-1'      : #f8f8f8,
-            'grey-2'      : #dee0e2,
-            'grey-3'      : #bfc1c3,
-            'grey-4'      : #6f777b,
-            'grey-5'      : #232627,
-            'grey-6'      : #161819,
-            'black'       : #000000
+        'name'                : 'palettes',	
+        'greyscale':(
+            'white'           : #ffffff,
+            'grey-1'          : #f8f8f8,
+            'grey-2'          : #dee0e2,
+            'grey-3'          : #bfc1c3,
+            'grey-4'          : #6f777b,
+            'grey-5'          : #232627,
+            'grey-6'          : #161819,
+            'black'           : #000000
         ),
-        'brand': (
-            'brand-1'     : #86f4d1,
-            'brand-2'     : #06d2ff,
-            'brand-3'     : #5533ff
+        'brand':(
+            'brand-1'         : #86f4d1,
+            'brand-2'         : #06d2ff,
+            'brand-3'         : #5533ff
         ),
-        'alert': (
-            'error'       : #d9322a,
-            'help'        : #f3c500,
-            'info'        : #3598dc,
-            'success'     : #2dbd78
+        'alert':(
+            'error'           : #d9322a,
+            'help'            : #f3c500,
+            'info'            : #3598dc,
+            'success'         : #2dbd78
         ),
-        'validation': (
-            'valid'       : #00B16A,
-            'invalid'     : #D91E18	
+        'validation':(
+            'valid'           : #00B16A,
+            'invalid'         : #D91E18	
         ),
-        'social' : (
-            'facebook'    : #507CBD,
-            'twitter'     : #63CEF2,
-            'linkedin'    : #117BB8,
-            'github'      : #1C1C1C,
-            'skype'       : #63CEF2,
-            'pinterest'   : #C92228,
-            'instagram'   : #5280A5,
-            'rss'         : #FBA933,
-            'youtube'     : #CB312E,
-            'flickr'      : #ED1384,
-            'vimeo'       : #1EB8EB,
-            'dribbble'    : #EB4C89,
-            'behance'     : #0595FC,
-            'deviantart'  : #B3C434,
-            'reddit'      : #0D7CCD,
-            'google-plus' : #dd4b39,
-            'email'       : #6cb42c,
-            'stumbleupon' : #47AD20
+        'social':(
+            'facebook'        : #507CBD,
+            'twitter'         : #63CEF2,
+            'linkedin'        : #117BB8,
+            'github'          : #1C1C1C,
+            'skype'           : #63CEF2,
+            'pinterest'       : #C92228,
+            'instagram'       : #5280A5,
+            'rss'             : #FBA933,
+            'youtube'         : #CB312E,
+            'flickr'          : #ED1384,
+            'vimeo'           : #1EB8EB,
+            'dribbble'        : #EB4C89,
+            'behance'         : #0595FC,
+            'deviantart'      : #B3C434,
+            'reddit'          : #0D7CCD,
+            'google-plus'     : #dd4b39,
+            'email'           : #6cb42c,
+            'stumbleupon'     : #47AD20
+        ),
+        'gradients':(
+            'brand':(
+                'direction'   : 135deg,
+                'color-stops' : (
+                    'brand-1' 0%, 
+                    'brand-2' 30%, 
+                    'brand-3' 100%
+                )
+            )
         )
     ), $custom) !global;
 
@@ -92,4 +102,32 @@
 /// @return {color} - the desired color value
 @function color($palette, $color) {
 	@return map-get(palette($palette), $color);
+}
+
+/// Function to create a linear-gradient
+///
+/// @access public
+/// @group utilities
+/// @param {map} $palette - the palette which contains your desired color
+/// @return {color} - the desired color value
+@function gradient($gradient) {
+    
+    $gradient: color('gradients', $gradient);
+    $direction: map-get($gradient, 'direction');
+    $color-stops: map-get($gradient, 'color-stops');
+
+    @each $color-stop in $color-stops {
+        $color: nth($color-stop, 1);
+        $updated-color-stop: replace-in-list(
+            $color-stop, $color, map-search($palettes, $color)
+        );
+        $color-stops: replace-in-list(
+            $color-stops, $color-stop, $updated-color-stop
+        );
+    }
+
+    $color-stops: join($color-stops, (), comma);
+
+    @return linear-gradient($direction, $color-stops);
+
 }

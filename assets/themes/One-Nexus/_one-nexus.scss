@@ -22,12 +22,6 @@
 	@include grid;
 	@include core;
 	@include helpers;
-	
-    $brand-gradient: linear-gradient(135deg,
-        color('brand', 'brand-1') 0%, 
-        color('brand', 'brand-2') 30%,
-        color('brand', 'brand-3') 100%
-    ) !global;
 
     ///************************************************************
     /// Elements
@@ -79,9 +73,7 @@
 
 	@include sections;
 	@include billboard((
-		'background':(
-			'default' : $brand-gradient
-		)
+		'background' :  gradient('brand')
 	));
 
 }
