@@ -129,6 +129,8 @@ module.exports = function(grunt) {
 		
         pkg: grunt.file.readJSON('package.json'),
 
+        themeBuildStyles: themeBuildStyles,
+
         /**
          * Grunt Text Replace
          * @see https://github.com/yoniholmes/grunt-text-replace
@@ -221,7 +223,7 @@ module.exports = function(grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    [themeBuildStyles + 'app.css']: 'assets/app.scss'
+                    '<%= themeBuildStyles %>app.css': 'assets/app.scss'
                 }
             },
             prod: {
@@ -230,7 +232,7 @@ module.exports = function(grunt) {
                     sourcemap: 'none'
                 },
                 files: {
-                    [themeBuildStyles + 'app.min.css']: 'assets/app.scss'
+                    '<%= themeBuildStyles %>app.min.css': 'assets/app.scss'
                 }
             } 
         },
