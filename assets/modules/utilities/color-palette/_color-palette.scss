@@ -118,10 +118,10 @@
 
     @each $color-stop in $color-stops {
         $color: nth($color-stop, 1);
-        $updated-color-stop: replace-in-list(
+        $updated-color-stop: list-replace(
             $color-stop, $color, map-search($palettes, $color)
         );
-        $color-stops: replace-in-list(
+        $color-stops: list-replace(
             $color-stops, $color-stop, $updated-color-stop
         );
     }

@@ -34,7 +34,6 @@ $fa-font-path: "#{$asset-path}/fonts";
 @import "vendor/Owl-Carousel/src/scss/video";
 @import "vendor/Font-Awesome/scss/font-awesome";
 @import "vendor/Synergy/src/scss/synergy";
-@import "vendor/Synergy/vendor/SassyJSON/src/SassyJSON";
 
 //-----------------------------------------------------------------
 // Tools
@@ -45,9 +44,7 @@ $fa-font-path: "#{$asset-path}/fonts";
 @import "tools/scss/fill-parent";
 @import "tools/scss/font-sizes";
 @import "tools/scss/horizontal-center";
-@import "tools/scss/map-search";
 @import "tools/scss/overlay";
-@import "tools/scss/replace-in-list";
 @import "tools/scss/triangle";
 @import "tools/scss/vertical-center";
 @import "tools/scss/vertical-rhythm";
