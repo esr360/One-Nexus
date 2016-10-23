@@ -38,7 +38,7 @@
     $responsive-font-sizes: if(
         map-get($font-sizes, 'mobile-first'), 
         map-get($font-sizes, 'breakpoints'), 
-        reverse-map(map-get($font-sizes, 'breakpoints'))
+        map-reverse(map-get($font-sizes, 'breakpoints'))
     );
         
     // Map containing desired optional responsive font values
@@ -50,7 +50,7 @@
     $responsive-optional-font-sizes: if(
         map-get($font-sizes, 'mobile-first'), 
         map-get($font-sizes, 'breakpoints'),
-        reverse-map(map-get($font-sizes, 'breakpoints'))
+        map-reverse(map-get($font-sizes, 'breakpoints'))
     );
 
     // create the base font-size for each modifier
