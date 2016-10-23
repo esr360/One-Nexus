@@ -366,30 +366,6 @@ module.exports = function(grunt) {
         },
 
         /**
-         * Assemble
-         * @see https://github.com/assemble/grunt-assemble
-         */
-        assemble: {
-            options: {
-                layout: 'core.hbs',
-                layoutdir: 'templates/layouts/',
-                partials: 'templates/partials/**/*.hbs',
-                helpers: ['templates/helpers/*.js']
-            },
-            app: {
-                options: {
-                    assets: 'app/',
-                    environment: env,
-                    theme: theme
-                },
-                cwd: 'templates/pages/',
-                dest: 'prototype/',
-                expand: true,
-                src: '**/*.hbs'
-            }
-        },
-
-        /**
          * SassDoc
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
@@ -424,6 +400,49 @@ module.exports = function(grunt) {
         },
 
         /**
+         * Assemble
+         * @see https://github.com/assemble/grunt-assemble
+         */
+        assemble: {
+            options: {
+                layout: 'core.hbs',
+                layoutdir: 'templates/layouts/',
+                partials: 'templates/partials/**/*.hbs',
+                helpers: ['templates/helpers/*.js']
+            },
+            app: {
+                options: {
+                    assets: 'app/',
+                    templates: '/prototype',
+                    environment: env,
+                    theme: theme
+                },
+                cwd: 'templates/pages/',
+                dest: 'prototype/',
+                expand: true,
+                src: '**/*.hbs'
+            }
+        },
+
+        /**
+         * Browser Sync
+         * https://github.com/BrowserSync/grunt-browser-sync
+         */
+        browserSync: {
+            bsFiles: {
+                src : [
+                    'app/**/*.css', 
+                    'prototype/**/*.html'
+                ]
+            },
+            options: {
+                server: './',
+                watchTask: true,
+                notify: false
+            }
+        },
+
+        /**
          * Watch
          * @see https://github.com/gruntjs/grunt-contrib-watch
          */
@@ -449,7 +468,7 @@ module.exports = function(grunt) {
                 files: _scripts,
                 tasks: [
                     'concat',
-                    //'jshint',
+                    'jshint',
                     'jsdoc',
                     'notify:scripts'
                 ]
@@ -508,6 +527,7 @@ module.exports = function(grunt) {
      *************************************************************/
     
     grunt.loadNpmTasks('grunt-assemble');
+    grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
@@ -542,8 +562,8 @@ module.exports = function(grunt) {
             'concat',
             'sass:' + environment,
             'postcss',
-            //'lint',
-            //'test',
+            'lint',
+            'test',
             'assemble',
             'docs'
         ];
@@ -562,6 +582,7 @@ module.exports = function(grunt) {
     // Default Grunt task
     grunt.registerTask('default', [
         'theme:' + theme,
+        'browserSync',
         'watch'
     ]);
       
