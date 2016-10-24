@@ -1,25 +1,25 @@
 <header class="app-header{{#each header.modifiers}}-{{.}}{{/each}}">
-    <div class="app-header_wrapper">
+    <div class="app-header_wrapper{{#if header.wide}}-wide{{/if}}">
         <div class="logo">
-            <a href="" alt="One-Nexus logo">
+            <a href="{{index}}" alt="One-Nexus logo">
                 <img src="{{assets}}images/logo-light.png" alt="One Nexus Logo">
             </a>
         </div>
         <nav class="navigation">
             <ul>
                 <li>
-                    <a href="{{templates}}/modules/">Modules</a>
+                    <a href="{{index}}modules/">Modules</a>
                     <ul>
-                        <li><a href="{{templates}}/modules/elements/">Elements</a></li>
-                        <li><a href="{{templates}}/modules/objects/">Objects</a></li>
-                        <li><a href="{{templates}}/modules/utilities/">Utilitie</a></li>
+                        <li><a href="{{index}}modules/elements/">Elements</a></li>
+                        <li><a href="{{index}}modules/objects/">Objects</a></li>
+                        <li><a href="{{index}}modules/utilities/">Utilities</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Link 2</a>
+                    <a href="{{index}}grid-system.html">Grid System</a>
                 </li>
                 <li>
-                    <a href="#">Link 3</a>
+                    <a href="{{index}}features.html">Features</a>
                 </li>
             </ul>
         </nav>

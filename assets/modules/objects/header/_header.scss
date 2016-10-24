@@ -119,9 +119,12 @@
         //*********************************************************
 
         @include component('wrapper') {
-            @include _module('container', 'large');
+            @include _module('container');
             height: this('height');
             transition: height core('transition');
+            @include modifier('wide') {
+                @include _module('container', 'large');
+            }
         }
         
     } // module

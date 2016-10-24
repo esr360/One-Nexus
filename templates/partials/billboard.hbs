@@ -1,6 +1,13 @@
 <div class="billboard{{#each billboard.modifiers}}-{{.}}{{/each}}">
-    <div class="billboard_wrapper text-center">
-        <h1 class="heading-light-size-9 font-2"><i>{{billboard.heading}}</i></h1>
-        <p>Lorem Ipsum Dolor Sit Amet</p>
-    </div>
+    {{#inArray billboard.modifiers 'fullscreen'}}
+        <div class="billboard_wrapper text-center">
+            <h1 class="heading-light-size-9 font-2"><i>{{billboard.heading}}</i></h1>
+            <p>Lorem Ipsum Dolor Sit Amet</p>
+        </div>
+    {{else}}
+        <div class="billboard_wrapper">
+            <h1 class="heading-light-size-6 font-2"><i>{{billboard.heading}}</i></h1>
+            <p>Lorem Ipsum Dolor Sit Amet</p>
+        </div>
+    {{/inArray}}
 </div>

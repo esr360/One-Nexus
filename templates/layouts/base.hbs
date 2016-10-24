@@ -1,22 +1,24 @@
 ---
 layout: core.hbs
-header: 
+header:
     modifiers:
     - absolute
     - sticky
 billboard:
     modifiers:
-    - fullscreen
     heading: Lorem Ipsum Dolor Sit Amet
+container:
+    wide: false
 breadcrumb: true
 ---
 
 {{> billboard}}
 
 <main id="{{contentID}}">
-    <div class="container-large-section">
+    <div class="container-section{{#if container.wide}}-large{{/if}}">
         {{#if 'breadcrumb'}}
             {{> breadcrumb}}
         {{/if}}
+        {{> body}}
     </div>
 </main>

@@ -408,19 +408,19 @@ module.exports = function(grunt) {
                 layout: 'core.hbs',
                 layoutdir: 'templates/layouts/',
                 partials: 'templates/partials/**/*.hbs',
-                helpers: ['templates/helpers/*.js']
+                helpers: 'templates/helpers/*.js'
             },
             app: {
-                options: {
-                    assets: 'app/',
-                    templates: '/prototype',
-                    environment: env,
-                    theme: theme
-                },
                 cwd: 'templates/pages/',
                 dest: 'prototype/',
                 expand: true,
-                src: '**/*.hbs'
+                src: '**/*.hbs',
+                options: {
+                    assets: 'app/',
+                    environment: env,
+                    theme: theme,
+                    index: '/<%= assemble.app.dest %>'
+                },
             }
         },
 
@@ -458,7 +458,7 @@ module.exports = function(grunt) {
                 tasks: [ 
                     'sass:' + env, 
                     'postcss',
-                    'scsslint',
+                    //'scsslint',
                     'mochacli:scss',
                     'sassdoc',
                     'notify:css'
@@ -605,8 +605,8 @@ module.exports = function(grunt) {
         
     // Lint
     grunt.registerTask('lint', [
-        'scsslint',
-        'jshint'
+        //'scsslint',
+        //'jshint'
     ]);
         
     // Test
