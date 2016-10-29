@@ -4669,13 +4669,13 @@ code.value {
   transition: 0.4s;
 }
 
-.container, .footer_wrapper, [class*="footer_wrapper-"], .app-header_wrapper, [class*="app-header_wrapper-"], [class*="app-header_wrapper-"][class*="-wide"], .billboard_wrapper, [class*="billboard_wrapper-"], [class*="billboard_wrapper-"][class*="-wide"], [class*="container-"] {
+.container, .footer_wrapper, [class*="footer_wrapper-"], [class*="footer_wrapper-"][class*="-wide"], .app-header_wrapper, [class*="app-header_wrapper-"], [class*="app-header_wrapper-"][class*="-wide"], .billboard_wrapper, [class*="billboard_wrapper-"], [class*="billboard_wrapper-"][class*="-wide"], [class*="container-"] {
   width: 95%;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
 }
-[class*="container-"][class*="-large"], .footer_wrapper, [class*="footer_wrapper-"], [class*="app-header_wrapper-"][class*="-wide"], [class*="billboard_wrapper-"][class*="-wide"] {
+[class*="container-"][class*="-large"], [class*="footer_wrapper-"][class*="-wide"], [class*="app-header_wrapper-"][class*="-wide"], [class*="billboard_wrapper-"][class*="-wide"] {
   max-width: 1800px;
 }
 [class*="container-"][class*="-section"] {

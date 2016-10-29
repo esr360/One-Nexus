@@ -408,7 +408,7 @@ module.exports = function(grunt) {
                 layout: 'core.hbs',
                 layoutdir: 'templates/layouts/',
                 partials: 'templates/partials/**/*.hbs',
-                helpers: 'templates/helpers/*.js'
+                helpers: 'templates/helpers/in-array.js'
             },
             app: {
                 cwd: 'templates/pages/',

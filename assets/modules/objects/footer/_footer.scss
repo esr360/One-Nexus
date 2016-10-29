@@ -48,13 +48,17 @@
 
         @include component('wrapper') {
 
-            @include _module('container', 'large');
+            @include _module('container');
 
             display: table;
             padding-top: this('wrapper-slug');
             padding-bottom: this('wrapper-slug');
             font-size: this('wrapper-font-size');
             color: this('wrapper-color');
+
+            @include modifier('wide') {
+                @include _module('container', 'large');
+            }
 
             @include overwrite('logo') {
                 img {

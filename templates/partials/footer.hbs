@@ -1,5 +1,5 @@
-<footer class="footer">
-    <div class="footer_wrapper">
+<footer class="footer{{#each footer.modifiers}}-{{.}}{{/each}}">
+    <div class="footer_wrapper{{#if wide}}-wide{{/if}}">
         <div class="footer_copyright">2016 Edmund Reed</div>
         <nav class="footer_nav">
             <ul>
