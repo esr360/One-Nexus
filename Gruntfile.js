@@ -12,12 +12,6 @@ module.exports = function(grunt) {
     /**************************************************************
      * Config
      *************************************************************/
-    
-    /**
-     * Set the version of your project
-     * @var {string} version
-     */
-    var version = grunt.option('tag') || '3.0.0';
 
     /**
      * Set the default theme to compile assets for
@@ -71,11 +65,17 @@ module.exports = function(grunt) {
     var themeBuildStyles  = 'app/' + themePath;
 
     /**
+     * Set the path to the vendor directory
+     * @var {string} vendor
+     */
+    var vendor  = 'assets/vendor/';
+
+    /**
      * Set which Owl-Carousel modules you would like to use
      * @see https://git.io/v6ssU
      */
     var _owl = function() {
-        var owlPath = 'assets/vendor/Owl-Carousel/src/js/'; 
+        var owlPath = vendor + 'Owl-Carousel/src/js/'; 
         var owlModules = [
             owlPath + 'owl.carousel.js',
             owlPath + 'owl.animate.js',
@@ -96,8 +96,8 @@ module.exports = function(grunt) {
      */
     var _scripts = [
         _owl(),
-        'assets/vendor/matchMedia/matchMedia.js',
-        'assets/vendor/Synergy/dist/synergy.js',
+        vendor + 'matchMedia/matchMedia.js',
+        vendor + 'Synergy/dist/synergy.js',
         'assets/modules/utilities/core/core.js',
         'assets/tools/**/*.js',
         'assets/modules/elements/**/*.js',
@@ -110,9 +110,9 @@ module.exports = function(grunt) {
      * @var {object} _globalScripts
      */
     var _globalScripts = [
-        'assets/vendor/jQuery/dist/jquery.js',
-        'assets/vendor/pseudojQuery/src/pseudojQuery-start.js',
-        'assets/vendor/pseudojQuery/src/pseudojQuery-end.js'
+        vendor + 'jQuery/dist/jquery.js',
+        vendor + 'pseudojQuery/src/pseudojQuery-start.js',
+        vendor + 'pseudojQuery/src/pseudojQuery-end.js'
     ];
 
     /**
@@ -157,8 +157,8 @@ module.exports = function(grunt) {
                 '!app/images/**'
             ],
             scripts: [
-                'app/scripts/**/*.js', 
-                '!app/**/*.min.js'
+                'app/themes/<%= theme %>/**/*.js', 
+                '!app/themes/<%= theme %>/**/*.min.js'
             ],
             styles: [
                 'app/**/*.css', 
@@ -169,11 +169,7 @@ module.exports = function(grunt) {
             },
             theme: {
                 src: 'app/themes/<%= theme %>'
-            },
-            themeScripts: [
-                'app/themes/<%= theme %>/**/*.js', 
-                '!app/themes/<%= theme %>/**/*.min.js'
-            ]
+            }
         },
         
         /**
@@ -184,7 +180,7 @@ module.exports = function(grunt) {
             app: {
                 files: [
                     {
-                        cwd: 'assets/vendor/Font-Awesome/fonts',
+                        cwd: vendor + 'Font-Awesome/fonts',
                         src: '**/*',
                         dest: 'app/fonts',
                         expand: true
@@ -571,7 +567,6 @@ module.exports = function(grunt) {
             assetTasks.push(
                 'uglify', 
                 'clean:scripts',
-                'clean:themeScripts',
                 'cssmin',
                 'clean:styles'
             );

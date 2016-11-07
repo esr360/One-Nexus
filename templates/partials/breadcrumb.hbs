@@ -1,7 +1,11 @@
 <nav class="breadcrumb">
     <ul>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li>Current</li>
+        {{#each breadcrumb}}
+            {{#is this ../page.basename}}
+                <li>{{.}}</li>
+            {{else}}
+                <li><a href="">{{.}}</a></li>
+            {{/is}}
+        {{/each}}
     </ul>
 </nav>

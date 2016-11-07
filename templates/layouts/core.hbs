@@ -2,6 +2,8 @@
 title: One Nexus
 bodyClass: ''
 contentID: 'site-content'
+modulesID: 'modulesConfigJSON'
+jQuery: '2.2.4'
 ---
 <!DOCTYPE html>
 <html lang="en-GB">
@@ -30,9 +32,11 @@ contentID: 'site-content'
         {{> footer}}
     </body>
 
-    <div id="modulesConfigJSON"></div>
+    <div id="{{modulesID}}"></div>
 
-    <script src="http://code.jquery.com/jquery-2.2.4.min.js" crossorigin="anonymous"></script>
+    {{#if jQuery}}
+        <script src="http://code.jquery.com/jquery-{{jQuery}}.min.js" crossorigin="anonymous"></script>
+    {{/if}}
 
     {{#is environment "dev"}}
         <script src="{{assets}}themes/{{theme}}/app.js"></script>

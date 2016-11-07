@@ -4709,21 +4709,27 @@ h1, h2, h3, h4, h5, h6,
 p, ul, ol,
 form, fieldset, legend, figure, table,
 pre, hr,
-.object {
+.object,
+.breadcrumb,
+[class*="breadcrumb-"] {
   margin: 2rem 0;
 }
 h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child,
 p:first-child, ul:first-child, ol:first-child,
 form:first-child, fieldset:first-child, legend:first-child, figure:first-child, table:first-child,
 pre:first-child, hr:first-child,
-.object:first-child {
+.object:first-child,
+.breadcrumb:first-child,
+[class*="breadcrumb-"]:first-child {
   margin-top: 0;
 }
 h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child,
 p:last-child, ul:last-child, ol:last-child,
 form:last-child, fieldset:last-child, legend:last-child, figure:last-child, table:last-child,
 pre:last-child, hr:last-child,
-.object:last-child {
+.object:last-child,
+.breadcrumb:last-child,
+[class*="breadcrumb-"]:last-child {
   margin-bottom: 0;
 }
 
@@ -7174,7 +7180,7 @@ progress::-moz-progress-bar {
   font-size: 0.9em;
 }
 .breadcrumb, .breadcrumb > ul, [class*="breadcrumb-"], [class*="breadcrumb-"] > ul {
-  margin: 0;
+  margin-left: 0;
 }
 .breadcrumb li, [class*="breadcrumb-"] li {
   display: inline;
