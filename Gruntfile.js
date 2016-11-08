@@ -417,6 +417,11 @@ module.exports = function(grunt) {
                     theme: theme,
                     index: '/<%= assemble.app.dest %>'
                 },
+            },
+            modules: {
+                files: {
+                    'modules': ['templates/pages/modules/**/*.hbs']
+                }
             }
         },
 

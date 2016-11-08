@@ -1,11 +1,28 @@
 <nav class="breadcrumb">
-    <ul>
+    <ul> 
         {{#each breadcrumb}}
+            {{#each ../pages}}
+
+                {{../../page.basename}}<br />
+
+                {{basename}}<br />
+
+                {{../../page.dirname}}<br />
+
+                {{dirname}}<br />
+
+                {{../this}}</br >
+
+                <br />
+            {{/each}}
+            <!--
             {{#is this ../page.basename}}
                 <li>{{.}}</li>
             {{else}}
                 <li><a href="">{{.}}</a></li>
             {{/is}}
+            -->
         {{/each}}
+        <br />
     </ul>
 </nav>
