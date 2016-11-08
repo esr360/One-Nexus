@@ -404,7 +404,10 @@ module.exports = function(grunt) {
                 layout: 'core.hbs',
                 layoutdir: 'templates/layouts/',
                 partials: 'templates/partials/**/*.hbs',
-                helpers: 'templates/helpers/in-array.js'
+                helpers: [
+                    'templates/helpers/in-array.js',
+                    'templates/helpers/breadcrumb.js'
+                ]
             },
             app: {
                 cwd: 'templates/pages/',
@@ -417,11 +420,6 @@ module.exports = function(grunt) {
                     theme: theme,
                     index: '/<%= assemble.app.dest %>'
                 },
-            },
-            modules: {
-                files: {
-                    'modules': ['templates/pages/modules/**/*.hbs']
-                }
             }
         },
 
