@@ -1,13 +1,21 @@
 <div class="billboard{{#each billboard.modifiers}}-{{.}}{{/each}}">
     {{#inArray billboard.modifiers 'fullscreen'}}
         <div class="billboard_wrapper{{#if wide}}-wide{{/if}} text-center">
-            <h1 class="heading-light-size-9 font-2"><i>{{billboard.heading}}</i></h1>
-            <p>Lorem Ipsum Dolor Sit Amet</p>
+            {{#if billboard.heading}}
+                <h1 class="heading-light-size-9 font-2"><i>{{billboard.heading}}</i></h1>
+            {{/if}}
+            {{#if billboard.subHeading}}
+                <p>{{billboard.subHeading}}</p>
+            {{/if}}
         </div>
     {{else}}
         <div class="billboard_wrapper{{#is layout 'base-wide.hbs'}}-wide{{/is}}">
-            <h1 class="heading-light-size-7 font-2"><i>{{billboard.heading}}</i></h1>
-            <p>Lorem Ipsum Dolor Sit Amet</p>
+            {{#if billboard.heading}}
+                <h1 class="heading-light-size-7 font-2"><i>{{billboard.heading}}</i></h1>
+            {{/if}}
+            {{#if billboard.subHeading}}
+                <p>{{billboard.subHeading}}</p>
+            {{/if}}
         </div>
     {{/inArray}}
 </div>

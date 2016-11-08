@@ -415,10 +415,11 @@ module.exports = function(grunt) {
                 expand: true,
                 src: '**/*.hbs',
                 options: {
-                    assets: 'app/',
+                    assets: '/',
                     environment: env,
                     theme: theme,
-                    index: '/<%= assemble.app.dest %>'
+                    index: '/',
+                    dest: '<%= assemble.app.dest %>'
                 },
             }
         },
@@ -435,7 +436,11 @@ module.exports = function(grunt) {
                 ]
             },
             options: {
-                server: './',
+                server: [
+                    './prototype',
+                    './app'
+                ],
+                open: false,
                 watchTask: true,
                 notify: false
             }
