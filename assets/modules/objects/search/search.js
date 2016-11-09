@@ -27,7 +27,7 @@
                 $(options.container).addClass(options.visibleClass);
                 setTimeout(function () {
                     $(options.container).find(options.input).focus();
-                }, baseTransition);
+                }, _baseTransition);
             });
                         
             $(options.closeTrigger).click(function() {

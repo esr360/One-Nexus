@@ -80,49 +80,12 @@
         // Components
         //*********************************************************
         
-        @include components(('avatar', 'cite')) {
-            display: inline-block;
-            vertical-align: middle;
-        }
-        
-        @include component('content') {
-            position: relative;
-            &:before,
-            &:after {
-                position: absolute;
-                font-family: FontAwesome;
-                font-size: this('icon-size');
-                color: rgba(black, 0.3);
-            }
-            @if this('left-icon') {
-                &:before {
-                    content: "\f10d";
-                    top: -0.2em;
-                    left: -1.25em;
-                }
-            }
-            @if this('right-icon') {
-                &:after {
-                    content: "\f10e";
-                    bottom: -0.2em;
-                    right: -1em;
-                }
-            }
-            @include overwrite-component('cite', $special: 'adjacent-sibling') {
-                margin-top: 1.5em;
-            }
-        }
-        
-        @include component('avatar') {
-            @include extend($parent: 'thumbnail', $modifiers: ('profile', 'round'));
-            @include overwrite-component('content', $special: 'adjacent-sibling') {
-                margin-top: 1.5em;
-            }
-        }
-        
-        @include component('cite') {
-            margin-left: 0.5em;
-            color: color('greyscale', 'white');
+        @include modifier('callout') {
+            padding: 0.75em;
+            font-size: font-size('size-4');
+            font-style: italic;
+            color: color('greyscale', 'grey-4');
+            border-left: 7px solid color('brand', 'brand-2');
         }
         
         @include component('footer') {
@@ -130,11 +93,5 @@
         }
             
     } // module
-
-    q {
-        &:before, &:after {
-            content: "";
-        }
-    }
 
 } // @mixin blockquotes

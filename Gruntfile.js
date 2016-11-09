@@ -230,7 +230,20 @@ module.exports = function(grunt) {
                 files: {
                     '<%= themeBuildStyles %>app.min.css': 'assets/app.scss'
                 }
-            } 
+            },
+            demo: {
+                options: {
+                    style: 'compressed',
+                    sourcemap: 'none'
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'demo/scss',
+                    src: ['**/*.scss'],
+                    dest: buildStyles,
+                    ext: '.css'
+                }]
+            }
         },
 
         /**
@@ -457,10 +470,12 @@ module.exports = function(grunt) {
             scss: {
                 files: [
                     'assets/modules/**/*.scss',
-                    'assets/themes/**/*.scss'
+                    'assets/themes/**/*.scss',
+                    'demo/scss/**/*.scss'
                 ],
                 tasks: [ 
                     'sass:' + env, 
+                    'sass:demo', 
                     'postcss',
                     //'scsslint',
                     'mochacli:scss',
@@ -565,6 +580,7 @@ module.exports = function(grunt) {
             'copy:images',
             'concat',
             'sass:' + environment,
+            'sass:demo',
             'postcss',
             'lint',
             'test',

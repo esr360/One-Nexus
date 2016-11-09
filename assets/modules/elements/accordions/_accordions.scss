@@ -107,33 +107,32 @@
         
         @include component('title') {
             display: block;
-            padding: 1em;
             margin: 0;
+            font-weight: normal;
+            line-height: 1;
+            backface-visibility: hidden;
+            padding: this('title-padding');
             background: this('title-bg');
             color: this('title-color');
             border: this('title-border');
             border-radius: this('title-radius');
-            font-weight: normal;	
-            line-height: 1;		
             transition: core('transition');
-            backface-visibility: hidden;
             // open/close icon
             &:after {
-                content: this('icon');
                 font-family: FontAwesome;
                 float: right;
+                content: this('icon');
                 color: this('icon-color');
                 transition: core('transition');
             }
         }
         
         @include component('content') {
+            margin: 0;
+            margin-top: -1px;	
             border: this('content-border');
             border-radius: this('content-radius');
             padding: this('content-padding');
-            margin: 0;
-            margin-top: -1px;	
-            font-weight: lighter;
             background: this('content-bg');
         }
 

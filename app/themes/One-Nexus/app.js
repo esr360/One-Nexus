@@ -3190,15 +3190,21 @@ function _option(module, option) {
  */
 
 // Create a global variable for base transition duration
-window['baseTransition'] = _modules['base']['transition'].slice(0,-1) * 1000;
+window['_baseTransition'] = _modules['base']['transition'].slice(0,-1) * 1000;
 
 // Get breakpoint value
-function breakpoint(media, value) {
+function _breakpoint(media, value) {
     if (value.indexOf('break') == 0) {
         return window.matchMedia('(' + media + ':' + _modules['grid']['breakpoints'][value] + ')').matches;
     } else {
         return window.matchMedia('(' + media + ':' + value + ')').matches;
     }
+}
+
+// Return a modifier
+function _modifier(modifier, glue) {
+    glue = glue || '-';
+    return '[class*="' + glue + modifier + '"]';
 }
 
 $(document).ready(function() {
@@ -3407,17 +3413,25 @@ $(document).ready(function() {
 (function ($) {
 
     /**
-     * KAYZEN
-     * @module: 'accordion'
-     * @author: @esr360
+     * Accordions
+     * 
+     * @access public
+     * @author [@esr360](http://twitter.com/esr360)
+     * @param {object} custom - where custom config will be passed
+     * 
+     * @example
+     *     $('.accordion').accordion({
+     *         activeClass: 'toggled',
+     *         animationSpeed: 0.5s
+     *     });
      */
     $.fn.accordion = function(custom) {
         
         // Options
         var options = $.extend({
             activeClass      : 'active',
-            animationSpeed   : baseTransition,
-            keepOpenSelector : '[class*="-keep-open"]'
+            animationSpeed   : _baseTransition,
+            keepOpenSelector : _modifier('keep-open')
         }, custom);
         
         // Run the code on each occurance of the target
@@ -3640,7 +3654,7 @@ $(document).ready(function() {
             navItem     : 'li',
             item        : '[class*="tabs_item"]',
             activeClass : 'active',
-            transition  : baseTransition/2
+            transition  : _baseTransition/2
         }, custom);
         
         // Run the code on each occurance of the element
@@ -3919,11 +3933,11 @@ $(document).ready(function() {
             }
             
             $(window).load(function() {
-                delayCarousel(footerTestimonials, baseTransition)
+                delayCarousel(footerTestimonials, _baseTransition)
             });
             
             $('#toggleHeader').click(function() {
-                delayCarousel(footerTestimonials, baseTransition)
+                delayCarousel(footerTestimonials, _baseTransition)
             });
             
         } // testimonials()
@@ -4179,7 +4193,7 @@ $(document).ready(function() {
             preloader.addClass('preloader-loaded');
             setTimeout(function() {
                 preloader.hide();
-            }, baseTransition);
+            }, _baseTransition);
         }
         
         $(window).bind('load', function() {
@@ -4261,7 +4275,7 @@ $(document).ready(function() {
                 $(options.container).addClass(options.visibleClass);
                 setTimeout(function () {
                     $(options.container).find(options.input).focus();
-                }, baseTransition);
+                }, _baseTransition);
             });
                         
             $(options.closeTrigger).click(function() {

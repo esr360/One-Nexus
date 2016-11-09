@@ -16,6 +16,10 @@
             {{#if billboard.subHeading}}
                 <p>{{billboard.subHeading}}</p>
             {{/if}}
+            {{#if billboard.resource}}
+                <i class="fa fa-{{billboard.resource.icon}}"></i>
+                <a href="{{billboard.resource.link}}" target="blank">{{billboard.resource.text}}</a>
+            {{/if}}
         </div>
     {{/inArray}}
 </div>

@@ -27,7 +27,10 @@
     /// Elements
     ///************************************************************
 
-	@include accordions;
+	@include accordions((
+        'title-active-bg': color('brand', 'brand-2')
+    ));
+    
 	@include alert-bars;
 	@include blockquotes;
 	@include buttons;

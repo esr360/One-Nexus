@@ -1,17 +1,25 @@
 (function ($) {
 
     /**
-     * KAYZEN
-     * @module: 'accordion'
-     * @author: @esr360
+     * Accordions
+     * 
+     * @access public
+     * @author [@esr360](http://twitter.com/esr360)
+     * @param {object} custom - where custom config will be passed
+     * 
+     * @example
+     *     $('.accordion').accordion({
+     *         activeClass: 'toggled',
+     *         animationSpeed: 0.5s
+     *     });
      */
     $.fn.accordion = function(custom) {
         
         // Options
         var options = $.extend({
             activeClass      : 'active',
-            animationSpeed   : baseTransition,
-            keepOpenSelector : '[class*="-keep-open"]'
+            animationSpeed   : _baseTransition,
+            keepOpenSelector : _modifier('keep-open')
         }, custom);
         
         // Run the code on each occurance of the target
