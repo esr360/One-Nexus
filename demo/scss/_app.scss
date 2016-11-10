@@ -27,9 +27,7 @@ $to-JSON: true;
 @import "../../assets/modules/utilities/grid/grid";
 @import "../../assets/modules/utilities/color-palette/color-palette";
 @import "../../assets/modules/utilities/typography/typography";
-@import "../../assets/modules/utilities/core/core";
 @import "../../assets/modules/utilities/helpers/helpers";
-@import "../../assets/modules/utilities/print/print";
 @import "../../assets/modules/utilities/sections/sections";
 
 // Elements
@@ -73,6 +71,7 @@ $to-JSON: true;
 @include palettes;
 
 @include typography((
+    'import-fonts': false,
     'colors':(
         'link' : color('brand', 'brand-2')
     )
@@ -92,8 +91,20 @@ $grid: map-merge-deep((
     )
 ), $kayzenGS);
 
+$core:(
+    'name'        : 'base',
+    'output-json' : true,
+    'background'  : color('greyscale', 'grey-1'),
+    'font-family' : typography('typefaces', 'primary'),
+    'text-color'  : typography('colors', 'base'),
+    'font-size'   : typography('sizes', 'base'),
+    'margin'      : 2rem,
+    'line-height' : 1.4,
+    'radius'      : 0.4em,
+    'oval-radius' : 1.5em,
+    'transition'  : 0.4s
+)!global;
+
 @function breakpoint($breakpoint) {
     @return kgs-breakpoint($breakpoint);
 }
-
-@include core;

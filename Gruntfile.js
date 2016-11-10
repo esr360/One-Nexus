@@ -240,7 +240,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'demo/scss',
                     src: ['**/*.scss'],
-                    dest: buildStyles,
+                    dest: 'demo/css',
                     ext: '.css'
                 }]
             }

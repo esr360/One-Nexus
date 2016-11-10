@@ -27,6 +27,7 @@
             'primary'   : ('Raleway', '100,300,700,900'),
             'secondary' : ('Arapey', '400,400i')
         ),
+        'import-fonts'  : true,
         'colors':(
             'base'      : color('greyscale', 'grey-4'),
             'heading'   : color('greyscale', 'grey-5'),
@@ -63,7 +64,9 @@
         $google-font: $font-family + ':' + $font-styles;
 
         // import the font from the Google Fonts API
-        @import url(http://fonts.googleapis.com/css?family=#{$google-font});
+        @if this('import-fonts') {
+            @import url(http://fonts.googleapis.com/css?family=#{$google-font});
+        }
 
         .font-#{$i} {
             font-family: $font-family;
