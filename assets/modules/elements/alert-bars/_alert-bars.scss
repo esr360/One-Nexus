@@ -19,13 +19,10 @@
     //*************************************************************
 
     $alert-bars: config((
-        'name'          : 'alert-bar',
-        'colors'        : palette('alert'),
-        'border-radius' : 0.25em,
-        'border-width'  : 1px,
-        'padding'       : 0.85em,
-        'font-size'     : 0.9em,
-        'font-weight'   : lighter
+        'name'       : 'alert-bar',
+        'colors'     : palette('alert'),
+        'text-color' : color('greyscale', 'white'),
+        'padding'    : 0.85em
     ), $custom);
 
     //*************************************************************
@@ -42,12 +39,8 @@
         position: relative;
 
         // Public styles
-        border-color: rgba(black, 0.15); // @TODO add to config
         padding: this('padding');
-        border: this('border-width') solid;
-        font-size: this('font-size');
-        border-radius: this('border-radius');
-        font-weight: this('font-weight');
+        color: this('text-color');
 
         // Pseudo States
         //*********************************************************
@@ -76,35 +69,23 @@
 
         @each $name, $color in this('colors') {
             @include modifier($name) {
-                background-color: alert-bg($color);
-                color: alert-text($color);
+                background-color: $color;
+            }
+        }
+
+        //*********************************************************
+        // Components
+        //*********************************************************
+
+        @include component('icon') {
+            margin-right: 0.5em;
+            @include modifier('right') {
+                float: right;
+                margin-left: 0.5em;
+                margin-right: 0;
             }
         }
 
     } // module
 
 } // @mixin alert-bars
-
-//*****************************************************************
-// Utilities
-//*****************************************************************
-
-/// Function to get color for alert background
-///
-/// @access private
-/// @group elements
-/// @param {color} $color - the alert color to be adjusted for the background
-/// @return {color} - the new color for alert background
-@function alert-bg($color) {
-    @return desaturate(lighten($color, 40%), 30%);
-}
-
-/// Function to get color for alert text
-///
-/// @access private
-/// @group elements
-/// @param {color} $color - the alert color to be adjusted for text
-/// @return {color} - the new color for alert text
-@function alert-text($color) {
-    @return desaturate(darken($color, 20%), 25%);
-}

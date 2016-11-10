@@ -3431,7 +3431,7 @@ $(document).ready(function() {
         var options = $.extend({
             activeClass      : 'active',
             animationSpeed   : _baseTransition,
-            keepOpenSelector : _modifier('keep-open')
+            keepOpenSelector : _modifier('keepOpen')
         }, custom);
         
         // Run the code on each occurance of the target

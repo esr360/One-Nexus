@@ -2,7 +2,7 @@
     {{#inArray billboard.modifiers 'fullscreen'}}
         <div class="billboard_wrapper{{#if wide}}-wide{{/if}} text-center">
             {{#if billboard.heading}}
-                <h1 class="heading-light-size-9 font-2"><i>{{billboard.heading}}</i></h1>
+                <h1 class="heading-light-size-9 font-2">{{billboard.heading}}</h1>
             {{/if}}
             {{#if billboard.subHeading}}
                 <p>{{billboard.subHeading}}</p>
@@ -11,7 +11,7 @@
     {{else}}
         <div class="billboard_wrapper{{#is layout 'base-wide.hbs'}}-wide{{/is}}">
             {{#if billboard.heading}}
-                <h1 class="heading-light-size-7 font-2"><i>{{billboard.heading}}</i></h1>
+                <h1 class="heading-light-size-7-heavy font-2">{{billboard.heading}}</h1>
             {{/if}}
             {{#if billboard.subHeading}}
                 <p>{{billboard.subHeading}}</p>

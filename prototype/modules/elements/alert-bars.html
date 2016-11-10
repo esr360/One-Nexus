@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en-GB">
+
+    <head>
+        <title>One Nexus</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <link href="../../../../../../../../themes/One-Nexus/app.css" rel="stylesheet">
+    </head>
+
+    <body class="">
+        <header class="app-header-absolute-sticky">
+            <div class="app-header_wrapper">
+                <div class="logo">
+                    <a href="/" alt="One-Nexus logo">
+                        <img src="../../../../../../../../images/logo-light.png" alt="One Nexus Logo">
+                    </a>
+                </div>
+                <nav class="navigation">
+                    <ul>
+                        <li>
+                            <a href="/modules/">Modules</a>
+                            <ul>
+                                <li><a href="/modules/elements/">Elements</a></li>
+                                <li><a href="/modules/objects/">Objects</a></li>
+                                <li><a href="/modules/utilities/">Utilities</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/grid-system.html">Grid System</a>
+                        </li>
+                        <li>
+                            <a href="/features.html">Features</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+
+    <div class="billboard">
+            <div class="billboard_wrapper">
+                    <h1 class="heading-light-size-7-heavy font-2">Alert Bars</h1>
+                    <i class="fa fa-github-alt"></i>
+                    <a href="https://github.com/esr360/One-Nexus/tree/master/assets/modules/elements/alert-bars" target="blank">/assets/modules/elements/alert-bars</a>
+            </div>
+    </div>
+<main id="site-content">
+        <div class="container-section">
+
+        <nav class="breadcrumb">
+            <ul> 
+                <li><a href="/modules">modules</a></li><li><a href="/modules/elements">elements</a></li>
+                <li class="current">alert-bars</li>
+            </ul>
+        </nav>
+    
+
+
+
+<h3 class="heading-size-5-light">Quick Look</h3>
+
+<p class="alert-bar-help">A helpful alert bar.</p>
+<p class="alert-bar-info">An informative alert bar.</p>
+<p class="alert-bar-success">A successful alert bar.</p>
+<p class="alert-bar-error">An error alert bar.</p>
+
+<h3 class="heading-size-5">Sass</h3>
+
+<p>Load the alert bar styles by including the <code>alert-bars()</code> mixin:</p>
+
+<pre><code>@include alert-bars();</code></pre>
+
+<p>The following options can be passed to the mixin to customize the alert bars:</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>name</td>
+            <td>The name used when generating the CSS selector</td>
+            <td><code>'alert-bar'</code></td>
+        </tr>
+        <tr>
+            <td>colors</td>
+            <td>A Sass map where the key will be used as a modifier and the value will be used as the color</td>
+            <td><code>palette('alert')</code></td>
+        </tr>
+        <tr>
+            <td>text-color</td>
+            <td>Text color for alert bars</td>
+            <td><code>color('greyscale', 'white')</code></td>
+        </tr>
+        <tr>
+            <td>padding</td>
+            <td>Padding for alert bars</td>
+            <td><code>0.85em</code></td>
+        </tr>
+    </tbody>
+</table>
+
+<p>The above options can be passed to the mixin like so:</p>
+
+<pre><code>@include alert-bars((
+    'colors':(
+        'carrot': #F97E52,
+        'error' : #DA4D44,
+        'rose'  : #D870AD
+    )
+));</code></pre>
+
+<p>The above example produces the following alert bars (custom values will be recursively merged with default values):</p>
+
+<p class="alertBarDemo-1-carrot">A carrot alert bar.</p>
+<p class="alertBarDemo-1-rose">A rose alert bar.</p>
+<p class="alertBarDemo-1-help">A helpful alert bar.</p>
+<p class="alertBarDemo-1-info">An informative alert bar.</p>
+<p class="alertBarDemo-1-success">A successful alert bar.</p>
+<p class="alertBarDemo-1-error">An error alert bar.</p>
+
+<h3 class="heading-size-5">Markup</h3>
+
+<h4 class="heading-size-3">Default</h4>
+
+<pre><code class="html">&lt;div class="alert-bar-success">A successful alert bar.&lt;/div>
+&lt;p class="alert-bar-error">An error alert bar.&lt;/p>
+&lt;div class="alert-bar-info">&lt;p>An informative alert bar.&lt;/p>&lt;/div></code></pre>
+
+<h4 class="heading-size-3">With Icon</h4>
+
+<p class="alert-bar-success"><i class="alert-bar_icon fa fa-check" aria-hidden="true"></i> A successful alert bar.</p>
+<p class="alert-bar-error"><i class="alert-bar_icon fa fa-times" aria-hidden="true"></i> An error alert bar.</p>
+
+<pre><code class="html">&lt;div class="alert-bar-success">&lt;i class="alert-bar_icon fa fa-times">&lt;/i> A successful alert bar.&lt;/div>
+&lt;div class="alert-bar-error">&lt;i class="alert-bar_icon fa fa-times">&lt;/i> An error alert bar.&lt;/div></code></pre>
+
+<h4 class="heading-size-3">With Right-Aligned Icon</h4>
+
+<p class="alert-bar-error"><i class="alert-bar_icon-right fa fa-times" aria-hidden="true"></i> An error alert bar.</p>
+
+<pre><code class="html">&lt;div class="alert-bar-success">&lt;i class="alert-bar_icon-right fa fa-times">&lt;/i> A successful alert bar.&lt;/div></code></pre>
+
+<!-- Cloak & dagger UI -->
+
+<link rel="stylesheet" href="/css/alert-bars.css" />
+
+<div id="demoConfig"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/monokai-sublime.min.css" />
+<script>hljs.initHighlightingOnLoad();</script>
+<style>
+    .hljs code { 
+        font-family : monospace;
+        font-size: 1em; 
+    }
+</style>
+
+        </div>
+</main>
+
+        <footer class="footer">
+            <div class="footer_wrapper">
+                <div class="footer_copyright">2016 Edmund Reed</div>
+                <nav class="footer_nav">
+                    <ul>
+                        <li>
+                            <a href="#">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Link 3</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>    </body>
+
+    <div id="modulesConfigJSON"></div>
+
+        <script src="http://code.jquery.com/jquery-2.2.4.min.js" crossorigin="anonymous"></script>
+
+        <script src="../../../../../../../../themes/One-Nexus/app.js"></script>
+
+</html>

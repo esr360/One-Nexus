@@ -45,7 +45,7 @@
 
     <div class="billboard">
             <div class="billboard_wrapper">
-                    <h1 class="heading-light-size-7 font-2"><i>Accordions</i></h1>
+                    <h1 class="heading-light-size-7-heavy font-2">Accordions</h1>
                     <i class="fa fa-github-alt"></i>
                     <a href="https://github.com/esr360/One-Nexus/tree/master/assets/modules/elements/accordions" target="blank">/assets/modules/elements/accordions</a>
             </div>
@@ -197,7 +197,7 @@
 
 <p>The above options can be passed to the mixin like so:</p>
 
-<pre><code class="sass">@include accordions((
+<pre><code>@include accordions((
     'section-margin': 1.4em,
     'icon': '\f101',
     'title-bg': #23241f,
@@ -261,7 +261,7 @@ $(_accordion).accordion();</code></pre>
         <tr>
             <td>keepOpenSelector</td>
             <td>The selector to use on the main module to allow multiple sections to be open simultaneously</td>
-            <td><code>_modifier('keep-open')</code></td>
+            <td><code>_modifier('keepOpen')</code></td>
         </tr>
     </tbody>
 </table>
@@ -270,7 +270,7 @@ $(_accordion).accordion();</code></pre>
 
 <pre><code>$(_accordion).accordion({
     activeClass: 'toggled',
-    animationSpeed: 0.5s
+    animationSpeed: 500
 });</code></pre>
 
 <h3 class="heading-size-5">Markup</h3>
@@ -289,6 +289,28 @@ $(_accordion).accordion();</code></pre>
         &lt;div class="accordion_content">
             &lt;p>Lorem ipsum.&lt;/p>
         &lt;/div>
+    &lt;/div>
+&lt;/div></code></pre>
+
+<h4 class="heading-size-3">Open by Default</h4>
+
+<pre><code class="html">&lt;div class="accordion">
+    &lt;div class="accordion_section active">
+        ...
+    &lt;/div>
+    &lt;div class="accordion_section">
+        ...
+    &lt;/div>
+&lt;/div></code></pre>
+
+<h4 class="heading-size-3">Multiple Open Sections</h4>
+
+<pre><code class="html">&lt;div class="accordion-keepOpen">
+    &lt;div class="accordion_section">
+        ...
+    &lt;/div>
+    &lt;div class="accordion_section">
+        ...
     &lt;/div>
 &lt;/div></code></pre>
 
