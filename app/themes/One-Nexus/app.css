@@ -5172,9 +5172,6 @@ pre:last-child, hr:last-child,
   color: #a4a9ac;
   border-left: 7px solid #06d2ff;
 }
-.blockquote_footer, [class*="blockquote_footer-"] {
-  margin-top: 1em;
-}
 
 .button, [class*="button-"] {
   display: inline-block;

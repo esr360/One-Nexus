@@ -87,10 +87,6 @@
             color: lighten(color('greyscale', 'grey-4'), 20%);
             border-left: 7px solid color('brand', 'brand-2');
         }
-        
-        @include component('footer') {
-            margin-top: 1em;			
-        }
             
     } // module
 
