@@ -63,6 +63,8 @@
 
 
 
+<h3 class="heading-size-5-light">Quick Look</h3>
+
 <div class="accordion">
     <div class="accordion_section">
         <div class="accordion_title">Accordion Title</div>
@@ -102,7 +104,7 @@
         </tr>
         <tr>
             <td>icon</td>
-            <td>The <a href="http://astronautweb.co/snippet/font-awesome/" target="blank">>content value</a> for a Font Awesome icon</td>
+            <td>The <a href="http://astronautweb.co/snippet/font-awesome/" target="blank">content value</a> for a Font Awesome icon</td>
             <td><code>'\f138'</code></td>
         </tr>
         <tr>
@@ -195,9 +197,16 @@
 
 <p>The above options can be passed to the mixin like so:</p>
 
-<pre><code class="css">@include accordions((
-    'title-bg': blue,
-    'title-color': #ffffff
+<pre><code class="sass">@include accordions((
+    'section-margin': 1.4em,
+    'icon': '\f101',
+    'title-bg': #23241f,
+    'title-color': white,
+    'title-radius': 0.4em,
+    'title-active-bg': #9B58B5,
+    'title-active-radius': 0.4em 0.4em 0 0,
+    'content-padding': 1em,
+    'content-radius': 0 0 0.4em 0.4em
 ));</code></pre>
 
 <p>The above example produces the following accordion:</p>
@@ -282,6 +291,23 @@ $(_accordion).accordion();</code></pre>
         &lt;/div>
     &lt;/div>
 &lt;/div></code></pre>
+
+<!-- Cloak & dagger UI -->
+
+<link rel="stylesheet" href="/css/accordions.css" />
+<script>
+    (function() {
+        var runMyCode = function($) {
+            $('.accordionDemo-1').accordion();
+        };
+        var timer = function() {
+            if (window.jQuery) {
+                runMyCode(window.jQuery);
+            } else { window.setTimeout(timer, 100) }
+        };
+        timer();
+    })();
+</script>
 
 <div id="demoConfig"></div>
 

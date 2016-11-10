@@ -105,6 +105,10 @@ $core:(
     'transition'  : 0.4s
 )!global;
 
+@function core($key) {
+    @return map-get($core, $key);
+}
+
 @function breakpoint($breakpoint) {
     @return kgs-breakpoint($breakpoint);
 }

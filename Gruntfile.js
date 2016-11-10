@@ -445,12 +445,14 @@ module.exports = function(grunt) {
             bsFiles: {
                 src : [
                     'app/**/*.css', 
+                    'demo/**/*.css', 
                     'prototype/**/*.html'
                 ]
             },
             options: {
                 server: [
                     './prototype',
+                    './demo',
                     './app'
                 ],
                 open: false,

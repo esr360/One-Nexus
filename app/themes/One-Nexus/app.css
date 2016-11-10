@@ -344,7 +344,8 @@
 :root .fa-rotate-270,
 :root .fa-flip-horizontal,
 :root .fa-flip-vertical {
-  filter: none;
+  -webkit-filter: none;
+          filter: none;
 }
 
 .fa-stack {
@@ -3090,7 +3091,8 @@ span.enlighterEnlighterJS {
     background: transparent !important;
     color: black !important;
     text-shadow: none !important;
-    filter: none !important;
+    -webkit-filter: none !important;
+            filter: none !important;
     -ms-filter: none !important;
   }
 
@@ -5079,6 +5081,7 @@ pre:last-child, hr:last-child,
 .accordion_title:after, [class*="accordion_title-"]:after {
   font-family: FontAwesome;
   float: right;
+  line-height: 0.75;
   content: "";
   color: rgba(191, 193, 195, 0.6);
   transition: 0.4s;
@@ -5929,7 +5932,7 @@ button::-moz-focus-inner {
 }
 [class*="heading-"][class*="-light"] {
   font-weight: lighter;
-  font-weight: 100;
+  font-weight: 300;
   font-style: normal;
 }
 [class*="heading-"][class*="-highlight"] {
