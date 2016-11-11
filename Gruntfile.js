@@ -24,8 +24,7 @@ module.exports = function(grunt) {
      * @var {object} themes
      */
     var themes = grunt.option('themes') || [
-        'default',
-        'One-Nexus'
+        'default', 'One-Nexus'
     ]
     
     /**
@@ -35,7 +34,8 @@ module.exports = function(grunt) {
     var env = grunt.option('env') || 'dev';
 
     /**
-     * Abstract the project's architecture into one Grunt can use
+     * Map the project's architecture into one Grunt can use
+     * @var {object} project
      */
     var project = {
         dist:[         'app/', {
@@ -66,42 +66,6 @@ module.exports = function(grunt) {
             styles:    'test/sass/'
         }]
     }
-    
-    /**
-     * Set the relative path to the target theme's source assets
-     * @var {string} themePath
-     */
-    var themePath = 'themes/<%= theme %>/';
-
-    /**
-     * Set the path to the compiled global scripts directory
-     * @var {string} buildScripts
-     */
-    var buildScripts = 'app/scripts/';
-
-    /**
-     * Set the path to the compiled global styles directory
-     * @var {string} buildStyles
-     */
-    var buildStyles  = 'app/styles/';
-    
-    /**
-     * Set the path to the compiled theme scripts directory
-     * @var {string} buildStyles
-     */
-    var themeBuildScripts = 'app/' + themePath;
-
-    /**
-     * Set the path to the compiled theme styles directory
-     * @var {string} buildStyles
-     */
-    var themeBuildStyles  = 'app/' + themePath;
-
-    /**
-     * Set the path to the vendor directory
-     * @var {string} vendor
-     */
-    var vendor  = 'assets/vendor/';
 
     /**
      * Set which Owl-Carousel modules you would like to use
@@ -142,17 +106,21 @@ module.exports = function(grunt) {
      * Set all global scripts to be used by the project
      * @var {object} _globalScripts
      */
-    var _globalScripts = [
-        project.source[1].vendor + 'jQuery/dist/jquery.js',
-        project.source[1].vendor + 'pseudojQuery/src/pseudojQuery-start.js',
-        project.source[1].vendor + 'pseudojQuery/src/pseudojQuery-end.js'
-    ];
+    var _globalScripts = [];
 
     /**
      * Set all global styles to be used by the project
      * @var {object} _globalStyles
      */
     var _globalStyles = [];
+
+    /**
+     * The name of your project's compiled & distributed asset
+     * @var {string} dist
+     * @example
+     * '/' + dist + '.css'
+     */
+    var dist = 'app';
     
     /**************************************************************
      * Packages
@@ -162,7 +130,8 @@ module.exports = function(grunt) {
 		
         pkg: grunt.file.readJSON('package.json'),
 
-        themeBuildStyles: themeBuildStyles,
+        // Pass the theme variable to allow it to be dynamic
+        theme: theme,
 
         /**
          * Grunt Text Replace
@@ -170,7 +139,7 @@ module.exports = function(grunt) {
          */
         replace: {
             sassTheme: {
-                src: project.source[0] + 'app.scss',
+                src: project.source[0] + dist + '.scss',
                 overwrite: true, 
                 replacements: [{
                     from: /\$theme(.*?);/g,
@@ -184,10 +153,9 @@ module.exports = function(grunt) {
          * @see https://github.com/gruntjs/grunt-contrib-clean
          */
         clean: {
-            app: [
+            dist: [
                 project.dist[0] + '*', 
-                '!' + project.dist[1].themes[0] + '**', 
-                '!' + project.dist[1].images + '**'
+                '!' + project.dist[1].themes[0] + '**'
             ],
             scripts: [
                 project.dist[1].themes[1].theme + '**/*.js', 
@@ -210,23 +178,23 @@ module.exports = function(grunt) {
          * @see https://github.com/gruntjs/grunt-contrib-copy
          */
         copy: {
-            app: {
+            dist: {
                 files: [
                     {
-                        cwd: vendor + 'Font-Awesome/fonts',
+                        cwd: project.source[1].vendor + 'Font-Awesome/fonts',
                         src: '**/*',
-                        dest: 'app/fonts',
+                        dest: project.dist[0] + 'fonts',
                         expand: true
                     },
                     {
                         src: [_globalScripts],
-                        dest: buildScripts,
+                        dest: project.dist[1].scripts,
                         expand: true,
                         flatten: true
                     },
                     {
                         src: [_globalStyles],
-                        dest: buildStyles,
+                        dest: project.dist[1].styles,
                         expand: true,
                         flatten: true
                     }
@@ -234,9 +202,9 @@ module.exports = function(grunt) {
             },
             images: {
                 files: [{
-                    cwd: 'assets/images',
+                    cwd: project.source[1].images,
                     src: '**/*',
-                    dest: 'app/images',
+                    dest: project.dist[1].images,
                     expand: true
                 }]
             }
@@ -252,7 +220,8 @@ module.exports = function(grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    '<%= themeBuildStyles %>app.css': 'assets/app.scss'
+                    [project.dist[1].themes[1].theme + dist + '.css']: 
+                    project.source[0] + dist + '.scss'
                 }
             },
             prod: {
@@ -261,7 +230,8 @@ module.exports = function(grunt) {
                     sourcemap: 'none'
                 },
                 files: {
-                    '<%= themeBuildStyles %>app.min.css': 'assets/app.scss'
+                    [project.dist[1].themes[1].theme + dist + '.min.css']: 
+                    project.source[0] + dist + '.scss'
                 }
             },
             demo: {
@@ -284,20 +254,20 @@ module.exports = function(grunt) {
          * @see https://github.com/gruntjs/grunt-contrib-cssmin
          */
         cssmin: {
-            target: {
+            dist: {
                 files: [
                     {
                         expand: true,
-                        cwd: themeBuildStyles,
+                        cwd: project.dist[1].themes[1].theme,
                         src: ['*.css', '!*.min.css'],
-                        dest: themeBuildStyles,
+                        dest: project.dist[1].themes[1].theme,
                         ext: '.min.css'
                     },
                     {
                         expand: true,
-                        cwd: buildStyles,
+                        cwd: project.dist[1].styles,
                         src: ['*.css', '!*.min.css'],
-                        dest: buildStyles,
+                        dest: project.dist[1].styles,
                         ext: '.min.css'
                     }
                 ]
@@ -320,8 +290,11 @@ module.exports = function(grunt) {
                     })
                 ]
             },
-            build: {
-                src: themeBuildStyles + '*.css'
+            dist: {
+                src: [
+                    project.dist[1].styles + '**/*.css',
+                    project.dist[1].themes[1].theme + '**/*.css'
+                ]
             }
         },
 
@@ -330,9 +303,9 @@ module.exports = function(grunt) {
          * @see https://github.com/gruntjs/grunt-contrib-concat
          */
         concat: {
-            app: {
+            dist: {
                 src: _scripts,
-                dest: themeBuildScripts + 'app.js',
+                dest: project.dist[1].scripts + dist + '.js',
             }
         },
 
@@ -346,10 +319,10 @@ module.exports = function(grunt) {
                     drop_console: true
                 }
             },
-            app: {
+            dist: {
                 files: [{ 
-                    src: 'app/scripts/*.js',
-                    dest: buildScripts,
+                    src: project.dist[1].scripts + '*.js',
+                    dest: project.dist[1].scripts,
                     expand: true,
                     flatten: true,
                     rename: function(dest, src) { 
@@ -359,8 +332,8 @@ module.exports = function(grunt) {
             },
             themes: {
                 files: [{ 
-                    src: 'app/' + themePath + '**/*.js',
-                    dest: themeBuildScripts,
+                    src: project.dist[1].themes[1].theme + '**/*.js',
+                    dest: project.dist[1].scripts,
                     expand: true,
                     flatten: true,
                     rename: function(dest, src) { 
@@ -375,9 +348,9 @@ module.exports = function(grunt) {
          * @see https://github.com/ahmednuaman/grunt-scss-lint
          */
         scsslint: {
-            allFiles: [
-                'assets/modules/**/*.scss',
-                'assets/themes/**/*.scss'
+            source: [
+                project.source[0] + '**/*.scss',
+                '!' + project.source[1].vendor
             ],
             options: {
                 config: '.scss-lint.yml',
@@ -390,11 +363,10 @@ module.exports = function(grunt) {
          * @see https://github.com/gruntjs/grunt-contrib-jshint
          */
         jshint: {
-            app: [
+            source: [
                 'Gruntfile.js', 
-                'assets/includes/**/*.js',
-                'assets/modules/**/*.js',
-                'assets/themes/**/*.js'
+                project.source[0] + '**/*.js',
+                '!' + project.source[1].vendor + '**/*'
             ]
         },
 
@@ -404,7 +376,7 @@ module.exports = function(grunt) {
          * @see https://github.com/Rowno/grunt-mocha-cli
          */
         mochacli: {
-            scss: ['unit-testing/sass/tests.js']
+            scss: [project.test[1].styles + 'tests.js']
         },
 
         /**
@@ -412,13 +384,13 @@ module.exports = function(grunt) {
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
         sassdoc: {
-            default: {
+            dist: {
                 src: [
-                    'assets/modules/**/*.scss',
-                    'assets/themes/**/*.scss'
+                    project.source[0] + '**/*.scss',
+                    '!' + project.source[1].vendor + '**/*'
                 ],
                 options: {
-                    dest: 'docs/sass'
+                    dest: project.docs[1].styles
                 }
             },
         },
@@ -430,13 +402,12 @@ module.exports = function(grunt) {
         jsdoc: {
             dist : {
                 src: [
-                    'Gruntfile.js',
-                    'assets/includes/**/*.js',
-                    'assets/modules/**/*.js',
-                    'assets/themes/**/*.js'
+                    'Gruntfile.js', 
+                    project.source[0] + '**/*.js',
+                    '!' + project.source[1].vendor + '**/*'
                 ],
                 options: {
-                    destination: 'docs/js'
+                    destination: project.docs[1].scripts
                 }
             }
         },
@@ -448,24 +419,23 @@ module.exports = function(grunt) {
         assemble: {
             options: {
                 layout: 'core.hbs',
-                layoutdir: 'templates/layouts/',
-                partials: 'templates/partials/**/*.hbs',
+                layoutdir: project.source[1].templates + 'layouts/',
+                partials: project.source[1].templates + 'partials/**/*.hbs',
                 helpers: [
-                    'templates/helpers/in-array.js',
-                    'templates/helpers/breadcrumb.js'
+                    project.source[1].templates + 'helpers/**/*.js'
                 ]
             },
-            app: {
-                cwd: 'templates/pages/',
-                dest: 'prototype/',
+            dist: {
+                cwd: project.source[1].templates + 'pages/',
+                dest: project.dist[1].templates,
                 expand: true,
                 src: '**/*.hbs',
                 options: {
+                    index: '/',
                     assets: '/',
                     environment: env,
                     theme: theme,
-                    index: '/',
-                    dest: '<%= assemble.app.dest %>'
+                    dest: '<%= assemble.dist.dest %>'
                 },
             }
         },
@@ -477,16 +447,16 @@ module.exports = function(grunt) {
         browserSync: {
             bsFiles: {
                 src : [
-                    'app/**/*.css', 
-                    'demo/**/*.css', 
-                    'prototype/**/*.html'
+                    project.dist[1] + '**/*.css',
+                    project.dist[1].templates + '**/*.html',
+                    'demo/**/*.css'
                 ]
             },
             options: {
                 server: [
-                    './prototype',
-                    './demo',
-                    './app'
+                    './' + project.dist[1].templates,
+                    './' + project.dist[0],
+                    './demo'
                 ],
                 open: false,
                 watchTask: true,
@@ -504,9 +474,8 @@ module.exports = function(grunt) {
             },
             scss: {
                 files: [
-                    'assets/app.scss',
-                    'assets/modules/**/*.scss',
-                    'assets/themes/**/*.scss',
+                    project.source[0] + dist + '.scss',
+                    project.source[0] + '**/*.scss',
                     'demo/scss/**/*.scss'
                 ],
                 tasks: [ 
@@ -529,14 +498,14 @@ module.exports = function(grunt) {
                 ]
             },
             images: {
-                files: 'assets/images/**/*',
+                files: project.source[1].images + '**/*',
                 tasks: [
                     'clean:images',
                     'copy:images'
                 ]
             },
             templates: {
-                files: 'templates/**/*',
+                files: project.source[1].templates + '**/*',
                 tasks: [
                     'assemble',
                     'notify:templates'
@@ -567,7 +536,7 @@ module.exports = function(grunt) {
                     message: 'All templates have been successfully compiled!'
                 }
             },
-            app: {
+            dist: {
                 options: {
                     title: 'App Built',
                     message: 'Your app has been successfully built!'
@@ -607,12 +576,12 @@ module.exports = function(grunt) {
      * Compile Assets
      * @param {(env|prod)} environment
      */
-    var gruntCompile = function(environment) {
-        var assetTasks = [
-            'clean:app',
+    var compile = function(environment) {
+        var tasks = [
+            'clean:dist',
             'clean:theme',
             'replace:sassTheme',
-            'copy:app',
+            'copy:dist',
             'copy:images',
             'concat',
             'sass:' + environment,
@@ -624,14 +593,14 @@ module.exports = function(grunt) {
             'docs'
         ];
         if (environment == 'prod') {
-            assetTasks.push(
+            tasks.push(
                 'uglify', 
                 'clean:scripts',
                 'cssmin',
                 'clean:styles'
             );
         };
-        return assetTasks;
+        return tasks;
     };
     
     // Default Grunt task
@@ -642,12 +611,12 @@ module.exports = function(grunt) {
     ]);
       
     // Compile the app
-    grunt.registerTask('compile', gruntCompile(env));
+    grunt.registerTask('compile', compile(env));
 
     // Compile a specific theme
-    grunt.registerTask('theme', function(targetTheme) {
-        targetTheme = targetTheme || theme;
-        grunt.config('theme', targetTheme);
+    grunt.registerTask('theme', function(target) {
+        target = target || theme;
+        grunt.config('theme', target);
         grunt.task.run('compile');
     });
 
