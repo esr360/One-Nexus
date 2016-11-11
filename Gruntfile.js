@@ -33,9 +33,42 @@ module.exports = function(grunt) {
      * @var {('dev'|'prod')} [dev] env
      */
     var env = grunt.option('env') || 'dev';
+
+    /**
+     * Abstract the project's architecture into one Grunt can use
+     */
+    var project = {
+        dist:[         'app/', {
+            images:    'app/images/',
+            scripts:   'app/scripts/',
+            styles:    'app/styles/',
+            themes:[   'app/themes/', {
+                theme: 'app/themes/<%= theme %>/'
+            }],
+            templates: 'prototype/',
+        }],
+        source:[       'assets/', {
+            images:    'assets/images/',
+            scripts:   'assets/modules/',
+            styles:    'assets/modules/',
+            themes:[   'assets/themes/', {
+                theme: 'assets/themes/<%= theme %>/'
+            }],
+            templates: 'templates/',
+            vendor:    'assets/vendor/'
+        }],
+        docs:[         'docs/', {
+            scripts:   'docs/js/',
+            styles:    'docs/sass/'
+        }],
+        test:[         'test/', {
+            scripts:   'test/js/',
+            styles:    'test/sass/'
+        }]
+    }
     
     /**
-     * Set the relative path to the current theme's source assets
+     * Set the relative path to the target theme's source assets
      * @var {string} themePath
      */
     var themePath = 'themes/<%= theme %>/';
@@ -75,7 +108,7 @@ module.exports = function(grunt) {
      * @see https://git.io/v6ssU
      */
     var _owl = function() {
-        var owlPath = vendor + 'Owl-Carousel/src/js/'; 
+        var owlPath = project.source[1].vendor + 'Owl-Carousel/src/js/'; 
         var owlModules = [
             owlPath + 'owl.carousel.js',
             owlPath + 'owl.animate.js',
@@ -96,13 +129,13 @@ module.exports = function(grunt) {
      */
     var _scripts = [
         _owl(),
-        vendor + 'matchMedia/matchMedia.js',
-        vendor + 'Synergy/dist/synergy.js',
-        'assets/modules/utilities/core/core.js',
-        'assets/tools/**/*.js',
-        'assets/modules/elements/**/*.js',
-        'assets/modules/objects/**/*.js',
-        'assets/themes/<%= theme %>/<%= theme %>.js'
+        project.source[1].vendor + 'matchMedia/matchMedia.js',
+        project.source[1].vendor + 'Synergy/dist/synergy.js',
+        project.source[0] + 'modules/utilities/core/core.js',
+        project.source[0] + 'tools/**/*.js',
+        project.source[0] + 'modules/elements/**/*.js',
+        project.source[0] + 'modules/objects/**/*.js',
+        project.source[1].themes[1].theme + '<%= theme %>.js'
     ];
 
     /**
@@ -110,9 +143,9 @@ module.exports = function(grunt) {
      * @var {object} _globalScripts
      */
     var _globalScripts = [
-        vendor + 'jQuery/dist/jquery.js',
-        vendor + 'pseudojQuery/src/pseudojQuery-start.js',
-        vendor + 'pseudojQuery/src/pseudojQuery-end.js'
+        project.source[1].vendor + 'jQuery/dist/jquery.js',
+        project.source[1].vendor + 'pseudojQuery/src/pseudojQuery-start.js',
+        project.source[1].vendor + 'pseudojQuery/src/pseudojQuery-end.js'
     ];
 
     /**
@@ -137,7 +170,7 @@ module.exports = function(grunt) {
          */
         replace: {
             sassTheme: {
-                src: 'assets/app.scss',
+                src: project.source[0] + 'app.scss',
                 overwrite: true, 
                 replacements: [{
                     from: /\$theme(.*?);/g,
@@ -152,23 +185,23 @@ module.exports = function(grunt) {
          */
         clean: {
             app: [
-                'app/*', 
-                '!app/themes/**', 
-                '!app/images/**'
+                project.dist[0] + '*', 
+                '!' + project.dist[1].themes[0] + '**', 
+                '!' + project.dist[1].images + '**'
             ],
             scripts: [
-                'app/themes/<%= theme %>/**/*.js', 
-                '!app/themes/<%= theme %>/**/*.min.js'
+                project.dist[1].themes[1].theme + '**/*.js', 
+                '!' + project.dist[1].themes[1].theme + '**/*.min.js'
             ],
             styles: [
-                'app/**/*.css', 
-                '!app/**/*.min.css'
+                project.dist[0] + '**/*.css', 
+                '!' + project.dist[0] + '**/*.min.css'
             ],
             images: {
-                src: 'app/images'
+                src: project.dist[1].images
             },
             theme: {
-                src: 'app/themes/<%= theme %>'
+                src: project.dist[1].themes[1].theme
             }
         },
         
@@ -471,6 +504,7 @@ module.exports = function(grunt) {
             },
             scss: {
                 files: [
+                    'assets/app.scss',
                     'assets/modules/**/*.scss',
                     'assets/themes/**/*.scss',
                     'demo/scss/**/*.scss'
