@@ -43,7 +43,7 @@ module.exports = function(grunt) {
             scripts:   'app/scripts/',
             styles:    'app/styles/',
             themes:[   'app/themes/', {
-                theme: 'app/themes/<%= theme %>/'
+                theme: 'app/themes/<%=theme%>/'
             }],
             templates: 'prototype/',
         }],
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
             scripts:   'assets/modules/',
             styles:    'assets/modules/',
             themes:[   'assets/themes/', {
-                theme: 'assets/themes/<%= theme %>/'
+                theme: 'assets/themes/<%=theme%>/'
             }],
             templates: 'templates/',
             vendor:    'assets/vendor/'
@@ -99,7 +99,7 @@ module.exports = function(grunt) {
         project.source[0] + 'tools/**/*.js',
         project.source[0] + 'modules/elements/**/*.js',
         project.source[0] + 'modules/objects/**/*.js',
-        project.source[1].themes[1].theme + '<%= theme %>.js'
+        project.source[1].themes[1].theme + '<%=theme%>.js'
     ];
 
     /**
@@ -143,7 +143,7 @@ module.exports = function(grunt) {
                 overwrite: true, 
                 replacements: [{
                     from: /\$theme(.*?);/g,
-                    to: '$theme : \'<%= theme %>\';'
+                    to: '$theme : \'<%=theme%>\';'
                 }]
             }
         },
@@ -435,7 +435,7 @@ module.exports = function(grunt) {
                     assets: '/',
                     environment: env,
                     theme: theme,
-                    dest: '<%= assemble.dist.dest %>'
+                    dest: '<%=assemble.dist.dest%>'
                 },
             }
         },
