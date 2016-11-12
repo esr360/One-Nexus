@@ -79,6 +79,7 @@
 
         @include component('icon') {
             margin-right: 0.5em;
+            line-height: 1.25;
             @include modifier('right') {
                 float: right;
                 margin-left: 0.5em;
