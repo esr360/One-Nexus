@@ -8,9 +8,9 @@ $fa-font-path: "#{$asset-path}/fonts";
 $to-JSON: true;
 
 // Vendor Files
-@import "../../assets/vendor/Kayzen-GS/src/kayzen-gs";
-@import "../../assets/vendor/Sass-Boost/src/sass-boost";
-@import "../../assets/vendor/Synergy/src/scss/synergy";
+@import "../../vendor/Kayzen-GS/src/kayzen-gs";
+@import "../../vendor/Sass-Boost/src/sass-boost";
+@import "../../vendor/Synergy/src/scss/synergy";
 
 // Tools
 @import "../../assets/tools/scss/animations";

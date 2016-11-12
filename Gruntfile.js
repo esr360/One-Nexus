@@ -470,7 +470,6 @@ module.exports = function(grunt) {
             },
             scss: {
                 files: [
-                    project.source[0] + dist + '.scss',
                     project.source[0] + '**/*.scss',
                     'demo/scss/**/*.scss'
                 ],
@@ -570,7 +569,7 @@ module.exports = function(grunt) {
     
     /**
      * Compile Assets
-     * @param {(env|prod)} environment
+     * @param {('dev'|'prod')} environment
      */
     var compile = function(environment) {
         var tasks = [
@@ -606,7 +605,7 @@ module.exports = function(grunt) {
         'watch'
     ]);
       
-    // Compile the app
+    // Compile the project's assets
     grunt.registerTask('compile', compile(env));
 
     // Compile a specific theme
