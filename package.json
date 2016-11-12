@@ -23,6 +23,7 @@
     "url": "https://github.com/esr360/One-Nexus/issues"
   },
   "devDependencies": {
+    "assemble-handlebars": "^0.3.0",
     "autoprefixer": "^6.3.1",
     "bower": "^1.7.9",
     "grunt": "^0.4.5",

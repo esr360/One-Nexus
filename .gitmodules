@@ -1,18 +1,36 @@
-[submodule "assets/vendor/Synergy"]
-	path = assets/vendor/Synergy
+[submodule "vendor/Synergy"]
+	path = vendor/Synergy
 	url = https://github.com/esr360/Synergy.git
-[submodule "assets/vendor/Owl-Carousel"]
-	path = assets/vendor/Owl-Carousel
+[submodule "vendor/Owl-Carousel"]
+	path = vendor/Owl-Carousel
 	url = https://github.com/OwlCarousel2/OwlCarousel2.git
-[submodule "assets/vendor/normalize-scss"]
-	path = assets/vendor/normalize-scss
+[submodule "vendor/normalize-scss"]
+	path = vendor/normalize-scss
 	url = https://github.com/JohnAlbin/normalize-scss.git
-[submodule "assets/vendor/Kayzen-GS"]
-	path = assets/vendor/Kayzen-GS
+[submodule "vendor/Kayzen-GS"]
+	path = vendor/Kayzen-GS
 	url = https://github.com/esr360/Kayzen-GS.git
-[submodule "assets/vendor/Font-Awesome"]
-	path = assets/vendor/Font-Awesome
+[submodule "vendor/Font-Awesome"]
+	path = vendor/Font-Awesome
 	url = https://github.com/FortAwesome/Font-Awesome.git
-[submodule "assets/vendor/Sass-Boost"]
-	path = assets/vendor/Sass-Boost
+[submodule "vendor/Sass-Boost"]
+	path = vendor/Sass-Boost
 	url = https://github.com/esr360/Sass-Boost.git
+[submodule "vendor\\Synergy"]
+	path = vendor\\Synergy
+	url = https://github.com/esr360/Synergy.git
+[submodule "vendor\\Owl-Carousel"]
+	path = vendor\\Owl-Carousel
+	url = https://github.com/OwlCarousel2/OwlCarousel2.git
+[submodule "vendor\\Normalize-SCSS"]
+	path = vendor\\Normalize-SCSS
+	url = https://github.com/JohnAlbin/normalize-scss.git
+[submodule "vendor\\Sass-Boost"]
+	path = vendor\\Sass-Boost
+	url = https://github.com/esr360/Sass-Boost.git
+[submodule "vendor\\Sass-Boostgit"]
+	path = vendor\\Sass-Boostgit
+	url = https://github.com/esr360/Sass-Boost.git
+[submodule "vendor\\Font-Awesome"]
+	path = vendor\\Font-Awesome
+	url = https://github.com/FortAwesome/Font-Awesome.git

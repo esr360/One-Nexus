@@ -36,7 +36,13 @@
 	@include buttons;
 	@include carousels;
 	@include forms;
-	@include headings;
+
+	@include headings((
+        'CSS': (
+            'letter-spacing': -0.04em
+        )
+    ));
+
 	@include images;
 	@include lists;
 	@include modals;

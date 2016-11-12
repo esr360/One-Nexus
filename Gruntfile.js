@@ -55,8 +55,8 @@ module.exports = function(grunt) {
                 theme: 'assets/themes/<%=theme%>/'
             }],
             templates: 'templates/',
-            vendor:    'assets/vendor/'
         }],
+        vendor:        'vendor/',
         docs:[         'docs/', {
             scripts:   'docs/js/',
             styles:    'docs/sass/'
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
      * @see https://git.io/v6ssU
      */
     var _owl = function() {
-        var owlPath = project.source[1].vendor + 'Owl-Carousel/src/js/'; 
+        var owlPath = project.vendor + 'Owl-Carousel/src/js/'; 
         var owlModules = [
             owlPath + 'owl.carousel.js',
             owlPath + 'owl.animate.js',
@@ -93,8 +93,8 @@ module.exports = function(grunt) {
      */
     var _scripts = [
         _owl(),
-        project.source[1].vendor + 'matchMedia/matchMedia.js',
-        project.source[1].vendor + 'Synergy/dist/synergy.js',
+        project.vendor + 'matchMedia/matchMedia.js',
+        project.vendor + 'Synergy/dist/synergy.js',
         project.source[0] + 'modules/utilities/core/core.js',
         project.source[0] + 'tools/**/*.js',
         project.source[0] + 'modules/elements/**/*.js',
@@ -181,7 +181,7 @@ module.exports = function(grunt) {
             dist: {
                 files: [
                     {
-                        cwd: project.source[1].vendor + 'Font-Awesome/fonts',
+                        cwd: project.vendor + 'Font-Awesome/fonts',
                         src: '**/*',
                         dest: project.dist[0] + 'fonts',
                         expand: true
@@ -350,7 +350,6 @@ module.exports = function(grunt) {
         scsslint: {
             source: [
                 project.source[0] + '**/*.scss',
-                '!' + project.source[1].vendor
             ],
             options: {
                 config: '.scss-lint.yml',
@@ -365,8 +364,7 @@ module.exports = function(grunt) {
         jshint: {
             source: [
                 'Gruntfile.js', 
-                project.source[0] + '**/*.js',
-                '!' + project.source[1].vendor + '**/*'
+                project.source[0] + '**/*.js'
             ]
         },
 
@@ -386,8 +384,7 @@ module.exports = function(grunt) {
         sassdoc: {
             dist: {
                 src: [
-                    project.source[0] + '**/*.scss',
-                    '!' + project.source[1].vendor + '**/*'
+                    project.source[0] + '**/*.scss'
                 ],
                 options: {
                     dest: project.docs[1].styles
@@ -403,8 +400,7 @@ module.exports = function(grunt) {
             dist : {
                 src: [
                     'Gruntfile.js', 
-                    project.source[0] + '**/*.js',
-                    '!' + project.source[1].vendor + '**/*'
+                    project.source[0] + '**/*.js'
                 ],
                 options: {
                     destination: project.docs[1].scripts
