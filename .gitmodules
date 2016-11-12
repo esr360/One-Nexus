@@ -16,21 +16,3 @@
 [submodule "vendor/Sass-Boost"]
 	path = vendor/Sass-Boost
 	url = https://github.com/esr360/Sass-Boost.git
-[submodule "vendor\\Synergy"]
-	path = vendor\\Synergy
-	url = https://github.com/esr360/Synergy.git
-[submodule "vendor\\Owl-Carousel"]
-	path = vendor\\Owl-Carousel
-	url = https://github.com/OwlCarousel2/OwlCarousel2.git
-[submodule "vendor\\Normalize-SCSS"]
-	path = vendor\\Normalize-SCSS
-	url = https://github.com/JohnAlbin/normalize-scss.git
-[submodule "vendor\\Sass-Boost"]
-	path = vendor\\Sass-Boost
-	url = https://github.com/esr360/Sass-Boost.git
-[submodule "vendor\\Sass-Boostgit"]
-	path = vendor\\Sass-Boostgit
-	url = https://github.com/esr360/Sass-Boost.git
-[submodule "vendor\\Font-Awesome"]
-	path = vendor\\Font-Awesome
-	url = https://github.com/FortAwesome/Font-Awesome.git
