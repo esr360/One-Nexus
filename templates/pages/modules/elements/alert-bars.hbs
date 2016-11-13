@@ -15,6 +15,15 @@ billboard:
 <p class="alert-bar-success">A successful alert bar.</p>
 <p class="alert-bar-error">An error alert bar.</p>
 
+<blockquote class="blockquote-callout">
+    <p>Alert bars are not too strict with their markup.</p>
+</blockquote>
+
+<pre><code class="html">&lt;div class="alert-bar-help">A helpful alert bar.&lt;/div>
+&lt;p class="alert-bar-info">An informative alert bar.&lt;/p>
+&lt;div class="alert-bar-success">&lt;p>A successful alert bar.&lt;/p>&lt;/div>
+&lt;span class="alert-bar-error">An error alert bar.&lt;/span></code></pre>
+
 <h3 class="heading-size-5">Sass</h3>
 
 <p>Load the alert bar styles by including the <code>alert-bars()</code> mixin:</p>
@@ -74,27 +83,27 @@ billboard:
 <p class="alertBarDemo-1-success">A successful alert bar.</p>
 <p class="alertBarDemo-1-error">An error alert bar.</p>
 
-<h3 class="heading-size-5">Markup</h3>
-
-<h4 class="heading-size-3">Default</h4>
-
-<pre><code class="html">&lt;div class="alert-bar-success">A successful alert bar.&lt;/div>
-&lt;p class="alert-bar-error">An error alert bar.&lt;/p>
-&lt;div class="alert-bar-info">&lt;p>An informative alert bar.&lt;/p>&lt;/div></code></pre>
+<h3 class="heading-size-5">Examples</h3>
 
 <h4 class="heading-size-3">With Icon</h4>
 
 <p class="alert-bar-success"><i class="alert-bar_icon fa fa-check" aria-hidden="true"></i> A successful alert bar.</p>
 <p class="alert-bar-error"><i class="alert-bar_icon fa fa-times" aria-hidden="true"></i> An error alert bar.</p>
 
-<pre><code class="html">&lt;div class="alert-bar-success">&lt;i class="alert-bar_icon fa fa-times">&lt;/i> A successful alert bar.&lt;/div>
-&lt;div class="alert-bar-error">&lt;i class="alert-bar_icon fa fa-times">&lt;/i> An error alert bar.&lt;/div></code></pre>
+<pre><code class="html">&lt;div class="alert-bar-success">
+    &lt;i class="alert-bar_icon fa fa-times">&lt;/i> A successful alert bar.
+&lt;/div>
+&lt;div class="alert-bar-error">
+    &lt;i class="alert-bar_icon fa fa-times">&lt;/i> An error alert bar.
+&lt;/div></code></pre>
 
 <h4 class="heading-size-3">With Right-Aligned Icon</h4>
 
 <p class="alert-bar-error"><i class="alert-bar_icon-right fa fa-times" aria-hidden="true"></i> An error alert bar.</p>
 
-<pre><code class="html">&lt;div class="alert-bar-success">&lt;i class="alert-bar_icon-right fa fa-times">&lt;/i> A successful alert bar.&lt;/div></code></pre>
+<pre><code class="html">&lt;div class="alert-bar-error">
+    &lt;i class="alert-bar_icon-right fa fa-times">&lt;/i> An error alert bar.
+&lt;/div></code></pre>
 
 <!-- Cloak & dagger UI -->
 

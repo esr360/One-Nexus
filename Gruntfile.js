@@ -305,7 +305,7 @@ module.exports = function(grunt) {
         concat: {
             dist: {
                 src: _scripts,
-                dest: project.dist[1].scripts + dist + '.js',
+                dest: project.dist[1].themes[1].theme + dist + '.js',
             }
         },
 
@@ -443,7 +443,7 @@ module.exports = function(grunt) {
         browserSync: {
             bsFiles: {
                 src : [
-                    project.dist[1] + '**/*.css',
+                    project.dist[0] + '**/*.css',
                     project.dist[1].templates + '**/*.html',
                     'demo/**/*.css'
                 ]
@@ -604,15 +604,12 @@ module.exports = function(grunt) {
         'browserSync',
         'watch'
     ]);
-      
-    // Compile the project's assets
-    grunt.registerTask('compile', compile(env));
 
     // Compile a specific theme
     grunt.registerTask('theme', function(target) {
         target = target || theme;
         grunt.config('theme', target);
-        grunt.task.run('compile');
+        grunt.task.run(compile(env));
     });
 
     // Compile all themes

@@ -20,13 +20,17 @@
 
     $blockquotes: config((
         'name'                  : 'blockquote',
-        'font'                  : typography('typefaces', 'secondary'),
-        'icon-size'             : 1.75rem,
+        'font-family'           : Georgia,
+        'icon-size'             : 4rem,
         'left-icon'             : true,
         'right-icon'            : false,
+        'pull':(
+            'width'             : 340px,
+            'max-width'         : 50%,
+            'margin'            : 1em
+        ),
         'pull-width'            : 340px,
         'pull-max-width'        : 50%,
-        'pull-font-style'       : italic,
         'pull-margin'           : 1em
     ), $custom);
 
@@ -44,26 +48,40 @@
         border: 0;
         padding: 0 2.5em;
         position: relative;
-        font-family: this('font');
+        quotes: '\201C''\201D''\2018''\2019';
+        font-family: this('font-family'), serif;
+
+        &:before {
+            content: open-quote;
+            font-size: this('icon-size');
+            line-height: 1;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
 
         //*********************************************************
         // Modifiers
         //*********************************************************
         
         @include modifiers(('pull-left', 'pull-right')) {
-            font-style: this('pull-font-style');
+
             margin: this('pull-margin');
+
             @media (min-width: breakpoint('break-2')) {
                 width: this('pull-width');
                 max-width: this('pull-max-width');
                 text-align: left;
             }
+
             @include modifier('top') {
                 margin-top: 0;
             }
+
             @include modifier('bottom') {
                 margin-bottom: 0;
             }
+
         }
         
         @include modifier('pull-left') {
@@ -75,19 +93,15 @@
             float: right;
             margin-right: 0;
         }
-
-        //*********************************************************
-        // Components
-        //*********************************************************
         
         @include modifier('callout') {
             padding: 0.75em;
             font-size: font-size('size-4');
             font-style: italic;
-            color: lighten(color('greyscale', 'grey-4'), 20%);
             border-left: 7px solid color('brand', 'brand-2');
+            &:before { display:none }
         }
-            
+
     } // module
 
 } // @mixin blockquotes
