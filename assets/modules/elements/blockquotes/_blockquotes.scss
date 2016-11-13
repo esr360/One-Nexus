@@ -24,14 +24,16 @@
         'icon-size'             : 4rem,
         'left-icon'             : true,
         'right-icon'            : false,
+        'icon':(
+            'size'              : 4rem,
+            'quote'             : open-quote,
+            'position'          : (left, top)
+        ),
         'pull':(
             'width'             : 340px,
             'max-width'         : 50%,
             'margin'            : 1em
-        ),
-        'pull-width'            : 340px,
-        'pull-max-width'        : 50%,
-        'pull-margin'           : 1em
+        )
     ), $custom);
 
     //*************************************************************
@@ -51,13 +53,20 @@
         quotes: '\201C''\201D''\2018''\2019';
         font-family: this('font-family'), serif;
 
-        &:before {
-            content: open-quote;
+        &:before, &:after {
             font-size: this('icon-size');
             line-height: 1;
             position: absolute;
-            left: 0;
-            top: 0;
+        }
+
+        //@include option(this(''));
+
+        &:before {
+            @include blockquote_icon(open-quote, (left, top));
+        }
+
+        &:after {
+            @include blockquote_icon(close-quote, (right, bottom));
         }
 
         //*********************************************************
@@ -66,11 +75,11 @@
         
         @include modifiers(('pull-left', 'pull-right')) {
 
-            margin: this('pull-margin');
+            margin: this('pull', 'margin');
 
             @media (min-width: breakpoint('break-2')) {
-                width: this('pull-width');
-                max-width: this('pull-max-width');
+                width: this('pull', 'width');
+                max-width: this('pull', 'max-width');
                 text-align: left;
             }
 
@@ -105,3 +114,19 @@
     } // module
 
 } // @mixin blockquotes
+
+
+/// Output the stylistic icon for a blockquote
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @group modules
+/// @param {(open-quote|close-quote)} $quote [open-quote] - the quote to use as the icon
+/// @param {list} $position [(left, top)] - the desired icon position
+/// @outputs styles for a blockquote quotation mark icon
+@mixin blockquote_icon($quote: open-quote, $position: (left, top)) {
+    content: $quote;
+    @if      nth($position, 1) == left   { left: 0;   } 
+    @else if nth($position, 1) == right  { right: 0;  }
+    @if      nth($position, 1) == top    { top: 0;    } 
+    @else if nth($position, 1) == bottom { bottom: 0; }
+}

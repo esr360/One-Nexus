@@ -93,7 +93,6 @@ module.exports = function(grunt) {
      */
     var _scripts = [
         _owl(),
-        project.vendor + 'matchMedia/matchMedia.js',
         project.vendor + 'Synergy/dist/synergy.js',
         project.source[0] + 'modules/utilities/core/core.js',
         project.source[0] + 'tools/**/*.js',

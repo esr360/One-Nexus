@@ -5354,13 +5354,18 @@ pre:last-child, hr:last-child,
   quotes: "“" "”" "‘" "’";
   font-family: Georgia, serif;
 }
-.blockquote:before, [class*="blockquote-"]:before {
-  content: open-quote;
+.blockquote:before, .blockquote:after, [class*="blockquote-"]:before, [class*="blockquote-"]:after {
   font-size: 4rem;
   line-height: 1;
   position: absolute;
+}
+.blockquote:before, [class*="blockquote-"]:before {
+  content: open-quote;
   left: 0;
-  top: 0;
+}
+.blockquote:after, [class*="blockquote-"]:after {
+  content: close-quote;
+  right: 0;
 }
 [class*="blockquote-"][class*="-pull-left"], [class*="blockquote-"][class*="-pull-right"] {
   margin: 1em;
