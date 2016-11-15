@@ -5428,13 +5428,15 @@ pre:last-child, hr:last-child,
   border-color: transparent;
   cursor: pointer;
   text-decoration: none;
+  padding-top: 0;
+  padding-bottom: 0;
   color: #ffffff;
   background: #6f777b;
   transition: 0.4s;
   padding-left: 1em;
   padding-right: 1em;
   line-height: 2.2;
-  font-weight: lighter;
+  font-weight: normal;
   border-width: 1px;
   border-style: solid;
 }

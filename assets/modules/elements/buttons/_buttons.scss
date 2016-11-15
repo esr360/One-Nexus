@@ -25,7 +25,7 @@
         'transition'       : core('transition'),
         'side-padding'     : 1em,
         'line-height'      : 2.2,
-        'weight'           : lighter,
+        'font-weight'      : normal,
         'border-width'     : 1px,
         'border-style'     : solid,
         'disabled-opacity' : 0.6,
@@ -51,6 +51,8 @@
         border-color: transparent;
         cursor: pointer;
         text-decoration: none;
+        padding-top: 0;
+        padding-bottom: 0;
 
         // Public styles
         color: this('color');
@@ -59,7 +61,7 @@
         padding-left: this('side-padding');
         padding-right: this('side-padding');
         line-height: this('line-height');
-        font-weight: this('weight');
+        font-weight: this('font-weight');
         border-width: this('border-width');
         border-style: this('border-style');
 
@@ -136,7 +138,7 @@
         }
         
         // Alert Colors
-        @each $name, $color in palette('alert') {
+        @each $name, $color in option($palettes, 'alert') {
             @include modifier($name) {
                 background: $color;
                 &:hover { background: darken($color, 10%) }
@@ -148,13 +150,6 @@
             @include modifier($social) {
                 background: $color;
                 &:hover { background: darken($color, 10%) }
-            }
-        }
-
-        // Gradient
-        @if variable-exists('brand-gradient') {
-            @include modifier('gradient') {
-                background: $brand-gradient;
             }
         }
 

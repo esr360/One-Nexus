@@ -14,11 +14,13 @@
     ///************************************************************
 
 	@include palettes;
+
 	@include typography((
 		'colors':(
 			'link' : color('brand', 'brand-2')
 		)
 	));
+
 	@include grid;
 	@include core;
 	@include helpers;
@@ -62,9 +64,11 @@
 	@include breadcrumb;
 	@include footer;
 	@include google-map;
+
 	@include header((
 		'background' : transparent
 	));
+
 	@include logo;
 	@include navigation;
 	@include dropdown;
@@ -81,6 +85,7 @@
     ///************************************************************
 
 	@include sections;
+
 	@include billboard((
 		'background' :  gradient('brand')
 	));

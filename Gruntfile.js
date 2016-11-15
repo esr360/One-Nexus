@@ -94,10 +94,9 @@ module.exports = function(grunt) {
     var _scripts = [
         _owl(),
         project.vendor + 'Synergy/dist/synergy.js',
-        project.source[0] + 'modules/utilities/core/core.js',
+        project.source[0] + 'app.js',
         project.source[0] + 'tools/**/*.js',
-        project.source[0] + 'modules/elements/**/*.js',
-        project.source[0] + 'modules/objects/**/*.js',
+        project.source[0] + 'modules/**/*.js',
         project.source[1].themes[1].theme + '<%=theme%>.js'
     ];
 

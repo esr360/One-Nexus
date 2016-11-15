@@ -108,7 +108,7 @@
 ///
 /// @access public
 /// @group utilities
-/// @param {map} $palette - the palette which contains your desired color
+/// @param {map} $gradient - the desired gradient from the $palettes variable
 /// @return {color} - the desired color value
 @function gradient($gradient) {
     
