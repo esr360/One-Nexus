@@ -21,13 +21,14 @@
     $blockquotes: config((
         'name'                  : 'blockquote',
         'font-family'           : Georgia,
-        'icon-size'             : 4rem,
-        'left-icon'             : true,
-        'right-icon'            : false,
+        'quotes'                : '\201C''\201D''\2018''\2019',
         'icon':(
             'size'              : 4rem,
-            'quote'             : open-quote,
-            'position'          : (left, top)
+            'height'            : 0.5em,
+            'padding'           : 2.5em,
+            'font-family'       : inherit,
+            'left'              : (true, top),
+            'right'             : (false, bottom)
         ),
         'pull':(
             'width'             : 340px,
@@ -48,39 +49,67 @@
             
         margin: 0;
         border: 0;
-        padding: 0 2.5em;
+        padding: 0;
         position: relative;
-        quotes: '\201C''\201D''\2018''\2019';
+        quotes: this('quotes');
         font-family: this('font-family'), serif;
 
         &:before, &:after {
-            font-size: this('icon-size');
+            font-size: this('icon', 'size');
+            font-family: this('icon', 'font-family');
+            height: this('icon', 'height');
             line-height: 1;
             position: absolute;
+            opacity: 0;
+            visibility: hidden;
         }
 
-        //@include option(this(''));
-
         &:before {
-            @include blockquote_icon(open-quote, (left, top));
+            content: open-quote;
+            left: 0;
         }
 
         &:after {
-            @include blockquote_icon(close-quote, (right, bottom));
+            content: close-quote;
+            right: 0;
         }
 
         //*********************************************************
         // Modifiers
         //*********************************************************
+
+        @include modifier('icon') {
+            @include option('icon', 'left') {
+                padding-left: this('icon', 'padding');
+                &:before {
+                    opacity: 1;
+                    visibility: visible;
+                    #{nth(this('icon', 'left'), 2)}: 0;
+                }
+            }
+            @include option('icon', 'right') {
+                padding-right: this('icon', 'padding');
+                &:after {
+                    opacity: 1;
+                    visibility: visible;
+                    #{nth(this('icon', 'right'), 2)}: 0;
+                }
+            }
+        }
         
-        @include modifiers(('pull-left', 'pull-right')) {
+        @include modifier('pull') {
 
             margin: this('pull', 'margin');
+            padding-left: enabled(
+                ('icon', 'left'), this('icon', 'padding'), 0
+            );
+            padding-right: enabled(
+                ('icon', 'right'), this('icon', 'padding'), 0
+            );
 
             @media (min-width: breakpoint('break-2')) {
                 width: this('pull', 'width');
                 max-width: this('pull', 'max-width');
-                text-align: left;
             }
 
             @include modifier('top') {
@@ -91,42 +120,29 @@
                 margin-bottom: 0;
             }
 
+            @include modifier('left') {
+                float: left;
+                margin-left: 0;
+            }
+
+            @include modifier('right') {
+                float: right;
+                margin-right: 0;
+            }
+
         }
         
-        @include modifier('pull-left') {
-            float: left;
-            margin-left: 0;
-        }
-        
-        @include modifier('pull-right') {
-            float: right;
-            margin-right: 0;
-        }
-        
+        /// @todo add callout styles to config
         @include modifier('callout') {
             padding: 0.75em;
             font-size: font-size('size-4');
             font-style: italic;
             border-left: 7px solid color('brand', 'brand-2');
-            &:before { display:none }
+            &:before, &:after { 
+                display: none;
+            }
         }
 
     } // module
 
 } // @mixin blockquotes
-
-
-/// Output the stylistic icon for a blockquote
-///
-/// @author [@esr360](http://twitter.com/esr360)
-/// @group modules
-/// @param {(open-quote|close-quote)} $quote [open-quote] - the quote to use as the icon
-/// @param {list} $position [(left, top)] - the desired icon position
-/// @outputs styles for a blockquote quotation mark icon
-@mixin blockquote_icon($quote: open-quote, $position: (left, top)) {
-    content: $quote;
-    @if      nth($position, 1) == left   { left: 0;   } 
-    @else if nth($position, 1) == right  { right: 0;  }
-    @if      nth($position, 1) == top    { top: 0;    } 
-    @else if nth($position, 1) == bottom { bottom: 0; }
-}

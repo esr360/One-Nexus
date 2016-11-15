@@ -5349,15 +5349,19 @@ pre:last-child, hr:last-child,
 .blockquote, [class*="blockquote-"] {
   margin: 0;
   border: 0;
-  padding: 0 2.5em;
+  padding: 0;
   position: relative;
   quotes: "“" "”" "‘" "’";
   font-family: Georgia, serif;
 }
 .blockquote:before, .blockquote:after, [class*="blockquote-"]:before, [class*="blockquote-"]:after {
   font-size: 4rem;
+  font-family: inherit;
+  height: 0.5em;
   line-height: 1;
   position: absolute;
+  opacity: 0;
+  visibility: hidden;
 }
 .blockquote:before, [class*="blockquote-"]:before {
   content: open-quote;
@@ -5367,27 +5371,44 @@ pre:last-child, hr:last-child,
   content: close-quote;
   right: 0;
 }
-[class*="blockquote-"][class*="-pull-left"], [class*="blockquote-"][class*="-pull-right"] {
+.blockquote, [class*="blockquote-"] {
+  padding-left: 2.5em;
+}
+.blockquote:before, [class*="blockquote-"]:before {
+  opacity: 1;
+  visibility: visible;
+  top: 0;
+}
+[class*="blockquote-"][class*="-icon"][class*="-right"] {
+  padding-right: 2.5em;
+}
+[class*="blockquote-"][class*="-icon"][class*="-right"]:after {
+  opacity: 1;
+  visibility: visible;
+  bottom: 0;
+}
+[class*="blockquote-"][class*="-pull"] {
   margin: 1em;
+  padding-left: 2.5em;
+  padding-right: 0;
 }
 @media (min-width: 720px) {
-  [class*="blockquote-"][class*="-pull-left"], [class*="blockquote-"][class*="-pull-right"] {
+  [class*="blockquote-"][class*="-pull"] {
     width: 340px;
     max-width: 50%;
-    text-align: left;
   }
 }
-[class*="blockquote-"][class*="-pull-left"][class*="-top"], [class*="blockquote-"][class*="-pull-right"][class*="-top"] {
+[class*="blockquote-"][class*="-pull"][class*="-top"] {
   margin-top: 0;
 }
-[class*="blockquote-"][class*="-pull-left"][class*="-bottom"], [class*="blockquote-"][class*="-pull-right"][class*="-bottom"] {
+[class*="blockquote-"][class*="-pull"][class*="-bottom"] {
   margin-bottom: 0;
 }
-[class*="blockquote-"][class*="-pull-left"] {
+[class*="blockquote-"][class*="-pull"][class*="-left"] {
   float: left;
   margin-left: 0;
 }
-[class*="blockquote-"][class*="-pull-right"] {
+[class*="blockquote-"][class*="-pull"][class*="-right"] {
   float: right;
   margin-right: 0;
 }
@@ -5397,7 +5418,7 @@ pre:last-child, hr:last-child,
   font-style: italic;
   border-left: 7px solid #06d2ff;
 }
-[class*="blockquote-"][class*="-callout"]:before {
+[class*="blockquote-"][class*="-callout"]:before, [class*="blockquote-"][class*="-callout"]:after {
   display: none;
 }
 

@@ -294,6 +294,12 @@ module.exports = function(grunt) {
                     project.dist[1].styles + '**/*.css',
                     project.dist[1].themes[1].theme + '**/*.css'
                 ]
+            },
+            demo: {
+                src: [
+                    'demo/css/**/*.css',
+                    'demo/css/**/*.css'
+                ]
             }
         },
 
@@ -469,16 +475,25 @@ module.exports = function(grunt) {
             },
             scss: {
                 files: [
-                    project.source[0] + '**/*.scss',
-                    'demo/scss/**/*.scss'
+                    project.source[0] + '**/*.scss'
                 ],
                 tasks: [ 
-                    'sass:' + env, 
-                    'sass:demo', 
-                    'postcss',
+                    'sass:' + env,
+                    'postcss:dist',
                     //'scsslint',
                     'mochacli:scss',
                     'sassdoc',
+                    'notify:css'
+                ],
+            },
+            demo: {
+                files: [
+                    'demo/scss/**/*.scss'
+                ],
+                tasks: [ 
+                    'sass:demo', 
+                    'postcss:demo',
+                    //'scsslint',
                     'notify:css'
                 ],
             },

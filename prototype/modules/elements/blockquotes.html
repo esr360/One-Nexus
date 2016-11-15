@@ -91,41 +91,85 @@
     </thead>
     <tbody>
         <tr>
-            <td>name</td>
+            <td><code>name</code></td>
             <td>The name used when generating the CSS selector</td>
-            <td><code>'alert-bar'</code></td>
+            <td><code>'blockquote'</code></td>
         </tr>
         <tr>
-            <td>colors</td>
-            <td>A Sass map where the key will be used as a modifier and the value will be used as the color</td>
-            <td><code>palette('alert')</code></td>
+            <td><code>font-family</code></td>
+            <td>The font-family for blockquotes to use</td>
+            <td><code>Georgia</code></td>
         </tr>
         <tr>
-            <td>text-color</td>
-            <td>Text color for alert bars</td>
-            <td><code>color('greyscale', 'white')</code></td>
+            <td><code>quotes</code></td>
+            <td><a href="https://css-tricks.com/almanac/properties/q/quotes/" target="blank">Content values</a> for quotes to act as a decorative icon</td>
+            <td><code>'\201C''\201D''\2018''\2019'</code></td>
         </tr>
         <tr>
-            <td>padding</td>
-            <td>Padding for alert bars</td>
-            <td><code>0.85em</code></td>
+            <td><code>icon[size]</code></td>
+            <td>The size of the quote icon</td>
+            <td><code>4rem</code></td>
+        </tr>
+        <tr>
+            <td><code>icon[padding]</code></td>
+            <td>The left/right spacing for the quote icon to fit</td>
+            <td><code>2.5em</code></td>
+        </tr>
+        <tr>
+            <td><code>icon[font-family]</code></td>
+            <td>The font-family for the quote icon</td>
+            <td><code>inherit</code></td>
+        </tr>
+        <tr>
+            <td><code>icon[left]</code></td>
+            <td>Set the enablement and position (top/bottom) of the left icon</td>
+            <td><code>(true, top)</code></td>
+        </tr>
+        <tr>
+            <td><code>icon[right]</code></td>
+            <td>Set the enablement and position (top/bottom) of the right icon</td>
+            <td><code>(false, bottom)</code></td>
+        </tr>
+        <tr>
+            <td><code>pull[width]</code></td>
+            <td>Default width for pull-quotes</td>
+            <td><code>340px</code></td>
+        </tr>
+        <tr>
+            <td><code>pull[max-width]</code></td>
+            <td>The max-width for pull-quotes</td>
+            <td><code>50%</code></td>
+        </tr>
+        <tr>
+            <td><code>pull[margin]</code></td>
+            <td>The margin for pull-quotes</td>
+            <td><code>1em</code></td>
         </tr>
     </tbody>
 </table>
 
 <p>The above options can be passed to the mixin like so:</p>
 
-<pre><code>@include alert-bars((
-    'colors':(
-        'carrot': #F97E52,
-        'error' : #DA4D44,
-        'rose'  : #D870AD
+<pre><code>@include blockquotes((
+    'quotes': '\f10d''\f10e''\f053''\f054',
+    'icon':(
+        'font-family': FontAwesome,
+        'size': 2em,
+        'height': 1em,
+        'left': (true, top),
+        'right': (true, bottom)
     )
 ));</code></pre>
 
-<p>The above example produces the following alert bars (custom values will be recursively merged with default values):</p>
+<p>The above example produces the following blockquote:</p>
 
-<p class="alertBarDemo-1-carrot">A carrot alert bar.</p>
+<blockquote class="blockquoteDemo-1">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent faucibus, purus a varius mattis, ligula dui imperdiet nisi, quis tincidunt sem tortor nec diam. Suspendisse id nunc pharetra, pulvinar nisl id, maximus nisl.
+</blockquote>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tortor elit, porta ut orci eget, suscipit dictum mauris. Etiam volutpat, quam vitae iaculis hendrerit, lectus leo consequat tellus, ut pretium nunc ante eget urna. Vivamus at lobortis dolor. <span class="blockquoteDemo-1-pull-left">Nam ligula eros, luctus vitae semper ut, mollis quis nunc.</span>Maecenas id finibus diam. Mauris ut accumsan sapien. Aliquam fringilla justo orci, dapibus consequat quam commodo vitae. Cras sit amet nisi velit. Nullam eleifend erat nunc, non congue urna aliquam ac. Aenean ac lectus lacus. Integer sit amet est sed purus fermentum consequat. Integer consectetur nibh arcu, vel sodales ex imperdiet eu. Nulla fermentum, justo eu iaculis consectetur, turpis risus sagittis metus, in placerat nibh ante cursus augue. Nunc luctus facilisis molestie. Sed quis porttitor mauris. Sed in quam eu mauris ultricies scelerisque vel vitae lacus. Praesent eu vehicula orci.</p>
+
+<p class="alert-bar-info">The above example uses FontAwesome icons for the quotes using their <a href="http://astronautweb.co/snippet/font-awesome/" target="blank">content values</a></p>
 
 <h3 class="heading-size-5">Examples</h3>
 
@@ -133,12 +177,25 @@
 
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tortor elit, porta ut orci eget, suscipit dictum mauris. Etiam volutpat, quam vitae iaculis hendrerit, lectus leo consequat tellus, ut pretium nunc ante eget urna. Vivamus at lobortis dolor. Maecenas id finibus diam. Mauris ut accumsan sapien. Aliquam fringilla justo orci, dapibus consequat quam commodo vitae. <span class="blockquote-pull-left">Nam ligula eros, luctus vitae semper ut, mollis quis nunc.</span> Cras sit amet nisi velit. Nullam eleifend erat nunc, non congue urna aliquam ac. Aenean ac lectus lacus. Integer sit amet est sed purus fermentum consequat. Integer consectetur nibh arcu, vel sodales ex imperdiet eu. Nulla fermentum, justo eu iaculis consectetur, turpis risus sagittis metus, in placerat nibh ante cursus augue. Nunc luctus facilisis molestie. Sed quis porttitor mauris. Sed in quam eu mauris ultricies scelerisque vel vitae lacus. Praesent eu vehicula orci.</p>
 
-<pre><code class="html">&lt;div class="alert-bar-success">&lt;i class="alert-bar_icon fa fa-times">&lt;/i> A successful alert bar.&lt;/div>
-&lt;div class="alert-bar-error">&lt;i class="alert-bar_icon fa fa-times">&lt;/i> An error alert bar.&lt;/div></code></pre>
+<pre><code class="html">&lt;p>...&lt;span class="blockquote-pull-left">Nam ligula eros, luctus vitae semper ut, mollis quis nunc.&lt;/span>...&lt;/p></code></pre>
+
+<h4 class="heading-size-3">Pull-Quote (right)</h4>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tortor elit, porta ut orci eget, suscipit dictum mauris. Etiam volutpat, quam vitae iaculis hendrerit, lectus leo consequat tellus, ut pretium nunc ante eget urna. Vivamus at lobortis dolor. <span class="blockquote-pull-right">Nam ligula eros, luctus vitae semper ut, mollis quis nunc.</span>Maecenas id finibus diam. Mauris ut accumsan sapien. Aliquam fringilla justo orci, dapibus consequat quam commodo vitae. Cras sit amet nisi velit. Nullam eleifend erat nunc, non congue urna aliquam ac. Aenean ac lectus lacus. Integer sit amet est sed purus fermentum consequat. Integer consectetur nibh arcu, vel sodales ex imperdiet eu. Nulla fermentum, justo eu iaculis consectetur, turpis risus sagittis metus, in placerat nibh ante cursus augue. Nunc luctus facilisis molestie. Sed quis porttitor mauris. Sed in quam eu mauris ultricies scelerisque vel vitae lacus. Praesent eu vehicula orci.</p>
+
+<pre><code class="html">&lt;p>...&lt;span class="blockquote-pull-right">Nam ligula eros, luctus vitae semper ut, mollis quis nunc.&lt;/span>...&lt;/p></code></pre>
+
+<h4 class="heading-size-3">Callout</h4>
+
+<blockquote class="blockquote-callout">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tortor elit, porta ut orci eget, suscipit dictum mauris.</blockquote>
+
+<pre><code class="html">&lt;blockquote class="blockquote-callout">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tortor elit, porta ut orci eget, suscipit dictum mauris.
+&lt;/blockquote></code></pre>
 
 <!-- Cloak & dagger UI -->
 
-<link rel="stylesheet" href="/css/alert-bars.css" />
+<link rel="stylesheet" href="/css/blockquotes.css" />
 
 <div id="demoConfig"></div>
 
