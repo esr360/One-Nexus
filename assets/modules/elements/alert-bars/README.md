@@ -1,5 +1,11 @@
 ## One-Nexus Alert Bars
 
+```html
+<div class="alert-bar-success">A successful alert bar.</div>
+<p class="alert-bar-error">An error alert bar.</p>
+<div class="alert-bar-info"><p>An informative alert bar.</p></div>
+```
+
 ### Sass
 
 Load the alert bar styles by including the `alert-bars()` mixin:
@@ -8,7 +14,7 @@ Load the alert bar styles by including the `alert-bars()` mixin:
 @include alert-bars();
 ```
 
-The following options can be passed to the mixin to customize the accordions:
+The following options can be passed to the mixin to customize the alert-bars:
 
 <table class="table">
     <thead>
@@ -49,15 +55,7 @@ The above options can be passed to the mixin like so:
 ));
 ```
 
-### Markup
-
-#### Default
-
-```html
-<div class="alert-bar-success">A successful alert bar.</div>
-<p class="alert-bar-error">An error alert bar.</p>
-<div class="alert-bar-info"><p>An informative alert bar.</p></div>
-```
+### Examples
 
 #### With Icon
 
