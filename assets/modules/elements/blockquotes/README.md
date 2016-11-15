@@ -25,47 +25,47 @@ The following options can be passed to the mixin to customize the blockquotes:
     </thead>
     <tbody>
         <tr>
-            <td><code>name</code></td>
+            <td>name</td>
             <td>The name used when generating the CSS selector</td>
         </tr>
         <tr>
-            <td><code>font-family</code></td>
+            <td>font-family</td>
             <td>The font-family for blockquotes to use</td>
         </tr>
         <tr>
-            <td><code>quotes</code></td>
+            <td>quotes</td>
             <td><a href="https://css-tricks.com/almanac/properties/q/quotes/" target="blank">Content values</a> for quotes to act as a decorative icon</td>
         </tr>
         <tr>
-            <td><code>icon[size]</code></td>
+            <td>icon[size]</td>
             <td>The size of the quote icon</td>
         </tr>
         <tr>
-            <td><code>icon[padding]</code></td>
+            <td>icon[padding]</td>
             <td>The left/right spacing for the quote icon to fit</td>
         </tr>
         <tr>
-            <td><code>icon[font-family]</code></td>
+            <td>icon[font-family]</td>
             <td>The font-family for the quote icon</td>
         </tr>
         <tr>
-            <td><code>icon[left]</code></td>
+            <td>icon[left]</td>
             <td>Set the enablement and position (top/bottom) of the left icon</td>
         </tr>
         <tr>
-            <td><code>icon[right]</code></td>
+            <td>icon[right]</td>
             <td>Set the enablement and position (top/bottom) of the right icon</td>
         </tr>
         <tr>
-            <td><code>pull[width]</code></td>
+            <td>pull[width]</td>
             <td>Default width for pull-quotes</td>
         </tr>
         <tr>
-            <td><code>pull[max-width]</code></td>
+            <td>pull[max-width]</td>
             <td>The max-width for pull-quotes</td>
         </tr>
         <tr>
-            <td><code>pull[margin]</code></td>
+            <td>pull[margin]</td>
             <td>The margin for pull-quotes</td>
         </tr>
     </tbody>
