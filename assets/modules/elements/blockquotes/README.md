@@ -2,7 +2,7 @@
 
 ```html
 <blockquote class="blockquote">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent faucibus, purus a varius mattis, ligula dui imperdiet nisi, quis tincidunt sem tortor nec diam. Suspendisse id nunc pharetra, pulvinar nisl id, maximus nisl.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent faucibus, purus a varius mattis.
 </blockquote>
 ```
 
