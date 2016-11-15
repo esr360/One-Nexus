@@ -1,5 +1,22 @@
 ## One-Nexus Accordions
 
+```html
+<div class="accordion">
+    <div class="accordion_section">
+        <div class="accordion_title">Accordion Title</div>
+        <div class="accordion_content">
+            <p>Lorem ipsum.</p>
+        </div>
+    </div>
+    <div class="accordion_section">
+        <div class="accordion_title">Accordion Title</div>
+        <div class="accordion_content">
+            <p>Lorem ipsum.</p>
+        </div>
+    </div>
+</div>
+```
+
 ### Sass
 
 Load the accordion styles by including the `accordions()` mixin:
@@ -162,26 +179,7 @@ $(_accordion).accordion({
 });
 ```
 
-### Markup
-
-#### Default
-
-```html
-<div class="accordion">
-    <div class="accordion_section">
-        <div class="accordion_title">Accordion Title</div>
-        <div class="accordion_content">
-            <p>Lorem ipsum.</p>
-        </div>
-    </div>
-    <div class="accordion_section">
-        <div class="accordion_title">Accordion Title</div>
-        <div class="accordion_content">
-            <p>Lorem ipsum.</p>
-        </div>
-    </div>
-</div>
-```
+### Examples
 
 #### Open by Default
 
