@@ -32,6 +32,12 @@
         'round-radius'     : 0.4em,
         'group-spacing'    : 0.5em,
         'group-stack'      : 'break-1',
+        'palettes'         : (
+            'brand', 'greyscale', 'alert', (
+            'social': (
+                'facebook', 'twitter'
+            ))
+        ),
         'modifiers'        : ()
     ), $custom);
 
@@ -95,61 +101,26 @@
         // Colors
         //*********************************************************
 
-        // Brand Colors
-        @each $brand, $color in palette('brand') {
-            @include modifier($brand) {
-                background: $color;
-                &:hover { background: darken($color, 10%) }
-                @include modifier('border') {
-                    color: $color;
-                    &:hover {
-                        background: $color;
-                        color: color('greyscale', 'white');
-                    }
-                }
-            }
-        }
-
-        // Greyscale Colors
-        @each $greyscale, $color in palette('greyscale') {
-            
+        @each $key, $color in merge-palettes(this('palettes')) {
             // Point at which light/dark background changes
             $threshold: 80;
-
-            @include modifier($greyscale) {
+            @include modifier($key) {
                 background: $color;
-                @if (lightness($color) > $threshold) { 
-                    color: typography('colors', 'base'); 
+                &:hover { 
+                    background: darken($color, 10%);
                 }
-                &:hover { background: darken($color, 10%) }
                 @include modifier('border') {
                     color: $color;
                     &:hover {
                         background: $color;
-                        @if (lightness($color) > $threshold) {
+                        border-color: $color;
+                        @if is-grayscale($color) and (lightness($color) < $threshold) {
                             color: typography('colors', 'base');
                         } @else {
-                            color: color('greyscale', 'white');
+                            color: this('color');
                         }
                     }
                 }
-            }
-
-        }
-        
-        // Alert Colors
-        @each $name, $color in option($palettes, 'alert') {
-            @include modifier($name) {
-                background: $color;
-                &:hover { background: darken($color, 10%) }
-            }
-        }
-        
-        // Social Colors   
-        @each $social, $color in option($palettes, 'social') {
-            @include modifier($social) {
-                background: $color;
-                &:hover { background: darken($color, 10%) }
             }
         }
 
