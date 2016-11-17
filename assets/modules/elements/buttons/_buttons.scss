@@ -32,13 +32,7 @@
         'round-radius'     : 0.4em,
         'group-spacing'    : 0.5em,
         'group-stack'      : 'break-1',
-        'palettes'         : (
-            'brand', 'greyscale', 'alert', (
-            'social': (
-                'facebook', 'twitter'
-            ))
-        ),
-        'modifiers'        : ()
+        'palettes'         : ('brand', 'greyscale', 'alert', 'social')
     ), $custom);
 
     //*************************************************************
@@ -70,9 +64,6 @@
         font-weight: this('font-weight');
         border-width: this('border-width');
         border-style: this('border-style');
-
-        // Default modifiers
-        @include extend(this('modifiers'));
 
         // Pseudo States
         //*********************************************************
