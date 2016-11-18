@@ -104,7 +104,7 @@
 	@return map-get(palette($palette), $color);
 }
 
-/// Function to merge entire/partial palettets
+/// Function to merge entire/partial color palettets
 ///
 /// @access public
 /// @group utilities
@@ -117,17 +117,23 @@
         @if type-of($palette) == 'string' {
             $new-palette: map-merge-deep($new-palette, palette($palette));
         } 
-        // is the value a map? (part of a palette)
+        // is the value a map?
         @else if type-of($palette) == 'map' {
-            $_palette: nth(nth($palette, 1), 1);
-            $_colors: nth(nth($palette, 1), 2);
+            // is the map one which contains colors (keys) from an existing paltte?
+            @if type-of(nth(nth($palette, 1), 2)) == 'list' {
+                $_palette: nth(nth($palette, 1), 1);
+                $_colors:  nth(nth($palette, 1), 2);
 
-            $_map: ();
-            
-            // create a new map to store the desired colors
-            @each $color in $_colors {
-                $_map: map-set($_map, $color, map-get(palette($_palette), $color));
-                $new-palette: map-merge($new-palette, $_map);
+                $_map: ();
+
+                @each $color in $_colors {
+                    $_map: map-set($_map, $color, map-get(palette($_palette), $color));
+                    $new-palette: map-merge($new-palette, $_map);
+                }
+            }
+            // is the map one which contains new colors?
+            @else if type-of(nth(nth($palette, 1), 2)) == 'color' {
+                $new-palette: map-merge($new-palette, $palette);
             }
         }
     }

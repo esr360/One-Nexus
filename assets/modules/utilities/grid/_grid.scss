@@ -23,6 +23,7 @@
     // Configuration
     //*************************************************************
 
+    // https://git.io/vX7Re
     $grid: map-merge-deep((
         'name'             : 'grid',
         'output-json'      : true,
@@ -41,6 +42,20 @@
     $grid: config($grid, $custom) !global;
 
     @include kayzen-gs($grid);
+
+    // Row
+    @include module(this('options', 'row-namespace')) {
+        @include modifier('breathe') {
+            [class*="#{this('options', 'col-namespace')}"] {
+                margin-bottom: this('options', 'gutter');
+            }
+        }
+        @include modifier('gasp') {
+            [class*="#{this('options', 'col-namespace')}"] {
+                margin-bottom: (this('options', 'gutter') / 2);
+            }
+        }
+    }
 
 } // @mixin grid
 

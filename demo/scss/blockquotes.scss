@@ -15,5 +15,3 @@
         'right': (true, bottom)
     )
 ));
-
-@include json-encode($_modules, $selector: '#demoConfig');
