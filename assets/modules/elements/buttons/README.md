@@ -281,8 +281,10 @@ If you are commonly reusing the same combination of modifiers multiple times, yo
 ));
 ```
 
+```html
 <button class="button-primary">Primary Action</button>
 <button class="button-social-rss"><i class="fa fa-rss"></i></button>
+```
 
 #### Components
 
