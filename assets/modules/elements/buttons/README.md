@@ -24,7 +24,6 @@ The following options can be passed to the mixin to customize the buttons:
         <tr>
             <th>Option</th>
             <th>Description</th>
-            <th>Default</th>
         </tr>
     </thead>
     <tbody>
