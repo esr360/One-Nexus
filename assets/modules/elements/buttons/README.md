@@ -121,7 +121,7 @@ The above options can be passed to the mixin like so:
 
 #### Color Palettes
 
-This option accepts a list of palettes defined in the <a href="/modules/utilities/color-palette.html">Color Palette</a> module.
+This option accepts a list of palettes defined in the <a href="..//utilities/color-palette.html">Color Palette</a> module.
 
 ```scss
 @include buttons((
