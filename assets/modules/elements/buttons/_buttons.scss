@@ -198,17 +198,6 @@
             }
         }
 
-        // Custom Styles
-        //*********************************************************
-
-        @include modifier('primary') {
-            @include extend(('round', 'size-4', 'brand-1'));
-        }
-
-        @include modifier('secondary') {
-            @include extend(('sharp', 'size-4', 'brand-2'));
-        }
-
         //*********************************************************
         // Components
         //*********************************************************

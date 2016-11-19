@@ -37,7 +37,11 @@
 	@include blockquotes;
 
 	@include buttons((
-		'active-background': color('brand', 'brand-3')
+		'active-background': color('brand', 'brand-3'),
+		'combine':(
+			'primary'  : ('round', 'size-4', 'brand-1'),
+			'secondary': ('sharp', 'size-4', 'brand-2')
+		)
 	));
 
 	@include carousels;

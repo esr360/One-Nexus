@@ -155,17 +155,14 @@ The following options can be passed to the function to customize the accordions:
         <tr>
             <td>activeClass</td>
             <td>The class to use to open an accordion section</td>
-            <td><code>'active'</code></td>
         </tr>
         <tr>
             <td>animationSpeed</td>
             <td>The duration of the open/close animation</td>
-            <td><code>_baseTransition</code></td>
         </tr>
         <tr>
             <td>keepOpenSelector</td>
             <td>The selector to use on the main module to allow multiple sections to be open simultaneously</td>
-            <td><code>_modifier('keepOpen')</code></td>
         </tr>
     </tbody>
 </table>

@@ -68,15 +68,21 @@
     code {
         background: white;
         border-radius: 0.3em;
-        //color: #C7254F;
+        color: #C7254F;
+		border: 1px solid color('greyscale', 'grey-2');
         font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
         font-style: normal;
         font-size: font-size('size-2');
         font-weight: 300;
         padding: 0.1em 0.3em;
-        &.value {
-            color: inherit;
-        }
+		&.alt {
+			background: rgba(black, 0.4);
+			border-color: transparent;
+			color: inherit;
+		}
+		pre & {
+			border: none;
+		}
     }
     
     #site-content {

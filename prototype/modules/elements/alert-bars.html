@@ -45,7 +45,7 @@
 
     <div class="billboard">
             <div class="billboard_wrapper">
-                    <h1 class="heading-light-size-7-heavy font-2">Alert Bars</h1>
+                    <h1 class="heading-light-size-7-heavy font-2">Alert Bars/Boxes</h1>
                     <i class="fa fa-github-alt"></i>
                     <a href="https://github.com/esr360/One-Nexus/tree/master/assets/modules/elements/alert-bars" target="blank">/assets/modules/elements/alert-bars</a>
             </div>
@@ -69,10 +69,6 @@
 <p class="alert-bar-info">An informative alert bar.</p>
 <p class="alert-bar-success">A successful alert bar.</p>
 <p class="alert-bar-error">An error alert bar.</p>
-
-<blockquote class="blockquote-callout">
-    <p>Alert bars are not too strict with their markup.</p>
-</blockquote>
 
 <pre><code class="html">&lt;div class="alert-bar-help">A helpful alert bar.&lt;/div>
 &lt;p class="alert-bar-info">An informative alert bar.&lt;/p>
@@ -99,7 +95,7 @@
         <tr>
             <td><code>name</code></td>
             <td>The name used when generating the CSS selector</td>
-            <td><code>'alert-bar'</code></td>
+            <td><code>'alert'</code></td>
         </tr>
         <tr>
             <td><code>colors</code></td>
@@ -112,9 +108,14 @@
             <td><code>color('greyscale', 'white')</code></td>
         </tr>
         <tr>
-            <td><code>padding</code></td>
+            <td><code>bar-padding</code></td>
             <td>Padding for alert bars</td>
             <td><code>0.85em</code></td>
+        </tr>
+        <tr>
+            <td><code>box-padding</code></td>
+            <td>Padding for alert boxes</td>
+            <td><code>1.5em</code></td>
         </tr>
     </tbody>
 </table>
@@ -131,33 +132,51 @@
 
 <p>The above example produces the following alert bars (custom values will be recursively merged with default values):</p>
 
-<p class="alertBarDemo-1-carrot">A carrot alert bar.</p>
-<p class="alertBarDemo-1-rose">A rose alert bar.</p>
-<p class="alertBarDemo-1-help">A helpful alert bar.</p>
-<p class="alertBarDemo-1-info">An informative alert bar.</p>
-<p class="alertBarDemo-1-success">A successful alert bar.</p>
-<p class="alertBarDemo-1-error">An error alert bar.</p>
+<p class="alertDemo-1-bar-carrot">A carrot alert bar.</p>
+
+<pre><code class="html">&lt;div class="alert-bar-carrot">A carrot alert bar.&lt;/div></code></pre>
+
+<p class="alertDemo-1-bar-rose">A rose alert bar.</p>
+<p class="alertDemo-1-bar-help">A helpful alert bar.</p>
+<p class="alertDemo-1-bar-info">An informative alert bar.</p>
+<p class="alertDemo-1-bar-success">A successful alert bar.</p>
+<p class="alertDemo-1-bar-error">An error alert bar.</p>
 
 <h3 class="heading-size-5">Examples</h3>
 
 <h4 class="heading-size-3">With Icon</h4>
 
-<p class="alert-bar-success"><i class="alert-bar_icon fa fa-check" aria-hidden="true"></i> A successful alert bar.</p>
-<p class="alert-bar-error"><i class="alert-bar_icon fa fa-times" aria-hidden="true"></i> An error alert bar.</p>
+<p class="alert-bar-success"><i class="alert_icon fa fa-check" aria-hidden="true"></i> A successful alert bar.</p>
+<p class="alert-bar-error"><i class="alert_icon fa fa-times" aria-hidden="true"></i> An error alert bar.</p>
 
 <pre><code class="html">&lt;div class="alert-bar-success">
-    &lt;i class="alert-bar_icon fa fa-times">&lt;/i> A successful alert bar.
+    &lt;i class="alert_icon fa fa-times">&lt;/i> A successful alert bar.
 &lt;/div>
 &lt;div class="alert-bar-error">
-    &lt;i class="alert-bar_icon fa fa-times">&lt;/i> An error alert bar.
+    &lt;i class="alert_icon fa fa-times">&lt;/i> An error alert bar.
 &lt;/div></code></pre>
 
 <h4 class="heading-size-3">With Right-Aligned Icon</h4>
 
-<p class="alert-bar-error"><i class="alert-bar_icon-right fa fa-times" aria-hidden="true"></i> An error alert bar.</p>
+<p class="alert-bar-error"><i class="alert_icon-right fa fa-times" aria-hidden="true"></i> An error alert bar.</p>
 
 <pre><code class="html">&lt;div class="alert-bar-error">
-    &lt;i class="alert-bar_icon-right fa fa-times">&lt;/i> An error alert bar.
+    &lt;i class="alert_icon-right fa fa-times">&lt;/i> An error alert bar.
+&lt;/div></code></pre>
+
+<h4 class="heading-size-3">Alert Box</h4>
+
+<div class="alert-box-info">
+
+    <h3 class="heading-size-4">This is an Alert Box</h3>
+
+    <p>Fusce at nibh augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu justo eget velit rhoncus semper. Fusce et elementum quam. Donec gravida sem nunc, ac dictum tortor semper a. Morbi ac accumsan neque. Nam egestas malesuada ex eu tincidunt. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+
+</div>
+
+<pre><code class="html">&lt;div class="alert-box-info">
+    &lt;h3 class="heading-size-4">This is an Alert Box&lt;/h3>
+    &lt;p>...&lt;p>
 &lt;/div></code></pre>
 
 <!-- Cloak & dagger UI -->

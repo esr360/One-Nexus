@@ -1,9 +1,10 @@
-## One-Nexus Alert Bars
+## One-Nexus Alert Bars/Boxes
 
 ```html
-<div class="alert-bar-success">A successful alert bar.</div>
-<p class="alert-bar-error">An error alert bar.</p>
-<div class="alert-bar-info"><p>An informative alert bar.</p></div>
+<div class="alert-bar-help">A helpful alert bar.</div>
+<p class="alert-bar-info">An informative alert bar.</p>
+<div class="alert-bar-success"><p>A successful alert bar.</p></div>
+<span class="alert-bar-error">An error alert bar.</span>
 ```
 
 ### Sass
@@ -37,8 +38,12 @@ The following options can be passed to the mixin to customize the alert-bars:
             <td>Text color for alert bars</td>
         </tr>
         <tr>
-            <td>padding</td>
+            <td>bar-padding</td>
             <td>Padding for alert bars</td>
+        </tr>
+        <tr>
+            <td>box-padding</td>
+            <td>Padding for alert boxes</td>
         </tr>
     </tbody>
 </table>
@@ -55,6 +60,10 @@ The above options can be passed to the mixin like so:
 ));
 ```
 
+```
+html<div class="alert-bar-carrot">A carrot alert bar.</div>
+```
+
 ### Examples
 
 #### With Icon
@@ -68,4 +77,13 @@ The above options can be passed to the mixin like so:
 
 ```html
 <div class="alert-bar-success"><i class="alert-bar_icon-right fa fa-times"></i> A successful alert bar.</div>
+```
+
+#### Alert Box
+
+```html
+<div class="alert-box-info">
+    <h3 class="heading-size-4">This is an Alert Box</h3>
+    <p>...<p>
+</div>
 ```

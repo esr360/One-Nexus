@@ -226,7 +226,7 @@
     )
 ));</code></pre>
 
-<p>Ypu can also pass new colors as a regular map:</p>
+<p>You can also pass new colors as a regular map:</p>
 
 <pre><code>@include buttons((
     'palettes': (
@@ -237,7 +237,7 @@
 
 <p>Using your new values like so:</p>
 
-<pre><code class="html">&lt;buttonDemo-1 class="button-foo">Button&lt;/button>
+<pre><code class="html">&lt;button class="button-foo">Button&lt;/button>
 &lt;button class="button-foo-round">Button&lt;/button>
 &lt;button class="button-bar">Button&lt;/button>
 &lt;button class="button-bar-border">Button&lt;/button></code></pre>
@@ -264,24 +264,11 @@
 </ul>
 
 <p><button class="button-size-1">Size 1 Button</button></p>
-
-<button class="button-size-2">Size 2 Button</button></p>
-
-<button class="button">Default Button</button></p>
-
-<button class="button-size-3">Size 3 Button</button></p>
-
-<button class="button-size-4">Size 4 Button</button></p>
-
-<button class="button-size-5">Size 5 Button</button></p>
-
-<button class="button-size-6">Size 6 Button</button></p>
-
-<button class="button-size-7">Size 7 Button</button></p>
-
-<button class="button-size-8">Size 5 Button</button></p>
-
-<button class="button-size-9">Size 9 Button</button></p>
+<p><button class="button-size-2">Size 2 Button</button></p>
+<p><button class="button">Default Button</button></p>
+<p><button class="button-size-3">Size 3 Button</button></p>
+<p><button class="button-size-4">Size 4 Button</button></p>
+<p><button class="button-size-5">Size 5 Button</button></p>
 
 <pre><code class="html">&lt;button class="button-size-7">Size 7 Button&lt;/button></code></pre>
 
@@ -385,7 +372,7 @@
     <button class="button-stumbleupon span-3">Stumbleupon Button</button>
 </div>
 
-<pre><code class="html">&lt;button class="button-dribbble">Success Button&lt;/button></code></pre>
+<pre><code class="html">&lt;button class="button-dribbble">Dribbble Button&lt;/button></code></pre>
 
 <h4 class="heading-size-4">Modifiers</h4>
 
@@ -481,21 +468,60 @@
     <h3 class="heading-size-3 font-2"><i class="alert_icon fa fa-info-circle"></i>Tip: Combine commonly reused modifiers</h3>
     <p>If you are commonly reusing the same combination of modifiers multiple times, you can combine them into a new modifier:</p>
 
-<pre><code>/* inside _buttons.scss */
-@include module {
-    ...
-    @include modifier('social') {
-        @include extend(('icon', 'oval', 'size-6'));
-    }
-    ...
-}</code></pre>
+<pre><code>@include buttons((
+    'combine':(
+        'primary' : ('round', 'size-4', 'brand-1'),
+        'social'  : ('icon', 'oval', 'size-6')
+    )
+));</code></pre>
 
-<pre><code class="html">&lt;button class="button-social-rss">&lt;i class="fa fa-rss">&lt;/i>&lt;/button></code></pre>
+<pre><code class="html">&lt;button class="button-primary">Primary Action&lt;/button>
+&lt;button class="button-social-rss">&lt;i class="fa fa-rss">&lt;/i>&lt;/button></code></pre>
 </div>
 
 <h4 class="heading-size-4">Components</h4>
 
 <h4 class="heading-size-2-uppercase">Button Group</h4>
+
+<p class="button_group">
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+</p>
+
+<pre><code class="html">&lt;div class="button_group">
+    &lt;button class="button">Button&lt;/button>
+    &lt;button class="button">Button&lt;/button>
+    &lt;button class="button">Button&lt;/button>
+&lt;/div></code></pre>
+
+<h4 class="heading-size-2-uppercase">Button Group - Pills</h4>
+
+<p class="button_group-pills">
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+</p>
+
+<pre><code class="html">&lt;div class="button_group-pills">
+    &lt;button class="button">Button&lt;/button>
+    &lt;button class="button">Button&lt;/button>
+    &lt;button class="button">Button&lt;/button>
+&lt;/div></code></pre>
+
+<h4 class="heading-size-2-uppercase">Button Group - Round Pills</h4>
+
+<p class="button_group-pills-round">
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+</p>
+
+<pre><code class="html">&lt;div class="button_group-pills-round">
+    &lt;button class="button">Button&lt;/button>
+    &lt;button class="button">Button&lt;/button>
+    &lt;button class="button">Button&lt;/button>
+&lt;/div></code></pre>
 
 <!-- Cloak & dagger UI -->
 

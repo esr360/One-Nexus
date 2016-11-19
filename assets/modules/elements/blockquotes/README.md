@@ -86,6 +86,8 @@ The above options can be passed to the mixin like so:
 ));
 ```
 
+> The above example uses FontAwesome icons for the quotes using their <a href="http://astronautweb.co/snippet/font-awesome/" target="blank">content values</a>
+
 ### Examples
 
 #### Pull-Quote (left)

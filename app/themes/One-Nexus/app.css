@@ -4879,14 +4879,21 @@ h1, h2, h3, h4, h5, h6 {
 code {
   background: white;
   border-radius: 0.3em;
+  color: #C7254F;
+  border: 1px solid #dee0e2;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   font-style: normal;
   font-size: 0.83em;
   font-weight: 300;
   padding: 0.1em 0.3em;
 }
-code.value {
+code.alt {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: transparent;
   color: inherit;
+}
+pre code {
+  border: none;
 }
 
 #site-content {
