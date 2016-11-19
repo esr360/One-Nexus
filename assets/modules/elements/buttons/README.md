@@ -286,6 +286,13 @@ If you are commonly reusing the same combination of modifiers multiple times, yo
 <button class="button-social-rss"><i class="fa fa-rss"></i></button>
 ```
 
+Which is the equivilent of:
+
+```html
+<button class="button-round-size-4-brand-1">Primary Action</button>
+<button class="button-icon-oval-size-6-rss"><i class="fa fa-rss"></i></button>
+```
+
 #### Components
 
 ##### Button Group
