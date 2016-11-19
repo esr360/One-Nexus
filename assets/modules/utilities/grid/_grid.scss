@@ -46,11 +46,13 @@
     // Row
     @include module(this('options', 'row-namespace')) {
         @include modifier('breathe') {
+            margin-bottom: -#{this('options', 'gutter')};
             [class*="#{this('options', 'col-namespace')}"] {
                 margin-bottom: this('options', 'gutter');
             }
         }
         @include modifier('gasp') {
+            margin-bottom: -#{(this('options', 'gutter') / 2)};
             [class*="#{this('options', 'col-namespace')}"] {
                 margin-bottom: (this('options', 'gutter') / 2);
             }

@@ -62,14 +62,19 @@ billboard:
             <td><code>core('transition')</code></td>
         </tr>
         <tr>
-            <td><code>side-padding</code></td>
+            <td><code>h-padding</code></td>
             <td>Thepadding for the left and right of buttons</td>
             <td><code>1em</code></td>
         </tr>
         <tr>
+            <td><code>v-padding</code></td>
+            <td>Thepadding for the tpp and bottom of buttons</td>
+            <td><code>0.65em</code></td>
+        </tr>
+        <tr>
             <td><code>line-height</code></td>
             <td>The line height for buttons</td>
-            <td><code>2.2</code></td>
+            <td><code>1</code></td>
         </tr>
         <tr>
             <td><code>font-weight</code></td>
@@ -88,8 +93,18 @@ billboard:
         </tr>
         <tr>
             <td><code>border-style</code></td>
-            <td>The border style for buttons with the <code>border</code> modifie</td>
+            <td>The border style for buttons with the <code>border</code> modifier</td>
             <td><code>solid</code></td>
+        </tr>
+        <tr>
+            <td><code>active-background</code></td>
+            <td>The background for buttons with the <code>active</code> modifier</td>
+            <td><code>color('brand', 'brand-1')</code></td>
+        </tr>
+        <tr>
+            <td><code>active-color</code></td>
+            <td>The text color for buttons with the <code>active</code> modifier</td>
+            <td><code>color('greyscale', 'white')</code></td>
         </tr>
         <tr>
             <td><code>disabled-opacity</code></td>
@@ -167,15 +182,15 @@ billboard:
 
 <p>Using your new values like so:</p>
 
-<pre><code class="html">&lt;button class="button-foo">Button&lt;/button>
+<pre><code class="html">&lt;buttonDemo-1 class="button-foo">Button&lt;/button>
 &lt;button class="button-foo-round">Button&lt;/button>
 &lt;button class="button-bar">Button&lt;/button>
 &lt;button class="button-bar-border">Button&lt;/button></code></pre>
 
-<button class="button-foo">Button</button>
-<button class="button-foo-round">Button</button>
-<button class="button-bar">Button</button>
-<button class="button-bar-border">Button</button>
+<button class="buttonDemo-1-foo">Button</button>
+<button class="buttonDemo-1-foo-round">Button</button>
+<button class="buttonDemo-1-bar">Button</button>
+<button class="buttonDemo-1-bar-border">Button</button>
 
 <h3 class="heading-size-5">Examples</h3>
 
@@ -253,7 +268,7 @@ billboard:
 <button class="button-grey-6">Grey 6 Button</button>
 <button class="button-black">Black Button</button>
 
-<pre><code class="html">&lt;button class="button-brand-3">Brand 3 Button&lt;/button></code></pre>
+<pre><code class="html">&lt;button class="button-grey-3">Grey 3 Button&lt;/button></code></pre>
 
 <h4 class="heading-size-2-uppercase">Alert</h4>
 
@@ -324,67 +339,108 @@ billboard:
     <li><code>border</code></li>
     <li><code>disabled</code></li>
     <li><code>round</code></li>
-    <li><code>circle</code></li>
+    <li><code>circle/oval</code></li>
     <li><code>sharp</code></li>
     <li><code>icon</code></li>
-    <li><code>plain</code></li>
     <li><code>active</code></li>
 </ul>
+  
+<div class="row-flow row-breathe">
 
-<div class="row row-breathe">
     <div class="span-4 va-middle">
         <button class="button-block">Button</button>
     </div>
     <div class="span-8 va-middle">
         <pre><code class="html">&lt;button class="button-block">Button&lt;/button></code></pre>
     </div>
-</div>
-
-<div class="row row-breathe">
+    
     <div class="span-4 va-middle">
         <button class="button-border">Button</button>
     </div>
     <div class="span-8 va-middle">
         <pre><code class="html">&lt;button class="button-border">Button&lt;/button></code></pre>
     </div>
-</div>
-
-<div class="row row-breathe">
+    
     <div class="span-4 va-middle">
         <button class="button-disabled">Button</button>
     </div>
     <div class="span-8 va-middle">
         <pre><code class="html">&lt;button class="button-disabled">Button&lt;/button></code></pre>
     </div>
-</div>
-
-<div class="row row-breathe">
+    
     <div class="span-4 va-middle">
         <button class="button-round">Button</button>
     </div>
     <div class="span-8 va-middle">
         <pre><code class="html">&lt;button class="button-round">Button&lt;/button></code></pre>
     </div>
-</div>
 
-<div class="row row-breathe">
     <div class="span-4 va-middle">
         <button class="button-oval">Button</button>
     </div>
     <div class="span-8 va-middle">
         <pre><code class="html">&lt;button class="button-oval">Button&lt;/button></code></pre>
     </div>
-</div>
 
-<div class="row row-breathe">
     <div class="span-4 va-middle">
         <button class="button-sharp">Button</button>
     </div>
     <div class="span-8 va-middle">
-        <pre><code class="html">&lt;button class="button-sharp">Button&lt;/button></code></pre>
+        <pre><code class="html">&lt;button class="button-sharp">Button&lt;/button>&lt;!-- ensure button corners are never rounded --></code></pre>
     </div>
+    
+    <div class="span-4 va-middle">
+        <button class="button"><i class="fa fa-download"></i> Button</button>
+    </div>
+    <div class="span-8 va-middle">
+        <pre><code class="html">&lt;button class="button">&lt;i class="fa fa-download">&lt;/i> Button&lt;/button></code></pre>
+    </div>
+    
+    <div class="span-4 va-middle">
+        <button class="button-icon"><i class="fa fa-download"></i></button>
+    </div>
+    <div class="span-8 va-middle">
+        <pre><code class="html">&lt;button class="button-icon">&lt;i class="fa fa-download">&lt;/i>&lt;/button></code></pre>
+    </div>
+    
+    <div class="span-4 va-middle">
+        <button class="button-active">Button</button>
+    </div>
+    <div class="span-8 va-middle">
+        <pre><code class="html">&lt;button class="button-active">Button&lt;/button></code></pre>
+    </div>
+
 </div>
 
+<p>Modifiers can be combined:</p>
+
+<button class="button-icon-oval-rss-size-6"><i class="fa fa-rss"></i></button>
+<button class="button-icon-oval-border-youtube"><i class="fa fa-youtube"></i></button>
+<button class="button-border-disabled-active">Button</button>
+
+<pre><code class="html">&lt;button class="button-icon-oval-rss-size-6">&lt;i class="fa fa-rss">&lt;/i>&lt;/button>
+&lt;button class="button-icon-oval-border-youtube">&lt;i class="fa fa-youtube">&lt;/i>&lt;/button>
+&lt;button class="button-border-disabled-active">Button&lt;/button></code></pre>
+
+<div class="alert-box-info">
+    <h3 class="heading-size-3 font-2"><i class="alert_icon fa fa-info-circle"></i>Tip: Combine commonly reused modifiers</h3>
+    <p>If you are commonly reusing the same combination of modifiers multiple times, you can combine them into a new modifier:</p>
+
+<pre><code>/* inside _buttons.scss */
+@include module {
+    ...
+    @include modifier('social') {
+        @include extend(('icon', 'oval', 'size-6'));
+    }
+    ...
+}</code></pre>
+
+<pre><code class="html">&lt;button class="button-social-rss">&lt;i class="fa fa-rss">&lt;/i>&lt;/button></code></pre>
+</div>
+
+<h4 class="heading-size-4">Components</h4>
+
+<h4 class="heading-size-2-uppercase">Button Group</h4>
 
 <!-- Cloak & dagger UI -->
 

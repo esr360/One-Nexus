@@ -19,10 +19,11 @@
     //*************************************************************
 
     $alert-bars: config((
-        'name'       : 'alert-bar',
-        'colors'     : palette('alert'),
-        'text-color' : color('greyscale', 'white'),
-        'padding'    : 0.85em
+        'name'        : 'alert',
+        'colors'      : palette('alert'),
+        'text-color'  : color('greyscale', 'white'),
+        'bar-padding' : 0.85em,
+        'box-padding' : 1.5em,
     ), $custom);
 
     //*************************************************************
@@ -40,7 +41,6 @@
         display: block;
 
         // Public styles
-        padding: this('padding');
         color: this('text-color');
 
         // Pseudo States
@@ -67,6 +67,15 @@
         //*********************************************************
         // Modifiers
         //*********************************************************
+
+        @include modifier('bar') {
+            padding: this('bar-padding');
+        }
+
+        @include modifier('box') {
+            @extend .object;
+            padding: this('box-padding');
+        }
 
         @each $name, $color in this('colors') {
             @include modifier($name) {

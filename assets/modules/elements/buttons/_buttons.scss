@@ -19,22 +19,25 @@
     //*************************************************************
 
     $buttons: config((
-        'name'             : 'button',
-        'color'            : color('greyscale', 'white'),
-        'background'       : color('greyscale', 'grey-4'),
-        'transition'       : core('transition'),
-        'side-padding'     : 1em,
-        'line-height'      : 2.2,
-        'font-weight'      : normal,
-        'font-family'      : typography('typefaces', 'primary'),
-        'border-width'     : 1px,
-        'border-style'     : solid,
-        'disabled-opacity' : 0.6,
-        'round-radius'     : 0.4em,
-        'group-spacing'    : 0.5em,
-        'group-stack'      : 'break-1',
-        'sizes'            : typography-config('sizes'),
-        'palettes'         : ('brand', 'greyscale', 'alert', 'social')
+        'name'              : 'button',
+        'color'             : color('greyscale', 'white'),
+        'background'        : color('greyscale', 'grey-4'),
+        'transition'        : core('transition'),
+        'h-padding'         : 1em,
+        'v-padding'         : 0.65em,
+        'line-height'       : 1,
+        'font-weight'       : normal,
+        'font-family'       : typography('typefaces', 'primary'),
+        'border-width'      : 1px,
+        'border-style'      : solid,
+        'active-background' : color('brand', 'brand-1'),
+        'active-color'      : color('greyscale', 'white'),
+        'disabled-opacity'  : 0.6,
+        'round-radius'      : 0.4em,
+        'group-spacing'     :  0.5em,
+        'group-stack'       : 'break-1',
+        'sizes'             : typography-config('sizes'),
+        'palettes'          : ('brand', 'greyscale', 'alert', 'social')
     ), $custom);
 
     //*************************************************************
@@ -53,15 +56,15 @@
         border-color: transparent;
         cursor: pointer;
         text-decoration: none;
-        padding-top: 0;
-        padding-bottom: 0;
 
         // Public styles
         color: this('color');
         background: this('background');
         transition: this('transition');
-        padding-left: this('side-padding');
-        padding-right: this('side-padding');
+        padding-left: this('h-padding');
+        padding-right: this('h-padding');
+        padding-top: this('v-padding');
+        padding-bottom: this('v-padding');
         line-height: this('line-height');
         font-weight: this('font-weight');
         font-family: this('font-family');
@@ -99,7 +102,7 @@
             @include modifier($key) {
                 background: $color;                        
                 // Point at which light/dark background changes
-                $threshold: 80;
+                $threshold: 77%;
                 @if is-grayscale($color, $key) {
                     @if (lightness($color) < $threshold) {
                         color: this('color');
@@ -171,27 +174,27 @@
         }
         
         @include modifier('icon') {
-            padding: 0;
-            width: 2.5em;
+            padding: this('v-padding');
             text-align: center;
             .fa {
                 width: 1em;
+                height: 1em;
             }
-            @include modifier('plain') {
-                width: 1.5em;
-            }
-        }
-        
-        @include modifier('plain') {
-            background: none;
-            line-height: 1.25em;
         }
         
         @include modifier('active') {
-            background: color('brand', 'brand-1');
-            color: color('greyscale', 'white');
+            background: this('active-background');
+            color: this('active-color');
+            border-color: this('active-background');
             &:hover {
-                background: color('brand', 'brand-1');
+                background: this('active-background');
+            }
+            @include modifier('border') {
+                background: none;
+                color: this('active-background');
+                &:hover {
+                    border-color: this('active-background');
+                }
             }
         }
 

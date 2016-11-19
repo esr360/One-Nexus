@@ -10,18 +10,18 @@
         if($(this).attr('data-modal') == '') {
         
             var id = $(this).attr('href');
-            var id = 'modal-' + id.substr(id.lastIndexOf("/") + 1).replace(/\.[^/.]+$/, "");
+            var id = 'modal-' + id.substr(id.lastIndexOf('/') + 1).replace(/\.[^/.]+$/, '');
             var style = '';
             var content = $(this).html();
                 
             $(this).attr('href', '#' + id);
             
             if ($(this).attr('data-modal-style')) {
-                var style = '-animate-' + $(this).attr('data-modal-style');
+                style = '-animate-' + $(this).attr('data-modal-style');
             }
             
             if ($(this).attr('data-modal-content')) {
-                var content = $(this).attr('data-modal-content');
+                content = $(this).attr('data-modal-content');
             }
                 
             $('body').append(

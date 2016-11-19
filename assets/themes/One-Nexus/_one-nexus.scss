@@ -35,7 +35,11 @@
     
 	@include alert-bars;
 	@include blockquotes;
-	@include buttons;
+
+	@include buttons((
+		'active-background': color('brand', 'brand-3')
+	));
+
 	@include carousels;
 	@include forms;
 

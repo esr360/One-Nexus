@@ -4835,8 +4835,14 @@ p > a {
   left: 103%;
 }
 
+[class*="row-"][class*="-breathe"] {
+  margin-bottom: -3%;
+}
 [class*="row-"][class*="-breathe"] [class*="span"] {
   margin-bottom: 3%;
+}
+[class*="row-"][class*="-gasp"] {
+  margin-bottom: -1.5%;
 }
 [class*="row-"][class*="-gasp"] [class*="span"] {
   margin-bottom: 1.5%;
@@ -4872,7 +4878,6 @@ h1, h2, h3, h4, h5, h6 {
 
 code {
   background: white;
-  border: 1px solid #dee0e2;
   border-radius: 0.3em;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   font-style: normal;
@@ -4929,6 +4934,7 @@ p, ul, ol,
 form, fieldset, legend, figure, table,
 pre, hr,
 .object,
+[class*="alert-"][class*="-box"],
 .blockquote,
 [class*="blockquote-"],
 .breadcrumb,
@@ -4940,6 +4946,7 @@ p:first-child, ul:first-child, ol:first-child,
 form:first-child, fieldset:first-child, legend:first-child, figure:first-child, table:first-child,
 pre:first-child, hr:first-child,
 .object:first-child,
+[class*="alert-"][class*="-box"]:first-child,
 .blockquote:first-child,
 [class*="blockquote-"]:first-child,
 .breadcrumb:first-child,
@@ -4951,6 +4958,7 @@ p:last-child, ul:last-child, ol:last-child,
 form:last-child, fieldset:last-child, legend:last-child, figure:last-child, table:last-child,
 pre:last-child, hr:last-child,
 .object:last-child,
+[class*="alert-"][class*="-box"]:last-child,
 .blockquote:last-child,
 [class*="blockquote-"]:last-child,
 .breadcrumb:last-child,
@@ -5319,41 +5327,46 @@ pre:last-child, hr:last-child,
   background: #ffffff;
 }
 
-.alert-bar, [class*="alert-bar-"] {
+.alert, [class*="alert-"] {
   position: relative;
   display: block;
-  padding: 0.85em;
   color: #ffffff;
 }
-.alert-bar:hover, [class*="alert-bar-"]:hover {
+.alert:hover, [class*="alert-"]:hover {
   text-decoration: none;
 }
-.alert-bar a, [class*="alert-bar-"] a {
+.alert a, [class*="alert-"] a {
   border-bottom: 1px dotted;
 }
-.alert-bar a:hover, [class*="alert-bar-"] a:hover {
+.alert a:hover, [class*="alert-"] a:hover {
   text-decoration: none;
 }
-.alert-bar a, .alert-bar b, [class*="alert-bar-"] a, [class*="alert-bar-"] b {
+.alert a, .alert b, [class*="alert-"] a, [class*="alert-"] b {
   color: inherit;
 }
-[class*="alert-bar-"][class*="-error"] {
+[class*="alert-"][class*="-bar"] {
+  padding: 0.85em;
+}
+[class*="alert-"][class*="-box"] {
+  padding: 1.5em;
+}
+[class*="alert-"][class*="-error"] {
   background-color: #D9434E;
 }
-[class*="alert-bar-"][class*="-help"] {
+[class*="alert-"][class*="-help"] {
   background-color: #F5BA42;
 }
-[class*="alert-bar-"][class*="-info"] {
+[class*="alert-"][class*="-info"] {
   background-color: #4B8CDC;
 }
-[class*="alert-bar-"][class*="-success"] {
+[class*="alert-"][class*="-success"] {
   background-color: #3BB85D;
 }
-[class*="alert-bar_icon"] {
+[class*="alert_icon"] {
   margin-right: 0.5em;
   line-height: 1.25;
 }
-[class*="alert-bar_icon"][class*="-right"] {
+[class*="alert_icon"][class*="-right"] {
   float: right;
   margin-left: 0.5em;
   margin-right: 0;
@@ -5440,14 +5453,14 @@ pre:last-child, hr:last-child,
   border-color: transparent;
   cursor: pointer;
   text-decoration: none;
-  padding-top: 0;
-  padding-bottom: 0;
   color: #ffffff;
   background: #6f777b;
   transition: 0.4s;
   padding-left: 1em;
   padding-right: 1em;
-  line-height: 2.2;
+  padding-top: 0.65em;
+  padding-bottom: 0.65em;
+  line-height: 1;
   font-weight: normal;
   font-family: "Raleway", "100,300,700,900";
   border-width: 1px;
@@ -6037,26 +6050,27 @@ pre:last-child, hr:last-child,
   border-radius: 0;
 }
 [class*="button-"][class*="-icon"] {
-  padding: 0;
-  width: 2.5em;
+  padding: 0.65em;
   text-align: center;
 }
 [class*="button-"][class*="-icon"] .fa {
   width: 1em;
-}
-[class*="button-"][class*="-icon"][class*="-plain"] {
-  width: 1.5em;
-}
-[class*="button-"][class*="-plain"] {
-  background: none;
-  line-height: 1.25em;
+  height: 1em;
 }
 [class*="button-"][class*="-active"] {
-  background: #86f4d1;
+  background: #5533ff;
   color: #ffffff;
+  border-color: #5533ff;
 }
 [class*="button-"][class*="-active"]:hover {
-  background: #86f4d1;
+  background: #5533ff;
+}
+[class*="button-"][class*="-active"][class*="-border"] {
+  background: none;
+  color: #5533ff;
+}
+[class*="button-"][class*="-active"][class*="-border"]:hover {
+  border-color: #5533ff;
 }
 [class*="button_group"] .button, [class*="button_group"] [class*="button-"] {
   margin-left: 0.5em;

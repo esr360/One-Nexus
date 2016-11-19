@@ -4,6 +4,10 @@
 
 @import '_app';
 
+.object {
+    margin: 2em 0;
+}
+
 @include blockquotes((
     'name': 'blockquoteDemo-1',
     'quotes': '\f10d''\f10e''\f053''\f054',

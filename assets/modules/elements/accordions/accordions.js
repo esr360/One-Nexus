@@ -21,7 +21,7 @@
             animationSpeed   : _baseTransition,
             keepOpenSelector : _modifier('keepOpen')
         }, custom);
-        
+
         // Run the code on each occurance of the target
         return this.each(function() {
             
@@ -39,6 +39,7 @@
                 }
                 
                 $parent.toggleClass(options.activeClass);
+
                 $(this).find('~ *').slideToggle(options.animationSpeed);
 
             });
