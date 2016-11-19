@@ -121,7 +121,7 @@ The above options can be passed to the mixin like so:
 
 #### Color Palettes
 
-This option accepts a list of palettes defined in the <a href="..//utilities/color-palette.html">Color Palette</a> module.
+This option accepts a list of palettes defined in the <a href="../utilities/color-palette.html">Color Palette</a> module.
 
 ```scss
 @include buttons((
@@ -191,7 +191,7 @@ Using your new values like so:
 * brand-3
 
 ```html
-<button class="button-brand-3">Size 7 Button</button>
+<button class="button-brand-3">Brand 3 Button</button>
 ```
 
 ##### Greyscale
@@ -206,7 +206,7 @@ Using your new values like so:
 * black
 
 ```html
-<button class="button-grey-3">Size 7 Button</button>
+<button class="button-grey-3">Grey 3 Button</button>
 ```
 
 ##### Alert
@@ -217,7 +217,7 @@ Using your new values like so:
 * info
 
 ```html
-<button class="button-success">Size 7 Button</button>
+<button class="button-success">Success Button</button>
 ```
 
 ##### Social
