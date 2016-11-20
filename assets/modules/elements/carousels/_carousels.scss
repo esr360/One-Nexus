@@ -74,6 +74,7 @@
                     font-family: FontAwesome;
                 }
                 @include modifier('prev') {
+                    display: inline-block;
                     &:before {
                         content: this('prev-icon');
                     }

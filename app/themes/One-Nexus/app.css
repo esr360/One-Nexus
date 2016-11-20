@@ -5942,6 +5942,9 @@ button::-moz-focus-inner {
 [class*="carousel_nav_item"]:before {
   font-family: FontAwesome;
 }
+[class*="carousel_nav_item"][class*="-prev"] {
+  display: inline-block;
+}
 [class*="carousel_nav_item"][class*="-prev"]:before {
   content: "";
 }
