@@ -68,33 +68,11 @@ module.exports = function(grunt) {
     }
 
     /**
-     * Set which Owl-Carousel modules you would like to use
-     * @see https://git.io/v6ssU
-     */
-    var _owl = function() {
-        var owlPath = project.vendor + 'Owl-Carousel/src/js/'; 
-        var owlModules = [
-            owlPath + 'owl.carousel.js',
-            owlPath + 'owl.animate.js',
-            owlPath + 'owl.autoheight.js',
-            owlPath + 'owl.autoplay.js',
-            owlPath + 'owl.compiled.js',
-            owlPath + 'owl.hash.js',
-            owlPath + 'owl.lazyload.js',
-            owlPath + 'owl.navigation.js',
-            owlPath + 'owl.video.js'
-        ]
-        return owlModules;
-    };
-
-    /**
      * Set the scripts to be included in your theme's main js file
      * @var {object} _scripts
      */
     var _scripts = [
-        _owl(),
         project.vendor + 'Synergy/dist/synergy.js',
-        project.source[0] + 'app.js',
         project.source[0] + 'tools/**/*.js',
         project.source[0] + 'modules/**/*.js',
         project.source[1].themes[1].theme + '<%=theme%>.js'
@@ -448,6 +426,7 @@ module.exports = function(grunt) {
             bsFiles: {
                 src : [
                     project.dist[0] + '**/*.css',
+                    project.dist[0] + '**/*.js',
                     project.dist[1].templates + '**/*.html',
                     'demo/**/*.css'
                 ]

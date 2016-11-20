@@ -17,7 +17,16 @@
     //*************************************************************
 
     $carousels: config((
-        'name'             : 'carousel'
+        'name'                 : 'carousel',
+        'output-json'          : true,
+        'nav-icon-size'        : font-size('size-6'),
+        'nav-icon-transition'  : core('transition'),
+        'prev-icon'            : '\f137',
+        'next-icon'            : '\f138',
+        'pager-icon-size'      : 10px,
+        'pager-icon-bg'        : rgba(black, 0.4),
+        'pager-icon-transiton' : core('transition'),
+        'pager-icon-active-bg' : grey
     ), $custom);
 
     //*************************************************************
@@ -32,26 +41,64 @@
 
         position: relative;
 
+        //*********************************************************
+        // Modifiers
+        //*********************************************************
+
+        @include modifier('no-nav') {
+            @include overwrite-component('nav') {
+                display: none;
+            }
+        }
+
+
+        @include modifier('no-pager') {
+            @include overwrite-component('pagination') {
+                display: none;
+            }
+        }
+
+        //*********************************************************
+        // Components
+        //*********************************************************
+
+        @include component('nav') {
+
+            position: relative;
+
+            @include component('item') {
+                cursor: pointer;
+                transition: this('nav-icon-transition');
+                font-size: this('nav-icon-size');
+                &:before {
+                    font-family: FontAwesome;
+                }
+                @include modifier('prev') {
+                    &:before {
+                        content: this('prev-icon');
+                    }
+                }
+                @include modifier('next') {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    &:before {
+                        content: this('next-icon');
+                    }
+                }
+            }
+
+        }
+
+        @include component('pagination') {
+            text-align: center;
+        }
+
     } // module
 
     //*************************************************************
     // Owl-Carousel Overwrites
     //*************************************************************
-
-    .owl-prev, .owl-next {
-        transition: core('transition');
-    }
-            
-    .owl-dots {
-        text-align: center;
-        margin-top: 1em;
-        .force-dots & {
-            position: static;
-        }
-        .owl-full > & {
-            margin-top: 4em;
-        }
-    }
 
     .owl-dot {
         cursor: pointer;
@@ -63,16 +110,16 @@
         }
         &.active {
             span {
-                background: grey;
+                background: this('pager-icon-active-bg');
             }
         }
         span {
             display: block;
-            transition: core('transition');
             border-radius: 50%;
-            height: 10px;
-            width: 10px;
-            background: rgba(black, 0.4);
+            height: this('pager-icon-size');
+            width: this('pager-icon-size');
+            background: this('pager-icon-bg');
+            transition: this('pager-icon-transition');
         }
     }
 

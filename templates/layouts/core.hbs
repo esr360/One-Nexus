@@ -3,7 +3,8 @@ title: One Nexus
 bodyClass: ''
 contentID: 'site-content'
 modulesID: 'modulesConfigJSON'
-jQuery: '2.2.4'
+jQuery: 2.2.4
+OwlCarousel: 2.2.0
 ---
 <!DOCTYPE html>
 <html lang="en-GB">
@@ -36,6 +37,11 @@ jQuery: '2.2.4'
 
     {{#if jQuery}}
         <script src="http://code.jquery.com/jquery-{{jQuery}}.min.js" crossorigin="anonymous"></script>
+    {{/if}}
+
+    {{#if OwlCarousel}}
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/{{OwlCarousel}}/assets/owl.carousel.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/{{OwlCarousel}}/owl.carousel.min.js"></script>
     {{/if}}
 
     {{#is environment "dev"}}

@@ -5,6 +5,8 @@ $(document).ready(function() {
 //-----------------------------------------------------------------
 
     $(_accordion).accordion();
+
+    $(_carousel).carousel();
     
     $(_form).form();
 
@@ -19,31 +21,31 @@ $(document).ready(function() {
         if ($(this).is('[class*="-top"]')) {
             
             $(this).tooltip({
-                position : "top"
+                position : 'top'
             });
             
         } else if ($(this).is('[class*="-bottom"]')) {
             
             $(this).tooltip({
-                position : "bottom"
+                position : 'bottom'
             });
             
         } else if ($(this).is('[class*="-left"]')) {
             
             $(this).tooltip({
-                position : "left"
+                position : 'left'
             });
             
         } else if ($(this).is('[class*="-right"]')) {
             
             $(this).tooltip({
-                position : "right"
+                position : 'right'
             });
             
         } else {
             
             $(this).tooltip({
-                position : "top"
+                position : 'top'
             });
             
         }
