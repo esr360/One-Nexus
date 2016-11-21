@@ -21,12 +21,10 @@
     $forms: config((
         'name'             : 'form',
         'output-json'      : true,
-        'weight'           : lighter,
+        'weight'           : normal,
         'input-color'      : core('text-color'),
         'input-border'     : 1px solid color('greyscale', 'grey-3'),
-        'input-padding'    : 0.65em,
-        'bg-color'         : rgba(black, 0.025),
-        'bg-focus-color'   : white,
+        'input-padding'    : 0.75em,
         'valid-color'      : color('validation', 'valid'),
         'invalid-color'    : color('validation', 'invalid')
     ), $custom);
@@ -84,15 +82,23 @@
                     display: table-footer-group;
                     &:focus {
                         &:invalid {
-                            &, ~ label, ~ .form_icon, &::placeholder {
+                            &, ~ label, ~ .form_icon {
+                                border-color: this('invalid-color');
+                                color: this('invalid-color');
+                            }
+                            &::placeholder {
                                 border-color: this('invalid-color');
                                 color: this('invalid-color');
                             }
                         }
                         &:valid {
-                            &, ~ label, ~ .form_icon, &::placeholder {
+                            &, ~ label, ~ .form_icon {
                                 border-color: this('valid-color');
                                 color: this('valid-color');
+                            }
+                            &::placeholder {
+                                border-color: this('invalid-color');
+                                color: this('invalid-color');
                             }
                         }
                     }
@@ -115,6 +121,7 @@
             border: this('input-border');
             transition: core('transition');
             color: this('input-color');
+            font-family: typography('typefaces', 'primary');
             &::placeholder {
                 color: this('input-color');
                 transition: core('transition');

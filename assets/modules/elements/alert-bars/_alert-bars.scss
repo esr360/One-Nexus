@@ -73,7 +73,7 @@
         }
 
         @include modifier('box') {
-            @extend .object;
+            @include object;
             padding: this('box-padding');
         }
 

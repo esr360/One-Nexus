@@ -172,7 +172,7 @@
         
             &:before,
             &:after {
-                content: "";
+                content: '';
                 width: 2em;
                 border-bottom: 1px solid color('brand', 'brand-1');
                 @include vertical-center(absolute);

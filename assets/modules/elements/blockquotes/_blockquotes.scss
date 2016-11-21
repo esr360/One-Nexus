@@ -73,7 +73,7 @@
             right: 0;
         }
 
-        @extend .object;
+        @include object;
 
         //*********************************************************
         // Modifiers

@@ -140,19 +140,8 @@
 	form, fieldset, legend, figure, table, 
 	pre, hr,
 	.object {
-	    margin: core('margin') 0;
-	    @include vertical-rhythm;
+	    @include object;
 	}
-    
-    .object-small {
-	    margin: (core('margin') / 2) 0;
-	    @include vertical-rhythm;
-    }
-    
-    .object-large {
-	    margin: (core('margin') * 2) 0;
-	    @include vertical-rhythm;
-    }
 	
 	::selection {
 		background-color: color('brand', 'brand-1');
@@ -173,6 +162,14 @@
 /// @return {map} - new map containing desired group
 @function core($key) {
     @return map-get($core, $key);
+}
+
+/// Create vertical-rhythm for an element
+/// @access public
+/// @group utilities
+@mixin object {
+	margin: core('margin') 0;
+	@include vertical-rhythm;
 }
 
 .auto-resizable-iframe {

@@ -30,7 +30,7 @@
 
     @include module {
 
-        @extend .object;
+        @include object;
 
         font-size: this('font-size');
         

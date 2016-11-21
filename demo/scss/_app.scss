@@ -112,3 +112,12 @@ $core:(
 @function breakpoint($breakpoint) {
     @return kgs-breakpoint($breakpoint);
 }
+
+@mixin object {
+	margin: core('margin') 0;
+	@include vertical-rhythm;
+}
+
+.object {
+    @include object;
+}

@@ -273,6 +273,24 @@ module.exports = function(grunt) {
                 ]
             }
         },
+        
+
+        /**
+         * csscomb 
+         * @see https://www.npmjs.com/package/grunt-csscomb
+         */
+        csscomb: {
+            options: {
+                config: '.csscomb.json'
+            },
+            dist: {
+                expand: true,
+                cwd: project.dist[0],
+                src: ['**/*.css', '!**/*.min.css'],
+                dest: project.dist[0],
+                ext: '.css'
+            }
+        },
 
         /**
          * Concat
@@ -452,6 +470,7 @@ module.exports = function(grunt) {
                 tasks: [ 
                     'sass:' + env,
                     'postcss:dist',
+                    'csscomb',
                     //'scsslint',
                     'mochacli:scss',
                     'sassdoc',
@@ -541,6 +560,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-csscomb');
     grunt.loadNpmTasks('grunt-jsdoc');
     grunt.loadNpmTasks('grunt-mocha-cli');
     grunt.loadNpmTasks('grunt-notify');
@@ -568,6 +588,7 @@ module.exports = function(grunt) {
             'sass:' + environment,
             'sass:demo',
             'postcss',
+            'csscomb',
             'lint',
             'test',
             'assemble',

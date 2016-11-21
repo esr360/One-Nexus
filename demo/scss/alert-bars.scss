@@ -4,10 +4,6 @@
 
 @import '_app';
 
-.object {
-    margin: 2em 0;
-}
-
 @include alert-bars((
     'name': 'alertDemo-1',
     'colors':(
