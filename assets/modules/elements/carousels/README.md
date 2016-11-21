@@ -1,5 +1,7 @@
 ## One-Nexus Carousels
 
+To create a carousel, add the `carousel` class to a container of elements which will act as the carousel slides:
+
 ```html
 <div class="carousel">
     <img src="http://lorempixel.com/640/480" />
