@@ -163,3 +163,36 @@ Default carousels will now reflect these options:
     <img src="http://lorempixel.com/640/480" />
 </div>
 ```
+
+### Examples
+
+You can initiaite multiple carousels on multiple elements if you wish for them to have different options:
+
+> In order for your carousel to receive the One-Nexus carousel styles, you must give it a class beginning with `carousel-`, e.g. `carousel-products`
+
+```html
+<div class="carousel-products">
+    <img src="http://lorempixel.com/640/480" />
+    <img src="http://lorempixel.com/640/480" />
+    <img src="http://lorempixel.com/640/480" />
+    <img src="http://lorempixel.com/640/480" />
+</div>
+```
+
+```js
+$('.carousel-products').carousel({
+    owl: {
+        items: 2,
+        margin: 20
+    }
+});
+```
+
+**Note:** You can of course just call the OwlCarousel plugin directly on your element like the below example, but you will lose out on some benefits that the One-Nexus wrapper provides:
+
+```js
+$('.carousel-products').owlCarousel({
+    items: 2,
+    margin: 20
+});
+```

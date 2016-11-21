@@ -262,6 +262,44 @@
     <img src="http://lorempixel.com/640/479" />
 </div>
 
+<h3 class="heading-size-5">Examples</h3>
+
+<p>You can initiaite multiple carousels on multiple elements if you wish for them to have different options:</p>
+
+<p class="alert-bar-info">In order for your carousel to receive the One-Nexus carousel styles, you must give it a class beginning with <code class="alt">carousel-</code>, e.g. <code class="alt">carousel-products</code>
+
+<pre><code class="html">&lt;div class="carousel-products">
+    &lt;img src="http://lorempixel.com/640/480" />
+    &lt;img src="http://lorempixel.com/640/480" />
+    &lt;img src="http://lorempixel.com/640/480" />
+    &lt;img src="http://lorempixel.com/640/480" />
+&lt;/div></code></pre>
+
+<pre><code>$('.carousel-products').carousel({
+    owl: {
+        items: 2,
+        margin: 20
+    }
+});</code></pre>
+
+<h4 class="heading-size-3">Result</h4>
+
+<div class="carousel-products">
+    <img src="http://lorempixel.com/641/481" />
+    <img src="http://lorempixel.com/640/479" />
+    <img src="http://lorempixel.com/640/481" />
+    <img src="http://lorempixel.com/641/481" />
+</div>
+
+<div class="alert-box-info">
+    <p><b>Note:</b> You can of course just call the OwlCarousel plugin directly on your element like the below example, but you will lose out on some benefits that the One-Nexus wrapper provides:</p>
+
+<pre><code>$('.carousel-products').owlCarousel({
+    items: 2,
+    margin: 20
+});</code></pre>
+</div>
+
 <!-- Cloak & dagger UI -->
 
 <link rel="stylesheet" href="/css/carousels.css" />
@@ -275,6 +313,12 @@
                 pagination: false,
                 owl: {
                     items: 6
+                }
+            });
+            $('.carousel-products').carousel({
+                owl: {
+                    items: 2,
+                    margin: 20
                 }
             });
         };
