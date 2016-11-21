@@ -17,16 +17,22 @@
     //*************************************************************
 
     $carousels: config((
-        'name'                 : 'carousel',
-        'output-json'          : true,
-        'nav-icon-size'        : font-size('size-6'),
-        'nav-icon-transition'  : core('transition'),
-        'prev-icon'            : '\f137',
-        'next-icon'            : '\f138',
-        'pager-icon-size'      : 10px,
-        'pager-icon-bg'        : rgba(black, 0.4),
-        'pager-icon-transiton' : core('transition'),
-        'pager-icon-active-bg' : grey
+        'name'             : 'carousel',
+        'output-json'      : true,
+        'nav-buttons':(
+            'enabled'      : true,
+            'size'         : font-size('size-6'),
+            'transition'   : core('transition'),
+            'prev'         : '\f137',
+            'next'         : '\f138'
+        ),
+        'bullets':(
+            'enabled'      : true,
+            'size'         : 10px,
+            'color'        : rgba(black, 0.4),
+            'transition'   : core('transition'),
+            'active-color' : grey
+        )
     ), $custom);
 
     //*************************************************************
@@ -42,23 +48,6 @@
         position: relative;
 
         //*********************************************************
-        // Modifiers
-        //*********************************************************
-
-        @include modifier('no-nav') {
-            @include overwrite-component('nav') {
-                display: none;
-            }
-        }
-
-
-        @include modifier('no-pager') {
-            @include overwrite-component('pagination') {
-                display: none;
-            }
-        }
-
-        //*********************************************************
         // Components
         //*********************************************************
 
@@ -68,15 +57,15 @@
 
             @include component('item') {
                 cursor: pointer;
-                transition: this('nav-icon-transition');
-                font-size: this('nav-icon-size');
+                transition: this('nav-buttons', 'transition');
+                font-size: this('nav-buttons', 'size');
                 &:before {
                     font-family: FontAwesome;
                 }
                 @include modifier('prev') {
                     display: inline-block;
                     &:before {
-                        content: this('prev-icon');
+                        content: this('nav-buttons', 'prev');
                     }
                 }
                 @include modifier('next') {
@@ -84,44 +73,44 @@
                     top: 0;
                     right: 0;
                     &:before {
-                        content: this('next-icon');
+                        content: this('nav-buttons', 'next');
                     }
                 }
             }
 
         }
 
-        @include component('pagination') {
+        @include component('bullets') {
             text-align: center;
         }
 
-    } // module
+        //*************************************************************
+        // Owl-Carousel Overwrites
+        //*************************************************************
 
-    //*************************************************************
-    // Owl-Carousel Overwrites
-    //*************************************************************
-
-    .owl-dot {
-        cursor: pointer;
-        cursor: hand;
-        user-select: none;
-        display: inline-block;
-        &:not(:first-child) {
-            margin-left: 0.5em;
-        }
-        &.active {
+        .owl-dot {
+            cursor: pointer;
+            cursor: hand;
+            user-select: none;
+            display: inline-block;
+            &:not(:first-child) {
+                margin-left: 0.5em;
+            }
+            &.active {
+                span {
+                    background: this('bullets', 'active-color');
+                }
+            }
             span {
-                background: this('pager-icon-active-bg');
+                display: block;
+                border-radius: 50%;
+                height: this('bullets', 'size');
+                width: this('bullets', 'size');
+                background: this('bullets', 'color');
+                transition: this('bullets', 'transition');
             }
         }
-        span {
-            display: block;
-            border-radius: 50%;
-            height: this('pager-icon-size');
-            width: this('pager-icon-size');
-            background: this('pager-icon-bg');
-            transition: this('pager-icon-transition');
-        }
-    }
+
+    } // module
 
 } // @mixin carousels

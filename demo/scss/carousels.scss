@@ -1,0 +1,17 @@
+///************************************************************
+/// Module Demos
+///************************************************************
+
+@import '_app';
+
+@include carousels((
+    'name': 'demoCarousel-1',
+    'nav-buttons':(
+        'enabled': false
+    ),
+    'bullets':(
+        'active-color': #C7254F
+    )
+));
+
+@include json-encode($_modules, $selector: '#demoConfig');

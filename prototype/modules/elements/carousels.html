@@ -65,6 +65,8 @@
 
 <h3 class="heading-size-5-light">Quick Look</h3>
 
+<p class="alert-bar-info">The One-Nexus carousels use <a href="http://owlcarousel2.github.io/OwlCarousel2/" target="blank"> OwlCarousel 2</a>
+
 <div class="carousel">
     <img src="http://lorempixel.com/640/480" />
     <img src="http://lorempixel.com/641/480" />
@@ -73,6 +75,8 @@
     <img src="http://lorempixel.com/640/479" />
 </div>
 
+<p>To create a carousel, add the <code>carousel</code> class to a container of elements which will act as the carousel slides:</p>
+
 <pre><code class="html">&lt;div class="carousel">
     &lt;img src="http://lorempixel.com/640/480" />
     &lt;img src="http://lorempixel.com/640/480" />
@@ -80,6 +84,208 @@
     &lt;img src="http://lorempixel.com/640/480" />
     &lt;img src="http://lorempixel.com/640/480" />
 &lt;/div></code></pre>
+
+<h3 class="heading-size-5">Sass</h3>
+
+<p>Load the carousel styles by including the <code>carousels()</code> mixin:</p>
+
+<pre><code>@include carousels();</code></pre>
+
+<p>The following options can be passed to the mixin to customize default carousels:</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>name</code></td>
+            <td>The name used when generating the CSS selector</td>
+            <td><code>'carousel'</code></td>
+        </tr>
+        <tr>
+            <td><code>output-json</td>
+            <td>Allows the configutation to be accessed in JavaScript</td>
+            <td><code>true</code></td>
+        </tr>
+        <tr>
+            <td><code>nav-buttons['enabled']</code></td>
+            <td>Determine whether to display the next/previous buttons</td>
+            <td><code>true</code></td>
+        </tr>
+        <tr>
+            <td><code>nav-buttons['size']</code></td>
+            <td>The size of the next/previous buttons</td>
+            <td><code>font-size('size-6')</code></td>
+        </tr>
+        <tr>
+            <td><code>nav-buttons['transition']</code></td>
+            <td>The transition for the next/previous buttons</td>
+            <td><code>core('transition')</code></td>
+        </tr>
+        <tr>
+            <td><code>nav-buttons['prev']</code></td>
+            <td>FontAwesome icon for 'previous' button using <a href="https://css-tricks.com/almanac/properties/q/quotes/" target="blank">content values</a></td>
+            <td><code>'\f137'</code></td>
+        </tr>
+        <tr>
+            <td><code>nav-buttons['next']</code></td>
+            <td>FontAwesome icon for 'next' button using <a href="https://css-tricks.com/almanac/properties/q/quotes/" target="blank">content values</a></td>
+            <td><code>'\f138'</code></td>
+        </tr>
+        <tr>
+            <td><code>bullets['enabled']</code></td>
+            <td>Determine whether to display pagination bullets</td>
+            <td><code>true</code></td>
+        </tr>
+        <tr>
+            <td><code>bullets['size']</code></td>
+            <td>The size for pagination bullets</td>
+            <td><code>10px</code></td>
+        </tr>
+        <tr>
+            <td><code>bullets['color']</code></td>
+            <td>The color for pagination bullets</td>
+            <td><code>rgba(black, 0.4)</code></td>
+        </tr>
+        <tr>
+            <td><code>bullets['transition']</code></td>
+            <td>The transition for pagination bullets</td>
+            <td><code>core('transition')</code></td>
+        </tr>
+        <tr>
+            <td><code>bullets['active-color']</code></td>
+            <td>The color for the active pagination bullet</td>
+            <td><code>grey</code></td>
+        </tr>
+    </tbody>
+</table>
+
+<p>The above options can be passed to the mixin like so:</p>
+
+<pre><code>@include carousels((
+    'nav-buttons':(
+        'enabled': false
+    ),
+    'bullets':(
+        'active-color': #C7254F
+    )
+));</code></pre>
+
+<p>Default carousels will now reflect these options:</p>
+
+<pre><code class="html">&lt;div class="carousel">
+    &lt;img src="http://lorempixel.com/640/480" />
+    &lt;img src="http://lorempixel.com/640/480" />
+    &lt;img src="http://lorempixel.com/640/480" />
+    &lt;img src="http://lorempixel.com/640/480" />
+    &lt;img src="http://lorempixel.com/640/480" />
+&lt;/div></code></pre>
+
+<div class="demoCarousel-1">
+    <img src="http://lorempixel.com/640/480" />
+    <img src="http://lorempixel.com/641/480" />
+    <img src="http://lorempixel.com/640/481" />
+    <img src="http://lorempixel.com/641/481" />
+    <img src="http://lorempixel.com/640/479" />
+</div>
+
+<h3 class="heading-size-5">JavaScript</h3>
+
+<p>Call the <code>carousel()</code> function on your carousel selector:</p>
+
+<pre><code>$('.carousel').carousel();</code></pre>
+
+<p>The following options can be passed to the function to customize the carousels:</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>nav</code></td>
+            <td>Create next/previous buttons</td>
+            <td><code>true</code></td>
+        </tr>
+        <tr>
+            <td><code>pagination</code></code></td>
+            <td>Create pagination bullets</td>
+            <td><code>true</code></td>
+        </tr>
+        <tr>
+            <td><code>owl</code></td>
+            <td>Pass any custom <a href="http://owlcarousel2.github.io/OwlCarousel2/docs/api-options.html" target="blank">OwlCarousel options</a> to the carousel</td>
+            <td><code>{}</code></td>
+        </tr>
+    </tbody>
+</table>
+
+<p>The above options can be passed to the function like so:</p>
+
+<pre><code>$('.carousel').carousel({
+    pagination: false,
+    owl: {
+        items: 6
+    }
+});</code></pre>
+
+<p>Default carousels will now reflect these options:</p>
+
+<pre><code class="html">&lt;div class="carousel">
+    &lt;img src="http://lorempixel.com/640/480" />
+    &lt;img src="http://lorempixel.com/640/480" />
+    &lt;img src="http://lorempixel.com/640/480" />
+    &lt;img src="http://lorempixel.com/640/480" />
+    &lt;img src="http://lorempixel.com/640/480" />
+    &lt;img src="http://lorempixel.com/640/480" />
+    &lt;img src="http://lorempixel.com/640/480" />
+    &lt;img src="http://lorempixel.com/640/480" />
+&lt;/div></code></pre>
+
+<div class="carousel-demo">
+    <img src="http://lorempixel.com/640/480" />
+    <img src="http://lorempixel.com/641/480" />
+    <img src="http://lorempixel.com/640/481" />
+    <img src="http://lorempixel.com/641/481" />
+    <img src="http://lorempixel.com/640/479" />
+    <img src="http://lorempixel.com/640/481" />
+    <img src="http://lorempixel.com/641/481" />
+    <img src="http://lorempixel.com/640/479" />
+</div>
+
+<!-- Cloak & dagger UI -->
+
+<link rel="stylesheet" href="/css/carousels.css" />
+<script>
+    (function() {
+        var runMyCode = function($) {
+            $('.demoCarousel-1').carousel({
+                nav : false
+            });
+            $('.carousel-demo').carousel({
+                pagination: false,
+                owl: {
+                    items: 6
+                }
+            });
+        };
+        var timer = function() {
+            if (window.jQuery) {
+                runMyCode(window.jQuery);
+            } else { window.setTimeout(timer, 100) }
+        };
+        timer();
+    })();
+</script>
 
 <div id="demoConfig"></div>
 
@@ -121,6 +327,8 @@
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.0/assets/owl.carousel.min.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.0/owl.carousel.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
         <script src="../../../../../../../../themes/One-Nexus/app.js"></script>
 

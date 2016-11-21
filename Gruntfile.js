@@ -157,12 +157,6 @@ module.exports = function(grunt) {
             dist: {
                 files: [
                     {
-                        cwd: project.vendor + 'Font-Awesome/fonts',
-                        src: '**/*',
-                        dest: project.dist[0] + 'fonts',
-                        expand: true
-                    },
-                    {
                         src: [_globalScripts],
                         dest: project.dist[1].scripts,
                         expand: true,

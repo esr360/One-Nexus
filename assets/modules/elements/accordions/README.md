@@ -167,7 +167,7 @@ The following options can be passed to the function to customize the accordions:
     </tbody>
 </table>
 
-The above options can be passed to the mixin like so:
+The above options can be passed to the function like so:
 
 ```js
 $(_accordion).accordion({

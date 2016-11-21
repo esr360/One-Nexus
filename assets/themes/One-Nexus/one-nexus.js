@@ -6,7 +6,7 @@ $(document).ready(function() {
 
     $(_accordion).accordion();
 
-    $(_carousel).carousel();
+    $('.carousel').carousel();
     
     $(_form).form();
 

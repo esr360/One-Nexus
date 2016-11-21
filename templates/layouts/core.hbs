@@ -5,6 +5,7 @@ contentID: 'site-content'
 modulesID: 'modulesConfigJSON'
 jQuery: 2.2.4
 OwlCarousel: 2.2.0
+FontAwesome: 4.7.0
 ---
 <!DOCTYPE html>
 <html lang="en-GB">
@@ -42,6 +43,10 @@ OwlCarousel: 2.2.0
     {{#if OwlCarousel}}
         <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/{{OwlCarousel}}/assets/owl.carousel.min.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/{{OwlCarousel}}/owl.carousel.min.js"></script>
+    {{/if}}
+
+    {{#if FontAwesome}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{FontAwesome}}/css/font-awesome.min.css" />
     {{/if}}
 
     {{#is environment "dev"}}
