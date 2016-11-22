@@ -20,8 +20,6 @@
 
     $forms: config((
         'name'             : 'form',
-        'output-json'      : true,
-        'weight'           : normal,
         'input-color'      : core('text-color'),
         'input-border'     : 1px solid color('greyscale', 'grey-3'),
         'input-padding'    : 0.75em,
@@ -43,6 +41,7 @@
         
         label {
             transition: core('transition');
+            color: this('input-color');
         }
 
         fieldset {
@@ -112,6 +111,7 @@
 
         @include component('icon') {
             @include vertical-center(absolute);
+            color: this('input-color');
             position: absolute;
             left: 0.75em;
         }

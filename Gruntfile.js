@@ -469,6 +469,7 @@ module.exports = function(grunt) {
                 ],
                 tasks: [ 
                     'sass:' + env,
+                    'sass:demo',
                     'postcss:dist',
                     'csscomb',
                     //'scsslint',
@@ -481,8 +482,8 @@ module.exports = function(grunt) {
                 files: [
                     'demo/scss/**/*.scss'
                 ],
-                tasks: [ 
-                    'sass:demo', 
+                tasks: [
+                    'sass:demo',
                     'postcss:demo',
                     //'scsslint',
                     'notify:css'
