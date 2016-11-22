@@ -103,6 +103,10 @@ The following options can be passed to the mixin to customize the buttons:
             <td><code>palettes</code></td>
             <td>A list of color palettes to create modifiers for</td>
         </tr>
+        <tr>
+            <td><code>sizes</code></td>
+            <td>Options to pass to the <a href="../../tools/scss/font-sizes"><code>font-sizes()</code> mixin to determine button font-sizes</a></td>
+        </tr>
     </tbody>
 </table>
 

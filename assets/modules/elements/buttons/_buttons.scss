@@ -36,8 +36,13 @@
         'round-radius'      : 0.4em,
         'group-spacing'     :  0.5em,
         'group-stack'       : 'break-1',
-        'sizes'             : typography-config('sizes'),
-        'palettes'          : ('brand', 'greyscale', 'alert', 'social')
+        'palettes'          : ('brand', 'greyscale', 'alert', 'social'),
+        'sizes':(
+            'optional-sizes': typography-config('sizes'),
+            'breakpoints': (
+                'break-3': 0.85
+            )
+        )
     ), $custom);
 
     //*************************************************************
@@ -87,12 +92,7 @@
         // Sizes
         //*********************************************************
 
-        @include font-sizes((
-            'optional-sizes': this('sizes'),
-            'breakpoints' : (
-                'break-3' : 0.85
-            )
-        ));
+        @include font-sizes(this('sizes'));
 
         //*********************************************************
         // Colors

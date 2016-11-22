@@ -20,17 +20,16 @@
 
     $headings: config((
         'name'                     : 'heading',
-        'output-json'              : true,
-        'highlight-color'          : color('brand', 'brand-1'),
-        'highlight-dark-color'     : color('greyscale', 'grey-6'),
-        'highlight-opaque-color'   : rgba(black, 0.6),
-        'strikethrough-width'      : 75px,
         'spaced-spacing'           : 0.35em,
         'border'                   : 1px dotted rgba(black, 0.2),
-        'group-dots-color'         : rgba(black, 0.4),
-        'group-dots-size'          : 24px,
         'group-block-padding'      : 6em,
-        'group_heading-lineHeight' : 0.8
+        'group_heading-lineHeight' : 0.8,
+        'sizes':(
+            'optional-sizes': typography-config('sizes'),
+            'breakpoints': (
+                'break-3': 0.85
+            )
+        )
     ), $custom);
 
     //*************************************************************
@@ -50,7 +49,7 @@
         // Sizes
         //*********************************************************
 
-        @include font-sizes();
+        @include font-sizes(this('sizes'));
 
         //*********************************************************
         // Modifiers
@@ -74,46 +73,12 @@
             font-weight: lighter;
             font-weight: 300;
             font-style: normal;
-        } 
-
-        @include modifier('highlight') {
-            $highlight-dimensions: 0.3em;
-            margin-left: $highlight-dimensions;
-            margin-right: $highlight-dimensions;
-            line-height: 1.5;
-            > b {
-                background: this('highlight-color');
-                color: white;
-                padding: 0.1em 0;
-                font-weight: inherit;
-                box-shadow: $highlight-dimensions 0 0 this('highlight-color'), -$highlight-dimensions 0 0 this('highlight-color');
-                text-shadow: none;    
-                &:not(:first-child) {
-                    margin-top: ($highlight-dimensions / 2);
-                }        
-            }      
-            @-moz-document url-prefix() {
-                box-shadow: none;
-                margin-left: 0;
-                margin-right: 0;
-                padding: 0 $highlight-dimensions;
-                > b {                
-                    box-decoration-break: clone;
-                }
-            }
         }
         
         @include modifier('flush') {
             margin-top: 0 !important;
             margin-bottom: 0 !important;
         }
-
-        // Custom Styles
-        //*********************************************************
-
-		@include modifier('primary') {
-			@include extend(('heavy', 'size-4', 'uppercase'));
-		}
 
         //*********************************************************
         // Components
@@ -132,58 +97,6 @@
                 margin-top: 0.5em;
                 margin-bottom: 0.5em;
                 line-height: this('group_heading-lineHeight');
-            }
-
-            p {
-                color: color('greyscale', 'grey-4');
-            }
-            
-            @include overwrite {
-                a {
-                    &:hover {
-                        color: color('brand', 'brand-1');
-                    }
-                }
-            }
-        
-        }
-        
-        @include component('icon') {
-        
-            display: inline-block;
-            position: relative;
-            font-size: font-size('size-5');
-        
-            .fa {
-                position: relative;
-                width: 0.85em;
-                height: 0.85em;
-                line-height: 0.85em;
-                font-size: font-size('size-4');
-                color: color('greyscale', 'grey-5');
-                border: 1px solid color('brand', 'brand-1');
-                border-radius: 50%;
-                &:before {
-                    position: absolute;
-                    left: 50%;
-                    transform: translateX(-50%);
-                }
-            }
-        
-            &:before,
-            &:after {
-                content: '';
-                width: 2em;
-                border-bottom: 1px solid color('brand', 'brand-1');
-                @include vertical-center(absolute);
-            }
-        
-            &:before {
-                left: -2em;
-            }
-            
-            &:after {
-                right: -2em;
             }
         
         }
