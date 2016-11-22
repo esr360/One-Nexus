@@ -97,14 +97,13 @@
         //*********************************************************
         // Colors
         //*********************************************************
-
-
+                 
+        // Point at which light/dark background changes for greyscale buttons
+        $threshold: 77%;
 
         @each $key, $color in merge-palettes(this('palettes')) {
             @include modifier($key) {
-                background: $color;                        
-                // Point at which light/dark background changes
-                $threshold: 77%;
+                background: $color;
                 @if is-grayscale($color, $key) {
                     @if (lightness($color) < $threshold) {
                         color: this('color');
@@ -114,23 +113,6 @@
                 }
                 &:hover { 
                     background: darken($color, 10%);
-                }
-                @debug $modifiers;
-                @include modifier('border') {
-                    color: $color;
-                    @if is-grayscale($color, $key) {
-                        border-color: $color;
-                        color: $color;
-                        &:hover {
-                            @if (lightness($color) > $threshold) {
-                                color: typography('colors', 'base');
-                            }
-                        }
-                    }
-                    &:hover {
-                        background: $color;
-                        border-color: $color;
-                    }
                 }
             }
         }
@@ -155,6 +137,25 @@
                 color: color('greyscale', 'white');
                 background: this('background');
                 border-color: this('background');
+            }
+            @each $key, $color in merge-palettes(this('palettes')) {
+                @include modifier($key) {
+                    color: $color;
+                    @if is-grayscale($color, $key) {
+                        border-color: $color;
+                        color: $color;
+                        &:hover {
+                            @if (lightness($color) > $threshold) {
+                                color: typography('colors', 'base');
+                            }
+                        }
+                    }
+                    &:hover {
+                        background: $color;
+                        border-color: $color;
+                        color: this('color');
+                    }
+                }
             }
         }
 

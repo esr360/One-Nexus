@@ -66,18 +66,21 @@
 <h3 class="heading-size-5-light">Quick Look</h3>
 
 <div class="row">
-    <form class="form span-6">
-        <div class="form_group">
-            <label>Your Name</label>
-            <input type="text" class="form_input" placeholder="E.g. John Doe">
-        </div>
-        <div class="form_group">
-            <label>Your Message</label>
-            <textarea class="form_input" placeholder="Enter your message..."></textarea>
-        </div>
-        <button type="submit" class="button">Submit</button>
-    </form>
-</div>
+    <div class="span-6">
+
+        <h4 class="heading-size-3">Default</h4>
+
+        <form class="form">
+            <div class="form_group">
+                <label>Your Name</label>
+                <input type="text" class="form_input" placeholder="E.g. John Doe">
+            </div>
+            <div class="form_group">
+                <label>Your Message</label>
+                <textarea class="form_input" placeholder="Enter your message..."></textarea>
+            </div>
+            <button type="submit" class="button">Submit</button>
+        </form>
 
 <pre><code class="html">&lt;form class="form">
     &lt;div class="form_group">
@@ -90,6 +93,41 @@
     &lt;/div>
     &lt;button type="submit" class="button">Submit&lt;/button>
 &lt;/form></code></pre>
+
+    </div>
+
+    <div class="span-6">
+
+        <h4 class="heading-size-3">With HTML5 Validation</h4>
+
+        <form class="form">
+            <div class="form_group-validate">
+                <input required type="text" class="form_input" placeholder="E.g. John Doe">
+                <label>Your Name</label>
+            </div>
+            <div class="form_group-validate">
+                <textarea required class="form_input" placeholder="Enter your message..."></textarea>
+                <label>Your Message</label>
+            </div>
+            <button type="submit" class="button">Submit</button>
+        </form>
+
+<pre><code class="html">&lt;form class="form">
+    &lt;div class="form_group-validate">
+        &lt;input required type="text" class="form_input" placeholder="E.g. John Doe">
+        &lt;label>Your Name&lt;/label>
+    &lt;/div>
+    &lt;div class="form_group-validate">
+        &lt;textarea required class="form_input" placeholder="Enter your message...">&lt;/textarea>
+        &lt;label>Your Message&lt;/label>
+    &lt;/div>
+    &lt;button type="submit" class="button">Submit&lt;/button>
+&lt;/form></code></pre>
+
+    </div>
+</div>
+
+<h3 class="heading-size-5">Sass</h3>
 
 <div id="demoConfig"></div>
 

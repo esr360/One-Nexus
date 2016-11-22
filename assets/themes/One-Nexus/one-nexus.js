@@ -7,8 +7,6 @@ $(document).ready(function() {
     $(_accordion).accordion();
 
     $('.carousel').carousel();
-    
-    $(_form).form();
 
     $(_modal).modal();
     

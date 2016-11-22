@@ -72,7 +72,8 @@
 
             @include modifier('validate') {
 
-                display: inline-table;
+                display: table;
+                width: 100%;
                 
                 label { 
                     display: table-header-group; 
@@ -80,6 +81,7 @@
 
                 @include overwrite-component('input') {
                     display: table-footer-group;
+                    float: left;
                     &:focus {
                         &:invalid {
                             &, ~ label, ~ .form_icon {
