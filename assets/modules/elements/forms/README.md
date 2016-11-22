@@ -5,11 +5,11 @@
 ```html
 <form class="form">
     <div class="form_group">
-        <label>Your Name</label>
+        <label class="form_label">Your Name</label>
         <input type="text" class="form_input" placeholder="E.g. John Doe">
     </div>
     <div class="form_group">
-        <label>Your Message</label>
+        <label class="form_label">Your Message</label>
         <textarea class="form_input" placeholder="Enter your message..."></textarea>
     </div>
     <button type="submit" class="button">Submit</button>
@@ -22,11 +22,11 @@
 <form class="form">
     <div class="form_group-validate">
         <input required type="text" class="form_input" placeholder="E.g. John Doe">
-        <label>Your Name</label>
+        <label class="form_label">Your Name</label>
     </div>
     <div class="form_group-validate">
         <textarea required class="form_input" placeholder="Enter your message..."></textarea>
-        <label>Your Message</label>
+        <label class="form_label">Your Message</label>
     </div>
     <button type="submit" class="button">Submit</button>
 </form>
@@ -99,7 +99,7 @@ The above options can be passed to the mixin like so:
 
 ```html
 <form class="form">
-    <label>Username</label>
+    <label class="form_label">Username</label>
     <div class="form_group-has-icon">
         <input type="text" class="form_input" placeholder="Ex: SkyUX">
         <i class="form_icon fa fa-user"></i>

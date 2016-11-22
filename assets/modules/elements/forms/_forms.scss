@@ -37,13 +37,6 @@
         // Core Styles
         //*********************************************************
 
-        font-weight: this('weight');
-        
-        label {
-            transition: core('transition');
-            color: this('input-color');
-        }
-
         fieldset {
             padding: 0;
             border: none;
@@ -52,6 +45,11 @@
         //*********************************************************
         // Components
         //*********************************************************
+
+        @include component('label') {
+            transition: core('transition');
+            color: this('input-color');
+        }
 
         @include component('group') {
 

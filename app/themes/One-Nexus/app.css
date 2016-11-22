@@ -3192,15 +3192,15 @@ button::-moz-focus-inner {
     transition: 0.4s;
 }
 
-.form label,
-[class*='form-'] label {
-    transition: 0.4s;
-    color: #6F777B;
-}
 .form fieldset,
 [class*='form-'] fieldset {
     padding: 0;
     border: none;
+}
+.form_label,
+[class*='form_label-'] {
+    transition: 0.4s;
+    color: #6F777B;
 }
 .form_group,
 [class*='form_group-'] {
