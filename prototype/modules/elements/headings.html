@@ -41,6 +41,77 @@
                 </nav>
             </div>
         </header>
+        
+
+    <div class="billboard">
+            <div class="billboard_wrapper">
+                    <h1 class="heading-light-size-7-heavy font-2">Headings</h1>
+                    <i class="fa fa-github-alt"></i>
+                    <a href="https://github.com/esr360/One-Nexus/tree/master/assets/modules/elements/headings" target="blank">/assets/modules/elements/headings</a>
+            </div>
+    </div>
+<main id="site-content">
+        <div class="container-section">
+
+        <nav class="breadcrumb">
+            <ul> 
+                <li><a href="/modules">modules</a></li><li><a href="/modules/elements">elements</a></li>
+                <li class="current">headings</li>
+            </ul>
+        </nav>
+    
+
+
+
+<h3 class="heading-size-5-light">Quick Look</h3>
+
+<h2 class="heading">Default Heading</h2>
+
+<h3 class="heading-size-5-light">Light Size-5 Heading</h3>
+
+<pre><code class="html">&lt;h2 class="heading">Default Heading&lt;/h2>
+&lt;h3 class="heading-size-5-light">Light Heading&lt;/h3>
+</code></pre>
+
+<h3 class="heading-size-5">Sass</h3>
+
+<p>Load the button styles by including the <code>headings()</code> mixin:</p>
+
+<pre><code>@include headings();</code></pre>
+
+<p>The following options can be passed to the mixin to customize the headings:</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>name</code></td>
+            <td>The name used when generating the CSS selector</td>
+            <td><code>'heading'</code></td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="demoConfig"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/monokai-sublime.min.css" />
+<script>hljs.initHighlightingOnLoad();</script>
+<style>
+    .hljs code { 
+        font-family : monospace;
+        font-size: 1em; 
+    }
+</style>
+
+        </div>
+</main>
 
         <footer class="footer">
             <div class="footer_wrapper">

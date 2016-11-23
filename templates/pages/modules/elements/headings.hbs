@@ -1,0 +1,44 @@
+---
+layout: module.hbs
+billboard:
+    heading: Headings
+    resource:
+        icon: github-alt
+        link: https://github.com/esr360/One-Nexus/tree/master/assets/modules/elements/headings
+        text: /assets/modules/elements/headings
+---
+
+<h3 class="heading-size-5-light">Quick Look</h3>
+
+<h2 class="heading">Default Heading</h2>
+
+<h3 class="heading-size-5-light">Light Size-5 Heading</h3>
+
+<pre><code class="html">&lt;h2 class="heading">Default Heading&lt;/h2>
+&lt;h3 class="heading-size-5-light">Light Heading&lt;/h3>
+</code></pre>
+
+<h3 class="heading-size-5">Sass</h3>
+
+<p>Load the button styles by including the <code>headings()</code> mixin:</p>
+
+<pre><code>@include headings();</code></pre>
+
+<p>The following options can be passed to the mixin to customize the headings:</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>name</code></td>
+            <td>The name used when generating the CSS selector</td>
+            <td><code>'heading'</code></td>
+        </tr>
+    </tbody>
+</table>
