@@ -3320,7 +3320,6 @@ button::-moz-focus-inner {
 .heading,
 [class*='heading-'] {
     line-height: 1;
-    transition: 0.4s;
     letter-spacing: -0.04em;
 }
 [class*='heading-'][class*='-base'] {
@@ -3407,17 +3406,12 @@ button::-moz-focus-inner {
     font-weight: bolder;
     font-weight: 900;
 }
-[class*='heading-'][class*='-brand-1'] {
-    font-style: normal;
-    color: #86F4D1;
-}
 [class*='heading-'][class*='-uppercase'] {
     text-transform: uppercase;
 }
 [class*='heading-'][class*='-light'] {
     font-weight: lighter;
     font-weight: 300;
-    font-style: normal;
 }
 [class*='heading-'][class*='-flush'] {
     margin-top: 0 !important;

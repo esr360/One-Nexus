@@ -20,8 +20,6 @@
 
     $headings: config((
         'name'                     : 'heading',
-        'spaced-spacing'           : 0.35em,
-        'border'                   : 1px dotted rgba(black, 0.2),
         'group_heading-lineHeight' : 0.8,
         'sizes':(
             'optional-sizes': typography-config('sizes'),
@@ -42,7 +40,6 @@
         //*********************************************************
 
         line-height: 1;
-        transition: core('transition');
 
         //*********************************************************
         // Sizes
@@ -59,11 +56,6 @@
             font-weight: 900;
         }
 
-        @include modifier('brand-1') {
-            font-style: normal;
-            color: color('brand', 'brand-1');
-        }
-
         @include modifier('uppercase') {
             text-transform: uppercase;
         }
@@ -71,7 +63,6 @@
         @include modifier('light') {
             font-weight: lighter;
             font-weight: 300;
-            font-style: normal;
         }
         
         @include modifier('flush') {

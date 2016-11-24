@@ -95,8 +95,30 @@
             <td>The name used when generating the CSS selector</td>
             <td><code>'heading'</code></td>
         </tr>
+        <tr>
+            <td><code>group_heading-lineHeight</code></td>
+            <td>The name used when generating the CSS selector</td>
+            <td><code>0.8</code></td>
+        </tr>
+        <tr>
+            <td><code>sizes['optional-sizes']</code></td>
+            <td>The name used when generating the CSS selector</td>
+            <td><code>typography-config('sizes')</code></td>
+        </tr>
+        <tr>
+            <td><code>sizes['breakpoints']</code></td>
+            <td>The name used when generating the CSS selector</td>
+            <td><code>('break-3': 0.85)</code></td>
+        </tr>
     </tbody>
 </table>
+
+<p>The above options can be passed to the mixin like so:</p>
+
+<pre><code>@include headings((
+    'input-color': color('brand', 'brand-3'),
+    'input-border': 1px solid color('brand', 'brand-3')
+));</code></pre>
 
 <div id="demoConfig"></div>
 

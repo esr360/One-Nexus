@@ -11,7 +11,7 @@
      * @example
      *     $('.carousel').carousel({
      *         pagination: false,
-     *         options: {
+     *         owl: {
      *             items: 1 
      *         }
      *     });
