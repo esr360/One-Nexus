@@ -38,14 +38,14 @@ module.exports = function(grunt) {
      * @var {object} project
      */
     var project = {
-        dist:[         'app/', {
-            images:    'app/images/',
-            scripts:   'app/scripts/',
-            styles:    'app/styles/',
-            themes:[   'app/themes/', {
-                theme: 'app/themes/<%=theme%>/'
+        dist:[         'dist/', {
+            images:    'dist/assets/images/',
+            scripts:   'dist/assets/scripts/',
+            styles:    'dist/assets/styles/',
+            themes:[   'dist/assets/themes/', {
+                theme: 'dist/assets/themes/<%=theme%>/'
             }],
-            templates: 'prototype/',
+            templates: 'dist/',
         }],
         source:[       'assets/', {
             images:    'assets/images/',
@@ -89,6 +89,14 @@ module.exports = function(grunt) {
      * @var {object} _globalStyles
      */
     var _globalStyles = [];
+
+    /**
+     * The name of your project's source asset
+     * @var {string} dist
+     * @example
+     * '/' + src + '.scss'
+     */
+    var src = 'app';
 
     /**
      * The name of your project's compiled & distributed asset
@@ -191,7 +199,7 @@ module.exports = function(grunt) {
                 },
                 files: {
                     [project.dist[1].themes[1].theme + dist + '.css']: 
-                    project.source[0] + dist + '.scss'
+                    project.source[0] + src + '.scss'
                 }
             },
             prod: {
@@ -201,7 +209,7 @@ module.exports = function(grunt) {
                 },
                 files: {
                     [project.dist[1].themes[1].theme + dist + '.min.css']: 
-                    project.source[0] + dist + '.scss'
+                    project.source[0] + src + '.scss'
                 }
             },
             demo: {
@@ -342,9 +350,7 @@ module.exports = function(grunt) {
          * @see https://github.com/ahmednuaman/grunt-scss-lint
          */
         scsslint: {
-            source: [
-                project.source[0] + '**/*.scss',
-            ],
+            source: [project.source[0] + '**/*.scss'],
             options: {
                 config: '.scss-lint.yml',
                 colorizeOutput: false
@@ -356,10 +362,7 @@ module.exports = function(grunt) {
          * @see https://github.com/gruntjs/grunt-contrib-jshint
          */
         jshint: {
-            source: [
-                'Gruntfile.js', 
-                project.source[0] + '**/*.js'
-            ]
+            source: [project.source[0] + '**/*.js']
         },
 
         /**
@@ -421,8 +424,7 @@ module.exports = function(grunt) {
                 expand: true,
                 src: '**/*.hbs',
                 options: {
-                    index: '/',
-                    assets: '/',
+                    assets: './dist/assets/',
                     environment: env,
                     theme: theme,
                     dest: '<%=assemble.dist.dest%>'
@@ -436,19 +438,10 @@ module.exports = function(grunt) {
          */
         browserSync: {
             bsFiles: {
-                src : [
-                    project.dist[0] + '**/*.css',
-                    project.dist[0] + '**/*.js',
-                    project.dist[1].templates + '**/*.html',
-                    'demo/**/*.css'
-                ]
+                src: [project.dist[0]]
             },
             options: {
-                server: [
-                    './' + project.dist[1].templates,
-                    './' + project.dist[0],
-                    './demo'
-                ],
+                server: ['./' + project.dist[0]],
                 open: false,
                 watchTask: true,
                 notify: false
@@ -529,6 +522,12 @@ module.exports = function(grunt) {
                 options: {
                     title: 'Styles Compiled',
                     message: 'All styles have been successfully compiled!'
+                }
+            },
+            images: {
+                options: {
+                    title: 'Images Copied',
+                    message: 'All images have been copied to the distribution directory'
                 }
             },
             templates: {

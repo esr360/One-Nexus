@@ -2,6 +2,6 @@
 .settings
 .sass-cache
 node_modules
-app
+dist
 docs
 todo.md
