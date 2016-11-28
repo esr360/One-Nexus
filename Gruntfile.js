@@ -424,7 +424,7 @@ module.exports = function(grunt) {
                 expand: true,
                 src: '**/*.hbs',
                 options: {
-                    assets: './dist/assets/',
+                    assets: './dist/',
                     environment: env,
                     theme: theme,
                     dest: '<%=assemble.dist.dest%>'
