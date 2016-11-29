@@ -6,7 +6,7 @@
 /// @param {map} $custom - where custom config will be passed
 /// @example
 ///     @include font-sizes((
-///         'default-sizes'  : ('size-2', 'sze-4'),
+///         'responsive-sizes'  : ('size-2', 'sze-4'),
 ///         'optional-sizes' : ('size-5'),
 ///         'breakpoints'    : (
 ///             'break-3'    : 0.85
@@ -19,19 +19,20 @@
     //*************************************************************
 
     $font-sizes: map-merge((
-        'responsive'     : true,
-        'mobile-first'   : false,
-        'default-sizes'  : (),
-        'optional-sizes' : typography-config('sizes'),
+        'responsive'       : true,
+        'mobile-first'     : false,
+        'sizes'            : typography-config('sizes'),
+        'responsive-sizes' : (),
+        'optional-sizes'   : typography-config('sizes'),
         'breakpoints':(
-            'break-2'    : 0.75,
-            'break-3'    : 0.9
+            'break-2'      : 0.75,
+            'break-3'      : 0.9
         )
     ), $custom) !global;
       
     // Map containing desired default responsive font values
     $default-font-sizes: get-font-sizes(
-        typography-config('sizes'), map-get($font-sizes, 'default-sizes')
+        typography-config('sizes'), map-get($font-sizes, 'responsive-sizes')
     );
 
     // Sizes to be used when responding
@@ -54,7 +55,7 @@
     );
 
     // create the base font-size for each modifier
-    @each $size, $value in typography-config('sizes') {   
+    @each $size, $value in map-get($font-sizes, 'sizes') {   
         @include modifier($size) {
             @if not map-get($font-sizes, 'mobile-first') {
                 font-size: $value; 

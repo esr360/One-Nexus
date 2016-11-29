@@ -414,9 +414,7 @@ module.exports = function(grunt) {
                 layout: 'core.hbs',
                 layoutdir: project.source[1].templates + 'layouts/',
                 partials: project.source[1].templates + 'partials/**/*.hbs',
-                helpers: [
-                    project.source[1].templates + 'helpers/**/*.js'
-                ]
+                helpers: [project.source[1].templates + 'helpers/**/*.js']
             },
             dist: {
                 cwd: project.source[1].templates + 'pages/',
@@ -424,7 +422,7 @@ module.exports = function(grunt) {
                 expand: true,
                 src: '**/*.hbs',
                 options: {
-                    assets: './dist/',
+                    assets: './' + project.dist[0],
                     environment: env,
                     theme: theme,
                     dest: '<%=assemble.dist.dest%>'
