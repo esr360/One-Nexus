@@ -1,0 +1,58 @@
+.landscape {
+
+    $image-path: '../images/spacestation';
+
+    background-color: #0d0e1f;
+    overflow: hidden;
+
+    &_layers {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 110vmin;
+        min-width: 150vmin;
+        min-height: 50vmax;
+    }
+
+    &_layer {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+    &_layer1 {
+        background-image: url('#{$image-path}/layer1.svg');
+    }
+
+    &_layer2 {
+        background-image: url('#{$image-path}/layer2.svg');
+    }
+
+    &_layer3 {
+        background-image: url('#{$image-path}/layer3.svg');
+    }
+
+    &_layer4 {
+        background-image: url('#{$image-path}/layer4.svg');
+    }
+
+    &_layer5 {
+        background-image: url('#{$image-path}/layer5.svg');
+    }
+
+    &_layer6 {
+        background-image: url('#{$image-path}/layer6.svg');
+    }
+
+    &_layer7 {
+        background-image: url('#{$image-path}/layer7.svg');
+    }
+
+    &_layer8 {
+        background-image: url('#{$image-path}/layer8.svg');
+    }
+
+}
