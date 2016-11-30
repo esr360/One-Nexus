@@ -57,4 +57,9 @@ FontAwesome: 4.7.0
         <script src="{{assets}}themes/{{theme}}/app.min.js"></script>
     {{/is}}
 
+    {{#if parallax}}
+        <script src="{{assets}}js/stellar.js"></script>
+        <script>$.stellar();</script>
+    {{/if}}
+
 </html>
