@@ -68,7 +68,7 @@ module.exports = function(grunt) {
     }
 
     /**
-     * Set the scripts to be included in your theme's main js file
+     * Set the scripts used to create the theme's main js file
      * @var {object} _scripts
      */
     var _scripts = [
@@ -79,13 +79,13 @@ module.exports = function(grunt) {
     ];
 
     /**
-     * Set all global scripts to be used by the project
+     * Set all optional scripts to be used by the project
      * @var {object} _globalScripts
      */
     var _globalScripts = [];
 
     /**
-     * Set all global styles to be used by the project
+     * Set all optional styles to be used by the project
      * @var {object} _globalStyles
      */
     var _globalStyles = [];
@@ -118,7 +118,8 @@ module.exports = function(grunt) {
         theme: theme,
 
         /**
-         * Grunt Text Replace
+         * Text Replace
+         * @note used to dynamically update theme name in .scss file
          * @see https://github.com/yoniholmes/grunt-text-replace
          */
         replace: {
