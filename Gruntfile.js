@@ -220,9 +220,9 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'demo/scss',
+                    cwd: 'www/scss',
                     src: ['**/*.scss'],
-                    dest: 'demo/css',
+                    dest: 'www/css',
                     ext: '.css'
                 }]
             }
@@ -277,8 +277,8 @@ module.exports = function(grunt) {
             },
             demo: {
                 src: [
-                    'demo/css/**/*.css',
-                    'demo/css/**/*.css'
+                    'www/css/**/*.css',
+                    'www/css/**/*.css'
                 ]
             }
         },
@@ -437,10 +437,10 @@ module.exports = function(grunt) {
          */
         browserSync: {
             bsFiles: {
-                src: [project.dist[0]]
+                src: [project.dist[0], 'www/**/*.css', 'www/**/*.js']
             },
             options: {
-                server: ['./' + project.dist[0]],
+                server: ['./' + project.dist[0], './www/'],
                 open: false,
                 watchTask: true,
                 notify: false
@@ -472,7 +472,7 @@ module.exports = function(grunt) {
             },
             demo: {
                 files: [
-                    'demo/scss/**/*.scss'
+                    'www/scss/**/*.scss'
                 ],
                 tasks: [
                     'sass:demo',

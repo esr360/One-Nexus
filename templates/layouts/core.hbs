@@ -24,6 +24,7 @@ FontAwesome: 4.7.0
         {{#is environment "prod"}}
             <link href="{{assets}}assets/themes/{{theme}}/app.min.css" rel="stylesheet">
         {{/is}}
+        <link href="{{assets}}css/demo.css" rel="stylesheet">
     </head>
 
     <body class="{{bodyClass}}">
@@ -55,5 +56,10 @@ FontAwesome: 4.7.0
     {{#is environment "prod"}}
         <script src="{{assets}}themes/{{theme}}/app.min.js"></script>
     {{/is}}
+
+    {{#if parallax}}
+        <script src="{{assets}}js/stellar.js"></script>
+        <script>$.stellar();</script>
+    {{/if}}
 
 </html>

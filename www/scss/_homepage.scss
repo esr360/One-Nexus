@@ -1,0 +1,18 @@
+.homepage {
+
+    &_section1 {
+        background-color: #2E3882;
+        position: relative;
+        min-height: 100px;
+        &_panel {
+            position: absolute;
+            background-color: #03A897;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 35%;
+            transform: skew(-35deg);
+        }
+    }
+
+}
