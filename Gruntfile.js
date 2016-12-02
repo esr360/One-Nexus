@@ -68,7 +68,7 @@ module.exports = function(grunt) {
     }
 
     /**
-     * Set the scripts to be included in your theme's main js file
+     * Set the scripts used to create the theme's main js file
      * @var {object} _scripts
      */
     var _scripts = [
@@ -79,13 +79,13 @@ module.exports = function(grunt) {
     ];
 
     /**
-     * Set all global scripts to be used by the project
+     * Set all optional scripts to be used by the project
      * @var {object} _globalScripts
      */
     var _globalScripts = [];
 
     /**
-     * Set all global styles to be used by the project
+     * Set all optional styles to be used by the project
      * @var {object} _globalStyles
      */
     var _globalStyles = [];
@@ -118,7 +118,8 @@ module.exports = function(grunt) {
         theme: theme,
 
         /**
-         * Grunt Text Replace
+         * Text Replace
+         * @note used to dynamically update theme name in .scss file
          * @see https://github.com/yoniholmes/grunt-text-replace
          */
         replace: {
@@ -211,19 +212,6 @@ module.exports = function(grunt) {
                     [project.dist[1].themes[1].theme + dist + '.min.css']: 
                     project.source[0] + src + '.scss'
                 }
-            },
-            demo: {
-                options: {
-                    style: 'compressed',
-                    sourcemap: 'none'
-                },
-                files: [{
-                    expand: true,
-                    cwd: 'www/scss',
-                    src: ['**/*.scss'],
-                    dest: 'www/css',
-                    ext: '.css'
-                }]
             }
         },
 
@@ -272,12 +260,6 @@ module.exports = function(grunt) {
                 src: [
                     project.dist[1].styles + '**/*.css',
                     project.dist[1].themes[1].theme + '**/*.css'
-                ]
-            },
-            demo: {
-                src: [
-                    'www/css/**/*.css',
-                    'www/css/**/*.css'
                 ]
             }
         },
@@ -436,10 +418,10 @@ module.exports = function(grunt) {
          */
         browserSync: {
             bsFiles: {
-                src: [project.dist[0], 'www/']
+                src: [project.dist[0]]
             },
             options: {
-                server: ['./' + project.dist[0], './www/'],
+                server: ['./' + project.dist[0]],
                 open: false,
                 watchTask: true,
                 notify: false
@@ -460,23 +442,11 @@ module.exports = function(grunt) {
                 ],
                 tasks: [ 
                     'sass:' + env,
-                    'sass:demo',
                     'postcss:dist',
                     'csscomb',
                     //'scsslint',
                     'mochacli:scss',
                     'sassdoc',
-                    'notify:css'
-                ],
-            },
-            demo: {
-                files: [
-                    'www/scss/**/*.scss'
-                ],
-                tasks: [
-                    'sass:demo',
-                    'postcss:demo',
-                    //'scsslint',
                     'notify:css'
                 ],
             },
@@ -584,7 +554,6 @@ module.exports = function(grunt) {
             'copy:images',
             'concat',
             'sass:' + environment,
-            'sass:demo',
             'postcss',
             'csscomb',
             'lint',

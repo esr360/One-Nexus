@@ -10,6 +10,7 @@
     "mobile-first",
     "front-end",
     "framework",
+    "boilerplate",
     "web",
     "development",
     "theme",
@@ -18,9 +19,9 @@
     "html5"
   ],
   "author": "Edmund Reed (http://twitter.com/esr360)",
-  "homepage": "https://github.com/esr360/One-Nexus/",
+  "homepage": "https://github.com/esr360/One-Nexus-Homepage/",
   "bugs": {
-    "url": "https://github.com/esr360/One-Nexus/issues"
+    "url": "https://github.com/esr360/One-Nexus-Homepage/issues"
   },
   "devDependencies": {
     "assemble-handlebars": "^0.3.0",
