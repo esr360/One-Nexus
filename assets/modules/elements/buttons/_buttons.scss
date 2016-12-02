@@ -153,7 +153,7 @@
                     &:hover {
                         background: $color;
                         border-color: $color;
-                        color: this('color');
+                        color: typography('colors', 'base');
                     }
                 }
             }

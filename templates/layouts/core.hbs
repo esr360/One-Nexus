@@ -3,6 +3,7 @@ title: One Nexus
 bodyClass: ''
 contentID: 'site-content'
 modulesID: 'modulesConfigJSON'
+header: true
 jQuery: 2.2.4
 OwlCarousel: 2.2.0
 FontAwesome: 4.7.0
@@ -28,7 +29,7 @@ FontAwesome: 4.7.0
     </head>
 
     <body class="{{bodyClass}}">
-        {{> header}}
+        {{#if header}}{{> header}}{{/if}}
 
         {{> body}}
 
@@ -59,7 +60,12 @@ FontAwesome: 4.7.0
 
     {{#if parallax}}
         <script src="{{assets}}js/stellar.js"></script>
-        <script>$.stellar();</script>
+        <script>
+            if (window.matchMedia("(min-width: 960px)").matches) {
+                $.stellar();
+            }
+        </script>
     {{/if}}
 
+    {{#if demo}}<script src="{{assets}}js/demo.js"></script>{{/if}}
 </html>

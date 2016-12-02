@@ -1,15 +1,21 @@
 ---
 layout: core.hbs
 wide: false 
-header:
-    modifiers:
-    - absolute
-    - sticky
+header: false
 parallax: true
+demo: true
 ---
 
 <div class="spacestation">
     <div class="spacestation_layers">
+        <div data-stellar-ratio="0.3" class="spacestation_content">
+            <div class="logo">
+                <img src="{{assets}}assets/images/logo-light.png" alt="One Nexus Logo">
+            </div>
+            <h2 class="spacestation_tagline heading-light-uppercase-size-2">
+                A UI Toolkit From Out of This World
+            </h2>
+        </div>
         <div class="spacestation_layer spacestation_layer1"></div>
         <div data-stellar-ratio="0.02" class="spacestation_layer spacestation_layer2"></div>
         <div class="spacestation_layer spacestation_layer3"></div>
@@ -27,5 +33,15 @@ parallax: true
 </div>
 
 <div class="homepage_section1">
-    <div class="homepage_section1_panel"></div>
+    <div class="container">
+        <div class="row">
+            <div class="span-8">
+                <h3 class="heading-size-6">What is One-Nexus?</h3>
+                <p>One-Nexus is a UI toolkit built using the <a href="#">Synergy</a> Sass framework, combined with a custom grid system; <a href="#">Kayzen-GS</a>. Together they form a powerful framework for building modular, responsive websites. Build upon the default modules and create your own with ease</p>
+                <div class="button_group">
+                    <button class="button-border-white-size-3">View More</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

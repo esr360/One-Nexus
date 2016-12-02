@@ -436,7 +436,7 @@ module.exports = function(grunt) {
          */
         browserSync: {
             bsFiles: {
-                src: [project.dist[0], 'www/**/*.css', 'www/**/*.js']
+                src: [project.dist[0], 'www/']
             },
             options: {
                 server: ['./' + project.dist[0], './www/'],
