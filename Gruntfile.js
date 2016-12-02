@@ -212,19 +212,6 @@ module.exports = function(grunt) {
                     [project.dist[1].themes[1].theme + dist + '.min.css']: 
                     project.source[0] + src + '.scss'
                 }
-            },
-            demo: {
-                options: {
-                    style: 'compressed',
-                    sourcemap: 'none'
-                },
-                files: [{
-                    expand: true,
-                    cwd: 'www/scss',
-                    src: ['**/*.scss'],
-                    dest: 'www/css',
-                    ext: '.css'
-                }]
             }
         },
 
@@ -273,12 +260,6 @@ module.exports = function(grunt) {
                 src: [
                     project.dist[1].styles + '**/*.css',
                     project.dist[1].themes[1].theme + '**/*.css'
-                ]
-            },
-            demo: {
-                src: [
-                    'www/css/**/*.css',
-                    'www/css/**/*.css'
                 ]
             }
         },
@@ -437,10 +418,10 @@ module.exports = function(grunt) {
          */
         browserSync: {
             bsFiles: {
-                src: [project.dist[0], 'www/**/*.css', 'www/**/*.js']
+                src: [project.dist[0]]
             },
             options: {
-                server: ['./' + project.dist[0], './www/'],
+                server: ['./' + project.dist[0]],
                 open: false,
                 watchTask: true,
                 notify: false
@@ -461,23 +442,11 @@ module.exports = function(grunt) {
                 ],
                 tasks: [ 
                     'sass:' + env,
-                    'sass:demo',
                     'postcss:dist',
                     'csscomb',
                     //'scsslint',
                     'mochacli:scss',
                     'sassdoc',
-                    'notify:css'
-                ],
-            },
-            demo: {
-                files: [
-                    'www/scss/**/*.scss'
-                ],
-                tasks: [
-                    'sass:demo',
-                    'postcss:demo',
-                    //'scsslint',
                     'notify:css'
                 ],
             },
@@ -585,7 +554,6 @@ module.exports = function(grunt) {
             'copy:images',
             'concat',
             'sass:' + environment,
-            'sass:demo',
             'postcss',
             'csscomb',
             'lint',
