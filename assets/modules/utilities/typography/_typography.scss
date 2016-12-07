@@ -82,7 +82,7 @@
     a {
         color: this('colors', 'link');
         text-decoration: none;
-        transition: 0.4s;
+        transition: color 0.4s;
         p > & {
             border-bottom: 1px solid;
         }

@@ -12,9 +12,11 @@
         
         // Options
         var options = $.extend({
-            navigation      : _navigation,
-            overlay         : '#site-overlay',
-            sticky          : _option($module, 'sticky'),
+            navigation   : _navigation,
+            overlay      : '#site-overlay',
+            sticky       : _option($module, 'sticky'),
+            transition   : _baseTransition,
+            stickyOffset : null
         }, custom);
         
         // Run the code on each occurance of the element
@@ -25,9 +27,12 @@
             var navDropdown = navigation.find('> ul > li > a:not(:only-child)').parent();
             
             function stickyHeader() {
-                        
-                var stickyOffset = header.offset().top;
-                
+
+                var stickyOffset = options.stickyOffset || header.offset().top;
+
+                // @note: use _isvisible to stick/unstick header then use scroll
+                // position to animate in/out
+
                 function stickHeader() {
                     header.addClass('fixed');
                     navDropdown.hover(
@@ -39,7 +44,7 @@
                         }
                     );
                 }
-    
+
                 function unStickHeader() {
                     header.removeClass('fixed');
                     navDropdown.unbind('mouseenter mouseleave');

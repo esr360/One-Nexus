@@ -1,8 +1,12 @@
  {
-    "name":"One-Nexus",
-    "description":"A modular approach to front-end development.",
-    "version":"3.0.0",
-    "keywords":[
+    "name": "One-Nexus",
+    "version": "3.0.0",
+    "description": "A modular UI toolkit.",
+    "main": [
+        "assets/themes/One-Nexus/_one-nexus.scss",
+        "assets/themes/One-Nexus/one-nexus.js"
+    ],
+    "keywords": [
         "css",
         "sass",
         "js",
@@ -17,21 +21,14 @@
         "html",
         "html5"
     ],
-    "homepage":"http://www.onenexusproject.com/",
-    "ignore":[
-       "/assets/js/jquery.min.js",
-       "/assets/js/modernizr.min.js",
-       ".git",
-       ".gitattributes",
-       ".gitignore",
-       "bower.json",
-       "cheatsheet.html",
-       "index.html",
-       "LICENSE.md",
-       "README.md"
+    "homepage": "http://onenexus.io/",
+    "ignore": [
+        "**/.*",
+        ".node_modules",
+        "bower.json"
     ],
-    "dependencies":{
-       "jquery": ">=1.10.0",
-       "modernizr": ">=2.6.2"
-    }
+    "authors": [
+        "Edmund Reed <esr360@live.com>"
+    ],
+    "license": "MIT"
  }

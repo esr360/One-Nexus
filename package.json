@@ -1,7 +1,7 @@
 {
   "name": "One-Nexus",
   "version": "3.0.0",
-  "description": "A unique, modular approach to front end development.",
+  "description": "A modular UI toolkit.",
   "keywords": [
     "css",
     "sass",
@@ -19,17 +19,15 @@
     "html5"
   ],
   "author": "Edmund Reed (http://twitter.com/esr360)",
-  "homepage": "https://github.com/esr360/One-Nexus-Homepage/",
+  "homepage": "https://onenexus.io/",
   "bugs": {
-    "url": "https://github.com/esr360/One-Nexus-Homepage/issues"
+    "url": "https://github.com/esr360/One-Nexus/issues"
   },
   "devDependencies": {
     "assemble-handlebars": "^0.3.0",
     "autoprefixer": "^6.3.1",
     "bower": "^1.7.9",
     "grunt": "^0.4.5",
-    "grunt-assemble": "^0.4.0",
-    "grunt-browser-sync": "^2.2.0",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-concat": "^0.5.1",
     "grunt-contrib-copy": "^0.8.1",

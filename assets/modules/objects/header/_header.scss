@@ -56,7 +56,6 @@
         overflow: visible;
         font-size: this('font-size');
         background: this('background');
-        transition: background core('transition');
 
         //*********************************************************
         // Settings
@@ -98,6 +97,7 @@
         @include option('sticky') {
             &.fixed {
                 position: fixed;
+                top: 0;
                 margin-top: 0;
                 width: 100%;
                 z-index: 12;
@@ -121,11 +121,12 @@
         @include component('wrapper') {
             @include _module('container');
             height: this('height');
-            transition: height core('transition');
             @include modifier('wide') {
                 @include _module('container', 'large');
             }
         }
+
+        @content;
         
     } // module
 

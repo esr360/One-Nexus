@@ -46,6 +46,11 @@
 	// Hide visually and from screen readers, but maintain layout
 	.invisible {
 		visibility: hidden;
+		opacity: 0;
+	}
+	.visible {
+		visibility: visible;
+		opacity: 1;
 	}
 
     //*************************************************************
