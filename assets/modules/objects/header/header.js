@@ -30,9 +30,6 @@
 
                 var stickyOffset = options.stickyOffset || header.offset().top;
 
-                // @note: use _isvisible to stick/unstick header then use scroll
-                // position to animate in/out
-
                 function stickHeader() {
                     header.addClass('fixed');
                     navDropdown.hover(
