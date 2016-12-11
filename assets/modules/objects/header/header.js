@@ -32,6 +32,9 @@
 
                 function stickHeader() {
                     header.addClass('fixed');
+                    if (!stickyOffset == header.offset().top) {
+                        header.addClass('visible');
+                    }
                     navDropdown.hover(
                         function() { 
                             $(options.overlay).siteOverlay('show', 'navDropdown');
@@ -43,7 +46,15 @@
                 }
 
                 function unStickHeader() {
-                    header.removeClass('fixed');
+                    if (stickyOffset == header.offset().top) {
+                        header.removeClass('fixed');
+                    } else {
+                        // to allow header to fade out before becoming unfixed
+                        header.removeClass('visible');
+                        setTimeout(function () {
+                            header.removeClass('fixed');
+                        }, 400);
+                    }
                     navDropdown.unbind('mouseenter mouseleave');
                     $(options.overlay).siteOverlay('hide');
                 }
