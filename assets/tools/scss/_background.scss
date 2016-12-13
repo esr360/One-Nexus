@@ -31,9 +31,6 @@
 
         @if map-get($config, 'image') {
             background-image: map-get($config, 'image');
-        }
-
-        @if map-get($config, 'image') {
             background-size: cover;
         }
 

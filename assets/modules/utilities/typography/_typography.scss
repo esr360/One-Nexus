@@ -25,7 +25,7 @@
         'name'          : 'typography',
         'typefaces':(
             'primary'   : ('Raleway', '100,300,700,900'),
-            'secondary' : ('Montserrat', '400,700')
+            'secondary' : ('Lato', '300,700')
         ),
         'import-fonts'  : true,
         'colors':(
@@ -56,12 +56,15 @@
         
         // Name of desired font family
         $font-family: nth(nth(nth(this('typefaces'), $i), 2), 1);
+
+        // Convert to a value @import can use
+        $font-name: str-replace($font-family, ' ', '+');
         
         // Desired font styles
         $font-styles: nth(nth(nth(this('typefaces'), $i), 2), 2);
         
         // String to be appended to Google Fonts url
-        $google-font: $font-family + ':' + $font-styles;
+        $google-font: $font-name + ':' + $font-styles;
 
         // import the font from the Google Fonts API
         @if this('import-fonts') {
