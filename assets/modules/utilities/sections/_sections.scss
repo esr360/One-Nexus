@@ -51,11 +51,7 @@
 		@include modifiers(('primary', 'secondary')) {
 			padding: this('padding');
 		}
-        
-        @include modifier('mini') {
-            padding: this('padding-mini');
-        }
-        
+
         @include modifier('panel') {
 			border-top: 1px solid color('greyscale', 'grey-2');	
 			background: this('panel-background');
@@ -67,32 +63,6 @@
 		
 		@include modifier('secondary') {
 			background-color: this('secondary-background');
-			> .container {
-				position: relative;
-			}
-			&, a:not([class*="button-"]) {
-				color: this('secondary-color');
-			}
-			p, li {
-				a {
-					border-bottom: 1px dotted;
-				}
-			}
-			.owl-dot {
-				&.active {
-					span {
-						background: color('greyscale', 'white');
-					}
-				} 
-			}
-            b, strong {
-                color: this('secondary-color');
-            }
-			@include overwrite-component('group', $parent: 'heading') {
-                &, p {
-				    color: this('secondary-color');
-                }
-			}
 		}
 		
 		//---------------------------------------------------------
@@ -101,19 +71,8 @@
 		
 		@include modifier('fullscreen') {
 			height: 100vh;
-			@if option($top-bar, 'fixed') {
-				height: calc(100vh - #{option($top-bar, 'height')});
-			}
 			@if option($header, 'sticky') {
 				height: calc(100vh - #{option($header, 'height')});
-			}
-		}
-		
-		@at-root {
-			@include overwrite('top-bar', $is: 'fixed') {
-				@include overwrite($special: 'general-sibling', $is: 'fullscreen') {
-					height: calc(100vh - #{option($top-bar, 'height')});
-				}
 			}
 		}
 		
@@ -138,44 +97,6 @@
                     this('overlay-deep-background')
                 );
 			}
-			@include modifier('dark') {
-				@include bg-overlay(
-                    this('overlay-dark-background')
-                );			
-			}
-			@include modifier('alt') {
-				@include bg-overlay(
-                    this('overlay-alt-background')
-                );			
-			}
-			&, a:not([class*="button-"]) {
-				color: this('overlay-color');
-			}
-			.wrap-section {
-				position: relative;
-			}
-		}
-	
-		//---------------------------------------------------------
-		// Dot Map
-		//---------------------------------------------------------
-		
-		@include modifier('dot-map') {
-			position: relative;
-			padding-bottom: 12em;
-			&:before {
-				content: "";
-				background-image: url("#{$asset-path}/images/dot-map.png");
-				background-position: center top;
-				background-repeat: no-repeat;
-				opacity: 0.1;
-				position: absolute;
-				bottom: 0;
-				height: 9em;
-				width: grid-option('base-width');
-				max-width: grid-option('max-width');
-				@extend %horizontal-center;
-			}
 		}
 	
 		//---------------------------------------------------------
@@ -184,22 +105,6 @@
 		
 		@include modifier('banner') {
 			padding: this('banner-padding');
-		}
-		
-		//---------------------------------------------------------
-		// Flush
-		//---------------------------------------------------------
-		
-		@include modifier('flush') {
-			padding-top: 0;
-		}
-		
-		//---------------------------------------------------------
-		// Sink
-		//---------------------------------------------------------
-		
-		@include modifier('sink') {
-			padding-bottom: 0;
 		}
 		
 		//---------------------------------------------------------
@@ -227,15 +132,6 @@
             }
 			@include modifier('opaque') {
 				background: rgba(white, 0.95);
-			}
-		}
-		
-		@include component('graphic') {
-			position: relative;
-			> img {
-				position: absolute;
-				transform: translateY(-10%);
-				@extend %horizontal-center;
 			}
 		}
 	
