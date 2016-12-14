@@ -9,10 +9,10 @@
 //*****************************************************************
 
 // Asset Path
-$asset-path: "../.." !default;
+$asset-path: '../..' !default;
 
 // Output module configuration data to JSON
-$to-JSON: true;
+$to-JSON: true !default;
 
 // Theme
 $theme : 'One-Nexus' !default;
@@ -21,90 +21,88 @@ $theme : 'One-Nexus' !default;
 // Vendor Files
 //*****************************************************************
     
-@import "../vendor/normalize-scss/sass/normalize/import-now";
-@import "../vendor/Kayzen-GS/src/kayzen-gs";
-@import "../vendor/Sass-Boost/src/sass-boost";
-@import "../vendor/Synergy/src/scss/synergy";
+@import '../vendor/normalize-scss/sass/normalize/import-now';
+@import '../vendor/Kayzen-GS/src/kayzen-gs';
+@import '../vendor/Sass-Boost/src/sass-boost';
+@import '../vendor/Synergy/src/scss/synergy';
 
 //*****************************************************************
 // Tools
 //*****************************************************************
 
-@import "tools/scss/animations";
-@import "tools/scss/background";
-@import "tools/scss/fill-parent";
-@import "tools/scss/font-sizes";
-@import "tools/scss/horizontal-center";
-@import "tools/scss/overlay";
-@import "tools/scss/triangle";
-@import "tools/scss/vertical-center";
-@import "tools/scss/vertical-rhythm";
+@import 'tools/scss/animations';
+@import 'tools/scss/background';
+@import 'tools/scss/fill-parent';
+@import 'tools/scss/font-sizes';
+@import 'tools/scss/horizontal-center';
+@import 'tools/scss/overlay';
+@import 'tools/scss/triangle';
+@import 'tools/scss/vertical-center';
+@import 'tools/scss/vertical-rhythm';
 
 //*****************************************************************
 // Utilities
 //*****************************************************************
 
-@import "modules/utilities/grid/grid";
-@import "modules/utilities/color-palette/color-palette";
-@import "modules/utilities/typography/typography";
-@import "modules/utilities/core/core";
-@import "modules/utilities/helpers/helpers";
-@import "modules/utilities/print/print";
-@import "modules/utilities/sections/sections";
+@import 'modules/utilities/grid/grid';
+@import 'modules/utilities/color-palette/color-palette';
+@import 'modules/utilities/typography/typography';
+@import 'modules/utilities/core/core';
+@import 'modules/utilities/helpers/helpers';
+@import 'modules/utilities/print/print';
+@import 'modules/utilities/sections/sections';
 
 //*****************************************************************
 // Elements
 //*****************************************************************
 
-@import "modules/elements/accordions/accordions";
-@import "modules/elements/alert-bars/alert-bars";
-@import "modules/elements/buttons/buttons";
-@import "modules/elements/blockquotes/blockquotes";
-@import "modules/elements/carousels/carousels";
-@import "modules/elements/forms/forms";
-@import "modules/elements/headings/headings";
-@import "modules/elements/images/images";
-@import "modules/elements/lists/lists";
-@import "modules/elements/modals/modals";
-@import "modules/elements/progress-bars/progress-bars";
-@import "modules/elements/tables/tables";
-@import "modules/elements/tabs/tabs";
-@import "modules/elements/thumbnails/thumbnails";
-@import "modules/elements/tooltips/tooltips";
-@import "modules/elements/wells/wells";
-@import "modules/elements/widgets/widgets";
+@import 'modules/elements/accordions/accordions';
+@import 'modules/elements/alert-bars/alert-bars';
+@import 'modules/elements/buttons/buttons';
+@import 'modules/elements/blockquotes/blockquotes';
+@import 'modules/elements/carousels/carousels';
+@import 'modules/elements/forms/forms';
+@import 'modules/elements/headings/headings';
+@import 'modules/elements/images/images';
+@import 'modules/elements/lists/lists';
+@import 'modules/elements/modals/modals';
+@import 'modules/elements/progress-bars/progress-bars';
+@import 'modules/elements/tables/tables';
+@import 'modules/elements/tabs/tabs';
+@import 'modules/elements/thumbnails/thumbnails';
+@import 'modules/elements/tooltips/tooltips';
+@import 'modules/elements/wells/wells';
+@import 'modules/elements/widgets/widgets';
 
 //*****************************************************************
 // Objects
 //*****************************************************************
 
-@import "modules/objects/billboard/billboard";
-@import "modules/objects/breadcrumb/breadcrumb";
-@import "modules/objects/flyout-nav/flyout-nav";
-@import "modules/objects/footer/footer";
-@import "modules/objects/google-map/google-map";
-@import "modules/objects/header/header";
-@import "modules/objects/logo/logo";
-@import "modules/objects/mega-menu/mega-menu";
-@import "modules/objects/navigation/navigation";
-@import "modules/objects/dropdown/dropdown";
-@import "modules/objects/preloader/preloader";
-@import "modules/objects/scroll-top/scroll-top";
-@import "modules/objects/search/search";
-@import "modules/objects/side-nav/side-nav";
-@import "modules/objects/site-overlay/site-overlay";
-@import "modules/objects/top-bar/top-bar";
-@import "modules/objects/twitter-feed/twitter-feed";
+@import 'modules/objects/billboard/billboard';
+@import 'modules/objects/breadcrumb/breadcrumb';
+@import 'modules/objects/flyout-nav/flyout-nav';
+@import 'modules/objects/footer/footer';
+@import 'modules/objects/google-map/google-map';
+@import 'modules/objects/header/header';
+@import 'modules/objects/logo/logo';
+@import 'modules/objects/navigation/navigation';
+@import 'modules/objects/dropdown/dropdown';
+@import 'modules/objects/preloader/preloader';
+@import 'modules/objects/scroll-top/scroll-top';
+@import 'modules/objects/search/search';
+@import 'modules/objects/side-nav/side-nav';
+@import 'modules/objects/site-overlay/site-overlay';
+@import 'modules/objects/twitter-feed/twitter-feed';
 
 //*****************************************************************
 // Themes
 //*****************************************************************
 
-@import "themes/default/default";
-@import "themes/One-Nexus/one-nexus";
+@import 'themes/default/default';
+@import 'themes/One-Nexus/one-nexus';
 
 // Output all configuration data to JSON only if setting exists and 
-// setting is "true"
+// setting is 'true'
 @if variable-exists('to-JSON') and $to-JSON {
 	@include json-encode($_modules);
 }

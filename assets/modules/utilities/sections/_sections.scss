@@ -10,9 +10,7 @@
 
 	$sections: config((
 		'name'                    : 'section',
-        'heading-group-color'     : typography('colors', 'heading'),
         'padding'                 : 6em 0,
-        'padding-mini'            : 4em 0,
         'banner-padding'          : 5em 0,
         'block-padding'           : 7%,
         'panel-background'        : color('greyscale', 'white'),
@@ -36,10 +34,6 @@
 	
 		background-size: cover;	
 		background-position: center;
-        
-        @include overwrite-component('group', $parent: 'heading') {
-            color: this('heading-group-color');
-        }
 
 	// Modifiers
 	//-------------------------------------------------------------
@@ -52,10 +46,6 @@
 			padding: this('padding');
 		}
         
-        @include modifier('mini') {
-            padding: this('padding-mini');
-        }
-        
         @include modifier('panel') {
 			border-top: 1px solid color('greyscale', 'grey-2');	
 			background: this('panel-background');
@@ -67,32 +57,6 @@
 		
 		@include modifier('secondary') {
 			background-color: this('secondary-background');
-			> .container {
-				position: relative;
-			}
-			&, a:not([class*="button-"]) {
-				color: this('secondary-color');
-			}
-			p, li {
-				a {
-					border-bottom: 1px dotted;
-				}
-			}
-			.owl-dot {
-				&.active {
-					span {
-						background: color('greyscale', 'white');
-					}
-				} 
-			}
-            b, strong {
-                color: this('secondary-color');
-            }
-			@include overwrite-component('group', $parent: 'heading') {
-                &, p {
-				    color: this('secondary-color');
-                }
-			}
 		}
 		
 		//---------------------------------------------------------
@@ -101,19 +65,8 @@
 		
 		@include modifier('fullscreen') {
 			height: 100vh;
-			@if option($top-bar, 'fixed') {
-				height: calc(100vh - #{option($top-bar, 'height')});
-			}
 			@if option($header, 'sticky') {
 				height: calc(100vh - #{option($header, 'height')});
-			}
-		}
-		
-		@at-root {
-			@include overwrite('top-bar', $is: 'fixed') {
-				@include overwrite($special: 'general-sibling', $is: 'fullscreen') {
-					height: calc(100vh - #{option($top-bar, 'height')});
-				}
 			}
 		}
 		
@@ -133,48 +86,10 @@
 			@include bg-overlay(
                 this('overlay-background')
             );
-			@include modifier('deep') {
-				@include bg-overlay(
-                    this('overlay-deep-background')
-                );
-			}
 			@include modifier('dark') {
 				@include bg-overlay(
                     this('overlay-dark-background')
                 );			
-			}
-			@include modifier('alt') {
-				@include bg-overlay(
-                    this('overlay-alt-background')
-                );			
-			}
-			&, a:not([class*="button-"]) {
-				color: this('overlay-color');
-			}
-			.wrap-section {
-				position: relative;
-			}
-		}
-	
-		//---------------------------------------------------------
-		// Dot Map
-		//---------------------------------------------------------
-		
-		@include modifier('dot-map') {
-			position: relative;
-			padding-bottom: 12em;
-			&:before {
-				content: "";
-				background-image: url("#{$asset-path}/images/dot-map.png");
-				background-position: center top;
-				background-repeat: no-repeat;
-				opacity: 0.1;
-				position: absolute;
-				bottom: 0;
-				height: 9em;
-				width: grid-option('base-width');
-				max-width: grid-option('max-width');
-				@extend %horizontal-center;
 			}
 		}
 	
@@ -187,22 +102,6 @@
 		}
 		
 		//---------------------------------------------------------
-		// Flush
-		//---------------------------------------------------------
-		
-		@include modifier('flush') {
-			padding-top: 0;
-		}
-		
-		//---------------------------------------------------------
-		// Sink
-		//---------------------------------------------------------
-		
-		@include modifier('sink') {
-			padding-bottom: 0;
-		}
-		
-		//---------------------------------------------------------
 		// Block
 		//---------------------------------------------------------
 		
@@ -211,31 +110,6 @@
 			& + & {
 				border-top: 1px solid color('greyscale', 'grey-2');
                 position: relative;
-			}
-		}
-		
-	// Components
-	//-------------------------------------------------------------
-	
-		@include component('block') {
-			position: relative;
-			transition: core('transition');
-			padding: 5em this('block-padding');
-			background-size: cover;
-            @media (min-width: breakpoint('break-2')) {
-			 padding: this('block-padding');
-            }
-			@include modifier('opaque') {
-				background: rgba(white, 0.95);
-			}
-		}
-		
-		@include component('graphic') {
-			position: relative;
-			> img {
-				position: absolute;
-				transform: translateY(-10%);
-				@extend %horizontal-center;
 			}
 		}
 	

@@ -12,7 +12,7 @@
         'name'               : 'search-box',
         'output-json'        : true,
         'background'         : color('greyscale', 'grey-5'),
-        'height'             : option($top-bar, 'height'),
+        'height'             : 90px,
         'input-background'   : color('greyscale', 'grey-5'),
         'input-color'        : color('greyscale', 'white'),
         'input-weight'       : lighter,
@@ -61,10 +61,6 @@
             &:focus {
                 outline: 0;
             }
-        }
-        
-        @include overwrite('container') {
-            height: 100%;
         }
         
         @include overwrite-component('group', $parent: 'button') {

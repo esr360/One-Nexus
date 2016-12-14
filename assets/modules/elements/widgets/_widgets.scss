@@ -63,11 +63,6 @@
             text-decoration: none;
         }
 
-        @include overwrite-component('group', $parent: 'heading') {
-            margin-bottom: 0;
-            color: typography('colors', 'heading');
-        }
-
         //*********************************************************
         // Modifiers
         //*********************************************************
@@ -114,18 +109,6 @@
                 }
             }
             
-            a {
-                border-bottom: 1px dotted;
-                transition: core('transition');
-            }
-            
-            &:hover {
-                a {
-                    color: inherit;
-                    transition: 0s;
-                }
-            }
-            
         }
 
         @include modifier('panel') {
@@ -138,91 +121,20 @@
             @include modifier('small') {
                 padding: this('panel-small-padding');
             }
-            &:last-child {
-                position: relative;
-                &:before, &:after {
-                    content: "";
-                    position: absolute;
-                    top: -1px;
-                    transition: core('transition');
-                    background: color('greyscale', 'grey-2');
-                }
-                &:before {
-                    height: 100%;
-                    width: 1px;
-                    right: -1px;
-                    z-index: 2;
-                }
-                &:after {
-                    height: 1px;
-                    width: 1000%;
-                    left: 100%;
-                }
-                &:hover {
-                    &:before {
-                        background: color('brand', 'primary');
-                    }
-                }
-            }
-        }
-
-        @include modifier('borderTop') {
-            border: 0; // reset border
-            border-top: this('border');
-            @include modifier('highlight') {
-                border-top-color: this('border-highlight-color');
-                &:hover {
-                    border-top-color: this('border-highlight-hover-color');
-                }
-            }
-        }
-
-        @include modifier('borderLeft') {
-            border-left: this('border');
-            @include modifier('highlight') {
-                border-left-color: this('border-highlight-color');
-                &:hover {
-                    border-left-color: this('border-highlight-hover-color');
-                }
-            }
         }
         
         @include modifier('card') {
             position: relative;
-            @include overwrite('heading') {
-                a {
-                    border-bottom: 1px dotted transparent;
-                    &:hover {
-                        border-bottom-color: inherit;
-                    }
-                }
-            }
             @include overwrite-component('content') {
                 border: 1px solid rgba(black, 0.1);
                 border-top: 0;
                 padding: core('margin');
-            }
-            @include overwrite('thumbnail') {
-                margin-bottom: 0;
             }
         }
         
         @include modifier('stacked') {
             margin-bottom: core('margin');
             @include vertical-rhythm('bottom');
-            p {
-                margin-top: (core('margin') / 2);
-            }
-            @media (max-width: breakpoint('break-2')) {
-                .text-right-break-2 > & {
-                    @include overwrite-component('icon') {
-                        float: left;
-                        margin-left: 0;
-                        margin-right: 0.5rem;
-                        margin-top: -0.5rem;
-                    }
-                }
-            }
         }
 
         @include modifier('tub') {
@@ -231,7 +143,7 @@
             color: this('tub-color');
             &:before {
                 @extend %fill-parent;
-                content: "";
+                content: '';
                 background: this('tub-background');
             }
             &:hover {
@@ -257,26 +169,7 @@
                 @media (max-width: breakpoint('break-3')) {
                     top: 50%;
                 }
-                @include overwrite('button', $special: 'adjacent-sibling') {
-                    position: absolute;
-                    z-index: 2;
-                    left: 0;
-                    bottom: 0;
-                    background: rgba(black, 0.4);
-                    font-weight: bold;
-                    @media (max-width: breakpoint('break-3')) {
-                        display: none;
-                    }
-                }
             }
-            @include overwrite-component('group', $parent: 'heading') {
-                color: color('greyscale', 'white');
-            }
-        }
-        
-        @include modifier('feature') {
-            padding: this('feature-padding');
-            position: relative;
         }
 
         @include modifier('greyscale') {    
@@ -286,21 +179,10 @@
                 -webkit-filter: grayscale(0%);
             }
         }
-        
-        @include modifiers(('article', 'card')) {
-            overflow: hidden;
-            iframe {
-                display: block;
-            }
-        }
 
         //*********************************************************
         // Components
         //*********************************************************
-        
-        @include component('titleLink') {
-            color: this('titleLink-color');
-        }
         
         @include component('lid') {
             background-color: inherit;
@@ -337,15 +219,7 @@
                 display: inline-block;
                 vertical-align: middle;
                 margin-bottom: 0 !important;
-                + p {
-                    margin-top: (core('margin') / 2);
-                }
             }
-        }
-        
-        @include component('content') {
-            display: block;
-            transition: core('transition');
         }
         
         @include component('group') {
@@ -359,24 +233,10 @@
                     margin-bottom: option($grid, 'options', 'gutter');
                 }
             }
-            @include modifier('panels') {
-                @include overwrite {
-                    border-bottom: 1px solid color('greyscale', 'grey-2');
-                }
-            }
-            @include modifier('center') {
-                @include overwrite {
-                    text-align: center;
-                }
-            }
         }
         
         @include component('icon') {
             color: this('icon-color');
-            margin-bottom: (core('margin') / 2);
-            @media (min-width: breakpoint('break-3')) {
-                margin-bottom: core('margin');
-            }
             @include modifier('inline') {
                 margin-right: 0.5rem;
             }
@@ -389,24 +249,6 @@
             @include context('parent-hovered') {
                 color: color('brand', 'primary');
             }
-        }
-        
-        @include component('header') {
-            @include overwrite-component('icon', $special: 'adjacent-sibling') {
-                margin-left: 0.5rem;
-                margin-right: 0;
-            }
-            .col-full & {
-                @media (min-width: breakpoint('break-3')) {
-                    position: absolute;
-                    bottom: 2em;
-                }
-            }
-        }
-        
-        @include component('controls') {
-            position: absolute;
-            bottom: 0;
         }
 
     } // module
