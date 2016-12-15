@@ -19,7 +19,8 @@
     //*************************************************************
 
     $headings: config((
-        'name': 'heading',
+        'name' : 'heading',
+        'color': core('text-color')
         'group_heading-lineHeight': 0.8,
         'sizes':(
             'sizes': typography-config('sizes'),
@@ -42,6 +43,7 @@
         //*********************************************************
 
         line-height: 1;
+        color: this('color');
 
         //*********************************************************
         // Sizes
