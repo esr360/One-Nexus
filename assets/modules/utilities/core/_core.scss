@@ -142,6 +142,10 @@
 	.object {
 	    @include object;
 	}
+
+	.object-small {
+	    @include object(core('margin')/2);
+	}
 	
 	::selection {
 		background-color: color('brand', 'brand-1');
@@ -167,8 +171,8 @@
 /// Create vertical-rhythm for an element
 /// @access public
 /// @group utilities
-@mixin object {
-	margin: core('margin') 0;
+@mixin object($gutter: core('margin')) {
+	margin: $gutter 0;
 	@include vertical-rhythm;
 }
 

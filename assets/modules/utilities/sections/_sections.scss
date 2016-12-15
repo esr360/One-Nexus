@@ -45,7 +45,7 @@
 		@include modifiers(('primary', 'secondary')) {
 			padding: this('padding');
 		}
-        
+
         @include modifier('panel') {
 			border-top: 1px solid color('greyscale', 'grey-2');	
 			background: this('panel-background');
@@ -89,7 +89,7 @@
 			@include modifier('dark') {
 				@include bg-overlay(
                     this('overlay-dark-background')
-                );			
+                );
 			}
 		}
 	
