@@ -44,8 +44,10 @@
                 
                 // Hide previously selected item
                 tabsItem.fadeOut(options.transition);
+                tabsNavItem.removeClass(options.activeClass);
                 
                 // Show the new item
+                tabsNavItem.eq(index).addClass(options.activeClass);
 		        setTimeout(function(){
                     tabsItem.eq(index).fadeIn(options.transition);
                 }, options.transition);
