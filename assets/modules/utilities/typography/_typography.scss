@@ -87,10 +87,10 @@
         color: this('colors', 'link');
         text-decoration: none;
         transition: color 0.4s;
-        p > & {
+        p > &, small > & {
             border-bottom: 1px solid;
         }
-        &:hover {
+        &:not([class*="button"]):hover {
             color: this('colors', 'link-hover');
         }
     }
