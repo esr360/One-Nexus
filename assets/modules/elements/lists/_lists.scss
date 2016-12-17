@@ -78,8 +78,10 @@
                     left: 0;
                     font-family: FontAwesome;
                     margin-right: 0.5em;
-                    color: this('arrow-color');
                 }
+            }
+            @include modifier('highlight') {
+                color: this('arrow-color');
             }
         }
         

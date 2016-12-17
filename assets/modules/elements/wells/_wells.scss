@@ -65,35 +65,6 @@
         @include modifier('deep') {
             padding: this('deep-padding');
         }
-        
-        @include modifier('comment') {
-            position: relative;
-            padding: this('comment-padding');
-            @media (min-width: breakpoint('break-2')) {
-                &:before {
-                    content: "";
-                    position: absolute;
-                    top: calc(50% + 4px);
-                    left: -8px;
-                    height: 14px;
-                    width: 14px;
-                    transform: rotate(45deg) translate(-50%, -50%);
-                    background: lighten(color('greyscale', 'grey-1'), 5%);
-                    border-left: 1px solid rgba(black, 0.15);
-                    border-bottom: 1px solid rgba(black, 0.15);
-                }
-            }
-        }
-        
-        @include modifier('thumb') {
-            height: this('thumb-height');
-            display: block;
-            transition: background-color core('transition');
-            &:hover {
-                background: this('hover-background');
-                color: this('hover-color');
-            }
-        }
 
         //*********************************************************
         // Components
@@ -102,6 +73,8 @@
         @include component('content') {
             @include vertical-center;
         }
+
+        @content;
         
     } // module
         

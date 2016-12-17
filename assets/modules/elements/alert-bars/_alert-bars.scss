@@ -53,7 +53,7 @@
         // Child Elements
         //*********************************************************
 
-        a {
+        a:not([class*="button"]) {
             border-bottom: 1px dotted;
             &:hover {
                 text-decoration: none;
