@@ -90,7 +90,7 @@
         p > &, small > & {
             border-bottom: 1px solid;
         }
-        &:not([class*="button"]):hover {
+        &:hover {
             color: this('colors', 'link-hover');
         }
     }

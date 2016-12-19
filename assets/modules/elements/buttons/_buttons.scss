@@ -236,6 +236,14 @@
 
         }
 
+        a[class*="#{this('name')}"] {
+            color: inherit;
+            content: 'dopy';
+            &:hover {
+                color: inherit;
+            }
+        }
+
         @content;
 
     } // @include module
