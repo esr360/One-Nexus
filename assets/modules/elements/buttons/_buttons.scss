@@ -131,7 +131,7 @@
 
         @include modifier('border') {
             background: none;
-            color: this('background');
+            color: inherit;
             border-color: currentColor;
             &:hover {
                 color: color('greyscale', 'white');
@@ -238,7 +238,6 @@
 
         a[class*="#{this('name')}"] {
             color: inherit;
-            content: 'dopy';
             &:hover {
                 color: inherit;
             }

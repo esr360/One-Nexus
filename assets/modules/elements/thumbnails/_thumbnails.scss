@@ -85,7 +85,8 @@
         }
 
         @include modifier('feature') {
-            @include overwrite-component('content') {
+            @include component('content') {
+                content: 'dopy';
                 position: absolute;
                 bottom: 0;
                 width: 100%;
