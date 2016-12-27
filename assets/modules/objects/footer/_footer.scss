@@ -60,7 +60,7 @@
                 @include _module('container', 'large');
             }
 
-            @include overwrite('logo') {
+            @include module('logo') {
                 img {
                     height: this('logo-height');
                 }

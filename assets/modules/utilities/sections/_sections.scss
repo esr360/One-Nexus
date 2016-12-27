@@ -71,7 +71,7 @@
 		}
 		
 		@at-root {
-			@include overwrite('app-header', $is: 'sticky') {
+			@include overwrite('appHeader', $is: 'sticky') {
 				@include overwrite($special: 'general-sibling', $is: 'fullscreen') {
 					height: calc(100vh - #{option($header, height)});
 				}

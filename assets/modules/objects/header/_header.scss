@@ -19,7 +19,7 @@
     //*************************************************************
 
     $header: config((
-        'name'             : 'app-header',
+        'name'             : 'appHeader',
         'output-json'      : true,
         'background'       : core('background'),
         'height'           : 85px,
@@ -65,8 +65,11 @@
         //*********************************************************
         
         @include option('bar') {
-            @include overwrite-component('wrapper') {	
-                display: table;
+            @include module {
+                @include component('wrapper') {	
+                    display: table;
+                    content: 'dopy';
+                }
             }
             @include overwrite(('logo', 'navigation')) {
                 display: table-cell;

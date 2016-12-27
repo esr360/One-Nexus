@@ -126,7 +126,6 @@
         @include modifier('card') {
             position: relative;
             @include component('content') {
-                content: 'dopy';
                 border: 1px solid rgba(black, 0.1);
                 border-top: 0;
                 padding: core('margin');

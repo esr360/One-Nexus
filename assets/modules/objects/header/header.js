@@ -2,13 +2,13 @@
     
     /**
      * KAYZEN
-     * @module: 'app-header'
+     * @module: 'appHeader'
      * @requires: 'navigation', 'side-nav', 'site-overlay'
      * @author: @esr360
      */
     $.fn.header = function(custom) {
     
-        var $module = 'app-header';
+        var $module = 'appHeader';
         
         // Options
         var options = $.extend({

@@ -2815,7 +2815,7 @@ The **header** module by default consists of the [logo](http://onenexusproject.c
 * Both the logo and app-nav elements are displayed as faux table-cells, so they can be both horizontally and vertically aligned whilst retianing full scalability.
 
 ```html
-<header class="app-header">
+<header class="appHeader">
     <div class="container">
         <div class="header-wrapper">
             <!-- Logo -->
