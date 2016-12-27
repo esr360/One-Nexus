@@ -71,7 +71,7 @@
             display: block;
         }
         
-        @include overwrite('button') {
+        @include module('button') {
             color: color('greyscale', 'white');
             border-color: color('greyscale', 'white');
         }
@@ -86,7 +86,6 @@
 
         @include modifier('feature') {
             @include component('content') {
-                content: 'dopy';
                 position: absolute;
                 bottom: 0;
                 width: 100%;
@@ -94,8 +93,10 @@
                 padding: this('featureContent-padding');
                 color: this('featureContent-color');
             }
-            @include overwrite-component('group', $parent: 'heading') {
-                color: this('featureContent-heading-color');
+            @include module('heading') {
+                @include component('group') {
+                    color: this('featureContent-heading-color');
+                }
             }
         }
 
@@ -195,12 +196,17 @@
                 transform: scale(1.15);		   
                 transition: core('transition');
             }
-            @include overwrite-component('group', $parent: 'heading') {
-                &[class*="thumbnail_title"] { 
-                    color: this('mask-title-color');
+            @include module('heading') {
+                @include component('group') {
+                    @include module {
+                        @include component('title') {
+                            // @todo this produces too much code
+                            color: this('mask-title-color');
+                        }
+                    }
                 }
             }
-            @include overwrite('heading') {
+            @include module('heading') {
                 a {
                     color: inherit;
                     &:hover {
@@ -292,16 +298,6 @@
             display: inline-block;
             vertical-align: top;
             padding-left: 1em;
-        }
-        
-        // Nested thumbnail-profile
-        
-        @include overwrite($is: 'profile', $special: 'adjacent-sibling') {
-            position: absolute;
-            z-index: 3;
-            top: 8%;
-            left: -0.5em;
-            transition: core('transition');
         }
         
     } // module

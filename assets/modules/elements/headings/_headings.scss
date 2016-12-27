@@ -84,7 +84,7 @@
             position: relative;
             background-size: cover;
 
-            @include overwrite('heading') {
+            @include module('heading') {
                 @include vertical-rhythm;
                 margin-top: 0.5em;
                 margin-bottom: 0.5em;

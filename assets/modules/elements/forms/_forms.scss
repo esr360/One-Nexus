@@ -62,8 +62,10 @@
             }
 
             @include modifier('has-icon') {
-                @include overwrite-component('input') {
-                    padding-left: 2em;
+                @include module {
+                    @include component('input') {
+                        padding-left: 2em;
+                    }
                 }
             }
 
@@ -76,28 +78,30 @@
                     display: table-header-group; 
                 }
 
-                @include overwrite-component('input') {
-                    display: table-footer-group;
-                    float: left;
-                    &:focus {
-                        &:invalid {
-                            &, ~ label, ~ .form_icon {
-                                border-color: this('invalid-color');
-                                color: this('invalid-color');
+                @include module {
+                    @include component('input') {
+                        display: table-footer-group;
+                        float: left;
+                        &:focus {
+                            &:invalid {
+                                &, ~ label, ~ .form_icon {
+                                    border-color: this('invalid-color');
+                                    color: this('invalid-color');
+                                }
+                                &::placeholder {
+                                    border-color: this('invalid-color');
+                                    color: this('invalid-color');
+                                }
                             }
-                            &::placeholder {
-                                border-color: this('invalid-color');
-                                color: this('invalid-color');
-                            }
-                        }
-                        &:valid {
-                            &, ~ label, ~ .form_icon {
-                                border-color: this('valid-color');
-                                color: this('valid-color');
-                            }
-                            &::placeholder {
-                                border-color: this('invalid-color');
-                                color: this('invalid-color');
+                            &:valid {
+                                &, ~ label, ~ .form_icon {
+                                    border-color: this('valid-color');
+                                    color: this('valid-color');
+                                }
+                                &::placeholder {
+                                    border-color: this('invalid-color');
+                                    color: this('invalid-color');
+                                }
                             }
                         }
                     }

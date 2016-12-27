@@ -84,22 +84,26 @@
             }
             &:hover,
             &.active {
-                @include overwrite-component('title') {
-                    background: this('title-active-bg');
-                    color: this('title-active-color');
-                    // open/close icon
-                    &:after {
-                        color: this('icon-active-color');
+                @include module {
+                    @include component('title') {
+                        background: this('title-active-bg');
+                        color: this('title-active-color');
+                        // open/close icon
+                        &:after {
+                            color: this('icon-active-color');
+                        }
                     }
                 }
             }
             &.active {
-                @include overwrite-component('title') {
-                    border-color: this('title-active-border');
-                    border-radius: this('title-active-radius');
-                    // open/close icon
-                    &:after {		
-                        transform: rotate(90deg) translateZ(0);
+                @include module {
+                    @include component('title') {
+                        border-color: this('title-active-border');
+                        border-radius: this('title-active-radius');
+                        // open/close icon
+                        &:after {		
+                            transform: rotate(90deg) translateZ(0);
+                        }
                     }
                 }
             }

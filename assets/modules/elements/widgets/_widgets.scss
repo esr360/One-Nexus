@@ -74,7 +74,7 @@
             
             @include modifier('small') {
                 padding: this('block-small-padding');
-                @include overwrite-component('icon') {
+                @include component('icon') {
                     margin-bottom: core('margin') * 0.57; // magic number 1 of 1
                 }
             }
@@ -82,10 +82,10 @@
             @include modifier('fill') {
                 background: this('block-fill-background');	
                 color: this('block-fill-color');
-                @include overwrite('heading') {
+                @include module('heading') {
                     color: color('greyscale', 'white');
                 }
-                @include overwrite-component('icon') {
+                @include component('icon') {
                     color: color('greyscale', 'white');
                 }
             }
@@ -94,10 +94,10 @@
                 &:hover {
                     background: this('block-hover-background');	
                     color: this('block-hover-color');
-                    @include overwrite('heading') {
+                    @include module('heading') {
                         color: color('greyscale', 'white');
                     }
-                    @include overwrite-component('icon') {
+                    @include component('icon') {
                         color: color('greyscale', 'white');
                     }
                     @include modifier('fill') {
@@ -125,7 +125,8 @@
         
         @include modifier('card') {
             position: relative;
-            @include overwrite-component('content') {
+            @include component('content') {
+                content: 'dopy';
                 border: 1px solid rgba(black, 0.1);
                 border-top: 0;
                 padding: core('margin');
@@ -147,17 +148,17 @@
                 background: this('tub-background');
             }
             &:hover {
-                @include overwrite-component('lid') {
+                @include component('lid') {
                     transform: translateY(-100%);
                 }
-                @include overwrite-component('content') {
+                @include component('content') {
                     transform: scale(1) translateY(-50%);
                 }
-                @include overwrite-component('sticker') {
+                @include component('sticker') {
                     top: 50%;
                 }
             }
-            @include overwrite-component('content') {
+            @include component('content') {
                 position: absolute;
                 top: calc(50% - 1em);
                 width: 80%;
@@ -191,7 +192,7 @@
             padding-top: 80%;
             height: 0;
             z-index: 2;
-            @include overwrite('icon') {
+            @include module('icon') {
                 color: color('greyscale', 'white');
             }
         }
@@ -229,7 +230,7 @@
             }
             @include modifier('grid') {
                 margin-bottom: -#{option($grid, 'options', 'gutter')} !important;
-                @include overwrite('widget') {
+                @include module {
                     margin-bottom: option($grid, 'options', 'gutter');
                 }
             }
