@@ -63,9 +63,11 @@
             }
         }
         
-        @include overwrite-component('group', $parent: 'button') {
-            @include vertical-center(absolute);
-            right: 0;
+        @include module('button') {
+            @include component('group') {
+                @include vertical-center(absolute);
+                right: 0;
+            }
         }
         
         ::placeholder {

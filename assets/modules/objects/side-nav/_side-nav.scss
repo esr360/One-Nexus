@@ -141,13 +141,8 @@
                 to right, rgba(white, 0.025), rgba(black, 0.5)
             );
         }
-
-        // hide the mega-menu
-        @include overwrite('mega-menu') {
-            display: none !important;
-        }
             
-        @include overwrite(('logo', 'navigation')) {
+        @include module(('logo', 'navigation')) {
             display: block;
         }
         
@@ -170,7 +165,7 @@
             }
         }
         
-        @include overwrite-component('openClose') {
+        @include component('openClose') {
             display: block;
         }
 

@@ -68,10 +68,9 @@
             @include module {
                 @include component('wrapper') {	
                     display: table;
-                    content: 'dopy';
                 }
             }
-            @include overwrite(('logo', 'navigation')) {
+            @include modules(('logo', 'navigation')) {
                 display: table-cell;
                 vertical-align: middle;
             }
@@ -98,20 +97,22 @@
         //*********************************************************
         
         @include option('sticky') {
-            &.fixed {
-                position: fixed;
-                top: 0;
-                margin-top: 0;
-                width: 100%;
-                z-index: 12;
-                background: this('sticky', 'background');
-                font-size: this('sticky', 'font-size');
-                @include overwrite-component('wrapper') {
-                    height: this('sticky', 'height');
-                }
-                @include overwrite('logo') {
-                    img {
-                        height: this('sticky', 'logo-height');
+            @include module {
+                @include modifier('fixed') {
+                    position: fixed;
+                    top: 0;
+                    margin-top: 0;
+                    width: 100%;
+                    z-index: 12;
+                    background: this('sticky', 'background');
+                    font-size: this('sticky', 'font-size');
+                    @include component('wrapper') {
+                        height: this('sticky', 'height');
+                    }
+                    @include module('logo') {
+                        img {
+                            height: this('sticky', 'logo-height');
+                        }
                     }
                 }
             }

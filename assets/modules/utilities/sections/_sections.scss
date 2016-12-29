@@ -58,25 +58,6 @@
 		@include modifier('secondary') {
 			background-color: this('secondary-background');
 		}
-		
-		//---------------------------------------------------------
-		// Full Screen
-		//---------------------------------------------------------
-		
-		@include modifier('fullscreen') {
-			height: 100vh;
-			@if option($header, 'sticky') {
-				height: calc(100vh - #{option($header, 'height')});
-			}
-		}
-		
-		@at-root {
-			@include overwrite('appHeader', $is: 'sticky') {
-				@include overwrite($special: 'general-sibling', $is: 'fullscreen') {
-					height: calc(100vh - #{option($header, height)});
-				}
-			}
-		}
 	
 		//---------------------------------------------------------
 		// Overlay

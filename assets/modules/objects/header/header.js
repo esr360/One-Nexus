@@ -15,6 +15,7 @@
             navigation   : _navigation,
             overlay      : '#site-overlay',
             sticky       : _option($module, 'sticky'),
+            fixedClass   : $module + '-fixed',
             transition   : _baseTransition,
             stickyOffset : null
         }, custom);
@@ -31,7 +32,7 @@
                 var stickyOffset = options.stickyOffset || header.offset().top;
 
                 function stickHeader() {
-                    header.addClass('fixed');
+                    header.addClass(options.fixedClass);
                     navDropdown.hover(
                         function() { 
                             $(options.overlay).siteOverlay('show', 'navDropdown');
@@ -43,7 +44,7 @@
                 }
 
                 function unStickHeader() {
-                    header.removeClass('fixed');
+                    header.removeClass(options.fixedClass);
                     navDropdown.unbind('mouseenter mouseleave');
                     $(options.overlay).siteOverlay('hide');
                 }

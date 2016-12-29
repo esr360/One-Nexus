@@ -50,10 +50,6 @@
                 &:hover {
                     text-decoration: none;
                 }
-                // icon
-                @include overwrite-component('icon') {
-                    margin-right: 0.5em;
-                }
             }   
         }
 
@@ -130,8 +126,10 @@
     //-------------------------------------------------------------
 
         @include option('noIcons') {
-            @include overwrite-component('icon') {
-                display: none;
+            @include module {
+                @include component('icon') {
+                    display: none;
+                }
             }
         }
 
