@@ -83,7 +83,7 @@
     //*************************************************************
 	
     // Links
-    a {
+    a:not([class*='button']) {
         color: this('colors', 'link');
         text-decoration: none;
         transition: color 0.4s;
