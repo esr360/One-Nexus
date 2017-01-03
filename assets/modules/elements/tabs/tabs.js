@@ -23,14 +23,21 @@
             var tabsParent = $(this);
             
             // Get the navigation container
-            var tabsNav = $(this).find(options.navParent);
+            var tabsNav = $(this).find(options.navParent).first();
             
-            // Get individual navigation item
+            // Get individual navigation items
             var tabsNavItem = tabsNav.find(options.navItem);
             
-            // Get individual tabs item
-            var tabsItem = tabsParent.find(options.item);
-            
+            // Get individual tabs items
+            var tabItems = function() {
+                // get depth of target tab items as tabs may be nested
+                var itemDepth = tabsParent.find(options.item).first().parents().length;
+                // get all items of same depth
+                return tabsParent.find(options.item).filter(function() {
+                    return $(this).parents().length === itemDepth;
+                });
+            }
+
             // Add active class to appropriate nav item
             $(tabsNav).KayzenClickHelper({
                 targetClass : options.activeClass
@@ -43,13 +50,13 @@
                 var index = $(this).index();
                 
                 // Hide previously selected item
-                tabsItem.fadeOut(options.transition);
+                tabItems().fadeOut(options.transition);
                 tabsNavItem.removeClass(options.activeClass);
                 
                 // Show the new item
                 tabsNavItem.eq(index).addClass(options.activeClass);
 		        setTimeout(function(){
-                    tabsItem.eq(index).fadeIn(options.transition);
+                    tabItems().eq(index).fadeIn(options.transition);
                 }, options.transition);
                 
                 return false;
