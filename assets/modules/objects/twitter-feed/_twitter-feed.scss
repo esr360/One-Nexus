@@ -52,8 +52,14 @@
 			background: color('greyscale', 'grey-5');
 			color: color('greyscale', 'white');
 		}
+
+        //*********************************************************
+        // Custom Content
+        //*********************************************************
+
+        @content;
 		
-	} // component()
+	}
 			
 	.tweets {
 		@include extend($parent: 'list', $modifiers: 'reset');
