@@ -56,6 +56,7 @@
             position: relative;
 
             @include component('item') {
+                position: absolute;
                 cursor: pointer;
                 transition: this('nav-buttons', 'transition');
                 font-size: this('nav-buttons', 'size');
@@ -64,12 +65,12 @@
                 }
                 @include modifier('prev') {
                     display: inline-block;
+                    left: 0;
                     &:before {
                         content: this('nav-buttons', 'prev');
                     }
                 }
                 @include modifier('next') {
-                    position: absolute;
                     top: 0;
                     right: 0;
                     &:before {

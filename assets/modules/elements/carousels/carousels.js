@@ -26,6 +26,7 @@
             options:{
                 nav : _modules['carousel']['nav-buttons']['enabled'],
                 dots: _modules['carousel']['bullets']['enabled'],
+                callbacks: true,
                 navText:[
                     '<div class="carousel_nav_item-prev"></div>',
                     '<div class="carousel_nav_item-next"></div>',
@@ -38,9 +39,9 @@
 
         // Run the code on each occurance of the target
         return this.each(function(index) {
-            // Cache the carousel wrapper and slides
             var $carousel = $(this);
             var slides = $carousel.children();
+            var owlOptions = {};
 
             // If the element doesn't have an id, add one
             if (!this.id) {
@@ -59,7 +60,9 @@
             });
 
             // Merge any custom owl options
-            $.extend(true, options.options, options.owl);
+            owlOptions = $.extend(true, options.options, 
+                options.owl, $carousel.data('owl-options')
+            );
 
             // Prepare the slides
             slides.addClass('carousel_slide');
@@ -80,7 +83,7 @@
 
             // Initiate the carousel using Owl-Carousel
             slidesWrapper.addClass('owl-carousel');
-            slidesWrapper.owlCarousel(options.options);
+            slidesWrapper.owlCarousel(owlOptions);
         });
 
     }; // carousel()
