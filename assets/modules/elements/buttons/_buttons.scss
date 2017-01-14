@@ -149,11 +149,14 @@
                                 color: typography('colors', 'base');
                             }
                         }
+                    } @else {
+                        &:hover {
+                            color: color('greyscale', 'white');
+                        }
                     }
                     &:hover {
                         background: $color;
                         border-color: $color;
-                        color: color('greyscale', 'white');
                     }
                 }
             }
