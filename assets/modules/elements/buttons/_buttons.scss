@@ -38,7 +38,7 @@
         'group-stack'       : 'break-1',
         'palettes'          : ('brand', 'greyscale', 'alert', 'social'),
         'sizes':(
-            'optional-sizes': typography-config('sizes')
+            'sizes': typography-config('sizes')
         )
     ), $custom);
 

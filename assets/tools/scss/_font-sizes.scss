@@ -1,17 +1,13 @@
-/// One Nexus - modules\utilities\font-sizes
+/// Create font-size modifiers
 ///
-/// @author Edmund Reed
+/// @author [@esr360](http://twitter.com/esr360)
+/// @link https://www.smashingmagazine.com/2016/05/fluid-typography/
 /// @access public
-/// @group utilities
+/// @group tools
 /// @param {map} $custom - where custom config will be passed
+///
 /// @example
-///     @include font-sizes((
-///         'responsive-sizes'  : ('size-2', 'sze-4'),
-///         'optional-sizes' : ('size-5'),
-///         'breakpoints'    : (
-///             'break-3'    : 0.85
-///         )
-///     ));
+///     @include font-sizes();
 @mixin font-sizes($custom: ()) {
 
     //*************************************************************
@@ -19,57 +15,74 @@
     //*************************************************************
 
     $font-sizes: map-merge((
-        'responsive'       : true,
-        'mobile-first'     : false,
-        'sizes'            : typography-config('sizes'),
-        'responsive-sizes' : (),
-        'optional-sizes'   : typography-config('sizes'),
-        'breakpoints':(
-            'break-2'      : 0.75,
-            'break-3'      : 0.9
-        ),
-        'smart-responsive' : true
+        'fluid-scaling' : true,
+        'sizes'         : typography-config('sizes')
     ), $custom) !global;
-      
-    // Map containing desired default responsive font values
-    $default-font-sizes: get-font-sizes(
-        typography-config('sizes'), map-get($font-sizes, 'responsive-sizes')
-    );
 
-    // Sizes to be used when responding
-    $responsive-font-sizes: if(
-        map-get($font-sizes, 'mobile-first'), 
-        map-get($font-sizes, 'breakpoints'), 
-        map-reverse(map-get($font-sizes, 'breakpoints'))
-    );
-        
-    // Map containing desired optional responsive font values
-    $optional-font-sizes: get-font-sizes(
-        typography-config('sizes'), map-get($font-sizes, 'optional-sizes')
-    );
+    // Break the font-sizes up into keys and values
+    $keys  : map-keys(map-get($font-sizes, 'sizes'));
+    $values: map-values(map-get($font-sizes, 'sizes'));
 
-    // Sizes to be used when responding
-    $responsive-optional-font-sizes: if(
-        map-get($font-sizes, 'mobile-first'), 
-        map-get($font-sizes, 'breakpoints'),
-        map-reverse(map-get($font-sizes, 'breakpoints'))
-    );
+    // Create our modular-scale values for fluid-scaling
+    $modular-scale-low-res: 1.067;
+    $modular-scale-hi-res : 1.333;
 
-    // create the base font-size for each modifier
-    @each $size, $value in map-get($font-sizes, 'sizes') {   
-        @include modifier($size) {
-            @if not map-get($font-sizes, 'mobile-first') {
-                font-size: $value; 
-            }
+    // Set the values between which sizes should scale
+    $min-vw: breakpoint('break-1');
+    $max-vw: breakpoint('break-3');
+
+    // Get the index of the value closest to our low-res 
+    // modular-scale value
+    $ms-index: 1;
+    @each $value in $values {
+        @if $value < $modular-scale-low-res {
+            $ms-index: index($values, $value);
         }
     }
 
-    // Respond the default font-sizes
-    @include respond-font-sizes($default-font-sizes, $responsive-font-sizes);
+    // Identify where our scale should start and end
+    $scale-start: 1 - $ms-index;
+    $scale-end: length($values) + $scale-start - 1;
 
-    // Respond the optional font-sizes
-    @include modifier('responsive') {
-        @include respond-font-sizes($optional-font-sizes, $responsive-optional-font-sizes);
+    // Create the scale to use to create our new values
+    $ms-list: ();
+    @for $i from $scale-start through $scale-end {
+        $ms-list: append($ms-list, $i);
+    }
+
+    // Create a set of minimum values to use for low resolutions
+    $ms-lr-values: ();
+    @for $i from 1 through length($ms-list) {
+        $new-value: pow($modular-scale-low-res, nth($ms-list, $i));
+        $old-value: strip-unit(nth($values, $i));
+        // Use the lowest of the two values
+        $new-value: min($new-value, $old-value);
+
+        $ms-lr-values: append($ms-lr-values, $new-value);
+    }
+
+    // Create a modifier for each font-size
+    @each $key, $value in map-get($font-sizes, 'sizes') {
+        // Get current index
+        $index: index($values, $value);
+    
+        // Set min/max value for scaling
+        $min-font-size: nth($ms-lr-values, $index) * 1em;
+        $max-font-size: $value;
+
+        @include modifier($key) {
+            @if map-get($font-sizes, 'fluid-scaling') {
+                font-size: $min-font-size;
+                @media screen and (min-width: $min-vw) {
+                    font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / (#{strip-unit($max-vw - $min-vw)} / 10)));
+                }
+                @media screen and (min-width: $max-vw) {
+                    font-size: $max-font-size;
+                }
+            } @else {
+                font-size: $value;
+            }
+        }
     }
 
 }
@@ -78,52 +91,24 @@
 // Tools & Utilities
 //*************************************************************
 
-/// Function to get desired font-size values
-/// @access private
-/// @group utilities
-/// @param {map} $original-sizes - the original map of font-sizes
-/// @param {list} $new-values - the keys you are interested in
-/// @return {map} - new map containing only desired values
-@function get-font-sizes($original-sizes, $new-values) {
-
-    // Get the keys of the desired new values
-    $keys: if(type-of($new-values) == 'map',
-        map-keys($new-values), $new-values
-    );
-
-    // Remove the desired values from the original list
-    $new-sizes: map-remove($original-sizes, $keys...);
-
-    // Now using the new list, we can remove those from the 
-    // original list to leave us with with our desired values
-    $new-sizes: map-remove($original-sizes, map-keys($new-sizes)...);
-
-    @return $new-sizes;
-
+// Strip units
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
 }
 
-/// Mixin to modify font-sizes at varying breakpoints
-/// @access private
-/// @group utilities
-/// @param {map} $sizes - desired font-sizes
-/// @param {map} $values - desired breakpoints to respond to
-@mixin respond-font-sizes($sizes, $values) {
-    @each $key, $value in $sizes {
-        @include modifier($key) {
-            @each $breakpoint, $new-size in $values {
-                $media: if(map-get($font-sizes, 'mobile-first'), 'min-width', 'max-width');
-                @media ($media: breakpoint($breakpoint)) {
-                    @if map-get($font-sizes, 'smart-responsive') {
-                        @if $value > 1 {
-                            font-size: calc(1em + (#{$value}/4));
-                        } @else {
-                            font-size: calc(1em - (#{$value}/4));
-                        }
-                    } @else {
-                        font-size: calc(#{$value} * #{$new-size});
-                    }
-                }
-            }
+// Power function
+@function pow($number, $exponent) {
+    $value: 1;
+
+    @if $exponent > 0 {
+        @for $i from 1 through $exponent {
+            $value: $value * $number;
+        }
+    } @else if $exponent < 0 {
+        @for $i from 1 through -$exponent {
+            $value: $value / $number;
         }
     }
+
+    @return $value;
 }
