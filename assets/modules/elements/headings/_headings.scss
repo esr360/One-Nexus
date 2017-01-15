@@ -24,10 +24,7 @@
         'sizes':(
             'sizes': typography-config('sizes'),
             'optional-sizes': (),
-            'responsive-sizes': typography-config('sizes'),
-            'breakpoints': (
-                'break-3': 0.85
-            )
+            'responsive-sizes': typography-config('sizes')
         )
     ), $custom);
 

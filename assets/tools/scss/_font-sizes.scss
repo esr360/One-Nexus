@@ -27,7 +27,8 @@
         'breakpoints':(
             'break-2'      : 0.75,
             'break-3'      : 0.9
-        )
+        ),
+        'smart-responsive' : true
     ), $custom) !global;
       
     // Map containing desired default responsive font values
@@ -110,13 +111,16 @@
     @each $key, $value in $sizes {
         @include modifier($key) {
             @each $breakpoint, $new-size in $values {
-                @if map-get($font-sizes, 'mobile-first') {
-                    @media (min-width: breakpoint($breakpoint)) {
-                        font-size: ($value * $new-size);
-                    }
-                } @else {
-                    @media (max-width: breakpoint($breakpoint)) {
-                        font-size: ($value * $new-size);
+                $media: if(map-get($font-sizes, 'mobile-first'), 'min-width', 'max-width');
+                @media ($media: breakpoint($breakpoint)) {
+                    @if map-get($font-sizes, 'smart-responsive') {
+                        @if $value > 1 {
+                            font-size: calc(1em + (#{$value}/4));
+                        } @else {
+                            font-size: calc(1em - (#{$value}/4));
+                        }
+                    } @else {
+                        font-size: calc(#{$value} * #{$new-size});
                     }
                 }
             }
