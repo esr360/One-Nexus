@@ -46,9 +46,15 @@
     // Row
     @include module(this('options', 'row-namespace')) {
         @include modifier('breathe') {
-            margin-bottom: -#{this('options', 'gutter')};
+            margin-bottom: -2em;
             [class*="#{this('options', 'col-namespace')}"] {
-                margin-bottom: this('options', 'gutter');
+                margin-bottom: 2em;
+            }
+            @media (min-width: breakpoint('break-3')) {
+                margin-bottom: -#{this('options', 'gutter')};
+                [class*="#{this('options', 'col-namespace')}"] {
+                    margin-bottom: this('options', 'gutter');
+                }
             }
         }
         @include modifier('gasp') {

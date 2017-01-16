@@ -50,7 +50,7 @@
         $ms-list: append($ms-list, $i);
     }
 
-    // Create a set of minimum values to use for low resolutions
+    // Create a set of minimum sizes to use for low resolutions
     $ms-lr-values: ();
     @for $i from 1 through length($ms-list) {
         $new-value: pow($modular-scale-low-res, nth($ms-list, $i));
