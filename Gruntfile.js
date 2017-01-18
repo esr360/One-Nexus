@@ -24,7 +24,7 @@ module.exports = function(grunt) {
      * @var {object} themes
      */
     var themes = grunt.option('themes') || [
-        'default', 'One-Nexus'
+        'One-Nexus'
     ]
     
     /**
@@ -126,7 +126,7 @@ module.exports = function(grunt) {
                 overwrite: true, 
                 replacements: [{
                     from: /\$theme(.*?);/g,
-                    to: '$theme : \'<%=theme%>\';'
+                    to: '$theme : \'<%=theme%>\' !default;'
                 }]
             }
         },

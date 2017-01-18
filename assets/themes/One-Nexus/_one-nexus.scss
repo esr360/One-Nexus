@@ -12,13 +12,7 @@
     ///************************************************************
 
 	@include palettes;
-
-	@include typography((
-		'colors':(
-			'link' : color('brand', 'brand-2')
-		)
-	));
-
+	@include typography;
 	@include grid;
 	@include core;
 	@include helpers;
@@ -27,30 +21,13 @@
     /// Elements
     ///************************************************************
 
-	@include accordions((
-        'title-active-bg': color('brand', 'brand-2')
-    ));
-    
+	@include accordions;
 	@include alert-bars;
 	@include blockquotes;
-
-	@include buttons((
-		'active-background': color('brand', 'brand-3'),
-		'combine':(
-			'primary'  : ('round', 'size-4', 'brand-1'),
-			'secondary': ('sharp', 'size-4', 'brand-2')
-		)
-	));
-
+	@include buttons;
 	@include carousels;
 	@include forms;
-
-	@include headings((
-        'CSS': (
-            'letter-spacing': -0.04em
-        )
-    ));
-
+	@include headings;
 	@include images;
 	@include lists;
 	@include modals;
@@ -69,11 +46,7 @@
 	@include breadcrumb;
 	@include footer;
 	@include google-map;
-
-	@include header((
-		'background' : transparent
-	));
-
+	@include header;
 	@include logo;
 	@include navigation;
 	@include dropdown;
@@ -89,9 +62,6 @@
     ///************************************************************
 
 	@include sections;
-
-	@include billboard((
-		'background' :  gradient('brand')
-	));
+	@include billboard;
 
 }
