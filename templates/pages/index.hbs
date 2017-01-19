@@ -1,0 +1,1384 @@
+---
+layout: core.hbs
+header:
+    modifiers:
+    - fixed
+    - hidden
+    - dark
+scripts:
+    - <%=assets%>assets/scripts/jquery.stellar
+    - <%=assets%>assets/themes/<%=theme%>/app
+Prism: 1.6.0
+---
+
+{{> header}}
+
+<div class="homepage_wrapper">
+
+    <div class="spacestation">
+
+        <div class="spacestation_content" data-stellar-ratio="0.2">
+            <div class="logo">
+                <img src="{{assets}}assets/images/logo-light.png" alt="One-Nexus Logo">
+            </div>
+            <h2 class="spacestation_tagline heading-light-uppercase-size-2">
+                Front-End Boilerplate & UI Toolkit
+            </h2>
+        </div>
+
+        <div class="spacestation_layer-stars1"></div>
+        <img src="{{assets}}assets/images/spacestation/layer3.svg" data-stellar-ratio="0.05" class="spacestation_layer-planets" />
+        <img src="{{assets}}assets/images/spacestation/layer6.svg" class="spacestation_layer-rocket" />
+        <img src="{{assets}}assets/images/spacestation/layer4.svg" data-stellar-ratio="0.1" class="spacestation_layer-sun" />
+        <img src="{{assets}}assets/images/spacestation/layer5.svg" data-stellar-ratio="0.15" class="spacestation_layer-mountain" />
+        <img src="{{assets}}assets/images/spacestation/layer7.svg" data-stellar-ratio="0.25" class="spacestation_layer-beacon" />
+        <img src="{{assets}}assets/images/spacestation/layer8.svg" data-stellar-ratio="0.3" class="spacestation_layer-greenland" />
+        <img src="{{assets}}assets/images/spacestation/layer9.svg" data-stellar-ratio="0.35" class="spacestation_layer-stardust1" />
+        <img src="{{assets}}assets/images/spacestation/layer10.svg" data-stellar-ratio="0.5" class="spacestation_layer-stardust2" />
+        <img src="{{assets}}assets/images/spacestation/layer11.svg" data-stellar-ratio="0.55" class="spacestation_layer-ufo" />
+        <img src="{{assets}}assets/images/spacestation/layer12.svg" data-stellar-ratio="0.85" class="spacestation_layer-foreground" />
+        <img src="{{assets}}assets/images/spacestation/layer13.svg" data-stellar-ratio="1.5" class="spacestation_layer-stardust3" />
+
+    </div>
+
+    <div class="homepage_content">
+
+        <div class="homepage_section-intro">
+            <div class="container">
+                <div class="row">
+                    <div class="span-8">
+                        <h3 class="heading-size-6">What is One-Nexus?</h3>
+                        <p>One-Nexus is a front-end boilerplate and UI toolkit built using the <a href="https://github.com/esr360/Synergy" target="blank">Synergy</a> Sass framework, combined with a custom grid system; <a href="https://github.com/esr360/Kayzen-GS" target="blank">Kayzen-GS</a>. Together they form a powerful framework for building responsive websites with modular and configurable components.</p>
+                        <p class="button_group">
+                            <button class="button-border-white-size-3">Get One-Nexus</button>
+                            <span class="button_group_item">or</span> <a href="#">Learn More</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="homepage_section-brand">
+
+            <div class="homepage_introBox well-deep-box container">
+                <h4 class="heading-size-4-brand-1 object-small">Free & Open-Source<span class="min-break-1"> - Hosted on Github</span></h4>
+                <i class="fa fa-github-alt"></i>
+                <p class="object-small">One-Nexus is open-source, built using open-source tools. All bugs, issues and feature requests are <a href="#">handled on Github</a>.</p>
+            </div>
+            
+            <div class="container text-center">
+                <div class="heading_group">
+                    <h3 class="heading-light-size-8 font-2">Why Choose One-Nexus?</h3>
+                    <p>With so many frameworks and libraries out there, what makes One-Nexus different?</p>
+                </div>
+
+                <div class="row-block object-large">
+                    <div class="brandBlock-brand2 span-4">
+                        <div class="livicon-evo" data-options="
+                            name: responsive.svg;
+                            eventOn: parent;
+                            size: 130px; 
+                            style: lines;
+                            tryToSharpen: true;
+                            colorsOnHover: custom;
+                            strokeColorAction: white;
+                            strokeColor: #007b93;
+                            drawOnViewport: true
+                        "></div>
+                        <h4 class="heading-size-3 object-small">Custom Grid System</h4>
+                        <p class="object-small">One-Nexus uses <a href="#">Kayzen-GS</a>, a powerful grid system custom built for One-Nexus.
+                    </div>
+                    <div class="brandBlock-brand3 span-4">
+                        <div class="livicon-evo" data-options="
+                            name: share.svg;
+                            eventOn: parent;
+                            size: 130px; 
+                            style: lines;
+                            tryToSharpen: true;
+                            colorsOnHover: custom;
+                            strokeColorAction: white;
+                            strokeColor: #008277;
+                            drawOnViewport: true
+                        "></div>
+                        <h4 class="heading-size-3 object-small">Unique Modules</h4>
+                        <p class="object-small">Built using <a href="#">Synergy</a>, One-Nexus offers a unique approach for building modules.
+                    </div>
+                    <div class="brandBlock-brand1 span-4">
+                        <div class="livicon-evo" data-options="
+                            name: rocket.svg;
+                            eventOn: parent;
+                            size: 130px; 
+                            style: lines;
+                            tryToSharpen: true;
+                            colorsOnHover: custom;
+                            strokeColorAction: white;
+                            strokeColor: #161d51;
+                            drawOnViewport: true
+                        "></div>
+                        <h4 class="heading-size-3 object-small">Powerful Theming</h4>
+                        <p class="object-small">Create multiple themes by passing different configuration data to modules.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="homepage_section-overview container">
+
+            <div class="heading_group text-center object-large">
+                <h3 class="heading-light-size-8-grey-5 font-2">Quick & Easy to Use</h3>
+                <p>Getting started can be as simple as including a single <code>.js</code> and <code>.css</code> file on your page</p>
+            </div>
+
+            <div class="homepage_overviewBox object">
+                <a href="#" class="button-border-size-4 min-break-2"><i class="fa fa-download"></i>&nbsp; Download</a>
+                <span class="button_group_item min-break-2">or</span>
+                <a href="#" class="button-border-size-4"><i class="fa fa-github-alt"></i>&nbsp; View on Github</a>
+            </div>
+
+            <div class="row row-breathe">
+                <div class="span-4">
+                    <div class="well-opaque-thumb homepage_webTool">
+                        <img src="{{assets}}assets/images/html5-logo.svg" class="html5-logo" alt="HTML5" />
+                    </div>
+                    <p>One-Nexus requires only plain old HTML5, leaving you to handle templates however you want - just load the required assets.</p>
+                </div>
+                <div class="span-4">
+                    <div class="well-opaque-thumb homepage_webTool">
+                        <img src="{{assets}}assets/images/sass-logo.svg" class="sass-logo" alt="Sass" />
+                    </div>
+                    <p>Styles are compiled from <code>.scss</code> files - use whatever method of compiling you are comfortable with (requires Sass 3.4+).</p>
+                </div>
+                <div class="span-4">
+                    <div class="well-opaque-thumb homepage_webTool">
+                        <img src="{{assets}}assets/images/jquery-logo.svg" class="jquery-logo" alt="j-Query" />
+                    </div>
+                    <p>Most plugins for One-Nexus require jQuery. The demo templates which you can build from come with it included via CDN.</p>
+                </div>
+            </div>
+
+            <div class="homepage_desktop min-break-3">
+                <iframe src="{{assets}}basic-html.html"></iframe>
+                <img src="{{assets}}assets/images/desktop-screen.png" class="" />
+            </div>
+
+        </div>
+
+        <div class="homepage_section-cards">
+            
+            <img id="UiComponentsForeground" src="{{assets}}assets/images/foreground.svg" data-stellar-ratio="0.9" class="homepage_section_foreground" />
+
+            <div id="UiComponentsContainer" class="container">
+
+                <div class="heading_group object-large text-center">
+                    <h3 class="heading-light-size-8 font-2">UI Components</h3>
+                    <p>One-Nexus comes with 39 premade modules with thousdands of unique combinations</p>
+                </div>
+
+                <div id="UiComponentsPlaceholder" class="row homepage_modules text-center">
+                    <div class="span-4 well-opaque-deep">
+                        <i class="fa fa-arrow-circle-down fa-3x" aria-hidden="true"></i>
+                        <h4 class="heading">View All Components</h4>
+                    </div>
+                </div>
+
+                <div id="UiComponents" class="homepage_modules text-center owl-carousel hidden">
+                    <a class="well-opaque-deep-hoverCard" href="#">
+                        <i class="fa fa-arrow-circle-down fa-3x" aria-hidden="true"></i>
+                        <h4 class="heading">Accordions</h4>
+                    </a>
+                    <div class="well-opaque-deep-hoverCard">
+                        <i class="fa fa-exclamation-triangle fa-3x"></i>
+                        <h4 class="heading">Alert Bars</h4>
+                    </div>
+                    <div class="well-opaque-deep-hoverCard">
+                        <i class="fa fa-quote-left fa-3x" aria-hidden="true"></i>
+                        <h4 class="heading">Blockquotes</h4>
+                    </div>
+                    <div class="well-opaque-deep-hoverCard">
+                        <i class="fa fa-keyboard-o fa-3x"></i>
+                        <h4 class="heading">Buttons</h4>
+                    </div>
+                    <div class="well-opaque-deep-hoverCard">
+                        <i class="fa fa-keyboard-o fa-3x"></i>
+                        <h4 class="heading">Buttons</h4>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="homepage_section_carouselNav">
+                <div id="UiComponentsPrev" class="homepage_section_carouselNav_item-prev fa fa-angle-left"></div>
+                <div id="UiComponentsNext" class="homepage_section_carouselNav_item-next fa fa-angle-right"></div>
+            </div>
+
+            <div class="container homepage_section_box_wrapper">
+                <div class="row">
+                    <div class="homepage_section_box span-4">
+                        <h3 class="heading-size-3">Built With Synergy</h3>
+                        <a 
+                            class="github-button" 
+                            href="https://github.com/esr360/Synergy" 
+                            data-icon="octicon-star"
+                            data-count-href="/esr360/Synergy/stargazers" 
+                            data-count-api="/repos/esr360/Synergy#stargazers_count" 
+                            data-count-aria-label="# stargazers on GitHub" 
+                            aria-label="Star esr360/Synergy on GitHub"
+                        >Star</a>
+                        <p>Each One-Nexus component is a configurable module built using <a href="">Synergy</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="homepage_section-codeSample">
+
+            <img src="{{assets}}assets/images/mountain.svg" data-stellar-ratio="0.8" class="homepage_section_mountain" />
+
+            <div class="container">
+
+                <div class="heading_group object-large text-center">
+                    <h3 class="heading-light-size-8-grey-5 font-2">Creating a Module</h3>
+                    <p>See the below pseudo examples to see just what's possible with One-Nexus/Synergy</p>
+                </div>
+
+                <div class="tabs">
+
+                    <ul class="tabs_nav-full-topLine object-center text-center">
+                        <li class="tabs_nav_item">Utility</li>
+                        <li class="tabs_nav_item active">Element</li>
+                        <li class="tabs_nav_item">Object</li>
+                    </ul>
+
+                    <div class="row row-breathe tabs tabs_item">
+
+                        <div class="span-8">
+                            <div class="tabs_item active">
+                                <div class="alert-bar-info">/modules/utilities/<b>_palettes.scss</b></div>
+
+                                <pre class="border"><code class="language-scss">
+                                    @mixin palettes($custom: ()) {
+                                        $palettes: config((
+                                            'brand':(
+                                                'brand-1' : #2E3882,
+                                                'brand-2' : #06d2ff,
+                                                'brand-3' : #04CEC0
+                                            ),
+                                            'alert':(
+                                                'error'   : #D9434E,
+                                                'help'    : #F5BA42,
+                                                'info'    : #4B8CDC,
+                                                'success' : #3BB85D
+                                            ),
+                                            'validation':(
+                                                'valid'   : #00B16A,
+                                                'invalid' : #D91E18	
+                                            )
+                                        ), $custom) !global;
+                                    }
+
+                                    // Function to get desired color from specific palette
+                                    @function color($palette, $color) {
+                                        @return map-get(map-get($palettes, $palette), $color);
+                                    }
+                                </code></pre>
+                            </div><!--/ .tabs_item -->
+
+                            <div class="tabs_item">
+                                <div class="alert-bar-info">/<b>app.scss</b></div>
+
+                                <pre class="border"><code class="language-scss">
+                                    // Config
+                                    ...
+                                    $theme : 'MyTheme';
+
+                                    // Vendor Files
+                                    ...
+
+                                    // Tools
+                                    ...
+
+                                    // Utilities
+                                    @import 'modules/utilities/palettes';
+                                    ...
+
+                                    // Elements
+                                    ...
+
+                                    // Objects
+                                    ...
+
+                                    // Themes
+                                    @import 'themes/MyTheme/MyTheme';
+                                    ...
+                                </code></pre>
+                            </div><!--/ .tabs_item -->
+
+                            <div class="tabs_item">
+                                <div class="alert-bar-info">/themes/MyTheme/<b>_MyTheme.scss</b></div>
+
+                                <pre class="border"><code class="language-scss">
+                                    @if $theme == 'MyTheme' {
+                                        // Utilities
+                                        @include palettes((
+                                            'brand':(
+                                                'brand-1': pink,
+                                                'brand-4': #ea4c88
+                                            ),
+                                            'validation':(
+                                                'invalid': rgba(255, 0, 0, 1)
+                                            )
+                                        ));
+                                        ...
+
+                                        // Elements
+                                        ...
+
+                                        // Objects
+                                        ...
+                                    }
+                                </code></pre>
+                            </div><!--/ .tabs_item -->
+
+                            <div class="tabs_item">
+                                <div class="alert-bar-info">/modules/objects/<b>_testObject.scss</b></div>
+
+                                <pre class="border"><code class="language-scss">
+                                    @include module('testObject') {
+
+                                        background-color: color('brand', 'brand-1');
+                                        border: 1px solid color('brand', 'brand-3');
+
+                                        @include modifier('invalid') {
+                                            background-color: color('validation', 'invalid');
+                                        }
+
+                                    }
+                                </code></pre>
+                            </div><!--/ .tabs_item -->
+
+                            <div class="tabs_item">
+                                <div class="alert-bar-info">/dist/MyTheme/<b>MyTheme.css</b></div>
+
+                                <pre class="border"><code class="language-css">
+                                    /* ... */
+
+                                    .testObject,
+                                    [class*='testObject-'] {
+                                        background-color: pink;
+                                        border: 1px solid #04CEC0;
+                                    }
+                                    [class*='testObject-'][class*='-invalid'] {
+                                        background-color: rgba(255, 0, 0, 1);
+                                    }
+
+                                    /* ... */
+                                </code></pre>
+                            </div>
+                        </div>
+
+                        <div class="span-4">
+                            <ul class="tabs_nav list-arrow-interactive">
+                                <li class="active">Sass module</li>
+                                <li>Import Sass module</li>
+                                <li>Include Sass module</li>
+                                <li>Usage</li>
+                                <li>CSS Output</li>
+                            </ul>
+                            <hr class="hrule-line" />
+                            <a href="#" class="button-block-brand-3">View Full Docs</a>
+                            <p><small><i>One-Nexus comes with a bunch of premade modules just like the example shown here!</i> <a href="#">View modules</a></small></p>
+                        </div>
+
+                    </div><!--/ .tabs_item -->
+
+                    <div class="row row-breathe tabs tabs_item active">
+                        <div class="span-8">
+
+                            <div class="tabs_item active">
+
+                                <div class="alert-bar-info">/modules/elements/buttons/<b>_buttons.scss</b></div>
+
+                                <pre class="border"><code class="language-scss">
+                                    @mixin buttons($custom: ()) {
+
+                                        // Configuration
+                                        $buttons: config((
+                                            'name'             : 'button',
+                                            'color'            : #FFFFFF,
+                                            'background'       : #444444,
+                                            'padding'          : 1em,
+                                            'colors'           : map-get($palettes, 'brand'),
+                                            'sizes': (
+                                                'small'        : 0.8em,
+                                                'large'        : 1.25em
+                                            )
+                                        ), $custom);
+                                        
+                                        // Module
+                                        @include module {
+                                            display: inline-block;
+                                            color: this('color');
+                                            background: this('background');
+                                            padding: this('padding');
+
+                                            // Colors
+                                            @each $key, $value in this('colors') {
+                                                @include modifier($key) {
+                                                    background-color: $value;
+                                                }
+                                            }
+
+                                            // Sizes
+                                            @each $key, $value in this('sizes') {
+                                                @include modifier($key) {
+                                                    font-size: $value;
+                                                }
+                                            }
+                                        }
+                                    }
+                                </code></pre>
+
+                            </div><!--/ .tabs_item -->
+
+                            <div class="tabs_item">
+                                <div class="alert-bar-info">/<b>app.scss</b></div>
+
+                                <pre class="border"><code class="language-scss">
+                                    // Config
+                                    ...
+                                    $theme : 'MyTheme';
+
+                                    // Vendor Files
+                                    ...
+
+                                    // Tools
+                                    ...
+
+                                    // Utilities
+                                    @import 'modules/utilities/palettes';
+                                    ...
+
+                                    // Elements
+                                    @import 'modules/elements/buttons/buttons';
+                                    ...
+
+                                    // Objects
+                                    ...
+
+                                    // Themes
+                                    @import 'themes/MyTheme/MyTheme';
+                                    ...
+                                </code></pre>
+                            </div><!--/ .tabs_item -->
+
+                            <div class="tabs_item">
+                                <div class="alert-bar-info">/themes/MyTheme/<b>_MyTheme.scss</b></div>
+
+                                <pre class="border"><code class="language-scss">
+                                    @if $theme == 'MyTheme' {
+                                        // Utilities
+                                        @include palettes((
+                                            'brand':(
+                                                'brand-1': pink,
+                                                'myBrand': #2093db
+                                            ),
+                                        ));
+                                        ...
+
+                                        // Elements
+                                        @include buttons((
+                                            'padding'    : 0.75em 1.25em,
+                                            'sizes': (
+                                                'xlarge' : 1.5em
+                                            )
+                                        ));
+                                        ...
+
+                                        // Objects
+                                        ...
+                                    }
+                                </code></pre>
+                            </div><!--/ .tabs_item -->
+
+                            <div class="tabs_item">
+                                <div class="alert-bar-info">/dist/MyTheme/<b>MyTheme.css</b></div>
+
+                                <pre class="border"><code class="language-css">
+                                    .button,
+                                    [class*='button-'] {
+                                        display: inline-block;
+                                        color: #FFFFFF;
+                                        background: #444444;
+                                        padding: 0.75em 1.25em;
+                                    }
+                                    [class*='button-'][class*='-brand-1'] {
+                                        background-color: pink;
+                                    }
+                                    [class*='button-'][class*='-brand-2'] {
+                                        background-color: #06D2FF;
+                                    }
+                                    [class*='button-'][class*='-brand-3'] {
+                                        background-color: #04CEC0;
+                                    }
+                                    [class*='button-'][class*='-myBrand'] {
+                                        background-color: #2093DB;
+                                    }
+                                    [class*='button-'][class*='-small'] {
+                                        font-size: 0.8em;
+                                    }
+                                    [class*='button-'][class*='-large'] {
+                                        font-size: 1.25em;
+                                    }
+                                    [class*='button-'][class*='-xlarge'] {
+                                        font-size: 1.5em;
+                                    }
+                                </code></pre> 
+                            </div><!--/ .tabs_item -->
+
+                            <div class="tabs_item">
+                                <div class="alert-bar-info">/templates/partials/<b>header.hbs</b></div>
+
+                                <pre class="border"><code class="language-markup">
+                                    &lt;button class="button">Button&lt;/button>
+                                    &lt;button class="button-myBrand">Button&lt;/button>
+                                    &lt;button class="button-xlarge">Button&lt;/button>
+                                    &lt;button class="button-myBrand-small">Button&lt;/button>
+                                    &lt;button class="button-large-brand-3">Button&lt;/button>
+                                </code></pre> 
+                            </div><!--/ .tabs_item -->
+
+                        </div>
+
+                        <div class="span-4">
+                            <ul class="tabs_nav list-arrow-interactive">
+                                <li class="active">Sass module</li>
+                                <li>Import Sass module</li>
+                                <li>Include Sass module</li>
+                                <li>CSS Output</li>
+                                <li>HTML usage</li>
+                            </ul>
+                            <hr class="hrule-line" />
+                            <a href="#" class="button-block-brand-3">View Full Docs</a>
+                            <p><small><i>One-Nexus comes with a bunch of premade modules just like the example shown here!</i> <a href="#">View modules</a></small></p>
+                        </div>
+                    </div><!--/ .tabs_item -->
+
+                    <div class="row row-breathe tabs tabs_item">
+                        <div class="span-8">
+
+                            <div class="tabs_item active">
+                                <div class="alert-bar-info">/modules/objects/header/<b>_header.scss</b></div>
+
+                                <pre class="border"><code class="language-scss">
+                                    @mixin header($custom: ()) {
+
+                                        // Configuration
+                                        $header: config((
+                                            'name'    : 'appHeader',
+                                            'sticky'  : false, // this value will be used in the JS module
+                                            'offset'  : 0, // this value will be used in the JS module
+                                            'bg-color': #444444
+                                        ), $custom) !global;
+
+                                        // Module
+                                        @include module() {
+                                            position: absolute;
+                                            top: this('offset');
+                                            background: this('bg-color');
+
+                                            @include modifier('fixed') {
+                                                position: fixed;
+                                                top: 0;
+                                            }
+                                        }
+                                        
+                                    }
+                                </code></pre>
+                            </div>
+
+                            <div class="tabs_item">
+                                <div class="alert-bar-info">/modules/objects/header/<b>header.js</b></div>
+
+                                <pre class="border"><code class="language-js">
+                                    $.fn.header = function(custom) {
+                                        
+                                        var $module = 'appHeader';
+                                        
+                                        // Configuration
+                                        var options = $.extend({
+                                            // these default values are fetched from the Sass module
+                                            // using the custom _option() function
+                                            sticky : _option($module, 'sticky'),
+                                            offset : _option($module, 'offset')
+                                        }, custom);
+                                            
+                                        var header = $(this);
+
+                                        if (options.sticky) {
+                                            $(window).on('load scroll', function() {
+                                                var scroll = $(window).scrollTop();
+
+                                                if (scroll > options.offset) {
+                                                    header.addClass($module + '-fixed');
+                                                } else {
+                                                    header.removeClass($module + '-fixed');
+                                                }
+                                            });
+                                        }
+                                            
+                                    }
+                                </code></pre>
+                            </div>
+
+                            <div class="tabs_item">
+                                <div class="alert-bar-info">/<b>app.scss</b></div>
+
+                                <pre class="border"><code class="language-scss">
+                                    // Config
+                                    ...
+                                    $theme : 'MyTheme';
+
+                                    // Vendor Files
+                                    ...
+
+                                    // Tools
+                                    ...
+
+                                    // Utilities
+                                    ...
+
+                                    // Elements
+                                    ...
+
+                                    // Objects
+                                    @import 'modules/objects/header/header';
+                                    ...
+
+                                    // Themes
+                                    @import 'themes/MyTheme/MyTheme';
+                                    ...
+                                </code></pre>
+                            </div>
+
+                            <div class="tabs_item">
+
+                                <div class="alert-bar-info">/themes/MyTheme/<b>_MyTheme.scss</b></div>
+
+                                <pre class="border"><code class="language-scss">
+                                    @if $theme == 'MyTheme' {
+                                        // Utilities
+                                        ...
+
+                                        // Elements
+                                        ...
+
+                                        // Objects
+                                        @include header((
+                                            'sticky'  : true, // JS module initially looks at this value
+                                            'offset'  : 50px,
+                                            'bg-color': black
+                                        ));
+                                        ...
+                                    }
+                                </code></pre>
+
+                            </div>
+
+                            <div class="tabs_item">
+
+                                <div class="alert-bar-info">/themes/MyTheme/<b>MyTheme.js</b></div>
+
+                                <pre class="border"><code class="language-javascript">
+                                    $(document).ready(function() {
+                                        // Utilities
+                                        ...
+
+                                        // Elements
+                                        ...
+
+                                        // Objects
+                                        $(_appHeader).header({ // _appHeader is an automatically generated global variable
+                                            // passing a value here overrides the value set in the Sass module
+                                            sticky: false
+                                        });
+                                        ...
+                                    });
+                                </code></pre>
+
+                            </div>
+
+                            <div class="tabs_item">
+
+                                <div class="alert-bar-info">/dist/MyTheme/<b>MyTheme.css</b></div>
+
+                                <pre class="border"><code class="language-css">
+                                    .appHeader, 
+                                    [class*="appHeader-"] {
+                                        position: absolute;
+                                        top: 50px;
+                                        background: black;
+                                    }
+                                    [class*="appHeader-"][class*="-fixed"] {
+                                        position: fixed;
+                                        top: 0;
+                                    }
+                                </code></pre> 
+
+                            </div>
+
+                            <div class="tabs_item">
+
+                                <div class="alert-bar-info">/templates/partials/<b>header.hbs</b></div>
+
+                                <pre class="border"><code class="language-markup">
+                                    &lt;!-- If 'sticky' is enabled, header will become fixed
+                                    when the top reaches top of the viewport: -->
+                                    &lt;header class="appHeader">
+                                        ...
+                                    &lt;/header>
+
+                                    &lt;!-- Or for a permanently fixed header: -->
+                                    &lt;header class="appHeader-fixed">
+                                        ...
+                                    &lt;/header>
+                                </code></pre> 
+
+                            </div>
+
+                        </div>
+
+                        <div class="span-4">
+                            <ul class="tabs_nav list-arrow-interactive">
+                                <li class="active">Sass module</li>
+                                <li>JS module</li>
+                                <li>Import Sass module</li>
+                                <li>Include Sass module</li>
+                                <li>Include JS module</li>
+                                <li>CSS Output</li>
+                                <li>HTML usage</li>
+                            </ul>
+                            <hr class="hrule-line" />
+                            <a href="#" class="button-block-brand-3">View Full Docs</a>
+                            <p><small><i>One-Nexus comes with a bunch of premade modules just like the example shown here!</i> <a href="#">View modules</a></small></p>
+                        </div>
+                    </div><!--/ .tabs_item -->
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="homepage_section-features-dotMap">
+
+            <div class="container">
+                <div class="heading_group text-center object-large">
+                    <h3 class="heading-light-size-8-grey-5 font-2">More Features...</h3>
+                    <p>One-Nexus offers more than the average framework/boilerplate</p>
+                </div>
+
+                <div class="row-flow row-breathe text-center">
+                    <div class="span-3 break-3-half">
+                        <div class="livicon-evo" data-options="
+                            name: comments.svg;
+                            eventOn: parent;
+                            size: 130px; 
+                            style: original;
+                            tryToSharpen: true;
+                            drawOnViewport: true
+                        "></div>
+                        <h4 class="heading-grey-5-light-size-3">Working Twitter Feed</h4>
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <div class="livicon-evo" data-options="
+                            name: dashboard.svg;
+                            eventOn: parent;
+                            size: 130px; 
+                            style: original;
+                            tryToSharpen: true;
+                            drawOnViewport: true
+                        "></div>
+                        <h4 class="heading-grey-5-light-size-3">Optimised Performance</h4>
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <div class="livicon-evo" data-options="
+                            name: cloud-download.svg;
+                            eventOn: parent;
+                            size: 130px; 
+                            style: original;
+                            tryToSharpen: true;
+                            drawOnViewport: true
+                        "></div>
+                        <h4 class="heading-grey-5-light-size-3">Package Manager Friendly</h4>
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <div class="livicon-evo" data-options="
+                            name: gears.svg;
+                            eventOn: parent;
+                            size: 130px; 
+                            style: original;
+                            tryToSharpen: true;
+                            drawOnViewport: true
+                        "></div>
+                        <h4 class="heading-grey-5-light-size-3">Component Configuration</h4>
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <div class="livicon-evo" data-options="
+                            name: location-alt.svg;
+                            eventOn: parent;
+                            size: 130px; 
+                            style: original;
+                            tryToSharpen: true;
+                            drawOnViewport: true
+                        "></div>
+                        <h4 class="heading-grey-5-light-size-3">Google Maps</h4>
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <div class="livicon-evo" data-options="
+                            name: print-image.svg;
+                            eventOn: parent;
+                            size: 130px; 
+                            style: original;
+                            tryToSharpen: true;
+                            drawOnViewport: true
+                        "></div>
+                        <h4 class="heading-grey-5-light-size-3">Print Stylesheet</h4>
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <div class="livicon-evo" data-options="
+                            name: responsive.svg;
+                            eventOn: parent;
+                            size: 130px; 
+                            style: original;
+                            tryToSharpen: true;
+                            drawOnViewport: true
+                        "></div>
+                        <h4 class="heading-grey-5-light-size-3">Fully Responsive</h4>
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <div class="livicon-evo" data-options="
+                            name: loader-7.svg;
+                            eventOn: parent;
+                            size: 130px; 
+                            style: original;
+                            tryToSharpen: true;
+                            drawOnViewport: true
+                        "></div>
+                        <h4 class="heading-grey-5-light-size-3">Talk Between Sass/JS</h4>
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <div class="livicon-evo" data-options="
+                            name: smartphone.svg;
+                            eventOn: parent;
+                            size: 130px; 
+                            style: original;
+                            tryToSharpen: true;
+                            drawOnViewport: true
+                        "></div>
+                        <h4 class="heading-grey-5-light-size-3">Touch/Swipe Support</h4>
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <div class="livicon-evo" data-options="
+                            name: notebook.svg;
+                            eventOn: parent;
+                            size: 130px; 
+                            style: original;
+                            tryToSharpen: true;
+                            drawOnViewport: true
+                        "></div>
+                        <h4 class="heading-grey-5-light-size-3">SassDoc/JSDoc</h4>
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <div class="livicon-evo" data-options="
+                            name: unlock.svg;
+                            eventOn: parent;
+                            size: 130px; 
+                            style: original;
+                            tryToSharpen: true;
+                            drawOnViewport: true
+                        "></div>
+                        <h4 class="heading-grey-5-light-size-3">Sass/JS Unit-Testing</h4>
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <div class="livicon-evo" data-options="
+                            name: paper-plane.svg;
+                            eventOn: parent;
+                            size: 130px; 
+                            style: original;
+                            tryToSharpen: true;
+                            drawOnViewport: true
+                        "></div>
+                        <h4 class="heading-grey-5-light-size-3">Automated Build Tools</h4>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+
+        <div class="homepage_banner-alpha" data-stellar-background-ratio="0.5">
+
+            <div class="container">
+                <div class="row">
+                    <div class="span-6 va-middle">
+                        <h4 class="heading-size-5 object-small">Integrates Into Any Workflow</h4>
+                        <h4 class="heading-size-4-brand-4-light object-small">Built For Experts & Beginners of All Levels</h4>
+                        <p>One-Nexus can be used with tools you already love and are familiar with. Getting started can be as simple as importing a single <code class="alt">.js</code> and <code class="alt">.css</code> file.</p>
+                        <ul class="list-arrow">
+                            <li>Watch and compile a single <code class="alt">.scss</code> file</li>
+                            <li>Resuable Handlebars templates included</li>
+                            <li>Adaptable Gruntfile to build One-Nexus assets included</li>
+                        </ul>
+                        <div class="button_group">
+                            <a href="#" class="button-brand-4-size-3">Get Started</a>
+                            <a href="#" class="button-border-white-size-3">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="span-6 va-middle">
+                        <div class="deviceOutline_laptop min-break-3">
+                            <div class="deviceOutline_laptop_content"><small id="typed-workflow"></small></div>
+                            <img src="{{assets}}assets/images/laptop-outline.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="homepage_section-responsive">
+
+            <div class="container">
+
+                <div class="heading_group object-large text-center">
+                    <h3 class="heading-light-size-8-grey-5 font-2">Mobile Optimised</h3>
+                    <p class="homepage_section2_subHeading">One-Nexus lets you build websites with a beautiful mobile experience</p>
+                </div>
+
+                <div class="homepage_section_wrapper row">
+                    <div class="span-6 min-break-3">
+                        <div class="homepage_iphone5c_wrapper">
+                            <img
+                                data-trigger="transform: translate(55%, -50%) translateZ(0) scale(0.85)"
+                                data-hover="transform: translate(65%, -50%) translateZ(0) scale(0.85)" 
+                                class="homepage_iphone5c"
+                                src="{{assets}}assets/images/mobile-base-purple.png" 
+                            />
+                            <img
+                                data-hover="transform: scale(1.05) translateY(-47.5%) translateZ(0)" 
+                                class="homepage_iphone5c" 
+                                src="{{assets}}assets/images/mobile-base-blue.png" 
+                            />
+                        </div>
+                    </div>
+                    <div class="span-5">
+                        <div class="object-large">
+                            <div class="homepage_section_header">
+                                <div class="homepage_section_header_icon">
+                                    <div class="livicon-evo" data-options="
+                                        name: responsive.svg;
+                                        eventOn: grandparent;
+                                        size: 64px; 
+                                        style: original;
+                                        tryToSharpen: true;
+                                        drawOnViewport: true
+                                    "></div>
+                                </div>
+                                <div class="homepage_section_header_title heading_group">
+                                    <h3 class="heading-size-5-grey-5">Kayzen-GS</h3>
+                                    <h3 class="heading-light-uppercase-brand-4 font-2">Custom grid system</h3>
+                                </div>
+                            </div>
+                            <p class="object-small">Kayzen is built on our own custom grid system: Kayzen GS, which is based off <code>inline-block</code> columns.</p>
+                        </div>
+                        <div class="object-large">
+                            <div class="homepage_section_header">
+                                <div class="homepage_section_header_icon">
+                                    <div class="livicon-evo" data-options="
+                                        name: touch.svg;
+                                        eventOn: grandparent;
+                                        size: 64px; 
+                                        style: original;
+                                        tryToSharpen: true;
+                                        drawOnViewport: true
+                                    "></div>
+                                </div>
+                                <div class="homepage_section_header_title heading_group">
+                                    <h3 class="heading-size-5-grey-5">Touch/Swipe Support</h3>
+                                    <h3 class="heading-light-uppercase-brand-4 font-2">Optimised for touch devices</h3>
+                                </div>
+                            </div>
+                            <p class="object-small">Kayzen is touch/swipe ready for mobile touch screen devices for various UI elements such as carousels.</p>
+                        </div>
+                        <div class="object-large">
+                            <div class="homepage_section_header">
+                                <div class="homepage_section_header_icon">
+                                    <div class="livicon-evo" data-options="
+                                        name: dashboard.svg;
+                                        eventOn: grandparent;
+                                        size: 64px; 
+                                        style: original;
+                                        tryToSharpen: true;
+                                        drawOnViewport: true
+                                    "></div>
+                                </div>
+                                <div class="homepage_section_header_title heading_group">
+                                    <h3 class="heading-size-5-grey-5">Smooth Performance</h3>
+                                    <h3 class="heading-light-uppercase-brand-4 font-2">Optimised for mobile browsing</h3>
+                                </div>
+                            </div>
+                            <p class="object-small">All jQuery plugins and CSS elements have been built with mobiles in mind, ensuring any animations run smoothly.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="homepage_section-kayzengs">
+
+            <img src="{{assets}}assets/images/spacestation/layer13.svg" data-stellar-ratio="1.25" class="homepage_section_stardust3 min-break-3" />
+
+            <div class="container">
+    
+                <div class="homepage_gridSystem min-break-3">
+                    <img class="homepage_gridSystem_browser" src="{{assets}}assets/images/chrome-browser.svg" />
+                    <div class="wrapper">
+                        <div class="row row-stack-0">
+                            <div class="span-4"></div>
+                            <div class="span-4"></div>
+                            <div class="span-4"></div>
+                        </div>
+                        <div class="row row-stack-0">
+                            <div class="span-6"></div>
+                            <div class="span-6"></div>
+                        </div>
+                        <div class="row row-stack-0">
+                            <div class="span-9"></div>
+                            <div class="span-3"></div>
+                        </div>
+                        <hr class="divider" />
+                        <div class="row row-stack-0">
+                            <div class="span-7">
+                                <div class="row row-stack-0">
+                                    <div class="span-4"></div>
+                                    <div class="span-4"></div>
+                                    <div class="span-4"></div>
+                                </div>
+                            </div>
+                            <div class="span-5">
+                                <div class="row row-stack-0">
+                                    <div class="span-6"></div>
+                                    <div class="span-6"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-stack-0">
+                            <div class="span-2"></div>
+                            <div class="span-2"></div>
+                            <div class="span-2"></div>
+                            <div class="span-2"></div>
+                            <div class="span-2"></div>
+                            <div class="span-2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="homepage_section_panel span-7 well-deep-dark-round">
+                        <h3 class="heading-size-4">Kayzen-GS</h3>
+                        <a 
+                            class="github-button" 
+                            href="https://github.com/esr360/Kayzen-GS" 
+                            data-icon="octicon-star"
+                            data-count-href="/esr360/Kayzen-GS/stargazers" 
+                            data-count-api="/repos/esr360/Kayzen-GS#stargazers_count" 
+                            data-count-aria-label="# stargazers on GitHub" 
+                            aria-label="Star esr360/Kayzen-GS on GitHub"
+                        >Star</a>
+                        <p>Kayzen-GS is a powerful framework for building responsive grid systems. Built using Sass and based off <code class="alt">inline-block</code> columns, Kayzen-GS is a one of a kind framework custom built for One-Nexus.</p>
+                        <div class="button_group">
+                            <a href="#" class="button-brand-4-size-3">Get Started</a>
+                            <a href="#" class="button-border-white-size-3">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="homepage_section-semanticGrids-codeSample">
+
+            <img src="{{assets}}assets/images/mountain.svg" data-stellar-ratio="0.8" class="homepage_section_mountain" />
+
+            <div class="container">
+
+                <div class="heading_group object-large text-center">
+                    <h3 class="heading-light-size-8 font-2">Creating Semantic Grids</h3>
+                    <p>See the below pseudo exampe to see just what's possible with One-Nexus/Kayzen-GS</p>
+                </div>
+
+                <div class="row row-breathe tabs">
+                    <div class="span-8">
+
+                        <div class="tabs_item active">
+
+                            <div class="alert-bar-brand-3">/pages/portfolio/<b>index.html</b></div>
+
+                            <pre><code class="language-markup">
+                                &lt;div class="portfolioItem_wrapper">
+                                    &lt;div class="portfolioItem">
+                                        ...
+                                    &lt;/div>
+
+                                    &lt;div class="portfolioItem">
+                                        ...
+                                    &lt;/div>
+
+                                    &lt;div class="portfolioItem">
+                                        ...
+                                    &lt;/div>
+
+                                    &lt;div class="portfolioItem">
+                                        ...
+                                    &lt;/div>
+                                &lt;/div>
+                            </code></pre>
+
+                        </div>
+
+                        <div class="tabs_item">
+
+                            <div class="alert-bar-brand-3">/modules/<b>_portfolio-items.scss</b></div>
+
+                            <pre class="border"><code class="language-scss">
+                                @include module('portfolioItem') {
+
+                                    // Create the semantic row
+                                    @include component('wrapper') {
+                                        @include row();
+                                    }
+
+                                    // Create the semantic columns
+                                    @include column((
+                                        'width' : (3, 12)
+                                    ));
+
+                                }
+                            </code></pre>
+
+                        </div>
+
+                        <div class="tabs_item">
+
+                            <div class="alert-bar-brand-3">/dist/MyTheme/<b>app.css</b></div>
+
+                            <pre class="border"><code class="language-css">
+                                .portfolioItem,
+                                [class*='portfolioItem-'] {
+                                    display: inline-block;
+                                    vertical-align: top;
+                                    margin-left: 3%;
+                                    width: 22.75%;
+                                }
+                                .portfolioItem_wrapper,
+                                [class*='portfolioItem_wrapper-'] {
+                                    letter-spacing: -1em;
+                                    display: table;
+                                    width: 100%;
+                                }
+                                .opera-only :-o-prefocus,
+                                .portfolioItem_wrapper,
+                                [class*='portfolioItem_wrapper-'] {
+                                    word-spacing: -0.43em;
+                                }
+                                .portfolioItem:first-child,
+                                [class*='portfolioItem-']:first-child {
+                                    margin-left: 0;
+                                }
+                                @media (max-width: 940px) {
+                                    .portfolioItem,
+                                    [class*='portfolioItem-'] {
+                                        display: block;
+                                        left: auto;
+                                        margin-left: 0;
+                                        width: 100%;
+                                    }
+                                }
+                            </code></pre>
+
+                        </div>
+
+                    </div>
+
+                    <div class="span-4">
+                        <ul class="tabs_nav list-arrow-interactive-alt">
+                            <li class="active">HTML Sample</li>
+                            <li>Sass Sample</li>
+                            <li>CSS Output</li>
+                        </ul>
+                        <hr class="hrule-line" />
+                        <a href="#" class="button-block-brand-3">View Full Docs</a>
+                        <p><small><i>One-Nexus comes with a bunch of premade modules just like the example shown here!</i> <a href="#">View modules</a></small></p>
+                    </div>
+
+                </div><!-- /.tabs -->
+
+            </div>
+
+        </div>
+
+        <div class="homepage_section-themes-dotMap">
+            <div class="container-full">
+                <div class="object-large text-center">
+                    <div class="heading_group text-center object-large">
+                        <h3 class="heading-light-size-8-grey-5 font-2">The Power of Themes</h3>
+                        <p>Change the entire look and feel of your website by creating different themes</p>
+                    </div>
+                </div>
+                <div class="row-flow row-breathe">
+                    <div class="span-3 break-3-half">
+                        <img class="homepage_layout-green" src="{{assets}}assets/images/layouts/layout-header-alt.png">
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <img class="homepage_layout-royal" src="{{assets}}assets/images/layouts/layout-header-no-bar-topbar.png">
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <img class="homepage_layout-purple" src="{{assets}}assets/images/layouts/layout-header-alt-topbar.png">
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <img class="homepage_layout-ocean" src="{{assets}}assets/images/layouts/layout-left-header.png">
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <img class="homepage_layout-pink" src="{{assets}}assets/images/layouts/layout-header-top.png">
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <img class="homepage_layout-green" src="{{assets}}assets/images/layouts/layout-left-sidebar.png">
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <img class="homepage_layout-blue" src="{{assets}}assets/images/layouts/layout-left-header-topbar.png">
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <img class="homepage_layout" src="{{assets}}assets/images/layouts/layout-menu-alt.png">
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <img class="homepage_layout-ocean" src="{{assets}}assets/images/layouts/layout-right-header.png">
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <img class="homepage_layout-orange" src="{{assets}}assets/images/layouts/layout-right-sidebar.png">
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <img class="homepage_layout-pink" src="{{assets}}assets/images/layouts/layout-topbar.png">
+                    </div>
+                    <div class="span-3 break-3-half">
+                        <img class="homepage_layout-red" src="{{assets}}assets/images/layouts/layout-right-header-topbar.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="homepage_section-signoff">
+            <div class="container">
+                <div class="heading_group">
+                    <h3 class="heading-size-7-heavy">One Goal, One Solution: One-Nexus.</h3>
+                    <h4 class="heading-light-size-4 font-2">Start your next project with One-Nexus to unlock a new way of building</h4>
+                </div>
+                <div class="button_group">
+                    <a href="#" class="button-white-size-4">Get Started</a>
+                    <a href="#" class="button-border-white-size-4">Learn More</a>
+                </div>
+            </div>
+            <div class="animated-particles">
+                <div id="particle-canvas"></div>
+            </div>
+        </div>
+
+        <div class="homepage_section-social container">
+            <div class="heading_group text-center object-large">
+                <h3 class="heading-light-size-8-grey-5 font-2">Share The Love <i class="fa fa-heart"></i></h3>
+                <p>Follow us on Social Media to keep up-to-date with One-Nexus</p>
+                <div class="button_group">
+                    <a href="#" class="button-circle-icon-size-6-facebook">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="#" class="button-circle-icon-size-6-twitter">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" class="button-circle-icon-size-6-github">
+                        <i class="fa fa-github"></i>
+                    </a>
+                    <a href="#" class="button-circle-icon-size-6-dribbble">
+                        <i class="fa fa-dribbble"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+
+            <div class="deviceOutline-invert">
+                <img class="deviceOutline_tablet" src="{{assets}}assets/images/tablet-outline.svg" alt="">
+                <img class="deviceOutline_phone" src="{{assets}}assets/images/phone-outline.svg" alt="">
+                <img class="deviceOutline_miniTablet" src="{{assets}}assets/images/tablet-mini-outline.svg" alt="">
+                <img class="deviceOutline_sidePhone" src="{{assets}}assets/images/phone-outline.svg" alt="">
+            </div>
+
+            <div class="footer_wrapper container">
+                <div class="row row-breathe object-large">
+                    <div class="homepage_section_box-alt span-4">
+                        <h4 class="heading-size-3">Other Projects</h4>
+                        <a 
+                            class="github-button"
+                            href="https://github.com/esr360"
+                            data-count-href="/esr360/followers"
+                            data-count-api="/users/esr360#followers"
+                            data-count-aria-label="# followers on GitHub"
+                            aria-label="Follow @esr360 on GitHub"
+                        >Follow @esr360</a>
+                        <p>Checkout our other open-source projects on Github for more cool, experimental and boundry-pushing front-end tools.</p>
+                    </div>
+                    <div class="span-8 va-bottom footer_projects">
+                        <div class="owl-carousel" id="footerGithubProjects">
+                            <section>
+                                <h4 class="footer_heading object-small heading-size-3">Kayzen - Free Theme Built Using One-Nexus</h4>
+                                <p class="object-small">Kayzen is a premium theme builder built in PHP using One-Nexus.</p>
+                                <div class="button_group">
+                                    <a class="button-size-2-border-white" href="#">Read More</a>
+                                    <a class="button-size-2-brand-2" href="#">Download</a>
+                                </div>
+                            </section>
+                            <section>
+                                <h4 class="footer_heading object-small heading-size-3">Kayzen - Free Theme Built Using One-Nexus</h4>
+                                <p class="object-small">Kayzen is a premium theme builder built in PHP using One-Nexus.</p>
+                                <div class="button_group">
+                                    <a class="button-size-2-border-white" href="#">Read More</a>
+                                    <a class="button-size-2-brand-2" href="#">Download</a>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="footer_projects_carouselNav">
+                            <button class="footer_projects_carouselNav_prev button-circle-icon-size-2-border">
+                                <i class="fa fa-angle-left"></i>
+                            </button>
+                            <button class="footer_projects_carouselNav_next button-circle-icon-size-2-border">
+                                <i class="fa fa-angle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer_bar">
+                <div class="container text-center">
+                    <small>
+                        Made with <i class="fa fa-heart"></i> in the UK by <a href="#">Edmund Reed</a> © <script>document.write(new Date().getFullYear())</script>
+                    </small>
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+</div>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>

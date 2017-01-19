@@ -1,0 +1,10 @@
+<div class="billboard{{#each billboard.modifiers}}-{{.}}{{/each}}">
+    <div class="billboard_wrapper">
+        {{#if billboard.heading}}
+            <h1 class="heading-light-size-7-heavy font-2">{{billboard.heading}}</h1>
+        {{/if}}
+        {{#if billboard.subHeading}}
+            <p>{{billboard.subHeading}}</p>
+        {{/if}}
+    </div>
+</div>

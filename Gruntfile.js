@@ -141,8 +141,8 @@ module.exports = function(grunt) {
                 '!' + project.dist[1].themes[0] + '**'
             ],
             scripts: [
-                project.dist[1].themes[1].theme + '**/*.js', 
-                '!' + project.dist[1].themes[1].theme + '**/*.min.js'
+                project.dist[0] + '**/*.js', 
+                '!' + project.dist[0] + '**/*.min.js'
             ],
             styles: [
                 project.dist[0] + '**/*.css', 
