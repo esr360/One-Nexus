@@ -41,7 +41,9 @@
     // Merge default config with custom options
     $grid: config($grid, $custom) !global;
 
-    @include kayzen-gs($grid);
+    @if not (variable-exists('disable-output') and $disable-output) {
+        @include kayzen-gs($grid);
+    }
 
     // Row
     @include module(this('options', 'row-namespace')) {

@@ -100,8 +100,7 @@ $theme : 'One-Nexus' !default;
 
 @import 'themes/One-Nexus/one-nexus';
 
-// Output all configuration data to JSON only if setting exists and 
-// setting is 'true'
+// Output all configuration data to JSON
 @if variable-exists('to-JSON') and $to-JSON {
 	@include json-encode($_modules);
 }

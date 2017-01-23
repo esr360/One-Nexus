@@ -32,125 +32,171 @@
 		'transition'  : 0.4s
 	), $custom) !global;
 
-    //*************************************************************
-    // General
-    //*************************************************************
-	
-	html, body {
-		padding: 0;
-		margin: 0;
-	    height: 100%;
-	}
-	
-	html {
-	    overflow-x: hidden;
-	}
-	
-	body {
-		background: core('background');
-	    font-family: core('font-family');
-	    color: core('text-color');
-	    font-size: core('font-size');
-	    line-height: core('line-height');
-	}
-	
-	ins {
-		font-weight: bold;
-		color: color('brand', 'brand-1');
-		text-decoration: none;
-	}
-    
-    h1, h2, h3, h4, h5, h6 {
-        font-size: core('font-size');
-    }
-    
-    // code tags
-    code {
-        background: white;
-        border-radius: 0.3em;
-        color: #C7254F;
-		border: 1px solid color('greyscale', 'grey-2');
-        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-        font-style: normal;
-        font-size: font-size('size-2');
-        font-weight: 300;
-        padding: 0.1em 0.3em;
-		&.alt {
-			background: rgba(black, 0.4);
-			border-color: transparent;
-			color: inherit;
-		}
-		pre & {
-			border: none;
-		}
-    }
-    
-    #site-content {
-		transition: core('transition');
-    }
+	@include module {
 
-    //*************************************************************
-    // Structure
-    //*************************************************************
-	
-	@include module('container') {
-        width: option($grid, 'options', 'base-width');
-        max-width: option($grid, 'options', 'medium-width');
-        margin: 0 auto;
-		position: relative;
-	    @include modifier('large') {
-	        max-width: option($grid, 'options', 'large-width');
-	    }
-		@include modifier('section') {
-			padding-top: 4em;
-			padding-bottom: 4em;
-		}
-	}
-	
-	@include module('hrule') {
-		margin: core('margin') 0;
-        border-color: rgba(black, 0.15);
-		@include modifier('line') {
-			border-top: 1px solid rgba(0, 0, 0, 0.15);
-			border-bottom: 0;
-		}
-		@include modifier('dotted') {
-			border-top: 1px dotted rgba(0, 0, 0, 0.15);
-			border-bottom: 0;
-		}
-	}
+		@at-root {
 
-	.wrapper {
-	    padding-left: option($grid, 'options', 'gutter');
-		padding-right: option($grid, 'options', 'gutter');
-	}
+			//*****************************************************
+			// General
+			//*****************************************************
+			
+			html, body {
+				padding: 0;
+				margin: 0;
+				height: 100%;
+			}
+			
+			html {
+				overflow-x: hidden;
+			}
+			
+			body {
+				background: core('background');
+				font-family: core('font-family');
+				color: core('text-color');
+				font-size: core('font-size');
+				line-height: core('line-height');
+			}
+			
+			ins {
+				font-weight: bold;
+				color: color('brand', 'brand-1');
+				text-decoration: none;
+			}
+			
+			h1, h2, h3, h4, h5, h6 {
+				font-size: core('font-size');
+			}
+			
+			// code tags
+			code {
+				background: white;
+				border-radius: 0.3em;
+				color: #C7254F;
+				border: 1px solid color('greyscale', 'grey-2');
+				font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+				font-style: normal;
+				font-size: font-size('size-2');
+				font-weight: 300;
+				padding: 0.1em 0.3em;
+				&.alt {
+					background: rgba(black, 0.4);
+					border-color: transparent;
+					color: inherit;
+				}
+				pre & {
+					border: none;
+				}
+			}
+			
+			#site-content {
+				transition: core('transition');
+			}
 
-    //*************************************************************
-    // Layout
-    //*************************************************************
-	
-	* {
-	    &, &:before, &:after {
-	        box-sizing: border-box;
-	    }
-	}
-	
-	h1, h2, h3, h4, h5, h6, 
-	p, ul, ol, 
-	form, fieldset, legend, figure, table, 
-	pre, hr,
-	.object {
-	    @include object;
-	}
+			//*****************************************************
+			// Structure
+			//*****************************************************
+			
+			@include module('container') {
+				width: option($grid, 'options', 'base-width');
+				max-width: option($grid, 'options', 'medium-width');
+				margin: 0 auto;
+				position: relative;
+				@include modifier('large') {
+					max-width: option($grid, 'options', 'large-width');
+				}
+				@include modifier('section') {
+					padding-top: 4em;
+					padding-bottom: 4em;
+				}
+			}
+			
+			@include module('hrule') {
+				margin: core('margin') 0;
+				border-color: rgba(black, 0.15);
+				@include modifier('line') {
+					border-top: 1px solid rgba(0, 0, 0, 0.15);
+					border-bottom: 0;
+				}
+				@include modifier('dotted') {
+					border-top: 1px dotted rgba(0, 0, 0, 0.15);
+					border-bottom: 0;
+				}
+			}
 
-	.object-small {
-	    @include object(core('margin')/2);
-	}
-	
-	::selection {
-		background-color: color('brand', 'brand-1');
-		color: color('greyscale', 'white');
-		text-shadow: none;
+			.wrapper {
+				padding-left: option($grid, 'options', 'gutter');
+				padding-right: option($grid, 'options', 'gutter');
+			}
+
+			//*****************************************************
+			// Layout
+			//*****************************************************
+			
+			* {
+				&, &:before, &:after {
+					box-sizing: border-box;
+				}
+			}
+			
+			h1, h2, h3, h4, h5, h6, 
+			p, ul, ol, 
+			form, fieldset, legend, figure, table, 
+			pre, hr,
+			.object {
+				@include object;
+			}
+
+			.object-small {
+				@include object(core('margin')/2);
+			}
+			
+			::selection {
+				background-color: color('brand', 'brand-1');
+				color: color('greyscale', 'white');
+				text-shadow: none;
+			}
+
+			.auto-resizable-iframe {
+				margin-left: auto;
+				margin-right: auto;
+				position: relative;
+				background: rgba(black, 0.2);
+				> div { 
+					position: relative;
+					padding-bottom: 58.5%;
+					height: 0px;           
+				}
+				iframe {
+					position: absolute;
+					border: 0px;
+					top: 0px;
+					left: 0px;
+					width: 100%;
+					height: 100%;
+				}
+			}
+
+			//*********************************************************
+			// Hacks
+			//*********************************************************
+
+			span.enlighterEnlighterJS {
+				white-space: nowrap;
+			}
+
+			.owl-carousel .owl-item img {
+				transform-style: flat;
+				width: auto;
+			}
+
+			.owl-carousel .owl-item > img {
+				transform-style: preserve-3d;
+				width: 100%;
+			}
+
+		}
+
 	}
 
 } // @mixin base
@@ -174,42 +220,4 @@
 @mixin object($gutter: core('margin')) {
 	margin: $gutter 0;
 	@include vertical-rhythm;
-}
-
-.auto-resizable-iframe {
-	margin-left: auto;
-	margin-right: auto;
-	position: relative;
-	background: rgba(black, 0.2);
-	> div { 
-		position: relative;
-		padding-bottom: 58.5%;
-		height: 0px;           
-	}
-	iframe {
-		position: absolute;
-		border: 0px;
-		top: 0px;
-		left: 0px;
-		width: 100%;
-		height: 100%;
-	}
-}
-
-//*****************************************************************
-// Hacks
-//*****************************************************************
-
-span.enlighterEnlighterJS {
-    white-space: nowrap;
-}
-
-.owl-carousel .owl-item img {
-    transform-style: flat;
-    width: auto;
-}
-
-.owl-carousel .owl-item > img {
-    transform-style: preserve-3d;
-    width: 100%;
 }
