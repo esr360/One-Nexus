@@ -101,12 +101,15 @@
         @include modifier('pull') {
 
             margin: this('pull', 'margin');
-            padding-left: enabled(
-                ('icon', 'left'), this('icon', 'padding'), 0
-            );
-            padding-right: enabled(
-                ('icon', 'right'), this('icon', 'padding'), 0
-            );
+
+            @include modifier('icon') {
+                padding-left: enabled(
+                    ('icon', 'left'), this('icon', 'padding'), 0
+                );
+                padding-right: enabled(
+                    ('icon', 'right'), this('icon', 'padding'), 0
+                );
+            }
 
             @media (min-width: breakpoint('break-2')) {
                 width: this('pull', 'width');

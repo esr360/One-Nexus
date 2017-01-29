@@ -21,7 +21,14 @@
         'name'         : 'breadcrumb',
         'font-size'    : 0.9em,
         'divider-icon' : '\f105',
-        'icon-color'   : core('text-color')
+        'icon-color'   : core('text-color'),
+        'link': (
+            'border-bottom': 1px dotted transparent,
+            'transition': core('transition')
+        ),
+        'link-hover': (
+            'border-bottom-color': currentColor
+        )
     ), $custom);
 
     //*************************************************************
@@ -39,6 +46,12 @@
             @include extend($parent: 'list', $modifiers: 'reset');
             margin-left: 0;
         }
+
+        a {
+            @each $property, $value in this('link') {
+                #{$property}: $value;
+            }
+        }
         
         li {
             display: inline;
@@ -49,6 +62,13 @@
                     content: this('divider-icon');
                     color: this('icon-color');
                     margin-left: 0.4em;
+                }
+            }
+            &:hover {
+                a {
+                    @each $property, $value in this('link-hover') {
+                        #{$property}: $value;
+                    }
                 }
             }
         }

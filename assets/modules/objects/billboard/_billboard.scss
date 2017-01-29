@@ -28,6 +28,7 @@
         'min-height'          : 400px,
         'padding'             : 6em 0,
         'color'               : color('greyscale', 'white'),
+        'active-color'        : color('brand', 'brand-2'),
         'background':(
             'color'           : color('brand', 'brand-1'),
             'image'           : null
@@ -105,6 +106,9 @@
             a {
                 color: this('color');
                 border-bottom: 1px dotted;
+                &:hover {
+                    color: this('active-color');
+                }
             }
         }
 

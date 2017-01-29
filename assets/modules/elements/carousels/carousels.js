@@ -39,8 +39,10 @@
 
         // Run the code on each occurance of the target
         return this.each(function(index) {
+            // Cache selectors
             var $carousel = $(this);
             var slides = $carousel.children();
+
             var owlOptions = {};
 
             // If the element doesn't have an id, add one

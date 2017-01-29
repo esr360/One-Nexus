@@ -41,12 +41,13 @@
     // Merge default config with custom options
     $grid: config($grid, $custom) !global;
 
-    @if not (variable-exists('disable-output') and $disable-output) {
-        @include kayzen-gs($grid);
-    }
-
     // Row
     @include module(this('options', 'row-namespace')) {
+
+        @at-root {
+            @include kayzen-gs($grid);
+        }
+
         @include modifier('breathe') {
             margin-bottom: -2em;
             [class*="#{this('options', 'col-namespace')}"] {
@@ -59,12 +60,14 @@
                 }
             }
         }
+    
         @include modifier('gasp') {
             margin-bottom: -#{(this('options', 'gutter') / 2)};
             [class*="#{this('options', 'col-namespace')}"] {
                 margin-bottom: (this('options', 'gutter') / 2);
             }
         }
+
     }
 
 } // @mixin grid

@@ -21,7 +21,7 @@ $theme : 'One-Nexus' !default;
 // Vendor Files
 //*****************************************************************
     
-@import '../vendor/normalize-scss/sass/normalize/import-now';
+@import '../vendor/normalize-scss/sass/normalize';
 @import '../vendor/Kayzen-GS/src/kayzen-gs';
 @import '../vendor/Sass-Boost/src/sass-boost';
 @import '../vendor/Synergy/src/scss/synergy';
@@ -30,7 +30,6 @@ $theme : 'One-Nexus' !default;
 // Tools
 //*****************************************************************
 
-@import 'tools/scss/animations';
 @import 'tools/scss/background';
 @import 'tools/scss/fill-parent';
 @import 'tools/scss/font-sizes';
