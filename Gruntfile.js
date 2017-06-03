@@ -283,13 +283,16 @@ module.exports = function(grunt) {
         },
 
         /**
-         * Concat
-         * @see https://github.com/gruntjs/grunt-contrib-concat
+         * Browserify
+         * @see https://www.npmjs.com/package/grunt-browserify
          */
-        concat: {
+        browserify: {
+            options: {
+                transform: [['babelify', {presets: ['es2015']}]]
+            },
             dist: {
                 src: _scripts,
-                dest: project.dist[1].themes[1].theme + dist + '.js',
+                dest: project.dist[1].themes[1].theme + dist + '.js'
             }
         },
 
@@ -453,9 +456,9 @@ module.exports = function(grunt) {
             scripts: {
                 files: _scripts,
                 tasks: [
-                    'concat',
                     'jshint',
                     'jsdoc',
+                    'browserify',
                     'notify:scripts'
                 ]
             },
@@ -520,6 +523,7 @@ module.exports = function(grunt) {
     
     grunt.loadNpmTasks('grunt-assemble');
     grunt.loadNpmTasks('grunt-browser-sync');
+    grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
@@ -552,7 +556,7 @@ module.exports = function(grunt) {
             'replace:sassTheme',
             'copy:dist',
             'copy:images',
-            'concat',
+            'browserify',
             'sass:' + environment,
             'postcss',
             'csscomb',
