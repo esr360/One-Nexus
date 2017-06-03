@@ -1,0 +1,9 @@
+{
+    "alert-bars": {
+        "name": "alert",
+        "colors": "palette('alert')",
+        "text-color": "color('greyscale', 'white')",
+        "bar-padding": "0.85em",
+        "box-padding": "1.5em"
+    }
+}

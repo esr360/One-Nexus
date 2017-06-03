@@ -1,0 +1,11 @@
+{
+    "accordions": {
+        "title": {
+            "color": "cyan",
+            "active": {
+                "color": "pink"
+            }
+        },
+        "keepOpenModifier": "foo"
+    }
+}

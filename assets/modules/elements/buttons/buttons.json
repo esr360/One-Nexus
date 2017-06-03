@@ -1,0 +1,25 @@
+{
+    "buttons": {
+        "name": "button",
+        "color": "color('greyscale', 'white')",
+        "background": "color('greyscale', 'grey-4')",
+        "transition": "core('transition')",
+        "h-padding": "1em",
+        "v-padding": "0.65em",
+        "line-height": "1",
+        "font-weight": "normal",
+        "font-family": "typography('typefaces', 'primary')",
+        "border-width": "1px",
+        "border-style": "solid",
+        "active-background": "color('brand', 'brand-1')",
+        "active-color": "color('greyscale', 'white')",
+        "disabled-opacity": "0.6",
+        "round-radius": "0.4em",
+        "group-spacing": "0.5em",
+        "group-stack": "break-1",
+        "palettes": "('brand', 'greyscale', 'alert', 'social')",
+        "sizes": {
+            "sizes": "typography-config('sizes')"
+        }
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "carousels": {
+        "name": "carousel",
+        "nav-buttons": {
+            "enabled": true,
+            "size": "font-size('size-6')",
+            "transition": "core('transition')",
+            "prev": "'\f137'",
+            "next": "'\f138'"
+        },
+        "bullets": {
+            "enabled": true,
+            "size": "10px",
+            "color": "rgba(black, 0.4)",
+            "transition": "core('transition')",
+            "active-color": "grey"
+        },
+        "owl": {}
+    }
+}
