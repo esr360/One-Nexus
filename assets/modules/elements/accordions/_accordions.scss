@@ -1,3 +1,4 @@
+@import 'modules/elements/accordions/accordions.json';
 /// Accordions
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -70,6 +71,7 @@
         // Components
         //*********************************************************
 
+
         @include component('section') {
             margin: 0;
             &:not(:last-child) {
@@ -108,7 +110,8 @@
                 }
             }
         }
-        
+
+
         @include component('title') {
             display: block;
             margin: 0;
@@ -131,7 +134,7 @@
                 transition: core('transition');
             }
         }
-        
+
         @include component('content') {
             margin: 0;
             margin-top: -1px;	

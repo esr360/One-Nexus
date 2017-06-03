@@ -27,14 +27,12 @@
     "Kayzen-GS": "^2.4.0",
     "normalize-scss": "^7.0.0",
     "Sass-Boost": "^1.1.0",
-    "Synergy": "^3.5.0"
+    "Synergy": "git+https://git@github.com/esr360/Synergy.git"
   },
   "devDependencies": {
     "assemble-handlebars": "^0.3.0",
     "autoprefixer": "^6.3.1",
     "babelify": "^7.3.0",
-    "bower": "^1.7.9",
-    "grunt": "^0.4.5",
     "grunt-assemble": "^0.4.0",
     "grunt-browser-sync": "^2.2.0",
     "grunt-browserify": "^5.0.0",
@@ -55,6 +53,7 @@
     "grunt-sassdoc": "^2.0.2",
     "grunt-scss-lint": "^0.3.8",
     "grunt-text-replace": "^0.4.0",
+    "node-sass-json-importer": "^3.0.2",
     "nopt-grunt-fix": "^1.0.0",
     "sass-true": "^2.1.3"
   }

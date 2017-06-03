@@ -160,7 +160,7 @@
             opacity: 0.6;
             display: none;
             &:hover {
-                background: rgba(color('greyscale', 'black'), 0.2);
+                background: rgba(color('greyscale', black), 0.2);
                 opacity: 1;
             }
         }

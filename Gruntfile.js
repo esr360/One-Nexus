@@ -56,7 +56,7 @@ module.exports = function(grunt) {
             }],
             templates: 'templates/'
         }],
-        vendor:        'vendor/',
+        vendor:        'node_modules/',
         docs:[         'docs/', {
             scripts:   'docs/js/',
             styles:    'docs/sass/'
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
      * @var {object} _scripts
      */
     var _scripts = [
-        project.vendor + 'Synergy/dist/synergy.js',
+        project.vendor + 'Synergy/src/js/synergy.js',
         project.source[0] + 'tools/**/*.js',
         project.source[0] + 'modules/**/*.js',
         project.source[1].themes[1].theme + '<%=theme%>.js'
@@ -196,7 +196,8 @@ module.exports = function(grunt) {
         sass: {
             dev: {
                 options: {
-                    style: 'expanded'
+                    style: 'expanded',
+                    require: 'sass-json-vars'
                 },
                 files: {
                     [project.dist[1].themes[1].theme + dist + '.css']: 
@@ -347,7 +348,8 @@ module.exports = function(grunt) {
          * @see https://github.com/gruntjs/grunt-contrib-jshint
          */
         jshint: {
-            source: [project.source[0] + '**/*.js']
+            source: [project.source[0] + '**/*.js'],
+            esversion: 6
         },
 
         /**
