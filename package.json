@@ -23,6 +23,12 @@
   "bugs": {
     "url": "https://github.com/esr360/One-Nexus/issues"
   },
+  "dependencies": {
+    "Kayzen-GS": "^2.4.0",
+    "normalize-scss": "^7.0.0",
+    "Sass-Boost": "^1.1.0",
+    "Synergy": "^3.5.0"
+  },
   "devDependencies": {
     "assemble-handlebars": "^0.3.0",
     "autoprefixer": "^6.3.1",
