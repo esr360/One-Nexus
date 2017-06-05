@@ -22,8 +22,6 @@ $theme : 'One-Nexus' !default;
 @import '../node_modules/Kayzen-GS/dist/kayzen-gs.scss';
 @import '../node_modules/Sass-Boost/dist/sass-boost';
 //@import '../node_modules/Synergy/dist/synergy';
-
-//@TODO this is to load local file for development only
 @import '../../../Synergy/src/scss/synergy';
 
 //*****************************************************************
