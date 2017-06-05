@@ -46,11 +46,11 @@
             }
             
             $(window).load(function() {
-                delayCarousel(footerTestimonials, _baseTransition)
+                delayCarousel(footerTestimonials, 400)
             });
             
             $('#toggleHeader').click(function() {
-                delayCarousel(footerTestimonials, _baseTransition)
+                delayCarousel(footerTestimonials, 400)
             });
             
         } // testimonials()

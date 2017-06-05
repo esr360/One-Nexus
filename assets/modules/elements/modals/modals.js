@@ -48,7 +48,7 @@
         var options = $.extend({
             overlay         : true,
             overlaySelector : '#site-overlay',
-            animate         : _modules['modal']['dafault-animation']
+            animate         : 'left'
         }, custom);
             
         var animateStyle = options.animate;

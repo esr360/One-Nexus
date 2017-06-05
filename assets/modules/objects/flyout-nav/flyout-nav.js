@@ -15,7 +15,7 @@
             trigger        : '#' + $module + '-trigger',
             overlay        : '#site-overlay',
             sideNavClass   : 'side-nav',
-            navOpenDefault : _modules[$module]['collapsible']['open-by-default']
+            navOpenDefault : true
         }, custom);
         
         // Run the code on each occurance of the element

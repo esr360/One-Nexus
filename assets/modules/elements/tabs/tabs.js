@@ -13,7 +13,7 @@
             navItem     : 'li',
             item        : '[class*="tabs_item"]',
             activeClass : 'active',
-            transition  : _baseTransition/2
+            transition  : 400/2
         }, custom);
         
         // Run the code on each occurance of the element

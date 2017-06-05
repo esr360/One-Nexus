@@ -19,7 +19,7 @@
             preloader.addClass('preloader-loaded');
             setTimeout(function() {
                 preloader.hide();
-            }, _baseTransition);
+            }, 400);
         }
         
         $(window).bind('load', function() {

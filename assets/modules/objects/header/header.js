@@ -16,7 +16,7 @@
             overlay      : '#site-overlay',
             sticky       : _option($module, 'sticky'),
             fixedClass   : $module + '-fixed',
-            transition   : _baseTransition,
+            transition   : 400,
             stickyOffset : null
         }, custom);
         

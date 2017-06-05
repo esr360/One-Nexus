@@ -24,8 +24,8 @@
             pagination: true,
             owl: {},
             options:{
-                nav : _modules['carousel']['nav-buttons']['enabled'],
-                dots: _modules['carousel']['bullets']['enabled'],
+                nav : true,
+                dots: true,
                 callbacks: true,
                 navText:[
                     '<div class="carousel_nav_item-prev"></div>',
