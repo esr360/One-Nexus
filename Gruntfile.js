@@ -68,11 +68,28 @@ module.exports = function(grunt) {
     }
 
     /**
+     * The name of your project's source asset
+     * @var {string} dist
+     * @example
+     * '/' + src + '.scss'
+     */
+    var src = 'app';
+
+    /**
+     * The name of your project's compiled & distributed asset
+     * @var {string} dist
+     * @example
+     * '/' + dist + '.css'
+     */
+    var dist = 'app';
+
+    /**
      * Set the scripts used to create the theme's main js file
      * @var {object} _scripts
      */
     var _scripts = [
         project.vendor + 'Synergy/src/js/synergy.js',
+        project.source[0] + src + '.js',
         project.source[0] + 'tools/**/*.js',
         project.source[0] + 'modules/**/*.js',
         project.source[1].themes[1].theme + '<%=theme%>.js'
@@ -89,22 +106,6 @@ module.exports = function(grunt) {
      * @var {object} _globalStyles
      */
     var _globalStyles = [];
-
-    /**
-     * The name of your project's source asset
-     * @var {string} dist
-     * @example
-     * '/' + src + '.scss'
-     */
-    var src = 'app';
-
-    /**
-     * The name of your project's compiled & distributed asset
-     * @var {string} dist
-     * @example
-     * '/' + dist + '.css'
-     */
-    var dist = 'app';
     
     /**************************************************************
      * Packages
@@ -458,7 +459,7 @@ module.exports = function(grunt) {
             scripts: {
                 files: _scripts,
                 tasks: [
-                    'jshint',
+                    //'jshint',
                     'jsdoc',
                     'browserify',
                     'notify:scripts'
