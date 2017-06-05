@@ -49,11 +49,9 @@
     "grunt-mocha-cli": "^2.1.0",
     "grunt-notify": "^0.4.1",
     "grunt-postcss": "^0.6.0",
-    "grunt-sass": "^2.0.0",
     "grunt-sassdoc": "^2.0.2",
     "grunt-scss-lint": "^0.3.8",
     "grunt-text-replace": "^0.4.0",
-    "node-sass-json-importer": "^3.0.2",
     "nopt-grunt-fix": "^1.0.0",
     "sass-true": "^2.1.3"
   }
