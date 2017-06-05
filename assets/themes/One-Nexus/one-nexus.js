@@ -1,22 +1,26 @@
 import app from '../../app';
 
+app.accordion('accordion', {
+
+});
+
 $(document).ready(function() {
     
     ///************************************************************
     /// Elements
     ///************************************************************
 
-    $(_accordion).accordion();
+    //$('.accordion, [class*="accordion-"]').accordion();
 
     $('.carousel').carousel();
 
-    $(_modal).modal();
+    //$(_modal).modal();
     
     $('progress.progress-bar').progressBar();
 
-    $(_tabs).tabs();
+    //$(_tabs).tabs();
 
-    $(_tooltip).each(function() {
+    /*$(_tooltip).each(function() {
         
         if ($(this).is('[class*="-top"]')) {
             
@@ -50,21 +54,21 @@ $(document).ready(function() {
             
         }
         
-    });
+    });*/
 
     ///************************************************************
     /// Modules
     ///************************************************************
 
-    $(_billboard).billboard();
+    //$(_billboard).billboard();
     
     //$('#google-map').googleMap();
 
-    $(_footer).footer();
+    //$(_footer).footer();
 
     //$(_navigation).flyoutNav();
     
-    $(_appHeader).header();
+    //$(_appHeader).header();
     
     //$(_preloader).preloader();
     

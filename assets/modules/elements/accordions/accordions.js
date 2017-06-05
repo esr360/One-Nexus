@@ -1,51 +1,47 @@
-(function ($) {
+import {synergy as $module} from '../../../app';
+/**
+ * Accordion
+ * 
+ * @access public
+ * 
+ * @param {(String|Object)} els
+ * @param {Object} custom
+ * @param {Object} exports
+ */
+export default function(els, custom, exports = {}) {
 
-    /**
-     * Accordions
-     * 
-     * @access public
-     * @author [@esr360](http://twitter.com/esr360)
-     * @param {object} custom - where custom config will be passed
-     * 
-     * @example
-     *     $('.accordion').accordion({
-     *         activeClass: 'toggled',
-     *         animationSpeed: 0.5s
-     *     });
-     */
-    $.fn.accordion = function(custom) {
-        
-        // Options
-        var options = $.extend({
-            activeClass      : 'active',
-            animationSpeed   : _baseTransition,
-            keepOpenSelector : _modifier('keepOpen')
-        }, custom);
+    $module(els, function(el, options, methods) {
 
-        // Run the code on each occurance of the target
-        return this.each(function() {
-            
-            // Add active class to the target content section
-            $(this).find('> *.' + options.activeClass + ' > *:first-child + *').addClass(options.activeClass);
+        let wrapper = el;
 
-            // When an accordion title is clicked
-            $(this).find('> * > *:first-child').click(function () {
+        Array.prototype.forEach.call(el.children, function(el, index) {
+            if(el.classList.contains(options.activeClass)) {
+                el.component('content')[0].classList.add(options.activeClass);
+            }
 
-                var $parent = $(this).parent();
+            el.component('title')[0].addEventListener('click', function(e) {
+                var active = el.classList.contains(options.activeClass);
 
-                if ($(this).parents().eq(1).is(':not(' + options.keepOpenSelector + ')')) {
-                    $parent.siblings().removeClass(options.activeClass);
-                    $parent.siblings().find('> *:first-child + *').slideUp(options.animationSpeed);
+                if (!wrapper.modifier(options.keepOpenModifier)) {
+                    Array.prototype.forEach.call(
+                        wrapper.component('section'), function(el, index) {
+                            el.classList.remove(options.activeClass);
+                            el.component('content')[0].classList.remove(options.activeClass);
+                        }
+                    );
                 }
-                
-                $parent.toggleClass(options.activeClass);
 
-                $(this).find('~ *').slideToggle(options.animationSpeed);
-
-            });
-            
+                if (active) {
+                    el.classList.remove(options.activeClass);
+                    el.component('content')[0].classList.remove(options.activeClass);
+                } else {
+                    el.classList.add(options.activeClass);
+                    el.component('content')[0].classList.add(options.activeClass);
+                }
+            }, false);
         });
 
-    }; // accordion()
+    }, require('./accordions.json'), custom);
 
-}(jQuery));
+    return exports;
+};
