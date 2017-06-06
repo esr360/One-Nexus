@@ -13,7 +13,7 @@ export function accordion(els, custom) {
 
     app.synergy(els, function(el, options) {
 
-        let wrapper = el;
+        const wrapper = el;
 
         Array.prototype.forEach.call(el.children, function(el, index) {
             if(el.classList.contains(options.activeClass)) {

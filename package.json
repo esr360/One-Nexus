@@ -34,6 +34,7 @@
     "assemble-handlebars": "^0.3.0",
     "autoprefixer": "^6.3.1",
     "babelify": "^7.3.0",
+    "babel-register": "^6.24.1",
     "grunt-assemble": "^0.4.0",
     "grunt-browser-sync": "^2.2.0",
     "grunt-browserify": "^5.0.0",

@@ -8,32 +8,7 @@
 /// @param {map} $custom - where custom config will be passed
 @mixin accordions($custom: ()) {
 
-    //*************************************************************
-    // Configuration
-    //*************************************************************
-
-    $accordions: config((
-        'name'                  : 'accordion',
-        'output-json'           : true,
-        'icon'                  : '\f138',
-        'icon-color'            : rgba(color('greyscale', 'grey-3'), 0.6),
-        'icon-active-color'     : color('greyscale', 'white'),
-        'section-margin'        : 0,
-        'title-bg'              : transparent,
-        'title-color'           : core('text-color'),
-        'title-border'          : 1px solid rgba(black, 0.15),
-        'title-radius'          : 0,
-        'title-padding'         : 1em,
-        'title-active-bg'       : color('brand', 'brand-1'),
-        'title-active-color'    : color('greyscale', 'white'),
-        'title-active-border'   : transparent,
-        'title-active-radius'   : 0,
-        'content-bg'            : color('greyscale', 'white'),
-        'content-color'         : core('text-color'),
-        'content-border'        : 1px solid rgba(black, 0.15),
-        'content-radius'        : 0,
-        'content-padding'       : 1.5em
-    ), $custom);
+    $accordions: config($accordions, $custom);
 
     //*************************************************************
     // Module
@@ -68,9 +43,9 @@
         @include component('section') {
             margin: 0;
             &:not(:last-child) {
-                margin-bottom: this('section-margin');
+                margin-bottom: this('section', 'margin');
             }
-            @if (this('section-margin') == 0) {
+            @if (this('section', 'margin') == 0) {
                 &:not(:last-child) {
                     > *:first-child, > *:last-child {
                         border-bottom: 0 !important;
@@ -81,7 +56,8 @@
             &.active {
                 @include module {
                     @include component('title') {
-                        background: this('title-active-bg');
+                        @debug this('title', 'active', 'background');
+                        background: this('title', 'active', 'background');
                         color: this('title-active-color');
                         // open/close icon
                         &:after {
