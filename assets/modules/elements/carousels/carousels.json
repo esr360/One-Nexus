@@ -15,6 +15,6 @@
             "transition": "core('transition')",
             "active-color": "grey"
         },
-        "owl": {}
+        "Flickity": {}
     }
 }

@@ -89,7 +89,6 @@ module.exports = function(grunt) {
      */
     var _scripts = [
         project.vendor + 'Synergy/src/js/synergy.js',
-        project.source[0] + src + '.js',
         project.source[0] + 'tools/**/*.js',
         project.source[0] + 'modules/**/*.js',
         project.source[1].themes[1].theme + '<%=theme%>.js'
@@ -457,7 +456,10 @@ module.exports = function(grunt) {
                 ],
             },
             scripts: {
-                files: _scripts,
+                files: [
+                    project.source[0] + src + '.js',
+                    _scripts
+                ],
                 tasks: [
                     //'jshint',
                     'jsdoc',

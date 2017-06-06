@@ -1,4 +1,5 @@
-import {synergy as $module} from '../../../app';
+import * as app from '../../../app';
+import defaults from './accordions.json';
 /**
  * Accordion
  * 
@@ -8,9 +9,9 @@ import {synergy as $module} from '../../../app';
  * @param {Object} custom
  * @param {Object} exports
  */
-export default function(els, custom, exports = {}) {
+export function accordion(els, custom) {
 
-    $module(els, function(el, options, methods) {
+    app.synergy(els, function(el, options) {
 
         let wrapper = el;
 
@@ -41,7 +42,9 @@ export default function(els, custom, exports = {}) {
             }, false);
         });
 
-    }, require('./accordions.json'), custom);
+    }, defaults, custom);
+
+    app.config.accordions = Object.assign(defaults.accordions, custom);
 
     return exports;
 };

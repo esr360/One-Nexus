@@ -4,22 +4,23 @@
 // https://github.com/esr360/One-Nexus
 //*****************************************************************
 
-import synergy from '../node_modules/Synergy/src/js/synergy';
-
-Element.prototype.component = function(component, set) {
-    return synergy(this).component(component, set, this);
-};
-
-Element.prototype.modifier = function(modifier, set) {
-    return synergy(this).modifier(modifier, set, this);
-};
+//import synergy from '../node_modules/Synergy/src/js/synergy';
+import synergy from '../../../Synergy/src/js/synergy';
+import Flickity from 'flickity';
 
 //*****************************************************************
 // Elements
 //*****************************************************************
 
-import accordion from './modules/elements/accordions/accordions';
+import { accordion } from './modules/elements/accordions/accordions';
+import { carousel } from './modules/elements/carousels/carousels';
 
-module.exports = {
-    synergy, accordion
+//*****************************************************************
+// Config
+//*****************************************************************
+
+const config = {};
+
+export {
+    config, synergy, Flickity, accordion, carousel
 }

@@ -7,5 +7,10 @@
             }
         },
         "keepOpenModifier": "foo"
+    },
+    "carousels": {
+        "nav-buttons": {
+            "enabled": false
+        }
     }
 }

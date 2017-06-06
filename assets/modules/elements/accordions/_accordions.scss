@@ -6,13 +6,6 @@
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-/// @outputs all accordion styles
-///
-/// @example
-///     @include accordions((
-///         'title-bg'    : blue,
-///         'title-color' : white
-///     ));
 @mixin accordions($custom: ()) {
 
     //*************************************************************

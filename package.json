@@ -25,9 +25,10 @@
   },
   "dependencies": {
     "Kayzen-GS": "^2.4.0",
-    "normalize-scss": "^7.0.0",
     "Sass-Boost": "^1.1.0",
-    "Synergy": "git+https://git@github.com/esr360/Synergy.git"
+    "Synergy": "git+https://git@github.com/esr360/Synergy.git",
+    "flickity": "^2.0.8",
+    "normalize-scss": "^7.0.0"
   },
   "devDependencies": {
     "assemble-handlebars": "^0.3.0",
