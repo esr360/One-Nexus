@@ -17,15 +17,9 @@
 </div>
 ```
 
-### Sass
+### Options
 
-Load the accordion styles by including the `accordions()` mixin:
-
-```scss
-@include accordions();
-```
-
-The following options can be passed to the mixin to customize the accordions:
+For default values view the [`accordions.json`](accordions.json) file.
 
 <table class="table">
     <thead>
@@ -40,141 +34,131 @@ The following options can be passed to the mixin to customize the accordions:
             <td>The name used when generating the CSS selector</td>
         </tr>
         <tr>
-            <td>icon</td>
+            <td>icon.glyph</td>
             <td>The <a href="http://astronautweb.co/snippet/font-awesome/" target="blank">content value</a> for a Font Awesome icon</td>
         </tr>
         <tr>
-            <td>icon-color</td>
+            <td>icon.color</td>
             <td>The color for the open/close icon</td>
         </tr>
         <tr>
-            <td>icon-active-color</td>
+            <td>icon.active-color</td>
             <td>The color for the open/close icon when the corresponding section is open</td>
         </tr>
         <tr>
-            <td>section-margin</td>
+            <td>section.margin</td>
             <td>The vertical spacing between each accordion section</td>
         </tr>
         <tr>
-            <td>title-bg</td>
+            <td>title.background</td>
             <td>The background color for the accordion title (the clickable part)</td>
         </tr>
         <tr>
-            <td>title-color</td>
+            <td>title.color</td>
             <td>The text color for the accordion title (the clickable part</td>
         </tr>
         <tr>
-            <td>title-border</td>
+            <td>title.border</td>
             <td>The border for the accordion title (the clickable part)</td>
         </tr>
         <tr>
-            <td>title-radius</td>
+            <td>title.radius</td>
             <td>The border-radius for the accordion title (the clickable part)</td>
         </tr>
         <tr>
-            <td>title-padding</td>
+            <td>title.padding</td>
             <td>The padding for the accordion title (the clickable part</td>
         </tr>
         <tr>
-            <td>title-active-bg</td>
+            <td>title.active.background</td>
             <td>The background color for the accordion title when the corresponding section is open</td>
         </tr>
         <tr>
-            <td>title-active-color</td>
+            <td>title.active.color</td>
             <td>The text color for the accordion title when the corresponding section is open</td>
         </tr>
         <tr>
-            <td>title-active-border</td>
+            <td>title.active.border</td>
             <td>The border for the accordion title when the corresponding section is open</td>
         </tr>
         <tr>
-            <td>title-active-radius</td>
+            <td>title.active.radius</td>
             <td>The border-radius for the accordion title when the corresponding section is open</td>
         </tr>
         <tr>
-            <td>content-bg</td>
+            <td>content.background</td>
             <td>The backgound for the accordion content</td>
         </tr>
         <tr>
-            <td>content-color</td>
+            <td>content.color</td>
             <td>The text color for the accordion content</td>
         </tr>
         <tr>
-            <td>content-border</td>
+            <td>content.border</td>
             <td>The border for the accordion content</td>
         </tr>
         <tr>
-            <td>content-radius</td>
+            <td>content.radius</td>
             <td>The border-radius for the accordion content</td>
         </tr>
         <tr>
-            <td>content-padding</td>
+            <td>content.padding</td>
             <td>The padding for the accordion content</td>
+        </tr>
+        <tr>
+            <td>activeClass</td>
+            <td>The class to be applied when a section is open (active)</td>
+        </tr>
+        <tr>
+            <td>animationSpeed</td>
+            <td>The duration of the open/close animation in milliseconds</td>
+        </tr>
+        <tr>
+            <td>keepOpenModifier</td>
+            <td>The name of the modifier for accordions which allow multiple open sections</td>
         </tr>
     </tbody>
 </table>
 
-The above options can be passed to the mixin like so:
+To modify any of the above options, pass them to the `accordions` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+
+```json
+{
+    "app": {
+        "accordions": {
+            "title": {
+                "color": "#0066ff"
+            },
+            "content": {
+                "background": "#0000cc"
+            },
+            "animationSpeed": 800
+        }
+    }
+}
+```
+
+### Sass
+
+Load the accordion styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `accordions()` mixin:
 
 ```scss
-@include accordions((
-    'section-margin': 1.4em,
-    'icon': '\f101',
-    'title-bg': #23241f,
-    'title-color': white,
-    'title-radius': 0.4em,
-    'title-active-bg': #9B58B5,
-    'title-active-radius': 0.4em 0.4em 0 0,
-    'content-padding': 1em,
-    'content-radius': 0 0 0.4em 0.4em
-));
+@import '../../app';
+@import './config.json';
+
+@include accordions();
 ```
 
 ### JavaScript
 
-Call the `accordion()` function on your accordion selector:
-
 ```js
-$('.foo').accordion();
-$(_accordion).accordion();
+import * as app from '../../app';
+import config from './config.json';
+
+app.accordion();
 ```
 
 > The default One-Nexus theme uses [Synergy's](https://github.com/esr360/Synergy) global module selector: '$(_accordion)'
-
-The following options can be passed to the function to customize the accordions:
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Description</th>
-            <th>Default</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>activeClass</td>
-            <td>The class to use to open an accordion section</td>
-        </tr>
-        <tr>
-            <td>animationSpeed</td>
-            <td>The duration of the open/close animation</td>
-        </tr>
-        <tr>
-            <td>keepOpenSelector</td>
-            <td>The selector to use on the main module to allow multiple sections to be open simultaneously</td>
-        </tr>
-    </tbody>
-</table>
-
-The above options can be passed to the function like so:
-
-```js
-$(_accordion).accordion({
-    activeClass: 'toggled',
-    animationSpeed: 500
-});
-```
 
 ### Examples
 
