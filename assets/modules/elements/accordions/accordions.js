@@ -9,42 +9,104 @@ import defaults from './accordions.json';
  * @param {Object} custom
  * @param {Object} exports
  */
-export function accordion(els, custom) {
+export function accordion(els = 'accordion', custom) {
 
-    app.synergy(els, function(el, options) {
+    custom = app.custom('accordions', custom);
+    let handler;
 
-        const wrapper = el;
+    app.Synergy(els, function(el, options) {
 
-        Array.prototype.forEach.call(el.children, function(el, index) {
-            if(el.classList.contains(options.activeClass)) {
-                el.component('content')[0].classList.add(options.activeClass);
+        Array.prototype.forEach.call(el.children, function(section, index) {
+            section.component('title')[0].removeEventListener('click', handler);
+
+            if (section.classList.contains(options.activeClass)) {
+                section.component('content')[0].classList.add(options.activeClass);
             }
 
-            el.component('title')[0].addEventListener('click', function(e) {
-                var active = el.classList.contains(options.activeClass);
-
-                if (!wrapper.modifier(options.keepOpenModifier)) {
-                    Array.prototype.forEach.call(
-                        wrapper.component('section'), function(el, index) {
-                            el.classList.remove(options.activeClass);
-                            el.component('content')[0].classList.remove(options.activeClass);
-                        }
-                    );
-                }
-
-                if (active) {
-                    el.classList.remove(options.activeClass);
-                    el.component('content')[0].classList.remove(options.activeClass);
-                } else {
-                    el.classList.add(options.activeClass);
-                    el.component('content')[0].classList.add(options.activeClass);
-                }
+            section.component('title')[0].addEventListener('click', handler = function() {
+                clickHandler(el, section, options);
             }, false);
         });
 
+        exports.open = function(target) {
+            app.Synergy(els, function(el) {
+                toggleAccordion('open', el, target, options.activeClass);
+            });
+        }
+
+        exports.close = function(target) {
+            app.Synergy(els, function(el) {
+                toggleAccordion('close', el, target, options.activeClass);
+            });
+        }
     }, defaults, custom);
 
     app.config.accordions = Object.assign(defaults.accordions, custom);
 
     return exports;
 };
+
+/**
+ * toggleAccordion
+ * 
+ * @access private
+ * 
+ * @param {('open'|'close')} type
+ * @param {Object} parent
+ * @param {(String|Number|Object)} target
+ * @param {String} activeClass
+ */
+function toggleAccordion(type, parent, target, activeClass) {
+    let section, operator;
+
+    if (type === 'open' ) { operator = 'add'    }
+    if (type === 'close') { operator = 'remove' }
+
+    if (typeof target === 'string') {
+        section = parent.querySelectorAll(target);
+    } else if (typeof target === 'number') {
+        section = parent.children[target - 1];
+    } else if (target instanceof HTMLElement || target instanceof NodeList) {
+        section = target;
+    }
+
+    if (section instanceof NodeList) {
+        Array.prototype.forEach.call(section, function(el) {
+            toggleActiveClass(el);
+        });
+    } else {
+        toggleActiveClass(section);
+    }
+
+    function toggleActiveClass(el) {
+        el.classList[operator](activeClass);
+        el.component('content')[0].classList[operator](activeClass);
+    }
+}
+
+/**
+ * clickHandler
+ * 
+ * @access private
+ * 
+ * @param {Object} accordion
+ * @param {Object} section
+ * @param {Object} options
+ */
+function clickHandler(accordion, section, options) {
+    var active = section.classList.contains(options.activeClass);
+
+    if (!accordion.modifier(options.keepOpenModifier)) {
+        Array.prototype.forEach.call(
+            accordion.component('section'), function(section, index) {
+                toggleAccordion('close', accordion, section, options.activeClass);
+            }
+        );
+    }
+
+    if (active) {
+        toggleAccordion('close', accordion, section, options.activeClass);
+    } else {
+        toggleAccordion('open', accordion, section, options.activeClass);
+    }
+}

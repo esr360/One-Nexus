@@ -1,16 +1,18 @@
 {
-    "accordions": {
-        "title": {
-            "color": "cyan",
-            "active": {
-                "color": "pink"
-            }
+    "app": {
+        "accordions": {
+            "title": {
+                "color": "red",
+                "active": {
+                    "color": "pink"
+                }
+            },
+            "keepOpenModifier": "foo"
         },
-        "keepOpenModifier": "foo"
-    },
-    "carousels": {
-        "nav-buttons": {
-            "enabled": false
+        "carousels": {
+            "nav-buttons": {
+                "enabled": false
+            }
         }
     }
 }

@@ -1,14 +1,19 @@
+///****************************************************************
+/// One Nexus
+/// themes\One-Nexus\one-nexus
+///
+/// @author [@esr360](http://twitter.com/esr360)
+///****************************************************************
+
 import * as app from '../../app';
 import config from './config.json';
 
-Element.prototype.component = function(component, set) {
-    return app.synergy(this).component(component, set, this);
-};
+app.theme = config.app;
 
-Element.prototype.modifier = function(modifier, set) {
-    return app.synergy(this).modifier(modifier, set, this);
-};
+app.accordion();
 
-app.accordion('accordion', config.accordions);
+app.accordion().open(2);
 
-app.carousel('carousel', config.carousels);
+app.accordion(document.querySelector('.joojoo'));
+
+app.carousel('carousel', config.app.carousels);
