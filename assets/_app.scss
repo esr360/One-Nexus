@@ -4,15 +4,8 @@
 // https://github.com/esr360/One-Nexus
 //*****************************************************************
 
-//*****************************************************************
-// Configuration
-//*****************************************************************
-
 // Asset Path
 $asset-path: '../..' !default;
-
-// Theme
-$theme : 'One-Nexus' !default;
 
 //*****************************************************************
 // Vendor Files
@@ -90,9 +83,3 @@ $theme : 'One-Nexus' !default;
 @import 'modules/objects/side-nav/side-nav';
 @import 'modules/objects/site-overlay/site-overlay';
 @import 'modules/objects/twitter-feed/twitter-feed';
-
-//*****************************************************************
-// Themes
-//*****************************************************************
-
-@import 'themes/One-Nexus/one-nexus';
