@@ -201,17 +201,18 @@ module.exports = function(grunt) {
                 },
                 files: {
                     [project.dist[1].themes[1].theme + dist + '.css']: 
-                    project.source[0] + src + '.scss'
+                    project.source[1].themes[1].theme + '<%=theme%>.scss'
                 }
             },
             prod: {
                 options: {
                     style: 'compressed',
+                    require: 'sass-json-vars',
                     sourcemap: 'none'
                 },
                 files: {
                     [project.dist[1].themes[1].theme + dist + '.min.css']: 
-                    project.source[0] + src + '.scss'
+                    project.source[1].themes[1].theme + '<%=theme%>.scss'
                 }
             }
         },
