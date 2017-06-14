@@ -15,6 +15,18 @@
             "transition": "core('transition')",
             "active-color": "grey"
         },
-        "Flickity": {}
+        "components": {
+            "wrapper": ".flickity-viewport",
+            "pagination": ".flickity-page-dots",
+            "paginationBullet": ".dot",
+            "navigation": "",
+            "navigationItem": ".flickity-prev-next-button",
+            "navigationItem-prev": ".flickity-prev-next-button.previous",
+            "navigationItem-next": ".flickity-prev-next-button.next"
+        },
+        "Flickity": {
+            "cellAlign": "left",
+            "contain": true
+        }
     }
 }
