@@ -1,4 +1,4 @@
-@import 'modules/elements/accordions/accordions.json';
+@import '../../modules/elements/accordions/accordions.json';
 /// Accordions
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -6,7 +6,7 @@
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin accordions($custom: ()) {
+@mixin accordions($custom: custom('accordions')) {
 
     $accordions: config($accordions, $custom);
 
@@ -56,12 +56,11 @@
             &.active {
                 @include module {
                     @include component('title') {
-                        @debug this('title', 'active', 'background');
                         background: this('title', 'active', 'background');
                         color: this('title-active-color');
                         // open/close icon
                         &:after {
-                            color: this('icon-active-color');
+                            color: this('icon', 'active-color');
                         }
                     }
                 }
@@ -69,8 +68,8 @@
             &.active {
                 @include module {
                     @include component('title') {
-                        border-color: this('title-active-border');
-                        border-radius: this('title-active-radius');
+                        border-color: this('title', 'active', 'border');
+                        border-radius: this('title', 'active', 'radius');
                         // open/close icon
                         &:after {		
                             transform: rotate(90deg) translateZ(0);
@@ -87,19 +86,19 @@
             font-weight: normal;
             line-height: 1;
             backface-visibility: hidden;
-            padding: this('title-padding');
-            background: this('title-bg');
-            color: this('title-color');
-            border: this('title-border');
-            border-radius: this('title-radius');
+            padding: this('title', 'padding');
+            background: this('title', 'background');
+            color: this('title', 'color');
+            border: this('title', 'border');
+            border-radius: this('title', 'radius');
             transition: core('transition');
             // open/close icon
             &:after {
                 font-family: FontAwesome;
                 float: right;
                 line-height: 0.75;
-                content: this('icon');
-                color: this('icon-color');
+                content: this('icon', 'glyph');
+                color: this('icon', 'color');
                 transition: core('transition');
             }
         }
@@ -107,10 +106,10 @@
         @include component('content') {
             margin: 0;
             margin-top: -1px;	
-            border: this('content-border');
-            border-radius: this('content-radius');
-            padding: this('content-padding');
-            background: this('content-bg');
+            border: this('content', 'border');
+            border-radius: this('content', 'radius');
+            padding: this('content', 'padding');
+            background: this('content', 'background');
         }
 
         //*********************************************************

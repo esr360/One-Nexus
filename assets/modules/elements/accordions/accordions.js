@@ -12,21 +12,21 @@ import defaults from './accordions.json';
 export function accordion(els = 'accordion', custom) {
 
     custom = app.custom('accordions', custom);
-    let handler;
 
     app.Synergy(els, function(el, options) {
 
-        Array.prototype.forEach.call(el.children, function(section, index) {
-            section.component('title')[0].removeEventListener('click', handler);
+        if (!el.getAttribute('data-initialised')) {
+            Array.prototype.forEach.call(el.children, function(section, index) {
+                if (section.classList.contains(options.activeClass)) {
+                    section.component('content')[0].classList.add(options.activeClass);
+                }
 
-            if (section.classList.contains(options.activeClass)) {
-                section.component('content')[0].classList.add(options.activeClass);
-            }
-
-            section.component('title')[0].addEventListener('click', handler = function() {
-                clickHandler(el, section, options);
-            }, false);
-        });
+                section.component('title')[0].addEventListener('click', function() {
+                    clickHandler(el, section, options);
+                }, false);
+            });
+            el.setAttribute('data-initialised', true);
+        }
 
         exports.open = function(target) {
             app.Synergy(els, function(el) {
@@ -39,6 +39,7 @@ export function accordion(els = 'accordion', custom) {
                 toggleAccordion('close', el, target, options.activeClass);
             });
         }
+
     }, defaults, custom);
 
     app.config.accordions = Object.assign(defaults.accordions, custom);
