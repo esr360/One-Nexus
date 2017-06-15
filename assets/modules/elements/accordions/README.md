@@ -1,5 +1,17 @@
 ## One-Nexus Accordions
 
+##### Components
+
+* section
+* title
+* content
+
+##### Modifiers
+
+* keepOpen
+
+##### Quick Look
+
 ```html
 <div class="accordion">
     <div class="accordion_section">
@@ -151,18 +163,44 @@ Load the accordion styles in your theme's main `scss` file (e.g. [themes/One-Nex
 
 ### JavaScript
 
+Call the `accordion()` function in your theme's main `js` file (e.g. [themes/One-Nexus/One-Nexus.js](../../../themes/One-Nexus/One-Nexus.js)):
+
 ```js
 import * as app from '../../app';
 import config from './config.json';
+app.theme = config.app;
 
 app.accordion();
 ```
 
-> The default One-Nexus theme uses [Synergy's](https://github.com/esr360/Synergy) global module selector: '$(_accordion)'
+#### Methods
+
+##### Open/Close
+
+You can open or close specific sections of an accordion by using either the `.open()` or `.close()` methods.
+
+```js
+// Opens all sections of accordion with ID 'foo'
+app.accordion(document.getElementById('foo')).open();
+
+// Opens first section of accordion with ID 'foo'
+app.accordion(document.getElementById('foo')).open(1);
+
+// Opens first section of all accordions
+app.accordion().open(1);
+
+// Opens all sections with class 'foo' for all accordions
+app.accordion().open(document.querySelectorAll('.foo'));
+
+// Opens all sections with class 'foo' for all accordions
+app.accordion().open('.foo');
+```
 
 ### Examples
 
 #### Open by Default
+
+Add the `active` class to any sections you wish to be open by default.
 
 ```html
 <div class="accordion">
@@ -176,6 +214,8 @@ app.accordion();
 ```
 
 #### Multiple Open Sections
+
+To allow accordions to have multiple open sections simultaneously, add the `keepOpen` modifier to the target accordion:
 
 ```html
 <div class="accordion-keepOpen">

@@ -14,6 +14,4 @@ app.accordion();
 
 app.accordion().open(2);
 
-app.accordion(document.querySelector('.joojoo'));
-
-app.carousel('carousel', config.app.carousels);
+app.carousel();
