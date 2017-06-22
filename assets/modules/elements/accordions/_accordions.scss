@@ -8,6 +8,7 @@
 /// @param {map} $custom - where custom config will be passed
 @mixin accordions($custom: custom('accordions')) {
 
+    // Configuration
     $accordions: config($accordions, $custom);
 
     //*************************************************************
@@ -38,7 +39,6 @@
         //*********************************************************
         // Components
         //*********************************************************
-
 
         @include component('section') {
             margin: 0;
@@ -78,7 +78,6 @@
                 }
             }
         }
-
 
         @include component('title') {
             display: block;

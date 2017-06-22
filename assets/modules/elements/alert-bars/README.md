@@ -1,21 +1,30 @@
 ## One-Nexus Alert Bars/Boxes
 
+##### Components
+
+* icon
+
+##### Modifiers
+
+* bar
+* box
+* {color}
+
+##### Quick Look
+
 ```html
 <div class="alert-bar-help">A helpful alert bar.</div>
+
 <p class="alert-bar-info">An informative alert bar.</p>
+
 <div class="alert-bar-success"><p>A successful alert bar.</p></div>
+
 <span class="alert-bar-error">An error alert bar.</span>
 ```
 
-### Sass
+### Options
 
-Load the alert bar styles by including the `alert-bars()` mixin:
-
-```scss
-@include alert-bars();
-```
-
-The following options can be passed to the mixin to customize the alert-bars:
+For default values view the [`alert-bars.json`](alert-bars.json) file.
 
 <table class="table">
     <thead>
@@ -48,20 +57,32 @@ The following options can be passed to the mixin to customize the alert-bars:
     </tbody>
 </table>
 
-The above options can be passed to the mixin like so:
+To modify any of the above options, pass them to the `alert-bars` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+
+```json
+{
+    "app": {
+        "alert-bars": {
+            "bar-padding": "14px",
+            "colors": {
+                "carrot": "#F97E52",
+                "error" : "#DA4D44",
+                "rose"  : "#D870AD"
+            }
+        }
+    }
+}
+```
+
+### Sass
+
+Load the accordion styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `alert-bars()` mixin:
 
 ```scss
-@include alert-bars((
-    'colors':(
-        'carrot': #F97E52,
-        'error' : #DA4D44,
-        'rose'  : #D870AD
-    )
-));
-```
+@import '../../app';
+@import './config.json';
 
-```
-html<div class="alert-bar-carrot">A carrot alert bar.</div>
+@include alert-bars();
 ```
 
 ### Examples

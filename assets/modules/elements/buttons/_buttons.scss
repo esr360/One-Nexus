@@ -1,3 +1,4 @@
+@import '../../modules/elements/buttons/buttons.json';
 /// Buttons
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -5,42 +6,10 @@
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-/// @outputs all button styles
-///
-/// @example
-///     @include buttons((
-///         'round-radius' : 4px,
-///         'weight'       : bold
-///     ));
-@mixin buttons($custom: ()) {
+@mixin buttons($custom: custom('buttons')) {
 
-    //*************************************************************
     // Configuration
-    //*************************************************************
-
-    $buttons: config((
-        'name'              : 'button',
-        'color'             : color('greyscale', 'white'),
-        'background'        : color('greyscale', 'grey-4'),
-        'transition'        : core('transition'),
-        'h-padding'         : 1em,
-        'v-padding'         : 0.65em,
-        'line-height'       : 1,
-        'font-weight'       : normal,
-        'font-family'       : typography('typefaces', 'primary'),
-        'border-width'      : 1px,
-        'border-style'      : solid,
-        'active-background' : color('brand', 'brand-1'),
-        'active-color'      : color('greyscale', 'white'),
-        'disabled-opacity'  : 0.6,
-        'round-radius'      : 0.4em,
-        'group-spacing'     :  0.5em,
-        'group-stack'       : 'break-1',
-        'palettes'          : ('brand', 'greyscale', 'alert', 'social'),
-        'sizes':(
-            'sizes': typography-config('sizes')
-        )
-    ), $custom);
+    $buttons: config($buttons, $custom);
 
     //*************************************************************
     // Module
@@ -89,7 +58,7 @@
         // Sizes
         //*********************************************************
 
-        @include font-sizes(this('sizes'));
+        @include font-sizes(('sizes': this('sizes')));
 
         //*********************************************************
         // Colors

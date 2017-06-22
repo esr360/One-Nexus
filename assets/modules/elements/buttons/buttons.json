@@ -17,9 +17,7 @@
         "round-radius": "0.4em",
         "group-spacing": "0.5em",
         "group-stack": "break-1",
-        "palettes": "('brand', 'greyscale', 'alert', 'social')",
-        "sizes": {
-            "sizes": "typography-config('sizes')"
-        }
+        "palettes": ["brand", "greyscale", "alert", "social"],
+        "sizes": "typography-config('sizes')"
     }
 }

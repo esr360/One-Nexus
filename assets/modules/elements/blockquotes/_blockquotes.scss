@@ -1,3 +1,4 @@
+@import '../../modules/elements/blockquotes/blockquotes.json';
 /// Blockquotes
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -5,37 +6,10 @@
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-/// @outputs all blockquote styles
-///
-/// @example
-///     @include blockquotes((
-///         'font'      : 'Times New Roman',
-///         'icon-size' : 24px
-///     ));
-@mixin blockquotes($custom: ()) {
+@mixin blockquotes($custom: custom('blockquotes')) {
 
-    //*************************************************************
     // Configuration
-    //*************************************************************
-
-    $blockquotes: config((
-        'name'                  : 'blockquote',
-        'font-family'           : Georgia,
-        'quotes'                : '\201C''\201D''\2018''\2019',
-        'icon':(
-            'size'              : 4rem,
-            'height'            : 0.5em,
-            'padding'           : 2.5em,
-            'font-family'       : inherit,
-            'left'              : (true, top),
-            'right'             : (false, bottom)
-        ),
-        'pull':(
-            'width'             : 340px,
-            'max-width'         : 50%,
-            'margin'            : 1em
-        )
-    ), $custom);
+    $blockquotes: config($blockquotes, $custom);
 
     //*************************************************************
     // Module
@@ -80,20 +54,20 @@
         //*********************************************************
 
         @include modifier('icon') {
-            @include option('icon', 'left') {
+            @include option('icon', 'openQuote') {
                 padding-left: this('icon', 'padding');
                 &:before {
                     opacity: 1;
                     visibility: visible;
-                    #{nth(this('icon', 'left'), 2)}: 0;
+                    #{nth(this('icon', 'openQuote'), 2)}: 0;
                 }
             }
-            @include option('icon', 'right') {
+            @include option('icon', 'closeQuote') {
                 padding-right: this('icon', 'padding');
                 &:after {
                     opacity: 1;
                     visibility: visible;
-                    #{nth(this('icon', 'right'), 2)}: 0;
+                    #{nth(this('icon', 'closeQuote'), 2)}: 0;
                 }
             }
         }
@@ -102,18 +76,17 @@
 
             margin: this('pull', 'margin');
 
-            @include modifier('icon') {
-                padding-left: enabled(
-                    ('icon', 'left'), this('icon', 'padding'), 0
-                );
-                padding-right: enabled(
-                    ('icon', 'right'), this('icon', 'padding'), 0
-                );
-            }
-
             @media (min-width: breakpoint('break-2')) {
                 width: this('pull', 'width');
                 max-width: this('pull', 'max-width');
+            }
+
+            @include option('icon', 'openQuote') {
+                padding-left: this('icon', 'padding');
+            }
+
+            @include option('icon', 'closeQuote') {
+                padding-right: this('icon', 'padding');
             }
 
             @include modifier('top') {

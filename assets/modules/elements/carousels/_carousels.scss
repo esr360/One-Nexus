@@ -1,3 +1,4 @@
+@import '../../modules/elements/carousels/carousels.json';
 /// Carousels
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -5,35 +6,10 @@
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-/// @outputs all carousel styles
-///
-/// @example
-///     @include carousels((
-///     ));
-@mixin carousels($custom: ()) {
+@mixin carousels($custom: custom('carousels')) {
 
-    //*************************************************************
     // Configuration
-    //*************************************************************
-
-    $carousels: config((
-        'name'             : 'carousel',
-        'output-json'      : true,
-        'nav-buttons':(
-            'enabled'      : true,
-            'size'         : font-size('size-6'),
-            'transition'   : core('transition'),
-            'prev'         : '\f137',
-            'next'         : '\f138'
-        ),
-        'bullets':(
-            'enabled'      : true,
-            'size'         : 10px,
-            'color'        : rgba(black, 0.4),
-            'transition'   : core('transition'),
-            'active-color' : grey
-        )
-    ), $custom);
+    $carousels: config($carousels, $custom);
 
     //*************************************************************
     // Module
@@ -42,73 +18,59 @@
     @include module {
 
         //*********************************************************
-        // Core Styles
-        //*********************************************************
-
-        position: relative;
-
-        //*********************************************************
         // Components
         //*********************************************************
 
-        @include component('nav') {
-
-            position: relative;
-
-            @include component('item') {
-                position: absolute;
-                cursor: pointer;
-                transition: this('nav-buttons', 'transition');
-                font-size: this('nav-buttons', 'size');
-                &:before {
-                    font-family: FontAwesome;
-                }
-                @include modifier('prev') {
-                    display: inline-block;
-                    left: 0;
-                    &:before {
-                        content: this('nav-buttons', 'prev');
-                    }
-                }
-                @include modifier('next') {
-                    top: 0;
-                    right: 0;
-                    &:before {
-                        content: this('nav-buttons', 'next');
-                    }
-                }
-            }
-
+        @include component('slide') {
+            width: 100%;
         }
 
-        @include component('bullets') {
-            text-align: center;
+        @include component('bullet') { 
+            height: this('bullets', 'size');
+            width: this('bullets', 'size');
+            transition: this('nav-buttons', 'transition');
+            background-color: this('bullets', 'color');
+            @if this('bullets', 'disabled') {
+                display: none;
+            }
+            &.is-selected {
+                color: this('bullets', 'active-color');
+            }
         }
 
-        //*************************************************************
-        // Owl-Carousel Overwrites
-        //*************************************************************
-
-        .owl-dot {
-            cursor: pointer;
-            cursor: hand;
-            user-select: none;
-            display: inline-block;
-            &:not(:first-child) {
-                margin-left: 0.5em;
-            }
-            &.active {
-                span {
-                    background: this('bullets', 'active-color');
-                }
-            }
-            span {
-                display: block;
+        @include component('navigationItem') {
+            height: this('nav-buttons', 'size');
+            width: this('nav-buttons', 'size');
+            transition: this('nav-buttons', 'transition');
+            background-color: this('nav-buttons', 'background-color');
+            color: this('nav-buttons', 'color');
+            @if this('nav-buttons', 'shape') == 'circle' {
                 border-radius: 50%;
-                height: this('bullets', 'size');
-                width: this('bullets', 'size');
-                background: this('bullets', 'color');
-                transition: this('bullets', 'transition');
+            } @else if this('nav-buttons', 'shape') == 'square' {
+                border-radius: 0;
+            }
+            @if this('nav-buttons', 'disabled') {
+                display: none;
+            }
+            .arrow {
+                fill: this('nav-buttons', 'color');
+            }
+        }
+
+        //*********************************************************
+        // Modifiers
+        //*********************************************************
+
+        @include modifier('hide-pagination') {
+            @include component('pagination') {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+
+        @include modifier('hide-navigation') {
+            @include component('navigationItem') {
+                display: none;
             }
         }
 

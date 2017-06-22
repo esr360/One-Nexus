@@ -8,8 +8,8 @@
             "height": "0.5em",
             "padding": "2.5em",
             "font-family": "inherit",
-            "left": "(true, top)",
-            "right": "(false, bottom)"
+            "openQuote": [true, "top"],
+            "closeQuote": [false, "bottom"]
         },
         "pull": {
             "width": "340px",

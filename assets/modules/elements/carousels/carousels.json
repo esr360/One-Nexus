@@ -2,31 +2,24 @@
     "carousels": {
         "name": "carousel",
         "nav-buttons": {
-            "enabled": true,
+            "disable": false,
             "size": "font-size('size-6')",
-            "transition": "core('transition')",
-            "prev": "'\f137'",
-            "next": "'\f138'"
+            "background-color": "rgba(white, 0.75)",
+            "color": "rgba(black, 0.4)",
+            "shape": "circle",
+            "transition": "core('transition')"
         },
         "bullets": {
-            "enabled": true,
+            "disable": false,
             "size": "10px",
             "color": "rgba(black, 0.4)",
-            "transition": "core('transition')",
-            "active-color": "grey"
-        },
-        "components": {
-            "wrapper": ".flickity-viewport",
-            "pagination": ".flickity-page-dots",
-            "paginationBullet": ".dot",
-            "navigation": "",
-            "navigationItem": ".flickity-prev-next-button",
-            "navigationItem-prev": ".flickity-prev-next-button.previous",
-            "navigationItem-next": ".flickity-prev-next-button.next"
+            "active-color": "grey",
+            "transition": "core('transition')"
         },
         "Flickity": {
             "cellAlign": "left",
-            "contain": true
+            "contain": true,
+            "initialIndex": 2
         }
     }
 }

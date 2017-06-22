@@ -1,3 +1,4 @@
+@import '../../modules/elements/alert-bars/alert-bars.json';
 /// Alert Bars
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -5,26 +6,10 @@
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-/// @outputs all alert bar styles
-///
-/// @example
-///     @include alert-bars((
-///         'title-bg'    : blue,
-///         'title-color' : white
-///     ));
-@mixin alert-bars($custom: ()) {
+@mixin alert-bars($custom: custom('alert-bars')) {
 
-    //*************************************************************
     // Configuration
-    //*************************************************************
-
-    $alert-bars: config((
-        'name'        : 'alert',
-        'colors'      : palette('alert'),
-        'text-color'  : color('greyscale', 'white'),
-        'bar-padding' : 0.85em,
-        'box-padding' : 1.5em,
-    ), $custom);
+    $alert-bars: config($alert-bars, $custom);
 
     //*************************************************************
     // Module

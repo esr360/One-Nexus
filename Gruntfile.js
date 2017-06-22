@@ -104,7 +104,9 @@ module.exports = function(grunt) {
      * Set all optional styles to be used by the project
      * @var {object} _globalStyles
      */
-    var _globalStyles = [];
+    var _globalStyles = [
+        project.vendor + 'flickity/dist/flickity.css'
+    ];
     
     /**************************************************************
      * Packages
@@ -265,7 +267,6 @@ module.exports = function(grunt) {
                 ]
             }
         },
-        
 
         /**
          * csscomb 
@@ -341,7 +342,7 @@ module.exports = function(grunt) {
             options: {
                 config: '.scss-lint.yml',
                 colorizeOutput: false
-            },
+            }
         },
 
         /**
@@ -443,9 +444,7 @@ module.exports = function(grunt) {
                 spawn: false,
             },
             scss: {
-                files: [
-                    project.source[0] + '**/*.scss'
-                ],
+                files: [project.source[0] + '**/*.scss'],
                 tasks: [ 
                     'sass:' + env,
                     'postcss:dist',
@@ -466,6 +465,24 @@ module.exports = function(grunt) {
                     'jsdoc',
                     'browserify',
                     'notify:scripts'
+                ]
+            },
+            config: {
+                files: [project.source[0] + '**/*.json'],
+                tasks: [
+                    'sass:' + env,
+                    'postcss:dist',
+                    'csscomb',
+                    //'scsslint',
+                    'mochacli:scss',
+                    'sassdoc',
+                    'notify:css',
+                    //'jshint',
+                    'jsdoc',
+                    'browserify',
+                    'notify:scripts'
+                    //'<%=watch.scss.tasks%>',
+                    //'<%=watch.scripts.tasks%>',
                 ]
             },
             images: {

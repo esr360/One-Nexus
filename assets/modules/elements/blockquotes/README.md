@@ -1,20 +1,26 @@
 ## One-Nexus Blockquotes
 
+##### Components
+
+* _This module has no components_
+
+##### Modifiers
+
+* icon(-openQuote, -closeQuote)
+* pull(-top, -bottom, -left, -right)
+* callout
+
+##### Quick Look
+
 ```html
 <blockquote class="blockquote">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent faucibus, purus a varius mattis.
 </blockquote>
 ```
 
-### Sass
+### Options
 
-Load the blockquote styles by including the `blockquotes()` mixin:
-
-```scss
-@include blockquotes();
-```
-
-The following options can be passed to the mixin to customize the blockquotes:
+For default values view the [`blockquotes.json`](blockquotes.json) file.
 
 <table class="table">
     <thead>
@@ -37,56 +43,71 @@ The following options can be passed to the mixin to customize the blockquotes:
             <td><a href="https://css-tricks.com/almanac/properties/q/quotes/" target="blank">Content values</a> for quotes to act as a decorative icon</td>
         </tr>
         <tr>
-            <td>icon[size]</td>
+            <td>icon.size</td>
             <td>The size of the quote icon</td>
         </tr>
         <tr>
-            <td>icon[padding]</td>
+            <td>icon.padding</td>
             <td>The left/right spacing for the quote icon to fit</td>
         </tr>
         <tr>
-            <td>icon[font-family]</td>
+            <td>icon.font-family</td>
             <td>The font-family for the quote icon</td>
         </tr>
         <tr>
-            <td>icon[left]</td>
-            <td>Set the enablement and position (top/bottom) of the left icon</td>
+            <td>icon.left</td>
+            <td>Set the enablement and position (top/bottom) of the left quote icon</td>
         </tr>
         <tr>
-            <td>icon[right]</td>
-            <td>Set the enablement and position (top/bottom) of the right icon</td>
+            <td>icon.right</td>
+            <td>Set the enablement and position (top/bottom) of the right quote icon</td>
         </tr>
         <tr>
-            <td>pull[width]</td>
+            <td>pull.width</td>
             <td>Default width for pull-quotes</td>
         </tr>
         <tr>
-            <td>pull[max-width]</td>
+            <td>pull.max-width</td>
             <td>The max-width for pull-quotes</td>
         </tr>
         <tr>
-            <td>pull[margin]</td>
+            <td>pull.margin</td>
             <td>The margin for pull-quotes</td>
         </tr>
     </tbody>
 </table>
 
-The above options can be passed to the mixin like so:
+To modify any of the above options, pass them to the `blockquotes` object in your theme's config file (e.g. [themes/One-Nexus/blockquotes.json](../../../themes/One-Nexus/blockquotes.json)):
 
-```scss
-@include blockquotes((
-    'quotes': '\f10d''\f10e''\f053''\f054',
-    'icon':(
-        'font-family': FontAwesome,
-        'size': 2em,
-        'height': 1em,
-        'left': (true, top),
-        'right': (true, bottom)
-    )
-));
+```json
+{
+    "app": {
+        "blockquotes": {
+            "quotes": "'\\f10d''\\f10e''\\f053''\\f054'",
+            "icon": {
+                "font-family": FontAwesome,
+                "size": 2em,
+                "height": 1em,
+                "left": (true, top),
+                "right": (true, bottom)
+            }
+        }
+    }
+}
 ```
 
-> The above example uses FontAwesome icons for the quotes using their <a href="http://astronautweb.co/snippet/font-awesome/" target="blank">content values</a>
+> The above example uses FontAwesome icons for the quote icons using their <a href="http://astronautweb.co/snippet/font-awesome/" target="blank">content values</a>
+
+### Sass
+
+Load the blockquote styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `blockquotes()` mixin:
+
+```scss
+@import '../../app';
+@import './config.json';
+
+@include blockquotes();
+```
 
 ### Examples
 
