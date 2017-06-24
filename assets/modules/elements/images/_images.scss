@@ -1,3 +1,4 @@
+@import '../../modules/elements/images/images.json';
 /// Images
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -5,24 +6,34 @@
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-/// @outputs all button styles
-///
-/// @example
-///     @include buttons((
-///         'round-radius' : 4px,
-///         'weight'       : bold
-///     ));
-@mixin images($custom: ()) {
+@mixin images($custom: custom('images')) {
 
-    //*************************************************************
     // Configuration
-    //*************************************************************
+    $images: config($images, $custom);
 
-    $images: config((
-        'name' : 'image'
-    ), $custom);
+    //*************************************************************
+    // Module
+    //*************************************************************
 
     @include module {
+
+        //*********************************************************
+        // Modifiers
+        //*********************************************************
+
+        @include modifier('center-xy') {
+            position: relative;
+            @include component('figure') {
+                @include horizontal-center;
+                @include vertical-center(absolute);
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+        }
+
+        //*********************************************************
+        // Custom Content
+        //*********************************************************
 
         @content;
 
@@ -35,49 +46,6 @@
     img {
         max-width: 100%;
         display: block;
-    }
-
-    //*************************************************************
-    // Horizontal & Vertical Centered Images
-    //*************************************************************
-
-    .center-xy {
-        position: relative;
-        > img {
-            @include vertical-center(absolute);
-            @extend %horizontal-center;
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
-    }
-
-    //*************************************************************
-    // Square Image
-    //*************************************************************
-
-    .image-square {
-        position: relative;
-        height: 0;
-        padding-top: 20%;
-        overflow: hidden;
-        > img {
-            position: absolute;
-            top: -25%;
-        }
-    }
-
-    //*************************************************************
-    // Background Image
-    //*************************************************************
-
-    .bg-img {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-size: cover;
-        transition: core('transition');
     }
 
 } // @mixin images
