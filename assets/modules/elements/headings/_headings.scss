@@ -1,3 +1,4 @@
+@import '../../modules/elements/headings/headings.json';
 /// Headings
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -5,26 +6,10 @@
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-/// @outputs all heading styles
-///
-/// @example
-///     @include headings((
-///         'font'      : 'Times New Roman',
-///         'icon-size' : 24px
-///     ));
-@mixin headings($custom: ()) {
+@mixin headings($custom: custom('headings')) {
 
-    //*************************************************************
     // Configuration
-    //*************************************************************
-
-    $headings: config((
-        'name' : 'heading',
-        'group_heading-lineHeight': 0.8,
-        'sizes':(
-            'sizes': typography-config('sizes')
-        )
-    ), $custom);
+    $headings: config($headings, $custom);
 
     //*************************************************************
     // Module
@@ -42,7 +27,7 @@
         // Sizes
         //*********************************************************
 
-        @include font-sizes(this('sizes'));
+        @include font-sizes(('sizes': this('sizes')));
 
         //*********************************************************
         // Modifiers
