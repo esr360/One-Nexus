@@ -1,3 +1,4 @@
+@import '../../modules/elements/forms/forms.json';
 /// Forms
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -5,27 +6,10 @@
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-/// @outputs all form styles
-///
-/// @example
-///     @include forms((
-///         'font'      : 'Times New Roman',
-///         'icon-size' : 24px
-///     ));
-@mixin forms($custom: ()) {
+@mixin forms($custom: custom('forms')) {
 
-    //*************************************************************
     // Configuration
-    //*************************************************************
-
-    $forms: config((
-        'name'             : 'form',
-        'input-color'      : core('text-color'),
-        'input-border'     : 1px solid color('greyscale', 'grey-3'),
-        'input-padding'    : 0.75em,
-        'valid-color'      : color('validation', 'valid'),
-        'invalid-color'    : color('validation', 'invalid')
-    ), $custom);
+    $forms: config($forms, $custom);
 
     //*************************************************************
     // Module

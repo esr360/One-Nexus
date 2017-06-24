@@ -1,0 +1,10 @@
+{
+    "forms": {
+        "name": "form",
+        "input-color": "core('text-color')",
+        "input-border": "1px solid color('greyscale', 'grey-3')",
+        "input-padding": "0.75em",
+        "valid-color": "color('validation', 'valid')",
+        "invalid-color": "color('validation', 'invalid')"
+    }
+}
