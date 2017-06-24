@@ -159,11 +159,6 @@
             }
         }
         
-        @include modifier('article') {
-            height: 200px;
-            @extend .center-xy;
-        }
-        
         @include modifier('inline') {
             display: inline-block;
             vertical-align: top;
