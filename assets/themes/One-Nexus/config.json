@@ -11,7 +11,7 @@
         },
         "carousels": {
             "nav-buttons": {
-                "enabled": true
+                "foo": "bar"
             }
         }
     }
