@@ -3,23 +3,24 @@
         "name": "carousel",
         "nav-buttons": {
             "disable": false,
-            "size": "font-size('size-6')",
+            "size": "font-size('size-9')",
             "background-color": "rgba(white, 0.75)",
-            "color": "rgba(black, 0.4)",
+            "arrow-color": "rgba(black, 0.4)",
+            "arrow-size": "40%",
             "shape": "circle",
             "transition": "core('transition')"
         },
         "bullets": {
             "disable": false,
             "size": "10px",
+            "gutter": "25px",
             "color": "rgba(black, 0.4)",
             "active-color": "grey",
             "transition": "core('transition')"
         },
         "Flickity": {
             "cellAlign": "left",
-            "contain": true,
-            "initialIndex": 2
+            "contain": true
         }
     }
 }

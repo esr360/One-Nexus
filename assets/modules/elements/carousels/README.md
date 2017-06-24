@@ -1,5 +1,20 @@
 ## One-Nexus Carousels
 
+##### Components
+
+* slide
+* navigation
+* navigationItem
+* pagination
+* bullet
+
+##### Modifiers
+
+* hide-pagination
+* hide-navigation
+
+##### Quick Look
+
 To create a carousel, add the `carousel` class to a container of elements which will act as the carousel slides:
 
 ```html
@@ -12,15 +27,9 @@ To create a carousel, add the `carousel` class to a container of elements which 
 </div>
 ```
 
-### Sass
+### Options
 
-Load the carousel styles by including the `carousels()` mixin:
-
-```scss
-@include carousels();
-```
-
-The following options can be passed to the mixin to customize the carousels:
+For default values view the [`carousels.json`](carousels.json) file.
 
 <table class="table">
     <thead>
@@ -36,163 +45,158 @@ The following options can be passed to the mixin to customize the carousels:
             <td>The name used when generating the CSS selector</td>
         </tr>
         <tr>
-            <td><code>output-json</td>
-            <td>Allows the configutation to be accessed in JavaScript</td>
+            <td><code>nav-buttons.disable</code></td>
+            <td>Hide navigation buttons by default</td>
         </tr>
         <tr>
-            <td><code>nav-buttons['enabled']</code></td>
-            <td>Determine whether to display the next/previous buttons</td>
-        </tr>
-        <tr>
-            <td><code>nav-buttons['size']</code></td>
+            <td><code>nav-buttons.size</code></td>
             <td>The size of the next/previous buttons</td>
         </tr>
         <tr>
-            <td><code>nav-buttons['transition']</code></td>
+            <td><code>nav-buttons.background-color</code></td>
+            <td>The background color of the next/previous buttons</td>
+        </tr>
+        <tr>
+            <td><code>nav-buttons.arrow-color</code></td>
+            <td>The arrow color of the next/previous buttons</td>
+        </tr>
+        <tr>
+            <td><code>nav-buttons.shape</code></td>
+            <td>The shape of the next/previous buttons [circle|square]</td>
+        </tr>
+        <tr>
+            <td><code>nav-buttons.transition</code></td>
             <td>The transition for the next/previous buttons</td>
         </tr>
         <tr>
-            <td><code>nav-buttons['prev']</code></td>
-            <td>FontAwesome icon for 'previous' button using <a href="https://css-tricks.com/almanac/properties/q/quotes/" target="blank">content values</a></td>
+            <td><code>bullets.disable</code></td>
+            <td>Hide the pagination/bullets by default</td>
         </tr>
         <tr>
-            <td><code>nav-buttons['next']</code></td>
-            <td>FontAwesome icon for 'next' button using <a href="https://css-tricks.com/almanac/properties/q/quotes/" target="blank">content values</a></td>
-        </tr>
-        <tr>
-            <td><code>bullets['enabled']</code></td>
-            <td>Determine whether to display pagination bullets</td>
-        </tr>
-        <tr>
-            <td><code>bullets['size']</code></td>
+            <td><code>bullets.size</code></td>
             <td>The size for pagination bullets</td>
         </tr>
         <tr>
-            <td><code>bullets['color']</code></td>
+            <td><code>bullets.gutter</code></td>
+            <td>The space between the carousel viewport and the pagination</td>
+        </tr>
+        <tr>
+            <td><code>bullets.color</code></td>
             <td>The color for pagination bullets</td>
         </tr>
         <tr>
-            <td><code>bullets['transition']</code></td>
+            <td><code>bullets.active-color</code></td>
+            <td>The color for the active pagination bullet</td>
+        </tr>
+        <tr>
+            <td><code>bullets.transition</code></td>
             <td>The transition for pagination bullets</td>
         </tr>
         <tr>
-            <td><code>bullets['active-color']</code></td>
-            <td>The color for the active pagination bullet</td>
+            <td><code>Flickity</code></td>
+            <td>Object of [Flickity options](https://flickity.metafizzy.co/options.html) to pass to carousels</td>
         </tr>
     </tbody>
 </table>
 
-The above options can be passed to the mixin like so:
+To modify any of the above options, pass them to the `carousels` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
-```scss
-@include carousels((
-    'nav-buttons':(
-        'enabled': false
-    ),
-    'bullets':(
-        'active-color': #C7254F
-    )
-));
+```json
+{
+    "app": {
+        "carousels": {
+            "nav-buttons": {
+                "disable": true,
+                "shape": "square"
+            },
+            "bullets" {
+                "size": "1em"
+            },
+            "Flickity": {
+                "contain": true,
+                "initialIndex": 2
+            }
+        }
+    }
+}
 ```
 
-Default carousels will now reflect these options:
+### Sass
 
-```html
-<div class="carousel">
-    <img src="http://lorempixel.com/640/480" />
-    <img src="http://lorempixel.com/640/480" />
-    <img src="http://lorempixel.com/640/480" />
-    <img src="http://lorempixel.com/640/480" />
-    <img src="http://lorempixel.com/640/480" />
-</div>
+Load the carousel styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `carousels()` mixin:
+
+```scss
+@import '../../app';
+@import './config.json';
+
+@include carousels();
 ```
 
 ### JavaScript
 
-Call the `carousel()` function on your accordion selector:
+Call the `carousel()` function in your theme's main `js` file (e.g. [themes/One-Nexus/One-Nexus.js](../../../themes/One-Nexus/One-Nexus.js)):
 
 ```js
-$('.carousel').carousel();
+import * as app from '../../app';
+import config from './config.json';
+app.theme = config.app;
+
+app.carousel();
 ```
 
-The following options can be passed to the function to customize the carousels:
+#### Data-Attribute Options
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Description</th>
-            <th>Default</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>nav</code></td>
-            <td>Create next/previous buttons</td>
-        </tr>
-        <tr>
-            <td><code>pagination</code></code></td>
-            <td>Create pagination bullets</td>
-        </tr>
-        <tr>
-            <td><code>owl</code></td>
-            <td>Pass any custom <a href="http://owlcarousel2.github.io/OwlCarousel2/docs/api-options.html" target="blank">OwlCarousel options</a> to the carousel</td>
-        </tr>
-    </tbody>
-</table>
+It is possible to pass custom [Flickity options](https://flickity.metafizzy.co/options.html) to a carousel instance using the `data-carousel` attribute:
 
-The above options can be passed to the function like so:
-
-```js
-$('.carousel').carousel({
-    pagination: false,
-    owl: {
-        items: 6
-    }
-});
-```
-
-Default carousels will now reflect these options:
+> Note that the content of the attribute must be valid JSON and is hence wrapped in 'single' quotes, not "double"
 
 ```html
-<div class="carousel">
-    <img src="http://lorempixel.com/640/480" />
-    <img src="http://lorempixel.com/640/480" />
-    <img src="http://lorempixel.com/640/480" />
-    <img src="http://lorempixel.com/640/480" />
-    <img src="http://lorempixel.com/640/480" />
+<div class="carousel" data-carousel='{"contain": true, "initialIndex": 1}'>
+    ...
 </div>
+```
+
+#### API
+
+> See the [Flickity API](https://flickity.metafizzy.co/api.html) to learn what's possible
+
+Use the Flickity API on a carousel instance like so:
+
+```js
+var carousel = document.getElementById('foo');
+
+// Flickity API
+app.carousel(carousel).Flickity.playPlayer();
+app.carousel(carousel).Flickity.next();
 ```
 
 ### Examples
 
-You can initiaite multiple carousels on multiple elements if you wish for them to have different options:
-
-> In order for your carousel to receive the One-Nexus carousel styles, you must give it a class beginning with `carousel-`, e.g. `carousel-products`
+#### No Navigation
 
 ```html
-<div class="carousel-products">
-    <img src="http://lorempixel.com/640/480" />
-    <img src="http://lorempixel.com/640/480" />
-    <img src="http://lorempixel.com/640/480" />
-    <img src="http://lorempixel.com/640/480" />
+<div class="carousel-hide-navigation">
+    ...
 </div>
 ```
 
-```js
-$('.carousel-products').carousel({
-    owl: {
-        items: 2,
-        margin: 20
-    }
-});
+#### No Pagination
+
+```html
+<div class="carousel-hide-pagination">
+    ...
+</div>
 ```
 
-**Note:** You can of course just call the OwlCarousel plugin directly on your element like the below example, but you will lose out on some benefits that the One-Nexus wrapper provides:
+**Note:** You can of course just call the Flickity plugin directly on your element like the below example, but you will lose out on some benefits that the One-Nexus wrapper provides:
 
 ```js
-$('.carousel-products').owlCarousel({
-    items: 2,
-    margin: 20
+var el = document.getElementById('foo');
+
+var carousel = new Flickity(el, {
+    ...
 });
+
+carousel.playPlayer();
+carousel.next();
 ```

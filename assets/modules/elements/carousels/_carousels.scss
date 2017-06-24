@@ -25,19 +25,6 @@
             width: 100%;
         }
 
-        @include component('bullet') { 
-            height: this('bullets', 'size');
-            width: this('bullets', 'size');
-            transition: this('nav-buttons', 'transition');
-            background-color: this('bullets', 'color');
-            @if this('bullets', 'disabled') {
-                display: none;
-            }
-            &.is-selected {
-                color: this('bullets', 'active-color');
-            }
-        }
-
         @include component('navigationItem') {
             height: this('nav-buttons', 'size');
             width: this('nav-buttons', 'size');
@@ -52,8 +39,32 @@
             @if this('nav-buttons', 'disabled') {
                 display: none;
             }
+            svg {
+                @include horizontal-center();
+                @include vertical-center(absolute);
+                height: this('nav-buttons', 'arrow-size');
+                width: this('nav-buttons', 'arrow-size');
+            }
             .arrow {
-                fill: this('nav-buttons', 'color');
+                fill: this('nav-buttons', 'arrow-color');
+            }
+        }
+
+        @include component('pagination') {
+            bottom: auto;
+            margin-top: this('bullets', 'gutter');
+        }
+
+        @include component('bullet') { 
+            height: this('bullets', 'size');
+            width: this('bullets', 'size');
+            transition: this('nav-buttons', 'transition');
+            background-color: this('bullets', 'color');
+            @if this('bullets', 'disabled') {
+                display: none;
+            }
+            &.is-selected {
+                color: this('bullets', 'active-color');
             }
         }
 
