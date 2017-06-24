@@ -12,6 +12,8 @@ app.theme = config.app;
 
 app.accordion();
 
-app.accordion().open(2);
-
 app.carousel();
+
+app.modal();
+
+//$('.modal, [class*="modal-"]').modal();
