@@ -173,7 +173,7 @@ app.theme = config.app;
 app.accordion();
 ```
 
-#### Methods
+#### API
 
 ##### Open/Close
 

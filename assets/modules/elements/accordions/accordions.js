@@ -60,7 +60,7 @@ export function accordion(els = 'accordion', custom) {
 function toggleAccordion(type, parent, target, activeClass) {
     let section, operator;
 
-    if (type === 'open' ) { operator = 'add'    }
+    if (type === 'open' ) { operator = 'add' }
     if (type === 'close') { operator = 'remove' }
 
     if (typeof target === 'string') {

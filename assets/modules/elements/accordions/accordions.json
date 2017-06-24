@@ -2,7 +2,7 @@
     "accordions": {
         "name": "accordion",
         "icon": {
-            "glyp": "\f138",
+            "glyph": "'\\f138'",
             "color": "rgba(color('greyscale', 'grey-3'), 0.6)",
             "active-color": "color('greyscale', 'white')"
         },
