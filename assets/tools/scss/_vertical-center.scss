@@ -13,3 +13,7 @@
 	top: 50%;
 	transform: translateY(-50%);
 }
+
+%vertical-center {
+    @include vertical-center();
+}

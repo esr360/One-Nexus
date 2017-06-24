@@ -1,5 +1,9 @@
-%horizontal-center {
+@mixin horizontal-center() {
     left: 0;
     right: 0;
     margin: auto;
+}
+
+%horizontal-center {
+    @include horizontal-center();
 }
