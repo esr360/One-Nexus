@@ -1,3 +1,4 @@
+@import '../../modules/elements/lists/lists.json';
 /// Buttons
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -5,26 +6,10 @@
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-/// @outputs all button styles
-///
-/// @example
-///     @include buttons((
-///         'round-radius' : 4px,
-///         'weight'       : bold
-///     ));
-@mixin lists($custom: ()) {
+@mixin lists($custom: custom('lists')) {
 
-    //*************************************************************
     // Configuration
-    //*************************************************************
-
-    $lists: config((
-        'name'               : 'list',
-        'small-size'         : font-size('size-1'),
-        'inline-spacing'     : 1em,
-        'arrow-icon'         : "\f138",
-        'arrow-color'        : color('brand', 'brand-1')
-    ), $custom);
+    $lists: config($lists, $custom);
 
     //*************************************************************
     // Module
