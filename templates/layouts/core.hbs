@@ -2,7 +2,6 @@
 title: One-Nexus
 bodyClass: ''
 contentID: 'site-content'
-modulesID: 'modulesConfigJSON'
 styles:
     - <%=assets%>assets/themes/<%=theme%>/app
 scripts:
@@ -38,7 +37,7 @@ FontAwesome: 4.7.0
         {{> body}}
     </body>
 
-    <div id="{{modulesID}}"></div>
+    <div id="site-overlay"></div>
 
     {{#if jQuery}}
         <script src="http://code.jquery.com/jquery-{{jQuery}}.min.js" crossorigin="anonymous"></script>
