@@ -19,8 +19,9 @@ export { Synergy, Flickity }
 
 import { accordion } from './modules/elements/accordions/accordions';
 import { carousel  } from './modules/elements/carousels/carousels';
+import { modal     } from './modules/elements/modals/modals';
 
-export { accordion, carousel }
+export { accordion, carousel, modal }
 
 // Config
 //*****************************************************************

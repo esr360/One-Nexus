@@ -5,22 +5,11 @@
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-/// @outputs all button styles
-///
-/// @example
-///     @include buttons((
-///         'round-radius' : 4px,
-///         'weight'       : bold
-///     ));
 @mixin modals($custom: ()) {
 
-    //*************************************************************
     // Configuration
-    //*************************************************************
-
     $modals: config((
         'name'                   : 'modal',
-        'output-json'            : true,
         'dafault-animation'      : left,
         'background'             : color('greyscale', 'grey-1'),
         'text-color'             : core('text-color'),
@@ -40,7 +29,7 @@
     @include module {
         
         @include vertical-center(absolute);
-        @extend %horizontal-center;
+        @include horizontal-center();
         
         // Private styles 
         position: fixed;
