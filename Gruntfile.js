@@ -38,30 +38,30 @@ module.exports = function(grunt) {
      * @var {object} project
      */
     var project = {
-        dist:[         'dist/', {
+        dist: [        'dist/', {
             images:    'dist/assets/images/',
             scripts:   'dist/assets/scripts/',
             styles:    'dist/assets/styles/',
-            themes:[   'dist/assets/themes/', {
+            themes: [  'dist/assets/themes/', {
                 theme: 'dist/assets/themes/<%=theme%>/'
             }],
             templates: 'dist/'
         }],
-        source:[       'assets/', {
+        source: [      'assets/', {
             images:    'assets/images/',
             scripts:   'assets/modules/',
             styles:    'assets/modules/',
-            themes:[   'assets/themes/', {
+            themes: [  'assets/themes/', {
                 theme: 'assets/themes/<%=theme%>/'
             }],
             templates: 'templates/'
         }],
         vendor:        'node_modules/',
-        docs:[         'docs/', {
+        docs: [        'docs/', {
             scripts:   'docs/js/',
             styles:    'docs/sass/'
         }],
-        test:[         'test/', {
+        test: [        'test/', {
             scripts:   'test/js/',
             styles:    'test/sass/'
         }]
