@@ -28,7 +28,8 @@
     "Sass-Boost": "^1.1.0",
     "Synergy": "^3.6.1",
     "flickity": "^2.0.8",
-    "normalize-scss": "^7.0.0"
+    "normalize-scss": "^7.0.0",
+    "sizzle": "^2.3.3"
   },
   "devDependencies": {
     "assemble-handlebars": "^0.3.0",

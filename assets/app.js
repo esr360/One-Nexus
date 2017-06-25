@@ -11,8 +11,9 @@ import * as app from './app';
 import Synergy from '../../../Synergy/src/js/synergy';
 //import Synergy  from 'synergy';
 import Flickity from 'flickity';
+import Sizzle from 'sizzle'; const $ = Sizzle;
 
-export { Synergy, Flickity }
+export { Synergy, Flickity, $ }
 
 // Modules
 //*****************************************************************
