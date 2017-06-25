@@ -1,5 +1,6 @@
 import * as app from '../../../app';
 import defaults from './accordions.json';
+
 /**
  * Accordion
  * 
@@ -7,7 +8,6 @@ import defaults from './accordions.json';
  * 
  * @param {(String|Object)} els
  * @param {Object} custom
- * @param {Object} exports
  */
 export function accordion(els = 'accordion', custom) {
 
@@ -58,10 +58,9 @@ export function accordion(els = 'accordion', custom) {
  * @param {String} activeClass
  */
 function toggleAccordion(type, parent, target, activeClass) {
-    let section, operator;
+    let section;
 
-    if (type === 'open' ) { operator = 'add' }
-    if (type === 'close') { operator = 'remove' }
+    const operator = (type === 'open') ? 'add' : ((type === 'close') ? 'remove' : '');
 
     if (typeof target === 'string') {
         section = parent.querySelectorAll(target);
