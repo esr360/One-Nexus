@@ -1,0 +1,8 @@
+{
+    "site-overlay": {
+		"name": "site-overlay",
+        "background": "rgba(black, 0.4)",
+        "z-index": 11,
+        "transition": "core('transition')"
+    }
+}
