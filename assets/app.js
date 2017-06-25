@@ -18,11 +18,13 @@ export { Synergy, Flickity, $ }
 // Modules
 //*****************************************************************
 
-import { accordion } from './modules/elements/accordions/accordions';
-import { carousel  } from './modules/elements/carousels/carousels';
-import { modal     } from './modules/elements/modals/modals';
+import { accordion   } from './modules/elements/accordions/accordions';
+import { carousel    } from './modules/elements/carousels/carousels';
+import { modal       } from './modules/elements/modals/modals';
 
-export { accordion, carousel, modal }
+import { siteOverlay } from './modules/objects/site-overlay/site-overlay';
+
+export { accordion, carousel, modal, siteOverlay }
 
 // Config
 //*****************************************************************
