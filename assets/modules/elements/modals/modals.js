@@ -1,5 +1,6 @@
 import * as app from '../../../app';
 import defaults from './modals.json';
+
 /**
  * Modal
  * 
@@ -7,7 +8,6 @@ import defaults from './modals.json';
  * 
  * @param {(String|Object)} els
  * @param {Object} custom
- * @param {Object} exports
  */
 export function modal(els = 'modal', custom) {
 
@@ -15,26 +15,35 @@ export function modal(els = 'modal', custom) {
 
     app.Synergy(els, function(el, options) {
 
-        const trigger = document.querySelector(`[data-modal-target="${el.id}"]`) || document.querySelector(`[href="#${el.id}"`);
+        const triggers = document.querySelectorAll(`[data-modal-target="${el.id}"], [href="#${el.id}"]`);
+        const animate  = (el.modifier('animate')) ? true : false;
 
-        trigger.addEventListener('click', function(e) {
-            e.preventDefault();
-
-            const closeTriggers = document.querySelectorAll(`${options.overlaySelector}, .modal_close`);
-
-            toggleModal('show', el, options);
-
-            Array.prototype.forEach.call(closeTriggers, function(trigger) {
-                trigger.addEventListener('click', function() {
-                    toggleModal('hide', el, options);
-                });
-            });
-        }, false);
-
-        exports.open = function(target) {
+        if (!animate && options['dafault-animation']) {
+            el.modifier(`animate-${options['dafault-animation']}`, true);
         }
 
-        exports.close = function(target) {
+        Array.prototype.forEach.call(triggers, function(trigger) {
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const closeTriggers = document.querySelectorAll(`${options.overlaySelector}, .modal_close`);
+
+                toggleModal('show', el, options);
+
+                Array.prototype.forEach.call(closeTriggers, function(trigger) {
+                    trigger.addEventListener('click', function() {
+                        toggleModal('hide', el, options);
+                    });
+                });
+            }, false);
+        });
+
+        exports.show = function() {
+            toggleModal('show', el, options);
+        }
+
+        exports.hide = function() {
+            toggleModal('hide', el, options);
         }
 
     }, defaults, custom);
@@ -45,19 +54,18 @@ export function modal(els = 'modal', custom) {
 };
 
 /**
- * toggleModal
+ * Show/Hide a Modal
  * 
  * @access private
  * 
- * @param {('open'|'close')} type
+ * @param {('show'|'hide')} type
  * @param {(String|Object)} target
- * @param {String} activeClass
+ * @param {Object} options
  */
 function toggleModal(type, target, options) {
-    let modal, operator;
+    let modal;
 
-    if (type === 'show') { operator = 'add' }
-    if (type === 'hide') { operator = 'remove' }
+    const operator = (type === 'show') ? 'add' : ((type === 'hide') ? 'remove' : '');
 
     if (typeof target === 'string') {
         modal = document.querySelector(target) || document.getElementById(target);
@@ -66,16 +74,21 @@ function toggleModal(type, target, options) {
     }
 
     if (type === 'show') {
-        // close any pre-exisintg visible modals
+        app.Synergy('modal', function(el) {
+            app.modal(el).hide();
+        });
     }
 
     modal.classList[operator]('modal-visible');
 
     if (options.overlay) {
-        //app.siteOverlay(type, 'dialog');
+        app.siteOverlay(document.querySelectorAll(options.overlaySelector))[type]('dialog');
     }
 }
 
+/**
+ * Build modal elements from data-attributes
+ */
 Array.prototype.forEach.call(document.querySelectorAll('[data-modal-content]'), function(el, index) {
 
     const id = (el.href) ? (el.href.substr(el.href.lastIndexOf('/') + 1).replace(/^#/, '')) : `_modal_${index}`;
@@ -92,66 +105,4 @@ Array.prototype.forEach.call(document.querySelectorAll('[data-modal-content]'), 
     el.setAttribute('data-modal-target', id);
 
     document.body.insertAdjacentHTML('beforeend', template);
-
 });
-
-
-////////
-
-
-(function ($) {
-
-    $.fn.modalx = function(custom) {
-        
-        // Options
-        var options = $.extend({
-            overlay         : true,
-            overlaySelector : '#site-overlay',
-            animate         : 'left'
-        }, custom);
-            
-        var animateStyle = options.animate;
-        
-        function openModal(el) {
-            // close any pre-exisintg visible modals
-            $('.modal').removeClass('modal-visible');
-            // show the target modal
-            el.addClass('modal-visible');
-            if (options.overlay) {
-                $(options.overlaySelector).siteOverlay('show', 'dialog');
-            }
-        }
-        
-        function closeModal(el) {
-            el.removeClass('modal-visible');
-            if (options.overlay) {
-                $(options.overlaySelector).siteOverlay('hide', 'dialog');
-            }
-        }
-        
-        return this.each(function() {
-            
-            var el = $(this);
-            var id = el.attr('id');
-            
-            if (el.is('[class*="-animate"]')) {
-                var $animate = true;
-            }
-            
-            if (!$animate) {
-                el.addClass('modal-animate-' + animateStyle);
-            }
-            
-            $('[data-modal="' + id + '"], [href*="' + id + '"]').click(function(e) {
-                openModal(el);
-                e.preventDefault();
-                $(options.overlaySelector + ', .modal_close').click(function() {
-                    closeModal(el);
-                });
-            });
-            
-        });
-            
-    } // modal()
-
-}(jQuery));
