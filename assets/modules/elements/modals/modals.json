@@ -7,20 +7,13 @@
         "radius": 0,
         "z-index": 14,
         "content-padding": "2em",
-
-        "close-icon-size": "font-size('size-5')",
-        "close-icon-color": "color('greyscale', 'grey-3')",
-        "close-icon-hover-color": "color('brand', 'brand-1')",
-        "close-icon-position": "(1rem, 1rem)",
-
         "close-icon": {
             "size": "font-size('size-5')",
             "color": "color('greyscale', 'grey-3')",
             "hover-color": "color('brand', 'brand-1')",
-            "position": "(1rem, 1rem)"
+            "position": ["1rem", "1rem"]
         },
-
         "overlay": true,
-        "overlaySelector": "#site-overlay"
+        "overlayClickToClose": true
     }
 }

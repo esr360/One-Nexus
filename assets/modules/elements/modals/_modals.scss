@@ -1,4 +1,5 @@
-/// Buttons
+@import '../../modules/elements/modals/modals.json';
+/// Modals
 ///
 /// @author [@esr360](http://twitter.com/esr360)
 /// @access public
@@ -8,19 +9,7 @@
 @mixin modals($custom: ()) {
 
     // Configuration
-    $modals: config((
-        'name'                   : 'modal',
-        'dafault-animation'      : left,
-        'background'             : color('greyscale', 'grey-1'),
-        'text-color'             : core('text-color'),
-        'radius'                 : 0,
-        'z-index'                : 14,
-        'content-padding'        : 2em,
-        'close-icon-size'        : font-size('size-5'),
-        'close-icon-color'       : color('greyscale', 'grey-3'),
-        'close-icon-hover-color' : color('brand', 'brand-1'),
-        'close-icon-position'    : (1rem, 1rem)
-    ), $custom);
+    $modals: config($modals, $custom);
 
     //*************************************************************
     // Module
@@ -110,13 +99,13 @@
         @include component('close') {
             position: absolute;
             cursor: pointer;
-            top: nth(this('close-icon-position'), 1);
-            right: nth(this('close-icon-position'), 2);
             transition: core('transition');
-            color: this('close-icon-color');
-            font-size: this('close-icon-size');
+            top: nth(this('close-icon', 'position'), 1);
+            right: nth(this('close-icon', 'position'), 2);
+            color: this('close-icon', 'color');
+            font-size: this('close-icon', 'size');
             &:hover {
-                color: this('close-icon-hover-color');
+                color: this('close-icon', 'hover-color');
             }	
         }
 

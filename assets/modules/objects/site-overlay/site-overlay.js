@@ -14,13 +14,14 @@ export function siteOverlay(els = 'site-overlay', flag, custom) {
     custom = app.custom('site-overlay', custom);
 
     app.Synergy(els, function(el, options) {
-        /*
-        if (el.modifier('visible')) {
-            toggleOverlay('hide', flag, options);
-        } else {
-            toggleOverlay('show', flag, options);
+
+        exports.toggle = function(flag = flag) {
+            if (el.modifier('visible')) {
+                toggleOverlay('hide', flag, options);
+            } else {
+                toggleOverlay('show', flag, options);
+            }
         }
-        */
 
         exports.show = function(flag = flag) {
             toggleOverlay('show', flag, options);
@@ -33,6 +34,7 @@ export function siteOverlay(els = 'site-overlay', flag, custom) {
         el.addEventListener('click', function() {
             app.siteOverlay(el).hide();
         });
+
     }, defaults, custom);
 
     app.config['site-overlay'] = Object.assign(defaults['site-overlay'], custom);
@@ -54,5 +56,5 @@ function toggleOverlay(type, flag, options) {
 
     flag = (flag) ? flag + '-' : '';
 
-    app.Synergy('site-overlay').query[0].classList[operator]('site-overlay-' + flag + 'visible');
+    app.Synergy('site-overlay').query[0].classList[operator](`site-overlay-${flag}visible`);
 }

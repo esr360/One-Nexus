@@ -14,29 +14,52 @@ export function modal(els = 'modal', custom) {
     custom = app.custom('modals', custom);
 
     app.Synergy(els, function(el, options) {
+        const modal = options.name;
 
-        const triggers = document.querySelectorAll(`[data-modal-target="${el.id}"], [href="#${el.id}"]`);
-        const animate  = (el.modifier('animate')) ? true : false;
+        // Create any dynamic modals then re-run the function
+        if (!(app.config.modals && 'initialised' in app.config.modals)) {
+            (app.config.modals) ? app.config.modals.initialised = true : app.config.modals = { initialised: true }
 
-        if (!animate && options['dafault-animation']) {
-            el.modifier(`animate-${options['dafault-animation']}`, true);
+            initModals(document.querySelectorAll('[data-modal-content]'), modal);
+
+            app.modal(els);
         }
 
-        Array.prototype.forEach.call(triggers, function(trigger) {
+        const triggers = document.querySelectorAll(`[data-modal-target="${el.id}"], [href="#${el.id}"]`);
+
+        if (!el.modifier('animate') && options['dafault-animation']) {
+            el.modifier(`animate-${options['dafault-animation']}`, 'set');
+        }
+
+        triggers.forEach(function(trigger) {
             trigger.addEventListener('click', function(e) {
                 e.preventDefault();
 
-                const closeTriggers = document.querySelectorAll(`${options.overlaySelector}, .modal_close`);
+                if (options.overlayClickToClose) {
+                    app.Synergy(['site-overlay', modal]).query[0].component('close', 'set');
+                }
+
+                let closeTriggers = app.Synergy(modal).component('close');
 
                 toggleModal('show', el, options);
 
-                Array.prototype.forEach.call(closeTriggers, function(trigger) {
+                closeTriggers.forEach(function(trigger) {
                     trigger.addEventListener('click', function() {
+                        app.Synergy(['site-overlay', modal]).query[0].component('close', 'unset');
+
                         toggleModal('hide', el, options);
                     });
                 });
             }, false);
         });
+
+        exports.toggle = function() {
+            if (el.modifier('visible')) {
+                toggleModal('hide', el, options);
+            } else {
+                toggleModal('show', el, options);
+            }
+        }
 
         exports.show = function() {
             toggleModal('show', el, options);
@@ -48,7 +71,7 @@ export function modal(els = 'modal', custom) {
 
     }, defaults, custom);
 
-    app.config.modals = Object.assign(defaults.modals, custom);
+    app.config.modals = Object.assign(app.config.modals, defaults.modals, custom);
 
     return exports;
 };
@@ -59,18 +82,14 @@ export function modal(els = 'modal', custom) {
  * @access private
  * 
  * @param {('show'|'hide')} type
- * @param {(String|Object)} target
+ * @param {(String|HTMLElement)} target
  * @param {Object} options
  */
 function toggleModal(type, target, options) {
-    let modal;
-
     const operator = (type === 'show') ? 'add' : ((type === 'hide') ? 'remove' : '');
 
     if (typeof target === 'string') {
-        modal = document.querySelector(target) || document.getElementById(target);
-    } else if (target instanceof HTMLElement) {
-        modal = target;
+        target = document.querySelector(target) || document.getElementById(target);
     }
 
     if (type === 'show') {
@@ -79,30 +98,35 @@ function toggleModal(type, target, options) {
         });
     }
 
-    modal.classList[operator]('modal-visible');
+    app.Synergy(target).modifier('visible', operator)
 
     if (options.overlay) {
-        app.siteOverlay(document.querySelectorAll(options.overlaySelector))[type]('dialog');
+        app.siteOverlay()[type]('dialog');
     }
 }
 
 /**
- * Build modal elements from data-attributes
+ * Initialise Modals from Data-Attributes
+ * 
+ * @access private
+ * 
+ * @param {Object} els
  */
-Array.prototype.forEach.call(document.querySelectorAll('[data-modal-content]'), function(el, index) {
+function initModals(els, namespace) {
+    els.forEach(function(el, index) {
+        const id = (el.href) ? (el.href.substr(el.href.lastIndexOf('/') + 1).replace(/^#/, '')) : `_modal_${index}`;
+        const style = (el.getAttribute('data-modal-style')) ? `-animate-${el.getAttribute('data-modal-style')}` : '';
+        const content = el.getAttribute('data-modal-content');
 
-    const id = (el.href) ? (el.href.substr(el.href.lastIndexOf('/') + 1).replace(/^#/, '')) : `_modal_${index}`;
-    const style = (el.getAttribute('data-modal-style')) ? `-animate-${el.getAttribute('data-modal-style')}` : '';
-    const content = el.getAttribute('data-modal-content');
+        const template = [`
+            <div class="${namespace}${style}" id="${id}">
+                <div class="${namespace}_close"><i class="fa fa-times"></i></div>
+                <div class="${namespace}_content">${content}</div>
+            </div>
+        `];
 
-    const template = [`
-        <div class="modal${style}" id="${id}">
-            <div class="modal_close"><i class="fa fa-times"></i></div>
-            <div class="modal_content">${content}</div>
-        </div>
-    `];
+        el.setAttribute('data-modal-target', id);
 
-    el.setAttribute('data-modal-target', id);
-
-    document.body.insertAdjacentHTML('beforeend', template);
-});
+        document.body.insertAdjacentHTML('beforeend', template);
+    });
+}

@@ -93,7 +93,6 @@
             transition: core('transition');
             // open/close icon
             &:after {
-                @debug $config;
                 font-family: FontAwesome;
                 float: right;
                 line-height: 0.75;

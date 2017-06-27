@@ -16,4 +16,6 @@ app.carousel();
 
 app.modal();
 
+app.siteOverlay();
+
 //$('.modal, [class*="modal-"]').modal();
