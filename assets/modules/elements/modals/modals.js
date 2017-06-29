@@ -54,8 +54,8 @@ export function modal(els = 'modal', custom) {
             }, false);
         });
 
-        exports.toggle = () => {
-            if (el.modifier('visible')) {
+        exports.toggle = (operator) => {
+            if (el.modifier('visible') || operator === 'hide') {
                 toggleModal('hide', el, options, overlay());
             } else {
                 toggleModal('show', el, options, overlay());
