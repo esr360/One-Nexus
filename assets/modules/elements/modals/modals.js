@@ -13,8 +13,9 @@ export function modal(els = 'modal', custom) {
 
     custom = app.custom('modals', custom);
 
-    app.Synergy(els, function(el, options) {
-        const modal = options.name;
+    app.Synergy(els, (el, options) => {
+        const modal   = options.name;
+        const overlay = () => app.Synergy(options.overlay.module).query[0];
 
         // Create any dynamic modals then re-run the function
         if (!(app.config.modals && 'initialised' in app.config.modals)) {
@@ -31,43 +32,39 @@ export function modal(els = 'modal', custom) {
             el.modifier(`animate-${options['dafault-animation']}`, 'set');
         }
 
-        triggers.forEach(function(trigger) {
-            trigger.addEventListener('click', function(e) {
-                e.preventDefault();
+        triggers.forEach(trigger => {
+            trigger.addEventListener('click', event => {
+                event.preventDefault();
 
-                if (options.overlayClickToClose) {
-                    app.Synergy(['site-overlay', modal]).query[0].component('close', 'set');
+                if (options.overlay.clickToClose) {
+                    app.Synergy([overlay(), modal]).query.component('close', 'set');
                 }
 
                 let closeTriggers = app.Synergy(modal).component('close');
 
-                toggleModal('show', el, options);
+                toggleModal('show', el, options, overlay());
 
-                closeTriggers.forEach(function(trigger) {
-                    trigger.addEventListener('click', function() {
-                        app.Synergy(['site-overlay', modal]).query[0].component('close', 'unset');
+                closeTriggers.forEach(trigger => {
+                    trigger.addEventListener('click', () => {
+                        app.Synergy([overlay(), modal]).query.component('close', 'unset');
 
-                        toggleModal('hide', el, options);
+                        toggleModal('hide', el, options, overlay());
                     });
                 });
             }, false);
         });
 
-        exports.toggle = function() {
+        exports.toggle = () => {
             if (el.modifier('visible')) {
-                toggleModal('hide', el, options);
+                toggleModal('hide', el, options, overlay());
             } else {
-                toggleModal('show', el, options);
+                toggleModal('show', el, options, overlay());
             }
         }
 
-        exports.show = function() {
-            toggleModal('show', el, options);
-        }
+        exports.show = () => toggleModal('show', el, options, overlay());
 
-        exports.hide = function() {
-            toggleModal('hide', el, options);
-        }
+        exports.hide = () => toggleModal('hide', el, options, overlay());
 
     }, defaults, custom);
 
@@ -84,8 +81,9 @@ export function modal(els = 'modal', custom) {
  * @param {('show'|'hide')} type
  * @param {(String|HTMLElement)} target
  * @param {Object} options
+ * @param {HTMLElement} overlay
  */
-function toggleModal(type, target, options) {
+function toggleModal(type, target, options, overlay) {
     const operator = (type === 'show') ? 'add' : ((type === 'hide') ? 'remove' : '');
 
     if (typeof target === 'string') {
@@ -93,15 +91,13 @@ function toggleModal(type, target, options) {
     }
 
     if (type === 'show') {
-        app.Synergy('modal', function(el) {
-            app.modal(el).hide();
-        });
+        app.Synergy(options.name, el => app.modal(el).hide());
     }
 
-    app.Synergy(target).modifier('visible', operator)
+    app.Synergy(target).modifier('visible', operator);
 
-    if (options.overlay) {
-        app.siteOverlay()[type]('dialog');
+    if (options.overlay.enabled) {
+        app.siteOverlay(overlay)[type]('dialog');
     }
 }
 
@@ -111,13 +107,14 @@ function toggleModal(type, target, options) {
  * @access private
  * 
  * @param {Object} els
+ * @param {String} namespace
  */
 function initModals(els, namespace) {
-    els.forEach(function(el, index) {
+    els.forEach((el, index) => {
         const id = (el.href) ? (el.href.substr(el.href.lastIndexOf('/') + 1).replace(/^#/, '')) : `_modal_${index}`;
         const style = (el.getAttribute('data-modal-style')) ? `-animate-${el.getAttribute('data-modal-style')}` : '';
         const content = el.getAttribute('data-modal-content');
-
+        
         const template = [`
             <div class="${namespace}${style}" id="${id}">
                 <div class="${namespace}_close"><i class="fa fa-times"></i></div>

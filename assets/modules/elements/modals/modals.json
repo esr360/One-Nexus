@@ -13,7 +13,10 @@
             "hover-color": "color('brand', 'brand-1')",
             "position": ["1rem", "1rem"]
         },
-        "overlay": true,
-        "overlayClickToClose": true
+        "overlay": {
+            "module": "site-overlay",
+            "enabled": true,
+            "clickToClose": true
+        }
     }
 }

@@ -13,25 +13,25 @@ export function siteOverlay(els = 'site-overlay', flag, custom) {
 
     custom = app.custom('site-overlay', custom);
 
-    app.Synergy(els, function(el, options) {
+    app.Synergy(els, (el, options) => {
 
-        exports.toggle = function(flag = flag) {
+        exports.toggle = (flag = flag, target = el) => {
             if (el.modifier('visible')) {
-                toggleOverlay('hide', flag, options);
+                toggleOverlay('hide', target, flag, options);
             } else {
-                toggleOverlay('show', flag, options);
+                toggleOverlay('show', target, flag, options);
             }
         }
 
-        exports.show = function(flag = flag) {
-            toggleOverlay('show', flag, options);
+        exports.show = (flag = flag, target = el) => {
+            toggleOverlay('show', target, flag, options);
         }
 
-        exports.hide = function(flag = flag) {
-            toggleOverlay('hide', flag, options);
+        exports.hide = (flag = flag, target = el) => {
+            toggleOverlay('hide', target, flag, options);
         }
 
-        el.addEventListener('click', function() {
+        el.addEventListener('click', () => {
             app.siteOverlay(el).hide();
         });
 
@@ -51,10 +51,10 @@ export function siteOverlay(els = 'site-overlay', flag, custom) {
  * @param {String} flag
  * @param {Object} options
  */
-function toggleOverlay(type, flag, options) {
+function toggleOverlay(type, target, flag, options) {
     const operator = (type === 'show') ? 'add' : ((type === 'hide') ? 'remove' : '');
 
     flag = (flag) ? flag + '-' : '';
 
-    app.Synergy('site-overlay').query[0].classList[operator](`site-overlay-${flag}visible`);
+    app.Synergy(target).query.modifier(`${flag}visible`, operator);
 }

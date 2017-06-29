@@ -13,31 +13,27 @@ export function accordion(els = 'accordion', custom) {
 
     custom = app.custom('accordions', custom);
 
-    app.Synergy(els, function(el, options) {
+    app.Synergy(els, (el, options) => {
 
         if (!el.getAttribute('data-initialised')) {
-            Array.prototype.forEach.call(el.children, function(section, index) {
+            Array.prototype.forEach.call(el.children, (section, index) => {
                 if (section.classList.contains(options.activeClass)) {
                     section.component('content')[0].classList.add(options.activeClass);
                 }
 
-                section.component('title')[0].addEventListener('click', function() {
+                section.component('title')[0].addEventListener('click', () => {
                     clickHandler(el, section, options);
                 }, false);
             });
             el.setAttribute('data-initialised', true);
         }
 
-        exports.open = function(target) {
-            app.Synergy(els, function(el) {
-                toggleAccordion('open', el, target, options.activeClass);
-            });
+        exports.open = target => {
+            app.Synergy(els, el => toggleAccordion('open', el, target, options.activeClass));
         }
 
-        exports.close = function(target) {
-            app.Synergy(els, function(el) {
-                toggleAccordion('close', el, target, options.activeClass);
-            });
+        exports.close = target => {
+            app.Synergy(els, el => toggleAccordion('close', el, target, options.activeClass));
         }
 
     }, defaults, custom);
@@ -71,9 +67,7 @@ function toggleAccordion(type, parent, target, activeClass) {
     }
 
     if (section instanceof NodeList) {
-        Array.prototype.forEach.call(section, function(el) {
-            toggleActiveClass(el);
-        });
+        Array.prototype.forEach.call(section, el => toggleActiveClass(el));
     } else {
         toggleActiveClass(section);
     }
@@ -98,7 +92,7 @@ function clickHandler(accordion, section, options) {
 
     if (!accordion.modifier(options.keepOpenModifier)) {
         Array.prototype.forEach.call(
-            accordion.component('section'), function(section, index) {
+            accordion.component('section'), (section, index) => {
                 toggleAccordion('close', accordion, section, options.activeClass);
             }
         );
