@@ -42,33 +42,29 @@ export function modal(els = 'modal', custom) {
 
                 let closeTriggers = app.Synergy(modal).component('close');
 
-                toggleModal('show', el, options, overlay());
+                toggleModal('show', els, el, options, overlay());
 
                 closeTriggers.forEach(trigger => {
                     trigger.addEventListener('click', () => {
                         app.Synergy([overlay(), modal]).query.component('close', 'unset');
 
-                        toggleModal('hide', el, options, overlay());
+                        toggleModal('hide', els, el, options, overlay());
                     });
                 });
             }, false);
         });
 
-        exports.toggle = (operator) => {
-            if (el.modifier('visible') || operator === 'hide') {
-                toggleModal('hide', el, options, overlay());
-            } else {
-                toggleModal('show', el, options, overlay());
-            }
-        }
+        exports.toggle = operator => toggleModal(
+            (el.modifier('visible') || operator === 'hide') ? 'hide' : 'show', els, el, options, overlay()
+        );
 
-        exports.show = () => toggleModal('show', el, options, overlay());
+        exports.show = () => toggleModal('show', els, el, options, overlay());
 
-        exports.hide = () => toggleModal('hide', el, options, overlay());
+        exports.hide = () => toggleModal('hide', els, el, options, overlay());
 
     }, defaults, custom);
 
-    app.config.modals = Object.assign(app.config.modals, defaults.modals, custom);
+    app.config.modals = Object.assign((app.config.modals) ? (app.config.modals) : '', defaults.modals, custom);
 
     return exports;
 };
@@ -78,20 +74,17 @@ export function modal(els = 'modal', custom) {
  * 
  * @access private
  * 
- * @param {('show'|'hide')} type
- * @param {(String|HTMLElement)} target
- * @param {Object} options
- * @param {HTMLElement} overlay
+ * @param {('show'|'hide')} [type] - the type of toggle to activate
+ * @param {(String|HTMLElement|NodeList)} [all] - a Synergy selector to match all modals
+ * @param {(String|HTMLElement)} [target] - a Synergy selector to match the modal of interest
+ * @param {Object} [options] - the module options to use when running the function
+ * @param {HTMLElement} [overlay] - the HTML element acting as the page overlay
  */
-function toggleModal(type, target, options, overlay) {
+function toggleModal(type, all, target, options, overlay) {
     const operator = (type === 'show') ? 'add' : ((type === 'hide') ? 'remove' : '');
 
-    if (typeof target === 'string') {
-        target = document.querySelector(target) || document.getElementById(target);
-    }
-
-    if (type === 'show') {
-        app.Synergy(options.name, el => app.modal(el).hide());
+    if (type === 'show' && document.querySelector(all) !== target) {
+        app.Synergy(all, el => app.modal(el).hide());
     }
 
     app.Synergy(target).modifier('visible', operator);
@@ -106,8 +99,8 @@ function toggleModal(type, target, options, overlay) {
  * 
  * @access private
  * 
- * @param {Object} els
- * @param {String} namespace
+ * @param {NodeList} [els] - elements to initialise as modals
+ * @param {String} [namespace = 'modal'] - name of modal module
  */
 function initModals(els, namespace) {
     els.forEach((el, index) => {
