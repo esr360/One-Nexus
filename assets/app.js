@@ -41,6 +41,10 @@ export function custom(module, custom) {
 // Tools
 //*****************************************************************
 
+import { isValidSelector } from './tools/js/isValidSelector';
+
+export { isValidSelector };
+
 Element.prototype.component = function(component, set) {
     return app.Synergy(this).component(component, set, this);
 };

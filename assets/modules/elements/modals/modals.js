@@ -83,7 +83,7 @@ export function modal(els = 'modal', custom) {
 function toggleModal(type, all, target, options, overlay) {
     const operator = (type === 'show') ? 'add' : ((type === 'hide') ? 'remove' : '');
 
-    if (type === 'show' && document.querySelector(all) !== target) {
+    if (type === 'show' && app.isValidSelector(all) && document.querySelector(all) !== target) {
         app.Synergy(all, el => app.modal(el).hide());
     }
 
