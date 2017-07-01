@@ -64,7 +64,9 @@ export function modal(els = 'modal', custom) {
 
     }, defaults, custom);
 
-    app.config.modals = Object.assign((app.config.modals) ? (app.config.modals) : '', defaults.modals, custom);
+    app.config.modals = Object.assign(
+        (app.config.modals) ? app.config.modals : '', defaults.modals, custom
+    );
 
     return exports;
 };
@@ -74,24 +76,27 @@ export function modal(els = 'modal', custom) {
  * 
  * @access private
  * 
- * @param {('show'|'hide')} [type] - the type of toggle to activate
- * @param {(String|HTMLElement|NodeList)} [all] - a Synergy selector to match all modals
- * @param {(String|HTMLElement)} [target] - a Synergy selector to match the modal of interest
- * @param {Object} [options] - the module options to use when running the function
+ * @param {('show'|'hide')} type - the type of toggle to activate
+ * @param {(String|HTMLElement|NodeList)} all - a Synergy selector to match all modals
+ * @param {(String|HTMLElement)} target - a Synergy selector to match the modal of interest
+ * @param {Object} options - the module options to use when running the function
  * @param {HTMLElement} [overlay] - the HTML element acting as the page overlay
  */
 function toggleModal(type, all, target, options, overlay) {
     const operator = (type === 'show') ? 'add' : ((type === 'hide') ? 'remove' : '');
 
+    // close any other currently openened modals
     if (type === 'show' && app.isValidSelector(all) && document.querySelector(all) !== target) {
         app.Synergy(all, el => app.modal(el).hide());
     }
 
-    app.Synergy(target).modifier('visible', operator);
-
+    // toggle the page overlay
     if (options.overlay.enabled) {
         app.siteOverlay(overlay)[type]('dialog');
     }
+
+    // toggle the target modal
+    app.Synergy(target).modifier('visible', operator);
 }
 
 /**
@@ -99,8 +104,8 @@ function toggleModal(type, all, target, options, overlay) {
  * 
  * @access private
  * 
- * @param {NodeList} [els] - elements to initialise as modals
- * @param {String} [namespace = 'modal'] - name of modal module
+ * @param {NodeList} els - elements to initialise as modals
+ * @param {String} namespace - name of modal module
  */
 function initModals(els, namespace) {
     els.forEach((el, index) => {

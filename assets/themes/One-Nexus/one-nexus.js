@@ -12,9 +12,13 @@ app.theme = config.app;
 
 app.accordion();
 
+app.accordion(document.getElementById('foo')).close(1);
+
 app.carousel();
 
 app.modal();
+
+app.progressBar();
 
 app.siteOverlay();
 

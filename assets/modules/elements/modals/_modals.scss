@@ -6,7 +6,7 @@
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin modals($custom: ()) {
+@mixin modals($custom: custom('modals')) {
 
     // Configuration
     $modals: config($modals, $custom);

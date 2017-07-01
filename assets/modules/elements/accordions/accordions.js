@@ -6,7 +6,7 @@ import defaults from './accordions.json';
  * 
  * @access public
  * 
- * @param {(String|Object)} els
+ * @param {(String|HTMLElement|NodeList)} els
  * @param {Object} custom
  */
 export function accordion(els = 'accordion', custom) {
@@ -14,9 +14,14 @@ export function accordion(els = 'accordion', custom) {
     custom = app.custom('accordions', custom);
 
     app.Synergy(els, (el, options) => {
+        const sections = el.component('section');
+
+        animationWrapper(sections);
 
         if (!el.getAttribute('data-initialised')) {
-            Array.prototype.forEach.call(el.children, (section, index) => {
+            //toggleAccordion('close', el, null, options);
+
+            sections.forEach((section, index) => {
                 if (section.classList.contains(options.activeClass)) {
                     section.component('content')[0].classList.add(options.activeClass);
                 }
@@ -29,11 +34,11 @@ export function accordion(els = 'accordion', custom) {
         }
 
         exports.open = target => {
-            app.Synergy(els, el => toggleAccordion('open', el, target, options.activeClass));
+            app.Synergy(els, el => toggleAccordion('open', el, target, options));
         }
 
         exports.close = target => {
-            app.Synergy(els, el => toggleAccordion('close', el, target, options.activeClass));
+            app.Synergy(els, el => toggleAccordion('close', el, target, options));
         }
 
     }, defaults, custom);
@@ -49,14 +54,15 @@ export function accordion(els = 'accordion', custom) {
  * @access private
  * 
  * @param {('open'|'close')} type
- * @param {Object} parent
- * @param {(String|Number|Object)} target
+ * @param {HTMLElement} parent
+ * @param {(String|Number|HTMLElement|NodeList)} target
  * @param {String} activeClass
  */
-function toggleAccordion(type, parent, target, activeClass) {
+function toggleAccordion(type, parent, target, options) {
     let section;
 
     const operator = (type === 'open') ? 'add' : ((type === 'close') ? 'remove' : '');
+    const animate  = (type === 'open') ? 'slideDown' : ((type === 'close') ? 'slideUp' : '');
 
     if (typeof target === 'string') {
         section = parent.querySelectorAll(target);
@@ -64,17 +70,20 @@ function toggleAccordion(type, parent, target, activeClass) {
         section = parent.children[target - 1];
     } else if (target instanceof HTMLElement || target instanceof NodeList) {
         section = target;
+    } else if (!target) {
+        section = parent.component('section');
     }
 
     if (section instanceof NodeList) {
-        Array.prototype.forEach.call(section, el => toggleActiveClass(el));
+        section.forEach(el => toggleActiveClass(el));
     } else {
         toggleActiveClass(section);
     }
 
     function toggleActiveClass(el) {
-        el.classList[operator](activeClass);
-        el.component('content')[0].classList[operator](activeClass);
+        el.classList[operator](options.activeClass);
+        el.component('animationWrapper')[0].classList[operator](options.activeClass);
+        el.component('animationWrapper')[0][animate](options.animationSpeed);
     }
 }
 
@@ -91,16 +100,30 @@ function clickHandler(accordion, section, options) {
     var active = section.classList.contains(options.activeClass);
 
     if (!accordion.modifier(options.keepOpenModifier)) {
-        Array.prototype.forEach.call(
-            accordion.component('section'), (section, index) => {
-                toggleAccordion('close', accordion, section, options.activeClass);
-            }
-        );
+        accordion.component('section').forEach(el => toggleAccordion('close', accordion, el, options));
     }
 
     if (active) {
-        toggleAccordion('close', accordion, section, options.activeClass);
+        toggleAccordion('close', accordion, section, options);
     } else {
-        toggleAccordion('open', accordion, section, options.activeClass);
+        toggleAccordion('open', accordion, section, options);
     }
+}
+/**
+ * animationWrapper
+ * 
+ * @access private
+ * 
+ * @param {NodeList} sections
+ */
+function animationWrapper(sections) {
+    sections.forEach(section => {
+        if (!section.querySelector('.accordion_animationWrapper')) {
+            const wrapper = document.createElement('div');
+
+            wrapper.classList.add('accordion_animationWrapper');
+            section.component('content')[0].before(wrapper);
+            wrapper.append(section.component('content')[0]);
+        }
+    });
 }

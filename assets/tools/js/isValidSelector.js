@@ -8,7 +8,7 @@
 export function isValidSelector(selector) {
     var stub = document.createElement('br');
     
-    try { stub.querySelector(selector) } catch(e) { return false }
+    try { stub.querySelector(selector) } catch(e) { return false; }
 
     return true;
 }

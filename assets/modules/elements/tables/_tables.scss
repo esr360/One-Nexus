@@ -1,28 +1,15 @@
-/// Buttons
+@import '../../modules/elements/tables/tables.json';
+/// Tables
 ///
 /// @author [@esr360](http://twitter.com/esr360)
 /// @access public
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-/// @outputs all button styles
-///
-/// @example
-///     @include buttons((
-///         'round-radius' : 4px,
-///         'weight'       : bold
-///     ));
-@mixin tables($custom: ()) {
+@mixin tables($custom: custom('tables')) {
 
-    //*************************************************************
     // Configuration
-    //*************************************************************
-
-    $tables: config((
-        'name'            : 'table',
-        'cell-padding'    : 0.6em,
-        'small-font-size' : 0.85em
-    ), $custom);
+    $tables: config($tables, $custom);
 
     //*************************************************************
     // Module
