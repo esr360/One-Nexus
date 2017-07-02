@@ -14,14 +14,9 @@ export function accordion(els = 'accordion', custom) {
     custom = app.custom('accordions', custom);
 
     app.Synergy(els, (el, options) => {
-        const sections = el.component('section');
-
-        animationWrapper(sections);
 
         if (!el.getAttribute('data-initialised')) {
-            //toggleAccordion('close', el, null, options);
-
-            sections.forEach((section, index) => {
+            el.component('section').forEach((section, index) => {
                 if (section.classList.contains(options.activeClass)) {
                     section.component('content')[0].classList.add(options.activeClass);
                 }
@@ -82,8 +77,7 @@ function toggleAccordion(type, parent, target, options) {
 
     function toggleActiveClass(el) {
         el.classList[operator](options.activeClass);
-        el.component('animationWrapper')[0].classList[operator](options.activeClass);
-        el.component('animationWrapper')[0][animate](options.animationSpeed);
+        el.component('content')[0].classList[operator](options.activeClass);
     }
 }
 
@@ -108,22 +102,4 @@ function clickHandler(accordion, section, options) {
     } else {
         toggleAccordion('open', accordion, section, options);
     }
-}
-/**
- * animationWrapper
- * 
- * @access private
- * 
- * @param {NodeList} sections
- */
-function animationWrapper(sections) {
-    sections.forEach(section => {
-        if (!section.querySelector('.accordion_animationWrapper')) {
-            const wrapper = document.createElement('div');
-
-            wrapper.classList.add('accordion_animationWrapper');
-            section.component('content')[0].before(wrapper);
-            wrapper.append(section.component('content')[0]);
-        }
-    });
 }

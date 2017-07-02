@@ -28,6 +28,12 @@
             > *:first-child { 
                 cursor: pointer;			
             }
+            > *:last-child { 
+                display: none;	
+                &.active {
+                    display: block;
+                }			
+            }
         }
 
         //*********************************************************
@@ -46,7 +52,8 @@
                     }
                 }
             }
-            &:hover, &.active {
+            &:hover,
+            &.active {
                 @include module {
                     @include component('title') {
                         background: this('title', 'active', 'background');

@@ -8,8 +8,6 @@ import * as app from './app';
 // Vendor
 //*****************************************************************
 
-import 'dom-slider';
-
 import Synergy  from '../../../Synergy/src/js/synergy';
 //import Synergy  from 'synergy';
 import Flickity from 'flickity';
