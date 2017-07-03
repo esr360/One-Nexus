@@ -20,4 +20,8 @@ app.progressBar();
 
 app.siteOverlay();
 
+app.tabs();
+
+//$('.tabs').tabsFoo();
+
 //$('.modal, [class*="modal-"]').modal();

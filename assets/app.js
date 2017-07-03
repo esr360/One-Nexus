@@ -23,11 +23,12 @@ import { accordion   } from './modules/elements/accordions/accordions';
 import { carousel    } from './modules/elements/carousels/carousels';
 import { modal       } from './modules/elements/modals/modals';
 import { progressBar } from './modules/elements/progress-bars/progress-bars';
+import { tabs        } from './modules/elements/tabs/tabs';
 
 // Objects
 import { siteOverlay } from './modules/objects/site-overlay/site-overlay';
 
-export { accordion, carousel, modal, progressBar, siteOverlay }
+export { accordion, carousel, modal, progressBar, tabs, siteOverlay }
 
 // Config
 //*****************************************************************
@@ -52,6 +53,24 @@ Element.prototype.component = function(component, set) {
 
 Element.prototype.modifier = function(modifier, set) {
     return app.Synergy(this).modifier(modifier, set, this);
+};
+
+Element.prototype.parents = function(selector) {
+	var elements = [];
+	var elem = this;
+	var ishaveselector = selector !== undefined;
+ 
+	while ((elem = elem.parentElement) !== null) {
+		if (elem.nodeType !== Node.ELEMENT_NODE) {
+			continue;
+		}
+ 
+		if (!ishaveselector || elem.matches(selector)) {
+			elements.push(elem);
+		}
+	}
+ 
+	return elements;
 };
 
 function breakpoint(media, value) {
