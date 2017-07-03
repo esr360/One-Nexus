@@ -89,7 +89,6 @@ module.exports = function(grunt) {
      */
     var _scripts = [
         project.vendor + 'Synergy/src/js/synergy.js',
-        project.source[0] + 'tools/**/*.js',
         project.source[0] + 'modules/**/*.js',
         project.source[1].themes[1].theme + '<%=theme%>.js'
     ];
@@ -498,6 +497,10 @@ module.exports = function(grunt) {
                     'assemble',
                     'notify:templates'
                 ]
+            },
+            grunt: {
+                files: 'Gruntfile.js',
+                tasks: ['theme:' + theme]
             }
         },
 
