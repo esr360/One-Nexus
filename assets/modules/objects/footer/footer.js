@@ -1,11 +1,10 @@
+/**
+ * KAYZEN
+ * @module: 'footer'
+ * @dependencies: 'twitter-feed', OwlCarousel
+ * @author: @esr360
 (function ($) {
     
-    /**
-     * KAYZEN
-     * @module: 'footer'
-     * @dependencies: 'twitter-feed', OwlCarousel
-     * @author: @esr360
-     */
     $.fn.footer = function(custom) {
         
         // Options
@@ -69,3 +68,4 @@
     }; // footer()
  
 }(jQuery));
+ */

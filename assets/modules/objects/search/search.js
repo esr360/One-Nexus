@@ -1,12 +1,10 @@
+/**
+ * 
+ * KAYZEN
+ * @module: 'search-box'
+ * @author: @esr360
+ * 
 (function ($) {
-    
-    /**
-     * 
-     * KAYZEN
-     * @module: 'search-box'
-     * @author: @esr360
-     * 
-     */
 
     $.fn.searchBox = function(custom) {
         
@@ -39,3 +37,4 @@
     }; // searchBox()
 
 }(jQuery));
+ */

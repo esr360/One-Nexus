@@ -1,10 +1,9 @@
+/**
+ * @module: 'preloader'
+ * @dependencies: Aloads
+ * @author: @esr360
 (function ($) {
     
-    /**
-     * @module: 'preloader'
-     * @dependencies: Aloads
-     * @author: @esr360
-     */
     $.fn.preloader = function(custom) {
         
         // Options
@@ -37,3 +36,4 @@
     }; // preloader()
  
 }(jQuery));
+ */

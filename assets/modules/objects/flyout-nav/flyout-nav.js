@@ -1,11 +1,10 @@
+/**
+ * KAYZEN
+ * @module: 'flyout-nav'
+ * @dependencies: 'side-nav' (, 'site-overlay')
+ * @author: @esr360
 (function ($) {
     
-    /**
-     * KAYZEN
-     * @module: 'flyout-nav'
-     * @dependencies: 'side-nav' (, 'site-overlay')
-     * @author: @esr360
-     */
     $.fn.flyoutNav = function(custom) {
         
         var $module = 'flyout-nav';
@@ -82,3 +81,4 @@
     }; // flyoutNav() 
     
 }(jQuery));
+ */

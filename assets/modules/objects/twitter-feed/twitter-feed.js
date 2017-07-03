@@ -1,11 +1,10 @@
+/**
+ * KAYZEN
+ * @module: 'twitter-feed'
+ * @dependencies: OwlCarousel, TweeCool
+ * @author: @esr360
 (function ($) {
-    
-    /**
-     * KAYZEN
-     * @module: 'twitter-feed'
-     * @dependencies: OwlCarousel, TweeCool
-     * @author: @esr360
-     */
+
     $.fn.twitterFeed = function(custom) {
         
         // Options
@@ -88,3 +87,4 @@
     }; // twitterFeed()
  
 }(jQuery));
+ */

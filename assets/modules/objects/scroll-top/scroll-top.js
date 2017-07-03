@@ -1,12 +1,11 @@
+/**
+ * KAYZEN
+ * Because .scrollTop() is already defined by jQuery, we must
+ * call our plugin something else, i.e. scrollToTop();
+ * @module: 'scroll-top'
+ * @author: @esr360
 (function ($) {
     
-    /**
-     * KAYZEN
-     * Because .scrollTop() is already defined by jQuery, we must
-     * call our plugin something else, i.e. scrollToTop();
-     * @module: 'scroll-top'
-     * @author: @esr360
-     */
     $.fn.scrollToTop = function(custom) {
         
         // Options
@@ -33,3 +32,4 @@
     }; // scrollToTop()
 
 }(jQuery));
+ */

@@ -1,10 +1,9 @@
+/**
+ * KAYZEN
+ * @module: 'billboard'
+ * @author: @esr360
 (function ($) {
  
-    /**
-     * KAYZEN
-     * @module: 'billboard'
-     * @author: @esr360
-     */
     $.fn.billboard = function(custom) {
         
         var $module = 'billboard';
@@ -69,3 +68,4 @@
     }; // billboard()
  
 }(jQuery));
+ */

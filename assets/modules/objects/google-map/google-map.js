@@ -1,10 +1,9 @@
+/**
+ * KAYZEN
+ * @module: 'google-map'
+ * @author: @esr360
 (function ($) {
     
-    /**
-     * KAYZEN
-     * @module: 'google-map'
-     * @author: @esr360
-     */
     $.fn.googleMap = function(custom) {
         
         // Options
@@ -146,3 +145,4 @@
     }; // googleMap()
  
 }(jQuery));
+ */

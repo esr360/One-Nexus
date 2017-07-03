@@ -1,11 +1,10 @@
+/**
+ * KAYZEN
+ * @module: 'appHeader'
+ * @requires: 'navigation', 'side-nav', 'site-overlay'
+ * @author: @esr360
 (function ($) {
     
-    /**
-     * KAYZEN
-     * @module: 'appHeader'
-     * @requires: 'navigation', 'side-nav', 'site-overlay'
-     * @author: @esr360
-     */
     $.fn.header = function(custom) {
     
         var $module = 'appHeader';
@@ -69,3 +68,4 @@
     }; // header()
  
 }(jQuery));
+ */
