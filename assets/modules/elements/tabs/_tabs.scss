@@ -123,9 +123,6 @@
                         background: this('contentBlock-glueColor');
                     }
                 }
-                @include modifier('deep') {
-                    padding: this('contentBlock-deepPadding');
-                }
             }
         }
         

@@ -14,7 +14,7 @@ export function tabs(els = 'tabs', custom) {
     custom = app.custom('tabs', custom);
 
     app.Synergy(els, (el, options) => {
-        // Get individual tabs items
+        // Get individual tab items
         const tabItems = function() {
             // get depth of target tab items as tabs may be nested
             const itemDepth = el.component('item')[0].parents().length;
@@ -24,26 +24,21 @@ export function tabs(els = 'tabs', custom) {
             });
         }
 
-        // Add active class to appropriate nav item
-        // const tabsNav = el.component('nav')[0];
-        /*
-        $(tabsNav).KayzenClickHelper({
-            targetClass : options.activeClass
-        });
-        */
+        // Toggle active class
+        app.clickHelper(el.component('nav')[0], options.activeClass);
 
-        el.component('nav_item').forEach((item, index) => {
+        Array.prototype.forEach.call(el.component('nav')[0].children, (item, index) => {
             item.addEventListener('click', () => {
                 // Hide previously selected item
-                tabItems().forEach(item => item.style.display = 'none');
-                // Show the new item
+                tabItems().forEach(tab => tab.style.display = 'none');
+                // Show new item
                 tabItems()[index].style.display = 'block';
             });
         });
 
     }, defaults, custom);
 
-    app.config.accordions = Object.assign(defaults.tabs, custom);
+    app.config.tabs = Object.assign(defaults.tabs, custom);
 
     return exports;
 };

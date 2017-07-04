@@ -18,8 +18,6 @@
         "contentBlock-padding": "1.5em",
         "contentBlock-glueHeight": "6px",
         "contentBlock-glueColor": "color('brand', 'brand-1')",
-        "contentBlock-deepPadding": "2.5em",
-        "activeClass": "active",
-        "transition": 200
+        "activeClass": "active"
     }
 }
