@@ -1,3 +1,4 @@
+@import '../../modules/objects/header/header.json';
 /// Header
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -12,12 +13,9 @@
 ///         'round-radius' : 4px,
 ///         'weight'       : bold
 ///     ));
-@mixin header($custom: ()) {
+@mixin header($custom: custom('header')) {
 
-    //*************************************************************
     // Configuration
-    //*************************************************************
-
     $header: config((
         'name'             : 'appHeader',
         'output-json'      : true,

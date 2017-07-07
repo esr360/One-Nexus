@@ -1,0 +1,22 @@
+{
+    "billboard": {
+        "name": "billboard",
+        "min-height": "400px",
+        "padding": "6em 0",
+        "color": "color('greyscale', 'white')",
+        "active-color": "color('brand', 'brand-2')",
+        "background": {
+            "color": "color('brand', 'brand-1')",
+            "image": "null"
+        },
+        "fullscreen": {
+            "enabled": "false",
+            "min-height": "700px"
+        },
+        "overlay": {
+            "enabled": "false",
+            "color": "color('brand', 'brand-1')",
+            "opacity": "0.6"
+        }     
+    }
+}

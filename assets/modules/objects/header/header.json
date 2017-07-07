@@ -1,0 +1,25 @@
+{
+    "header": {
+        "name": "appHeader",
+        "background": "core('background')",
+        "height": "85px",
+        "font-size": "1em",
+        "z-index": "5",
+        "bar": "true",
+        "absolute": {
+            "enabled": false,
+            "top-position" : 0
+        },
+        "dark": {
+            "enabled": false,
+            "background": "color('greyscale', 'grey-6')"
+        },
+        "sticky": {
+            "enabled": false,
+            "background": "color('greyscale', 'grey-6')",
+            "height": "70px",
+            "logo-height": "28px",
+            "font-size": "font-size('size-2')"
+        }
+    }
+}
