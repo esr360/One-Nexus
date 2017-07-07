@@ -1,4 +1,5 @@
-/// Buttons
+@import '../../modules/elements/tooltips/tooltips.json';
+/// Tooltips
 ///
 /// @author [@esr360](http://twitter.com/esr360)
 /// @access public
@@ -6,48 +7,13 @@
 /// @see https://github.com/esr360/K-Tooltips
 ///
 /// @param {map} $custom - where custom config will be passed
-/// @outputs all button styles
-///
-/// @example
-///     @include buttons((
-///         'round-radius' : 4px,
-///         'weight'       : bold
-///     ));
-@mixin tooltips($custom: ()) {
+@mixin tooltips($custom: custom('tooltips')) {
 
-    //*************************************************************
     // Configuration
-    //*************************************************************
+    $tooltips: config($tooltips, $custom);
 
-    $tooltips: config((
-        'name'           : 'tooltip',
-        'output-json'    : true,
-        // Size & Appearance
-        'max-width'      : 500px,
-        'padding'        : 0.5em 0.75em,
-        'distance'       : -1em,
-        'background'     : rgba(black, 0.75),
-        'border-radius'  : 0,
-        'arrow-size'     : 0.5em,
-        'arrow-color'    : rgba(black, 0.75),
-        // Typography
-        'font-size'      : font-size('size-2', $rem: true),
-        'font-family'    : typography('typefaces', 'primary'),
-        'color'          : white,
-        'text-transform' : none,
-        'font-weight'    : normal,
-        // Other
-        'transition'     : core('transition'),
-        'z-index'        : 9999
-    ), $custom) !global;
-
-    //*************************************************************
     // Positions
-    //*************************************************************
-
-    $tooltip-positions: (
-        'top', 'bottom', 'left', 'right'
-    );
+    $tooltip-positions: ('top', 'bottom', 'left', 'right');
 
     //*************************************************************
     // Module
@@ -63,12 +29,6 @@
         position: relative;
 
         //*********************************************************
-        // Modifiers
-        //*********************************************************
-
-        @include modifier('light') {}
-
-        //*********************************************************
         // Components
         //*********************************************************
 
@@ -81,7 +41,6 @@
         }
 
         @include component('content') {
-                
             // Size & Appearance
             max-width: this('max-width');
             padding: this('padding');
@@ -145,8 +104,7 @@
                     }
                 }	
             }
-            
-        } // component('content')
+        }
 
         //*********************************************************
         // Custom Content

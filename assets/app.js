@@ -24,11 +24,15 @@ import { carousel    } from './modules/elements/carousels/carousels';
 import { modal       } from './modules/elements/modals/modals';
 import { progressBar } from './modules/elements/progress-bars/progress-bars';
 import { tabs        } from './modules/elements/tabs/tabs';
+import { tooltips    } from './modules/elements/tooltips/tooltips';
 
 // Objects
 import { siteOverlay } from './modules/objects/site-overlay/site-overlay';
 
-export { accordion, carousel, modal, progressBar, tabs, siteOverlay }
+export { 
+    accordion, carousel, modal, progressBar, tabs, tooltips, 
+    siteOverlay 
+}
 
 // Tools
 //*****************************************************************

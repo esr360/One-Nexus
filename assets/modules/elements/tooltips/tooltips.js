@@ -1,30 +1,42 @@
+import * as app from '../../../app';
+import defaults from './tooltips.json';
+
 /**
- * KAYZEN
- * @module: 'tooltip'
- * @author: @esr360
-(function ($) {
-
-    $.fn.tooltip = function(custom) {
-        
-        // Options
-        var options = $.extend({
-            position : 'top'
-        }, custom);
-        
-        return this.each(function() {
-            
-            var $content = $(this).attr('data-tooltip');			
-            var $position = options.position;
-            
-            $(this).attr('ontouchstart', '');
-            
-            $(this).append(
-                $('<div class="tooltip_wrapper-' + $position + '"><div class="tooltip_content">' + $content + '</div></div>')
-            );
-            
-        });
-            
-    } // tooltip
-
-}(jQuery));
+ * Tabs
+ * 
+ * @access public
+ * 
+ * @param {(String|Object)} els
+ * @param {Object} custom
  */
+export function tooltips(els = 'tooltip', custom) {
+
+    custom = app.custom('tooltips', custom);
+
+    app.Synergy(els, (el, options) => {
+        let position = 'top';
+        const content = el.getAttribute('data-tooltip');
+
+        ['top', 'bottom', 'left', 'right'].forEach(pos => {
+            el.modifier().forEach(modifier => {
+                if (modifier === pos) {
+                    position = pos;
+                }
+            });
+        });
+
+        const template = [`
+            <div class="tooltip_wrapper-${position}">
+                <div class="tooltip_content">${content}</div>
+            </div>
+        `];
+
+        el.setAttribute('ontouchstart', '');
+
+        el.insertAdjacentHTML('beforeend', template);
+    }, defaults, custom);
+
+    app.config.tooltips = Object.assign(defaults.tooltips, custom);
+
+    return exports;
+};

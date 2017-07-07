@@ -2,7 +2,7 @@
 
 ##### Components
 
-* nav(-round, -center, -left, -right, -full, -large, _item)
+* nav(-round, -center, -left, -right, -full)
 * content(-block)
 * item
 
@@ -121,6 +121,9 @@ To modify any of the above options, pass them to the `tabs` object in your theme
 {
     "app": {
         "tabs": {
+            "navItem-radius": "12px",
+            "navItem-hover-background": "#f21313",
+            "contentBlock-padding": "8px 12px"
         }
     }
 }
@@ -152,20 +155,66 @@ app.tabs();
 
 ### Examples
 
-#### Creating From Data-Attribute
+#### Tabs With Glued Content
 
 ```html
-<a href="#" data-modal-content="Lorem ipsum dolor sit amet">Click Me</a>
+<div class="tabs">
+    <ul class="tabs_nav">
+        ...
+    </ul>
+    
+    <div class="tabs_content-block-glue">
+        ...
+    </div>
+</div>
 ```
 
-> HTML is allowed inside the `data-modal-content` attribute 
+#### Tabs With Aligned Navigation
+
+##### Left (default)
 
 ```html
-<div data-modal-content="<h1 class='heading'>Title</h1><p>Lorem ipsum dolor sit amet</p>">Click Me</div>
+<ul class="tabs_nav-left">
+    ...
+</ul>
 ```
 
-##### Passing Custom Style
+##### Right
 
 ```html
-<a href="#" data-modal-content="<p>Lorem ipsum dolor sit amet</p>" data-modal-style="zoom">Click Me</a>
+<ul class="tabs_nav-right">
+    ...
+</ul>
+```
+
+##### Center
+
+```html
+<ul class="tabs_nav-center">
+    ...
+</ul>
+```
+
+#### Tabs With Full-Width Navigation
+
+```html
+<ul class="tabs_nav-full">
+    ...
+</ul>
+```
+
+#### Tabs With Pill Navigation
+
+```html
+<div class="tabs">
+    <ul class="tabs_nav-center">
+        <li class="tabs_nav_item active">New Arrivals</li>
+        <li class="tabs_nav_item">Best Sellers</li>
+        <li class="tabs_nav_item">On Offer</li>
+    </ul>
+    
+    <div class="tabs_content object">
+        ...  
+    </div>  
+</div>
 ```

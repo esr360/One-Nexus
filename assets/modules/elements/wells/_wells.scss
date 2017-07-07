@@ -1,39 +1,15 @@
-/// Buttons
+@import '../../modules/elements/wells/wells.json';
+/// Wells
 ///
 /// @author [@esr360](http://twitter.com/esr360)
 /// @access public
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-/// @outputs all button styles
-///
-/// @example
-///     @include buttons((
-///         'round-radius' : 4px,
-///         'weight'       : bold
-///     ));
-@mixin wells($custom: ()) {
+@mixin wells($custom:  custom('wells')) {
 
-    //*************************************************************
     // Configuration
-    //*************************************************************
-
-    $wells: config((
-        'name'             : 'well',
-        'background'       : white,
-        'border'           : 1px solid rgba(black, 0.15),
-        'radius'           : 0.4em,
-        'padding'          : 1em,
-        'color'            : inherit,
-        'dark-background'  : rgba(black, 0.4),
-        'dark-border'      : none,
-        'dark-color'       : white,
-        'deep-padding'     : 2em,
-        'comment-padding'  : 1.5em,
-        'thumb-height'     : 76px,
-        'hover-background' : color('brand', 'brand-1'),
-        'hover-color'      : color('greyscale', 'white')
-    ), $custom);
+    $wells: config($wells, $custom);
 
     //*************************************************************
     // Module
@@ -60,10 +36,6 @@
             background: this('dark-background');
             border: this('dark-border');
             color: this('dark-color');
-        }
-        
-        @include modifier('deep') {
-            padding: this('deep-padding');
         }
 
         //*********************************************************

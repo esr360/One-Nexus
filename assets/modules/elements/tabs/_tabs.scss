@@ -6,7 +6,7 @@
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin tabs($custom: ()) {
+@mixin tabs($custom:  custom('tabs')) {
 
     // Configuration
     $tabs: config($tabs, $custom);
@@ -39,6 +39,23 @@
                         border-top-right-radius: this('navItem-radius');
                     }
                 }
+            }
+            
+            @include modifier('center') {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            @include modifier('left') {
+                margin-right: auto;
+            }
+            
+            @include modifier('right') {
+                margin-left: auto;
+            }
+            
+            @include modifier('full') {
+                width: 100%;
             }
             
             @include component('item') {
@@ -75,28 +92,7 @@
                     }
                 }
             }
-            
-            @include modifier('center') {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            @include modifier('left') {
-                margin-right: auto;
-            }
-            
-            @include modifier('right') {
-                margin-left: auto;
-            }
-            
-            @include modifier('full') {
-                width: 100%;
-            }
-            
-            @include modifier('large') {
-                margin-bottom: (core('margin') * 2);
-            }
-            
+
         } // component(nav)
         
         @include component('content') {
