@@ -1,30 +1,27 @@
-## One-Nexus Alert Bars/Boxes
+## Billboard
 
 ##### Components
 
-* icon
+* wrapper(-wide)
 
 ##### Modifiers
 
-* bar
-* box
-* {color}
+* overlay
+* fullscreen
 
 ##### Quick Look
 
 ```html
-<div class="alert-bar-help">A helpful alert bar.</div>
-
-<p class="alert-bar-info">An informative alert bar.</p>
-
-<div class="alert-bar-success"><p>A successful alert bar.</p></div>
-
-<span class="alert-bar-error">An error alert bar.</span>
+<div class="billboard">
+    <div class="billboard_wrapper">
+        ...
+    </div>
+</div>
 ```
 
 ### Options
 
-For default values view the [`alert-bars.json`](alert-bars.json) file.
+For default values view the [`billboard.json`](billboard.json) file.
 
 <table class="table">
     <thead>
@@ -39,35 +36,65 @@ For default values view the [`alert-bars.json`](alert-bars.json) file.
             <td>The name used when generating the CSS selector</td>
         </tr>
         <tr>
-            <td>colors</td>
-            <td>A Sass map where the key will be used as a modifier and the value will be used as the color</td>
+            <td>min-height</td>
+            <td>The minimum height the billboard should occupy</td>
         </tr>
         <tr>
-            <td>text-color</td>
-            <td>Text color for alert bars</td>
+            <td>padding</td>
+            <td>The padding for the billboard element</td>
         </tr>
         <tr>
-            <td>bar-padding</td>
-            <td>Padding for alert bars</td>
+            <td>color</td>
+            <td>The billboard text color</td>
         </tr>
         <tr>
-            <td>box-padding</td>
-            <td>Padding for alert boxes</td>
+            <td>active-color</td>
+            <td>The color for 'active' text, such as hovered links</td>
+        </tr>
+        <tr>
+            <td>background.color</td>
+            <td>The background color for the billboard</td>
+        </tr>
+        <tr>
+            <td>background.image</td>
+            <td>The billboard background image</td>
+        </tr>
+        <tr>
+            <td>fullscreen.enabled</td>
+            <td>Set to enable fullscreen for all billboards</td>
+        </tr>
+        <tr>
+            <td>fullscreen.min-height</td>
+            <td>The min-height for full-screen billboards</td>
+        </tr>
+        <tr>
+            <td>overlay.enabled</td>
+            <td>Set whether the billboard should have an overlay without any modifiers</td>
+        </tr>
+        <tr>
+            <td>overlay.color</td>
+            <td>Set the overlay color (if applicable)</td>
+        </tr>
+        <tr>
+            <td>overlay.opacity</td>
+            <td>The the overlay opacity (if applicable)</td>
         </tr>
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `alert-bars` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+To modify any of the above options, pass them to the `billboard` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
     "app": {
-        "alert-bars": {
-            "bar-padding": "14px",
-            "colors": {
-                "carrot": "#F97E52",
-                "error" : "#DA4D44",
-                "rose"  : "#D870AD"
+        "billboard": {
+            "min-height": "500px",
+            "background": {
+                "image": "url('../path/to/image.png')"
+            },
+            "overlay": {
+                "enabled": true,
+                "color": "#5C1160"
             }
         }
     }
@@ -76,35 +103,43 @@ To modify any of the above options, pass them to the `alert-bars` object in your
 
 ### Sass
 
-Load the accordion styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `alert-bars()` mixin:
+Load the accordion styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `billboard()` mixin:
 
 ```scss
 @import '../../app';
 @import './config.json';
 
-@include alert-bars();
+@include billboard();
 ```
 
 ### Examples
 
-#### With Icon
+#### Overlay Using Modifier
 
 ```html
-<div class="alert-bar-success"><i class="alert-bar_icon fa fa-times"></i> A successful alert bar.</div>
-<div class="alert-bar-error"><i class="alert-bar_icon fa fa-times"></i> An error alert bar.</div>
+<div class="billboard-overlay">
+    <div class="billboard_wrapper">
+        ...
+    </div>
+</div>
 ```
 
-#### With Right-Aligned Icon
+#### Fullscreen Using Modifier
 
 ```html
-<div class="alert-bar-success"><i class="alert-bar_icon-right fa fa-times"></i> A successful alert bar.</div>
+<div class="billboard-fullscreen">
+    <div class="billboard_wrapper">
+        ...
+    </div>
+</div>
 ```
 
-#### Alert Box
+#### Wide Wrapper
 
 ```html
-<div class="alert-box-info">
-    <h3 class="heading-size-4">This is an Alert Box</h3>
-    <p>...<p>
+<div class="billboard">
+    <div class="billboard_wrapper-wide">
+        ...
+    </div>
 </div>
 ```

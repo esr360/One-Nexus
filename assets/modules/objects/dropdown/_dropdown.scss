@@ -1,38 +1,25 @@
-//=================================================================
-// Dropdown
-//=================================================================
+@import '../../modules/objects/dropdown/dropdown.json';
+/// Dropdown
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group objects
+///
+/// @param {map} $custom - where custom config will be passed
+@mixin dropdown($custom: custom('dropdown')) {
 
-@mixin dropdown($custom: ()) {
-
-    //-------------------------------------------------------------
     // Config
-    //-------------------------------------------------------------
+    $dropdown: config($dropdown, $custom);
 
-    $dropdown: config((
-        'name'                 : 'dropdown',
-        'text-align'           : left,
-        'width'                : 175px,
-        'top-position'         : 0,
-        'dropdown-icon'        : "\f105",
-        'low-level-icon'       : "\f105",
-        'font-size'            : font-size('size-2'),
-        'link-color'           : color('greyscale', 'grey-4'),
-        'link-bg-color'        : color('greyscale', 'grey-1'),
-        'link-padding'         : 0.6rem,
-        'link-hover-color'     : color('greyscale', 'white'),
-        'link-hover-bg-color'  : color('brand', 'brand-1'),
-        'link-active-color'    : option($navigation, 'a-has-child-color'),
-        'link-active-bg-color' : option($navigation, 'a-has-child-color')
-    ), $custom) !global;
-
-    //-------------------------------------------------------------
+    //*************************************************************
     // Module
-    //-------------------------------------------------------------
+    //*************************************************************
 
     @include module('#{option($navigation, 'name')}') {
 
         // parent list
         ul {
+            margin: 0;
             
             // show the dropdown
             li {	
@@ -68,8 +55,7 @@
                         color: this('link-color');
                         padding: this('link-padding');
                         border-top: 1px solid color('greyscale', 'grey-2'); 
-                        &:before, 
-                        &:after {
+                        &:before, &:after {
                             font-family: FontAwesome;		
                         }
                         &:not(:only-child) {
@@ -117,8 +103,8 @@
                     }
             
                     ul {
-                        left: 100%;
                         top: 0;
+                        left: 100%;
                         li {
                             a {
                                 border-left: 1px solid color('greyscale', 'grey-2');

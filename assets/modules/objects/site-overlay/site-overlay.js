@@ -2,7 +2,7 @@ import * as app from '../../../app';
 import defaults from './site-overlay.json';
 
 /**
- * Modal
+ * Page Overlay
  * 
  * @access public
  * 

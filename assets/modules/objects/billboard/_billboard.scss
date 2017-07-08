@@ -51,13 +51,17 @@
         //*********************************************************
 
         @include component('wrapper') {
-            @extend %horizontal-center;
+            @include horizontal-center();
             @include vertical-center(absolute);
+
             @include _module('container');
+
             color: this('color');
+
             @include modifier('wide') {
                 @include _module('container', 'large');
             }
+
             a {
                 color: this('color');
                 border-bottom: 1px dotted;

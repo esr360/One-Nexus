@@ -13,6 +13,17 @@
             "nav-buttons": {
                 "foo": "bar"
             }
+        },
+        "billboard": {
+            "fullscreen": {
+                "enabled": false
+            },
+            "overlay": {
+                "enabled": false
+            }
+        },
+        "navigation": {
+            
         }
     }
 }
