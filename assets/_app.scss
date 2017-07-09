@@ -26,6 +26,7 @@ $asset-path: '../..' !default;
 //*****************************************************************
 
 @import 'tools/scss/background';
+@import 'tools/scss/fetch';
 @import 'tools/scss/fill-parent';
 @import 'tools/scss/font-sizes';
 @import 'tools/scss/horizontal-center';
@@ -72,7 +73,6 @@ $asset-path: '../..' !default;
 
 @import 'modules/objects/billboard/billboard';
 @import 'modules/objects/breadcrumb/breadcrumb';
-@import 'modules/objects/flyout-nav/flyout-nav';
 @import 'modules/objects/footer/footer';
 @import 'modules/objects/google-map/google-map';
 @import 'modules/objects/header/header';

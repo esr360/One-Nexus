@@ -1,0 +1,27 @@
+/// Fetch another module's option value
+///
+/// @access public
+/// @group Tools
+///
+/// @param {list}    $module
+/// @param {string}  $module[0] - the name of the module
+/// @param {map}     $module[1] - default config for the module
+/// @param {arglist} $args      - the options to fetch
+///
+/// @returns {*} desired option value
+@function fetch($module, $args) {
+    $namespace: nth($module, 1);
+    $defaults:  nth($module, 2);
+
+    // First see if the value exists in the global $app
+    @if (variable-exists('app')) {
+        @if map-has-key($app, $namespace) {
+            @if map-get-deep($app, $namespace, $args...) {
+                @return map-get-deep($app, $namespace, $args...);
+            }
+        }
+    }
+
+    // Otherwise fetch the default value
+    @return map-get-deep($defaults, $args...);
+}

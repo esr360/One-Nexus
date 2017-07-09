@@ -1,3 +1,4 @@
+@import '../../modules/objects/footer/footer.json';
 /// Footer
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -5,30 +6,10 @@
 /// @group objects
 ///
 /// @param {map} $custom - where custom config will be passed
-/// @outputs all footer styles
-///
-/// @example
-///     @include footer((
-///         'round-radius' : 4px,
-///         'weight'       : bold
-///     ));
-@mixin footer($custom: ()) {
+@mixin footer($custom: custom('footer')) {
 
-    //*************************************************************
     // Configuration
-    //*************************************************************
-
-    $footer: config((
-        'name'                 : 'footer',
-        'output-json'          : true,
-        'background'           : color('greyscale', 'grey-6'),
-        'wrapper-slug'         : 4em,
-        'wrapper-font-size'    : 0.9em,
-        'wrapper-color'        : color('greyscale', 'grey-3'),
-        'logo-height'          : 34px,
-        'nav-link-color'       : color('greyscale', 'grey-3'),
-        'nav-link-hover-color' : color('greyscale', 'white')
-    ), $custom);
+    $footer: config($footer, $custom);
 
     //*************************************************************
     // Module
@@ -47,7 +28,6 @@
         //*********************************************************
 
         @include component('wrapper') {
-
             @include _module('container');
 
             display: table;
@@ -55,24 +35,11 @@
             padding-bottom: this('wrapper-slug');
             font-size: this('wrapper-font-size');
             color: this('wrapper-color');
-
-            @include modifier('wide') {
-                @include _module('container', 'large');
-            }
-
-            @include module('logo') {
-                img {
-                    height: this('logo-height');
-                }
-            }
-
         }
 
         @include component('nav') {
             ul {
-                @include extend(
-                    $parent: 'list', $modifiers: ('reset', 'inline')
-                );
+                @include _module('list', ('reset', 'inline'), false);
             }
             a {
                 color: this('nav-link-color');

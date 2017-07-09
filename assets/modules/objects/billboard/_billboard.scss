@@ -58,10 +58,6 @@
 
             color: this('color');
 
-            @include modifier('wide') {
-                @include _module('container', 'large');
-            }
-
             a {
                 color: this('color');
                 border-bottom: 1px dotted;

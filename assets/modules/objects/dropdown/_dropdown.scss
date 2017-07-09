@@ -15,10 +15,11 @@
     // Module
     //*************************************************************
 
-    @include module('#{option($navigation, 'name')}') {
+    @include module('#{fetch(('navigation', $navigation), 'name')}') {
 
         // parent list
         ul {
+
             margin: 0;
             
             // show the dropdown

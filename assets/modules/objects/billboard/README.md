@@ -103,7 +103,7 @@ To modify any of the above options, pass them to the `billboard` object in your 
 
 ### Sass
 
-Load the accordion styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `billboard()` mixin:
+Load the billboard styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `billboard()` mixin:
 
 ```scss
 @import '../../app';

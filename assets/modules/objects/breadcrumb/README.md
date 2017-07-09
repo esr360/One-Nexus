@@ -79,7 +79,7 @@ To modify any of the above options, pass them to the `breadcrumb` object in your
 
 ### Sass
 
-Load the accordion styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `breadcrumb()` mixin:
+Load the breadcrumb styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `breadcrumb()` mixin:
 
 ```scss
 @import '../../app';

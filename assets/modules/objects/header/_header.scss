@@ -123,9 +123,6 @@
         @include component('wrapper') {
             @include _module('container');
             height: this('height');
-            @include modifier('wide') {
-                @include _module('container', 'large');
-            }
         }
 
         //*********************************************************

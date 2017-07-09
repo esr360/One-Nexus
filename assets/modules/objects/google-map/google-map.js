@@ -2,7 +2,8 @@
  * KAYZEN
  * @module: 'google-map'
  * @author: @esr360
-(function ($) {
+ */
+function never() {
     
     $.fn.googleMap = function(custom) {
         
@@ -144,5 +145,4 @@
  
     }; // googleMap()
  
-}(jQuery));
- */
+}
