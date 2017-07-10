@@ -1,80 +1,19 @@
-//=================================================================
-// Google Map
-//=================================================================
+@import '../../modules/objects/google-map/google-map.json';
+/// Google Map
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group objects
+///
+/// @param {map} $custom - where custom config will be passed
+@mixin google-map($custom: custom('google-map')) {
 
-@mixin google-map($custom: ()) {
-
-    //-------------------------------------------------------------
     // Config
-    //-------------------------------------------------------------
+    $google-map: config($google-map, $custom);
 
-    $baseMapColor: color('brand', 'brand-1');
-
-    $google-map: config((
-        'name'               : 'google-map',
-        'output-json'        : true,
-        'location'           : (53.48076, -2.24263),
-        'colors'             : (
-            'water'          : adjust-color(
-                $baseMapColor,
-                $hue         : 5.95deg, 
-                $saturation  : -5.97%, 
-                $lightness   : -16.08%
-            ),
-            'landscape'      : adjust-color(
-                $baseMapColor,
-                $hue         : 3.52deg, 
-                $saturation  : -2.45%, 
-                $lightness   : -6.08%
-            ),
-            'road'           : adjust-color(
-                $baseMapColor,
-                $hue         : -3.65deg, 
-                $saturation  : -1.58%, 
-                $lightness   : -2.55%
-            ),
-            'highway'        : adjust-color(
-                $baseMapColor,
-                $hue         : 5.95deg, 
-                $saturation  : -5.97%, 
-                $lightness   : -22.08%
-            ),
-            'poi'            : adjust-color(
-                $baseMapColor,
-                $hue         : -0.03deg, 
-                $saturation  : 3.08%, 
-                $lightness   : 0.20%
-            ),
-            'transit'        : adjust-color(
-                $baseMapColor,
-                $hue         : -0.03deg, 
-                $saturation  : 3.08%, 
-                $lightness   : 0.20%
-            ),
-            'stroke'         : adjust-color(
-                $baseMapColor,
-                $hue         : 1.77deg, 
-                $saturation  : -1.79%, 
-                $lightness   : -3.73%
-            ),
-            'administrative' : adjust-color(
-                $baseMapColor,
-                $hue         : 3.23deg, 
-                $saturation  : -5.61%, 
-                $lightness   : -15.88%
-            ),
-            'park'           : adjust-color(
-                $baseMapColor,
-                $hue         : 3.52deg, 
-                $saturation  : -2.45%, 
-                $lightness   : -6.08%
-            )
-        )
-    ), $custom);
-
-    //-------------------------------------------------------------
+    //*************************************************************
     // Module
-    //-------------------------------------------------------------
+    //*************************************************************
 
     @include module {
         
@@ -82,11 +21,6 @@
         width: 100%;
         height: 375px;
         display: block;
-
-        @include modifier('large') {
-            height: 59vh;
-            min-height: 300px;
-        }
 
         //*********************************************************
         // Custom Content

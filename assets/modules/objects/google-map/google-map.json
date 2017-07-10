@@ -1,5 +1,8 @@
 {
     "google-map": {
-        
+        "name": "google-map",
+        "longitude": -33.866758, 
+        "latitude": 151.208514,
+        "zoom": 13
     }
 }

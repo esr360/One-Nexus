@@ -23,3 +23,5 @@ app.siteOverlay();
 app.tabs();
 
 app.tooltips();
+
+app.googleMap();

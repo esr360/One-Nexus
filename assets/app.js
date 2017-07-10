@@ -28,10 +28,11 @@ import { tooltips    } from './modules/elements/tooltips/tooltips';
 
 // Objects
 import { siteOverlay } from './modules/objects/site-overlay/site-overlay';
+import { googleMap   } from './modules/objects/google-map/google-map';
 
 export { 
     accordion, carousel, modal, progressBar, tabs, tooltips, 
-    siteOverlay 
+    siteOverlay, googleMap
 }
 
 // Tools
