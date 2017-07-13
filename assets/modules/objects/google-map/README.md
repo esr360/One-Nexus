@@ -14,10 +14,11 @@
 <div class="google-map"></div>
 
 <!-- Using data-attribute -->
-<div class="google-map" data-google-map="{
-    longitude: 48.195387, 
-    latitude: -63.171387
-}"></div>
+<div class="google-map" data-google-map='{
+    "height": "50vh",
+    "longitude": 48.195387, 
+    "latitude": -63.171387
+}'></div>
 
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 ```
@@ -39,34 +40,86 @@
             <td>The name used when generating the CSS selector</td>
         </tr>
         <tr>
-            <td>background</td>
-            <td>The background of modal boxes</td>
+            <td>height</td>
+            <td>The Google Map height (can be any valid CSS measurement)</td>
         </tr>
         <tr>
-            <td>text-color</td>
-            <td>The text color for modal boxes</td>
+            <td>longitude</td>
+            <td>The longitude for default map location</td>
         </tr>
         <tr>
-            <td>radius</td>
-            <td>The border radius of modal boxes</td>
+            <td>latitude</td>
+            <td>The latitude for default map location</td>
         </tr>
         <tr>
-            <td>z-index</td>
-            <td>The z-index for modal boxes</td>
+            <td>zoom</td>
+            <td>The defauly zoom for Google maps</td>
         </tr>
         <tr>
-            <td>content-padding</td>
-            <td>The padding for the modal content</td>
+            <td>styles</td>
+            <td>The styles to use for the map (see [Snazzy Maps](http://snazzymaps.com/) for examples)</td>
+        </tr>
+        <tr>
+            <td>googleApi</td>
+            <td>Options to pass to the actual Google Map instance (See the [Google Maps documentation](https://developers.google.com/maps/documentation/javascript/reference#MapOptions))</td>
         </tr>
     </tbody>
 </table>
 
 To modify any of the above options, pass them to the `google-map` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
+> Checkout [Snazzy Maps](http://snazzymaps.com/) for examples to pass to the `styles` option
+
 ```json
 {
     "app": {
         "google-map": {
+            "longitude": -33.866758, 
+            "latitude": 151.208514,
+            "zoom": 10,
+            "styles": [
+                {
+                    "featureType": "water",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#e9e9e9"
+                        },
+                        {
+                            "lightness": 17
+                        }
+                    ]
+                },
+                {
+                    "featureType": "landscape",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#f5f5f5"
+                        },
+                        {
+                            "lightness": 20
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#ffffff"
+                        },
+                        {
+                            "lightness": 17
+                        }
+                    ]
+                }
+                ...
+            ],
+            "googleApi": {
+                "scrollwheel": true,
+                "draggable": true
+            }
         }
     }
 }
@@ -98,12 +151,21 @@ app.googleMap();
 
 #### API
 
-TODO view google maps api
+View the [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/reference) for full documentations
 
 ### Examples
 
-#### Creating From Data-Attribute
+#### Passing Options From Data-Attribute
 
 ```html
-<a href="#" data-modal-content="Lorem ipsum dolor sit amet">Click Me</a>
+<div class="google-map" data-google-map="{
+    longitude: 48.195387, 
+    latitude: -63.171387,
+    styles: [
+        ...
+    ],
+    googleApi: {
+        ...
+    }
+}"></div>
 ```

@@ -15,6 +15,7 @@ export function googleMap(els = 'google-map', custom) {
 
     app.Synergy(els, (el, options) => { 
 
+        // set some default map styles
         options.styles = options.styles ? options.styles : [
             {
                 "featureType": "landscape.man_made",
@@ -153,16 +154,23 @@ export function googleMap(els = 'google-map', custom) {
             }
         ]
 
-        const mapOptions = {
-            zoom: options.zoom,
-            scrollwheel: false,
-            draggable: false,
-            center: new google.maps.LatLng(options.longitude, options.latitude), 
-            styles: options.styles
-        };
+        // merge any data-attribute options
+        if (el.hasAttribute('data-google-map')) {
+            options = Object.assign(options, JSON.parse(el.getAttribute('data-google-map')));
+        }
 
-        // When the window has finished loading create the google map
-        google.maps.event.addDomListener(window, 'load', new google.maps.Map(el, mapOptions));
+        // set final googleApi options
+        options.googleApi = Object.assign(options.googleApi, {
+            zoom: options.zoom,
+            styles: options.styles,
+            center: new google.maps.LatLng(options.longitude, options.latitude)
+        });
+
+        // set height of google map
+        el.style.height = options.height;
+
+        // create the google map
+        google.maps.event.addDomListener(window, 'load', new google.maps.Map(el, options.googleApi));
 
     }, defaults, custom);
 

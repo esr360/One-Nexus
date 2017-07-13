@@ -3,7 +3,8 @@
  * @module: 'appHeader'
  * @requires: 'navigation', 'side-nav', 'site-overlay'
  * @author: @esr360
-(function ($) {
+ */
+function never() {
     
     $.fn.header = function(custom) {
     
@@ -67,5 +68,4 @@
  
     }; // header()
  
-}(jQuery));
- */
+}
