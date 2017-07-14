@@ -15,7 +15,7 @@ export function header(els = 'appHeader', custom) {
 
     app.Synergy(els, (el, options) => {
 
-        const overlay = app.Synergy('site-overlay').query[0];
+        const overlay = app.Synergy(options.overlay).query[0];
         const stickyOffset = options.stickyOffset || el.offsetTop;
 
         if (options.sticky.enabled || el.modifier('sticky')) {
@@ -27,16 +27,15 @@ export function header(els = 'appHeader', custom) {
             return toggleStickyHeader({
                 type: (window.scrollY > stickyOffset) ? 'stick' : 'unstick', 
                 target: el,
-                navigation: app.Synergy('navigation').query[0],
+                navigation: app.Synergy(options.navigation).query[0],
                 overlay: overlay,
-                dropdownShowOverlay: exports.dropdownShowOverlay,
-                dropdownHideOverlay: exports.dropdownHideOverlay,
-                config: options
+                dropdownShowOverlay: options.dropdownShowOverlay,
+                dropdownHideOverlay: options.dropdownHideOverlay
             });
         }
 
-        exports.dropdownShowOverlay = () => app.siteOverlay(overlay).show('navDropown');
-        exports.dropdownHideOverlay = () => app.siteOverlay(overlay).hide('navDropown');
+        options.dropdownShowOverlay = () => app.siteOverlay(overlay).show('navDropown');
+        options.dropdownHideOverlay = () => app.siteOverlay(overlay).hide('navDropown');
 
     }, defaults, custom);
 
@@ -56,17 +55,19 @@ function toggleStickyHeader(options) {
     // toggle fixed modifier
     app.Synergy(options.target).modifier('fixed', (options.type === 'stick') ? 'add' : 'remove');
 
-    Array.prototype.forEach.call(options.navigation.children[0].children, el => {
-        if (el.children.length > 1 && options.overlay) {
-            if (options.type === 'stick') {
-                el.addEventListener('mouseenter', options.dropdownShowOverlay, false);
-                el.addEventListener('mouseleave', options.dropdownHideOverlay, false);
-            } else {
-                el.removeEventListener('mouseenter', options.dropdownShowOverlay, false);
-                el.removeEventListener('mouseleave', options.dropdownHideOverlay, false);
+    if (options.navigation && options.navigation.children) {
+        Array.prototype.forEach.call(options.navigation.children[0].children, el => {
+            if (el.children.length > 1 && options.overlay) {
+                if (options.type === 'stick') {
+                    el.addEventListener('mouseenter', options.dropdownShowOverlay, false);
+                    el.addEventListener('mouseleave', options.dropdownHideOverlay, false);
+                } else {
+                    el.removeEventListener('mouseenter', options.dropdownShowOverlay, false);
+                    el.removeEventListener('mouseleave', options.dropdownHideOverlay, false);
+                }
             }
-        }
-    });
+        });
+    }
 
     if (options.type === 'unstick') {
         app.siteOverlay(options.overlay).hide('navDropown');

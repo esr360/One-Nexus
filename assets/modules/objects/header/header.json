@@ -20,6 +20,8 @@
             "height": "70px",
             "logo-height": "28px",
             "font-size": "font-size('size-2')"
-        }
+        },
+        "overlay": "site-overlay",
+        "navigation": "navigation"
     }
 }
