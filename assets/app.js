@@ -29,10 +29,11 @@ import { tooltips    } from './modules/elements/tooltips/tooltips';
 // Objects
 import { siteOverlay } from './modules/objects/site-overlay/site-overlay';
 import { googleMap   } from './modules/objects/google-map/google-map';
+import { header      } from './modules/objects/header/header';
 
 export { 
     accordion, carousel, modal, progressBar, tabs, tooltips, 
-    siteOverlay, googleMap
+    siteOverlay, googleMap, header
 }
 
 // Tools

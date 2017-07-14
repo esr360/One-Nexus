@@ -2,7 +2,7 @@ import * as app from '../../../app';
 import defaults from './google-map.json';
 
 /**
- * Accordion
+ * Google Map
  * 
  * @access public
  * 

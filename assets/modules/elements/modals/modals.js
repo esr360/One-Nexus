@@ -15,7 +15,7 @@ export function modal(els = 'modal', custom) {
 
     app.Synergy(els, (el, options) => {
         const modal   = options.name;
-        const overlay = () => app.Synergy(options.overlay.module).query[0];
+        const overlay = app.Synergy(options.overlay.module).query[0];
 
         // Create any dynamic modals then re-run the function
         if (!(app.config.modals && 'initialised' in app.config.modals)) {
@@ -37,30 +37,30 @@ export function modal(els = 'modal', custom) {
                 event.preventDefault();
 
                 if (options.overlay.clickToClose) {
-                    app.Synergy([overlay(), modal]).query.component('close', 'set');
+                    app.Synergy([overlay, modal]).query.component('close', 'set');
                 }
 
                 let closeTriggers = app.Synergy(modal).component('close');
 
-                toggleModal('show', els, el, options, overlay());
+                toggleModal('show', els, el, options, overlay);
 
                 closeTriggers.forEach(trigger => {
                     trigger.addEventListener('click', () => {
-                        app.Synergy([overlay(), modal]).query.component('close', 'unset');
+                        app.Synergy([overlay, modal]).query.component('close', 'unset');
 
-                        toggleModal('hide', els, el, options, overlay());
+                        toggleModal('hide', els, el, options, overlay);
                     });
                 });
             }, false);
         });
 
         exports.toggle = operator => toggleModal(
-            (el.modifier('visible') || operator === 'hide') ? 'hide' : 'show', els, el, options, overlay()
+            (el.modifier('visible') || operator === 'hide') ? 'hide' : 'show', els, el, options, overlay
         );
 
-        exports.show = () => toggleModal('show', els, el, options, overlay());
+        exports.show = () => toggleModal('show', els, el, options, overlay);
 
-        exports.hide = () => toggleModal('hide', els, el, options, overlay());
+        exports.hide = () => toggleModal('hide', els, el, options, overlay);
 
     }, defaults, custom);
 
@@ -83,8 +83,6 @@ export function modal(els = 'modal', custom) {
  * @param {HTMLElement} [overlay] - the HTML element acting as the page overlay
  */
 function toggleModal(type, all, target, options, overlay) {
-    const operator = (type === 'show') ? 'add' : ((type === 'hide') ? 'remove' : '');
-
     // close any other currently openened modals
     if (type === 'show' && app.isValidSelector(all) && document.querySelector(all) !== target) {
         app.Synergy(all, el => app.modal(el).hide());
@@ -96,7 +94,7 @@ function toggleModal(type, all, target, options, overlay) {
     }
 
     // toggle the target modal
-    app.Synergy(target).modifier('visible', operator);
+    app.Synergy(target).modifier('visible', (type === 'show') ? 'add' : 'remove');
 }
 
 /**

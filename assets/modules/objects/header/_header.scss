@@ -6,13 +6,6 @@
 /// @group objects
 ///
 /// @param {map} $custom - where custom config will be passed
-/// @outputs all header styles
-///
-/// @example
-///     @include header((
-///         'round-radius' : 4px,
-///         'weight'       : bold
-///     ));
 @mixin header($custom: custom('header')) {
 
     // Configuration
@@ -91,27 +84,26 @@
             background-color: this('dark', 'background');
         }
         
-        // Sticky Header
+        // Fixed/Sticky Header
         //*********************************************************
         
-        @include option('sticky') {
+        @include option('fixed') {
+            position: fixed;
+            top: 0;
+            margin-top: 0;
+            content: 'dopy';
+            width: 100%;
+            z-index: 12;
+            background: this('sticky', 'background');
+            font-size: this('sticky', 'font-size');
             @include module {
-                @include modifier('fixed') {
-                    position: fixed;
-                    top: 0;
-                    margin-top: 0;
-                    width: 100%;
-                    z-index: 12;
-                    background: this('sticky', 'background');
-                    font-size: this('sticky', 'font-size');
-                    @include component('wrapper') {
-                        height: this('sticky', 'height');
-                    }
-                    @include module('logo') {
-                        img {
-                            height: this('sticky', 'logo-height');
-                        }
-                    }
+                @include component('wrapper') {
+                    height: this('sticky', 'height');
+                }
+            }
+            @include module('logo') {
+                img {
+                    height: this('sticky', 'logo-height');
                 }
             }
         }
