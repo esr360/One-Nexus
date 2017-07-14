@@ -9,30 +9,7 @@
 @mixin header($custom: custom('header')) {
 
     // Configuration
-    $header: config((
-        'name'             : 'appHeader',
-        'output-json'      : true,
-        'background'       : core('background'),
-        'height'           : 85px,
-        'font-size'        : 1em,
-        'z-index'          : 5,
-        'bar'              : true,
-        'absolute':(
-            'enabled'      : false,
-            'top-position' : 0
-        ),
-        'dark':(
-            'enabled'      : false,
-            'background'   : color('greyscale', 'grey-6')
-        ),
-        'sticky':(
-            'enabled'      : false,
-            'background'   : color('greyscale', 'grey-6'),
-            'height'       : 70px,
-            'logo-height'  : 28px,
-            'font-size'    : font-size('size-2')
-        )
-    ), $custom) !global;
+    $header: config($header, $custom);
 
     //*************************************************************
     // Module
@@ -53,8 +30,6 @@
         //*********************************************************
 
         // Header Bar
-        //*********************************************************
-        
         @include option('bar') {
             @include module {
                 @include component('wrapper') {	
@@ -68,8 +43,6 @@
         }
         
         // Absolute Position Header
-        //*********************************************************
-        
         @include option('absolute') {
             position: absolute;
             width: 100%;
@@ -78,15 +51,11 @@
         }
         
         // Dark Header
-        //*********************************************************
-
         @include option('dark') {
             background-color: this('dark', 'background');
         }
         
         // Fixed/Sticky Header
-        //*********************************************************
-        
         @include option('fixed') {
             position: fixed;
             top: 0;

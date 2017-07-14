@@ -31,9 +31,7 @@ export function siteOverlay(els = 'site-overlay', flag, custom) {
             toggleOverlay('hide', target, flag, options);
         }
 
-        el.addEventListener('click', () => {
-            app.siteOverlay(el).hide();
-        });
+        el.addEventListener('click', () => app.siteOverlay(el).hide());
 
     }, defaults, custom);
 
@@ -52,9 +50,6 @@ export function siteOverlay(els = 'site-overlay', flag, custom) {
  * @param {Object} options
  */
 function toggleOverlay(type, target, flag, options) {
-    const operator = (type === 'show') ? 'add' : ((type === 'hide') ? 'remove' : '');
-
-    flag = (flag) ? flag + '-' : '';
-
-    app.Synergy(target).query.modifier(`${flag}visible`, operator);
+    flag = flag ? flag + '-' : '';
+    app.Synergy(target).query.modifier(`${flag}visible`, (type === 'show') ? 'add' : 'remove');
 }

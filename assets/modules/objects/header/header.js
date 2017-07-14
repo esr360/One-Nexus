@@ -15,7 +15,6 @@ export function header(els = 'appHeader', custom) {
 
     app.Synergy(els, (el, options) => {
 
-        const overlay = app.Synergy(options.overlay).query[0];
         const stickyOffset = options.stickyOffset || el.offsetTop;
 
         if (options.sticky.enabled || el.modifier('sticky')) {
@@ -28,14 +27,14 @@ export function header(els = 'appHeader', custom) {
                 type: (window.scrollY > stickyOffset) ? 'stick' : 'unstick', 
                 target: el,
                 navigation: app.Synergy(options.navigation).query[0],
-                overlay: overlay,
-                dropdownShowOverlay: options.dropdownShowOverlay,
-                dropdownHideOverlay: options.dropdownHideOverlay
+                overlay: options.overlay,
+                dropdownShowOverlay: exports.dropdownShowOverlay,
+                dropdownHideOverlay: exports.dropdownHideOverlay
             });
         }
 
-        options.dropdownShowOverlay = () => app.siteOverlay(overlay).show('navDropown');
-        options.dropdownHideOverlay = () => app.siteOverlay(overlay).hide('navDropown');
+        exports.dropdownShowOverlay = () => app.siteOverlay(options.overlay).show('navDropown');
+        exports.dropdownHideOverlay = () => app.siteOverlay(options.overlay).hide('navDropown');
 
     }, defaults, custom);
 
@@ -56,8 +55,10 @@ function toggleStickyHeader(options) {
     app.Synergy(options.target).modifier('fixed', (options.type === 'stick') ? 'add' : 'remove');
 
     if (options.navigation && options.navigation.children) {
+        // loop over each top level navigation item
         Array.prototype.forEach.call(options.navigation.children[0].children, el => {
-            if (el.children.length > 1 && options.overlay) {
+            // if the nav item has a child menu
+            if (el.querySelector('ul') && options.overlay) {
                 if (options.type === 'stick') {
                     el.addEventListener('mouseenter', options.dropdownShowOverlay, false);
                     el.addEventListener('mouseleave', options.dropdownHideOverlay, false);
@@ -69,7 +70,7 @@ function toggleStickyHeader(options) {
         });
     }
 
-    if (options.type === 'unstick') {
-        app.siteOverlay(options.overlay).hide('navDropown');
+    if (options.overlay && options.type === 'unstick') {
+        options.dropdownHideOverlay();
     }
 }

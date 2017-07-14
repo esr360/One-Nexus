@@ -4,11 +4,11 @@
         "background": "core('background')",
         "height": "85px",
         "font-size": "1em",
-        "z-index": "5",
-        "bar": "true",
+        "z-index": 5,
+        "bar": true,
         "absolute": {
             "enabled": false,
-            "top-position" : 0
+            "top-position": 0
         },
         "dark": {
             "enabled": false,

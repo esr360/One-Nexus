@@ -19,7 +19,7 @@ export function modal(els = 'modal', custom) {
 
         // Create any dynamic modals then re-run the function
         if (!(app.config.modals && 'initialised' in app.config.modals)) {
-            (app.config.modals) ? app.config.modals.initialised = true : app.config.modals = { initialised: true }
+            app.config.modals ? app.config.modals.initialised = true : app.config.modals = { initialised: true }
 
             initModals(document.querySelectorAll('[data-modal-content]'), modal);
 
@@ -107,7 +107,7 @@ function toggleModal(type, all, target, options, overlay) {
  */
 function initModals(els, namespace) {
     els.forEach((el, index) => {
-        const id = (el.href) ? (el.href.substr(el.href.lastIndexOf('/') + 1).replace(/^#/, '')) : `_modal_${index}`;
+        const id = el.href ? (el.href.substr(el.href.lastIndexOf('/') + 1).replace(/^#/, '')) : `_modal_${index}`;
         const style = (el.getAttribute('data-modal-style')) ? `-animate-${el.getAttribute('data-modal-style')}` : '';
         const content = el.getAttribute('data-modal-content');
         
