@@ -20,16 +20,13 @@
         //*********************************************************
         // Core Styles
         //*********************************************************
-        
+
+        @include fill-parent(fixed);
+
         background: this('background');
         z-index: this('z-index');
         transition: this('transition');
         transform: scale(1);
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
         
         @media (max-width: this('visible-at')) {
             display: none;
@@ -39,12 +36,16 @@
         // Components
         //*********************************************************
 
+        @include component ('spinner') {
+            @include spinner(this('spinner')...);
+            @include vertical-center(absolute);
+            @include horizontal-center();
+        }
+
         @include component('close') {
+            @include horizontal-center();
             position: absolute;
-            left: 0;
-            right: 0;
             text-align: center;
-            margin: auto;
             bottom: 4rem;
         }
 
@@ -63,13 +64,5 @@
         @content;
         
     } // module
-    
-    //*********************************************************
-    // Preloaders
-    //*********************************************************
-    
-    @if this('preloader') == 'balloons' {
-        @include awd_balloons();
-    }
 
-} // @mixin foo
+} // @mixin preloader

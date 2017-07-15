@@ -1,7 +1,11 @@
-%fill-parent {
-    position: absolute;
+@mixin fill-parent($position: absolute) {
+    position: $position;
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
+}
+
+%fill-parent {
+    @include fill-parent();
 }

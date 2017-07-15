@@ -4,3 +4,4 @@
 * add data-attribute optons to google-maps
 * re-name site-overlay to overlay
 * consider renaming appHeader to header
+* change default position in vertical-center to absolute
