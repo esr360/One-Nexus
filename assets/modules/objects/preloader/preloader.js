@@ -21,17 +21,12 @@ export function preloader(els = 'preloader', custom) {
             trigger.addEventListener('click', () => exports.hide());
         });
 
-        exports.toggle = operator => {
-            el.modifier('loaded', (el.modifier('loaded') || operator === 'show') ? 'unset' : 'set')
-        }
+        exports.toggle = operator => el.modifier(
+            'loaded', (el.modifier('loaded') || operator === 'show') ? 'unset' : 'set'
+        );
 
-        exports.show = () => {
-            el.modifier('loaded', 'unset');  
-        }
-
-        exports.hide = () => {
-            el.modifier('loaded', 'set');           
-        }
+        exports.show = () => exports.toggle('show');
+        exports.hide = () => exports.toggle('hide');
 
     }, defaults, custom);
 
