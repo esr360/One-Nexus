@@ -1,41 +1,25 @@
-//=================================================================
-// Navigation
-//=================================================================
+@import '../../modules/objects/navigation/navigation.json';
+/// Navigation
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group objects
+///
+/// @param {map} $custom - where custom config will be passed
+@mixin navigation($custom: custon('navigation')) {
 
-@mixin navigation($custom: ()) {
-
-    //-------------------------------------------------------------
     // Config
-    //-------------------------------------------------------------
+    $navigation: config($navigation, $custom);
 
-    $navigation: config((
-        'name'                     : 'navigation',
-        'output-json'              : true,
-        'text-align'               : right,
-        'font-size'                : 1em,
-        'dropdown-icon'            : "\f107",
-        'item-gutter'              : 0.5em,
-        'item-padding'             : 0.5rem 0.75rem,
-        'item-color'               : color('greyscale', 'white'),
-        'item-bg'                  : transparent,
-        'item-border'              : 1px solid transparent,
-        'item-radius'              : 0,
-        'item-hover-bg'            : transparent,
-        'item-hover-border'        : 1px solid color('greyscale', 'white'),
-        'has-child-hover-color'    : color('brand', 'brand-1'),
-        'has-child-hover-bg'       : color('greyscale', 'grey-1'),
-        'has-child-hover-border'   : 1px solid transparent,
-        'no-icons'                 : false
-    ), $custom) !global;
-
-    //-------------------------------------------------------------
+    //*************************************************************
     // Module
-    //-------------------------------------------------------------
+    //*************************************************************
 
     @include module {
 
-    // Core Styles
-    //-------------------------------------------------------------
+        //*********************************************************
+        // Core Styles
+        //*********************************************************
         
         font-size: this('font-size');
         text-align: this('text-align');
@@ -122,8 +106,9 @@
             }
         }
 
-    // Settings
-    //-------------------------------------------------------------
+        //*********************************************************
+        // Settings
+        //*********************************************************
 
         @include option('noIcons') {
             @include module {

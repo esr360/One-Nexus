@@ -1,0 +1,10 @@
+{
+    "preloader": {
+        "name": "preloader",
+        "preloader": "clock",
+        "background": "color('greyscale', 'grey-1')",
+        "z-index": 99,
+        "transition": "core('transition')",
+        "visible-at": "breakpoint('break-2')"
+    }
+}

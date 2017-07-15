@@ -1,25 +1,19 @@
-//=================================================================
-// Logo
-//=================================================================
+@import '../../modules/objects/logo/logo.json';
+/// Logo
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group objects
+///
+/// @param {map} $custom - where custom config will be passed
+@mixin logo($custom: custom('logo')) {
 
-@mixin logo($custom: ()) {
-
-    //-------------------------------------------------------------
     // Config
-    //-------------------------------------------------------------
+    $logo: config($logo, $custom);
 
-    $logo: config((
-        'name'         : 'logo',
-        'text-align'   : left,
-        'color'        : white,
-        'size'         : font-size('size-5'),
-        'padding'      : 0,
-        'image-height' : 38px
-    ), $custom);
-
-    //-------------------------------------------------------------
-    // Component
-    //-------------------------------------------------------------
+    //*************************************************************
+    // Module
+    //*************************************************************
 
     @include module {	
 

@@ -1,0 +1,10 @@
+{
+    "logo": {
+        "name": "logo",
+        "text-align": "left",
+        "color": "white",
+        "size": "font-size('size-5')",
+        "padding": "0",
+        "image-height": "38px"
+    }
+}

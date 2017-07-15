@@ -27,3 +27,5 @@ app.tooltips();
 app.googleMap();
 
 app.header();
+
+app.preloader();
