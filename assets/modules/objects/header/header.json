@@ -14,6 +14,7 @@
             "enabled": false,
             "background": "color('greyscale', 'grey-6')"
         },
+        "fixed": false,
         "sticky": {
             "enabled": false,
             "background": "color('greyscale', 'grey-6')",

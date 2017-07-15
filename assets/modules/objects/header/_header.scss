@@ -55,23 +55,29 @@
             background-color: this('dark', 'background');
         }
         
-        // Fixed/Sticky Header
+        // Fixed Header
         @include option('fixed') {
             position: fixed;
             top: 0;
             margin-top: 0;
             width: 100%;
             z-index: 12;
+        }
+
+        // Sticky Header
+        @include option('sticky') {
             background: this('sticky', 'background');
             font-size: this('sticky', 'font-size');
-            @include module {
-                @include component('wrapper') {
-                    height: this('sticky', 'height');
+            @include modifier('fixed') {
+                @include module {
+                    @include component('wrapper') {
+                        height: this('sticky', 'height');
+                    }
                 }
-            }
-            @include module('logo') {
-                img {
-                    height: this('sticky', 'logo-height');
+                @include module('logo') {
+                    img {
+                        height: this('sticky', 'logo-height');
+                    }
                 }
             }
         }

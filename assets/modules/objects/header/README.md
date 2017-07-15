@@ -52,43 +52,100 @@
             <td>The name used when generating the CSS selector</td>
         </tr>
         <tr>
+            <td>background</td>
+            <td>The main background for the header module</td>
+        </tr>
+        <tr>
             <td>height</td>
-            <td>The Google Map height (can be any valid CSS measurement)</td>
+            <td>The height for the header module</td>
         </tr>
         <tr>
-            <td>longitude</td>
-            <td>The longitude for default map location</td>
+            <td>font-size</td>
+            <td>The font size for the header module</td>
         </tr>
         <tr>
-            <td>latitude</td>
-            <td>The latitude for default map location</td>
+            <td>z-index</td>
+            <td>The z-index from the header module</td>
         </tr>
         <tr>
-            <td>zoom</td>
-            <td>The defauly zoom for Google maps</td>
+            <td>bar</td>
+            <td>Apply the `bar` modifier styles to the header to give alignment to the `logo` and `navigation` modules</td>
         </tr>
         <tr>
-            <td>styles</td>
-            <td>The styles to use for the map (see [Snazzy Maps](http://snazzymaps.com/) for examples)</td>
+            <td>absolute.enabled</td>
+            <td>Apply the `absolute` modifier styles to the header</td>
         </tr>
         <tr>
-            <td>googleApi</td>
-            <td>Options to pass to the actual Google Map instance (See the [Google Maps documentation](https://developers.google.com/maps/documentation/javascript/reference#MapOptions))</td>
+            <td>absolute.top-position</td>
+            <td>Apply a `margin-top` to the absolutely positioned header</td>
+        </tr>
+        <tr>
+            <td>dark.enabled</td>
+            <td>Apply the `dark` modifier styles to the header</td>
+        </tr>
+        <tr>
+            <td>dark.background</td>
+            <td>Set the background for the header when the `dark` modifier is applied</td>
+        </tr>
+        <tr>
+            <td>height</td>
+            <td>Set the header height</td>
+        </tr>
+        <tr>
+            <td>fixed</td>
+            <td>Set to apply the `fixed` modifier styles to the header, to keep the header in a fixed position</td>
+        </tr>
+        <tr>
+            <td>sticky.enabled</td>
+            <td>Dynamically add/remove the `fixed` modifer when the header is scrolled out of viewport</td>
+        </tr>
+        <tr>
+            <td>sticky.offset</td>
+            <td>(Optional) Set an offset value for applying the `fixed` modifier - leave blank to use the header's default `offsetTop` value</td>
+        </tr>
+        <tr>
+            <td>sticky.background</td>
+            <td>Apply a different background to the header when 'stuck'</td>
+        </tr>
+        <tr>
+            <td>sticky.height</td>
+            <td>Apply a different height to the header when 'stuck'</td>
+        </tr>
+        <tr>
+            <td>sticky.logo-height</td>
+            <td>Apply a different height to the logo module when the header is 'stuck'</td>
+        </tr>
+        <tr>
+            <td>sticky.font-size</td>
+            <td>Apply a different font-size to the header when 'stuck'</td>
+        </tr>
+        <tr>
+            <td>overlay</td>
+            <td>[Synergy Selector](#TODO) (ID or module name only) for the [overlay module](#TODO)</td>
+        </tr>
+        <tr>
+            <td>navigation</td>
+            <td>Synergy Selector](#TODO) (ID or module name only) for the [navigation module](#TODO)</td>
         </tr>
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `google-map` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
-
-> Checkout [Snazzy Maps](http://snazzymaps.com/) for examples to pass to the `styles` option
+To modify any of the above options, pass them to the `header` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
     "app": {
-        "google-map": {
-            "longitude": -33.866758, 
-            "latitude": 151.208514,
-            "zoom": 10
+        "header": {
+            "absolute": {
+                "enabled": true,
+                "top-position": "50px"
+            }, 
+            "dark": {
+                "enabled": true
+            },
+            "sticky": {
+                "enabled": true
+            }
         }
     }
 }
@@ -118,23 +175,36 @@ app.theme = config.app;
 app.header();
 ```
 
-#### API
-
-View the [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/reference) for full documentations
-
 ### Examples
 
-#### Passing Options From Data-Attribute
+#### Absolute Header Using Modifier
 
 ```html
-<div class="google-map" data-google-map="{
-    longitude: 48.195387, 
-    latitude: -63.171387,
-    styles: [
-        ...
-    ],
-    googleApi: {
-        ...
-    }
-}"></div>
+<header class="header-absolute">
+    ...
+</header>
+```
+
+#### Dark Header Using Modifier
+
+```html
+<header class="header-dark">
+    ...
+</header>
+```
+
+#### Sticky Header Using Modifier
+
+```html
+<header class="header-sticky">
+    ...
+</header>
+```
+
+#### Combined Modifiers
+
+```html
+<header class="header-dark-sticky">
+    ...
+</header>
 ```

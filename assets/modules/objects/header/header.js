@@ -15,7 +15,7 @@ export function header(els = 'appHeader', custom) {
 
     app.Synergy(els, (el, options) => {
 
-        const stickyOffset = options.stickyOffset || el.offsetTop;
+        const stickyOffset = options.sticky.offset || el.offsetTop;
 
         if (options.sticky.enabled || el.modifier('sticky')) {
             window.addEventListener('load', stickyHeaderHandler);
