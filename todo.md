@@ -6,3 +6,4 @@
 * consider renaming appHeader to header
 * change default position in vertical-center to absolute
 * move internal module js functions into the exports object
+* break-5 appears to be broken (try using in scroll-top module)

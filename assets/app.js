@@ -31,10 +31,11 @@ import { siteOverlay } from './modules/objects/site-overlay/site-overlay';
 import { googleMap   } from './modules/objects/google-map/google-map';
 import { header      } from './modules/objects/header/header';
 import { preloader   } from './modules/objects/preloader/preloader';
+import { scrollTop   } from './modules/objects/scroll-top/scroll-top';
 
 export { 
     accordion, carousel, modal, progressBar, tabs, tooltips, 
-    siteOverlay, googleMap, header, preloader
+    siteOverlay, googleMap, header, preloader, scrollTop
 }
 
 // Tools

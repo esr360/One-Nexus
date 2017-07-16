@@ -1,35 +1,33 @@
-//=================================================================
-// Scroll to Top
-//=================================================================
+@import '../../modules/objects/scroll-top/scroll-top.json';
+/// Scroll Top
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group objects
+///
+/// @param {map} $custom - where custom config will be passed
+@mixin scroll-top($custom: custom('scroll-top')) {
 
-@mixin scroll-top($custom: ()) {
-
-    //-------------------------------------------------------------
     // Config
-    //-------------------------------------------------------------
+    $scroll-top: config($scroll-top, $custom);
 
-    $scroll-top: config((
-        'name'            : 'scroll-top',
-        'output-json'     : true,
-        'position'        : (auto, 2rem, 2rem, auto),
-        'hide-below'      : breakpoint('break-5')
-    ), $custom);
-
-    //-------------------------------------------------------------
-    // Component
-    //-------------------------------------------------------------
+    //*************************************************************
+    // Module
+    //*************************************************************
 
     @include module {
 
         display: none;
         opacity: 0;
         visibility: hidden;
+
         position: fixed;
         top: nth(this('position'), 1);
         right: nth(this('position'), 2);
         bottom: nth(this('position'), 3);
         left: nth(this('position'), 4);
         transform: translateZ(0);
+
         &.visible {
             opacity: 1;
             visibility: visible;
@@ -41,6 +39,11 @@
 
         @media (min-width: this('hide-below')) {
             display: block;
+        }
+
+        @include modifier('visible') {
+            opacity: 1;
+            visibility: visible;
         }
 
         //*********************************************************
