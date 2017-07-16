@@ -2,21 +2,20 @@
 
 ##### Components
 
-* spinner
-* close
+* _This module has no components_
 
 ##### Modifiers
 
-* loaded
+* _This module has no modifiers_
 
 ##### Quick Look
 
-> It is recommended to place the preloader at the top of the `body` HTML element
+> Tip: Utilise the [Button](#TODO) classes to style the scrollTop element
 
 ```html
-<div class="preloader">
-    <div class="preloader_spinner"></div>
-</div>
+<a class="scroll-top button-icon-border" href="#site-content">
+    <i class="fa fa-angle-up"></i>
+</a>
 ```
 
 ### Options
@@ -36,37 +35,27 @@
             <td>The name used when generating the CSS selector</td>
         </tr>
         <tr>
-            <td>spinner</td>
-            <td>The value to pass to the [spinner](#TODO) mixin</td>
+            <td>position</td>
+            <td>The position on the screen for the scroll-top icon (top, right, bottom, left)</td>
         </tr>
         <tr>
-            <td>background</td>
-            <td>The background color for the full screen overlay</td>
+            <td>hide-below</td>
+            <td>The width at which the icon should be hidden</td>
         </tr>
         <tr>
-            <td>z-index</td>
-            <td>The z-index for the overlay</td>
-        </tr>
-        <tr>
-            <td>transition</td>
-            <td>The transition time for the closing animation</td>
-        </tr>
-        <tr>
-            <td>visible-at</td>
-            <td>The minimum width at which the preloader should be visible</td>
+            <td>activePosition</td>
+            <td>The scrollY position at which the element should appear</td>
         </tr>
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `preloader` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
-
-> Look at the [Spinners](http://franzheidl.github.io/spinners/) example page for more Spinner examples
+To modify any of the above options, pass them to the `scroll-top` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
     "app": {
-        "preloader": {
-            "spinner": ["6px double fuchsia"],
+        "scroll-top": {
+            "position": ["auto", "2rem", "2rem", "auto"],
         }
     }
 }
@@ -74,18 +63,18 @@ To modify any of the above options, pass them to the `preloader` object in your 
 
 ### Sass
 
-Load the Preloader styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `preloader()` mixin:
+Load the scroll-top styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `scroll-top()` mixin:
 
 ```scss
 @import '../../app';
 @import './config.json';
 
-@include preloader();
+@include scroll-top();
 ```
 
 ### JavaScript
 
-Call the `preloader()` function in your theme's main `js` file (e.g. [themes/One-Nexus/One-Nexus.js](../../../themes/One-Nexus/One-Nexus.js)):
+Call the `scrollTop()` function in your theme's main `js` file (e.g. [themes/One-Nexus/One-Nexus.js](../../../themes/One-Nexus/One-Nexus.js)):
 
 ```js
 import * as app from '../../app';
@@ -93,7 +82,7 @@ import config from './config.json';
 
 app.theme = config.app;
 
-app.preloader();
+app.scrollTop();
 ```
 
 #### API
@@ -101,30 +90,11 @@ app.preloader();
 ##### Show
 
 ```js
-app.preloader().show();
+app.scrollTop().show();
 ```
 
 ##### Hide
 
 ```js
-app.preloader().hide();
-```
-
-##### Toggle
-
-```js
-app.preloader().toggle();
-```
-
-### Examples
-
-#### With Preloader-Close Button
-
-```html
-<div class="preloader">
-    <div class="preloader_spinner"></div>
-    <div class="preloader_close">
-        <button class="button">Disable Preloader</button>
-    </div>
-</div>
+app.scrollTop().hide();
 ```
