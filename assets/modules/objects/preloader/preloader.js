@@ -2,7 +2,7 @@ import * as app from '../../../app';
 import defaults from './preloader.json';
 
 /**
- * Header
+ * Preloader
  * 
  * @access public
  * 
@@ -21,12 +21,12 @@ export function preloader(els = 'preloader', custom) {
             trigger.addEventListener('click', () => exports.hide());
         });
 
+        exports.show = () => exports.toggle('show');
+        exports.hide = () => exports.toggle('hide');
+
         exports.toggle = operator => el.modifier(
             'loaded', (el.modifier('loaded') || operator === 'show') ? 'unset' : 'set'
         );
-
-        exports.show = () => exports.toggle('show');
-        exports.hide = () => exports.toggle('hide');
 
     }, defaults, custom);
 
