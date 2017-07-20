@@ -1,4 +1,4 @@
-## Preloader
+## Scroll-Top
 
 ##### Components
 
@@ -20,7 +20,7 @@
 
 ### Options
 
-> For default values view the [`preloader.json`](preloader.json) file
+> For default values view the [`scroll-top.json`](scroll-top.json) file
 
 <table class="table">
     <thead>

@@ -17,7 +17,7 @@
 
     @include module('#{fetch(('navigation', $navigation), 'name')}') {
 
-        // parent list
+        // parent menus
         ul {
 
             margin: 0;
@@ -33,7 +33,7 @@
                 }
             }
             
-            // dropdown
+            // dropdown menus
             ul {
             
                 @include extend($parent: 'list', $modifiers: 'reset');
@@ -102,10 +102,17 @@
                             background: this('link-active-bg-color');
                         }
                     }
+
+                    &:hover {
+                        > ul {
+                            left: 50%;
+                        }
+                    }
             
                     ul {
                         top: 0;
-                        left: 100%;
+                        left: 80%;
+                        box-shadow: 1px 1px 6px 1px rgba(black, 0.2);
                         li {
                             a {
                                 border-left: 1px solid color('greyscale', 'grey-2');

@@ -1,40 +1,42 @@
+import * as app from '../../../app';
+import defaults from './search.json';
+
 /**
+ * Search
  * 
- * KAYZEN
- * @module: 'search-box'
- * @author: @esr360
+ * @access public
  * 
-(function ($) {
-
-    $.fn.searchBox = function(custom) {
-        
-        // Options
-        var options = $.extend({
-            
-            container    : _searchBox,
-            input        : '[type="search"]',
-            closeTrigger : '.search-box_close',
-            visibleClass : 'search-box-visible'
-            
-        }, custom);
-        
-        // Run the code on each occurance of the element
-        return this.each(function() {
-            
-            $(this).click(function() {
-                $(options.container).addClass(options.visibleClass);
-                setTimeout(function () {
-                    $(options.container).find(options.input).focus();
-                }, 400);
-            });
-                        
-            $(options.closeTrigger).click(function() {
-                $(options.container).removeClass(options.visibleClass);
-            });
-            
-        }); // this.each
-
-    }; // searchBox()
-
-}(jQuery));
+ * @param {(String|HTMLElement|NodeList)} els
+ * @param {Object} custom
  */
+export function search(els = 'searchBox', custom) {
+
+    custom = app.custom('search', custom);
+
+    app.Synergy(els, (el, options) => {
+
+        app.Synergy(options.name).component('trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => exports.show());
+        });
+
+        app.Synergy(options.name).component('close').forEach(trigger => {
+            trigger.addEventListener('click', () => exports.hide());
+        });
+
+        exports.show = () => exports.toggle('show');
+        exports.hide = () => exports.toggle('hide');
+
+        exports.toggle = operator => {
+            el.modifier('visible', (el.modifier('visible') || operator === 'hide') ? 'unset' : 'set');
+
+            if (operator === 'show') {
+                window.setTimeout(() => el.component('input')[0].focus(), 100);
+            }
+        }
+
+    }, defaults, custom);
+
+    app.config.search = Object.assign(defaults.search, custom);
+
+    return exports;
+};

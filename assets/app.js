@@ -32,10 +32,11 @@ import { googleMap   } from './modules/objects/google-map/google-map';
 import { header      } from './modules/objects/header/header';
 import { preloader   } from './modules/objects/preloader/preloader';
 import { scrollTop   } from './modules/objects/scroll-top/scroll-top';
+import { search      } from './modules/objects/search/search';
 
 export { 
     accordion, carousel, modal, progressBar, tabs, tooltips, 
-    siteOverlay, googleMap, header, preloader, scrollTop
+    siteOverlay, googleMap, header, preloader, scrollTop, search
 }
 
 // Tools

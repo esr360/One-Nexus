@@ -1,0 +1,12 @@
+{
+    "search": {
+        "name": "searchBox",
+        "background": "color('greyscale', 'grey-5')",
+        "height": "60px",
+        "input-background": "color('greyscale', 'grey-5')",
+        "input-color": "color('greyscale', 'white')",
+        "input-weight": "lighter",
+        "placeholder-color": "core('text-color')",
+        "placeholder-weight": "lighter"
+    }
+}

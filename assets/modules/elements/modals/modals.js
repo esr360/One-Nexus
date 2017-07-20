@@ -59,7 +59,6 @@ export function modal(els = 'modal', custom) {
         );
 
         exports.show = () => toggleModal('show', els, el, options, overlay);
-
         exports.hide = () => toggleModal('hide', els, el, options, overlay);
 
     }, defaults, custom);

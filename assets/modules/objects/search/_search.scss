@@ -1,28 +1,19 @@
-//=================================================================
-// Search
-//=================================================================
+@import '../../modules/objects/search/search.json';
+/// Search
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group objects
+///
+/// @param {map} $custom - where custom config will be passed
+@mixin search($custom: custom('searchBox')) {
 
-@mixin search($custom: ()) {
-
-    //-------------------------------------------------------------
     // Config
-    //-------------------------------------------------------------
+    $search: config($search, $custom);
 
-    $site-overlay: config((
-        'name'               : 'search-box',
-        'output-json'        : true,
-        'background'         : color('greyscale', 'grey-5'),
-        'height'             : 90px,
-        'input-background'   : color('greyscale', 'grey-5'),
-        'input-color'        : color('greyscale', 'white'),
-        'input-weight'       : lighter,
-        'placeholder-color'  : core('text-color'),
-        'placeholder-weight' : lighter
-    ), $custom);
-
-    //-------------------------------------------------------------
+    //*************************************************************
     // Module
-    //-------------------------------------------------------------
+    //*************************************************************
 
     @include module {
         
@@ -35,8 +26,12 @@
         text-align: center;
         transform: translateY(-100%);
         transition: core('transition');
+                
+        @include modifier('visible') {
+            transform: translateY(0);
+        }
         
-        [type="search"] {
+        @include component('input') {
             background: this('input-background');
             color: this('input-color');
             font-weight: this('input-weight');
@@ -51,10 +46,6 @@
                 }
             }
         }
-                
-        @include modifier('visible') {
-            transform: translateY(0);
-        }
         
         @include components(('go', 'close')) {
             cursor: pointer;
@@ -68,6 +59,10 @@
                 @include vertical-center(absolute);
                 right: 0;
             }
+        }
+
+        @include module('container') {
+            height: 100%;
         }
         
         ::placeholder {

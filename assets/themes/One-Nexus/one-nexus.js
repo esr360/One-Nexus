@@ -31,3 +31,5 @@ app.header();
 app.preloader();
 
 app.scrollTop();
+
+app.search();
