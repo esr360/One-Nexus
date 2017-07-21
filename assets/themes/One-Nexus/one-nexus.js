@@ -33,3 +33,5 @@ app.preloader();
 app.scrollTop();
 
 app.search();
+
+app.sideNav();

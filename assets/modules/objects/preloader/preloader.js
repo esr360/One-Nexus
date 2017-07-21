@@ -24,9 +24,9 @@ export function preloader(els = 'preloader', custom) {
         exports.show = () => exports.toggle('show');
         exports.hide = () => exports.toggle('hide');
 
-        exports.toggle = operator => {
-            el.modifier('loaded', 'set');
-        }
+        exports.toggle = operator => el.modifier('hidden', 
+            (el.modifier('hidden') && operator !== 'hide' || operator === 'show') ? 'unset' : 'set'
+        );
 
     }, defaults, custom);
 

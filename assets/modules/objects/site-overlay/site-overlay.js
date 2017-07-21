@@ -15,6 +15,8 @@ export function siteOverlay(els = 'site-overlay', flag, custom) {
 
     app.Synergy(els, (el, options) => {
 
+        el.addEventListener('click', () => app.siteOverlay(el).hide());
+
         exports.toggle = (flag = flag, target = el) => {
             if (el.modifier('visible')) {
                 toggleOverlay('hide', target, flag, options);
@@ -30,8 +32,6 @@ export function siteOverlay(els = 'site-overlay', flag, custom) {
         exports.hide = (flag = flag, target = el) => {
             toggleOverlay('hide', target, flag, options);
         }
-
-        el.addEventListener('click', () => app.siteOverlay(el).hide());
 
     }, defaults, custom);
 

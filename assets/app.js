@@ -27,16 +27,17 @@ import { tabs        } from './modules/elements/tabs/tabs';
 import { tooltips    } from './modules/elements/tooltips/tooltips';
 
 // Objects
-import { siteOverlay } from './modules/objects/site-overlay/site-overlay';
 import { googleMap   } from './modules/objects/google-map/google-map';
 import { header      } from './modules/objects/header/header';
 import { preloader   } from './modules/objects/preloader/preloader';
 import { scrollTop   } from './modules/objects/scroll-top/scroll-top';
 import { search      } from './modules/objects/search/search';
+import { sideNav     } from './modules/objects/side-nav/side-nav';
+import { siteOverlay } from './modules/objects/site-overlay/site-overlay';
 
 export { 
     accordion, carousel, modal, progressBar, tabs, tooltips, 
-    siteOverlay, googleMap, header, preloader, scrollTop, search
+    googleMap, header, preloader, scrollTop, search, sideNav, siteOverlay
 }
 
 // Tools

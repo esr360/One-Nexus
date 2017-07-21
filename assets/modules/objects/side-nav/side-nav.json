@@ -1,0 +1,27 @@
+{
+    "side-nav": {
+        "name": "side-nav",
+        "parent-color": "color('greyscale', 'white')",
+        "parent-background": "rgba(black, 0.15)",
+        "parent-left-border": "5px solid color('brand', 'brand-1')",
+        "parent-hover-background": "color('brand', 'brand-1')",
+        "parent-active-background": "color('brand', 'brand-1')",
+        "item-padding": "1.2em",
+        "item-color": "color('greyscale', 'grey-3')",
+        "item-bg": "rgba(black, 0.15)",
+        "item-top-border": "1px solid rgba(white, 0.05)",
+        "item-bottom-border": "1px solid rgba(black, 0.1)",
+        "item-left-border": "5px solid rgba(black, 0.3)",
+        "item-right-border": "none",
+        "item-hover-left-border": "5px solid color('brand', 'brand-1')",
+        "item-hover-color": "color('greyscale', 'white')",
+        "item-hover-bg": "color('brand', 'brand-1')",
+        "show-y-scrollbar": "false",
+        "collapsible": {
+            "enabled": "true",
+            "open-by-default": "true",
+            "icon": "fa-chevron-circle-down"
+        },
+        "overlay": "site-overlay"
+    }
+}

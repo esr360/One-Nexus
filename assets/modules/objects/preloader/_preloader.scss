@@ -53,7 +53,7 @@
         // Modifiers
         //*********************************************************
 
-        @include modifier('loaded') {
+        @include modifier('hidden') {
             transform: scale(0);
         }
 

@@ -120,6 +120,8 @@ app.preloader().toggle();
 
 #### With Preloader-Close Button
 
+> Any element with the `preloader_close` class can close the preloader
+
 ```html
 <div class="preloader">
     <div class="preloader_spinner"></div>

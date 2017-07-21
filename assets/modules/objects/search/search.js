@@ -16,7 +16,7 @@ export function search(els = 'searchBox', custom) {
     app.Synergy(els, (el, options) => {
 
         app.Synergy(options.name).component('trigger').forEach(trigger => {
-            trigger.addEventListener('click', () => exports.show());
+            trigger.addEventListener('click', () => exports.toggle());
         });
 
         app.Synergy(options.name).component('close').forEach(trigger => {
