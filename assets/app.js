@@ -59,6 +59,9 @@ export function custom(module, custom) {
     return custom;
 }
 
+// Attach `app` to the `window` object
+window.app = app;
+
 // Global Methods
 //*****************************************************************
 

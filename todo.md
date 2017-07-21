@@ -10,3 +10,5 @@
 * add searchbox and side-nav html to handlebars partials
 * sticky header padding-top scroll jump
 * search codebase for @TODO's
+* Synergy strips hyphens from module name when using component mixin
+* modal.hide() on specific ID will close even if id is wrong/mispelt

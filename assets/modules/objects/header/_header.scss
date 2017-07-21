@@ -91,6 +91,13 @@
             height: this('height');
         }
 
+        @include module('sideNav') {
+            @include component('trigger') {
+                @include vertical-center(absolute);
+                right: 0;
+            }
+        }
+
         //*********************************************************
         // Custom Content
         //*********************************************************

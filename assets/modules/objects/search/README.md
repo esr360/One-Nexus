@@ -9,7 +9,7 @@
 ##### Modifiers
 
 * visible
-* inuput
+* input
 
 ##### Quick Look
 

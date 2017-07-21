@@ -1,6 +1,6 @@
 {
     "side-nav": {
-        "name": "side-nav",
+        "name": "sideNav",
         "parent-color": "color('greyscale', 'white')",
         "parent-background": "rgba(black, 0.15)",
         "parent-left-border": "5px solid color('brand', 'brand-1')",

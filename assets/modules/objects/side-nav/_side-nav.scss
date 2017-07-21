@@ -1,12 +1,12 @@
 @import '../../modules/objects/side-nav/side-nav.json';
-/// Side-Nav
+/// sideNav
 ///
 /// @author [@esr360](http://twitter.com/esr360)
 /// @access public
 /// @group objects
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin side-nav($custom: custom('side-nav')) {
+@mixin side-nav($custom: custom('sideNav')) {
 
     // Config
     $side-nav: config($side-nav, $custom);
@@ -134,16 +134,11 @@
         // Components
         //*********************************************************
 
-        // @TODO perhaps rename to 'toggle'?
-        @include component('openClose') {
-            position: absolute;
-            top: -1px;
-            right: 0;
+        @include component('trigger') {
             padding: 1.45em;
             cursor: pointer;
             transition: core('transition');
             opacity: 0.6;
-            display: block;
             &:hover {
                 background: rgba(color('greyscale', black), 0.2);
                 opacity: 1;
@@ -158,4 +153,4 @@
 
     } // module
 	
-} // @mixin side-nav
+} // @mixin sideNav

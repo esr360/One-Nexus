@@ -9,7 +9,7 @@ import defaults from './side-nav.json';
  * @param {(String|HTMLElement|NodeList)} els
  * @param {Object} custom
  */
-export function sideNav(els = 'side-nav', custom) {
+export function sideNav(els = 'sideNav', custom) {
 
     custom = app.custom('side-nav', custom);
 
@@ -32,8 +32,8 @@ export function sideNav(els = 'side-nav', custom) {
             // toggle sidenav
             el.modifier('visible', state);
             // toggle overlay
-            app.siteOverlay(options.overlay).toggle('sideNav');
-            // toggle event handler on overlay to hide side-nav
+            app.siteOverlay(options.overlay).toggle('overlaySideNav');
+            // toggle event handler to hide side-nav on overlay click
             app.Synergy(options.overlay).query[0][listener]('click', exports.hide);
         }
 
