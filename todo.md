@@ -14,3 +14,5 @@
 * modal.hide() on specific ID will close even if id is wrong/mispelt
 * add sass error/warn when this('option') doesn't exist
 * create something to dynamically create reference links from strings
+* add light overlay modifier and integrate into preloader module
+* add option to disable close overlay on click
