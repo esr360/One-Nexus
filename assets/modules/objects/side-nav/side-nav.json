@@ -16,10 +16,10 @@
         "item-hover-left-border": "5px solid color('brand', 'brand-1')",
         "item-hover-color": "color('greyscale', 'white')",
         "item-hover-bg": "color('brand', 'brand-1')",
-        "show-y-scrollbar": "false",
+        "show-y-scrollbar": false,
         "collapsible": {
-            "enabled": "true",
-            "open-by-default": "true",
+            "enabled": true,
+            "open-by-default": false,
             "icon": "fa-chevron-circle-down"
         },
         "overlay": "site-overlay"

@@ -125,24 +125,13 @@
                 to right, rgba(white, 0.025), rgba(black, 0.5)
             );
         }
+
+        .collapsed {
+            display: none;
+        }
             
         @include module(('logo', 'navigation')) {
             display: block;
-        }
-        
-        //*********************************************************
-        // Components
-        //*********************************************************
-
-        @include component('trigger') {
-            padding: 1.45em;
-            cursor: pointer;
-            transition: core('transition');
-            opacity: 0.6;
-            &:hover {
-                background: rgba(color('greyscale', black), 0.2);
-                opacity: 1;
-            }
         }
 
         //*********************************************************
