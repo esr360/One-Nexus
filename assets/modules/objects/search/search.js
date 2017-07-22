@@ -15,12 +15,12 @@ export function search(els = 'searchBox', custom) {
 
     app.Synergy(els, (el, options) => {
 
-        app.Synergy(options.name).component('trigger').forEach(trigger => {
-            trigger.addEventListener('click', () => exports.toggle());
+        app.Synergy(options.name).component('toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => exports.toggle());
         });
 
-        app.Synergy(options.name).component('close').forEach(trigger => {
-            trigger.addEventListener('click', () => exports.hide());
+        app.Synergy(options.name).component('close').forEach(close => {
+            close.addEventListener('click', () => exports.hide());
         });
 
         exports.show = () => exports.toggle('show');
@@ -29,7 +29,7 @@ export function search(els = 'searchBox', custom) {
         exports.toggle = operator => {
             el.modifier('visible', (el.modifier('visible') || operator === 'hide') ? 'unset' : 'set');
 
-            if (operator === 'show') {
+            if (1) {
                 window.setTimeout(() => el.component('input')[0].focus(), 100);
             }
         }

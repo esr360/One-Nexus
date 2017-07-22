@@ -27,13 +27,26 @@
         width: 400px;
         max-width: 100%;
         transition: core('transition');
+        font-size: this('font-size');
 
         @include modifier('visible') {
             left: 0;
         }
-        
-        @include option('show-y-scrollbar') {
-           overflow-y: scroll;
+
+        @include component('dropdown') {
+            @include component('toggle') {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: this('item', 'padding');
+                line-height: 1.5;
+                cursor: pointer;
+                transition: core('transition');
+                &:hover {
+                    background: this('parent', 'background');
+                    color: this('parent', 'color');
+                }
+            }
         }
             
         nav {
@@ -50,13 +63,14 @@
                 visibility: visible;
                 li {
                     display: block;
+                    position: relative;
                     margin-left: 0;
                     &:hover {
-                        > a, a:not(:only-child) {
+                        > a {
                             border-right: none;
-                            background: this('item-hover-bg');
-                            border-left: this('item-hover-left-border');
-                            color: this('item-hover-color');
+                            background: this('item', 'hover', 'background');
+                            border-left: this('item', 'hover', 'left-border');
+                            color: this('item', 'hover', 'color');
                         }
                     }
                 }
@@ -66,12 +80,12 @@
                     text-decoration: none;
                     border-radius: 0;
                     
-                    padding: this('item-padding');
-                    color: this('item-color');
-                    border-top: this('item-top-border');
-                    border-bottom: this('item-bottom-border');
-                    border-left: this('item-left-border');
-                    border-right: this('item-right-border');
+                    padding: this('item', 'padding');
+                    color: this('item', 'color');
+                    border-top: this('item', 'top-border');
+                    border-bottom: this('item', 'bottom-border');
+                    border-left: this('item', 'left-border');
+                    border-right: this('item', 'right-border');
                     &:after {
                         display: none;
                     }
@@ -80,10 +94,10 @@
                     li {
                         &:hover {
                             a {
-                                color: this('item-hover-color');
+                                color: this('item', 'hover', 'color');
                                 background: transparent;
-                                border-top: this('item-top-border');
-                                border-bottom: this('item-bottom-border');
+                                border-top: this('item', 'top-border');
+                                border-bottom: this('item', 'bottom-border');
                             }
                         }
                     }
@@ -97,41 +111,27 @@
             > ul {		
                 > li {
                     > a {
-                        color: this('parent-color');
-                        border-left: this('parent-left-border');
-                        background: this('parent-background');
+                        color: this('parent', 'color');
+                        border-left: this('parent', 'left-border');
+                        background: this('parent', 'background');
                         &.active {
-                            background: this('parent-active-background');
+                            background: this('parent', 'active', 'background');
                         }
                     }
                     &:hover {
                         > a {
                             border-color: transparent;
                             border-right: none;
-                            background: this('parent-hover-background');
+                            background: this('parent', 'hover', 'background');
                         }
                     }
                 }
             }
         
         } // nav
-        
-        &::-webkit-scrollbar {
-            width: 14px;
-        }
-        &::-webkit-scrollbar-thumb {
-            border-left: 1px solid rgba(white, 0.075);
-            background-image: linear-gradient(
-                to right, rgba(white, 0.025), rgba(black, 0.5)
-            );
-        }
 
         .collapsed {
             display: none;
-        }
-            
-        @include module(('logo', 'navigation')) {
-            display: block;
         }
 
         //*********************************************************
@@ -142,4 +142,4 @@
 
     } // module
 	
-} // @mixin sideNav
+} // @mixin side-nav

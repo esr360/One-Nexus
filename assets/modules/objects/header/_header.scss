@@ -92,7 +92,7 @@
         }
 
         @include module('sideNav') {
-            @include component('trigger') {
+            @include component('toggle') {
                 @include vertical-center(absolute);
                 right: 0;
             }
