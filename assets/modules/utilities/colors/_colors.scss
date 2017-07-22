@@ -1,5 +1,5 @@
 @import '../../modules/utilities/colors/colors.json';
-/// Color Palette
+/// Colors
 ///
 /// @author [@esr360](http://twitter.com/esr360)
 /// @access public
@@ -8,9 +8,8 @@
 /// @param {map} $custom - where custom config will be passed
 /// @outputs all project color palettes as a global variable
 @mixin colors($custom: module('colors')) {
-    // Configuration
     $colors: config($colors, $custom) !global;
-} // @mixin colors
+}
 
 @if ($include-now) {
     @include colors;
@@ -91,9 +90,11 @@
 
     @each $color-stop in $color-stops {
         $color: nth($color-stop, 1);
+
         $updated-color-stop: list-replace(
             $color-stop, $color, map-search($colors, $color)
         );
+
         $color-stops: list-replace(
             $color-stops, $color-stop, $updated-color-stop
         );
