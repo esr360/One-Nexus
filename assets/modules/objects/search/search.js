@@ -27,9 +27,11 @@ export function search(els = 'searchBox', custom) {
         exports.hide = () => exports.toggle('hide');
 
         exports.toggle = operator => {
-            el.modifier('visible', (el.modifier('visible') || operator === 'hide') ? 'unset' : 'set');
+            const state = (el.modifier('visible') && operator !== 'show' || operator === 'hide') ? 'unset' : 'set';
 
-            if (1) {
+            el.modifier('visible', state);
+
+            if (state === 'set') {
                 window.setTimeout(() => el.component('input')[0].focus(), 100);
             }
         }
