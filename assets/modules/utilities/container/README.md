@@ -18,6 +18,8 @@
 
 ### Options
 
+> For default values view the [`container.json`](container.json) file.
+
 <table class="table">
     <thead>
         <tr>

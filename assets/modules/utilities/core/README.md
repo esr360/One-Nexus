@@ -12,6 +12,8 @@
 
 ### Options
 
+> For default values view the [`core.json`](core.json) file.
+
 <table class="table">
     <thead>
         <tr>

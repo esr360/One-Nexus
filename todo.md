@@ -17,3 +17,4 @@
 * add light overlay modifier and integrate into preloader module
 * add option to disable close overlay on click
 * updating Quick Look heading size to ###
+* add placeholder alis for each helper class

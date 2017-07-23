@@ -20,6 +20,8 @@ The One-Nexus Grid System is built using the [Kayzen-GS](https://github.com/esr3
 
 The complete available options and settings to pass to the module can be found on the [Kayzen-GS SassDocs](http://esr360.github.io/Kayzen-GS/docs/#variable-kayzenGS) page.
 
+> For default values view the [`grid.json`](grid.json) file.
+
 <table class="table">
     <thead>
         <tr>
@@ -34,19 +36,19 @@ The complete available options and settings to pass to the module can be found o
         </tr>
         <tr>
             <td>options {}</td>
-            <td>placeholder</td>
+            <td>The [Kayzen-GS](http://esr360.github.io/Kayzen-GS/docs/#variable-kayzenGS) options to be modified</td>
         </tr>
         <tr>
             <td>settings {}</td>
-            <td>placeholder</td>
+            <td>The [Kayzen-GS](http://esr360.github.io/Kayzen-GS/docs/#variable-kayzenGS) settings to be modified</td>
         </tr>
         <tr>
             <td>breakpoints {}</td>
-            <td>placeholder</td>
+            <td>The [breakpoints](https://github.com/esr360/Kayzen-GS#breakpoints) to use when generating the Grid System styles</td>
         </tr>
         <tr>
             <td>fractions {}</td>
-            <td>placeholder</td>
+            <td>The [fractions](https://github.com/esr360/Kayzen-GS#fractions) to use when generating the Grid System styles</td>
         </tr>
     </tbody>
 </table>
@@ -74,6 +76,18 @@ Load the Grid System styles in your theme's main `scss` file (e.g. [themes/One-N
 @import './config.json';
 
 @include grid();
+```
+
+### Tools & Utilities
+
+#### Function: `breakpoint()`
+
+Retrieve an existing breakpoint value
+
+```sass
+@media (min-width: breakpoint('break-3')) {
+    ...
+}
 ```
 
 ### Examples

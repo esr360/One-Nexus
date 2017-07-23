@@ -3,10 +3,8 @@
 /// @author [@esr360](http://twitter.com/esr360)
 /// @access public
 /// @group utilities
-/// @param {map} $custom - where custom config will be passed
 ///
-/// @example
-///     @include print();
+/// @param {map} $custom - where custom config will be passed
 @mixin print($custom: ()) {
 
 	@include module('print') {

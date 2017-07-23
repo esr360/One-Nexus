@@ -55,6 +55,12 @@
 					transform: rotate(360deg); 
 				} 
 			}
+			
+			::selection {
+				background-color: color('brand', 'brand-1');
+				color: color('greyscale', 'white');
+				text-shadow: none;
+			}
 
 			//*****************************************************
 			// Layout & Structure
@@ -82,12 +88,6 @@
 
 			.object-small {
 				@include object(this('margin')/2);
-			}
-			
-			::selection {
-				background-color: color('brand', 'brand-1');
-				color: color('greyscale', 'white');
-				text-shadow: none;
 			}
 
 		}
