@@ -47,20 +47,15 @@ export const config = {};
 
 import { breakpoint      } from './tools/js/app.breakpoint';
 import { clickHelper     } from './tools/js/app.clickHelper';
+import { custom          } from './tools/js/app.custom';
 import { isValidSelector } from './tools/js/app.isValidSelector';
 import { parents         } from './tools/js/app.parents';
+import { smoothScroll    } from './tools/js/app.smoothScroll';
 
-export { breakpoint, clickHelper, isValidSelector, parents };
-
-export function custom(module, custom) {
-    if (typeof app.theme[module] !== 'undefined' && !custom) {
-        return app.theme[module];
-    }
-    return custom;
-}
+export { breakpoint, clickHelper, custom, isValidSelector, parents };
 
 // Attach `app` to the `window` object
-window.app = app;
+window.APPUI = app;
 
 // Global Methods
 //*****************************************************************
@@ -76,3 +71,8 @@ Element.prototype.modifier = function(modifier, set) {
 Element.prototype.parents = function(selector) {
 	return app.parents(this, selector);
 };
+
+// Global Functions
+//*****************************************************************
+
+smoothScroll();

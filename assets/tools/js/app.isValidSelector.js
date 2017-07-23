@@ -1,7 +1,7 @@
 /**
  * Test the validity (not existance) of a CSS selector
  * 
- * @access private
+ * @access public
  * 
  * @param {String} selector
  */

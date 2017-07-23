@@ -1,4 +1,4 @@
-import app from '../../app';
+import * as app from '../../app';
 
 /**
  * Custom
@@ -9,5 +9,8 @@ import app from '../../app';
  * @param {Object} custom
  */
 export function custom(module, custom) {
-    return (typeof app.theme[module] !== 'undefined' && !custom) ? app.theme[module] : custom;
+    if (typeof app.theme[module] !== 'undefined' && !custom) {
+        return app.theme[module];
+    }
+    return custom;
 }
