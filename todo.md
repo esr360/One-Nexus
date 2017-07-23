@@ -18,3 +18,4 @@
 * add option to disable close overlay on click
 * updating Quick Look heading size to ###
 * add placeholder alis for each helper class
+* choose consistent sass/scss syntax highlight for README's

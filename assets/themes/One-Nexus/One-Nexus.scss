@@ -46,6 +46,7 @@
 /// Objects
 ///************************************************************
 
+@include billboard;
 @include breadcrumb;
 @include footer;
 @include google-map;
@@ -58,10 +59,3 @@
 @include scroll-top;
 @include search;
 @include site-overlay;
-
-///************************************************************
-/// Sections
-///************************************************************
-
-@include sections;
-@include billboard;
