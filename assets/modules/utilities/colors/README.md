@@ -1,6 +1,6 @@
 ## Colors
 
-##### Quick Look
+### Quick Look
 
 ```css
 .brand-1 {
@@ -72,6 +72,25 @@
 }
 ```
 
+To modify any of the above colors, pass them to the `colors` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+
+```json
+{
+    "app": {
+        "colors": {
+            "brand": {
+                "brand-1": "#3A99D8",
+                "brand-4": "#39CB74"
+            },
+            "new-palette": {
+                "new-color-1": "red",
+                "new-color-2": "#F0C330"
+            }
+        }
+    }
+}
+```
+
 ### Sass
 
 Load the color palettes in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `colors()` mixin:
@@ -83,4 +102,69 @@ Load the color palettes in your theme's main `scss` file (e.g. [themes/One-Nexus
 @include colors();
 ```
 
-### Examples
+### Tools & Utilities
+
+#### Function: `palette()`
+
+Retrieve an existing color palette
+
+```sass
+@each $brand, $color in palette('brand') {
+    ...
+}
+```
+
+#### Function: `color()`
+
+Retrieve a color from an existing palette
+
+```sass
+.brand-1 {
+    color: color('brand', 'brand-1');
+}
+```
+
+#### Function: `merge-palettes()`
+
+Create a new palette from existing palettes
+
+```sass
+$new-palette: merge-palettes('brand', 'greyscale', 'alert', 'social');
+
+.brand-1 {
+    color: map-get($new-palettes, 'brand-1');
+}
+```
+
+Use only specific colors from certain palettes
+
+```sass
+$new-palette: merge-palettes(
+    'brand', 
+    ('greyscale': ('grey-1', 'grey-3', 'grey-4')), 
+    'alert', 
+    ('social': ('facebook', 'twitter'))
+);
+
+.facebook {
+    color: map-get($new-palettes, 'grey-1');
+    background-color: map-get($new-palettes, 'facebook');
+}
+```
+#### Function: `gradient()`
+
+Create a linear gradient using `gradients` from the options
+
+```sass
+.brand-gradient {
+    background: gradient('brand');
+}
+```
+
+Outputs:
+
+```sass
+.brand-gradient {
+    background: linear-gradient(135deg, #2E3882 0%, #06D2FF 20%, #04CEC0 100%);
+}
+```

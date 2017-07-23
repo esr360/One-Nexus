@@ -7,7 +7,7 @@
 ///
 /// @param {map} $custom - where custom config will be passed
 /// @outputs all project color palettes as a global variable
-@mixin colors($custom: module('colors')) {
+@mixin colors($custom: custom('colors')) {
     $colors: config($colors, $custom) !global;
 }
 

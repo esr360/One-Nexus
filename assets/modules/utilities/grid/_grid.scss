@@ -1,11 +1,13 @@
-/// One Nexus - modules\utilities\grid
+@import '../../modules/utilities/grid/grid.json';
+/// Grid System
 ///
-/// @author Edmund Reed
+/// @author [@esr360](http://twitter.com/esr360)
 /// @access public
 /// @group utilities
+///
 /// @param {map} $custom - where custom config will be passed
 ///
-/// @require {mixin} kayzen-gs
+/// @require {mixin} kayzen-gs - http://esr360.github.io/Kayzen-GS/
 ///
 /// @example
 ///     @include grid((
@@ -17,54 +19,37 @@
 ///             'break-5'   : 1600px
 ///         )
 ///     ));
-@mixin grid($custom: ()) {
+@mixin grid($custom: custom('grid')) {
 
-    //*************************************************************
-    // Configuration
-    //*************************************************************
-
-    // https://git.io/vX7Re
-    $grid: map-merge-deep((
-        'name'             : 'grid',
-        'output-json'      : true,
-        'options':(
-            'base-width'   : 90%,
-            'small-width'  : 940px,
-            'medium-width' : 1200px,
-            'large-width'  : 1800px
-        ),
-        'breakpoints':(
-            'break-5'      : 1400px
-        )
-    ), $kayzenGS);
+    // Configuration - https://git.io/vX7Re
+    $grid: map-merge-deep($grid, $kayzenGS);
 
     // Merge default config with custom options
     $grid: config($grid, $custom) !global;
 
-    // Row
-    @include module(this('options', 'row-namespace')) {
+    // Load Kayzen-GS styles
+    @include kayzen-gs($grid);
 
-        @at-root {
-            @include kayzen-gs($grid);
-        }
+    $row:    this('options', 'row-namespace');
+    $column: this('options', 'col-namespace');
+    $gutter: this('options', 'gutter');
+
+    // Row
+    @include module($row) {
 
         @include modifier('breathe') {
-            margin-bottom: -2em;
-            [class*="#{this('options', 'col-namespace')}"] {
-                margin-bottom: 2em;
+            margin-bottom: -#{core('margin')};
+
+            @include module($column) {
+                margin-bottom: core('margin');
             }
-            @media (min-width: breakpoint('break-3')) {
-                margin-bottom: -#{this('options', 'gutter')};
-                [class*="#{this('options', 'col-namespace')}"] {
-                    margin-bottom: this('options', 'gutter');
+
+            @media (min-width: this('options', 'col-break')) {
+                margin-bottom: -#{$gutter};
+
+                @include module($column) {
+                    margin-bottom: $gutter;
                 }
-            }
-        }
-    
-        @include modifier('gasp') {
-            margin-bottom: -#{(this('options', 'gutter') / 2)};
-            [class*="#{this('options', 'col-namespace')}"] {
-                margin-bottom: (this('options', 'gutter') / 2);
             }
         }
 

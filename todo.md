@@ -16,3 +16,4 @@
 * create something to dynamically create reference links from strings
 * add light overlay modifier and integrate into preloader module
 * add option to disable close overlay on click
+* updating Quick Look heading size to ###

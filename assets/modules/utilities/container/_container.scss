@@ -1,0 +1,34 @@
+@import '../../modules/utilities/container/container.json';
+/// Container
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group utilities
+///
+/// @param {map} $custom - where custom config will be passed
+@mixin container($custom: custom('container')) {
+
+    // Configuration
+	$container: config($container, $custom);
+
+    //*************************************************************
+    // Module
+    //*************************************************************
+
+	@include module {
+        width: this('base-width');
+        max-width: this('max-width');
+        margin: 0 auto;
+        position: relative;
+
+        @include modifier('large') {
+            max-width: this('large-width');
+        }
+
+        @include modifier('section') {
+            padding-top: 4em;
+            padding-bottom: 4em;
+        }
+	}
+
+} // @mixin container

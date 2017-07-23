@@ -107,6 +107,11 @@
     //*************************************************************
     // Aligning
     //*************************************************************
+
+	.wrapper {
+		padding-left: option($grid, 'options', 'gutter');
+		padding-right: option($grid, 'options', 'gutter');
+	}
     
     .force-align {
         white-space: nowrap;

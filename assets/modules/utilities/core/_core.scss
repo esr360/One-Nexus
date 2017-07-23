@@ -1,37 +1,15 @@
 @import '../../modules/utilities/core/core.json';
-/// One Nexus - modules\utilities\core
+/// Core Styles
 ///
-/// @author Edmund Reed
+/// @author [@esr360](http://twitter.com/esr360)
 /// @access public
 /// @group utilities
+///
 /// @param {map} $custom - where custom config will be passed
-/// @example
-///     @include core((
-///         'default-sizes'  : ('size-2', 'sze-4'),
-///         'optional-sizes' : ('size-5'),
-///         'breakpoints'    : (
-///             'break-3'    : 0.85
-///         )
-///     ));
-@mixin core($custom: ()) {
+@mixin core($custom: custom('core')) {
 
-    //*************************************************************
     // Configuration
-    //*************************************************************
-
-	$core: config((
-		'name'        : 'base',
-		'output-json' : true,
-		'background'  : color('greyscale', 'grey-1'),
-		'font-family' : typography('typefaces', 'primary'),
-		'text-color'  : typography('colors', 'base'),
-		'font-size'   : typography('sizes', 'base'),
-		'margin'      : 2rem,
-		'line-height' : 1.4,
-		'radius'      : 0.4em,
-		'oval-radius' : 1.5em,
-		'transition'  : 0.4s
-	), $custom) !global;
+	$core: config($core, $custom) !global;
 
 	@include module {
 
@@ -52,11 +30,11 @@
 			}
 			
 			body {
-				background: core('background');
-				font-family: core('font-family');
-				color: core('text-color');
-				font-size: core('font-size');
-				line-height: core('line-height');
+				background: this('background');
+				font-family: this('font-family');
+				color: this('text-color');
+				font-size: this('font-size');
+				line-height: this('line-height');
 			}
 			
 			ins {
@@ -66,32 +44,7 @@
 			}
 			
 			h1, h2, h3, h4, h5, h6 {
-				font-size: core('font-size');
-			}
-			
-			// code tags
-			code {
-				background: white;
-				border-radius: 0.3em;
-				color: #C7254F;
-				border: 1px solid color('greyscale', 'grey-2');
-				font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-				font-style: normal;
-				font-size: font-size('size-2');
-				font-weight: 300;
-				padding: 0.1em 0.3em;
-				&.alt {
-					background: rgba(black, 0.4);
-					border-color: transparent;
-					color: inherit;
-				}
-				pre & {
-					border: none;
-				}
-			}
-			
-			#site-content {
-				transition: core('transition');
+				font-size: this('font-size');
 			}
 
 			@keyframes spin { 
@@ -104,44 +57,14 @@
 			}
 
 			//*****************************************************
-			// Structure
+			// Layout & Structure
 			//*****************************************************
-			
-			@include module('container') {
-				width: option($grid, 'options', 'base-width');
-				max-width: option($grid, 'options', 'medium-width');
-				margin: 0 auto;
-				position: relative;
-				@include modifier('large') {
-					max-width: option($grid, 'options', 'large-width');
-				}
-				@include modifier('section') {
-					padding-top: 4em;
-					padding-bottom: 4em;
-				}
-			}
 			
 			@include module('hrule') {
-				margin: core('margin') 0;
-				border-color: rgba(black, 0.15);
-				@include modifier('line') {
-					border-top: 1px solid rgba(0, 0, 0, 0.15);
-					border-bottom: 0;
-				}
-				@include modifier('dotted') {
-					border-top: 1px dotted rgba(0, 0, 0, 0.15);
-					border-bottom: 0;
-				}
+				margin: this('margin') 0;
+				border: none;
+				border-top: 1px solid this('hrule-color');
 			}
-
-			.wrapper {
-				padding-left: option($grid, 'options', 'gutter');
-				padding-right: option($grid, 'options', 'gutter');
-			}
-
-			//*****************************************************
-			// Layout
-			//*****************************************************
 			
 			* {
 				&, &:before, &:after {
@@ -158,7 +81,7 @@
 			}
 
 			.object-small {
-				@include object(core('margin')/2);
+				@include object(this('margin')/2);
 			}
 			
 			::selection {
@@ -167,31 +90,11 @@
 				text-shadow: none;
 			}
 
-			.auto-resizable-iframe {
-				margin-left: auto;
-				margin-right: auto;
-				position: relative;
-				background: rgba(black, 0.2);
-				> div { 
-					position: relative;
-					padding-bottom: 58.5%;
-					height: 0px;           
-				}
-				iframe {
-					position: absolute;
-					border: 0px;
-					top: 0px;
-					left: 0px;
-					width: 100%;
-					height: 100%;
-				}
-			}
-
 		}
 
 	}
 
-} // @mixin base
+} // @mixin core
 
 //*****************************************************************
 // Tools & Utilities
