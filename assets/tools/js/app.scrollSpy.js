@@ -7,7 +7,6 @@
  * @param {String} selector
  */
 export function scrollSpy() {
-    'use strict';
 
     var section = document.querySelectorAll(".section");
     var sections = {};

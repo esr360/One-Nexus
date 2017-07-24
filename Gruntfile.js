@@ -457,7 +457,8 @@ module.exports = function(grunt) {
             scripts: {
                 files: [
                     project.source[0] + src + '.js',
-                    _scripts
+                    _scripts,
+                    project.source[0] + 'tools/**/*.js',
                 ],
                 tasks: [
                     //'jshint',

@@ -11,7 +11,7 @@
 @mixin bg-overlay($background) {
 	position: relative;
 	&:before {
-		content: "";
+		content: '';
 		z-index: 0;
 		background: $background;
 		@extend %fill-parent;
