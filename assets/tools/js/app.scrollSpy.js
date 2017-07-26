@@ -2,28 +2,43 @@
  * ScrollSpy
  * 
  * @access public
- * @see https://codepen.io/zchee/pen/ogzvZZ
  * 
- * @param {String} selector
+ * @param {Object} custom - where custom options are passed
  */
-export function scrollSpy() {
+export function scrollSpy(custom) {
 
-    var section = document.querySelectorAll(".section");
-    var sections = {};
-    var i = 0;
+    /**
+     * @param {String} options.container - CSS selector for scrollSpy links container
+     * @param {String} options.element - CSS selector for scrollSpy link elements
+     * @param {String} options.activeClass - class to apply to link element when target is in view
+     */
+    const options = Object.assign({
+        container: null,
+        element: 'a',
+        activeClass: 'active'
+    }, custom);
 
-    Array.prototype.forEach.call(section, function(e) {
-        sections[e.id] = e.offsetTop;
-    });
+    if (!options.container) {
+        console.warn('ScrollSpy: you must pass a value for "container"')
+    }
 
-    window.onscroll = function() {
+    const spyLinks = document.querySelector(options.container).querySelectorAll(options.element);
+
+    const spyTargets = (targets = []) => {
+        spyLinks.forEach(el => targets.push(document.querySelector(el.getAttribute('href'))));
+        return targets;
+    }
+
+    window.onscroll = () => {
         var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
 
-        for (i in sections) {
-            if (sections[i] <= scrollPosition) {
-                document.querySelector('.active').setAttribute('class', ' ');
-                document.querySelector('a[href*=' + i + ']').setAttribute('class', 'active');
+        spyTargets().forEach((target, index) => {
+            if (target.offsetTop <= scrollPosition) {
+                spyLinks.forEach(el => el.classList.remove(options.activeClass));
+                spyLinks[index].classList.add(options.activeClass);
+            } else {
+                spyLinks[index].classList.remove(options.activeClass);
             }
-        }
+        });
     };
 }

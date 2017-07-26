@@ -4,10 +4,15 @@
  * @access public
  * @see https://codepen.io/rleve/pen/iCbgy
  * 
- * @param {String} selector
+ * @todo fix downwards scroll when <html> tag has 100% height
+ * 
+ * @param {Object} custom - where custom options are passed
  */
 export function smoothScroll(custom) {
 
+    /**
+     * @param {Number} [options.speed=300] - the animation duration (milliseconds)
+     */
     const options = Object.assign({
         speed: 300
     }, custom);
@@ -34,9 +39,9 @@ export function smoothScroll(custom) {
             var travelled = window.pageYOffset;
             var down = (travelled >= (endLocation - increments)) || ((window.innerHeight + travelled) >= document.body.offsetHeight);
             var up = travelled <= (endLocation || 0);
-            var scrollDirection = (increments >= 0) ? down : up;
+            var shouldStop = (increments >= 0) ? down : up;
 
-            if (scrollDirection) {
+            if (shouldStop) {
                 clearInterval(runAnimation);
             }
         };

@@ -9,9 +9,18 @@ scripts:
     - <%=assets%>assets/themes/<%=theme%>/app
 Prism: 1.6.0
 ---
-<a href="#footer">CLCK ME FOOTER</a>
+
+<div class="scrollSpy_links">
+    <a href="#scrollSpy_link-1">Link 1</a>
+    <a href="#scrollSpy_link-2">Link 1</a>
+    <a href="#scrollSpy_link-3">Link 1</a>
+</div>
+
+<a href="#map">map</a>
 
 <h1>Hello Space!</h1>
+
+<div id="scrollSpy_link-1"></div>
 
 <div class="accordion" id="foo">
     <div class="accordion_section">
@@ -34,6 +43,8 @@ Prism: 1.6.0
     <div class="carousel_slide">lorem ipsum</div>
     <div class="carousel_slide">Dolor sit amet</div>
 </div>
+
+<div id="scrollSpy_link-2"></div>
 
 <a href="#fizz">Fizz Modal Trigger</a>
 <div class="modal" data-modal-style="zoom" id="fizz">Fizz Modal</div>
@@ -101,7 +112,9 @@ Prism: 1.6.0
 <br />
 <br />
 
-<div class="google-map" data-google-map='{
+<div id="scrollSpy_link-3"></div>
+
+<div id="map" class="google-map" data-google-map='{
     "height": "80vh",
     "zoom": 12,
     "longitude": 37.773675, 

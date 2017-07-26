@@ -85,3 +85,18 @@ $asset-path: '../..' !default;
 @import 'modules/objects/search/search';
 @import 'modules/objects/side-nav/side-nav';
 @import 'modules/objects/site-overlay/site-overlay';
+
+.scrollSpy {
+
+    &_links {
+        @include vertical-center(fixed);
+        left: 0;
+        a {
+            &.active {
+                color: red;
+                font-weight: bold;
+            }
+        }
+    }
+
+}

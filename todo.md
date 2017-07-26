@@ -16,6 +16,9 @@
 * create something to dynamically create reference links from strings
 * add light overlay modifier and integrate into preloader module
 * add option to disable close overlay on click
-* updating Quick Look heading size to ###
-* add placeholder alis for each helper class
+* update Quick Look heading size to ###
+* add placeholder alias for each helper class
 * choose consistent sass/scss syntax highlight for README's
+* add unit-tests
+* create animation library
+* add author to JS modules

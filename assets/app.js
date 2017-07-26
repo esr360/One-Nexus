@@ -51,8 +51,11 @@ import { custom          } from './tools/js/app.custom';
 import { isValidSelector } from './tools/js/app.isValidSelector';
 import { parents         } from './tools/js/app.parents';
 import { smoothScroll    } from './tools/js/app.smoothScroll';
+import { scrollSpy       } from './tools/js/app.scrollSpy';
 
-export { breakpoint, clickHelper, custom, isValidSelector, parents };
+export { 
+    breakpoint, clickHelper, custom, isValidSelector, parents, scrollSpy 
+};
 
 // Attach `app` to the `window` object
 window.APPUI = app;
@@ -76,3 +79,7 @@ Element.prototype.parents = function(selector) {
 //*****************************************************************
 
 smoothScroll();
+
+scrollSpy({
+    container: '.scrollSpy_links'
+});
