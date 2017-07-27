@@ -48,17 +48,19 @@ export const config = {};
 import { breakpoint      } from './tools/js/app.breakpoint';
 import { clickHelper     } from './tools/js/app.clickHelper';
 import { custom          } from './tools/js/app.custom';
+import { inViewport      } from './tools/js/app.inViewport';
 import { isValidSelector } from './tools/js/app.isValidSelector';
 import { parents         } from './tools/js/app.parents';
 import { smoothScroll    } from './tools/js/app.smoothScroll';
 import { scrollSpy       } from './tools/js/app.scrollSpy';
 
 export { 
-    breakpoint, clickHelper, custom, isValidSelector, parents, scrollSpy 
+    breakpoint, clickHelper, custom, inViewport, isValidSelector, 
+    parents, scrollSpy 
 };
 
-// Attach `app` to the `window` object
-window.APPUI = app;
+// Attach `app` to the Window object
+window.APPUI = window.APPUI || app;
 
 // Global Methods
 //*****************************************************************
@@ -75,11 +77,11 @@ Element.prototype.parents = function(selector) {
 	return app.parents(this, selector);
 };
 
-// Global Functions
+// App-Level Functions
 //*****************************************************************
 
 smoothScroll();
 
-scrollSpy({
-    container: '.scrollSpy_links'
-});
+scrollSpy({container: '.scrollSpy_links'});
+
+console.log(inViewport({target: document.querySelector('.tabs')}));

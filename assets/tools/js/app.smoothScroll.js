@@ -12,9 +12,11 @@ export function smoothScroll(custom) {
 
     /**
      * @param {Number} [options.speed=300] - the animation duration (milliseconds)
+     * @param {Number} [options.increments=16] - increments to run the animation
      */
     const options = Object.assign({
-        speed: 300
+        speed: 300,
+        increments: 16
     }, custom);
 
     // Define smooth scroll links
@@ -26,7 +28,7 @@ export function smoothScroll(custom) {
         var startLocation = window.pageYOffset;
         var endLocation = anchor.offsetTop;
         var distance = endLocation - startLocation;
-        var increments = distance/(duration/16);
+        var increments = distance/(duration/options.increments);
 
         // Scroll the page by an increment, and check if it's time to stop
         const animateScroll = () => {
@@ -47,7 +49,7 @@ export function smoothScroll(custom) {
         };
 
         // Loop the animation function
-        const runAnimation = setInterval(animateScroll, 16);
+        const runAnimation = setInterval(animateScroll, options.increments);
     };
 
     // For each smooth scroll link
