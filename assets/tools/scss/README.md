@@ -1,15 +1,14 @@
-## JavaScript Tools
+# Sass Tools
 
 One-Nexus provides some useful JavaScript tools to facilitate development and ehance your project's UI.
 
 > All tools are imported by default in [`app.js`](../../app.js)
 
-### Tools
+## Tools
 
 * [breakpoint](#breakpoint)
-* [clickHelper](#clickhelper)
 
-#### Breakpoint
+### Background
 
 > Determine if certain media matches the passed conditions
 

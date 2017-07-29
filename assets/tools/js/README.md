@@ -188,7 +188,7 @@ app.inViewport({
 // the element may have been scrolled passed and not be in view)
 app.inViewport({
     target: target, 
-    coverage: 'top', 
+    coverage: 'bottom', 
     scope: 'reached'
 });
 ```
