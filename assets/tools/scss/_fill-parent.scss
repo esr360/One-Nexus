@@ -1,3 +1,9 @@
+/// Cause an element to fill its parent
+///
+/// @access public
+/// @group Tools
+///
+/// @param {string} $position - the value to use for the `position` property
 @mixin fill-parent($position: absolute) {
     position: $position;
     height: 100%;

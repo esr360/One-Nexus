@@ -1,4 +1,4 @@
-/// Fetch another module's option value
+/// Retrieve another module's option value
 ///
 /// @access public
 /// @group Tools
@@ -9,7 +9,7 @@
 /// @param {arglist} $args      - the options to fetch
 ///
 /// @returns {*} desired option value
-@function fetch($module, $args) {
+@function retrieve-value($module, $args) {
     $namespace: nth($module, 1);
     $defaults:  nth($module, 2);
 

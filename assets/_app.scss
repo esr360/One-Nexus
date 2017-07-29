@@ -27,11 +27,11 @@ $asset-path: '../..' !default;
 //*****************************************************************
 
 @import 'tools/scss/background';
-@import 'tools/scss/fetch';
 @import 'tools/scss/fill-parent';
 @import 'tools/scss/font-sizes';
 @import 'tools/scss/horizontal-center';
 @import 'tools/scss/overlay';
+@import 'tools/scss/retrieve-value';
 @import 'tools/scss/triangle';
 @import 'tools/scss/vertical-center';
 @import 'tools/scss/vertical-rhythm';

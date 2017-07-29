@@ -6,14 +6,12 @@
 /// @group Tools
 ///
 /// @param {map} $custom - where custom config will be passed
-///
-/// @outputs styles for an element's background
 @mixin bg-overlay($background) {
 	position: relative;
 	&:before {
 		content: '';
 		z-index: 0;
 		background: $background;
-		@extend %fill-parent;
+		@include fill-parent();
 	}
 }

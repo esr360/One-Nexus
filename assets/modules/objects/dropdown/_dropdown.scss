@@ -15,7 +15,7 @@
     // Module
     //*************************************************************
 
-    @include module('#{fetch(('navigation', $navigation), 'name')}') {
+    @include module('#{retrieve-value(('navigation', $navigation), 'name')}') {
 
         // parent menus
         ul {

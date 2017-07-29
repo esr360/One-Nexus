@@ -4,8 +4,6 @@
 ///
 /// @access public
 /// @group Tools
-///
-/// @outputs core styles for a CSS triangle
 @mixin triangle-core {
 	&:after {
 		content:'';
@@ -21,10 +19,6 @@
 ///
 /// @access public
 /// @group Tools
-///
-/// @param {map} $custom - where custom config will be passed
-///
-/// @outputs styles for an element's background
 @mixin triangle($config: ()) {
 	
 	$config: map-merge((
