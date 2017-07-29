@@ -138,7 +138,7 @@ custom = app.custom('accordions', {
 
 #### InViewport
 
-> Determine if an element if visible in the viewport
+> Determine if an element is visible in the viewport
 
 ```js
 app.inViewport(options);
