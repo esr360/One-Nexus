@@ -1,9 +1,7 @@
 language: node_js
 node_js:
-    - 4.4
+    - 6
 before_install:
-    - gem update --system 2.0.0 
-    - gem --version
     - gem install sass
     - npm install -g grunt-cli 
 install: 
