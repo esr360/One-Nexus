@@ -346,9 +346,9 @@ Calling a module with the name of another module [[source]](#todo):
 ```scss
 .element {
     @include triangle((
-		'position': top, 
-		'color': rgba(black, 0.8),
-		'size': 0.5em
+        'position': top, 
+        'color': rgba(black, 0.8),
+        'size': 0.5em
     ));
 }
 ```
