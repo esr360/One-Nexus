@@ -1,12 +1,12 @@
-language: ruby
-rvm:
-  - 2.2.3
-env:
-  - TRAVIS_NODE_VERSION="6"
+language: node_js
+node_js:
+    - 6
 before_install:
+    - rvm install 2.2.4
     - gem install sass
     - gem install scss-lint
     - npm install -g grunt-cli 
-install: npm install
+install: 
+    - npm install
 before_script: 
     - grunt theme
