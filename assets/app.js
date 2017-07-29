@@ -89,5 +89,3 @@ console.log(inViewport({
     coverage: 'middle',
     scope: 'inView'
 }));
-
-console.log(app.parents(document.getElementById('map'), 'div')); // returns true)

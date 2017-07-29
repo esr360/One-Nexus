@@ -7,13 +7,13 @@ One-Nexus provides some useful JavaScript tools to facilitate development and eh
 ### Tools
 
 * [breakpoint](#breakpoint)
-* [clickHelper](#clickHelper)
+* [clickHelper](#clickhelper)
 * [custom](#custom)
-* [inViewport](#inViewport)
-* [isValidSelector](#isValidSelector)
+* [inViewport](#inviewport)
+* [isValidSelector](#isvalidselector)
 * [parents](#parents)
-* [scrollSpy](#scrollSpy)
-* [smoothScroll](#smoothScroll)
+* [scrollSpy](#scrollspy)
+* [smoothScroll](#smoothscroll)
 
 #### Breakpoint
 
