@@ -2,6 +2,7 @@
  * Parents
  * 
  * @access public
+ * @see https://gist.github.com/ziggi/2f15832b57398649ee9b
  * 
  * @param {HTMLElement} elem
  * @param {String} selector

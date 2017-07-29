@@ -86,5 +86,8 @@ scrollSpy({container: '.scrollSpy_links'});
 
 console.log(inViewport({
     target: document.querySelector('#map'),
-    scope: ['middle', 'inView']
+    coverage: 'middle',
+    scope: 'inView'
 }));
+
+console.log(app.parents(document.getElementById('map'), 'div')); // returns true)

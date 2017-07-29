@@ -12,7 +12,7 @@ export function smoothScroll(custom) {
 
     /**
      * @param {Number} [options.speed=300] - the animation duration (milliseconds)
-     * @param {Number} [options.increments=16] - increments to run the animation
+     * @param {Number} [options.increments=16] - increments to scroll by
      */
     const options = Object.assign({
         speed: 300,

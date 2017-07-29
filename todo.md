@@ -23,3 +23,4 @@
 * create animation library
 * add author to JS modules
 * fix smoothScroll calculations to be consistent
+* rename app.breakpoint to app.media
