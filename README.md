@@ -3,7 +3,7 @@
 
 <img src="https://raw.githubusercontent.com/esr360/One-Nexus/master/assets/images/logo.png" width="270">
 
-> A unique, modular approach to front end development
+> One-Nexus is a UI toolkit for prototyping front-end web apps
 
 [View Demo](http://esr360.github.io/One-Nexus/) | 
 [View Sass Documentation](http://esr360.github.io/One-Nexus/docs/sass)
