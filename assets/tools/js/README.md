@@ -119,7 +119,7 @@ app.custom(module, custom);
         </tr>
         <tr>
             <td>custom</td>
-            <td>Configuraton to use instead of the values found in the global [`app.theme` Object](#TODO)</td>
+            <td>Configuraton to use instead of the values found in the global <a href="#TODO">`app.theme` Object</a></td>
         </tr>
     </tbody>
 </table>

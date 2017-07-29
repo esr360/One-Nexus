@@ -286,11 +286,11 @@ retrieve-value($module, $args);
     <tbody>
         <tr>
             <td>module.namespace</td>
-            <td>the private name of the module</td>
+            <td>The private name of the module</td>
         </tr>
         <tr>
             <td>module.defaults</td>
-            <td>default config for the module</td>
+            <td>Default config for the module</td>
         </tr>
         <tr>
             <td>args</td>
