@@ -1,10 +1,10 @@
-## JavaScript Tools
+# JavaScript Tools
 
 One-Nexus provides some useful JavaScript tools to facilitate development and ehance your project's UI.
 
 > All tools are imported by default in [`app.js`](../../app.js)
 
-### Tools
+## Tools
 
 * [breakpoint](#breakpoint)
 * [clickHelper](#clickhelper)
@@ -15,7 +15,7 @@ One-Nexus provides some useful JavaScript tools to facilitate development and eh
 * [scrollSpy](#scrollspy)
 * [smoothScroll](#smoothscroll)
 
-#### Breakpoint
+### Breakpoint
 
 > Determine if certain media matches the passed conditions
 
@@ -56,7 +56,7 @@ if (app.breakpoint('min-width', 'break-3')) {
 }
 ```
 
-#### ClickHelper
+### ClickHelper
 
 > Add a class to an element when clicked and remove the same class from siblings
 
@@ -97,7 +97,7 @@ var targets = document.getElementById('els');
 app.clickHelper(targets, 'active');
 ```
 
-#### Custom
+### Custom
 
 > Private function to retrieve custom module configuration
 
@@ -136,7 +136,7 @@ custom = app.custom('accordions', {
 });
 ```
 
-#### InViewport
+### InViewport
 
 > Determine if an element is visible in the viewport
 
@@ -193,7 +193,7 @@ app.inViewport({
 });
 ```
 
-#### IsValidSelector
+### IsValidSelector
 
 > Test the validity (not existance) of a CSS selector
 
@@ -221,7 +221,7 @@ app.isValidSelector('[class*="foo"]'); // returns true
 app.isValidSelector('class*="foo"'); // returns false
 ```
 
-#### Parents
+### Parents
 
 > Vanilla JS jQuery.parents() implementation
 
@@ -263,7 +263,7 @@ app.parents(document.getElementById('foo')).length; // returns 2
 app.parents(document.getElementById('bar'), 'div'); // returns the `#foo` element object
 ```
 
-#### ScrollSpy
+### ScrollSpy
 
 > Lightweightt Scroll-Spy plugin
 
@@ -321,7 +321,7 @@ app.scrollSpy({
 });
 ```
 
-#### SmoothScroll
+### SmoothScroll
 
 > Animate scrolling to anchor links
 
