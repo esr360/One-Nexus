@@ -26,7 +26,8 @@ export function inViewport(custom) {
     const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
     const scrollBottom = scrollTop + Math.max(document.documentElement.clientHeight, window.innerHeight);
 
-    const elemTop = options.target.getBoundingClientRect().top + scrollTop;
+    var elemTop = options.target.getBoundingClientRect().top + scrollTop;
+
     const elemHeight = options.target.clientHeight;
 
     const scope = () => {
@@ -36,8 +37,8 @@ export function inViewport(custom) {
 
         else if (point === 'bottom') return elemTop + elemHeight;
 
-        else if (typeof point === 'String') {
-            var value = point.match(/\d+/)[0];
+        else if (typeof point === 'string') {
+            var value = Number(point.match(/\d+/)[0]);
             // value is a percentage
             if (point.indexOf('%') >= 0) return elemTop + (elemHeight/100 * value);
             // value is in pixels
@@ -48,7 +49,7 @@ export function inViewport(custom) {
     }
 
     const reached = scope() < scrollBottom;
-    const inView  = reached && scrollTop < scope();
+    const inView  = reached && (scrollTop < scope());
 
     return options.scope[1] === 'reached' ? reached : inView;
 

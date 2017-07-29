@@ -68,6 +68,7 @@
         @include option('sticky') {
             background: this('sticky', 'background');
             font-size: this('sticky', 'font-size');
+
             @include modifier('fixed') {
                 @include module {
                     @include component('wrapper') {
@@ -80,6 +81,12 @@
                     }
                 }
             }
+
+            @include module('logo') {
+                img {
+                    transition: height core('transition');
+                }
+            }
         }
 
         //*********************************************************
@@ -89,6 +96,7 @@
         @include component('wrapper') {
             @include _module('container');
             height: this('height');
+            transition: height core('transition');
         }
 
         @include module('sideNav') {
@@ -96,6 +104,11 @@
                 @include vertical-center(absolute);
                 right: 0;
             }
+        }
+
+        // For JS - will be applied to body element
+        @include component('isFixed') {
+            padding-top: this('sticky', 'height');
         }
 
         //*********************************************************

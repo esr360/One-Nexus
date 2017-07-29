@@ -29,7 +29,8 @@ export function header(els = 'appHeader', custom) {
                 navigation: app.Synergy(options.navigation).query[0],
                 overlay: options.overlay,
                 dropdownShowOverlay: exports.dropdownShowOverlay,
-                dropdownHideOverlay: exports.dropdownHideOverlay
+                dropdownHideOverlay: exports.dropdownHideOverlay,
+                config: options
             });
         }
 
@@ -51,6 +52,10 @@ export function header(els = 'appHeader', custom) {
  * @param {Object} options
  */
 function toggleStickyHeader(options) {
+    // toggle header padding
+    // @todo change below to Synergy selector to avoid hardcoded 'appHeader'
+    document.body.classList[(options.type === 'stick') ? 'add' : 'remove']('appHeader_isFixed');
+
     // toggle fixed modifier
     app.Synergy(options.target).modifier('fixed', (options.type === 'stick') ? 'add' : 'remove');
 

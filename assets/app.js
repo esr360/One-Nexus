@@ -84,4 +84,7 @@ smoothScroll();
 
 scrollSpy({container: '.scrollSpy_links'});
 
-console.log(inViewport({target: document.querySelector('.tabs')}));
+console.log(inViewport({
+    target: document.querySelector('#map'),
+    scope: ['middle', 'inView']
+}));
