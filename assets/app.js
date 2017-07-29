@@ -83,9 +83,3 @@ Element.prototype.parents = function(selector) {
 smoothScroll();
 
 scrollSpy({container: '.scrollSpy_links'});
-
-console.log(inViewport({
-    target: document.querySelector('#map'),
-    coverage: 'middle',
-    scope: 'inView'
-}));
