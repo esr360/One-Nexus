@@ -124,7 +124,7 @@ CSS output:
     <tbody>
         <tr>
             <td>custom.fluid-scaling</td>
-            <td>Enable [responsive fluid-scaling](https://www.smashingmagazine.com/2016/05/fluid-typography/)</td>
+            <td>Enable [responsive scaling](https://www.smashingmagazine.com/2016/05/fluid-typography/)</td>
         </tr>
         <tr>
             <td>custom.sizes</td>
