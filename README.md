@@ -25,30 +25,9 @@ For a more complete experience, visit the official [One Nexus documentaion](http
 
 * [Getting Started](https://github.com/esr360/One-Nexus#getting-started)
 * [Responsive Grid system](https://github.com/esr360/One-Nexus#responsive-grid-system)
-    * [Grid Structure](https://github.com/esr360/One-Nexus#grid-structure)
-    * [Example](https://github.com/esr360/One-Nexus#example-using-default-values)
-    * [Breakpoints](https://github.com/esr360/One-Nexus#breakpoints)
-    * [Column Types](https://github.com/esr360/One-Nexus#column-types)
-        * [Regular Columns](https://github.com/esr360/One-Nexus#regular-columns)
-        * [Flow Columns](https://github.com/esr360/One-Nexus#flow-columns)
-        * [Magic Columns](https://github.com/esr360/One-Nexus#magic-columns)
-        * [Adaptive Columns](https://github.com/esr360/One-Nexus#adaptive-columns)
-        * [Block Columns](https://github.com/esr360/One-Nexus#block-columns)
-    * [Custom Column Collapsing](https://github.com/esr360/One-Nexus#custom-column-collapsing)
 * [Utilities](https://github.com/esr360/One-Nexus#elements)
 * [Elements](https://github.com/esr360/One-Nexus#elements)
 * [Objects](https://github.com/esr360/One-Nexus#modules)
 
 ## Getting Started
 
-##### Option 1 - Classic Download
-
-Download the latest copy of One Nexus, extract the files to your desired location, and open the folder with your favourite text editor.
-
->[Download v2.0](https://github.com/esr360/One-Nexus/archive/master.zip)
-
-##### Option 2 - Bower Installation
-
-```html
-bower install one-nexus
-```
