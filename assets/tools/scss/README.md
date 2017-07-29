@@ -2,19 +2,19 @@
 
 One-Nexus provides some useful Sass tools to facilitate development and ehance your project's UI.
 
-> All tools are imported by default in [`app.scss`](../../app.scss)
+> All tools are imported by default in [`_app.scss`](../../_app.scss)
 
 ## Tools
 
-* [background](#background)
-* [fetch](#fetch)
-* [fill-parent](#fill-parent)
-* [font-sizes](#font-sizes)
-* [horizontal-center](#horizontal-center)
-* [overlay](#overlay)
-* [triangle](#triangle)
-* [vertical-center](#vertical-center)
-* [vertical-rhythm](#vertical-rhythm)
+* [background](#mixin-background)
+* [fill-parent](#mixin-fill-parent)
+* [font-sizes](#mixin-font-sizes)
+* [horizontal-center](#mixin-horizontal-center)
+* [overlay](#mixin-overlay)
+* [retrieve-value](#function-retrieve-value)
+* [triangle](#mixin-triangle)
+* [vertical-center](#mixin-vertical-center)
+* [vertical-rhythm](#mixin-vertical-rhythm)
 
 ### Mixin: `background()`
 
@@ -31,12 +31,10 @@ Sample config [[source]](#todo):
 ```json
 {
     "billboard": {
-        ...
         "background": {
             "color": "#00A9FF",
             "image": "url('bg.png')"
         },
-        ...
     }
 }
 ```
@@ -44,15 +42,19 @@ Sample config [[source]](#todo):
 Inside the Billboard module [[source]](#todo):
 
 ```scss
-@include background();
+@include module('billboard') {
+    @include background();
+}
 ```
 
 CSS output:
 
 ```css
-background-color: #00A9FF;
-background-image: url('bg.png');
-background-size: cover;
+{
+    background-color: #00A9FF;
+    background-image: url('bg.png');
+    background-size: cover;
+}
 ```
 
 #### Example 2
@@ -64,9 +66,7 @@ Sample config:
 ```json
 {
     "billboard": {
-        ...
         "background": "no-repeat center url('bg.png')",
-        ...
     }
 }
 ```
@@ -74,7 +74,9 @@ Sample config:
 CSS output:
 
 ```css
-background: no-repeat center url('bg.png');
+{
+    background: no-repeat center url('bg.png');
+}
 ```
 
 ### Mixin: `fill-parent()`
