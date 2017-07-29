@@ -1,13 +1,10 @@
 language: node_js
 node_js:
-    - 6
+  - 6
 before_install:
-    - gem update --system 2.1.11
-    - gem --version
     - gem install sass
     - gem install scss-lint
     - npm install -g grunt-cli 
-install: 
-    - npm install
+install: npm install
 before_script: 
     - grunt theme
