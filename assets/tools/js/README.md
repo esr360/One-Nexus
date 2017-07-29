@@ -56,7 +56,7 @@ if (app.breakpoint('min-width', 'break-3')) {
 }
 ```
 
-#### clickHelper
+#### ClickHelper
 
 > Add a class to an element when clicked and remove the same class from siblings
 
@@ -136,7 +136,7 @@ custom = app.custom('accordions', {
 });
 ```
 
-#### inViewport
+#### InViewport
 
 > Determine if an element if visible in the viewport
 
