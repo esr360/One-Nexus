@@ -5,6 +5,7 @@ before_install:
     - rvm install 2.2.4
     - gem install sass
     - gem install scss-lint
+    - gem install sass-json-vars
     - npm install -g grunt-cli 
 install: 
     - npm install
