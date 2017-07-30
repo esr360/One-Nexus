@@ -16,8 +16,7 @@ $asset-path: '../..' !default;
 @import '../node_modules/Kayzen-GS/dist/kayzen-gs';
 @import '../node_modules/Sass-Boost/dist/sass-boost';
 @import '../node_modules/spinners/stylesheets/spinners';
-//@import '../node_modules/Synergy/dist/synergy';
-@import '../../../Synergy/src/scss/synergy';
+@import '../node_modules/Synergy/dist/synergy';
 
 // CSS librarys
 @import '../../styles/flickity.css';

@@ -26,7 +26,7 @@
   "dependencies": {
     "Kayzen-GS": "^2.4.0",
     "Sass-Boost": "^1.1.0",
-    "Synergy": "^3.6.1",
+    "Synergy": "^3.7.0",
     "flickity": "^2.0.8",
     "normalize-scss": "^7.0.0",
     "sizzle": "^2.3.3",
