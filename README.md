@@ -149,7 +149,7 @@ Looking inside `_app.scss` and `app.js`, we can see how the available modules to
 
 #### Inside app.js
 
-```scss
+```js
 import { accordion } from './modules/elements/accordions/accordions';
 import { carousel  } from './modules/elements/carousels/carousels';
 ...
