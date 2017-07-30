@@ -11,7 +11,7 @@
 
 ### Features
 
-* Configure entire project UI from a single JSON file
+* Configure your entire project's UI from a single JSON file
 * Modular and configurable UI components
 * [Bespoke responsive grid system](https://github.com/esr360/One-Nexus#responsive-grid-system)
 * Built with Sass and ES6
@@ -41,12 +41,12 @@
 
 To develop using One-Nexus, the machine being used to develop must have the following tools installed:
 
-* Git
-* Ruby
-* Node.js
-* Sass Gem
-* Sass-JSON-Vars Gem
-* Grunt-Cli
+* [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
+* [Node.js](https://nodejs.org/en/download/)
+* [Ruby Sass](http://sass-lang.com/install) - `gem install sass`
+* [Sass-JSON-Vars Gem](https://github.com/vigetlabs/sass-json-vars) - `gem install sass-json-vars`
+* [Grunt-Cli](https://github.com/gruntjs/grunt-cli) - `npm install -g grunt-cli`
 
 To get started, obtain a fresh copy of One-Nexus:
 
@@ -66,4 +66,6 @@ Finally, build all assets and deploy to a localserver:
 grunt
 ```
 
-You can now access the deployed app in your browser by visiting http://localhost:3000/ - any changes to the source code will automatically be picked up, re-compiled and re-deployed to the local server on the fly. Your browser will even refresh itself, too.
+You can now access the deployed app in your browser by visiting http://localhost:3000/ - any changes to the source code will automatically be picked up, re-compiled and re-deployed to the local server on the fly.
+
+## Introduction
