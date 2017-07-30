@@ -29,7 +29,6 @@
     "Synergy": "^3.7.0",
     "flickity": "^2.0.8",
     "normalize-scss": "^7.0.0",
-    "sizzle": "^2.3.3",
     "spinners": "^1.2.2"
   },
   "devDependencies": {

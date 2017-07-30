@@ -10,9 +10,8 @@ import * as app from './app';
 
 import Synergy  from 'Synergy';
 import Flickity from 'flickity';
-import Sizzle   from 'sizzle'; const $ = Sizzle;
 
-export { Synergy, Flickity, $ }
+export { Synergy, Flickity }
 
 // Modules
 //*****************************************************************
