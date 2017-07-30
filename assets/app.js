@@ -8,7 +8,7 @@ import * as app from './app';
 // Vendor
 //*****************************************************************
 
-import Synergy  from 'synergy';
+import Synergy  from 'Synergy';
 import Flickity from 'flickity';
 import Sizzle   from 'sizzle'; const $ = Sizzle;
 
