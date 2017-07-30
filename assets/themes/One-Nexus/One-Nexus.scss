@@ -1,5 +1,5 @@
 ///****************************************************************
-/// One Nexus
+/// One-Nexus
 /// themes\One-Nexus\one-nexus
 ///
 /// @author [@esr360](http://twitter.com/esr360)

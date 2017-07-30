@@ -3,31 +3,30 @@
 
 <img src="https://raw.githubusercontent.com/esr360/One-Nexus/master/assets/images/logo.png" width="270">
 
-> One-Nexus is a UI-focused toolkit for prototyping front-end web apps
+> One-Nexus is a toolkit for architecting and constructing front-end user-interfaces
 
-[View Demo](http://esr360.github.io/One-Nexus/) | 
-[View Sass Documentation](http://esr360.github.io/One-Nexus/docs/sass)
+[Visit Website](http://esr360.github.io/One-Nexus/) | 
+[View SassDoc Documentation](http://esr360.github.io/One-Nexus/docs/sass)
+[View JSDoc Documentation](http://esr360.github.io/One-Nexus/docs/sass)
 
 ### Features
 
-* [Responsive Grid system](https://github.com/esr360/One-Nexus#responsive-grid-system)
-* [Elements](https://github.com/esr360/One-Nexus#elements)
-* [Modules](https://github.com/esr360/One-Nexus#modules)
-* [jQuery & Plugins](https://github.com/esr360/One-Nexus#jquery--plugins)
-* [Modernizr](https://github.com/esr360/One-Nexus#html5-boilerplate)
-* ...and more
+* Configure entire project UI from a single JSON file
+* Modular and configurable UI components
+* [Bespoke responsive grid system](https://github.com/esr360/One-Nexus#responsive-grid-system)
+* Built with Sass and ES6
+* Handlebars templates
+* Sass and JS unit testing
+* Over 30 prebuilt configurable UI components included
+* Create multiple themes using your components
+* Includes everything needed to develop your project's independent front-end
 
-# One Nexus Documentation
+# One-Nexus Documentation
 
-For a more complete experience, visit the official [One Nexus documentaion](http://www.onenexusproject.com/documentation/) page.
+> For interactive demos, visit the [One-Nexus Website](#TODO)
 
 ## Table of Contents
 
 * [Getting Started](https://github.com/esr360/One-Nexus#getting-started)
-* [Responsive Grid system](https://github.com/esr360/One-Nexus#responsive-grid-system)
-* [Utilities](https://github.com/esr360/One-Nexus#elements)
-* [Elements](https://github.com/esr360/One-Nexus#elements)
-* [Objects](https://github.com/esr360/One-Nexus#modules)
 
 ## Getting Started
-
