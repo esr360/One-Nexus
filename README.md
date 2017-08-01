@@ -610,11 +610,11 @@ The following options can be passed to the Grid module:
         </tr>
         <tr>
             <td>settings.custom-stacking</td>
-            <td>This option generates the code required for the [custom breakpoint stacking](https://github.com/esr360/Kayzen-GS/blob/master/README.md#responsiveness) feature</td>
+            <td>This option generates the code required for the <a href="https://github.com/esr360/Kayzen-GS/blob/master/README.md#responsiveness">custom breakpoint stacking</a> feature</td>
         </tr>
         <tr>
             <td>settings.adaptive-columns</td>
-            <td>This option generates the code required for [adaptive columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#adaptive-columns)</td>
+            <td>This option generates the code required for <a href="https://github.com/esr360/Kayzen-GS/blob/master/README.md#adaptive-columns">adaptive columns</a></td>
         </tr>
         <tr>
             <td>settings.flow-columns</td>
