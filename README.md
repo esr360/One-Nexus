@@ -29,8 +29,8 @@
 
 * [Getting Started](https://github.com/esr360/One-Nexus#getting-started)
 * [Introduction](#TODO)
-* [UI Modules](#TODO)
 * [The App Layer](#TODO)
+* [UI Modules](#TODO)
 * [Themes](#TODO)
 * [Tools](#TODO)
 * [Grid System](#TODO)
@@ -83,7 +83,7 @@ The second layer is the `theme` layer; a theme will import the `app` layer and t
 
 The final layer is the `module` layer. Modules are configurable components - they are imported in the `app` layer and included in the `theme` layer as required.
 
-The One-Nexus layers can be visually represented by the following ~~graphic~~ work of art (please direct all graphic complaints to my employer then maybe they will get me a copy of Photoshop):
+The One-Nexus layers can be visually represented by the following ~~graphic~~ work of art (_please direct all graphic complaints to my employer then maybe they will get me a copy of Photoshop_):
 
 <img src="https://raw.githubusercontent.com/esr360/One-Nexus/master/assets/images/one-nexus-infograph.jpg" width="600">
 
@@ -262,7 +262,7 @@ All available modlues are located within the `assets/modules/` directory. One-Ne
 _Elements_ are the more abstract UI modules which serve no set purpose or function.
 
 * [Accordions](#TODO)
-* [Alert-Bars]
+* [Alert-Bars](#TODO)
 * [Blockquotes](#TODO)
 * [Buttons](#TODO)
 * [Carousels](#TODO)
@@ -282,7 +282,7 @@ _Elements_ are the more abstract UI modules which serve no set purpose or functi
 _Objects_ are the larger and more specific modules which generally serve a set function.
 
 * [Billboard](#TODO)
-* [Breadcrumb]
+* [Breadcrumb](#TODO)
 * [Dropdown](#TODO)
 * [Footer](#TODO)
 * [Google-Map](#TODO)
@@ -300,7 +300,7 @@ _Objects_ are the larger and more specific modules which generally serve a set f
 _Utilities_ are everything else; modules which serve to ehance and compliment the other modules.
 
 * [Colors](#TODO)
-* [Container]
+* [Container](#TODO)
 * [Core](#TODO)
 * [Grid](#TODO)
 * [Helpers](#TODO)
@@ -354,7 +354,7 @@ Pass the `js` and `scss` files to their respective compilers and they will gener
 
 ### One-Nexus.js
 
-The theme's JavaScript file must first import the `app`:
+The theme's JavaScript file must first import the `app` (['assets/app.js'](#TODO)):
 
 ```js
 import * as app from '../../app';
@@ -387,9 +387,154 @@ app.theme = config.app;
 app.accordion();
 app.carousel();
 app.modal();
+...
 ```
 
 ### One-Nexus.scss
+
+Like with the corresponding JavaScript file, the theme's Sass file must first import the `app` (['assets/_app.scss'](#TODO)):
+
+```scss
+@import '../../app';
+```
+
+And again, the theme's configuration is imported:
+
+```scss
+@import '../../app';
+@import './config.json';
+```
+
+Modules from the `app` can now be included:
+
+```scss
+@import '../../app';
+@import './config.json';
+
+@include accordions;
+@include carousels;
+@include modals;
+```
+
+### config.json
+
+This file is used to store custom configuration for any modules that are included, overwriting the default value. To use a module's default configuration entirely, you do not need to add it to this object.
+
+> The below values should be considered _pseudo values_ and may not reflect real module options
+
+```json
+{
+    "app": {
+        "accordions": {
+            "title": {
+                "color": "red",
+                "active": {
+                    "color": "#454545"
+                }
+            },
+            "keepOpenModifier": "keepOpen"
+        },
+        "carousels": {
+            "nav-buttons": {
+                "enabled": "true"
+            }
+        },
+        "billboard": {
+            "fullscreen": {
+                "enabled": true,
+                "min-height": "500px"
+            },
+            "overlay": {
+                "enabled": false
+            }
+        }
+    }
+}
+```
+
+#### How Configuration Works
+
+Each module can have any number of configuration options. All values for a module are accessible in the module's corresponding `scss` and `js` files, even options which may seemingly only suit one of these technologies. It makes things eaiser keeping all of the module's configuration in one place, and it helps with keeping things modular. 
+
+However, it is entirely possible to use modules in a way which don't have shared configuration in the form of JSON, where the corresponding `scss` and `js` files have their own config options. Rather than having a common app JSON file (and separate JSON files for each module), config would be passed to modules when including them, like so:
+
+##### One-Nexus.js
+
+```js
+import * as app from '../../app';
+
+app.accordion({
+    keepOpenModifier: 'keepOpen'
+});
+app.carousel();
+...
+```
+
+##### One-Nexus.scss
+
+```scss
+@import '../../app';
+
+@include accordions((
+    'title': (
+        'color': red,
+        'active': (
+            'color': #454545
+        )
+    )
+));
+@include carousels;
+...
+```
+
+Understanding that configuration can be passed to modules in this way opens up the explanation as to how modules will use any custom configuration that exists in `config.json`.
+
+When a module is called without any options passed to it, it will search for the global `app` object. In Sass, this object is created by [Sass-JSON-Vars](#TODO) when `config.json` is imported (`@import './config.json'`), and accessible by the `$app` variable (the variable name is determined by the first key in the JSON object, which in the case for One-Nexus is `app`). Having access to this variable allows it to be searched for configuration. Specifically, this is handled by [Synergy's `custom` function](#TODO):
+
+```scss
+@function custom($module) {
+    @return if(variable-exists('app') and map-get($app, $module), map-get($app, $module), ())
+}
+```
+
+So this means when calling a module, custom configuration (if it exists in `config.json`) can be passed to it like so:
+
+```scss
+@import '../../app';
+@import './config.json'; // config now accessible globally by `$app` variable
+
+@include accordions(custom('accordions'));
+```
+
+And to avoid the need for doing this with every module, `custom(MODULE_NAME)` is passed as a default parameter when defining modules, as seen in the Accordions example:
+
+```scss
+@mixin accordions($custom: custom('accordions')) {
+    ...
+}
+```
+
+And it works exactly the same way for the corresponding JavaScript. The configuration object is created after importing `config.json`:
+
+```js
+import * as app from '../../app';
+import config from './config.json';
+
+app.theme = config.app; // `app.theme` now exposes the same information as `$app` in the Sass
+```
+
+Again, One-Nexus provides a `custom` JS function (accessed by `app.custom`) which can be used to search `app.theme` for any existing custom configuration. This means when calling a module, custom configuration (if it exists in `config.json`) can be passed to it like so:
+
+```scss
+import * as app from '../../app';
+import config from './config.json';
+
+app.theme = config.app;
+
+app.accordion(app.custom('accordions'));
+```
+
+And again just like with the corresponding Sass, to avoid the need for doing this with every module, `app.custom(MODULE_NAME)` is built into the module definition.
 
 ## Grid System
 
