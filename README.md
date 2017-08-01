@@ -538,6 +538,387 @@ And again just like with the corresponding Sass, to avoid the need for doing thi
 
 ## Grid System
 
+One-Nexus comes with a custom grid system: [Kayzen-GS](https://github.com/esr360/Kayzen-GS). Kayzen-GS is built with Sass and is fully responsive, dynamic and customizable.
+
+Some of the core features of Kayzen-GS include:
+
+* Specify any number of columns
+* Infinitely nestable rows
+* Easily set vertical/horizontal align
+* Create semantic rows and columns
+* Uses inline-block columns
+* Specify global column/row selector names
+* Specify gutter width
+* Multiple column types
+* Reverse column order
+* Collapse columns at different breakpoints
+* Adaptive column widths
+* Push/pull columns
+* Works in all browsers
+
+All examples from the [Kayzen-GS Examples](http://kayzen.gs/) page come included with One-Nexus.
+
+The grid system exists in One-Nexus as a [Utility Module](#TODO). This module is essentially a wrapper around Kayzen-GS, so accepts the same options as [Kayzen-GS](https://github.com/esr360/Kayzen-GS/blob/master/README.md#custom-configuration).
+
+The following options can be passed to the Grid module:
+
+> For default values, see the [Kayzen-GS configuration section](https://github.com/esr360/Kayzen-GS/blob/master/README.md#custom-configuration)
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>name</td>
+            <td>The name used when generating the CSS selector</td>
+        </tr>
+        <tr>
+            <td>options.columns</td>
+            <td>The number of columns to use when generating the grid system classes</td>
+        </tr>
+        <tr>
+            <td>options.gutter</td>
+            <td>The width of the gutter between each column</td>
+        </tr>
+        <tr>
+            <td>options.col-break</td>
+            <td>The default width at which columns should collapse and stack ontop of each other</td>
+        </tr>
+        <tr>
+            <td>options.row-namespace</td>
+            <td>The namespace for rows; used when generating the CSS classes</td>
+        </tr>
+        <tr>
+            <td>options.col-namespace</td>
+            <td>The namespace for columns; used when generating the CSS classes</td>
+        </tr>
+        <tr>
+            <td>settings.old-ie</td>
+            <td>Enabling this setting will allow default columns to work on Internet Explorer 6 & 7</td>
+        </tr>
+        <tr>
+            <td>settings.responsive</td>
+            <td>If disabled, columns will not stack vertically</td>
+        </tr>
+        <tr>
+            <td>settings.mobile-first</td>
+            <td>Column stacking will work from a mobile-first perspective</td>
+        </tr>
+        <tr>
+            <td>settings.custom-stacking</td>
+            <td>This option generates the code required for the [custom breakpoint stacking](https://github.com/esr360/Kayzen-GS/blob/master/README.md#responsiveness) feature</td>
+        </tr>
+        <tr>
+            <td>settings.adaptive-columns</td>
+            <td>This option generates the code required for [adaptive columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#adaptive-columns)</td>
+        </tr>
+        <tr>
+            <td>settings.flow-columns</td>
+            <td>This option generates the code required for [flow columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#flow-columns)</td>
+        </tr>
+        <tr>
+            <td>settings.magic-columns</td>
+            <td>This option generates the code required for [magic columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#magic-columns)</td>
+        </tr>
+        <tr>
+            <td>settings.block-columns</td>
+            <td>This option generates the code required for [block columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#block-columns)</td>
+        </tr>
+        <tr>
+            <td>settings.no-gutter-columns</td>
+            <td>This option generates the code required for [no-gutter columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#no-gutter-columns)</td>
+        </tr>
+        <tr>
+            <td>settings.reverse</td>
+            <td>This option generates the code required to [reverse columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#reverse-column-order)</td>
+        </tr>
+        <tr>
+            <td>settings.pull</td>
+            <td>This option generates the code required to [pull columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#pushpull-columns)</td>
+        </tr>
+        <tr>
+            <td>settings.push</td>
+            <td>This option generates the code required to [push columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#pushpull-columns)</td>
+        </tr>
+        <tr>
+            <td>breakpoints {}</td>
+            <td>Keys and values to use for each breakpoint you desire (format: "break-1":"460px")</td>
+        </tr>
+        <tr>
+            <td>fractions {}</td>
+            <td>Keys and values any fractions to use in the grid system (format: "half":[1,2])</td>
+        </tr>
+    </tbody>
+</table>
+
+Options can be passed to `config.json` like so:
+
+```json
+{
+    "app": {
+        "grid": {
+            "breakpoints": {
+                "break-5": "1400px"
+            }
+        }
+    }
+}
+```
+
+> Read the [Grid module documention](https://github.com/esr360/One-Nexus/blob/master/assets/modules/utilities/grid/README.md) for more information
+
+### Semantic Grid System
+
+You can use Kayzen-GS to build your own grid system using semantic class names whilst retaining complete control over the flexibility of your columns.
+
+[View Examples](http://esr360.github.io/Kayzen-GS/#semantic-examples)
+
+#### Creating a Semantic Row
+
+```scss
+.main {
+    @include row;
+}
+```
+
+In the above example, **main** is used as the semantic class name.
+
+**Creating a semantic row for Flow Columns:**
+
+
+```scss
+.portfolio-items {
+    @include row('flow');
+}
+```
+
+In the above example, the semantic class name for the row of Flow Columns is **portfolio-items**.
+
+#### Creating a Semantic Column
+
+##### Basic Example
+
+```scss
+.sidebar {
+    @include column((
+        'width' : (3, 12)
+    ));
+}
+```
+
+This will create a column that spans 3 out of 12 columns in width, so **1/4** or **25%**. Alternatively, you can achieve the same thing with this:
+
+```scss
+.sidebar {
+    @include column((
+        'width' : 'quarter'
+    ));
+}
+```
+
+> You can use any fractions defined in the [Configuration](#fractions).
+
+Or even this:
+
+```scss
+.sidebar {
+    @include column((
+        'width' : 25%
+    ));
+}
+```
+
+Note that perhaps surprisingly the above examples do **not** produce a `width` value of **25%**, but rather a calculated value based off the value of the `gutter` value. This is so you can easily create columns without having to think about the effect of gutters like so:
+
+```scss
+.sidebar {
+    @include column((
+        'width' : 20%
+    ));
+}
+
+.content {
+    @include column(
+        'width' : 70%
+    ));
+}
+
+.promo {
+    @include column(
+        'width' : 10%
+    ));
+}
+```
+
+Which will produce the following CSS, assuming the default value of **2.5%** for your `gutter`:
+
+```css
+.sidebar {
+    width: 18%;
+    margin-left: 2.5%;
+}
+
+.content {
+    width: 69.25%;
+    margin-left: 2.5%;
+}
+
+.promo {
+    width: 7.75%;
+    margin-left: 2.5%;
+}
+```
+
+Note that the **first-child** in a row of normal columns has its `margin-left` removed (this is *not* the case for [Flow Columns](#flow-columns-2)).
+
+##### Column Types
+
+All the column types from the default grid system are also available to use in your semantic grid system.
+
+###### Flow Columns
+
+> Ensure that your semantic row container is also set to `flow`.
+
+```scss
+.portfolio-item {
+    @include column((
+        'type'  : 'flow',
+        'width' : (3, 12)
+    ));
+}
+```
+
+[View Demo](http://esr360.github.io/Kayzen-GS/#flow-columns-semantic)
+
+###### Magic Columns
+
+```scss
+.portfolio-item {
+    @include column(
+        'type' : 'magic'
+    );
+} 
+```
+
+[View Demo](http://esr360.github.io/Kayzen-GS/#magic-columns-semantic)
+
+###### Block Columns
+
+```scss
+.portfolio-item {
+    @include column((
+        'type'  : 'block',
+        'width' : (3, 12)
+    ));
+}
+```
+
+[View Demo](http://esr360.github.io/Kayzen-GS/#block-columns-semantic)
+
+###### No-Gutter Columns
+
+```scss
+.portfolio-item {
+    @include column((
+        'type'  : 'no-gutter',
+        'width' : (3, 12)
+    ));
+}
+```
+
+[View Demo](http://esr360.github.io/Kayzen-GS/#no-gutter-columns-semantic)
+
+##### Responsiveness
+
+The default width for the stacking of semantic columns is set in the [Configuration](#options). You can override the default value like so:
+
+```scss
+.sidebar {
+    @include column((
+        'width' : 'quarter',
+        'stack' : breakpoint('break-2')
+    ));
+}
+```
+
+This will cause the columns to stack when the screen size is less than **break-2** as opposed to the default value of **break-3**.
+
+###### Adaptive Columns
+
+When inside a Flow Columns container and with its `type` set to **flow**, you can set the width of your column at specific breakpoints using the **respond-to** option:
+
+```scss
+.portfolio-item {
+    @include column((
+        'type' : 'flow',
+        'width': (3, 12),
+        'respond-to' : (
+            'break-3': (4, 12),
+            'break-2': (6, 12),
+            'break-1': (12, 12)
+        )
+    ));
+}
+```
+
+[View Demo](http://esr360.github.io/Kayzen-GS/#semantic-adaptive)
+
+With `mobile-first` enabled, a width is not required by default if you are using adaptive responsiveness - the column is 100% width up until **break-1** where it becomes 6/12's, then 4/12's at **break-2** and 3/12's at **break-3**.
+
+```scss
+.portfolio-item {
+    @include column((
+        'mobile-first': true: 
+        'type': 'flow',
+        'respond-to' : (
+            'break-1': (6, 12),
+            'break-2': (4, 12),
+            'break-3': (3, 12)
+        )
+    ));
+}
+```
+
+> You can set any fraction you want, for example you can write *(1, 2)* instead of *(6, 12)*.
+
+You can also use numeric values for the width:
+
+```scss
+.portfolio-item {
+    @include column((
+        'type' : 'flow',
+        'width': 25%,
+        'respond-to' : (
+            'break-3': 100/3,
+            'break-2': 50%,
+            'break-1': 100%
+        )
+    ));
+}
+```
+
+Using the fractions from the [Configuration](#TODO) you can substitue writing the fraction numbers for the fraction name like so:
+
+```scss
+.portfolio-item {
+    @include column((
+        'type' : 'flow',
+        'width': 'quarter',
+        'respond-to' : (
+            'break-3': 'third',
+            'break-2': 'half',
+            'break-1': 'full'
+        )
+    ));
+}
+```
+
+> Read the [Kayzen-GS documentation](https://github.com/esr360/Kayzen-GS/blob/master/README.md) for more information
+
 ## Templates
 
 ## Unit Testing
