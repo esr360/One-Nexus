@@ -307,33 +307,6 @@ _Utilities_ are everything else; modules which serve to ehance and compliment th
 * [Print](#TODO)
 * [Typoraphy](#TODO)
 
-## Tools
-
-One-Nexus provides some useful tools to facilitate development and ehance your project's UI.
-
-### JavaScript Tools
-
-* [app.breakpoint](#TODO)
-* [app.clickHelper](#TODO)
-* [app.custom](#TODO)
-* [app.inViewport](#TODO)
-* [app.isValidSelector](#TODO)
-* [app.parents](#TODO)
-* [app.scrollSpy](#TODO)
-* [app.smoothScroll](#TODO)
-
-### Sass Tools
-
-* [background](#TODO)
-* [fill-parent](#TODO)
-* [font-sizes](#TODO)
-* [horizontal-center](#TODO)
-* [overlay](#TODO)
-* [retrieve-value](#TODO)
-* [triangle](#TODO)
-* [vertical-center](#TODO)
-* [vertical-rhythm](#TODO)
-
 ## Themes
 
 Themes are used to create distinctly separate UI's using a combination of modules and custom configuration.
@@ -535,6 +508,33 @@ app.accordion(app.custom('accordions'));
 ```
 
 And again just like with the corresponding Sass, to avoid the need for doing this with every module, `app.custom(MODULE_NAME)` is built into the module definition.
+
+## Tools
+
+One-Nexus provides some useful tools to facilitate development and ehance your project's UI.
+
+### JavaScript Tools
+
+* [app.breakpoint](#TODO)
+* [app.clickHelper](#TODO)
+* [app.custom](#TODO)
+* [app.inViewport](#TODO)
+* [app.isValidSelector](#TODO)
+* [app.parents](#TODO)
+* [app.scrollSpy](#TODO)
+* [app.smoothScroll](#TODO)
+
+### Sass Tools
+
+* [background](#TODO)
+* [fill-parent](#TODO)
+* [font-sizes](#TODO)
+* [horizontal-center](#TODO)
+* [overlay](#TODO)
+* [retrieve-value](#TODO)
+* [triangle](#TODO)
+* [vertical-center](#TODO)
+* [vertical-rhythm](#TODO)
 
 ## Grid System
 
@@ -920,6 +920,217 @@ Using the fractions from the [Configuration](#TODO) you can substitue writing th
 > Read the [Kayzen-GS documentation](https://github.com/esr360/Kayzen-GS/blob/master/README.md) for more information
 
 ## Templates
+
+One-Nexus comes with some sample Handlebars templates to get started (located in the `templates` directory), using [Assemble](https://assemble.io/docs/Home.html) to compile them (incorporated by the [Grunt build tasks](#TODO)).
+
+### Helpers
+
+One-Nexus provides some custom [Handlebars Helpers](http://handlebarsjs.com/block_helpers.html) to ehance your templating experience.
+
+#### Breadcrumb
+
+The `breadcrumb` helper can be used to populate a breadcrumb list from its current URL structure.
+
+```html
+<nav class="breadcrumb">
+    <ul> 
+        {{#breadcrumb page.dirname}}{{/breadcrumb}}
+        <li class="current">{{page.basename}}</li>
+    </ul>
+</nav>
+```
+
+#### InArray
+
+This helper is used to determine if an array contains a certain value.
+
+```html
+{{#inArray array 'value }}...{{/inArray}}
+```
+
+### Layouts
+
+Layouts are used by pages to determine the layout and structure of the page. One-Nexus comes with two base layouts.
+
+#### Core Layout
+
+This layout provides the core HTML for a page. Other than that, all content is passed to the `body` element, making this the ideal starting layout for any further layouts.
+
+##### Page Options
+
+Page options are passed as [YAML Front Matter](http://assemble.io/docs/YAML-front-matter.html). Any subsequent layout or page which uses this layout will have access to these options.
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>bodyClass</td>
+            <td>Class to apply to the `body` element</td>
+        </tr>
+        <tr>
+            <td>styles</td>
+            <td>List of styles to load</td>
+        </tr>
+        <tr>
+            <td>scripts</td>
+            <td>List of script files to load</td>
+        </tr>
+        <tr>
+            <td>jQuery</td>
+            <td>The version of jQuery to use. Set to `false` to not load jQuery</td>
+        </tr>
+        <tr>
+            <td>FontAwesome</td>
+            <td>The version of FontAwesome to use. Set to `false` to not load FontAwesome</td>
+        </tr>
+    </tbody>
+</table>
+
+```yaml
+title: One-Nexus
+bodyClass: ''
+styles:
+    - <%=assets%>assets/themes/<%=theme%>/app
+scripts:
+    - <%=assets%>assets/themes/<%=theme%>/app
+jQuery: 2.2.4
+FontAwesome: 4.7.0
+```
+
+The above options work in the templates like so:
+
+```html
+{{#if jQuery}}
+    <script src="http://code.jquery.com/jquery-{{jQuery}}.min.js" crossorigin="anonymous"></script>
+{{/if}}
+
+{{#each scripts}}
+    <script src="{{.}}.js"></script>
+{{/each}}
+```
+
+#### Base Layout
+
+The Base layout extends the above `core` layout, and includes all global modules and elements. All content is passed to a `main` element, and then an optional `container` element, making this the ideal layout for general pages or more complex layouts.
+
+##### Page Options
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>layout</td>
+            <td>The layout to use - by default this is set to `core.hbs`</td>
+        </tr>
+        <tr>
+            <td>header</td>
+            <td>Options to pass to the [Header partial](#TODO)</td>
+        </tr>
+        <tr>
+            <td>billboard</td>
+            <td>Options to pass to the [Billboard partial](#TODO) - set to `false` to disable</td>
+        </tr>
+        <tr>
+            <td>container</td>
+            <td>Options to pass to the [Container partial](#TODO) - set to `false` to not wrap content in a `container`</td>
+        </tr>
+        <tr>
+            <td>breadcrumb</td>
+            <td>Set to display the breadcrumb</td>
+        </tr>
+    </tbody>
+</table>
+
+```yaml
+layout: core.hbs
+header:
+    modifiers:
+    - dark
+billboard:
+    heading: <%title%>
+container:
+    modifiers:
+    - section
+breadcrumb: true
+```
+
+### Pages
+
+One-Nexus provides just a single starting page: `index.hbs`. It is a basic page which uses the `base` layout, as serves to act as a guide for create further pages.
+
+### Partials/Modules
+
+To pass custom YAML to a partial/module on a per-page basis, add the values to the page's YAML Front Matter (YFM).
+
+> Add [Modifiers](#TODO) to a module by passing them to the `modifiers` option in the YFM
+
+#### Header
+
+> For available modifiers, see the [Header Module documentation](#TODO)
+
+```yaml
+header:
+    modifiers:
+    - dark
+```
+
+Include in Handlebars template:
+
+```html
+{{> header}}
+```
+
+#### Billboard
+
+> For available modifiers, see the [Billboard Module documentation](#TODO)
+
+```yaml
+billboard:
+    modifiers:
+    - fullscreen
+    heading: <%title%>
+    subHeading: 'Sub Heading'
+```
+
+Include in Handlebars template:
+
+```html
+{{> billboard}}
+```
+
+#### Breadcrumb
+
+Include in Handlebars template:
+
+```html
+{{> breadcrumb}}
+```
+
+#### Footer
+
+> For available modifiers, see the [Footer Module documentation](#TODO)
+
+```yaml
+header:
+    modifiers:
+    - dark
+```
+
+Include in Handlebars template:
+
+```html
+{{> footer}}
+```
 
 ## Unit Testing
 
