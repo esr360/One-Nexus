@@ -83,7 +83,7 @@ The second layer is the `theme` layer; a theme will import the `app` layer and t
 
 The final layer is the `module` layer. Modules are configurable components - they are imported in the `app` layer and included in the `theme` layer as required.
 
-[[https://github.com/esr360/One-Nexus/blob/master/assets/images/one-nexus-infograph.png]]
+![Infographic](https://raw.githubusercontent.com/esr360/One-Nexus/master/assets/images/one-nexus-infograph.jpg)
 
 Once the One-Nexus app is compiled, the end result will be an amalgamation of modules in the form of a single `js` and `css` file.
 
