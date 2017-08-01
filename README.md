@@ -85,6 +85,8 @@ The final layer is the `module` layer. Modules are configurable components - the
 
 ![Infographic](https://raw.githubusercontent.com/esr360/One-Nexus/master/assets/images/one-nexus-infograph.jpg)
 
+<img src="https://raw.githubusercontent.com/esr360/One-Nexus/master/assets/images/one-nexus-infograph.jpg" width="600">
+
 Once the One-Nexus app is compiled, the end result will be an amalgamation of modules in the form of a single `js` and `css` file.
 
 To take a bottom-up approach to introducing One-Nexus, let's start with the end result; an `app.js` file and an `app.css` file. Together, these assets form a _theme_. Let's call our theme 'One-Nexus'. So the file structure of the end result would look someting like:
