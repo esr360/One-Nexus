@@ -14,7 +14,7 @@
 * Configure your entire project's UI from a single JSON file
 * Modular and configurable UI components
 * [Bespoke responsive grid system](https://github.com/esr360/One-Nexus#responsive-grid-system)
-* Built with Sass and ES6
+* Built with Sass and ES6 (no jQuery!)
 * Handlebars templates
 * Sass and JS unit testing
 * Over 30 prebuilt configurable UI components included
@@ -30,8 +30,9 @@
 * [Getting Started](https://github.com/esr360/One-Nexus#getting-started)
 * [Introduction](#TODO)
 * [UI Modules](#TODO)
-* [Tools](#TODO)
+* [The App Layer](#TODO)
 * [Themes](#TODO)
+* [Tools](#TODO)
 * [Grid System](#TODO)
 * [Templates](#TODO)
 * [Unit Testing](#TODO)
@@ -45,7 +46,7 @@ To develop using One-Nexus, the machine being used to develop must have the foll
 * [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
 * [Node.js](https://nodejs.org/en/download/)
 * [Ruby Sass](http://sass-lang.com/install) - `gem install sass`
-* [Sass-JSON-Vars Gem](https://github.com/vigetlabs/sass-json-vars) - `gem install sass-json-vars`
+* [Sass-JSON-Vars](https://github.com/vigetlabs/sass-json-vars) - `gem install sass-json-vars`
 * [Grunt-Cli](https://github.com/gruntjs/grunt-cli) - `npm install -g grunt-cli`
 
 To get started, obtain a fresh copy of One-Nexus:
@@ -72,6 +73,20 @@ You can now access the deployed app in your browser by visiting http://localhost
 
 This section will introduce One-Nexus and explain how it is architectured and structured, walking through each of the significant files and directories which come included as part of One-Nexus.
 
+### Architecture Overview
+
+There are three distinct layers to the One-Nexus architecture: the `app` layer, the `theme` layer and the `module` layer. 
+
+The `app` layer is the _nexus_ of the project; all modules, tools and utilities are imported and all global functions are called. Anything at this level will be exposed to all themes and modules.
+
+The second layer is the `theme` layer; a theme will import the `app` layer and then include whatever modules and utilities are required by the theme, passing any custom theme configuration as required.
+
+The final layer is the `module` layer. Modules are configurable components - they are imported in the `app` layer and included in the `theme` layer as required.
+
+[[https://github.com/esr360/One-Nexus/blob/master/assets/images/one-nexus-infograph.png]]
+
+Once the One-Nexus app is compiled, the end result will be an amalgamation of modules in the form of a single `js` and `css` file.
+
 To take a bottom-up approach to introducing One-Nexus, let's start with the end result; an `app.js` file and an `app.css` file. Together, these assets form a _theme_. Let's call our theme 'One-Nexus'. So the file structure of the end result would look someting like:
 
 ```
@@ -95,9 +110,9 @@ Each respective asset is generated from a single source file. In the above examp
 |   |   |   |   |-- One-Nexus.scss
 ```
 
-So `One-Nexus.scss` is sent to the Sass compiler to create `app.css`, and likewise for `One-Nexus.js` and `app.js`. Notice the `config.json` file above - this is where any custom configuration for each UI module will be stored, effectively acting as the source of your project's UI configuration, this will be addressed in more detail later.
+So `One-Nexus.scss` is sent to the Sass compiler to create `app.css`, and likewise for `One-Nexus.js` and `app.js`. Notice the `config.json` file above - this is where any custom configuration for the UI modules will be stored, effectively acting as the source of your project's UI configuration - this will be addressed in more detail later.
 
-One-Nexus is built using the [Synergy](https://github.com/esr360/Synergy) framework, which is what allows it to have configurable modules.
+One-Nexus is built using the [Synergy](https://github.com/esr360/Synergy) framework, which provides the functionality for configurable modules.
 
 > Read the [Synergy Documentation](https://github.com/esr360/Synergy) to learn more about modules and how to configure them
 
@@ -230,10 +245,154 @@ When your app re-compiles, the above values will be used instead of the default 
 
 ## UI Modules
 
-A module is a UI element which can be comprised of a `.scss` file, `.js` file and `.json` file, which can be imported into themes and configured by a theme.json file. They can have modifier variants as well as child components which can also have modifiers.
+A module is a UI element which can be comprised of a `.scss` file, `.js` file and `.json` file, which can be imported into themes and configured by a theme.json file. Modules can have modifier variants as well as child components which can also have modifiers.
+
+Each module has a _private_ and _public_ name. The _private_ name is unconfigurable and used internally to access the module and its configuration, and to call the module itself. The _public_ name is used in the HTML (and hence CSS), and is configurable.
 
 All available modlues are located within the `assets/modules/` directory. One-Nexus splits the modules up into the following categories:
 
 * Elements
 * Objects
 * Utilities
+
+### Elements
+
+_Elements_ are the more abstract UI modules which serve no set purpose or function.
+
+* [Accordions](#TODO)
+* [Alert-Bars]
+* [Blockquotes](#TODO)
+* [Buttons](#TODO)
+* [Carousels](#TODO)
+* [Forms](#TODO)
+* [Headings](#TODO)
+* [Images](#TODO)
+* [Lists](#TODO)
+* [Modals](#TODO)
+* [Progress-Bars](#TODO)
+* [Tables](#TODO)
+* [Tabs](#TODO)
+* [Tooltips](#TODO)
+* [Wells](#TODO)
+
+### Objects
+
+_Objects_ are the larger and more specific modules which generally serve a set function.
+
+* [Billboard](#TODO)
+* [Breadcrumb]
+* [Dropdown](#TODO)
+* [Footer](#TODO)
+* [Google-Map](#TODO)
+* [Header](#TODO)
+* [Logo](#TODO)
+* [Navigation](#TODO)
+* [Preloader](#TODO)
+* [Scroll-Top](#TODO)
+* [Search](#TODO)
+* [Side-Nav](#TODO)
+* [Overlay](#TODO)
+
+### Utilities
+
+_Utilities_ are everything else; modules which serve to ehance and compliment the other modules.
+
+* [Colors](#TODO)
+* [Container]
+* [Core](#TODO)
+* [Grid](#TODO)
+* [Helpers](#TODO)
+* [Print](#TODO)
+* [Typoraphy](#TODO)
+
+## Tools
+
+One-Nexus provides some useful tools to facilitate development and ehance your project's UI.
+
+### JavaScript Tools
+
+* [app.breakpoint](#TODO)
+* [app.clickHelper](#TODO)
+* [app.custom](#TODO)
+* [app.inViewport](#TODO)
+* [app.isValidSelector](#TODO)
+* [app.parents](#TODO)
+* [app.scrollSpy](#TODO)
+* [app.smoothScroll](#TODO)
+
+### Sass Tools
+
+* [background](#TODO)
+* [fill-parent](#TODO)
+* [font-sizes](#TODO)
+* [horizontal-center](#TODO)
+* [overlay](#TODO)
+* [retrieve-value](#TODO)
+* [triangle](#TODO)
+* [vertical-center](#TODO)
+* [vertical-rhythm](#TODO)
+
+## Themes
+
+Themes are used to create distinctly separate UI's using a combination of modules and custom configuration.
+
+By default themes exist in the `assets/themes` directory. As each theme can be comprised of multiple files, it is neccessery to create a separate directory for each theme.
+
+```
+|-- src
+|   |-- assets
+|   |   |-- themes
+|   |   |   |-- One-Nexus
+|   |   |   |   |-- config.json
+|   |   |   |   |-- One-Nexus.js
+|   |   |   |   |-- One-Nexus.scss
+```
+
+Pass the `js` and `scss` files to their respective compilers and they will generate your project's UI using the configuration from the `json` file. If using the provided `Grunt` tasks, you can run `grunt theme` to do this.
+
+### One-Nexus.js
+
+The theme's JavaScript file must first import the `app`:
+
+```js
+import * as app from '../../app';
+```
+
+Next, the theme's configuration is imported:
+
+```js
+import * as app from '../../app';
+import config from './config.json';
+```
+
+Finally, the configuration is exposed to the entire app:
+
+```js
+import * as app from '../../app';
+import config from './config.json';
+
+app.theme = config.app;
+```
+
+Modules from the `app` can now be included:
+
+```js
+import * as app from '../../app';
+import config from './config.json';
+
+app.theme = config.app;
+
+app.accordion();
+app.carousel();
+app.modal();
+```
+
+### One-Nexus.scss
+
+## Grid System
+
+## Templates
+
+## Unit Testing
+
+## Build/Grunt Tools
