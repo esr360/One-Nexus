@@ -618,31 +618,31 @@ The following options can be passed to the Grid module:
         </tr>
         <tr>
             <td>settings.flow-columns</td>
-            <td>This option generates the code required for [flow columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#flow-columns)</td>
+            <td>This option generates the code required for <a href="https://github.com/esr360/Kayzen-GS/blob/master/README.md#flow-columns">flow columns</a></td>
         </tr>
         <tr>
             <td>settings.magic-columns</td>
-            <td>This option generates the code required for [magic columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#magic-columns)</td>
+            <td>This option generates the code required for <a href="https://github.com/esr360/Kayzen-GS/blob/master/README.md#magic-columns">magic columns</a></td>
         </tr>
         <tr>
             <td>settings.block-columns</td>
-            <td>This option generates the code required for [block columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#block-columns)</td>
+            <td>This option generates the code required for <a href="https://github.com/esr360/Kayzen-GS/blob/master/README.md#block-columns">block columns</a></td>
         </tr>
         <tr>
             <td>settings.no-gutter-columns</td>
-            <td>This option generates the code required for [no-gutter columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#no-gutter-columns)</td>
+            <td>This option generates the code required for <a href="https://github.com/esr360/Kayzen-GS/blob/master/README.md#no-gutter-columns">no-gutter columns</a></td>
         </tr>
         <tr>
             <td>settings.reverse</td>
-            <td>This option generates the code required to [reverse columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#reverse-column-order)</td>
+            <td>This option generates the code required to <a href="https://github.com/esr360/Kayzen-GS/blob/master/README.md#reverse-column-order">reverse columns</a></td>
         </tr>
         <tr>
             <td>settings.pull</td>
-            <td>This option generates the code required to [pull columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#pushpull-columns)</td>
+            <td>This option generates the code required to <a href="https://github.com/esr360/Kayzen-GS/blob/master/README.md#pushpull-columns">pull columns</a></td>
         </tr>
         <tr>
             <td>settings.push</td>
-            <td>This option generates the code required to [push columns](https://github.com/esr360/Kayzen-GS/blob/master/README.md#pushpull-columns)</td>
+            <td>This option generates the code required to <a href="https://github.com/esr360/Kayzen-GS/blob/master/README.md#pushpull-columns">push columns</a></td>
         </tr>
         <tr>
             <td>breakpoints {}</td>
