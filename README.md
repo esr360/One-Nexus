@@ -1190,7 +1190,7 @@ grunt mochaTest:js
 
 Create a new file in the `unit-testing/js`. For this example, we will be testing the One-nexus [`app.isValidSelector.js` function](https://github.com/esr360/One-Nexus/blob/master/assets/tools/js/app.isValidSelector.js). In this example the file will be called `isValidSelector.js`, living at `unit-testing/js/isValidSelector.js`.
 
-Import the newly created file into `unit-testing/js/tests.js` (which already exists):
+Require the newly created file into `unit-testing/js/tests.js` (which already exists):
 
 ```js
 require('./isValidSelector.js');
@@ -1201,7 +1201,7 @@ Inside `isValidSelector.js`:
 ```js
 import * as app from '#TODO/app.js';
 
-describe('Test is a CSS selector is a valid selector', function() {
+describe('Test if a CSS selector is a valid selector', function() {
     it('should validate a valid selector', function() {
         assert.equal(app.isValidSelector('[class*="foo"]'), true);
     });
@@ -1214,3 +1214,76 @@ describe('Test is a CSS selector is a valid selector', function() {
 For more information read the [MochaJS Documentation](https://mochajs.org/).
 
 ## Build/Grunt Tools
+
+One-Nexus currently uses Grunt for all build tools, but in the future will be moving to [NPM Scripts](https://medium.com/valtech-design/using-npm-scripts-to-run-node-sass-443b031b02a).
+
+All of the build commands work out-the-box (after running `npm install` and assuming you have `grunt-cli` installed) without any other configuration - though many aspects of the build tools are configurable.
+
+> Remember you need to have `grunt-cli` installed globally (`npm i -g grunt-cli`)
+
+Generate distribution assets and setup a local server which watches for live changes by running the default `grunt` task. Your built UI will be available at `http://localhost:3000/`.
+
+### Available Grunt Tasks
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Task</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>grunt</td>
+            <td>Default grunt tasks; runs the `theme`, `browserSync` and `watch` tasks</td>
+        </tr>
+        <tr>
+            <td>grunt theme</td>
+            <td>Generate distribution assets for the default theme</td>
+        </tr>
+        <tr>
+            <td>grunt theme:THEME</td>
+            <td>Generate distribution assets for a specified theme</td>
+        </tr>
+        <tr>
+            <td>grunt themes</td>
+            <td>Generate distribution assets for all themes</td>
+        </tr>
+        <tr>
+            <td>grunt lint</td>
+            <td>Run JavaScript and Sass code linting</td>
+        </tr>
+        <tr>
+            <td>grunt test</td>
+            <td>Run JavaScript and Sass unit tests</td>
+        </tr>
+        <tr>
+            <td>grunt docs</td>
+            <td>Generate SassDoc and JSDoc from source files</td>
+        </tr>
+    </tbody>
+</table>
+
+### Available Grunt Options
+
+Using the [grunt.option](http://gruntjs.com/api/grunt.option) API, you can pass several parameters on the command line when running the above tasks:
+
+#### Theme
+
+```bash
+grunt --theme=AnotherTheme
+```
+
+#### Env
+
+Set your development environment; either `dev` or `prod`. This determines whether generated assets should be minified or not, as well as whether or not source maps should be generated.
+
+```bash
+grunt --env=prod
+```
+
+You can combine options (this is thanks to [nopt-grunt-fix](https://www.npmjs.com/package/nopt-grunt-fix), and is not a standard feature of Grunt):
+
+```bash
+grunt --theme=AnotherTheme --env=prod
+```
