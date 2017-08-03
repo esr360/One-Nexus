@@ -33,9 +33,13 @@ import { search      } from './modules/objects/search/search';
 import { sideNav     } from './modules/objects/side-nav/side-nav';
 import { siteOverlay } from './modules/objects/site-overlay/site-overlay';
 
+// Utilities
+import { colors      } from './modules/utilities/colors/colors';
+
 export { 
     accordion, carousel, modal, progressBar, tabs, tooltips, 
-    googleMap, header, preloader, scrollTop, search, sideNav, siteOverlay
+    googleMap, header, preloader, scrollTop, search, sideNav, siteOverlay,
+    colors
 }
 
 // Tools

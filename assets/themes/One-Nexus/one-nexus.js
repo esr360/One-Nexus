@@ -10,6 +10,10 @@ import config from './config.json';
 
 app.theme = config.app;
 
+///************************************************************
+/// Elements
+///************************************************************
+
 app.accordion();
 app.carousel();
 app.modal();
@@ -17,9 +21,16 @@ app.progressBar();
 app.siteOverlay();
 app.tabs();
 app.tooltips();
+
+///************************************************************
+/// Objects
+///************************************************************
+
 app.googleMap();
 app.header();
 app.preloader();
 app.scrollTop();
 app.search();
 app.sideNav();
+
+console.log(app.colors().color('brand', 'brand-1'));
