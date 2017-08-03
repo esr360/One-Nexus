@@ -1235,7 +1235,7 @@ Generate distribution assets and setup a local server which watches for live cha
     <tbody>
         <tr>
             <td>grunt</td>
-            <td>Default grunt tasks; runs the `theme`, `browserSync` and `watch` tasks</td>
+            <td>Default grunt tasks; runs the <code>theme</code>, <code>browserSync</code> and <code>watch</code> tasks</td>
         </tr>
         <tr>
             <td>grunt theme</td>
