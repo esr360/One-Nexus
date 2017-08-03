@@ -12,13 +12,13 @@ export function colors(custom) {
 
     custom = app.custom('colors', custom);
 
-    const options = Object.assign(defaults, custom);
+    const options = Object.assign(defaults.colors, custom);
 
-    exports.palette = palette => options.colors[palette];
+    exports.palette = palette => options[palette];
 
-    exports.color = (palette, color) => options.colors[palette][color];
+    exports.color = (palette, color) => options[palette][color];
 
-    app.config.colors = Object.assign(defaults.colors, custom);
+    app.config.colors = options;
 
     return exports;
 }

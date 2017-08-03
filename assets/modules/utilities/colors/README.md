@@ -104,7 +104,9 @@ Load the color palettes in your theme's main `scss` file (e.g. [themes/One-Nexus
 
 ### Tools & Utilities
 
-#### Function: `palette()`
+#### Sass
+
+##### Function: `palette()`
 
 Retrieve an existing color palette
 
@@ -114,7 +116,7 @@ Retrieve an existing color palette
 }
 ```
 
-#### Function: `color()`
+##### Function: `color()`
 
 Retrieve a color from an existing palette
 
@@ -124,7 +126,7 @@ Retrieve a color from an existing palette
 }
 ```
 
-#### Function: `merge-palettes()`
+##### Function: `merge-palettes()`
 
 Create a new palette from existing palettes
 
@@ -151,7 +153,7 @@ $new-palette: merge-palettes(
     background-color: map-get($new-palettes, 'facebook');
 }
 ```
-#### Function: `gradient()`
+##### Function: `gradient()`
 
 Create a linear gradient using `gradients` from the options
 
@@ -167,4 +169,22 @@ Outputs:
 .brand-gradient {
     background: linear-gradient(135deg, #2E3882 0%, #06D2FF 20%, #04CEC0 100%);
 }
+```
+
+#### JavaScript
+
+##### Function: `app.colors().palette()`
+
+Retrieve an existing color palette
+
+```sass
+const brandPalette = app.colors().palette('brand');
+```
+
+##### Function: `app.colors().color()`
+
+Retrieve a color from an existing palette
+
+```sass
+const alertSuccessColor = app.colors().color('alert', 'success');
 ```

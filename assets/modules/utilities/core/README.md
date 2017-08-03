@@ -87,7 +87,9 @@ Load the core styles in your theme's main `scss` file (e.g. [themes/One-Nexus/On
 
 ### Tools & Utilities
 
-#### Function: `core()`
+#### Sass
+
+##### Function: `core()`
 
 Retrieve a core value
 
@@ -97,7 +99,7 @@ Retrieve a core value
 }
 ```
 
-#### Mixin: `object()`
+##### Mixin: `object()`
 
 Add vertical-rhythem to an element - uses the value from the `margin` option by default.
 
@@ -121,10 +123,22 @@ Outputs:
 }
 ```
 
-#### Module: `hrule()`
+##### Module: `hrule()`
 
 Add a horizontal rule to separate elements:
 
 ```html
 <hr class="hrule" />
+```
+
+#### JavaScript
+
+##### Function: `app.core()`
+
+Retrieve a core value
+
+```sass
+.element {
+    font-size: core('font-size');
+}
 ```

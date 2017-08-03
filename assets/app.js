@@ -35,11 +35,12 @@ import { siteOverlay } from './modules/objects/site-overlay/site-overlay';
 
 // Utilities
 import { colors      } from './modules/utilities/colors/colors';
+import { core        } from './modules/utilities/core/core';
 
 export { 
     accordion, carousel, modal, progressBar, tabs, tooltips, 
     googleMap, header, preloader, scrollTop, search, sideNav, siteOverlay,
-    colors
+    colors, core
 }
 
 // Tools
@@ -50,6 +51,7 @@ export const config = {};
 import { breakpoint      } from './tools/js/app.breakpoint';
 import { clickHelper     } from './tools/js/app.clickHelper';
 import { custom          } from './tools/js/app.custom';
+import { evalConfig      } from './tools/js/app.evalConfig';
 import { inViewport      } from './tools/js/app.inViewport';
 import { isValidSelector } from './tools/js/app.isValidSelector';
 import { parents         } from './tools/js/app.parents';
@@ -57,8 +59,8 @@ import { smoothScroll    } from './tools/js/app.smoothScroll';
 import { scrollSpy       } from './tools/js/app.scrollSpy';
 
 export { 
-    breakpoint, clickHelper, custom, inViewport, isValidSelector, 
-    parents, scrollSpy 
+    breakpoint, clickHelper, custom, evalConfig, inViewport, 
+    isValidSelector, parents, scrollSpy
 };
 
 // Attach `app` to the Window object

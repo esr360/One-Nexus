@@ -132,3 +132,21 @@ header:
 </div>
 
 <hr class="hrule" />
+
+<div id="sandbox" contenteditable="true">
+    document.body.style.background = APPUI.config.colors.brand['brand-1'];
+</div>
+
+<script>
+    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+    var observer = new MutationObserver(function(mutations) {
+        eval(document.getElementById('sandbox').innerHTML);
+    });
+
+    observer.observe(sandbox, {
+        characterData: true,
+        subtree: true,
+        attributeOldValue: true,
+    });
+</script>

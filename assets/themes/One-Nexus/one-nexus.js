@@ -33,4 +33,6 @@ app.scrollTop();
 app.search();
 app.sideNav();
 
-console.log(app.colors().color('brand', 'brand-1'));
+app.core();
+
+console.log(app.colors().color('greyscale', 'grey-1'));
