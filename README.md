@@ -573,10 +573,6 @@ The following options can be passed to the Grid module:
     </thead>
     <tbody>
         <tr>
-            <td>name</td>
-            <td>The name used when generating the CSS selector</td>
-        </tr>
-        <tr>
             <td>options.columns</td>
             <td>The number of columns to use when generating the grid system classes</td>
         </tr>
@@ -1133,5 +1129,49 @@ Include in Handlebars template:
 ```
 
 ## Unit Testing
+
+One-Nexus offers out-the-box unit testing for Sass and JavaScript. Currently, One-Nexus provides very little coverage for all the default modules (but coverage will keep improving until 100% is reached!) - but the setup make it easy to start writing unit tests for your own modules.
+
+### Sass Unit Testing
+
+The test framework of choice for Sass unit tests is [True](https://github.com/oddbird/true), and uses Mocha as the test runner. Sass unit tests are found within the `unit-testing/scss` directory.
+
+#### Running Sass Unit Tests
+
+To run Sass unit tests with Grunt, run the `mochaTest:scss` command:
+
+```bash
+grunt mochaTest:scss
+```
+
+#### Writing Sass Unit Tests
+
+Create a new file in the `unit-testing/scss`. For this example, we will be testing [Sass-Boost](https://github.com/esr360/Sass-Boost)'s [`_list-reverse.scss` function](https://github.com/esr360/Sass-Boost/blob/master/src/functions/_list-reverse.scss). So we will call our test file `_list-reverse.scss` as well, living at `unit-testing/scss/_list-reverse.scss`.
+
+Import the newly created file into `unit-testing/scss/tests.scss` (which already exists):
+
+```scss
+@import 'list-reverse';
+```
+
+Inside `_list-reverse.scss`:
+
+@include test-module('list-reverse') {
+    @include test('Reverse a list') {
+
+        $list: (1, 2, 3, 4);
+
+        $actual: list-reverse($list);
+        $expected: (4 3 2 1);
+
+        @include assert-equal(
+            $actual, $expected, 'should return the list in reverse'
+        );
+    }
+}
+
+For more information read the [Sass True Documentation](https://github.com/oddbird/true).
+
+### JavaScript Unit Testing
 
 ## Build/Grunt Tools
