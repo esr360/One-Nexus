@@ -1156,6 +1156,7 @@ Import the newly created file into `unit-testing/scss/tests.scss` (which already
 
 Inside `_list-reverse.scss`:
 
+```scss
 @include test-module('list-reverse') {
     @include test('Reverse a list') {
 
@@ -1169,6 +1170,7 @@ Inside `_list-reverse.scss`:
         );
     }
 }
+```
 
 For more information read the [Sass True Documentation](https://github.com/oddbird/true).
 
