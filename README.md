@@ -1176,4 +1176,41 @@ For more information read the [Sass True Documentation](https://github.com/oddbi
 
 ### JavaScript Unit Testing
 
+JavaScript unit tests again use Mocha, and are found within the `unit-testing/js` directory.
+
+#### Running JavaScript Unit Tests
+
+To run JavaScript unit tests with Grunt, run the `mochaTest:js` command:
+
+```bash
+grunt mochaTest:js
+```
+
+#### Writing JavaScript Unit Tests
+
+Create a new file in the `unit-testing/js`. For this example, we will be testing the One-nexus [`app.isValidSelector.js` function](https://github.com/esr360/One-Nexus/blob/master/assets/tools/js/app.isValidSelector.js). In this example the file will be called `isValidSelector.js`, living at `unit-testing/js/isValidSelector.js`.
+
+Import the newly created file into `unit-testing/js/tests.js` (which already exists):
+
+```js
+require('./isValidSelector.js');
+```
+
+Inside `isValidSelector.js`:
+
+```js
+import * as app from '#TODO/app.js';
+
+describe('Test is a CSS selector is a valid selector', function() {
+    it('should validate a valid selector', function() {
+        assert.equal(app.isValidSelector('[class*="foo"]'), true);
+    });
+    it('should invalidate an ivalid selector', function() {
+        assert.equal(app.isValidSelector('class*="foo"'), false);
+    });
+});
+```
+
+For more information read the [MochaJS Documentation](https://mochajs.org/).
+
 ## Build/Grunt Tools
