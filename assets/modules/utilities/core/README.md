@@ -133,10 +133,8 @@ Add a horizontal rule to separate elements:
 
 #### JavaScript
 
-##### Function: `app.core()`
-
-Retrieve a core value
+You can retrieve core values from the `app.config` object:
 
 ```js
-const primaryFont = app.core()['font-family'];
+const fontFamily = app.config.core['font-family'];
 ```

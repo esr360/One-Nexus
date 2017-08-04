@@ -37,6 +37,8 @@ app.sideNav();
 /// Utilities
 ///************************************************************
 
+app.colors();
 app.core();
+app.typography();
 
-console.log(app.evalConfig("core('background')"));
+app.config = app.evalConfig(app.config);

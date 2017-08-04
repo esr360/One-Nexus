@@ -173,29 +173,11 @@ Outputs:
 
 #### JavaScript
 
-##### Function: `app.colors().palette()`
-
-Retrieve an existing color palette
-
-```js
-const brandPalette = app.colors().palette('brand');
-```
-
-Note that you can also access configuraton values directly from the `app.config` object:
+You can retrieve colors and palettes from the `app.config` object:
 
 ```js
 const brandPalette = app.config.colors.brand
 ```
-
-##### Function: `app.colors().color()`
-
-Retrieve a color from an existing palette
-
-```js
-const alertSuccessColor = app.colors().color('alert', 'success');
-```
-
-Note that you can also access configuraton values directly from the `app.config` object:
 
 ```js
 const alertSuccessColor = app.config.colors.alert.success
