@@ -498,7 +498,7 @@ app.theme = config.app; // `app.theme` now exposes the same information as `$app
 
 Again, One-Nexus provides a `custom` JS function (accessed by `app.custom`) which can be used to search `app.theme` for any existing custom configuration. This means when calling a module, custom configuration (if it exists in `config.json`) can be passed to it like so:
 
-```scss
+```js
 import * as app from '../../app';
 import config from './config.json';
 

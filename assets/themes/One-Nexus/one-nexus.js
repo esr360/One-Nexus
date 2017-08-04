@@ -33,6 +33,10 @@ app.scrollTop();
 app.search();
 app.sideNav();
 
+///************************************************************
+/// Utilities
+///************************************************************
+
 app.core();
 
-console.log(app.colors().color('greyscale', 'grey-1'));
+console.log(app.evalConfig("core('background')"));

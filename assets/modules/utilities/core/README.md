@@ -2,11 +2,11 @@
 
 ### Quick Look
 
-```sass
+```scss
 .element {
     font-size: core('font-size');
-    transition: core('transition);
-    margin-bottom: core('margin);
+    transition: core('transition');
+    margin-bottom: core('margin');
 }
 ```
 
@@ -93,7 +93,7 @@ Load the core styles in your theme's main `scss` file (e.g. [themes/One-Nexus/On
 
 Retrieve a core value
 
-```sass
+```scss
 .element {
     font-size: core('font-size');
 }
@@ -103,7 +103,7 @@ Retrieve a core value
 
 Add vertical-rhythem to an element - uses the value from the `margin` option by default.
 
-```sass
+```scss
 .element {
     @include object();
 }
@@ -137,8 +137,6 @@ Add a horizontal rule to separate elements:
 
 Retrieve a core value
 
-```sass
-.element {
-    font-size: core('font-size');
-}
+```js
+const primaryFont = app.core()['font-family'];
 ```

@@ -110,7 +110,7 @@ Load the color palettes in your theme's main `scss` file (e.g. [themes/One-Nexus
 
 Retrieve an existing color palette
 
-```sass
+```scss
 @each $brand, $color in palette('brand') {
     ...
 }
@@ -120,7 +120,7 @@ Retrieve an existing color palette
 
 Retrieve a color from an existing palette
 
-```sass
+```scss
 .brand-1 {
     color: color('brand', 'brand-1');
 }
@@ -130,7 +130,7 @@ Retrieve a color from an existing palette
 
 Create a new palette from existing palettes
 
-```sass
+```scss
 $new-palette: merge-palettes('brand', 'greyscale', 'alert', 'social');
 
 .brand-1 {
@@ -140,7 +140,7 @@ $new-palette: merge-palettes('brand', 'greyscale', 'alert', 'social');
 
 Use only specific colors from certain palettes
 
-```sass
+```scss
 $new-palette: merge-palettes(
     'brand', 
     ('greyscale': ('grey-1', 'grey-3', 'grey-4')), 
@@ -157,7 +157,7 @@ $new-palette: merge-palettes(
 
 Create a linear gradient using `gradients` from the options
 
-```sass
+```scss
 .brand-gradient {
     background: gradient('brand');
 }
@@ -165,7 +165,7 @@ Create a linear gradient using `gradients` from the options
 
 Outputs:
 
-```sass
+```scss
 .brand-gradient {
     background: linear-gradient(135deg, #2E3882 0%, #06D2FF 20%, #04CEC0 100%);
 }
@@ -177,14 +177,26 @@ Outputs:
 
 Retrieve an existing color palette
 
-```sass
+```js
 const brandPalette = app.colors().palette('brand');
+```
+
+Note that you can also access configuraton values directly from the `app.config` object:
+
+```js
+const brandPalette = app.config.colors.brand
 ```
 
 ##### Function: `app.colors().color()`
 
 Retrieve a color from an existing palette
 
-```sass
+```js
 const alertSuccessColor = app.colors().color('alert', 'success');
+```
+
+Note that you can also access configuraton values directly from the `app.config` object:
+
+```js
+const alertSuccessColor = app.config.colors.alert.success
 ```

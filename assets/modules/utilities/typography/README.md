@@ -68,7 +68,7 @@ Load the Typography styles in your theme's main `scss` file (e.g. [themes/One-Ne
 
 Retrieve an Typography configuration object
 
-```sass
+```scss
 @each $key, $value in typography-config('sizes') {
     ...
 }

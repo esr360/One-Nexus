@@ -5,6 +5,9 @@
             "primary": "('Raleway', '100,300,700,900')",
             "secondary": "('Lato', '300,700')"
         },
+        "foo": {
+            "foo": "core('background')"
+        },
         "import-fonts": true,
         "colors": {
             "base": "color('greyscale', 'grey-4')",

@@ -82,7 +82,7 @@ Load the container styles in your theme's main `scss` file (e.g. [themes/One-Nex
 
 #### Turn Any Element Into a Container
 
-```sass
+```scss
 .element {
     @include _module('container');
 }

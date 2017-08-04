@@ -36,11 +36,12 @@ import { siteOverlay } from './modules/objects/site-overlay/site-overlay';
 // Utilities
 import { colors      } from './modules/utilities/colors/colors';
 import { core        } from './modules/utilities/core/core';
+import { typography  } from './modules/utilities/typography/typography';
 
 export { 
     accordion, carousel, modal, progressBar, tabs, tooltips, 
     googleMap, header, preloader, scrollTop, search, sideNav, siteOverlay,
-    colors, core
+    colors, core, typography
 }
 
 // Tools

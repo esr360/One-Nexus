@@ -84,7 +84,7 @@ Load the Grid System styles in your theme's main `scss` file (e.g. [themes/One-N
 
 Retrieve an existing breakpoint value
 
-```sass
+```scss
 @media (min-width: breakpoint('break-3')) {
     ...
 }
@@ -135,7 +135,7 @@ Semantic classes:
 
 Sass
 
-```sass
+```scss
 .main {
     @include row();
 }
