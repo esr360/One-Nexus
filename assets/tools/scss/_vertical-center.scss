@@ -4,7 +4,7 @@
 /// @group Tools
 ///
 /// @param {string} $position - the value to use for the `position` property
-@mixin vertical-center($position: relative) {
+@mixin vertical-center($position: absolute) {
 	position: $position;
 	top: 50%;
 	transform: translateY(-50%);

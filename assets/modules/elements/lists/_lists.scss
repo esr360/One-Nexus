@@ -57,7 +57,7 @@
                 margin-bottom: 0;
                 padding-left: 1.5em;
                 &:before {
-                    @include vertical-center(absolute);
+                    @include vertical-center();
                     content: this('arrow-icon');
                     display: inline-block;
                     left: 0;

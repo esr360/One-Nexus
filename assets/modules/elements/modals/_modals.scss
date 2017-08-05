@@ -17,7 +17,7 @@
 
     @include module {
         
-        @include vertical-center(absolute);
+        @include vertical-center();
         @include horizontal-center();
         
         // Private styles 

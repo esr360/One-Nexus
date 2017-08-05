@@ -41,7 +41,7 @@
             }
             svg {
                 @include horizontal-center();
-                @include vertical-center(absolute);
+                @include vertical-center();
                 height: this('nav-buttons', 'arrow-size');
                 width: this('nav-buttons', 'arrow-size');
             }

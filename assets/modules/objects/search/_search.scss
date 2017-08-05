@@ -56,7 +56,7 @@
         
         @include module('button') {
             @include component('group') {
-                @include vertical-center(absolute);
+                @include vertical-center();
                 right: 0;
             }
         }

@@ -96,7 +96,7 @@
         }
 
         @include component('icon') {
-            @include vertical-center(absolute);
+            @include vertical-center();
             color: this('input-color');
             position: absolute;
             left: 0.75em;

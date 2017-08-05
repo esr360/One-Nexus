@@ -64,7 +64,7 @@
                             &:after {
                                 content: this('dropdown-icon');
                                 right: 0.75em;
-                                @include vertical-center(absolute);
+                                @include vertical-center();
                             }
                         }
                     }

@@ -38,7 +38,7 @@
 
         @include component('spinner') {
             @include spinner(this('spinner')...);
-            @include vertical-center(absolute);
+            @include vertical-center();
             @include horizontal-center();
         }
 

@@ -27,7 +27,7 @@
         overflow: hidden;
         
         &:before {
-            @include vertical-center(absolute);
+            @include vertical-center();
             left: 0.5em;
             content: attr(data-progress);
             color: this('value-color');

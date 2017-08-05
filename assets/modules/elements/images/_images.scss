@@ -25,7 +25,7 @@
             position: relative;
             @include component('figure') {
                 @include horizontal-center;
-                @include vertical-center(absolute);
+                @include vertical-center();
                 margin-left: auto !important;
                 margin-right: auto !important;
             }

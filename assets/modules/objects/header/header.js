@@ -9,7 +9,7 @@ import defaults from './header.json';
  * @param {(String|HTMLElement|NodeList)} els
  * @param {Object} custom
  */
-export function header(els = 'appHeader', custom) {
+export function header(els = 'header', custom) {
 
     custom = app.custom('header', custom);
 
@@ -53,8 +53,8 @@ export function header(els = 'appHeader', custom) {
  */
 function toggleStickyHeader(options) {
     // toggle header padding
-    // @todo change below to Synergy selector to avoid hardcoded 'appHeader'
-    document.body.classList[(options.type === 'stick') ? 'add' : 'remove']('appHeader_isFixed');
+    // @todo change below to Synergy selector to avoid hardcoded 'header'
+    document.body.classList[(options.type === 'stick') ? 'add' : 'remove']('header_isFixed');
 
     // toggle fixed modifier
     app.Synergy(options.target).modifier('fixed', (options.type === 'stick') ? 'add' : 'remove');

@@ -1,6 +1,6 @@
 {
     "header": {
-        "name": "appHeader",
+        "name": "header",
         "background": "core('background')",
         "height": "85px",
         "font-size": "1em",

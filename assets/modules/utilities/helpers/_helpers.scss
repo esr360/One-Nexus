@@ -127,7 +127,7 @@
 	// Vertical Center
 	
 	.v-center {
-		@include vertical-center;
+		@include vertical-center();
 	}
 
     //*************************************************************

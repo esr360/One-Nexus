@@ -52,7 +52,7 @@
 
         @include component('wrapper') {
             @include horizontal-center();
-            @include vertical-center(absolute);
+            @include vertical-center();
 
             @include _module('container');
 

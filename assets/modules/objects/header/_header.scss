@@ -101,7 +101,7 @@
 
         @include module('sideNav') {
             @include component('toggle') {
-                @include vertical-center(absolute);
+                @include vertical-center();
                 right: 0;
             }
         }
