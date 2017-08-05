@@ -16,6 +16,8 @@
 
     $font-sizes: map-merge((
         'fluid-scaling' : true,
+        'min-vw'        : breakpoint('break-1'),
+        'max-vw'        : breakpoint('break-3'),
         'sizes'         : typography-config('sizes')
     ), $custom) !global;
 
@@ -28,8 +30,8 @@
     $modular-scale-hi-res : 1.333;
 
     // Set the values between which sizes should scale
-    $min-vw: breakpoint('break-1');
-    $max-vw: breakpoint('break-3');
+    $min-vw: map-get($font-sizes, 'min-vw');
+    $max-vw: map-get($font-sizes, 'max-vw');
 
     // Get the index of the value closest to our low-res 
     // modular-scale value

@@ -27,8 +27,6 @@
     // Merge default config with custom options
     $grid: config($grid, $custom) !global;
 
-    @debug $grid;
-
     // Load Kayzen-GS styles
     @include kayzen-gs($grid);
 
