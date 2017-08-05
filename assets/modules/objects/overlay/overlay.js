@@ -15,7 +15,9 @@ export function overlay(els = 'overlay', custom) {
 
     app.Synergy(els, (el, options) => {
 
-        el.addEventListener('click', () => exports.hide());
+        if (options.closeOnClick) {
+            el.addEventListener('click', () => exports.hide());
+        }
 
         exports.show = flag => exports.toggle(flag, 'show');
         exports.hide = flag => exports.toggle(flag, 'hide');

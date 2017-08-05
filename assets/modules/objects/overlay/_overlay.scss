@@ -33,7 +33,11 @@
         @include modifier('visible') {
 	        visibility: visible;
 	        opacity: 1;
-        }
+		}
+		
+		@include modifier('light') {
+			background: this('light-background');
+		}
 
         //*********************************************************
         // Custom Content
