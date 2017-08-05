@@ -15,13 +15,13 @@
     //*************************************************************
 
 	//Hide visually and from screen readers:
-	.hidden {
+	.hidden, %hidden {
 		display: none !important;
 	}
 	
 	// Hide only visually, but keep for screen readers
 	// http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
-	.visually-hidden {
+	.visually-hidden, %visually-hidden {
 		border: 0;
 		clip: rect(0 0 0 0);
 		height: 1px;
@@ -43,12 +43,12 @@
 	}
 
 	// Hide visually and from screen readers, but maintain layout
-	.invisible {
+	.invisible, %invisible {
 		visibility: hidden;
 		opacity: 0;
 	}
 
-	.visible {
+	.visible, %visible {
 		visibility: visible;
 		opacity: 1;
 	}
@@ -57,7 +57,7 @@
     // Clearfix
     //*************************************************************
 
-	.clearfix, .cf {
+	.clearfix, .cf, %clearfix {
 		zoom: 1;
 		&:before, &:after { 
 			content: ''; 
@@ -72,13 +72,13 @@
     // Disabling
     //*************************************************************
     
-    %greyscale, .greyscale {
+    .greyscale, %greyscale {
         filter: grayscale(100%);
         filter: gray; // IE6-9
         -webkit-filter: grayscale(100%);
     }
     
-    %disabled, .disabled {
+    .disabled, %disabled {
         @extend %greyscale;
         opacity: 0.8;
     }
