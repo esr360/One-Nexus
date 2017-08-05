@@ -13,30 +13,15 @@ breadcrumb: true
 
 {{> header}}
 
-<div class="searchBox">
-    <form class="container">
-        <input class="searchBox_input" required type="search" placeholder="Enter search query..." />
-        <div class="button_group-small">
-            <button class="searchBox_go button-icon-primary" type="submit">
-                <i class="fa fa-search"></i>
-            </button>
-            <span class="searchBox_close button-icon">
-                <i class="fa fa-times"></i>
-            </span>
-        </div>
-    <form>
-</div>
+{{> search}}
 
-<div class="sideNav">
-    <nav></nav>
-</div>
+{{> side-nav}}
 
 {{#if billboard}}
     {{> billboard}}
 {{/if}}
 
 <main>
-
     {{#if container}}
         <div class="container{{#each container.modifiers}}-{{.}}{{/each}}">
     {{/if}}

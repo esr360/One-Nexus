@@ -1,6 +1,7 @@
 ---
 title: One-Nexus
 bodyClass: ''
+preloader: true
 styles:
     - <%=assets%>assets/themes/<%=theme%>/app
 scripts:
@@ -31,18 +32,15 @@ FontAwesome: 4.7.0
         {{/is}}
     </head>
 
-    <div class="preloader">
-        <div class="preloader_spinner"></div>
-        <div class="preloader_close">
-            <div class="button-round-border-size-2-thin-grey-3">Disable Preloader</div>
-        </div>
-    </div>
+    {{#if preloader}}
+        {{> preloader}}
+    {{/if}}
 
     <body class="{{bodyClass}}">
         {{> body}}
     </body>
 
-    <div id="overlay" class="overlay"></div>
+    {{> overlay}}
 
     {{#if jQuery}}
         <script src="http://code.jquery.com/jquery-{{jQuery}}.min.js" crossorigin="anonymous"></script>
