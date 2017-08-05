@@ -6,7 +6,7 @@
 
 * dark
 
-##### Quick Look
+### Quick Look
 
 ```html
 <div class="well">

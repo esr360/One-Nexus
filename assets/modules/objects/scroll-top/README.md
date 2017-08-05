@@ -8,7 +8,7 @@
 
 * _This module has no modifiers_
 
-##### Quick Look
+### Quick Look
 
 > Tip: Utilise the [Button](#TODO) classes to style the scrollTop element
 

@@ -13,7 +13,7 @@
 * hide-pagination
 * hide-navigation
 
-##### Quick Look
+### Quick Look
 
 To create a carousel, add the `carousel` class to a container of elements which will act as the carousel slides:
 

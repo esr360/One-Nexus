@@ -10,7 +10,7 @@
 * box
 * {color}
 
-##### Quick Look
+### Quick Look
 
 ```html
 <div class="alert-bar-help">A helpful alert bar.</div>

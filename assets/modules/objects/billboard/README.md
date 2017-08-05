@@ -9,7 +9,7 @@
 * overlay
 * fullscreen
 
-##### Quick Look
+### Quick Look
 
 ```html
 <div class="billboard">

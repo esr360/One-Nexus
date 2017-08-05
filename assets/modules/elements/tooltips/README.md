@@ -9,7 +9,7 @@
 
 * [top, bottom, left, right]
 
-##### Quick Look
+### Quick Look
 
 ```html
 <a href="#" class="button-icon tooltip" data-tooltip="Facebook">

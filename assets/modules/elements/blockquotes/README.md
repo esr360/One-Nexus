@@ -10,7 +10,7 @@
 * pull(-top, -bottom, -left, -right)
 * callout
 
-##### Quick Look
+### Quick Look
 
 ```html
 <blockquote class="blockquote">

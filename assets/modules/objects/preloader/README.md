@@ -9,7 +9,7 @@
 
 * loaded
 
-##### Quick Look
+### Quick Look
 
 > It is recommended to place the preloader at the top of the `body` HTML element
 

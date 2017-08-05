@@ -8,7 +8,7 @@
 
 * visible
 
-##### Quick Look
+### Quick Look
 
 ```html
 <div class="overlay"></div>

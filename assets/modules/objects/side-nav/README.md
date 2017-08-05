@@ -10,7 +10,7 @@
 
 * visible
 
-##### Quick Look
+### Quick Look
 
 > You can populate the Side-Nav from an existing menu (see the module's [options](#options)) - by default the [Navigation](#TODO) module is used to populate the Side-Nav
 

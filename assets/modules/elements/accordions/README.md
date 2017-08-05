@@ -10,7 +10,7 @@
 
 * keepOpen
 
-##### Quick Look
+### Quick Look
 
 ```html
 <div class="accordion">

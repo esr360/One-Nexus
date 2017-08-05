@@ -8,7 +8,7 @@
 
 * _This module has no modifiers_
 
-##### Quick Look
+### Quick Look
 
 ```html
 <progress class="progress-bar" max="100" data-progress="75%"></progress>

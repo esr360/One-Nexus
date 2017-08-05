@@ -12,7 +12,7 @@
 * sticky
 * fixed
 
-##### Quick Look
+### Quick Look
 
 > The `header` module extends the [`logo`](#TODO), [`navigation`](#TODO) and [`overlay`](#TODO) modules
 

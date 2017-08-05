@@ -10,7 +10,7 @@
 
 * _This module has no modifiers_
 
-##### Quick Look
+### Quick Look
 
 ```html
 <div class="tabs">

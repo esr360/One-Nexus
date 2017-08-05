@@ -11,7 +11,7 @@
 * arrow(-highlight)
 * group
 
-##### Quick Look
+### Quick Look
 
 ```html
 <ul class="list">

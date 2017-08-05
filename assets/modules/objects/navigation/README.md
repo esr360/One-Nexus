@@ -8,7 +8,7 @@
 
 * noIcons
 
-##### Quick Look
+### Quick Look
 
 The Navigation module appears inside the [Header](#TODO) module by default, along with the [Logo](#TODO) module.
 

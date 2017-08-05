@@ -11,7 +11,7 @@
 * flush
 
 
-##### Quick Look
+### Quick Look
 
 ```html
 <h1 class="heading-size-8">Size 8 Heading</h1>

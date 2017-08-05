@@ -6,7 +6,7 @@
 
 * fixed
 
-##### Quick Look
+### Quick Look
 
 ```html
 <table class="table">

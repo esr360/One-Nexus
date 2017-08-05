@@ -6,7 +6,7 @@
 
 * center-xy
 
-##### Quick Look
+### Quick Look
 
 ```html
 <img class="image_figure" src="#" alt="" />

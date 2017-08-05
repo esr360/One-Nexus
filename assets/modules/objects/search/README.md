@@ -11,7 +11,7 @@
 * visible
 * input
 
-##### Quick Look
+### Quick Look
 
 > To avoid conficts with other elements, this module's default namespace is `searchBox`
 

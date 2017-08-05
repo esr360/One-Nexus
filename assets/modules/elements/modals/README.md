@@ -10,7 +10,7 @@
 * visible
 * animate(-top, -bottom, -left, -right, -zoom)
 
-##### Quick Look
+### Quick Look
 
 ```html
 <a href="#modal_1">Modal 1 Trigger</a>

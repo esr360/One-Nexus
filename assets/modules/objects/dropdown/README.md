@@ -8,7 +8,7 @@
 
 * _This module has no modifiers_
 
-##### Quick Look
+### Quick Look
 
 > This module is an extension of the [Navigation](#TODO) module
 

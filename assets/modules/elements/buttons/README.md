@@ -17,7 +17,7 @@
 * icon
 * active
 
-##### Quick Look
+### Quick Look
 
 ```html
 <button class="button">Button</button>
