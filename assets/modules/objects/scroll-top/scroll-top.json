@@ -2,7 +2,7 @@
     "scroll-top": {
         "name": "scroll-top",
         "position": ["auto", "2rem", "2rem", "auto"],
-        "hide-below": "breakpoint('break-4')",
+        "hide-below": "breakpoint('break-5')",
         "activePosition": 350
     }
 }

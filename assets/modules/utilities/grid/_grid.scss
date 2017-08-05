@@ -22,10 +22,12 @@
 @mixin grid($custom: custom('grid')) {
 
     // Configuration - https://git.io/vX7Re
-    $grid: map-merge-deep($grid, $kayzenGS);
+    $grid: map-merge-deep($kayzenGS, $grid);
 
     // Merge default config with custom options
     $grid: config($grid, $custom) !global;
+
+    @debug $grid;
 
     // Load Kayzen-GS styles
     @include kayzen-gs($grid);
@@ -57,11 +59,11 @@
 
 } // @mixin grid
 
-/// Alias for 'kgs-breakpoint' function
+/// Get a breakpoint value
 /// @access public
 /// @group utilities
 /// @param {string} $breakpoint - the key of your desired breakpoint
 /// @return {number} - your desired breakpoint value
 @function breakpoint($breakpoint) {
-    @return kgs-breakpoint($breakpoint);
+    @return map-get-deep($grid, 'breakpoints', $breakpoint);
 }
