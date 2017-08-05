@@ -6,55 +6,14 @@ One-Nexus provides some useful JavaScript tools to facilitate development and eh
 
 ## Tools
 
-* [breakpoint](#breakpoint)
 * [clickHelper](#clickhelper)
 * [custom](#custom)
 * [inViewport](#inviewport)
 * [isValidSelector](#isvalidselector)
+* [media](#breakpoint)
 * [parents](#parents)
 * [scrollSpy](#scrollspy)
 * [smoothScroll](#smoothscroll)
-
-### Breakpoint
-
-> Determine if certain media matches the passed conditions
-
-```js
-app.breakpoint(media, value);
-```
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Parameter</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>media</td>
-            <td>The media to test for</td>
-        </tr>
-        <tr>
-            <td>value</td>
-            <td>The value to test</td>
-        </tr>
-    </tbody>
-</table>
-
-```js
-if (app.breakpoint('min-width', '960px')) {
-    ...
-}
-```
-
-Using keys from the [`Grid`](#TODO) module:
-
-```js
-if (app.breakpoint('min-width', 'break-3')) {
-    ...
-}
-```
 
 ### ClickHelper
 
@@ -219,6 +178,47 @@ app.isValidSelector(selector);
 ```js
 app.isValidSelector('[class*="foo"]'); // returns true
 app.isValidSelector('class*="foo"'); // returns false
+```
+
+### Media
+
+> Determine if certain media matches the passed conditions
+
+```js
+app.media(media, value);
+```
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>media</td>
+            <td>The media to test for</td>
+        </tr>
+        <tr>
+            <td>value</td>
+            <td>The value to test</td>
+        </tr>
+    </tbody>
+</table>
+
+```js
+if (app.media('min-width', '960px')) {
+    ...
+}
+```
+
+Using keys from the [`Grid`](#TODO) module:
+
+```js
+if (app.media('min-width', 'break-3')) {
+    ...
+}
 ```
 
 ### Parents

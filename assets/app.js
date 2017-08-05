@@ -50,19 +50,19 @@ export {
 
 export const config = {};
 
-import { breakpoint      } from './tools/js/app.breakpoint';
 import { clickHelper     } from './tools/js/app.clickHelper';
 import { custom          } from './tools/js/app.custom';
 import { evalConfig      } from './tools/js/app.evalConfig';
 import { inViewport      } from './tools/js/app.inViewport';
 import { isValidSelector } from './tools/js/app.isValidSelector';
+import { media           } from './tools/js/app.media';
 import { parents         } from './tools/js/app.parents';
 import { smoothScroll    } from './tools/js/app.smoothScroll';
 import { scrollSpy       } from './tools/js/app.scrollSpy';
 
 export { 
-    breakpoint, clickHelper, custom, evalConfig, inViewport, 
-    isValidSelector, parents, scrollSpy
+    clickHelper, custom, evalConfig, inViewport, isValidSelector,
+    media, parents, scrollSpy
 };
 
 // Attach `app` to the Window object

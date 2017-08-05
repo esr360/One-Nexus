@@ -515,11 +515,11 @@ One-Nexus provides some useful tools to facilitate development and ehance your p
 
 ### JavaScript Tools
 
-* [app.breakpoint](#TODO)
 * [app.clickHelper](#TODO)
 * [app.custom](#TODO)
 * [app.inViewport](#TODO)
 * [app.isValidSelector](#TODO)
+* [app.media](#TODO)
 * [app.parents](#TODO)
 * [app.scrollSpy](#TODO)
 * [app.smoothScroll](#TODO)

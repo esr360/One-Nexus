@@ -1,6 +1,5 @@
 ## To Do
 
-* update Quick Look heading size to ###
 * rename app.breakpoint to app.media
 * add placeholder alias for each helper class
 * add sass error/warn when this('option') doesn't exist
@@ -32,3 +31,4 @@
 * modal.hide() on specific ID will close even if id is wrong/mispelt
 * create something to dynamically create reference links from strings
 * create animation library
+* update Quick Look heading size to ###
