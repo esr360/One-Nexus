@@ -29,6 +29,7 @@ export function evalConfig(config) {
  */
 function evalValue(value) {
 
+    const isBreakpoint = value => value.indexOf('breakpoint(') == 0;
     const isColor = value => value.indexOf('color(') == 0;
     const isPalette = value => value.indexOf('palette(') == 0;
     const isCore = value => value.indexOf('core(') == 0;
@@ -36,18 +37,26 @@ function evalValue(value) {
     
     let [params, requiresEval] = ['', false];
 
-    if (isColor(value) || isPalette(value) || isCore(value) || isTypography(value)) {
+    if (
+        isBreakpoint(value) || isColor(value) || isPalette(value) || isCore(value) || 
+        isTypography(value)
+    ) {
         [params, requiresEval] = [getParams(value), true];
     }
 
-    // If value uses the `colors().color()` function
-    if (isColor(value)) {
+    // If value uses the `breakpoint()` utility function
+    if (isBreakpoint(value)) {
+        value = app.config.grid.breakpoints[params[0]];
+    }
+
+    // If value uses the `color()` utility function
+    else if (isColor(value)) {
         value = app.config.colors[params[0]][params[1]];
     }
 
-    // If value uses the `colors().palette()` function
+    // If value uses the `palette()` utility function
     else if (isPalette(value)) {
-
+        value = app.config.colors[params[0]]
     }
 
     // If value uses the `core()` function

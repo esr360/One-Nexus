@@ -27,21 +27,22 @@ import { tooltips    } from './modules/elements/tooltips/tooltips';
 // Objects
 import { googleMap   } from './modules/objects/google-map/google-map';
 import { header      } from './modules/objects/header/header';
+import { overlay     } from './modules/objects/overlay/overlay';
 import { preloader   } from './modules/objects/preloader/preloader';
 import { scrollTop   } from './modules/objects/scroll-top/scroll-top';
 import { search      } from './modules/objects/search/search';
 import { sideNav     } from './modules/objects/side-nav/side-nav';
-import { siteOverlay } from './modules/objects/site-overlay/site-overlay';
 
 // Utilities
 import { colors      } from './modules/utilities/colors/colors';
 import { core        } from './modules/utilities/core/core';
+import { grid        } from './modules/utilities/grid/grid';
 import { typography  } from './modules/utilities/typography/typography';
 
 export { 
     accordion, carousel, modal, progressBar, tabs, tooltips, 
-    googleMap, header, preloader, scrollTop, search, sideNav, siteOverlay,
-    colors, core, typography
+    googleMap, header, overlay, preloader, scrollTop, search, sideNav,
+    colors, core, grid, typography
 }
 
 // Tools

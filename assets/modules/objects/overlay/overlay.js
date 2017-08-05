@@ -1,5 +1,5 @@
 import * as app from '../../../app';
-import defaults from './site-overlay.json';
+import defaults from './overlay.json';
 
 /**
  * Page Overlay
@@ -9,9 +9,9 @@ import defaults from './site-overlay.json';
  * @param {(String|Object)} els
  * @param {Object} custom
  */
-export function siteOverlay(els = 'site-overlay', custom) {
+export function overlay(els = 'overlay', custom) {
 
-    custom = app.custom('site-overlay', custom);
+    custom = app.custom('overlay', custom);
 
     app.Synergy(els, (el, options) => {
 
@@ -28,7 +28,7 @@ export function siteOverlay(els = 'site-overlay', custom) {
 
     }, defaults, custom);
 
-    app.config['site-overlay'] = Object.assign(defaults['site-overlay'], custom);
+    app.config.overlay = Object.assign(defaults.overlay, custom);
 
     return exports;
 }

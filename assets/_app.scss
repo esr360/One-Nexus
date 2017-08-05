@@ -79,11 +79,11 @@ $asset-path: '../..' !default;
 @import 'modules/objects/logo/logo';
 @import 'modules/objects/navigation/navigation';
 @import 'modules/objects/dropdown/dropdown';
+@import 'modules/objects/overlay/overlay';
 @import 'modules/objects/preloader/preloader';
 @import 'modules/objects/scroll-top/scroll-top';
 @import 'modules/objects/search/search';
 @import 'modules/objects/side-nav/side-nav';
-@import 'modules/objects/site-overlay/site-overlay';
 
 .scrollSpy {
 

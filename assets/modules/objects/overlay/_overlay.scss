@@ -1,4 +1,4 @@
-@import '../../modules/objects/site-overlay/site-overlay.json';
+@import '../../modules/objects/overlay/overlay.json';
 /// Overlay
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -6,10 +6,10 @@
 /// @group objects
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin site-overlay($custom: custom('site-overlay')) {
+@mixin overlay($custom: custom('overlay')) {
 
 	// Config
-	$site-overlay: config($site-overlay, $custom);
+	$overlay: config($overlay, $custom);
 	
     //*************************************************************
     // Module
@@ -43,4 +43,4 @@
 		
 	}
 		
-} // @mixin site-overlay
+} // @mixin overlay

@@ -16,7 +16,7 @@ export function googleMap(els = 'google-map', custom) {
     app.Synergy(els, (el, options) => { 
 
         // set some default map styles
-        options.styles = options.styles ? options.styles : [
+        options.styles = options.styles || [
             {
                 "featureType": "landscape.man_made",
                 "elementType": "geometry",

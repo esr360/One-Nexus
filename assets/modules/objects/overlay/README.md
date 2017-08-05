@@ -16,7 +16,7 @@
 
 ### Options
 
-> For default values view the [`site-overlay.json`](site-overlay.json) file
+> For default values view the [`overlay.json`](overlay.json) file
 
 <table class="table">
     <thead>

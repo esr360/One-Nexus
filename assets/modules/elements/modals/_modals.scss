@@ -117,7 +117,7 @@
         
     } // module
     
-    @include module('site-overlay') {
+    @include module('overlay') {
         &[class*="dialog-visible"] {
             z-index: 12;
         }

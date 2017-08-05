@@ -14,7 +14,7 @@
             "position": ["1rem", "1rem"]
         },
         "overlay": {
-            "module": "site-overlay",
+            "module": "overlay",
             "enabled": true,
             "clickToClose": true
         }

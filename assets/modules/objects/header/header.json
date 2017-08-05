@@ -22,7 +22,7 @@
             "logo-height": "28px",
             "font-size": "font-size('size-2')"
         },
-        "overlay": "site-overlay",
+        "overlay": "overlay",
         "navigation": "navigation"
     }
 }

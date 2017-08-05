@@ -89,7 +89,7 @@ function toggleModal(type, all, target, options, overlay) {
 
     // toggle the page overlay
     if (options.overlay.enabled) {
-        app.siteOverlay(overlay)[type]('dialog');
+        app.overlay(overlay)[type]('dialog');
     }
 
     // toggle the target modal

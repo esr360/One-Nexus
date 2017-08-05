@@ -34,8 +34,8 @@ export function header(els = 'appHeader', custom) {
             });
         }
 
-        exports.dropdownShowOverlay = () => app.siteOverlay(options.overlay).show('navDropown');
-        exports.dropdownHideOverlay = () => app.siteOverlay(options.overlay).hide('navDropown');
+        exports.dropdownShowOverlay = () => app.overlay(options.overlay).show('navDropown');
+        exports.dropdownHideOverlay = () => app.overlay(options.overlay).hide('navDropown');
 
     }, defaults, custom);
 

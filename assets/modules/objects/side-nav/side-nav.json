@@ -32,6 +32,6 @@
             "icon": "fa-chevron-circle-down"
         },
         "navigation": "navigation",
-        "overlay": "site-overlay"
+        "overlay": "overlay"
     }
 }
