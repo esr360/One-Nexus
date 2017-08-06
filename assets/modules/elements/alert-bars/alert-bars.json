@@ -1,9 +1,20 @@
 {
     "alert-bars": {
         "name": "alert",
-        "colors": "palette('alert')",
-        "text-color": "color('greyscale', 'white')",
-        "bar-padding": "0.85em",
-        "box-padding": "1.5em"
+        "colors": "palette(alert)",
+        "text-color": "color(greyscale, white)",
+        "icon": {
+            "margin-right": "0.5em",
+            "line-height": "1.25",
+            "-right": {
+                "margin-left": "0.5em"
+            }
+        },
+        "-bar": {
+            "padding": "0.85em"
+        },
+        "-box": {
+            "padding": "1.5em"
+        }
     }
 }

@@ -26,45 +26,45 @@
         }
 
         @include component('navigationItem') {
-            height: this('nav-buttons', 'size');
-            width: this('nav-buttons', 'size');
-            transition: this('nav-buttons', 'transition');
-            background-color: this('nav-buttons', 'background-color');
-            color: this('nav-buttons', 'color');
-            @if this('nav-buttons', 'shape') == 'circle' {
+            height: this('navigationItem', 'size');
+            width: this('navigationItem', 'size');
+
+            @if this('navigationItem', 'shape') == 'circle' {
                 border-radius: 50%;
-            } @else if this('nav-buttons', 'shape') == 'square' {
+            } @else if this('navigationItem', 'shape') == 'square' {
                 border-radius: 0;
             }
-            @if this('nav-buttons', 'disabled') {
+
+            @if this('navigationItem', 'disabled') {
                 display: none;
             }
+
             svg {
                 @include horizontal-center();
                 @include vertical-center();
-                height: this('nav-buttons', 'arrow-size');
-                width: this('nav-buttons', 'arrow-size');
+                height: this('navigationItem', 'arrow-size');
+                width: this('navigationItem', 'arrow-size');
             }
+
             .arrow {
-                fill: this('nav-buttons', 'arrow-color');
+                fill: this('navigationItem', 'arrow-color');
             }
         }
 
         @include component('pagination') {
             bottom: auto;
-            margin-top: this('bullets', 'gutter');
+            margin-top: this('bullet', 'gutter');
         }
 
         @include component('bullet') { 
-            height: this('bullets', 'size');
-            width: this('bullets', 'size');
-            transition: this('nav-buttons', 'transition');
-            background-color: this('bullets', 'color');
-            @if this('bullets', 'disabled') {
+            height: this('bullet', 'size');
+            width: this('bullet', 'size');
+            background-color: this('bullet', 'color');
+            @if this('bullet', 'disabled') {
                 display: none;
             }
             &.is-selected {
-                color: this('bullets', 'active-color');
+                color: this('bullet', 'active-color');
             }
         }
 

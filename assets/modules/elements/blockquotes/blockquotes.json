@@ -1,7 +1,7 @@
 {
     "blockquotes": {
         "name": "blockquote",
-        "font-family": "Georgia",
+        "font-family": ["Georgia", "serif"],
         "quotes": "'\\201C''\\201D''\\2018''\\2019'",
         "icon":{
             "size": "4rem",
@@ -15,6 +15,12 @@
             "width": "340px",
             "max-width": "50%",
             "margin": "1em"
+        },
+        "-callout": {
+            "padding": "0.75em",
+            "font-size": "font-size('size-4')",
+            "font-style": "italic",
+            "border-left": "7px solid color('brand', 'brand-2')"
         }
     }
 }

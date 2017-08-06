@@ -43,8 +43,8 @@ export function carousel(els = 'carousel', custom) {
         }
 
         // Compensate for pagination
-        if (!options['nav-buttons']['disable']) {
-            const offset = el.component('pagination')[0].clientHeight + parseInt(options['bullets']['gutter'], 10);
+        if (!options.navigationItem.disable) {
+            const offset = el.component('pagination')[0].clientHeight + parseInt(options.bullet.gutter, 10);
             el.style.marginBottom = `${offset}px`;
         }
 

@@ -29,18 +29,10 @@
         text-decoration: none;
 
         // Public styles
-        color: this('color');
-        background: this('background');
-        transition: this('transition');
         padding-left: this('h-padding');
         padding-right: this('h-padding');
         padding-top: this('v-padding');
         padding-bottom: this('v-padding');
-        line-height: this('line-height');
-        font-weight: this('font-weight');
-        font-family: this('font-family');
-        border-width: this('border-width');
-        border-style: this('border-style');
 
         // Pseudo States
         //*********************************************************
@@ -156,17 +148,17 @@
         }
         
         @include modifier('active') {
-            background: this('active-background');
-            color: this('active-color');
-            border-color: this('active-background');
+            background: this('active', 'background');
+            color: this('active', 'color');
+            border-color: this('active', 'background');
             &:hover {
-                background: this('active-background');
+                background: this('active', 'background');
             }
             @include modifier('border') {
                 background: none;
-                color: this('active-background');
+                color: this('active', 'background');
                 &:hover {
-                    border-color: this('active-background');
+                    border-color: this('active', 'background');
                 }
             }
         }

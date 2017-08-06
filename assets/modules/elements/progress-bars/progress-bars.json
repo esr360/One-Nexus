@@ -2,11 +2,11 @@
     "progress-bars": {
         "name": "progress-bar",
         "background": "rgba(black, 0.15)",
-        "fill-background": "color('brand', 'brand-1')",
-        "bar-height": "1.5em",
-        "bar-radius": "0",
-        "value-color": "color('greyscale', white)",
-        "value-size": "font-size('size-2')",
+        "height": "1.5em",
+        "border-radius": "0",
+        "fill-background": "color(brand, brand-1)",
+        "value-color": "color(greyscale, white)",
+        "value-size": "font-size(size-2)",
         "group-spacing": "0.5em"
     }
 }

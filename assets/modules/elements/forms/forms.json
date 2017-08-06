@@ -1,10 +1,18 @@
 {
     "forms": {
         "name": "form",
-        "input-color": "core('text-color')",
-        "input-border": "1px solid color('greyscale', 'grey-3')",
-        "input-padding": "0.75em",
-        "valid-color": "color('validation', 'valid')",
-        "invalid-color": "color('validation', 'invalid')"
+        "label": {
+            "transition": "core(transition)",
+            "color": "core(text-color)"
+        },
+        "input": {
+            "color": "core(text-color)",
+            "border": "1px solid color(greyscale, grey-3)",
+            "padding": "0.75em",
+            "transition": "core(transition)",
+            "font-family": "typography(typefaces, primary)"
+        },
+        "valid-color": "color(validation, valid)",
+        "invalid-color": "color(validation, invalid)"
     }
 }

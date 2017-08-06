@@ -17,9 +17,6 @@
 
     @include module {
 
-        height: this('bar-height');
-        border-radius: this('bar-radius');
-        background: this('background');
         display: block;
         position: relative;
         width: 100%;
@@ -28,8 +25,8 @@
         
         &:before {
             @include vertical-center();
-            left: 0.5em;
             content: attr(data-progress);
+            left: 0.5em;
             color: this('value-color');
             font-size: this('value-size');
         }
@@ -65,12 +62,12 @@
 
         &::-webkit-progress-bar {
             background: this('background');
-            height: this('bar-height');
+            height: this('height');
         }
 
         &::-webkit-progress-value {
             background: this('fill-background');
-            height: this('bar-height');
+            height: this('height');
         }
         
         &::-moz-progress-bar {	

@@ -30,10 +30,7 @@
         // Components
         //*********************************************************
 
-        @include component('label') {
-            transition: core('transition');
-            color: this('input-color');
-        }
+        @include component('label');
 
         @include component('group') {
 
@@ -97,7 +94,7 @@
 
         @include component('icon') {
             @include vertical-center();
-            color: this('input-color');
+            color: this('input', 'color');
             position: absolute;
             left: 0.75em;
         }
@@ -105,13 +102,8 @@
         @include component('input') {
             display: block;
             width: 100%;
-            padding: this('input-padding');
-            border: this('input-border');
-            transition: core('transition');
-            color: this('input-color');
-            font-family: typography('typefaces', 'primary');
             &::placeholder {
-                color: this('input-color');
+                color: this('input', 'color');
                 transition: core('transition');
             }
             &:focus {

@@ -8,7 +8,8 @@ import * as app from './app';
 // Vendor
 //*****************************************************************
 
-import Synergy  from 'Synergy';
+//import Synergy  from 'Synergy';
+import Synergy  from '../../../Synergy/src/js/synergy';
 import Flickity from 'flickity';
 
 export { Synergy, Flickity }

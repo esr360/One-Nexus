@@ -5,7 +5,7 @@
         "padding": "6em 0",
         "color": "color('greyscale', 'white')",
         "active-color": "color('brand', 'brand-2')",
-        "background": {
+        "bg": {
             "color": "color('brand', 'brand-1')",
             "image": "null"
         },

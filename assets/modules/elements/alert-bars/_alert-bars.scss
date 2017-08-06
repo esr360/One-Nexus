@@ -53,13 +53,10 @@
         // Modifiers
         //*********************************************************
 
-        @include modifier('bar') {
-            padding: this('bar-padding');
-        }
+        @include modifier('bar') {}
 
         @include modifier('box') {
             @include object;
-            padding: this('box-padding');
         }
 
         @each $name, $color in this('colors') {
@@ -73,11 +70,8 @@
         //*********************************************************
 
         @include component('icon') {
-            margin-right: 0.5em;
-            line-height: 1.25;
             @include modifier('right') {
                 float: right;
-                margin-left: 0.5em;
                 margin-right: 0;
             }
         }

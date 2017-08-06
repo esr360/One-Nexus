@@ -26,8 +26,8 @@
             @include extend($parent: 'list', $modifiers: 'reset');
 
             display: table;
-            margin-bottom: 0;
             position: relative;
+            margin-bottom: 0;
             z-index: 2;
             
             @include modifier('round') {
@@ -59,13 +59,8 @@
             }
             
             @include component('item') {
-                color: this('navItem-color');
-                padding: this('navItem-padding');
-                background: this('navItem-background');
-                border: 1px solid this('navItem-borderColor');
-                transition: this('navItem-transition');
-                display: table-cell;
                 cursor: pointer;
+                display: table-cell;
                 &.active {
                     color: this('navItem-active-color');
                     border-color: this('navItem-active-borderColor');
@@ -96,28 +91,22 @@
         } // component(nav)
         
         @include component('content') {
-            @include modifier('block') {
-                background: this('contentBlock-background');
-                color: this('contentBlock-color');
-                padding: this('contentBlock-padding');
-                border: 1px solid this('contentBlock-borderColor');
-                position: relative;
-                top: -1px;
-                @include modifier('glue') {
-                    $tabs-glue: this('contentBlock-glueHeight');
-                    margin-top: $tabs-glue;
-                    top: -2px;
-                    z-index: 2;
-                    &:before {
-                        content: "";
-                        position: absolute;
-                        left: -1px;
-                        top: -$tabs-glue;
-                        height: $tabs-glue;
-                        width: calc(100% + 2px);
-                        border: 1px solid this('contentBlock-glueColor');
-                        background: this('contentBlock-glueColor');
-                    }
+            position: relative;
+            top: -1px;
+            @include modifier('glue') {
+                $tabs-glue: this('contentBlock-glueHeight');
+                margin-top: $tabs-glue;
+                top: -2px;
+                z-index: 2;
+                &:before {
+                    content: '';
+                    position: absolute;
+                    left: -1px;
+                    top: -$tabs-glue;
+                    height: $tabs-glue;
+                    width: calc(100% + 2px);
+                    border: 1px solid this('contentBlock-glueColor');
+                    background: this('contentBlock-glueColor');
                 }
             }
         }

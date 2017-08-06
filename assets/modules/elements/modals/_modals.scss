@@ -31,13 +31,6 @@
         opacity: 0;
         visibility: hidden;
 
-        // Public styles
-        background: this('background');
-        color: this('text-color');
-        z-index: this('z-index');
-        transition: core('transition');
-        border-radius: this('radius');
-
         //*********************************************************
         // Modifiers
         //*********************************************************
@@ -92,20 +85,14 @@
         // Components
         //*********************************************************
         
-        @include component('content') {
-            padding: this('content-padding');
-        }
+        @include component('content');
         
         @include component('close') {
-            position: absolute;
             cursor: pointer;
-            transition: core('transition');
-            top: nth(this('close-icon', 'position'), 1);
-            right: nth(this('close-icon', 'position'), 2);
-            color: this('close-icon', 'color');
-            font-size: this('close-icon', 'size');
+            position: absolute;
+            font-size: this('close', 'size');
             &:hover {
-                color: this('close-icon', 'hover-color');
+                color: this('close', 'hover-color');
             }	
         }
 

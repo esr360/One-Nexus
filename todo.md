@@ -1,15 +1,15 @@
 ## To Do
 
-* add sass error/warn when this('option') doesn't exist
-* add control for min/max vw in font-sizes() mixin
-* Synergy strips hyphens from module name when using component mixin
-* move internal module js functions into the exports object
-* add global modifiers (e.g. small, large)
-* sticky header padding-top scroll jump
+* add css property list for config
+* add 'size' to blacklist for $css-properties
+* make modal width configurable
+* could possibly fix 'glyph' config to not be so ugly
+* add 'font-size()' too evalConfig
 * search codebase for @TODO's
 * add unit-tests
-* add author to JS modules
 * fix smoothScroll calculations to be consistent
+* add global modifiers (e.g. small, large)
+* add author to JS modules
 
 ## Backlog
 
@@ -32,3 +32,8 @@
 * update Quick Look heading size to ###
 * rename app.breakpoint to app.media
 * add placeholder alias for each helper class
+* add sass error/warn when this('option') doesn't exist
+* add control for min/max vw in font-sizes() mixin
+* Synergy strips hyphens from module name when using component mixin
+* move internal module js functions into the exports object
+* sticky header padding-top scroll jump

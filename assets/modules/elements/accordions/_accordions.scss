@@ -22,6 +22,7 @@
         //*********************************************************
 
         margin-bottom: core('margin');
+
         @include vertical-rhythm('bottom');
         
         > * {
@@ -41,7 +42,6 @@
         //*********************************************************
 
         @include component('section') {
-            margin: 0;
             &:not(:last-child) {
                 margin-bottom: this('section', 'margin');
             }
@@ -85,12 +85,6 @@
             font-weight: normal;
             line-height: 1;
             backface-visibility: hidden;
-            padding: this('title', 'padding');
-            background: this('title', 'background');
-            color: this('title', 'color');
-            border: this('title', 'border');
-            border-radius: this('title', 'radius');
-            transition: core('transition');
             // open/close icon
             &:after {
                 font-family: FontAwesome;
@@ -104,11 +98,7 @@
 
         @include component('content') {
             margin: 0;
-            margin-top: -1px;	
-            border: this('content', 'border');
-            border-radius: this('content', 'radius');
-            padding: this('content', 'padding');
-            background: this('content', 'background');
+            margin-top: -1px;
         }
 
         //*********************************************************

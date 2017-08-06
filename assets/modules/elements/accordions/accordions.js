@@ -28,13 +28,10 @@ export function accordion(els = 'accordion', custom) {
             el.setAttribute('data-initialised', true);
         }
 
-        exports.open = target => {
-            app.Synergy(els, el => toggleAccordion('open', el, target, options));
-        }
+        exports.open  = target => exports.toggle('open', target);
+        exports.close = target => exports.toggle('close', target);
 
-        exports.close = target => {
-            app.Synergy(els, el => toggleAccordion('close', el, target, options));
-        }
+        exports.toggle = (type, target) => toggleAccordion(type, el, target, options);
 
     }, defaults, custom);
 
@@ -56,8 +53,7 @@ export function accordion(els = 'accordion', custom) {
 function toggleAccordion(type, parent, target, options) {
     let section;
 
-    const operator = (type === 'open') ? 'add' : ((type === 'close') ? 'remove' : '');
-    const animate  = (type === 'open') ? 'slideDown' : ((type === 'close') ? 'slideUp' : '');
+    const operator = (type === 'open') ? 'add' : 'remove';
 
     if (typeof target === 'string') {
         section = parent.querySelectorAll(target);
