@@ -1,7 +1,7 @@
 {
     "header": {
         "name": "header",
-        "background": "core('background')",
+        "background": "core(background)",
         "font-size": "1em",
         "bar": true,
         "wrapper": {
@@ -14,14 +14,14 @@
         },
         "dark": {
             "enabled": false,
-            "background": "color('greyscale', 'grey-6')"
+            "background": "color(greyscale, grey-6)"
         },
         "fixed": false,
         "sticky": {
             "enabled": false,
-            "background": "color('greyscale', 'grey-6')",
+            "background": "color(greyscale, grey-6)",
             "logo-height": "28px",
-            "font-size": "font-size('size-2')",
+            "font-size": "font-size(size-2)",
             "wrapper": {
                 "height": "70px"
             }

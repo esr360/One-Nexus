@@ -21,16 +21,11 @@
         // Core Styles
         //*********************************************************
         
-        font-size: this('font-size');
-        text-align: this('text-align');
-        
         // all levels
         li {    
             a {
+                @include get-styles(this('global-item'));
                 display: block;
-                padding: this('item-padding');
-                color: this('item-color');
-                border: this('item-border');
                 &:hover {
                     text-decoration: none;
                 }
@@ -40,26 +35,25 @@
         // parent level only
         > ul {
 
-            @include extend($parent: 'list', $modifiers: 'reset');
+            @include _module('list', ('reset'), false);
             vertical-align: middle;
 
             > li {
 
                 // add gap between items
-                margin-left: option($navigation, 'item-gutter');
+                margin-left: this('item', 'gutter');
                 &:first-child {
                     margin-left: 0;
                 }
 
                 > a {
-                    background: option($navigation, 'item-bg');
-                    border-radius: this('item-radius');
+                    @include get-styles(this('item'));
                     // if item has child menu
                     &:not(:only-child) {
                         border-bottom-color: transparent;
                         border-radius: 0;
                         &:after {
-                            content: option($navigation, 'dropdown-icon');
+                            content: this('dropdown-icon');
                             font-family: FontAwesome;
                             margin-left: 0.5em;
                         }
@@ -68,14 +62,10 @@
 
                 &:hover {
                     > a {
-                        color: this('link-hover-color');
-                        background: this('item-hover-bg');
-                        border: this('item-hover-border');
+                        @include get-styles(this('item', 'hover'));
                         // if item has child menu
                         &:not(:only-child) {
-                            color: this('has-child-hover-color');
-                            background: this('has-child-hover-bg');
-                            border: this('has-child-hover-border');
+                            @include get-styles(this('item', 'has-child', 'hover'));
                             border-bottom-color: transparent;
                         }
                     }
@@ -83,7 +73,7 @@
 
                 &.active {
                     > a {
-                        color: this('link-active-color');
+                        @include get-styles(this('item', 'active'));
                     }
                     &:hover {
                         // if item is active and hovered

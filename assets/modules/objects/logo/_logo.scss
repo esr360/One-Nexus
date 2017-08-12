@@ -15,12 +15,7 @@
     // Module
     //*************************************************************
 
-    @include module {	
-
-        color: this('color');
-        font-size: this('size');
-        text-align: this('text-align');
-        padding: this('padding');
+    @include module {
         
         // for plain text logos
         a {
@@ -30,7 +25,7 @@
                 text-decoration: none;
             }
         }
-        
+
         // for image logos
         img {
             height: this('image-height');
