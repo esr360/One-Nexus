@@ -18,7 +18,7 @@
 
 ### Options
 
-> For default values view the [`container.json`](container.json) file.
+For default values view the [`container.json`](container.json) file.
 
 <table class="table">
     <thead>
@@ -47,7 +47,7 @@
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `container` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `container` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {

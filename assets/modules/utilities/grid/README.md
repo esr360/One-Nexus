@@ -20,7 +20,7 @@ The One-Nexus Grid System is built using the [Kayzen-GS](https://github.com/esr3
 
 The complete available options and settings to pass to the module can be found on the [Kayzen-GS SassDocs](http://esr360.github.io/Kayzen-GS/docs/#variable-kayzenGS) page.
 
-> For default values view the [`grid.json`](grid.json) file.
+For default values view the [`grid.json`](grid.json) file.
 
 <table class="table">
     <thead>
@@ -53,7 +53,7 @@ The complete available options and settings to pass to the module can be found o
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `grid` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `grid` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
