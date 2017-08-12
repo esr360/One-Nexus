@@ -1,11 +1,18 @@
 {
     "footer": {
         "name": "footer",
-        "background": "color('greyscale', 'grey-6')",
-        "wrapper-slug": "4em",
-        "wrapper-font-size": "0.9em",
-        "wrapper-color": "color('greyscale', 'grey-3')",
-        "nav-link-color": "color('greyscale', 'grey-3')",
-        "nav-link-hover-color": "color('greyscale', 'white')"
+        "background": "color(greyscale, grey-6)",
+        "wrapper": {
+            "padding": "4em 0",
+            "font-size": "0.9em",
+            "color": "color(greyscale, grey-3)"
+        },
+        "link": {
+            "color": "color('greyscale', grey-3)",
+            "hover": {
+                "text-decoration": "none",
+                "color": "color(greyscale, white)"
+            }
+        }
     }
 }

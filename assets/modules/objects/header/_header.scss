@@ -22,8 +22,6 @@
         //*********************************************************
 
         overflow: visible;
-        font-size: this('font-size');
-        background: this('background');
 
         //*********************************************************
         // Settings
@@ -44,15 +42,14 @@
         
         // Absolute Position Header
         @include option('absolute') {
+            @include get-styles(this('absolute'));
             position: absolute;
             width: 100%;
-            margin-top: this('absolute', 'top-position');
-            z-index: this('z-index');
         }
         
         // Dark Header
         @include option('dark') {
-            background-color: this('dark', 'background');
+            @include get-styles(this('dark'));
         }
         
         // Fixed Header
@@ -66,13 +63,12 @@
 
         // Sticky Header
         @include option('sticky') {
-            background: this('sticky', 'background');
-            font-size: this('sticky', 'font-size');
+            @include get-styles(this('sticky'));
 
             @include modifier('fixed') {
                 @include module {
                     @include component('wrapper') {
-                        height: this('sticky', 'height');
+                        @include get-styles(this('sticky', 'wrapper'));
                     }
                 }
                 @include module('logo') {
@@ -95,7 +91,6 @@
 
         @include component('wrapper') {
             @include _module('container');
-            height: this('height');
             transition: height core('transition');
         }
 

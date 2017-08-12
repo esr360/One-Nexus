@@ -21,34 +21,18 @@
         // Core Styles
         //*********************************************************
 
-        background: this('background');
+        a {
+            @include get-styles(this('link'));
+            &:hover {
+                @include get-styles(this('link', 'hover'));
+            }
+        }
 
         //*********************************************************
         // Components
         //*********************************************************
 
-        @include component('wrapper') {
-            @include _module('container');
-
-            display: table;
-            padding-top: this('wrapper-slug');
-            padding-bottom: this('wrapper-slug');
-            font-size: this('wrapper-font-size');
-            color: this('wrapper-color');
-        }
-
-        @include component('nav') {
-            ul {
-                @include _module('list', ('reset', 'inline'), false);
-            }
-            a {
-                color: this('nav-link-color');
-                &:hover {
-                    text-decoration: none;
-                    color: this('nav-link-hover-color');
-                }
-            }
-        }
+        @include component('wrapper');
 
         //*********************************************************
         // Custom Content
