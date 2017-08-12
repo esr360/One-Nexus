@@ -37,7 +37,7 @@
 
 ### Options
 
-> For default values view the [`header.json`](header.json) file
+For default values view the [`header.json`](header.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -52,22 +52,6 @@
             <td>The name used when generating the CSS selector</td>
         </tr>
         <tr>
-            <td>background</td>
-            <td>The main background for the header module</td>
-        </tr>
-        <tr>
-            <td>height</td>
-            <td>The height for the header module</td>
-        </tr>
-        <tr>
-            <td>font-size</td>
-            <td>The font size for the header module</td>
-        </tr>
-        <tr>
-            <td>z-index</td>
-            <td>The z-index from the header module</td>
-        </tr>
-        <tr>
             <td>bar</td>
             <td>Apply the `bar` modifier styles to the header to give alignment to the `logo` and `navigation` modules</td>
         </tr>
@@ -78,18 +62,6 @@
         <tr>
             <td>absolute.top-position</td>
             <td>Apply a `margin-top` to the absolutely positioned header</td>
-        </tr>
-        <tr>
-            <td>dark.enabled</td>
-            <td>Apply the `dark` modifier styles to the header</td>
-        </tr>
-        <tr>
-            <td>dark.background</td>
-            <td>Set the background for the header when the `dark` modifier is applied</td>
-        </tr>
-        <tr>
-            <td>height</td>
-            <td>Set the header height</td>
         </tr>
         <tr>
             <td>fixed</td>
@@ -104,20 +76,8 @@
             <td>(Optional) Set an offset value for applying the `fixed` modifier - leave blank to use the header's default `offsetTop` value</td>
         </tr>
         <tr>
-            <td>sticky.background</td>
-            <td>Apply a different background to the header when 'stuck'</td>
-        </tr>
-        <tr>
-            <td>sticky.height</td>
-            <td>Apply a different height to the header when 'stuck'</td>
-        </tr>
-        <tr>
             <td>sticky.logo-height</td>
             <td>Apply a different height to the logo module when the header is 'stuck'</td>
-        </tr>
-        <tr>
-            <td>sticky.font-size</td>
-            <td>Apply a different font-size to the header when 'stuck'</td>
         </tr>
         <tr>
             <td>overlay</td>
@@ -130,7 +90,7 @@
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `header` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `header` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
@@ -138,7 +98,7 @@ To modify any of the above options, pass them to the `header` object in your the
         "header": {
             "absolute": {
                 "enabled": true,
-                "top-position": "50px"
+                "margin-top": "50px"
             }, 
             "dark": {
                 "enabled": true

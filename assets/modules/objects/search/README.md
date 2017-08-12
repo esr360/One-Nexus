@@ -39,7 +39,7 @@
 
 ### Options
 
-> For default values view the [`search.json`](search.json) file
+For default values view the [`search.json`](search.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -53,45 +53,19 @@
             <td>name</td>
             <td>The name used when generating the CSS selector</td>
         </tr>
-        <tr>
-            <td>background</td>
-            <td>The background color for the main search module</td>
-        </tr>
-        <tr>
-            <td>height</td>
-            <td>The height of the module</td>
-        </tr>
-        <tr>
-            <td>input-background</td>
-            <td>The background for the input element</td>
-        </tr>
-        <tr>
-            <td>input-color</td>
-            <td>The text color for the input element</td>
-        </tr>
-        <tr>
-            <td>input-weight</td>
-            <td>The font weight for the input element</td>
-        </tr>
-        <tr>
-            <td>placeholder-color</td>
-            <td>The color for the input placeholder</td>
-        </tr>
-        <tr>
-            <td>placeholder-weight</td>
-            <td>The font weight for the input placeholder</td>
-        </tr>
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `search` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `search` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
     "app": {
         "search": {
             "background": "white",
-            "input-color": "#222222"
+            "input" {
+                "color": "#222222"
+            }
         }
     }
 }

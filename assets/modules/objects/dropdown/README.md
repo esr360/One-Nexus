@@ -36,7 +36,7 @@
 
 ### Options
 
-For default values view the [`dropdown.json`](dropdown.json) file.
+For default values view the [`dropdown.json`](dropdown.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -51,14 +51,6 @@ For default values view the [`dropdown.json`](dropdown.json) file.
             <td>The name used when generating the CSS selector</td>
         </tr>
         <tr>
-            <td>text-align</td>
-            <td>The text alignment for dropdown menus</td>
-        </tr>
-        <tr>
-            <td>width</td>
-            <td>The minimum with which dropdown menus should be</td>
-        </tr>
-        <tr>
             <td>top-position</td>
             <td>The top distance dropdown menus should be from their parent</td>
         </tr>
@@ -70,42 +62,10 @@ For default values view the [`dropdown.json`](dropdown.json) file.
             <td>low-level-icon</td>
             <td>The Font Awesome icon for dropdown menu items which have a child menu</td>
         </tr>
-        <tr>
-            <td>font-size</td>
-            <td>The font size for dropdown menus</td>
-        </tr>
-        <tr>
-            <td>link-color</td>
-            <td>The color for dropdown menu links</td>
-        </tr>
-        <tr>
-            <td>link-bg-color</td>
-            <td>The background color for dropdown links</td>
-        </tr>
-        <tr>
-            <td>link-padding</td>
-            <td>The padding for dropdown menu items</td>
-        </tr>
-        <tr>
-            <td>link-hover-color</td>
-            <td>The text color for dropdown menu items when hovered</td>
-        </tr>
-        <tr>
-            <td>link-hover-bg-color</td>
-            <td>The background color for dropdown menu items when hovered</td>
-        </tr>
-        <tr>
-            <td>link-active-color</td>
-            <td>The text color for dropdown menu items when supplied with the `active` class</td>
-        </tr>
-        <tr>
-            <td>link-active-bg-color</td>
-            <td>The background color for dropdown menu items when supplied with the `active` class</td>
-        </tr>
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `dropdown` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `dropdown` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
@@ -113,7 +73,9 @@ To modify any of the above options, pass them to the `dropdown` object in your t
         "dropdown": {
             "text-align": "right",
             "font-size": "12px",
-            "link-hover-color": "#565656"
+            "link": {
+                "hover-color": "#565656"
+            }
         }
     }
 }

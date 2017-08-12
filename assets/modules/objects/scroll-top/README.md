@@ -20,7 +20,7 @@
 
 ### Options
 
-> For default values view the [`scroll-top.json`](scroll-top.json) file
+For default values view the [`scroll-top.json`](scroll-top.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -49,7 +49,7 @@
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `scroll-top` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `scroll-top` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {

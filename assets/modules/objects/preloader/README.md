@@ -21,7 +21,7 @@
 
 ### Options
 
-> For default values view the [`preloader.json`](preloader.json) file
+For default values view the [`preloader.json`](preloader.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -40,25 +40,13 @@
             <td>The value to pass to the [spinner](#TODO) mixin</td>
         </tr>
         <tr>
-            <td>background</td>
-            <td>The background color for the full screen overlay</td>
-        </tr>
-        <tr>
-            <td>z-index</td>
-            <td>The z-index for the overlay</td>
-        </tr>
-        <tr>
-            <td>transition</td>
-            <td>The transition time for the closing animation</td>
-        </tr>
-        <tr>
             <td>visible-at</td>
             <td>The minimum width at which the preloader should be visible</td>
         </tr>
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `preloader` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `preloader` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 > Look at the [Spinners](http://franzheidl.github.io/spinners/) example page for more Spinner examples
 

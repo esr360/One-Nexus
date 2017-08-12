@@ -16,7 +16,7 @@
 
 ### Options
 
-> For default values view the [`overlay.json`](overlay.json) file
+For default values view the [`overlay.json`](overlay.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -30,22 +30,10 @@
             <td>name</td>
             <td>The name used when generating the CSS selector</td>
         </tr>
-        <tr>
-            <td>background</td>
-            <td>The background for the overlay</td>
-        </tr>
-        <tr>
-            <td>z-index</td>
-            <td>The z-index for the overlay</td>
-        </tr>
-        <tr>
-            <td>transition</td>
-            <td>The transition time for the show/hide animation</td>
-        </tr>
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `overlay` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `overlay` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {

@@ -25,7 +25,7 @@
 
 ### Options
 
-> For default values view the [`google-map.json`](google-map.json) file
+For default values view the [`google-map.json`](google-map.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -52,10 +52,6 @@
             <td>The latitude for default map location</td>
         </tr>
         <tr>
-            <td>zoom</td>
-            <td>The defauly zoom for Google maps</td>
-        </tr>
-        <tr>
             <td>styles</td>
             <td>The styles to use for the map (see [Snazzy Maps](http://snazzymaps.com/) for examples)</td>
         </tr>
@@ -66,7 +62,7 @@
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `google-map` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `google-map` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 > Checkout [Snazzy Maps](http://snazzymaps.com/) for examples to pass to the `styles` option
 

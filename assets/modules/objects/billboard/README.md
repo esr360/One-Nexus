@@ -21,7 +21,7 @@
 
 ### Options
 
-For default values view the [`billboard.json`](billboard.json) file.
+For default values view the [`billboard.json`](billboard.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -34,18 +34,6 @@ For default values view the [`billboard.json`](billboard.json) file.
         <tr>
             <td>name</td>
             <td>The name used when generating the CSS selector</td>
-        </tr>
-        <tr>
-            <td>min-height</td>
-            <td>The minimum height the billboard should occupy</td>
-        </tr>
-        <tr>
-            <td>padding</td>
-            <td>The padding for the billboard element</td>
-        </tr>
-        <tr>
-            <td>color</td>
-            <td>The billboard text color</td>
         </tr>
         <tr>
             <td>active-color</td>
@@ -82,7 +70,7 @@ For default values view the [`billboard.json`](billboard.json) file.
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `billboard` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `billboard` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {

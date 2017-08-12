@@ -8,7 +8,7 @@
             "color": "color(greyscale, grey-3)"
         },
         "link": {
-            "color": "color('greyscale', grey-3)",
+            "color": "color(greyscale, grey-3)",
             "hover": {
                 "text-decoration": "none",
                 "color": "color(greyscale, white)"

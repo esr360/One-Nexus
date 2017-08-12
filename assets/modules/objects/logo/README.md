@@ -26,7 +26,7 @@
 
 ### Options
 
-For default values view the [`logo.json`](logo.json) file.
+For default values view the [`logo.json`](logo.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -41,29 +41,13 @@ For default values view the [`logo.json`](logo.json) file.
             <td>The name used when generating the CSS selector</td>
         </tr>
         <tr>
-            <td>text-align</td>
-            <td>The text-align value for the logo module</td>
-        </tr>
-        <tr>
-            <td>color</td>
-            <td>The text color for the logo module</td>
-        </tr>
-        <tr>
-            <td>size</td>
-            <td>The module's font size</td>
-        </tr>
-        <tr>
-            <td>padding</td>
-            <td>The module's padding</td>
-        </tr>
-        <tr>
             <td>image-height</td>
             <td>The height of the logo's image element</td>
         </tr>
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `logo` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `logo` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {

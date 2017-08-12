@@ -27,7 +27,7 @@
 
 ### Options
 
-For default values view the [`footer.json`](footer.json) file.
+For default values view the [`footer.json`](footer.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -42,40 +42,28 @@ For default values view the [`footer.json`](footer.json) file.
             <td>The name used when generating the CSS selector</td>
         </tr>
         <tr>
-            <td>background</td>
-            <td>The base background for the whole footer module</td>
-        </tr>
-        <tr>
-            <td>wrapper-slug</td>
-            <td>The top/bottom padding for the wrapper component</td>
-        </tr>
-        <tr>
-            <td>wrapper-font-size</td>
-            <td>The font size for the wrapper component</td>
-        </tr>
-        <tr>
-            <td>wrapper-color</td>
-            <td>The text color for the wrapper component</td>
-        </tr>
-        <tr>
-            <td>nav-link-color</td>
+            <td>link.color</td>
             <td>The color for links inside the `nav` component</td>
         </tr>
         <tr>
-            <td>nav-link-hover-color</td>
+            <td>link.hover.color</td>
             <td>The color for links inside the `nav` component when hovered</td>
         </tr>
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `footer` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `footer` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
     "app": {
         "footer": {
-            "wrapper-slug": "20px",
-            "nav-link-color": "white",
+            "link": {
+                "color": "color(greyscale, grey-3)"
+            },
+            "wrapper" {
+                "padding": "20px 0"
+            }
         }
     }
 }
