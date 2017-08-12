@@ -23,9 +23,6 @@
 
         @include fill-parent(fixed);
 
-        background: this('background');
-        z-index: this('z-index');
-        transition: this('transition');
         transform: scale(1);
         
         @media (max-width: this('visible-at')) {
@@ -46,7 +43,6 @@
             @include horizontal-center();
             position: absolute;
             text-align: center;
-            bottom: 4rem;
         }
 
         //*********************************************************

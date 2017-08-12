@@ -22,13 +22,10 @@
 	    right: 0;
 	    bottom: 0;
 	    left: 0;
-	    cursor: pointer;
-		z-index: this('z-index');
-	    background: this('background');
 	    transform: translateZ(0);
-	    transition: this('transition');
 	    visibility: hidden;
 	    opacity: 0;
+	    cursor: pointer;
         
         @include modifier('visible') {
 	        visibility: visible;

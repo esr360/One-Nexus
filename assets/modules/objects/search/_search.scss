@@ -16,25 +16,19 @@
     //*************************************************************
 
     @include module {
-        
+
         position: fixed;
-        background: this('background');
-        height: this('height');
         width: 100%;
         top: 0;
         z-index: 16;
         text-align: center;
         transform: translateY(-100%);
-        transition: core('transition');
                 
         @include modifier('visible') {
             transform: translateY(0);
         }
         
         @include component('input') {
-            background: this('input-background');
-            color: this('input-color');
-            font-weight: this('input-weight');
             height: 100%;
             width: 100%;
             border: none;
@@ -46,14 +40,14 @@
                 }
             }
         }
-        
+
         @include components(('go', 'close')) {
             cursor: pointer;
             &:focus {
                 outline: 0;
             }
         }
-        
+
         @include module('button') {
             @include component('group') {
                 @include vertical-center();
@@ -61,14 +55,8 @@
             }
         }
 
-        @include module('container') {
-            height: 100%;
-        }
-        
         ::placeholder {
-            font-weight: this('placeholder-weight');
-            color: this('placeholder-color');
-            transition: core('transition');
+            @include get-styles(this('placeholder'));
         }
 
         //*********************************************************
@@ -76,7 +64,7 @@
         //*********************************************************
 
         @content;
-        
+
     } // module
-		
+
 } // @mixin search
