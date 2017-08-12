@@ -14,8 +14,8 @@
             "active": {
                 "background": "color(brand, brand-1)",
                 "color": "color(greyscale, white)",
-                "border": "transparent",
-                "radius": 0
+                "border-color": "transparent",
+                "border-radius": 0
             }
         },
         "content": {
@@ -30,7 +30,6 @@
             "color": "rgba(color(greyscale, grey-3), 0.6)",
             "active-color": "color(greyscale, white)"
         },
-        "activeClass": "active",
         "animationSpeed": 400,
         "keepOpenModifier": "keepOpen"
     }

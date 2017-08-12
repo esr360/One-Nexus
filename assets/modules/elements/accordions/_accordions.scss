@@ -24,18 +24,6 @@
         margin-bottom: core('margin');
 
         @include vertical-rhythm('bottom');
-        
-        > * {
-            > *:first-child { 
-                cursor: pointer;			
-            }
-            > *:last-child { 
-                display: none;	
-                &.active {
-                    display: block;
-                }			
-            }
-        }
 
         //*********************************************************
         // Components
@@ -52,8 +40,7 @@
                     }
                 }
             }
-            &:hover,
-            &.active {
+            &:hover {
                 @include module {
                     @include component('title') {
                         background: this('title', 'active', 'background');
@@ -65,21 +52,10 @@
                     }
                 }
             }
-            &.active {
-                @include module {
-                    @include component('title') {
-                        border-color: this('title', 'active', 'border');
-                        border-radius: this('title', 'active', 'radius');
-                        // open/close icon
-                        &:after {		
-                            transform: rotate(90deg) translateZ(0);
-                        }
-                    }
-                }
-            }
         }
 
         @include component('title') {
+            cursor: pointer;
             display: block;
             margin: 0;
             font-weight: normal;
@@ -94,11 +70,22 @@
                 color: this('icon', 'color');
                 transition: core('transition');
             }
+            @include modifier('active') {
+                // open/close icon
+                &:after {		
+                    color: this('icon', 'active-color');
+                    transform: rotate(90deg) translateZ(0);
+                }
+            }
         }
 
         @include component('content') {
             margin: 0;
             margin-top: -1px;
+            display: none;
+            @include modifier('active') {
+                display: block;
+            }
         }
 
         //*********************************************************

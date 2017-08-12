@@ -21,22 +21,7 @@
         // Core Styles
         //*********************************************************
 
-        background: this('background');
-        border: this('border');
-        border-radius: this('radius');
-        padding: this('padding');
-        color: this('color');
         position: relative;
-
-        //*********************************************************
-        // Modifiers
-        //*********************************************************
-        
-        @include modifier('dark') {
-            background: this('dark-background');
-            border: this('dark-border');
-            color: this('dark-color');
-        }
 
         //*********************************************************
         // Components

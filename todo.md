@@ -3,10 +3,11 @@
 * add css property list for config
 * add 'size' to blacklist for $css-properties
 * make modal width configurable
-* could possibly fix 'glyph' config to not be so ugly
+* make 'glyph' config not be so ugly (e.g. "'\\f138'" => "f138")
 * add 'font-size()' too evalConfig
 * search codebase for @TODO's
 * add unit-tests
+* remove social colors from border buttons
 * fix smoothScroll calculations to be consistent
 * add global modifiers (e.g. small, large)
 * add author to JS modules

@@ -17,8 +17,8 @@ export function accordion(els = 'accordion', custom) {
 
         if (!el.getAttribute('data-initialised')) {
             el.component('section').forEach((section, index) => {
-                if (section.classList.contains(options.activeClass)) {
-                    section.component('content')[0].classList.add(options.activeClass);
+                if (section.modifier('active')) {
+                    section.component('content')[0].modifier('active', 'add');
                 }
 
                 section.component('title')[0].addEventListener('click', () => {
@@ -48,7 +48,7 @@ export function accordion(els = 'accordion', custom) {
  * @param {('open'|'close')} type
  * @param {HTMLElement} parent
  * @param {(String|Number|HTMLElement|NodeList)} target
- * @param {String} activeClass
+ * @param {Object} options
  */
 function toggleAccordion(type, parent, target, options) {
     let section;
@@ -72,8 +72,9 @@ function toggleAccordion(type, parent, target, options) {
     }
 
     function toggleActiveClass(el) {
-        el.classList[operator](options.activeClass);
-        el.component('content')[0].classList[operator](options.activeClass);
+        el.modifier('active', operator);
+        el.component('title')[0].modifier('active', operator);
+        el.component('content')[0].modifier('active', operator);
     }
 }
 
@@ -87,7 +88,7 @@ function toggleAccordion(type, parent, target, options) {
  * @param {Object} options
  */
 function clickHandler(accordion, section, options) {
-    var active = section.classList.contains(options.activeClass);
+    var active = section.modifier('active', 'isset');
 
     if (!accordion.modifier(options.keepOpenModifier)) {
         accordion.component('section').forEach(el => toggleAccordion('close', accordion, el, options));

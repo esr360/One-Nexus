@@ -1,13 +1,12 @@
 {
     "tabs": {
         "name": "tabs",
-
         "nav": {
             "item": {
                 "transition": "core(transition)",
                 "color": "core(text-color)",
                 "background": "transparent",
-                "border-radius": "0.6em",
+                "round-radius": "0.6em",
                 "padding": "0.75em 1.25em",
                 "border": "1px solid color(greyscale, grey-3)",
                 "hover": {
@@ -21,7 +20,6 @@
                 }
             }
         },
-
         "content": {
             "color": "core(text-color)",
             "background": "color(greyscale, white)",
@@ -30,16 +28,6 @@
             "glueHeight": "6px",
             "glueColor": "color(brand, brand-1)"
         },
-
-        "navItem-hover-color": "color('greyscale', 'grey-5')",
-        "navItem-hover-background": "darken(color('greyscale', 'grey-1'), 4%)",
-        "navItem-active-color": "color('greyscale', 'white')",
-        "navItem-active-background": "color('brand', 'brand-1')",
-        "navItem-active-borderColor": "color('brand', 'brand-1')",
-        
-        "contentBlock-glueHeight": "6px",
-        "contentBlock-glueColor": "color('brand', 'brand-1')",
-
         "activeClass": "active"
     }
 }

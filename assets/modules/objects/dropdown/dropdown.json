@@ -2,7 +2,7 @@
     "dropdown": {
         "name": "dropdown",
         "text-align": "left",
-        "width": "175px",
+        "min-width": "175px",
         "top-position": "0",
         "dropdown-icon": "'\\f105'",
         "low-level-icon": "'\\f105'",

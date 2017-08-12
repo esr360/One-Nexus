@@ -1,19 +1,22 @@
 {
     "tooltips": {
         "name": "tooltip",
-        "max-width": "500px",
-        "padding": "0.5em 0.75em",
         "distance": "-1em",
-        "background": "rgba(black, 0.75)",
-        "border-radius": "0",
         "arrow-size": "0.5em",
         "arrow-color": "rgba(black, 0.75)",
-        "font-size": "font-size('size-2', $rem: true)",
-        "font-family": "typography('typefaces', 'primary')",
-        "color": "white",
-        "text-transform": "none",
-        "font-weight": "normal",
-        "transition": "core('transition')",
-        "z-index": 9999    
+        "content": {
+            "max-width": "500px",
+            "padding": "0.5em 0.75em",
+            "border-radius": "0",
+            "line-height": "1.75",
+            "background": "rgba(black, 0.75)",
+            "font-size": "font-size('size-2', $rem: true)",
+            "font-family": "typography('typefaces', 'primary')",
+            "text-transform": "none",
+            "font-weight": "normal",
+            "color": "white",
+            "transition": "core('transition')",
+            "z-index": 9999
+        }
     }
 }

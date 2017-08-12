@@ -33,10 +33,10 @@
             @include modifier('round') {
                 @include component('item') {
                     &:first-child {
-                        border-top-left-radius: this('navItem-radius');
+                        border-top-left-radius: this('nav', 'item', 'round-radius');
                     }
                     &:last-child {
-                        border-top-right-radius: this('navItem-radius');
+                        border-top-right-radius: this('nav', 'item', 'round-radius');
                     }
                 }
             }
@@ -61,29 +61,26 @@
             @include component('item') {
                 cursor: pointer;
                 display: table-cell;
-                &.active {
-                    color: this('navItem-active-color');
-                    border-color: this('navItem-active-borderColor');
-                    background: this('navItem-active-background');
+                @include modifier('active') {
                     + li {
-                        border-left-color: this('navItem-active-borderColor');
+                        border-left-color: this('nav', 'item', 'active', 'border-color');
                     }
                     &:hover {
-                        color: this('navItem-active-color');
+                        color: this('nav', 'item', 'active', 'color');
+                        background: this('nav', 'item', 'active', 'background');
                     }
-                }
-                &:hover:not(.active) {
-                    background: this('navItem-hover-background');
                 }
                 &:not(:last-child) {
                     border-right: none;
                 }
                 @include modifier('round') {
                     &:first-child {
-                        border-radius: this('navItem-radius') 0 0 this('navItem-radius');
+                        border-top-left-radius: this('nav', 'item', 'round-radius');
+                        border-bottom-left-radius: this('nav', 'item', 'round-radius');
                     }
                     &:last-child {
-                        border-radius: 0 this('navItem-radius') this('navItem-radius') 0;
+                        border-top-right-radius: this('nav', 'item', 'round-radius');
+                        border-bottom-right-radius: this('nav', 'item', 'round-radius');
                     }
                 }
             }
@@ -94,7 +91,7 @@
             position: relative;
             top: -1px;
             @include modifier('glue') {
-                $tabs-glue: this('contentBlock-glueHeight');
+                $tabs-glue: this('content', 'glueHeight');
                 margin-top: $tabs-glue;
                 top: -2px;
                 z-index: 2;
@@ -105,8 +102,8 @@
                     top: -$tabs-glue;
                     height: $tabs-glue;
                     width: calc(100% + 2px);
-                    border: 1px solid this('contentBlock-glueColor');
-                    background: this('contentBlock-glueColor');
+                    border: 1px solid this('content', 'glueColor');
+                    background: this('content', 'glueColor');
                 }
             }
         }

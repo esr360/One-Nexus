@@ -24,11 +24,12 @@ export function tabs(els = 'tabs', custom) {
             });
         }
 
-        // Toggle active class
-        app.clickHelper(el.component('nav')[0], options.activeClass);
-
         Array.prototype.forEach.call(el.component('nav')[0].children, (item, index) => {
             item.addEventListener('click', () => {
+                Array.prototype.forEach.call(item.parentNode.children, sibling => {
+                    sibling.modifier('active', 'unset');
+                });
+                item.modifier('active', 'set');
                 // Hide previously selected item
                 tabItems().forEach(tab => tab.style.display = 'none');
                 // Show new item

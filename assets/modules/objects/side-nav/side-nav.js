@@ -74,6 +74,8 @@ function toggleSideNav(el, operator, options) {
     // toggle sidenav
     el.modifier('visible', state);
 
+    console.log(el.modifier('visible'));
+
     // toggle overlay
     if (options.overlay) {
         app.overlay(options.overlay).toggle('overlaySideNav');

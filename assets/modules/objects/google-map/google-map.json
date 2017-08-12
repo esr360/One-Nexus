@@ -4,10 +4,10 @@
         "height": "375px",
         "longitude": -33.866758, 
         "latitude": 151.208514,
-        "zoom": 13,
         "googleApi": {
             "scrollwheel": false,
-            "draggable": false
+            "draggable": false,
+            "zoom": 13
         }
     }
 }

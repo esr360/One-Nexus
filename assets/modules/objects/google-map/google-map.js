@@ -161,7 +161,6 @@ export function googleMap(els = 'google-map', custom) {
 
         // set final googleApi options
         options.googleApi = Object.assign(options.googleApi, {
-            zoom: options.zoom,
             styles: options.styles,
             center: new google.maps.LatLng(options.longitude, options.latitude)
         });

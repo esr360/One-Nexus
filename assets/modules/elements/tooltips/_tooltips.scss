@@ -42,24 +42,10 @@
 
         @include component('content') {
             // Size & Appearance
-            max-width: this('max-width');
-            padding: this('padding');
-            background: this('background');
-            border-radius: this('border-radius');
-            line-height: 1.75;
             position: absolute;
             display: inline-block;
             
-            // Typography
-            font-size: this('font-size');
-            font-family: this('font-family');
-            color: this('color');
-            text-transform: this('text-transform');
-            font-weight: this('font-weight');
-            
             // Other
-            transition: this('transition');
-            z-index: this('z-index');
             white-space: nowrap;
             
             // Hide by default

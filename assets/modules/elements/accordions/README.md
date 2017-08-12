@@ -118,10 +118,6 @@ For default values view the [`accordions.json`](accordions.json) file.
             <td>The padding for the accordion content</td>
         </tr>
         <tr>
-            <td>activeClass</td>
-            <td>The class to be applied when a section is open (active)</td>
-        </tr>
-        <tr>
             <td>animationSpeed</td>
             <td>The duration of the open/close animation in milliseconds</td>
         </tr>

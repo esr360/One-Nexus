@@ -148,8 +148,6 @@
         }
         
         @include modifier('active') {
-            background: this('active', 'background');
-            color: this('active', 'color');
             border-color: this('active', 'background');
             &:hover {
                 background: this('active', 'background');
