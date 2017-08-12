@@ -14,8 +14,8 @@
             "disable": false,
             "size": "10px",
             "gutter": "25px",
-            "color": "rgba(black, 0.4)",
-            "active-color": "grey",
+            "fill": "rgba(black, 0.4)",
+            "active-fill": "grey",
             "transition": "core(transition)"
         },
         "Flickity": {

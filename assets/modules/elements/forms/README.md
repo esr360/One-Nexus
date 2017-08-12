@@ -30,7 +30,7 @@
 
 ### Options
 
-For default values view the [`forms.json`](forms.json) file.
+For default values view the [`forms.json`](forms.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -47,21 +47,6 @@ For default values view the [`forms.json`](forms.json) file.
             <td><code>'form'</code></td>
         </tr>
         <tr>
-            <td><code>input-color</code></td>
-            <td>The text color for input elements</td>
-            <td><code>core('text-color')</code></td>
-        </tr>
-        <tr>
-            <td><code>input-border</code></td>
-            <td>The border for input elements</td>
-            <td><code>1px solid color('greyscale', 'grey-3')</code></td>
-        </tr>
-        <tr>
-            <td><code>input-padding</code></td>
-            <td>The padding for input elements</td>
-            <td><code>0.75em</code></td>
-        </tr>
-        <tr>
             <td><code>valid-color</code></td>
             <td>The color for valid HTML5 inputs</td>
             <td><code>color('validation', 'valid')</code></td>
@@ -74,7 +59,7 @@ For default values view the [`forms.json`](forms.json) file.
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `forms` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `forms` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {

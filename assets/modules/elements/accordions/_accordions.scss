@@ -31,24 +31,12 @@
 
         @include component('section') {
             &:not(:last-child) {
-                margin-bottom: this('section', 'margin');
+                margin-bottom: this('section', 'vertical-rhythm');
             }
-            @if (this('section', 'margin') == 0) {
+            @if (this('section', 'vertical-rhythm') == 0) {
                 &:not(:last-child) {
                     > *:first-child, > *:last-child {
                         border-bottom: 0 !important;
-                    }
-                }
-            }
-            &:hover {
-                @include module {
-                    @include component('title') {
-                        background: this('title', 'active', 'background');
-                        color: this('title-active-color');
-                        // open/close icon
-                        &:after {
-                            color: this('icon', 'active-color');
-                        }
                     }
                 }
             }
@@ -70,10 +58,15 @@
                 color: this('icon', 'color');
                 transition: core('transition');
             }
+            &:hover {
+                &:after {
+                    color: this('title', 'active', 'color');
+                }
+            }
             @include modifier('active') {
                 // open/close icon
                 &:after {		
-                    color: this('icon', 'active-color');
+                    color: this('title', 'hover', 'color');
                     transform: rotate(90deg) translateZ(0);
                 }
             }

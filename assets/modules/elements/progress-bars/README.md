@@ -16,7 +16,7 @@
 
 ### Options
 
-For default values view the [`progress-bars.json`](progress-bars.json) file.
+For default values view the [`progress-bars.json`](progress-bars.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -44,10 +44,6 @@ For default values view the [`progress-bars.json`](progress-bars.json) file.
             <td>The height of the progress bar</td>
         </tr>
         <tr>
-            <td><code>bar-radius</code></td>
-            <td>The border-radius of the progress bar</td>
-        </tr>
-        <tr>
             <td><code>value-color</code></td>
             <td>The color of the progress value text</td>
         </tr>
@@ -62,14 +58,13 @@ For default values view the [`progress-bars.json`](progress-bars.json) file.
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `progress-bars` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `progress-bars` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
     "app": {
         "progress-bars": {
-            "fill-background": "#27E573",
-            "bar-radius": "6px"
+            "fill-background": "#27E573"
         }
     }
 }

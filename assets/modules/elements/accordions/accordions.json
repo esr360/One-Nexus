@@ -2,7 +2,7 @@
     "accordions": {
         "name": "accordion",
         "section": {
-            "margin": 0
+            "vertical-rhythm": 0
         },
         "title": {
             "background": "transparent",
@@ -11,6 +11,10 @@
             "border-radius": 0,
             "padding": "1em",
             "transition": "core(transition)",
+            "hover": {
+                "background":  "color(brand, brand-1)",
+                "color": "color(greyscale, white)"
+            },
             "active": {
                 "background": "color(brand, brand-1)",
                 "color": "color(greyscale, white)",
@@ -27,8 +31,7 @@
         },
         "icon": {
             "glyph": "'\\f138'",
-            "color": "rgba(color(greyscale, grey-3), 0.6)",
-            "active-color": "color(greyscale, white)"
+            "color": "rgba(color(greyscale, grey-3), 0.6)"
         },
         "animationSpeed": 400,
         "keepOpenModifier": "keepOpen"

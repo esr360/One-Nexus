@@ -20,7 +20,7 @@
 
 ### Options
 
-For default values view the [`blockquotes.json`](blockquotes.json) file.
+For default values view the [`blockquotes.json`](blockquotes.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -77,7 +77,7 @@ For default values view the [`blockquotes.json`](blockquotes.json) file.
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `blockquotes` object in your theme's config file (e.g. [themes/One-Nexus/blockquotes.json](../../../themes/One-Nexus/blockquotes.json)):
+Pass custom options to the `blockquotes` object in your theme's config file (e.g. [themes/One-Nexus/blockquotes.json](../../../themes/One-Nexus/blockquotes.json)):
 
 ```json
 {

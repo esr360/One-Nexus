@@ -59,12 +59,12 @@
         @include component('bullet') { 
             height: this('bullet', 'size');
             width: this('bullet', 'size');
-            background-color: this('bullet', 'color');
+            background-color: this('bullet', 'fill');
             @if this('bullet', 'disabled') {
                 display: none;
             }
             &.is-selected {
-                color: this('bullet', 'active-color');
+                color: this('bullet', 'active-fill');
             }
         }
 

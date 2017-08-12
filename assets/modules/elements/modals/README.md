@@ -33,7 +33,7 @@
 
 ### Options
 
-For default values view the [`modals.json`](modals.json) file.
+For default values view the [`modals.json`](modals.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -52,40 +52,12 @@ For default values view the [`modals.json`](modals.json) file.
             <td>The default animation style modals should use (top, bottom, left, right, zoom)</td>
         </tr>
         <tr>
-            <td>background</td>
-            <td>The background of modal boxes</td>
-        </tr>
-        <tr>
-            <td>text-color</td>
-            <td>The text color for modal boxes</td>
-        </tr>
-        <tr>
-            <td>radius</td>
-            <td>The border radius of modal boxes</td>
-        </tr>
-        <tr>
-            <td>z-index</td>
-            <td>The z-index for modal boxes</td>
-        </tr>
-        <tr>
-            <td>content-padding</td>
-            <td>The padding for the modal content</td>
-        </tr>
-        <tr>
-            <td>close-icon.size</td>
+            <td>close.size</td>
             <td>The font-size for the close icon</td>
         </tr>
         <tr>
-            <td>close-icon.color</td>
-            <td>The color for the close icon</td>
-        </tr>
-        <tr>
-            <td>close-icon.hover-color</td>
+            <td>close.hover-color</td>
             <td>The hover color for the close icon</td>
-        </tr>
-        <tr>
-            <td>close-icon.position</td>
-            <td>The [top, right] position for the close icon</td>
         </tr>
         <tr>
             <td>overlay.module</td>
@@ -102,15 +74,15 @@ For default values view the [`modals.json`](modals.json) file.
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `modals` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `modals` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
     "app": {
         "modals": {
             "default-animation": "zoom",
-            "close-icon": {
-                "position": ["20px", "20px"]
+            "close": {
+                "size": "font-size(size-5)"
             },
             "overlay": {
                 "clickToClose": false

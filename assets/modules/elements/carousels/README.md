@@ -29,7 +29,7 @@ To create a carousel, add the `carousel` class to a container of elements which 
 
 ### Options
 
-For default values view the [`carousels.json`](carousels.json) file.
+For default values view the [`carousels.json`](carousels.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -45,28 +45,20 @@ For default values view the [`carousels.json`](carousels.json) file.
             <td>The name used when generating the CSS selector</td>
         </tr>
         <tr>
-            <td><code>nav-buttons.disable</code></td>
+            <td><code>navigationItem.disable</code></td>
             <td>Hide navigation buttons by default</td>
         </tr>
         <tr>
-            <td><code>nav-buttons.size</code></td>
+            <td><code>navigationItem.size</code></td>
             <td>The size of the next/previous buttons</td>
         </tr>
         <tr>
-            <td><code>nav-buttons.background-color</code></td>
-            <td>The background color of the next/previous buttons</td>
-        </tr>
-        <tr>
-            <td><code>nav-buttons.arrow-color</code></td>
+            <td><code>navigationItem.arrow-color</code></td>
             <td>The arrow color of the next/previous buttons</td>
         </tr>
         <tr>
-            <td><code>nav-buttons.shape</code></td>
+            <td><code>navigationItem.shape</code></td>
             <td>The shape of the next/previous buttons [circle|square]</td>
-        </tr>
-        <tr>
-            <td><code>nav-buttons.transition</code></td>
-            <td>The transition for the next/previous buttons</td>
         </tr>
         <tr>
             <td><code>bullets.disable</code></td>
@@ -81,16 +73,12 @@ For default values view the [`carousels.json`](carousels.json) file.
             <td>The space between the carousel viewport and the pagination</td>
         </tr>
         <tr>
-            <td><code>bullets.color</code></td>
+            <td><code>bullets.fill</code></td>
             <td>The color for pagination bullets</td>
         </tr>
         <tr>
-            <td><code>bullets.active-color</code></td>
+            <td><code>bullets.active-fill</code></td>
             <td>The color for the active pagination bullet</td>
-        </tr>
-        <tr>
-            <td><code>bullets.transition</code></td>
-            <td>The transition for pagination bullets</td>
         </tr>
         <tr>
             <td><code>Flickity</code></td>
@@ -99,7 +87,7 @@ For default values view the [`carousels.json`](carousels.json) file.
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `carousels` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `carousels` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {

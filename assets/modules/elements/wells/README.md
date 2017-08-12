@@ -16,7 +16,7 @@
 
 ### Options
 
-For default values view the [`wells.json`](wells.json) file.
+For default values view the [`wells.json`](wells.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -31,48 +31,18 @@ For default values view the [`wells.json`](wells.json) file.
             <td><code>name</code></td>
             <td>The name used when generating the CSS selector</td>
         </tr>
-        <tr>
-            <td><code>background</code></td>
-            <td>The background color for wells</td>
-        </tr>
-        <tr>
-            <td><code>border</code></td>
-            <td>The well border</td>
-        </tr>
-        <tr>
-            <td><code>radius</code></td>
-            <td>The border radius for wells</td>
-        </tr>
-        <tr>
-            <td><code>padding</code></td>
-            <td>The well padding</td>
-        </tr>
-        <tr>
-            <td><code>color</code></td>
-            <td>The text color for wells</td>
-        </tr>
-        <tr>
-            <td><code>dark-background</code></td>
-            <td>The background for wells when using the `dark` modifier</td>
-        </tr>
-        <tr>
-            <td><code>dark-border</code></td>
-            <td>The border for wells when using the `dark` modifier</td>
-        </tr>
-        <tr>
-            <td><code>dark-color</code></td>
-            <td>The text color for wells when using the `dark` modifier</td>
-        </tr>
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `wells` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `wells` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
     "app": {
         "wells": {
-            "dark-background": "color('brand', 'brand-2')",
+            "dark": {
+                "background": "color(brand, brand-2)"
+            }
         }
     }
 }

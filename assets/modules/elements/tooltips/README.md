@@ -19,7 +19,7 @@
 
 ### Options
 
-For default values view the [`tooltips.json`](tooltips.json) file.
+For default values view the [`tooltips.json`](tooltips.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -34,24 +34,8 @@ For default values view the [`tooltips.json`](tooltips.json) file.
             <td>The name used when generating the CSS selector</td>
         </tr>
         <tr>
-            <td>max-width</td>
-            <td>The maximum width for tooltips before text starts to wrap</td>
-        </tr>
-        <tr>
-            <td>padding</td>
-            <td>The tooltip padding</td>
-        </tr>
-        <tr>
             <td>distance</td>
             <td>The distance the tooltip should be from the parent object</td>
-        </tr>
-        <tr>
-            <td>background</td>
-            <td>The tooltip background</td>
-        </tr>
-        <tr>
-            <td>border-radius</td>
-            <td>The radius of the toolitp</td>
         </tr>
         <tr>
             <td>arrow-size</td>
@@ -61,38 +45,10 @@ For default values view the [`tooltips.json`](tooltips.json) file.
             <td>arrow-color</td>
             <td>The tooltip arrow color</td>
         </tr>
-        <tr>
-            <td>font-size</td>
-            <td>The tooltip font size</td>
-        </tr>
-        <tr>
-            <td>font-family</td>
-            <td>The tooltip font family</td>
-        </tr>
-        <tr>
-            <td>color</td>
-            <td>The tooltip text color</td>
-        </tr>
-        <tr>
-            <td>text-transform</td>
-            <td>The tooltip text-transform</td>
-        </tr>
-        <tr>
-            <td>font-weight</td>
-            <td>The tooltip font weight</td>
-        </tr>
-        <tr>
-            <td>transition</td>
-            <td>The tooltip fade-in animation transition duration</td>
-        </tr>
-        <tr>
-            <td>z-index</td>
-            <td>The tooltip z-index</td>
-        </tr>
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `tooltips` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `tooltips` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {

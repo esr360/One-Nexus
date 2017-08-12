@@ -24,7 +24,7 @@
 
 ### Options
 
-For default values view the [`alert-bars.json`](alert-bars.json) file.
+For default values view the [`alert-bars.json`](alert-bars.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -46,24 +46,15 @@ For default values view the [`alert-bars.json`](alert-bars.json) file.
             <td>text-color</td>
             <td>Text color for alert bars</td>
         </tr>
-        <tr>
-            <td>bar-padding</td>
-            <td>Padding for alert bars</td>
-        </tr>
-        <tr>
-            <td>box-padding</td>
-            <td>Padding for alert boxes</td>
-        </tr>
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `alert-bars` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `alert-bars` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
     "app": {
         "alert-bars": {
-            "bar-padding": "14px",
             "colors": {
                 "carrot": "#F97E52",
                 "error" : "#DA4D44",

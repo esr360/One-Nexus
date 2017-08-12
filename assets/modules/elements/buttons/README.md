@@ -35,7 +35,7 @@
 
 ### Options
 
-For default values view the [`buttons.json`](buttons.json) file.
+For default values view the [`buttons.json`](buttons.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -50,52 +50,12 @@ For default values view the [`buttons.json`](buttons.json) file.
             <td>The name used when generating the CSS selector</td>
         </tr>
         <tr>
-            <td><code>color</code></td>
-            <td>The default text-color for buttons</td>
-        </tr>
-        <tr>
-            <td><code>background</code></td>
-            <td>The default background for buttons</td>
-        </tr>
-        <tr>
-            <td><code>transition</code></td>
-            <td>The transition speed primarily used for the hover effect</td>
-        </tr>
-        <tr>
             <td><code>h-padding</code></td>
             <td>Thepadding for the left and right of buttons</td>
         </tr>
         <tr>
             <td><code>v-padding</code></td>
             <td>Thepadding for the tpp and bottom of buttons</td>
-        </tr>
-        <tr>
-            <td><code>line-height</code></td>
-            <td>The line height for buttons</td>
-        </tr>
-        <tr>
-            <td><code>font-weight</code></td>
-            <td>The default font weight for buttons</td>
-        </tr>
-        <tr>
-            <td><code>font-family</code></td>
-            <td>The default font family for buttons</td>
-        </tr>
-        <tr>
-            <td><code>border-width</code></td>
-            <td>The border width for buttons with the <code>border</code> modifier</td>
-        </tr>
-        <tr>
-            <td><code>border-style</code></td>
-            <td>The border style for buttons with the <code>border</code> modifier</td>
-        </tr>
-        <tr>
-            <td><code>active-background</code></td>
-            <td>The background for buttons with the <code>active</code> modifier</td>
-        </tr>
-        <tr>
-            <td><code>active-color</code></td>
-            <td>The text color for buttons with the <code>active</code> modifier</td>
         </tr>
         <tr>
             <td><code>disabled-opacity</code></td>
@@ -124,7 +84,7 @@ For default values view the [`buttons.json`](buttons.json) file.
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `buttons` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `buttons` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {

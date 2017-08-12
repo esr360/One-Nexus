@@ -38,7 +38,7 @@
 
 ### Options
 
-For default values view the [`tabs.json`](tabs.json) file.
+For default values view the [`tabs.json`](tabs.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -51,54 +51,6 @@ For default values view the [`tabs.json`](tabs.json) file.
         <tr>
             <td>name</td>
             <td>The name used when generating the CSS selector</td>
-        </tr>
-        <tr>
-            <td>navItem-transition</td>
-            <td>The transition duration of the tabs navigation items</td>
-        </tr>
-        <tr>
-            <td>navItem-color</td>
-            <td>The text color of the tabs navigation items</td>
-        </tr>
-        <tr>
-            <td>navItem-background</td>
-            <td>The background of the tabs navigation items</td>
-        </tr>
-        <tr>
-            <td>navItem-radius</td>
-            <td>The border radius for tabs navigation items</td>
-        </tr>
-        <tr>
-            <td>navItem-padding</td>
-            <td>The padding for tabs navigation items</td>
-        </tr>
-        <tr>
-            <td>navItem-borderColor</td>
-            <td>The border color of the tabs navigation items</td>
-        </tr>
-        <tr>
-            <td>navItem-active-color</td>
-            <td>The text color of the active tabs navigation item</td>
-        </tr>
-        <tr>
-            <td>navItem-active-background</td>
-            <td>The background color of the active tabs navigation item</td>
-        </tr>
-        <tr>
-            <td>navItem-active-borderColor</td>
-            <td>The border color of the active tabs navigation item</td>
-        </tr>
-        <tr>
-            <td>contentBlock-background</td>
-            <td>The background color of the content block</td>
-        </tr>
-        <tr>
-            <td>contentBlock-borderColor</td>
-            <td>The border color of the content block</td>
-        </tr>
-        <tr>
-            <td>contentBlock-padding</td>
-            <td>The padding of the content block</td>
         </tr>
         <tr>
             <td>contentBlock-glueHeight</td>
@@ -115,15 +67,23 @@ For default values view the [`tabs.json`](tabs.json) file.
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `tabs` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `tabs` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
     "app": {
         "tabs": {
-            "navItem-radius": "12px",
-            "navItem-hover-background": "#f21313",
-            "contentBlock-padding": "8px 12px"
+            "nav": {
+                "item": {
+                    "border-radius": "12px",
+                    "background": "#f21313",
+                    "padding": "8px 12px"
+                }
+            },
+            "content": {
+                "glueHeight": "6px",
+                "glueColor": "color(brand, brand-1)"
+            }
         }
     }
 }

@@ -31,7 +31,7 @@
 
 ### Options
 
-For default values view the [`accordions.json`](accordions.json) file.
+For default values view the [`accordions.json`](accordions.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
 
 <table class="table">
     <thead>
@@ -54,68 +54,8 @@ For default values view the [`accordions.json`](accordions.json) file.
             <td>The color for the open/close icon</td>
         </tr>
         <tr>
-            <td>icon.active-color</td>
-            <td>The color for the open/close icon when the corresponding section is open</td>
-        </tr>
-        <tr>
             <td>section.margin</td>
             <td>The vertical spacing between each accordion section</td>
-        </tr>
-        <tr>
-            <td>title.background</td>
-            <td>The background color for the accordion title (the clickable part)</td>
-        </tr>
-        <tr>
-            <td>title.color</td>
-            <td>The text color for the accordion title (the clickable part</td>
-        </tr>
-        <tr>
-            <td>title.border</td>
-            <td>The border for the accordion title (the clickable part)</td>
-        </tr>
-        <tr>
-            <td>title.radius</td>
-            <td>The border-radius for the accordion title (the clickable part)</td>
-        </tr>
-        <tr>
-            <td>title.padding</td>
-            <td>The padding for the accordion title (the clickable part</td>
-        </tr>
-        <tr>
-            <td>title.active.background</td>
-            <td>The background color for the accordion title when the corresponding section is open</td>
-        </tr>
-        <tr>
-            <td>title.active.color</td>
-            <td>The text color for the accordion title when the corresponding section is open</td>
-        </tr>
-        <tr>
-            <td>title.active.border</td>
-            <td>The border for the accordion title when the corresponding section is open</td>
-        </tr>
-        <tr>
-            <td>title.active.radius</td>
-            <td>The border-radius for the accordion title when the corresponding section is open</td>
-        </tr>
-        <tr>
-            <td>content.background</td>
-            <td>The backgound for the accordion content</td>
-        </tr>
-        <tr>
-            <td>content.color</td>
-            <td>The text color for the accordion content</td>
-        </tr>
-        <tr>
-            <td>content.border</td>
-            <td>The border for the accordion content</td>
-        </tr>
-        <tr>
-            <td>content.radius</td>
-            <td>The border-radius for the accordion content</td>
-        </tr>
-        <tr>
-            <td>content.padding</td>
-            <td>The padding for the accordion content</td>
         </tr>
         <tr>
             <td>animationSpeed</td>
@@ -128,17 +68,14 @@ For default values view the [`accordions.json`](accordions.json) file.
     </tbody>
 </table>
 
-To modify any of the above options, pass them to the `accordions` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `accordions` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
     "app": {
         "accordions": {
-            "title": {
+            "icon": {
                 "color": "#0066ff"
-            },
-            "content": {
-                "background": "#0000cc"
             },
             "animationSpeed": 800
         }
