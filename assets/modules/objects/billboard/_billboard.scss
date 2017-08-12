@@ -24,8 +24,6 @@
         @include background();
 
         position: relative;
-        min-height: this('min-height');
-        padding: this('padding');
         background-size: cover;
         overflow: hidden;
 

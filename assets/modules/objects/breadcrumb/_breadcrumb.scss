@@ -18,8 +18,6 @@
     @include module {
 
         @include object;
-
-        font-size: this('font-size');
         
         // the breadcrumb may or may not be a ul itself
         &, & > ul {

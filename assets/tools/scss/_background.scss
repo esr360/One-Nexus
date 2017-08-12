@@ -8,16 +8,16 @@
 /// @param {map} $custom - where custom config will be passed
 ///
 /// @outputs styles for an element's background
-@mixin background($custom: if(this('bg'), this('bg'), ())) {
+@mixin background($custom: if(this('background'), this('background'), ())) {
 
     @if type-of($custom) == 'map' {
 
         $_color: if(
-            this('bg', 'color'), this('bg', 'color'), ''
+            this('background', 'color'), this('background', 'color'), ''
         );
 
         $_image: if(
-            this('bg', 'image'), this('bg', 'image'), ''
+            this('background', 'image'), this('background', 'image'), ''
         );
 
         $config: map-merge((

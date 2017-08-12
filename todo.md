@@ -11,6 +11,9 @@
 * fix smoothScroll calculations to be consistent
 * add global modifiers (e.g. small, large)
 * add author to JS modules
+* consider changing json functions to ["$color", "brand", "brand-2"]
+* change all sass extends to _module alias
+* try and get config component and modifier behaviour to be consistent
 
 ## Backlog
 

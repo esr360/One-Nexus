@@ -36,11 +36,7 @@
             // dropdown menus
             ul {
             
-                @include extend($parent: 'list', $modifiers: 'reset');
-                min-width: this('width');
-                text-align: this('text-align');
-                transition: core('transition');
-                font-size: this('font-size');
+                @include _module('list', ('reset'), false);
                 position: absolute;
                 z-index: 7;
                 // hide until required
@@ -52,15 +48,12 @@
                     position: relative;
             
                     a {
-                        background: this('link-bg-color');
-                        color: this('link-color');
-                        padding: this('link-padding');
-                        border-top: 1px solid color('greyscale', 'grey-2'); 
+                        @include get-styles(this('link'));
                         &:before, &:after {
                             font-family: FontAwesome;		
                         }
                         &:not(:only-child) {
-                            padding-right: this('link-padding') + 1rem;
+                            padding-right: this('link', 'padding') + 1rem;
                             &:after {
                                 content: this('dropdown-icon');
                                 right: 0.75em;
@@ -85,21 +78,18 @@
             
                     &:hover {
                         > a {
-                            color: this('link-hover-color');
-                            background: this('link-hover-bg-color');
-                            border-color: color('brand', 'brand-1');
+                            @include get-styles(this('link', 'hover'));
                         }
                         + li {
                             > a {
-                                border-top-color: color('greyscale', 'grey-1');
+                                border-top-color: this('link', 'background');
                             }
                         }
                     }
             
                     &.active {
                         > a {
-                            color: this('link-active-color');
-                            background: this('link-active-bg-color');
+                            @include get-styles(this('link', 'active'));
                         }
                     }
 
@@ -115,7 +105,7 @@
                         box-shadow: 1px 1px 6px 1px rgba(black, 0.2);
                         li {
                             a {
-                                border-left: 1px solid color('greyscale', 'grey-2');
+                                border-left: this('link', 'border-top');
                             }
                         }
                     }
