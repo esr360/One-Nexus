@@ -16,18 +16,14 @@
     //*************************************************************
 
     @include module {
-        
-        background: color('greyscale', 'grey-5');
+
         overflow: auto;
         position: fixed;
         z-index: 13;
         top: 0;
         left: -100%;
         height: 100%;
-        width: 400px;
         max-width: 100%;
-        transition: core('transition');
-        font-size: this('font-size');
 
         @include modifier('visible') {
             left: 0;
@@ -52,9 +48,7 @@
         nav {
             
             ul {
-                @include extend(
-                    $parent: 'list', $modifiers: 'reset'
-                );
+                @include _module('list', ('reset'), false);
                 text-align: left;
                 margin-top: 0;
                 width: 100%;
@@ -67,25 +61,17 @@
                     margin-left: 0;
                     &:hover {
                         > a {
+                            @include get-styles(this('item', 'hover'));
                             border-right: none;
-                            background: this('item', 'hover', 'background');
-                            border-left: this('item', 'hover', 'left-border');
-                            color: this('item', 'hover', 'color');
                         }
                     }
                 }
                 a {
+                    @include get-styles(this('item'));
                     display: block;
                     position: relative;
                     text-decoration: none;
                     border-radius: 0;
-                    
-                    padding: this('item', 'padding');
-                    color: this('item', 'color');
-                    border-top: this('item', 'top-border');
-                    border-bottom: this('item', 'bottom-border');
-                    border-left: this('item', 'left-border');
-                    border-right: this('item', 'right-border');
                     &:after {
                         display: none;
                     }
@@ -94,8 +80,8 @@
                     li {
                         &:hover {
                             a {
-                                color: this('item', 'hover', 'color');
                                 background: transparent;
+                                color: this('item', 'hover', 'color');
                                 border-top: this('item', 'top-border');
                                 border-bottom: this('item', 'bottom-border');
                             }
@@ -111,18 +97,16 @@
             > ul {		
                 > li {
                     > a {
-                        color: this('parent', 'color');
-                        border-left: this('parent', 'left-border');
-                        background: this('parent', 'background');
+                        @include get-styles(this('parent'));
                         &.active {
-                            background: this('parent', 'active', 'background');
+                            @include get-styles(this('parent', 'active'));
                         }
                     }
                     &:hover {
                         > a {
+                            @include get-styles(this('parent', 'hover'));
                             border-color: transparent;
                             border-right: none;
-                            background: this('parent', 'hover', 'background');
                         }
                     }
                 }
