@@ -1,25 +1,25 @@
 ## To Do
 
-* add css property list for config
-* add 'size' to blacklist for $css-properties
-* make modal width configurable
+* prevent modal link anchor scroll with rel="modal" attr
 * make 'glyph' config not be so ugly (e.g. "'\\f138'" => "f138")
-* add 'font-size()' too evalConfig
+* add 'font-size()' to evalConfig
 * search codebase for @TODO's
 * add unit-tests
 * remove social colors from border buttons
 * fix smoothScroll calculations to be consistent
-* add global modifiers (e.g. small, large)
 * add author to JS modules
-* consider changing json functions to ["$color", "brand", "brand-2"]
-* change all sass extends to _module alias
+* change all sass module extends to _module alias
 * try and get config component and modifier behaviour to be consistent
+* get rid of clickHelper?
 
 ## Backlog
 
 * modal.hide() on specific ID will close even if id is wrong/mispelt
 * create something to dynamically create reference links from strings
 * create animation library
+* add global modifiers (e.g. small, large)
+* consider changing json functions to ["$color", "brand", "brand-2"]
+* add 'size' to blacklist for $css-properties
 
 ## Done
 
@@ -41,3 +41,5 @@
 * Synergy strips hyphens from module name when using component mixin
 * move internal module js functions into the exports object
 * sticky header padding-top scroll jump
+* add css property list for config
+* make modal width configurable

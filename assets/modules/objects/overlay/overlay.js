@@ -18,7 +18,7 @@ export function overlay(els = 'overlay', custom) {
         exports.hide = flag => exports.toggle(flag, 'hide');
 
         exports.toggle = (flag, operator) => {
-            const state = (el.modifier('visible') && operator !== 'show' || operator === 'hide') ? 'unset' : 'set';
+            const state = (el.modifier('visible') && operator !== 'show' || operator === 'hide') ? 'remove' : 'add';
 
             el.modifier((flag ? flag + '-' : '') + 'visible', state);
         }

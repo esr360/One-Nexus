@@ -50,16 +50,22 @@ header:
 
 <div id="scrollSpy_link-2"></div>
 
-<a href="#fizz">Fizz Modal Trigger</a>
-<div class="modal-foo" data-modal-style="zoom" id="fizz">Fizz Modal</div>
+<a href="#fizz" rel="modal">Fizz Modal Trigger</a>
+<div class="modal-zoom" id="fizz">Fizz Modal</div>
 
-<a href="#buzz">Buzz Modal Trigger</a>
-<div class="modal" id="buzz">Buzz Modal</div>
-
-<div data-modal-target="modal-demo-10">Foo Bar</div>
-<a href="#modal-demo-10" data-modal-content="Lorem ipsum dolor sit amet." data-modal-style="zoom">Click Me</a>
+<br><br>
 
 <div data-modal-content="<p>Modal Content</p>">Click Me</div>
+
+<br>
+
+<a href="#buzz" rel="modal">Buzz Modal Trigger</a>
+<div class="modal-animate-right" id="buzz">Buzz Modal</div>
+
+<br><br>
+
+<div data-modal-target="modal-demo-10">Foo Bar</div>
+<a rel="modal" href="#modal-demo-10" data-modal-content="Lorem ipsum dolor sit amet." data-modal-style="zoom">Click Me</a>
 
 <progress class="progress-bar" max="100" data-progress="75%">foo</progress>
 
@@ -156,4 +162,4 @@ header:
         subtree: true,
         attributeOldValue: true,
     });
-</script>
+</script>   

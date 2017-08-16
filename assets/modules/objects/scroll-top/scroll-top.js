@@ -19,8 +19,8 @@ export function scrollTop(els = 'scroll-top', custom) {
             exports[(window.scrollY > options.activePosition) ? 'show' : 'hide']();
         });
 
-        exports.show = () => el.modifier('visible', 'set');
-        exports.hide = () => el.modifier('visible', 'unset');
+        exports.show = () => el.modifier('visible', 'add');
+        exports.hide = () => el.modifier('visible', 'remove');
 
     }, defaults, custom);
 

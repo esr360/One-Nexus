@@ -4,6 +4,7 @@
         "dafault-animation": "left",
         "background": "color(greyscale, grey-1)",
         "color": "core(text-color)",
+        "width": "650px",
         "border-radius": 0,
         "transition": "core(transition)",
         "z-index": 14,

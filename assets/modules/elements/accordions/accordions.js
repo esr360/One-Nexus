@@ -41,6 +41,29 @@ export function accordion(els = 'accordion', custom) {
 };
 
 /**
+ * clickHandler
+ * 
+ * @access private
+ * 
+ * @param {Object} accordion
+ * @param {Object} section
+ * @param {Object} options
+ */
+function clickHandler(accordion, section, options) {
+    var active = section.modifier('active', 'isset');
+
+    if (!accordion.modifier(options.keepOpenModifier)) {
+        accordion.component('section').forEach(el => toggleAccordion('close', accordion, el, options));
+    }
+
+    if (active) {
+        toggleAccordion('close', accordion, section, options);
+    } else {
+        toggleAccordion('open', accordion, section, options);
+    }
+}
+
+/**
  * toggleAccordion
  * 
  * @access private
@@ -75,28 +98,5 @@ function toggleAccordion(type, parent, target, options) {
         el.modifier('active', operator);
         el.component('title')[0].modifier('active', operator);
         el.component('content')[0].modifier('active', operator);
-    }
-}
-
-/**
- * clickHandler
- * 
- * @access private
- * 
- * @param {Object} accordion
- * @param {Object} section
- * @param {Object} options
- */
-function clickHandler(accordion, section, options) {
-    var active = section.modifier('active', 'isset');
-
-    if (!accordion.modifier(options.keepOpenModifier)) {
-        accordion.component('section').forEach(el => toggleAccordion('close', accordion, el, options));
-    }
-
-    if (active) {
-        toggleAccordion('close', accordion, section, options);
-    } else {
-        toggleAccordion('open', accordion, section, options);
     }
 }

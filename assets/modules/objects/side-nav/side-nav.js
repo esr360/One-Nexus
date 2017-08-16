@@ -25,7 +25,7 @@ export function sideNav(els = 'sideNav', custom) {
         });
 
         // close side nav on component click
-        app.Synergy(options.name).component('close').forEach(close => {
+        Array.prototype.forEach.call(app.Synergy(options.name).component('close'), close => {
             close.addEventListener('click', () => exports.hide());
         });
 
@@ -74,14 +74,12 @@ function toggleSideNav(el, operator, options) {
     // toggle sidenav
     el.modifier('visible', state);
 
-    console.log(el.modifier('visible'));
-
     // toggle overlay
     if (options.overlay) {
         app.overlay(options.overlay).toggle('overlaySideNav');
         // toggle event handler to hide side-nav on overlay click
         app.Synergy(options.overlay).query[0][listener]('click', exports.hide);
-    }  
+    }
 }
 
 /**

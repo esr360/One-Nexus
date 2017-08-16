@@ -14,49 +14,41 @@ export function modal(els = 'modal', custom) {
     custom = app.custom('modals', custom);
 
     app.Synergy(els, (el, options) => {
-        const modal   = options.name;
-        const overlay = app.Synergy(options.overlay.module).query[0];
 
         // Create any dynamic modals then re-run the function
         if (!(app.config.modals && 'initialised' in app.config.modals)) {
             app.config.modals ? app.config.modals.initialised = true : app.config.modals = { initialised: true }
 
-            initModals(document.querySelectorAll('[data-modal-content]'), modal);
+            initModals(document.querySelectorAll('[data-modal-content]'), options.name);
 
-            app.modal(els);
+            return app.modal(els);
         }
 
-        const triggers = document.querySelectorAll(`[data-modal-target="${el.id}"], [href="#${el.id}"]`);
+        const overlay = app.Synergy(options.overlay.module).query[0];
 
-        if (!el.modifier('animate') && options['dafault-animation']) {
-            el.modifier(`animate-${options['dafault-animation']}`, 'set');
+        const show = () => toggleModal('show', els, el, options, overlay);
+        const hide = () => toggleModal('hide', els, el, options, overlay);
+
+        // setup animation modifier
+        if (el.modifier('animate') !== true && options['dafault-animation']) {
+            el.modifier(`animate-${options['dafault-animation']}`, 'add');
         }
 
-        triggers.forEach(trigger => {
-            trigger.addEventListener('click', event => {
-                event.preventDefault();
+        // setup overlay as modal close trigger
+        if (options.overlay.clickToClose) {
+            app.Synergy([overlay, options.name]).query.component('close', 'add');
+        }
 
-                if (options.overlay.clickToClose) {
-                    app.Synergy([overlay, modal]).query.component('close', 'set');
-                }
+        // Open/Close Triggers
+        const openTriggers  = document.querySelectorAll(`[data-modal-target="${el.id}"], [href="#${el.id}"]`);
+        const closeTriggers = app.Synergy(options.name).component('close');
 
-                let closeTriggers = app.Synergy(modal).component('close');
+        openTriggers.forEach(trigger => trigger.addEventListener('click', show, false));
+        closeTriggers.forEach(trigger => trigger.addEventListener('click', hide, false));
 
-                toggleModal('show', els, el, options, overlay);
-
-                closeTriggers.forEach(trigger => {
-                    trigger.addEventListener('click', () => {
-                        app.Synergy([overlay, modal]).query.component('close', 'unset');
-
-                        toggleModal('hide', els, el, options, overlay);
-                    });
-                });
-            }, false);
-        });
-
-        exports.toggle = operator => toggleModal(
-            (el.modifier('visible') || operator === 'hide') ? 'hide' : 'show', els, el, options, overlay
-        );
+        exports.toggle = operator => {
+            (el.modifier('visible') || operator === 'hide') ? exports.hide : exports.show;
+        }
 
         exports.show = () => toggleModal('show', els, el, options, overlay);
         exports.hide = () => toggleModal('hide', els, el, options, overlay);
@@ -84,13 +76,11 @@ export function modal(els = 'modal', custom) {
 function toggleModal(type, all, target, options, overlay) {
     // close any other currently openened modals
     if (type === 'show' && app.isValidSelector(all) && document.querySelector(all) !== target) {
-        app.Synergy(all, el => app.modal(el).hide());
+        app.Synergy(all, el => toggleModal('hide', all, el, options, overlay));
     }
 
     // toggle the page overlay
-    if (options.overlay.enabled) {
-        app.overlay(overlay)[type]('dialog');
-    }
+    if (options.overlay.enabled) app.overlay(overlay)[type]('dialog');
 
     // toggle the target modal
     app.Synergy(target).modifier('visible', (type === 'show') ? 'add' : 'remove');
@@ -107,7 +97,7 @@ function toggleModal(type, all, target, options, overlay) {
 function initModals(els, namespace) {
     els.forEach((el, index) => {
         const id = el.href ? (el.href.substr(el.href.lastIndexOf('/') + 1).replace(/^#/, '')) : `_modal_${index}`;
-        const style = (el.getAttribute('data-modal-style')) ? `-animate-${el.getAttribute('data-modal-style')}` : '';
+        const style = (el.getAttribute('data-modal-style')) ? '-animate-' + el.getAttribute('data-modal-style') : '';
         const content = el.getAttribute('data-modal-content');
         
         const template = [`

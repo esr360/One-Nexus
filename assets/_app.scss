@@ -100,3 +100,30 @@ $asset-path: '../..' !default;
     }
 
 }
+
+@mixin fizz($custom: ()) {
+
+    $fizz: config((
+        'name': 'buttons'
+    ), $custom);
+
+    @include module() {
+
+    }
+
+}
+
+@include fizz((
+    '_foo': (
+        'content': 'alpha' ,
+        '-bar': (
+            'content': 'beta',
+            '-baz': (
+                'content': 'gamma',
+                '_fizz': (
+                    'content': 'delta'
+                )
+            )
+        )
+    )
+));
