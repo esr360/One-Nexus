@@ -12,6 +12,7 @@
         "item": {
             "gutter": "0.5em",
             "background": "transparent",
+            "transition": "core(transition)",
             "border-radius": "0",
             "hover": {
                 "color": "color(greyscale, white)",

@@ -21,7 +21,7 @@
         
         // the breadcrumb may or may not be a ul itself
         &, & > ul {
-            @include extend($parent: 'list', $modifiers: 'reset');
+            @include _module('list', ('reset'), false);
             margin-left: 0;
         }
 

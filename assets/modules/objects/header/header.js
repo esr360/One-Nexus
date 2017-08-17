@@ -52,9 +52,10 @@ export function header(els = 'header', custom) {
  * @param {Object} options
  */
 function toggleStickyHeader(options) {
-    // toggle header padding
-    // @todo change below to Synergy selector to avoid hardcoded 'header'
-    document.body.classList[(options.type === 'stick') ? 'add' : 'remove']('header_isFixed');
+
+    const operator = (options.type === 'stick') ? 'add' : 'remove';
+
+    app.Synergy([document.body, options.config.name]).component('isFixed', operator);
 
     // toggle fixed modifier
     app.Synergy(options.target).modifier('fixed', (options.type === 'stick') ? 'add' : 'remove');

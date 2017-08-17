@@ -6,7 +6,6 @@ One-Nexus provides some useful JavaScript tools to facilitate development and eh
 
 ## Tools
 
-* [clickHelper](#clickhelper)
 * [custom](#custom)
 * [inViewport](#inviewport)
 * [isValidSelector](#isvalidselector)
@@ -14,47 +13,6 @@ One-Nexus provides some useful JavaScript tools to facilitate development and eh
 * [parents](#parents)
 * [scrollSpy](#scrollspy)
 * [smoothScroll](#smoothscroll)
-
-### ClickHelper
-
-> Add a class to an element when clicked and remove the same class from siblings
-
-```js
-app.clickHelper(parents, targetClass);
-```
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Parameter</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>parent</td>
-            <td>The parent element which contains the targets</td>
-        </tr>
-        <tr>
-            <td>targetClass</td>
-            <td>The class to add/remove to the targets when clicked</td>
-        </tr>
-    </tbody>
-</table>
-
-```html
-<div id="els">
-    <div>...</div>
-    <div>...</div>
-    <div>...</div>
-</div<
-```
-
-```js
-var targets = document.getElementById('els');
-
-app.clickHelper(targets, 'active');
-```
 
 ### Custom
 

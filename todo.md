@@ -1,26 +1,26 @@
 ## To Do
 
-* change all sass module extends to _module alias
-* get rid of clickHelper?
 * search codebase for @TODO's
 * add unit-tests
 * test everything e.g keepOpenModifier on accordions
 * fix smoothScroll calculations to be consistent
 * add author to JS modules
-* try and get config component and modifier behaviour to be consistent
 
-## Backlog
+## Fridge
+
+* add global modifiers (e.g. small, large)
+* make 'glyph' config not be so ugly (e.g. "'\\f138'" => "f138")
+* fix dropdown alignment when appears off screen
+
+## Freezer
 
 * modal.hide() on specific ID will close even if id is wrong/mispelt
 * create something to dynamically create reference links from strings
 * create animation library
-* add global modifiers (e.g. small, large)
 * consider changing json functions to ["$color", "brand", "brand-2"]
 * add 'size' to blacklist for $css-properties
 * prevent modal link anchor scroll with rel="modal" attr
-* make 'glyph' config not be so ugly (e.g. "'\\f138'" => "f138")
-* fix dropdown alignment when appears off screen
-* add 'font-size()' to evalConfig
+* try and get config component and modifier behaviour to be consistent
 
 ## Done
 
@@ -46,3 +46,6 @@
 * make modal width configurable
 * fix dropdown nav width
 * remove social colors from border buttons
+* add 'font-size()' to evalConfig
+* change all sass module extends to _module alias
+* get rid of clickHelper?

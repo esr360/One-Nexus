@@ -106,8 +106,7 @@
             }
 
         }
-        
-        /// @todo add callout styles to config
+
         @include modifier('callout') {
             &:before, &:after { 
                 display: none;

@@ -23,7 +23,7 @@
             
         @include component('nav') {
             
-            @include extend($parent: 'list', $modifiers: 'reset');
+            @include _module('list', ('reset'), false);
 
             display: table;
             position: relative;
