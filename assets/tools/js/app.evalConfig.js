@@ -34,12 +34,13 @@ function evalValue(value) {
     const isPalette = value => value.indexOf('palette(') == 0;
     const isCore = value => value.indexOf('core(') == 0;
     const isTypography = value => value.indexOf('typography(') == 0;
+    const isFontSize = value => value.indexOf('font-size(') == 0;
     
     let [params, requiresEval] = ['', false];
 
     if (
         isBreakpoint(value) || isColor(value) || isPalette(value) || isCore(value) || 
-        isTypography(value)
+        isTypography(value) || isFontSize(value)
     ) {
         [params, requiresEval] = [getParams(value), true];
     }
@@ -67,6 +68,11 @@ function evalValue(value) {
     // If value uses the `typography()` function
     else if (isTypography(value)) {
         value = app.config.typography[params[0]][params[1]];
+    }
+
+    // If value uses the `font-size()` function
+    else if (isFontSize(value)) {
+        value = app.config.typography.sizes[params[0]];
     }
 
     // recurse the function if returned value also needs to be evaluated
