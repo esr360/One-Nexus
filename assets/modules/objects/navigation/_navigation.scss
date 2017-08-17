@@ -1,12 +1,11 @@
 @import '../../modules/objects/navigation/navigation.json';
 /// Navigation
 ///
-/// @author [@esr360](http://twitter.com/esr360)
 /// @access public
 /// @group objects
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin navigation($custom: custon('navigation')) {
+@mixin navigation($custom: custom('navigation')) {
 
     // Config
     $navigation: config($navigation, $custom);
