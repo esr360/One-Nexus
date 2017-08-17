@@ -11,6 +11,7 @@
 * search codebase for @TODO's
 * fix smoothScroll calculations to be consistent
 * test everything e.g keepOpenModifier on accordions
+* address typography(typefaces, primary) outputting weights
 
 ## Freezer
 

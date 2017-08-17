@@ -51,6 +51,14 @@ Pass custom options to the `typography` object in your theme's config file (e.g.
 }
 ```
 
+#### Typefaces
+
+The `typefaces` object imports [Google Fonts](https://fonts.google.com) - so the above example would import the following url into your stylesheet:
+
+```
+https://fonts.googleapis.com/css?family=Raleway:100,900
+```
+
 ### Sass
 
 Load the Typography styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `typography()` mixin:
@@ -81,6 +89,7 @@ Retrevie a value from a Typography options group
 ```scss
 .element {
     font-size: typography('sizes', 'size-4');
+    font-family: typography('typefaces', 'primary');
 }
 ```
 
