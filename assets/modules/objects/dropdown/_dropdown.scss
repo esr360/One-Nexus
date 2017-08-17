@@ -23,7 +23,10 @@
             margin: 0;
             
             // show the dropdown
-            li {	
+            li {
+
+                position: relative;
+
                 &:hover {
                     > ul {
                         opacity: 1;

@@ -1,6 +1,7 @@
 ---
 title: One-Nexus
 bodyClass: ''
+bodyID: ''
 preloader: true
 styles:
     - <%=assets%>assets/themes/<%=theme%>/app
@@ -36,7 +37,7 @@ FontAwesome: 4.7.0
         {{> preloader}}
     {{/if}}
 
-    <body class="{{bodyClass}}">
+    <body class="{{bodyClass}}" id="{{bodyID}}">
         {{> body}}
     </body>
 

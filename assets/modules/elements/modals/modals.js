@@ -41,13 +41,14 @@ export function modal(els = 'modal', custom) {
 
         // Open/Close Triggers
         const openTriggers  = document.querySelectorAll(`[data-modal-target="${el.id}"], [href="#${el.id}"]`);
+        // @todo add option to change to el.component('close') to protect outside influences
         const closeTriggers = app.Synergy(options.name).component('close');
 
         openTriggers.forEach(trigger => trigger.addEventListener('click', show, false));
         closeTriggers.forEach(trigger => trigger.addEventListener('click', hide, false));
 
         exports.toggle = operator => {
-            (el.modifier('visible') || operator === 'hide') ? exports.hide : exports.show;
+            (el.modifier('visible') || operator === 'hide') ? exports.hide() : exports.show();
         }
 
         exports.show = () => toggleModal('show', els, el, options, overlay);

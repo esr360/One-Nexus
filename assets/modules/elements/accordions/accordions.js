@@ -18,7 +18,7 @@ export function accordion(els = 'accordion', custom) {
         if (!el.getAttribute('data-initialised')) {
             el.component('section').forEach((section, index) => {
                 if (section.modifier('active')) {
-                    section.component('content')[0].modifier('active', 'add');
+                    section.component('content')[0].modifier('active', 'set');
                 }
 
                 section.component('title')[0].addEventListener('click', () => {
@@ -76,7 +76,7 @@ function clickHandler(accordion, section, options) {
 function toggleAccordion(type, parent, target, options) {
     let section;
 
-    const operator = (type === 'open') ? 'add' : 'remove';
+    const operator = (type === 'open') ? 'set' : 'unset';
 
     if (typeof target === 'string') {
         section = parent.querySelectorAll(target);

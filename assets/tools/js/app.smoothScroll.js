@@ -4,7 +4,7 @@
  * @access public
  * @see https://codepen.io/rleve/pen/iCbgy
  * 
- * @todo fix downwards scroll when <html> tag has 100% height
+ * @todo fix downwards scroll when <html> tag has height value of 100% 
  * 
  * @param {Object} custom - where custom options are passed
  */

@@ -1,16 +1,15 @@
 ## To Do
 
-* prevent modal link anchor scroll with rel="modal" attr
-* make 'glyph' config not be so ugly (e.g. "'\\f138'" => "f138")
 * add 'font-size()' to evalConfig
+* remove social colors from border buttons
+* change all sass module extends to _module alias
+* get rid of clickHelper?
 * search codebase for @TODO's
 * add unit-tests
-* remove social colors from border buttons
+* test everything e.g keepOpenModifier on accordions
 * fix smoothScroll calculations to be consistent
 * add author to JS modules
-* change all sass module extends to _module alias
 * try and get config component and modifier behaviour to be consistent
-* get rid of clickHelper?
 
 ## Backlog
 
@@ -20,6 +19,9 @@
 * add global modifiers (e.g. small, large)
 * consider changing json functions to ["$color", "brand", "brand-2"]
 * add 'size' to blacklist for $css-properties
+* prevent modal link anchor scroll with rel="modal" attr
+* make 'glyph' config not be so ugly (e.g. "'\\f138'" => "f138")
+* fix dropdown alignment when appears off screen
 
 ## Done
 
@@ -43,3 +45,4 @@
 * sticky header padding-top scroll jump
 * add css property list for config
 * make modal width configurable
+* fix dropdown nav width
