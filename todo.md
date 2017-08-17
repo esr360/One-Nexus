@@ -1,16 +1,16 @@
 ## To Do
 
-* search codebase for @TODO's
+* remove @author
 * add unit-tests
-* test everything e.g keepOpenModifier on accordions
-* fix smoothScroll calculations to be consistent
-* add author to JS modules
 
 ## Fridge
 
 * add global modifiers (e.g. small, large)
 * make 'glyph' config not be so ugly (e.g. "'\\f138'" => "f138")
 * fix dropdown alignment when appears off screen
+* search codebase for @TODO's
+* fix smoothScroll calculations to be consistent
+* test everything e.g keepOpenModifier on accordions
 
 ## Freezer
 
