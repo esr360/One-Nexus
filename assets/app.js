@@ -1,7 +1,9 @@
-//*****************************************************************
-// One-Nexus - A front-end framework for creating modular and 
-// configurable UI components - https://github.com/esr360/One-Nexus
-//*****************************************************************
+///****************************************************************
+/// One-Nexus - A toolkit for architecting and constructing 
+/// front-end user-interfaces - https://github.com/esr360/One-Nexus
+///
+/// @author [@esr360](http://twitter.com/esr360)
+///****************************************************************
 
 import * as app from './app';
 

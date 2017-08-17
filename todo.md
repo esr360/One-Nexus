@@ -1,6 +1,6 @@
 ## To Do
 
-* remove @author
+* tidy up Gruntfile/build
 * add unit-tests
 
 ## Fridge
@@ -11,7 +11,8 @@
 * search codebase for @TODO's
 * fix smoothScroll calculations to be consistent
 * test everything e.g keepOpenModifier on accordions
-* address typography(typefaces, primary) outputting weights
+* address typography(typefaces, primary) outputting weights in CSS
+* fork https://github.com/franzheidl/spinners to remove CSS comments
 
 ## Freezer
 
@@ -50,3 +51,4 @@
 * add 'font-size()' to evalConfig
 * change all sass module extends to _module alias
 * get rid of clickHelper?
+* remove @author
