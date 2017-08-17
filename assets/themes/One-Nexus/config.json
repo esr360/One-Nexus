@@ -1,13 +1,7 @@
 {
     "app": {
-        "accordions": {
-            "title": {
-                "color": "red",
-                "active": {
-                    "color": "pink"
-                }
-            },
-            "keepOpenModifier": "foo"
+        "buttons": {
+            "border-palettes": ["brand", "alert"]
         },
         "carousels": {
             "nav-buttons": {

@@ -1,7 +1,5 @@
 ## To Do
 
-* add 'font-size()' to evalConfig
-* remove social colors from border buttons
 * change all sass module extends to _module alias
 * get rid of clickHelper?
 * search codebase for @TODO's
@@ -22,6 +20,7 @@
 * prevent modal link anchor scroll with rel="modal" attr
 * make 'glyph' config not be so ugly (e.g. "'\\f138'" => "f138")
 * fix dropdown alignment when appears off screen
+* add 'font-size()' to evalConfig
 
 ## Done
 
@@ -46,3 +45,4 @@
 * add css property list for config
 * make modal width configurable
 * fix dropdown nav width
+* remove social colors from border buttons

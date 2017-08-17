@@ -91,12 +91,16 @@
             background: none;
             color: inherit;
             border-color: currentColor;
+
             &:hover {
                 color: color('greyscale', 'white');
                 background: this('background');
                 border-color: this('background');
             }
-            @each $key, $color in merge-palettes(this('palettes')) {
+
+            $border-palettes: if(this('border-palettes'), this('border-palettes'), this('palettes'));
+
+            @each $key, $color in merge-palettes($border-palettes) {
                 @include modifier($key) {
                     color: $color;
                     @if is-grayscale($color, $key) {
