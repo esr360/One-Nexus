@@ -941,7 +941,7 @@ The `breadcrumb` helper can be used to populate a breadcrumb list from its curre
 This helper is used to determine if an array contains a certain value.
 
 ```html
-{{#inArray array 'value }}...{{/inArray}}
+{{#inArray array 'value' }}...{{/inArray}}
 ```
 
 ### Layouts
@@ -1130,7 +1130,7 @@ Include in Handlebars template:
 
 ## Unit Testing
 
-One-Nexus offers out-the-box unit testing for Sass and JavaScript. Currently, One-Nexus provides very little coverage for all the default modules (but coverage will keep improving until 100% is reached!) - but the setup make it easy to start writing unit tests for your own modules.
+One-Nexus offers out-the-box unit testing for Sass and JavaScript. Currently, One-Nexus provides very little coverage for all the default modules (but coverage will keep improving until 100% is reached!) - but the setup makes it easy to start writing unit tests for your own modules.
 
 ### Sass Unit Testing
 
@@ -1222,6 +1222,8 @@ All of the build commands work out-the-box (after running `npm install` and assu
 > Remember you need to have `grunt-cli` installed globally (`npm i -g grunt-cli`)
 
 Generate distribution assets and setup a local server which watches for live changes by running the default `grunt` task. Your built UI will be available at `http://localhost:3000/`.
+
+> Configure your project's Grunt environment via `/build/config.js`
 
 ### Available Grunt Tasks
 

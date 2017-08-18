@@ -1,0 +1,36 @@
+///****************************************************************
+/// One-Nexus - A toolkit for architecting and constructing 
+/// front-end user-interfaces - https://github.com/esr360/One-Nexus
+///
+/// @author [@esr360](http://twitter.com/esr360)
+///****************************************************************
+
+@include describe('Vertical Center') {
+
+    @include it('Outputs correct positioning with no parameter') {
+        @include assert {
+            @include output {
+                @include vertical-center();
+            }
+            @include expect {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+    @include it('Outputs correct relative positioning') {
+        @include assert {
+            @include output {
+                @include vertical-center(relative);
+            }
+            @include expect {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+}
