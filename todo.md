@@ -1,8 +1,5 @@
 ## To Do
 
-* tidy up Gruntfile/build
-* add unit-tests
-
 ## Fridge
 
 * add global modifiers (e.g. small, large)
@@ -13,6 +10,8 @@
 * test everything e.g keepOpenModifier on accordions
 * address typography(typefaces, primary) outputting weights in CSS
 * fork https://github.com/franzheidl/spinners to remove CSS comments
+* tidy up Gruntfile/build
+* add unit-tests
 
 ## Freezer
 

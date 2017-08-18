@@ -128,3 +128,9 @@ $asset-path: '../..' !default;
         )
     )
 ));
+
+@include module('foo') {
+    @include module('bar') {
+        content: '.foo, [class*="foo-"]';
+    }
+}
