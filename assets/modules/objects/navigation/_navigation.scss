@@ -19,16 +19,17 @@
         //*********************************************************
         // Core Styles
         //*********************************************************
-        
+
         // all levels
-        li {    
+        li {
             a {
                 @include get-styles(this('global-item'));
                 display: block;
+
                 &:hover {
                     text-decoration: none;
                 }
-            }   
+            }
         }
 
         // parent level only
@@ -38,9 +39,9 @@
             vertical-align: middle;
 
             > li {
-
                 // add gap between items
                 margin-left: this('item', 'gutter');
+
                 &:first-child {
                     margin-left: 0;
                 }
@@ -49,12 +50,13 @@
                     @include get-styles(this('item'));
                     // if item has child menu
                     &:not(:only-child) {
-                        border-bottom-color: transparent;
                         border-radius: 0;
-                        &:after {
+                        border-bottom-color: transparent;
+
+                        &::after {
                             content: this('dropdown-icon');
-                            font-family: FontAwesome;
                             margin-left: 0.5em;
+                            font-family: FontAwesome;
                         }
                     }
                 }
@@ -74,6 +76,7 @@
                     > a {
                         @include get-styles(this('item', 'active'));
                     }
+
                     &:hover {
                         // if item is active and hovered
                         // > a {}
@@ -88,6 +91,7 @@
         @media (min-width: breakpoint('break-3')) {
             > ul {
                 display: inline-block;
+
                 > li {
                     display: inline-block;
                     //position: relative;

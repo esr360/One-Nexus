@@ -24,51 +24,54 @@
             padding-left: 0;
             list-style: none;
         }
-        
+
         @include modifier('clear') {
             padding-left: 1em;
         }
-        
+
         @include modifier('inline') {
             > li {
                 display: inline-block;
+
                 + li {
                     margin-left: this('inline-spacing');
                 }
             }
         }
-        
+
         @include modifier('divider') {
             > li {
                 &:not(:last-child) {
-                    padding-bottom: 1em;
                     margin-bottom: 1em;
-                    border-bottom: 1px dotted rgba(black, 0.2);
+                    padding-bottom: 1em;
+                    border-bottom: 1px dotted color('opaque', 'dark-2');
                 }
             }
         }
-        
+
         @include modifier('arrow') {
             @include extend('reset');
             > li {
                 position: relative;
-                line-height: 1.7;
                 margin-bottom: 0;
                 padding-left: 1.5em;
-                &:before {
+                line-height: 1.7;
+
+                &::before {
                     @include vertical-center();
                     content: this('arrow-icon');
                     display: inline-block;
                     left: 0;
-                    font-family: FontAwesome;
                     margin-right: 0.5em;
+                    font-family: FontAwesome;
                 }
             }
+
             @include modifier('highlight') {
                 color: this('arrow-color');
             }
         }
-        
+
         @include modifier('group') {
             > li + li {
                 margin-top: 1em;
@@ -80,7 +83,7 @@
         //*********************************************************
 
         @content;
-        
+
     } // module
 
 } // @mixin lists

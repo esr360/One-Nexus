@@ -23,7 +23,7 @@
         @include fill-parent(fixed);
 
         transform: scale(1);
-        
+
         @media (max-width: this('visible-at')) {
             display: none;
         }
@@ -57,7 +57,7 @@
         //*********************************************************
 
         @content;
-        
+
     } // module
 
 } // @mixin preloader

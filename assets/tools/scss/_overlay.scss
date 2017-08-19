@@ -5,11 +5,12 @@
 ///
 /// @param {map} $custom - where custom config will be passed
 @mixin bg-overlay($background) {
-	position: relative;
-	&:before {
-		content: '';
-		z-index: 0;
-		background: $background;
-		@include fill-parent();
-	}
+    position: relative;
+
+    &::before {
+        @include fill-parent();
+        content: '';
+        z-index: 0;
+        background: $background;
+    }
 }

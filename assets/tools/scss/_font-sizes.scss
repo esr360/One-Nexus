@@ -32,7 +32,7 @@
     $min-vw: map-get($font-sizes, 'min-vw');
     $max-vw: map-get($font-sizes, 'max-vw');
 
-    // Get the index of the value closest to our low-res 
+    // Get the index of the value closest to our low-res
     // modular-scale value
     $ms-index: 1;
     @each $value in $values {
@@ -66,7 +66,7 @@
     @each $key, $value in map-get($font-sizes, 'sizes') {
         // Get current index
         $index: index($values, $value);
-    
+
         // Set min/max value for scaling
         $min-font-size: nth($ms-lr-values, $index) * 1em;
         $max-font-size: $value;
@@ -74,9 +74,11 @@
         @include modifier($key) {
             @if map-get($font-sizes, 'fluid-scaling') {
                 font-size: $min-font-size;
+
                 @media screen and (min-width: $min-vw) {
                     font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / (#{strip-unit($max-vw - $min-vw)} / 10)));
                 }
+
                 @media screen and (min-width: $max-vw) {
                     font-size: $max-font-size;
                 }

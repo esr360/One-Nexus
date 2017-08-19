@@ -8,6 +8,11 @@
                 "foo": "bar"
             }
         },
+        "colors": {
+            "opaque": {
+                "dark-2": "rgba(black, 0.2)"
+            }
+        },
         "billboard": {
             "fullscreen": {
                 "enabled": false

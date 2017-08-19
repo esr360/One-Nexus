@@ -20,31 +20,11 @@
         // Core Styles
         //*********************************************************
 
-        border: 0;
-        padding: 0;
-        position: relative;
-
-        &:before, &:after {
-            font-size: this('icon', 'size');
-            font-family: this('icon', 'font-family');
-            height: this('icon', 'height');
-            line-height: 1;
-            position: absolute;
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        &:before {
-            content: open-quote;
-            left: 0;
-        }
-
-        &:after {
-            content: close-quote;
-            right: 0;
-        }
-
         @include object;
+
+        position: relative;
+        padding: 0;
+        border: none;
 
         //*********************************************************
         // Modifiers
@@ -53,22 +33,25 @@
         @include modifier('icon') {
             @include option('icon', 'openQuote') {
                 padding-left: this('icon', 'padding');
-                &:before {
-                    opacity: 1;
+
+                &::before {
                     visibility: visible;
+                    opacity: 1;
                     #{nth(this('icon', 'openQuote'), 2)}: 0;
                 }
             }
+
             @include option('icon', 'closeQuote') {
                 padding-right: this('icon', 'padding');
-                &:after {
-                    opacity: 1;
+
+                &::after {
                     visibility: visible;
+                    opacity: 1;
                     #{nth(this('icon', 'closeQuote'), 2)}: 0;
                 }
             }
         }
-        
+
         @include modifier('pull') {
 
             margin: this('pull', 'margin');
@@ -95,21 +78,45 @@
             }
 
             @include modifier('left') {
-                float: left;
                 margin-left: 0;
+                float: left;
             }
 
             @include modifier('right') {
-                float: right;
                 margin-right: 0;
+                float: right;
             }
 
         }
 
         @include modifier('callout') {
-            &:before, &:after { 
+            &::before, &::after {
                 display: none;
             }
+        }
+
+        //*********************************************************
+        // Pseudo Elements
+        //*********************************************************
+
+        &::before, &::after {
+            visibility: hidden;
+            position: absolute;
+            height: this('icon', 'height');
+            opacity: 0;
+            font-family: this('icon', 'font-family');
+            font-size: this('icon', 'size');
+            line-height: 1;
+        }
+
+        &::before {
+            content: open-quote;
+            left: 0;
+        }
+
+        &::after {
+            content: close-quote;
+            right: 0;
         }
 
         //*********************************************************

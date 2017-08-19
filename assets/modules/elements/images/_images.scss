@@ -22,11 +22,12 @@
 
         @include modifier('center-xy') {
             position: relative;
+
             @include component('figure') {
-                @include horizontal-center;
+                @include horizontal-center();
                 @include vertical-center();
-                margin-left: auto !important;
                 margin-right: auto !important;
+                margin-left: auto !important;
             }
         }
 
@@ -43,8 +44,8 @@
     //*************************************************************
 
     img {
-        max-width: 100%;
         display: block;
+        max-width: 100%;
     }
 
 } // @mixin images

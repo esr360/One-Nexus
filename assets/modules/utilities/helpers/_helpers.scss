@@ -12,70 +12,71 @@
     // Visibility
     //*************************************************************
 
-	//Hide visually and from screen readers:
-	.hidden, %hidden {
-		display: none !important;
-	}
-	
-	// Hide only visually, but keep for screen readers
-	// http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
-	.visually-hidden, %visually-hidden {
-		border: 0;
-		clip: rect(0 0 0 0);
-		height: 1px;
-		margin: -1px;
-		overflow: hidden;
-		padding: 0;
-		position: absolute;
-		width: 1px;
-		&.focusable {
-			&:active, &:focus {
-				clip: auto;
-				height: auto;
-				margin: 0;
-				overflow: visible;
-				position: static;
-				width: auto;
-			}
-		}
-	}
+    //Hide visually and from screen readers:
+    .hidden, %hidden {
+        display: none !important;
+    }
 
-	// Hide visually and from screen readers, but maintain layout
-	.invisible, %invisible {
-		visibility: hidden;
-		opacity: 0;
-	}
+    // Hide only visually, but keep for screen readers
+    // http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+    .visually-hidden, %visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        border: none;
 
-	.visible, %visible {
-		visibility: visible;
-		opacity: 1;
-	}
+        &.focusable {
+            &:active, &:focus {
+                position: static;
+                width: auto;
+                height: auto;
+                margin: 0;
+                overflow: visible;
+                clip: auto;
+            }
+        }
+    }
+
+    // Hide visually and from screen readers, but maintain layout
+    .invisible, %invisible {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .visible, %visible {
+        visibility: visible;
+        opacity: 1;
+    }
 
     //*************************************************************
     // Clearfix
     //*************************************************************
 
-	.clearfix, .cf, %clearfix {
-		zoom: 1;
-		&:before, &:after { 
-			content: ''; 
-			display: table; 
-		}
-		&:after { 
-			clear: both; 
-		}
-	}
+    .clearfix, .cf, %clearfix {
+        zoom: 1;
+
+        &::before, &::after {
+            content: '';
+            display: table;
+        }
+
+        &::after {
+            clear: both;
+        }
+    }
 
     //*************************************************************
     // Disabling
     //*************************************************************
-    
+
     .greyscale, %greyscale {
         filter: grayscale(100%);
-        filter: gray; // IE6-9
-        -webkit-filter: grayscale(100%);
     }
-    
+
     .disabled, %disabled {
         @extend %greyscale;
         opacity: 0.8;
@@ -85,69 +86,73 @@
     // Aligning
     //*************************************************************
 
-	.wrapper {
-		padding-left: option($grid, 'options', 'gutter');
-		padding-right: option($grid, 'options', 'gutter');
-	}
-    
-	// Text Aligning
-	
-	.text-left { 
-		text-align: left !important; 
-	}
-	.text-center { 
-		text-align: center !important; 
-	}
-	.text-right { 
-		text-align: right !important; 
-	}
-	
+    .wrapper {
+        padding-right: option($grid, 'options', 'gutter');
+        padding-left: option($grid, 'options', 'gutter');
+    }
+
+    // Text Aligning
+
+    .text-left {
+        text-align: left !important;
+    }
+
+    .text-center {
+        text-align: center !important;
+    }
+
+    .text-right {
+        text-align: right !important;
+    }
+
     // Object Aligning
-    
+
     .object-center {
         position: relative;
         left: 50%;
         transform: translateX(-50%);
     }
-    
-	// Vertical Aligning
-	
-	.va-top {
-		vertical-align: top !important;
-	}
-	.va-middle {
-		vertical-align: middle !important;
-	}
-	.va-bottom {
-		vertical-align: bottom !important;
-	}
-	
-	// Vertical Center
-	
-	.v-center {
-		@include vertical-center();
-	}
+
+    // Vertical Aligning
+
+    .va-top {
+        vertical-align: top !important;
+    }
+
+    .va-middle {
+        vertical-align: middle !important;
+    }
+
+    .va-bottom {
+        vertical-align: bottom !important;
+    }
+
+    // Vertical Center
+
+    .v-center {
+        @include vertical-center();
+    }
 
     //*************************************************************
     // Responsive Visibility
     //*************************************************************
 
-	// Show only when resolution is at most X
-	@each $bp, $width in map-get($grid, 'breakpoints') {
-		.max-#{$bp} {
-			@media (min-width: $width) {
-				display: none !important;
-			}
-		}
-	}
-	
-	// Show only when resolution is at least X
-	@each $bp, $width in map-get($grid, 'breakpoints') {
-		.min-#{$bp} {
-			@media (max-width: $width) {
-				display: none !important;
-			}
-		}
-	}
-	
+    // Show only when resolution is at most X
+    @each $bp, $width in map-get($grid, 'breakpoints') {
+        .max-#{$bp} {
+            @media (min-width: $width) {
+                display: none !important;
+            }
+        }
+    }
+
+    // Show only when resolution is at least X
+    @each $bp, $width in map-get($grid, 'breakpoints') {
+        .min-#{$bp} {
+            @media (max-width: $width) {
+                display: none !important;
+            }
+        }
+    }
+
 } // @mixin helpers

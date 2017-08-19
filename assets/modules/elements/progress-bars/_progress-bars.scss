@@ -19,16 +19,8 @@
         display: block;
         position: relative;
         width: 100%;
-        border: none;
         overflow: hidden;
-        
-        &:before {
-            @include vertical-center();
-            content: attr(data-progress);
-            left: 0.5em;
-            color: this('value-color');
-            font-size: this('value-size');
-        }
+        border: none;
 
         //*********************************************************
         // Components
@@ -41,16 +33,28 @@
         }
 
         //*********************************************************
+        // Pseudo Elements
+        //*********************************************************
+
+        &::before {
+            @include vertical-center();
+            content: attr(data-progress);
+            left: 0.5em;
+            color: this('value-color');
+            font-size: this('value-size');
+        }
+
+        //*********************************************************
         // Custom Content
         //*********************************************************
 
         @content;
-    
+
     }
 
     .progress {
-        background: this('fill-background');
         display: block;
+        background: this('fill-background');
     }
 
     //*************************************************************
@@ -60,16 +64,16 @@
     progress {
 
         &::-webkit-progress-bar {
-            background: this('background');
             height: this('height');
+            background: this('background');
         }
 
         &::-webkit-progress-value {
-            background: this('fill-background');
             height: this('height');
+            background: this('fill-background');
         }
-        
-        &::-moz-progress-bar {	
+
+        &::-moz-progress-bar {
             background: this('fill-background');
         }
 

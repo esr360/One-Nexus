@@ -17,32 +17,33 @@
     @include module {
 
         display: none;
-        opacity: 0;
         visibility: hidden;
-
         position: fixed;
         top: nth(this('position'), 1);
         right: nth(this('position'), 2);
         bottom: nth(this('position'), 3);
         left: nth(this('position'), 4);
         transform: translateZ(0);
+        opacity: 0;
 
-        &.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        &:hover {
-            text-decoration: none;
-            opacity: 1;
-        }
 
         @media (min-width: this('hide-below')) {
             display: block;
         }
 
         @include modifier('visible') {
-            opacity: 1;
             visibility: visible;
+            opacity: 1;
+        }
+
+        &:hover {
+            opacity: 1;
+            text-decoration: none;
+        }
+
+        &.visible {
+            visibility: visible;
+            opacity: 1;
         }
 
         //*********************************************************
@@ -52,5 +53,5 @@
         @content;
 
     } // module
-	
+
 } // @mixin scroll-top

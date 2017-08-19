@@ -8,17 +8,17 @@
 @mixin container($custom: custom('container')) {
 
     // Configuration
-	$container: config($container, $custom);
+    $container: config($container, $custom);
 
     //*************************************************************
     // Module
     //*************************************************************
 
-	@include module {
+    @include module {
+        position: relative;
         width: this('base-width');
         max-width: this('max-width');
         margin: 0 auto;
-        position: relative;
 
         @include modifier('large') {
             max-width: this('large-width');
@@ -28,6 +28,6 @@
             padding-top: 4em;
             padding-bottom: 4em;
         }
-	}
+    }
 
 } // @mixin container

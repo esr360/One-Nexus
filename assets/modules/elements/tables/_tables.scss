@@ -21,16 +21,29 @@
         //*********************************************************
 
         width: 100%;
-        
+
+        //*********************************************************
+        // Modifiers
+        //*********************************************************
+
+        @include modifier('fixed') {
+            table-layout: fixed;
+        }
+
+        //*********************************************************
+        // Child Elements
+        //*********************************************************
+
         th, td {
             padding: this('cell-padding');
+            border-bottom: 1px solid color('opaque', 'dark-1');
+            border-left: 1px solid color('opaque', 'dark-1');
             text-align: left;
-            border-bottom: 1px solid rgba(black, 0.1);
-            border-left: 1px solid rgba(black, 0.1);
             vertical-align: top;
+
             &:first-child {
-                border-left: none;
                 padding-left: 0;
+                border-left: none;
             }
         }
 
@@ -43,17 +56,9 @@
                 }
             }
         }
-        
+
         code {
             white-space: nowrap;
-        }
-
-        //*********************************************************
-        // Modifiers
-        //*********************************************************
-
-        @include modifier('fixed') {		
-            table-layout: fixed;
         }
 
         //*********************************************************

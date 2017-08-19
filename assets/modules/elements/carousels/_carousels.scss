@@ -25,8 +25,8 @@
         }
 
         @include component('navigationItem') {
-            height: this('navigationItem', 'size');
             width: this('navigationItem', 'size');
+            height: this('navigationItem', 'size');
 
             @if this('navigationItem', 'shape') == 'circle' {
                 border-radius: 50%;
@@ -41,8 +41,8 @@
             svg {
                 @include horizontal-center();
                 @include vertical-center();
-                height: this('navigationItem', 'arrow-size');
                 width: this('navigationItem', 'arrow-size');
+                height: this('navigationItem', 'arrow-size');
             }
 
             .arrow {
@@ -55,13 +55,14 @@
             margin-top: this('bullet', 'gutter');
         }
 
-        @include component('bullet') { 
-            height: this('bullet', 'size');
+        @include component('bullet') {
             width: this('bullet', 'size');
+            height: this('bullet', 'size');
             background-color: this('bullet', 'fill');
             @if this('bullet', 'disabled') {
                 display: none;
             }
+
             &.is-selected {
                 color: this('bullet', 'active-fill');
             }

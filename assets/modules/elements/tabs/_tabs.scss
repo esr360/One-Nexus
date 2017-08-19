@@ -19,64 +19,70 @@
         //*********************************************************
         // Components
         //*********************************************************
-            
+
         @include component('nav') {
-            
+
             @include _module('list', ('reset'), false);
 
             display: table;
             position: relative;
-            margin-bottom: 0;
             z-index: 2;
-            
+            margin-bottom: 0;
+
             @include modifier('round') {
                 @include component('item') {
                     &:first-child {
                         border-top-left-radius: this('nav', 'item', 'round-radius');
                     }
+
                     &:last-child {
                         border-top-right-radius: this('nav', 'item', 'round-radius');
                     }
                 }
             }
-            
+
             @include modifier('center') {
-                margin-left: auto;
                 margin-right: auto;
+                margin-left: auto;
             }
-            
+
             @include modifier('left') {
                 margin-right: auto;
             }
-            
+
             @include modifier('right') {
                 margin-left: auto;
             }
-            
+
             @include modifier('full') {
                 width: 100%;
             }
-            
+
             @include component('item') {
-                cursor: pointer;
                 display: table-cell;
+                cursor: pointer;
+
                 @include modifier('active') {
                     + li {
                         border-left-color: this('nav', 'item', 'active', 'border-color');
                     }
+
                     &:hover {
-                        color: this('nav', 'item', 'active', 'color');
                         background: this('nav', 'item', 'active', 'background');
+                        color: this('nav', 'item', 'active', 'color');
                     }
                 }
+
                 &:not(:last-child) {
                     border-right: none;
                 }
+
                 @include modifier('round') {
                     &:first-child {
                         border-top-left-radius: this('nav', 'item', 'round-radius');
                         border-bottom-left-radius: this('nav', 'item', 'round-radius');
                     }
+
                     &:last-child {
                         border-top-right-radius: this('nav', 'item', 'round-radius');
                         border-bottom-right-radius: this('nav', 'item', 'round-radius');
@@ -85,30 +91,34 @@
             }
 
         } // component(nav)
-        
+
         @include component('content') {
             position: relative;
             top: -1px;
+
             @include modifier('glue') {
                 $tabs-glue: this('content', 'glueHeight');
-                margin-top: $tabs-glue;
-                top: -2px;
                 z-index: 2;
-                &:before {
+                top: -2px;
+                margin-top: $tabs-glue;
+
+                &::before {
                     content: '';
                     position: absolute;
-                    left: -1px;
                     top: -$tabs-glue;
-                    height: $tabs-glue;
+                    left: -1px;
                     width: calc(100% + 2px);
+                    height: $tabs-glue;
                     border: 1px solid this('content', 'glueColor');
                     background: this('content', 'glueColor');
                 }
             }
         }
-        
+
         @include component('item') {
             display: none;
+
+            // @TODO change to modifier
             &.active {
                 display: block;
             }

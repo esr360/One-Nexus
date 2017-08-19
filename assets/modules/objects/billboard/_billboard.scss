@@ -23,22 +23,22 @@
         @include background();
 
         position: relative;
-        background-size: cover;
         overflow: hidden;
+        background-size: cover;
 
         //*********************************************************
         // Options
         //*********************************************************
-        
+
         @include option('fullscreen') {
             height: 100%;
             height: 100vh;
             min-height: this('fullscreen', 'min-height');
         }
-        
+
         @include option('overlay') {
             @include bg-overlay(rgba(
-                this('overlay', 'color'), 
+                this('overlay', 'color'),
                 this('overlay', 'opacity')
             ));
         }
@@ -56,8 +56,9 @@
             color: this('color');
 
             a {
-                color: this('color');
                 border-bottom: 1px dotted;
+                color: this('color');
+
                 &:hover {
                     color: this('active-color');
                 }

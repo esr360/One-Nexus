@@ -18,9 +18,8 @@
     @include module {
 
         @include object;
-        
-        // the breadcrumb may or may not be a ul itself
-        &, & > ul {
+
+        > ul {
             @include _module('list', ('reset'), false);
             margin-left: 0;
         }
@@ -30,18 +29,21 @@
                 #{$property}: $value;
             }
         }
-        
+
         li {
             display: inline;
+
             &:not(:last-child) {
                 margin-right: 0.2em;
-                &:after {
-                    font-family: FontAwesome;
+
+                &::after {
                     content: this('divider-icon');
-                    color: this('icon-color');
                     margin-left: 0.4em;
+                    color: this('icon-color');
+                    font-family: FontAwesome;
                 }
             }
+
             &:hover {
                 a {
                     @each $property, $value in this('link-hover') {

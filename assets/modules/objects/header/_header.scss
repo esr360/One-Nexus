@@ -29,35 +29,36 @@
         // Header Bar
         @include option('bar') {
             @include module {
-                @include component('wrapper') {	
+                @include component('wrapper') {
                     display: table;
                 }
             }
+
             @include modules(('logo', 'navigation')) {
                 display: table-cell;
                 vertical-align: middle;
             }
         }
-        
+
         // Absolute Position Header
         @include option('absolute') {
             @include get-styles(this('absolute'));
             position: absolute;
             width: 100%;
         }
-        
+
         // Dark Header
         @include option('dark') {
             @include get-styles(this('dark'));
         }
-        
+
         // Fixed Header
         @include option('fixed') {
             position: fixed;
-            top: 0;
-            margin-top: 0;
-            width: 100%;
             z-index: 12;
+            top: 0;
+            width: 100%;
+            margin-top: 0;
         }
 
         // Sticky Header
@@ -70,6 +71,7 @@
                         @include get-styles(this('sticky', 'wrapper'));
                     }
                 }
+
                 @include module('logo') {
                     img {
                         height: this('sticky', 'logo-height');
@@ -110,7 +112,7 @@
         //*********************************************************
 
         @content;
-        
+
     } // module
 
 } // @mixin header

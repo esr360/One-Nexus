@@ -10,7 +10,7 @@ linters:
 
   BorderZero:
     enabled: true
-    convention: zero # or `none`
+    convention: none
 
   ChainedClasses:
     enabled: false
@@ -29,7 +29,7 @@ linters:
     enabled: false
 
   DeclarationOrder:
-    enabled: true
+    enabled: false
 
   DisableLinterReason:
     enabled: false
@@ -38,7 +38,7 @@ linters:
     enabled: true
 
   ElsePlacement:
-    enabled: true
+    enabled: false
     style: same_line # or 'new_line'
 
   EmptyLineBetweenBlocks:
@@ -70,7 +70,7 @@ linters:
     enabled: true
 
   ImportantRule:
-    enabled: true
+    enabled: false
 
   ImportPath:
     enabled: true
@@ -92,14 +92,14 @@ linters:
     force_nesting: true
 
   NameFormat:
-    enabled: true
+    enabled: false #TODO set to true
     allow_leading_underscore: true
     convention: hyphenated_lowercase # or 'camel_case', or 'snake_case', or a regex pattern
 
   NestingDepth:
-    enabled: true
+    enabled: false
     max_depth: 3
-    ignore_parent_selectors: false
+    ignore_parent_selectors: true
 
   PlaceholderInExtend:
     enabled: false
@@ -111,6 +111,7 @@ linters:
 
   PropertySortOrder:
     enabled: true
+    order: smacss
     ignore_unspecified: false
     min_properties: 2
     separate_groups: false
@@ -143,12 +144,12 @@ linters:
     allow_element_with_id: false
 
   SelectorDepth:
-    enabled: true
+    enabled: false
     max_depth: 3
 
   SelectorFormat:
-    enabled: true
-    convention: hyphenated_lowercase # or 'strict_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
+    enabled: false #TODO add regex for Synergy pattern
+    convention: hyphenated_BEM # or 'strict_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
 
   Shorthand:
     enabled: true
@@ -159,7 +160,7 @@ linters:
     allow_single_line_rule_sets: true
 
   SingleLinePerSelector:
-    enabled: true
+    enabled: false
 
   SpaceAfterComma:
     enabled: true

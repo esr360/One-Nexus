@@ -45,7 +45,7 @@
         @include modifier('uppercase') {
             text-transform: uppercase;
         }
-        
+
         @include modifier('flush') {
             margin-top: 0 !important;
             margin-bottom: 0 !important;
@@ -56,12 +56,12 @@
         //*********************************************************
 
         @include component('group') {
-        
+
             @include vertical-rhythm('bottom');
-            margin-bottom: core('margin');
-            font-size: 1rem;
             position: relative;
+            margin-bottom: core('margin');
             background-size: cover;
+            font-size: 1rem;
 
             @include module('heading') {
                 @include vertical-rhythm;
@@ -69,7 +69,7 @@
                 margin-bottom: 0.5em;
                 line-height: this('group_heading-lineHeight');
             }
-        
+
         }
 
         //*********************************************************

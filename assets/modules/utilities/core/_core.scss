@@ -8,89 +8,90 @@
 @mixin core($custom: custom('core')) {
 
     // Configuration
-	$core: config($core, $custom) !global;
+    $core: config($core, $custom) !global;
 
-	@include module {
+    @include module {
 
-		@at-root {
+        @at-root {
 
-			//*****************************************************
-			// General
-			//*****************************************************
-			
-			html, body {
-				padding: 0;
-				margin: 0;
-			}
-			
-			html {
-				overflow-x: hidden;
-			}
-			
-			body {
-				background: this('background');
-				font-family: this('font-family');
-				color: this('text-color');
-				font-size: this('font-size');
-				line-height: this('line-height');
-			}
-			
-			ins {
-				font-weight: bold;
-				color: color('brand', 'brand-1');
-				text-decoration: none;
-			}
-			
-			h1, h2, h3, h4, h5, h6 {
-				font-size: this('font-size');
-			}
+            //*****************************************************
+            // General
+            //*****************************************************
 
-			@keyframes spin { 
-				0% {
-					transform: rotate(0deg); 
-				}
-				100% { 
-					transform: rotate(360deg); 
-				} 
-			}
-			
-			::selection {
-				background-color: color('brand', 'brand-1');
-				color: color('greyscale', 'white');
-				text-shadow: none;
-			}
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
 
-			//*****************************************************
-			// Layout & Structure
-			//*****************************************************
-			
-			@include module('hrule') {
-				margin: this('margin') 0;
-				border: none;
-				border-top: 1px solid this('hrule-color');
-			}
-			
-			* {
-				&, &:before, &:after {
-					box-sizing: border-box;
-				}
-			}
-			
-			h1, h2, h3, h4, h5, h6, 
-			p, ul, ol, 
-			form, fieldset, legend, figure, table, 
-			pre, hr,
-			.object {
-				@include object;
-			}
+            html {
+                overflow-x: hidden;
+            }
 
-			.object-small {
-				@include object(this('margin')/2);
-			}
+            body {
+                background: this('background');
+                color: this('text-color');
+                font-family: this('font-family');
+                font-size: this('font-size');
+                line-height: this('line-height');
+            }
 
-		}
+            ins {
+                color: color('brand', 'brand-1');
+                font-weight: bold;
+                text-decoration: none;
+            }
 
-	}
+            h1, h2, h3, h4, h5, h6 {
+                font-size: this('font-size');
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            ::selection {
+                background-color: color('brand', 'brand-1');
+                color: color('greyscale', 'white');
+                text-shadow: none;
+            }
+
+            //*****************************************************
+            // Layout & Structure
+            //*****************************************************
+
+            @include module('hrule') {
+                margin: this('margin') 0;
+                border: none;
+                border-top: 1px solid this('hrule-color');
+            }
+
+            * {
+                &, &::before, &::after {
+                    box-sizing: border-box;
+                }
+            }
+
+            h1, h2, h3, h4, h5, h6,
+            p, ul, ol,
+            form, fieldset, legend, figure, table,
+            pre, hr,
+            .object {
+                @include object;
+            }
+
+            .object-small {
+                @include object(this('margin') / 2);
+            }
+
+        }
+
+    }
 
 } // @mixin core
 
@@ -111,6 +112,6 @@
 /// @access public
 /// @group utilities
 @mixin object($gutter: core('margin')) {
-	margin: $gutter 0;
-	@include vertical-rhythm;
+    margin: $gutter 0;
+    @include vertical-rhythm;
 }

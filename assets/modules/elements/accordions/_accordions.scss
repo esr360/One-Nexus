@@ -20,9 +20,9 @@
         // Core Styles
         //*********************************************************
 
-        margin-bottom: core('margin');
-
         @include vertical-rhythm('bottom');
+
+        margin-bottom: core('margin');
 
         //*********************************************************
         // Components
@@ -32,6 +32,7 @@
             &:not(:last-child) {
                 margin-bottom: this('section', 'vertical-rhythm');
             }
+
             @if (this('section', 'vertical-rhythm') == 0) {
                 &:not(:last-child) {
                     > *:first-child, > *:last-child {
@@ -42,39 +43,44 @@
         }
 
         @include component('title') {
-            cursor: pointer;
+
             display: block;
             margin: 0;
+            backface-visibility: hidden;
             font-weight: normal;
             line-height: 1;
-            backface-visibility: hidden;
-            // open/close icon
-            &:after {
-                font-family: FontAwesome;
-                float: right;
-                line-height: 0.75;
-                content: this('icon', 'glyph');
-                color: this('icon', 'color');
-                transition: core('transition');
-            }
-            &:hover {
-                &:after {
-                    color: this('title', 'active', 'color');
-                }
-            }
+            cursor: pointer;
+
             @include modifier('active') {
                 // open/close icon
-                &:after {		
-                    color: this('title', 'hover', 'color');
+                &::after {
                     transform: rotate(90deg) translateZ(0);
+                    color: this('title', 'hover', 'color');
+                }
+            }
+
+            // open/close icon
+            &::after {
+                content: this('icon', 'glyph');
+                float: right;
+                transition: core('transition');
+                color: this('icon', 'color');
+                font-family: FontAwesome;
+                line-height: 0.75;
+            }
+
+            &:hover {
+                &::after {
+                    color: this('title', 'active', 'color');
                 }
             }
         }
 
         @include component('content') {
+            display: none;
             margin: 0;
             margin-top: -1px;
-            display: none;
+
             @include modifier('active') {
                 display: block;
             }

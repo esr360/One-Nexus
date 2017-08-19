@@ -16,16 +16,16 @@
 
     @include module {
 
-        background: rgba(black,0.2);
-        width: 100%;
         display: block;
+        width: 100%;
+        background: color('opaque', 'dark-2');
 
         //*********************************************************
         // Custom Content
         //*********************************************************
 
         @content;
-        
+
     }// module
-	
+
 } // @mixin google-map

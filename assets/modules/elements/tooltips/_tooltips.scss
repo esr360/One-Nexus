@@ -24,8 +24,8 @@
         // Core Styles
         //*********************************************************
 
-        cursor: pointer;	
         position: relative;
+        cursor: pointer;
 
         //*********************************************************
         // Components
@@ -34,45 +34,40 @@
         @at-root .inline-tooltip {
             display: inline-block;
         }
-        
+
         @include component('wrapper') {
             text-align: center;
         }
 
         @include component('content') {
-            // Size & Appearance
-            position: absolute;
             display: inline-block;
-            
-            // Other
-            white-space: nowrap;
-            
-            // Hide by default
-            opacity: 0;
             visibility: hidden;
-            
+            position: absolute;
+            opacity: 0;
+            white-space: nowrap;
+
             // Show when parent component is hovered/touched
             [data-tooltip]:hover &,
             [data-tooltip]:active & {
-                opacity: 1;
                 visibility: visible;
+                opacity: 1;
             }
-            
+
             // Direction Arrow
             @include triangle-core;
-            
+
             // Inline-Tooltip styles
             .inline-tooltip & {
                 white-space: nowrap;
             }
-                
+
             // Positions
             @each $tooltip-position in $tooltip-positions {
                 [class*="tooltip_wrapper"][class*="-#{$tooltip-position}"] & {
                     #{$tooltip-position}: this('distance');
                     @include triangle((
-                        'core'     : false, 
-                        'position' : #{$tooltip-position}, 
+                        'core'     : false,
+                        'position' : #{$tooltip-position},
                         'color'    : this('arrow-color'),
                         'size'     : this('arrow-size')
                     ));
@@ -87,7 +82,7 @@
                         top: 50%;
                         transform: translateX(100%) translateY(-50%);
                     }
-                }	
+                }
             }
         }
 

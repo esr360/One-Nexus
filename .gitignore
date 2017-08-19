@@ -2,6 +2,7 @@
 .vscode
 .settings
 .sass-cache
+settings.json
 debug.log
 node_modules
 dist

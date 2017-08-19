@@ -20,7 +20,7 @@
         ul {
 
             margin: 0;
-            
+
             // show the dropdown
             li {
 
@@ -28,99 +28,101 @@
 
                 &:hover {
                     > ul {
-                        opacity: 1;
                         visibility: visible;
                         z-index: 8;
+                        opacity: 1;
                     }
                 }
             }
-            
+
             // dropdown menus
             ul {
-            
+
                 @include _module('list', ('reset'), false);
+                visibility: hidden;
                 position: absolute;
                 z-index: 7;
-                // hide until required
                 opacity: 0;
-                visibility: hidden;
-            
+
                 li {
-            
+
                     position: relative;
-            
+
                     a {
                         @include get-styles(this('link'));
-                        &:before, &:after {
-                            font-family: FontAwesome;		
+
+                        &::before, &::after {
+                            font-family: FontAwesome;
                         }
+
                         &:not(:only-child) {
                             padding-right: this('link', 'padding') + 1rem;
-                            &:after {
+
+                            &::after {
                                 content: this('dropdown-icon');
                                 right: 0.75em;
                                 @include vertical-center();
                             }
                         }
                     }
-            
+
                     // remove top border on first item
                     &:first-child {
                         > a {
                             border-top-color: transparent;
                         }
                     }
-                    
+
                     // remove bottom border on last item
                     &:last-child {
                         > a {
                             // border-bottom-color: transparent;
                         }
                     }
-            
+
                     &:hover {
                         > a {
                             @include get-styles(this('link', 'hover'));
                         }
+
                         + li {
                             > a {
                                 border-top-color: this('link', 'background');
                             }
                         }
+
+                        > ul {
+                            left: 50%;
+                        }
                     }
-            
+
                     &.active {
                         > a {
                             @include get-styles(this('link', 'active'));
                         }
                     }
 
-                    &:hover {
-                        > ul {
-                            left: 50%;
-                        }
-                    }
-            
                     ul {
                         top: 0;
                         left: 80%;
-                        box-shadow: 1px 1px 6px 1px rgba(black, 0.2);
+                        box-shadow: 1px 1px 6px 1px color('opaque', 'dark-2');
+
                         li {
                             a {
                                 border-left: this('link', 'border-top');
                             }
                         }
                     }
-            
+
                 } // li
-            
+
             } // ul
-            
+
             // first level only
             > ul {
                 padding-top: this('top-position');
             }
-        
+
         } // ul (parent)
 
         //*********************************************************
@@ -128,7 +130,7 @@
         //*********************************************************
 
         @content;
-        
+
     } // module
 
 } // @mixin dropdown

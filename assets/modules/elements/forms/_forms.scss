@@ -17,15 +17,6 @@
     @include module {
 
         //*********************************************************
-        // Core Styles
-        //*********************************************************
-
-        fieldset {
-            padding: 0;
-            border: none;
-        }
-
-        //*********************************************************
         // Components
         //*********************************************************
 
@@ -33,9 +24,9 @@
 
         @include component('group') {
 
+            @include vertical-rhythm('bottom');
             position: relative;
             margin-bottom: (core('margin') / 2);
-            @include vertical-rhythm('bottom');
 
             @include modifier('compound') {
                 margin-bottom: (core('margin') / 4);
@@ -53,31 +44,35 @@
 
                 display: table;
                 width: 100%;
-                
-                label { 
-                    display: table-header-group; 
+
+                label {
+                    display: table-header-group;
                 }
 
                 @include module {
                     @include component('input') {
                         display: table-footer-group;
                         float: left;
+
                         &:focus {
                             &:invalid {
-                                &, ~ label, ~ .form_icon {
+                                &, ~ label, ~ #{selector($module, 'icon')} {
                                     border-color: this('invalid-color');
                                     color: this('invalid-color');
                                 }
+
                                 &::placeholder {
                                     border-color: this('invalid-color');
                                     color: this('invalid-color');
                                 }
                             }
+
                             &:valid {
                                 &, ~ label, ~ .form_icon {
                                     border-color: this('valid-color');
                                     color: this('valid-color');
                                 }
+
                                 &::placeholder {
                                     border-color: this('invalid-color');
                                     color: this('invalid-color');
@@ -87,27 +82,38 @@
                     }
                 }
 
-            }
+            } // modifier('validate')
 
-        }
+        } // component('group')
 
         @include component('icon') {
             @include vertical-center();
-            color: this('input', 'color');
             position: absolute;
             left: 0.75em;
+            color: this('input', 'color');
         }
 
         @include component('input') {
             display: block;
             width: 100%;
+
             &::placeholder {
-                color: this('input', 'color');
                 transition: core('transition');
+                color: this('input', 'color');
             }
+
             &:focus {
                 outline: 0;
             }
+        }
+
+        //*********************************************************
+        // Child Elements
+        //*********************************************************
+
+        fieldset {
+            padding: 0;
+            border: none;
         }
 
         //*********************************************************
@@ -115,7 +121,7 @@
         //*********************************************************
 
         @content;
-        
+
     } // module
 
 } // @mixin forms

@@ -19,40 +19,14 @@
         //*********************************************************
         // Core Styles
         //*********************************************************
-        
-        // Private styles
-        position: relative;
+
         display: block;
-
-        // Public styles
+        position: relative;
         color: this('text-color');
-
-        // Pseudo States
-        //*********************************************************
-
-        &:hover {
-            text-decoration: none;
-        }
-
-        // Child Elements
-        //*********************************************************
-
-        a:not([class*="button"]) {
-            border-bottom: 1px dotted;
-            &:hover {
-                text-decoration: none;
-            }
-        }
-        
-        a, b {
-            color: inherit;
-        }
 
         //*********************************************************
         // Modifiers
         //*********************************************************
-
-        @include modifier('bar') {}
 
         @include modifier('box') {
             @include object;
@@ -70,9 +44,33 @@
 
         @include component('icon') {
             @include modifier('right') {
-                float: right;
                 margin-right: 0;
+                float: right;
             }
+        }
+
+        //*********************************************************
+        // Pseudo States
+        //*********************************************************
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        //*********************************************************
+        // Child Elements
+        //*********************************************************
+
+        a:not([class*="button"]) {
+            border-bottom: 1px dotted;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        a, b {
+            color: inherit;
         }
 
         //*********************************************************

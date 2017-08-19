@@ -7,40 +7,40 @@
 /// @param {map} $custom - where custom config will be passed
 @mixin overlay($custom: custom('overlay')) {
 
-	// Config
-	$overlay: config($overlay, $custom);
-	
+    // Config
+    $overlay: config($overlay, $custom);
+
     //*************************************************************
     // Module
     //*************************************************************
-	
-	@include module {
-	
-	    position: fixed;
-	    top: 0;
-	    right: 0;
-	    bottom: 0;
-	    left: 0;
-	    transform: translateZ(0);
-	    visibility: hidden;
-	    opacity: 0;
-	    cursor: pointer;
-        
+
+    @include module {
+
+        visibility: hidden;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: translateZ(0);
+        opacity: 0;
+        cursor: pointer;
+
         @include modifier('visible') {
-	        visibility: visible;
-	        opacity: 1;
-		}
-		
-		@include modifier('light') {
-			background: this('light-background');
-		}
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @include modifier('light') {
+            background: this('light-background');
+        }
 
         //*********************************************************
         // Custom Content
         //*********************************************************
 
         @content;
-		
-	}
-		
+
+    }
+
 } // @mixin overlay

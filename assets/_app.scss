@@ -1,5 +1,5 @@
 ///****************************************************************
-/// One-Nexus - A toolkit for architecting and constructing 
+/// One-Nexus - A toolkit for architecting and constructing
 /// front-end user-interfaces - https://github.com/esr360/One-Nexus
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -86,51 +86,3 @@ $asset-path: '../..' !default;
 @import 'modules/objects/scroll-top/scroll-top';
 @import 'modules/objects/search/search';
 @import 'modules/objects/side-nav/side-nav';
-
-.scrollSpy {
-
-    &_links {
-        @include vertical-center(fixed);
-        left: 0;
-        a {
-            &.active {
-                color: red;
-                font-weight: bold;
-            }
-        }
-    }
-
-}
-
-@mixin fizz($custom: ()) {
-
-    $fizz: config((
-        'name': 'buttons'
-    ), $custom);
-
-    @include module() {
-
-    }
-
-}
-
-@include fizz((
-    '_foo': (
-        'content': 'alpha' ,
-        '-bar': (
-            'content': 'beta',
-            '-baz': (
-                'content': 'gamma',
-                '_fizz': (
-                    'content': 'delta'
-                )
-            )
-        )
-    )
-));
-
-@include module('foo') {
-    @include module('bar') {
-        content: '.foo, [class*="foo-"]';
-    }
-}

@@ -5,9 +5,9 @@
 ///
 /// @param {string} $position - the value to use for the `position` property
 @mixin vertical-center($position: absolute) {
-	position: $position;
-	top: 50%;
-	transform: translateY(-50%);
+    position: $position;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 %vertical-center {

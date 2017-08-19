@@ -15,83 +15,82 @@
     //*************************************************************
 
     @include module {
-        
+
         @include vertical-center();
         @include horizontal-center();
-        
-        // Private styles 
+
+        visibility: hidden;
         position: fixed;
-        overflow: auto;
         max-width: 90%;
         max-height: 90%;
-
-        // hide by default
+        overflow: auto;
         opacity: 0;
-        visibility: hidden;
 
         //*********************************************************
         // Modifiers
         //*********************************************************
-        
+
         @include modifier('visible') {
-            opacity: 1;
             visibility: visible;
+            opacity: 1;
         }
-        
+
         @include modifier('animate') {
-            
+
             transition: core('transition');
-            
+
             @include modifiers(('top', 'bottom')) {
                 @include modifier('visible') {
                     top: 50%;
                 }
             }
-            
+
             @include modifier('top') {
                 top: 45%;
             }
-            
+
             @include modifier('bottom') {
                 top: 55%;
             }
-            
+
             @include modifiers(('left', 'right')) {
                 @include modifier('visible') {
                     transform: translateX(0) translateY(-50%);
                 }
             }
-            
+
             @include modifier('left') {
                 transform: translateX(-15%) translateY(-50%);
             }
-            
+
             @include modifier('right') {
                 transform: translateX(15%) translateY(-50%);
             }
-            
+
             @include modifier('zoom') {
                 transform: scale(0.5) translateY(-75%);
+
                 @include modifier('visible') {
                     transform: scale(1) translateY(-50%);
                 }
             }
-            
+
         }
 
         //*********************************************************
         // Components
         //*********************************************************
-        
+
         @include component('content');
-        
+
         @include component('close') {
-            cursor: pointer;
             position: absolute;
             font-size: this('close', 'size');
+            cursor: pointer;
+
             &:hover {
                 color: this('close', 'hover-color');
-            }	
+            }
         }
 
         //*********************************************************
@@ -99,9 +98,9 @@
         //*********************************************************
 
         @content;
-        
+
     } // module
-    
+
     @include module('overlay') {
         &[class*="dialog-visible"] {
             z-index: 12;

@@ -10,6 +10,11 @@
             "grey-6": "#161819",
             "black": "#000000"
         },
+        "opaque": {
+            "dark-1": "rgba(black, 0.1)",
+            "dark-2": "rgba(black, 0.2)",
+            "dark-8": "rgba(black, 0.8)"
+        },
         "brand": {
             "brand-1": "#2E3882",
             "brand-2": "#06d2ff",

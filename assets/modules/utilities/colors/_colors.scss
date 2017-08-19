@@ -36,7 +36,7 @@
 /// @param {string} $color - the key of the color you are interested in
 /// @return {color} - the desired color value
 @function color($palette, $color) {
-	@return map-get(palette($palette), $color);
+    @return map-get(palette($palette), $color);
 }
 
 /// Function to merge entire/partial color palettets
@@ -51,7 +51,7 @@
         // is the value a string? (an entire palette)
         @if type-of($palette) == 'string' {
             $new-palette: map-merge-deep($new-palette, palette($palette));
-        } 
+        }
         // is the value a map?
         @else if type-of($palette) == 'map' {
             // is the map one which contains colors (keys) from an existing paltte?

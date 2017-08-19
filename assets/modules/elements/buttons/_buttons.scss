@@ -13,37 +13,22 @@
     //*************************************************************
     // Module
     //*************************************************************
-        
+
     @include module {
 
         //*********************************************************
         // Core Styles
         //*********************************************************
-        
-        // Private styles 
+
         display: inline-block;
-        vertical-align: middle;
-        border-color: transparent;
-        cursor: pointer;
-        text-decoration: none;
-
-        // Public styles
-        padding-left: this('h-padding');
-        padding-right: this('h-padding');
         padding-top: this('v-padding');
+        padding-right: this('h-padding');
         padding-bottom: this('v-padding');
-
-        // Pseudo States
-        //*********************************************************
-
-        &:hover {
-            text-decoration: none;
-            background: darken(this('background'), 10%);
-        }
-        
-        &:focus {
-            outline: 0;
-        }
+        padding-left: this('h-padding');
+        border-color: transparent;
+        text-decoration: none;
+        vertical-align: middle;
+        cursor: pointer;
 
         //*********************************************************
         // Sizes
@@ -54,13 +39,14 @@
         //*********************************************************
         // Colors
         //*********************************************************
-                 
+
         // Point at which light/dark background changes for greyscale buttons
         $threshold: 77%;
 
         @each $key, $color in merge-palettes(this('palettes')) {
             @include modifier($key) {
                 background: $color;
+
                 @if is-grayscale($color, $key) {
                     @if (lightness($color) < $threshold) {
                         color: this('color');
@@ -68,7 +54,8 @@
                         color: typography('colors', 'base');
                     }
                 }
-                &:hover { 
+
+                &:hover {
                     background: darken($color, 10%);
                 }
             }
@@ -81,20 +68,21 @@
         @include modifier('block') {
             width: 100%;
             text-align: center;
+
             & + & {
                 margin-top: (core('margin') / 2);
             }
-        } 
+        }
 
         @include modifier('border') {
+            border-color: currentColor;
             background: none;
             color: inherit;
-            border-color: currentColor;
 
             &:hover {
-                color: color('greyscale', 'white');
-                background: this('background');
                 border-color: this('background');
+                background: this('background');
+                color: color('greyscale', 'white');
             }
 
             $border-palettes: if(this('border-palettes'), this('border-palettes'), this('palettes'));
@@ -105,6 +93,7 @@
                     @if is-grayscale($color, $key) {
                         border-color: $color;
                         color: $color;
+
                         &:hover {
                             @if (lightness($color) > $threshold) {
                                 color: typography('colors', 'base');
@@ -115,18 +104,19 @@
                             color: color('greyscale', 'white');
                         }
                     }
+
                     &:hover {
-                        background: $color;
                         border-color: $color;
+                        background: $color;
                     }
                 }
             }
         }
 
         @include modifier('disabled') {
+            transition-delay: 999s;
             opacity: this('disabled-opacity');
             cursor: not-allowed;
-            transition-delay: 999s;
         }
 
         @include modifier('round') {
@@ -140,24 +130,28 @@
         @include modifier('sharp') {
             border-radius: 0;
         }
-        
+
         @include modifier('icon') {
             padding: this('v-padding');
             text-align: center;
+
             .fa {
                 width: 1em;
                 height: 1em;
             }
         }
-        
+
         @include modifier('active') {
             border-color: this('active', 'background');
+
             &:hover {
                 background: this('active', 'background');
             }
+
             @include modifier('border') {
                 background: none;
                 color: this('active', 'background');
+
                 &:hover {
                     border-color: this('active', 'background');
                 }
@@ -172,25 +166,32 @@
 
             @include module {
                 margin-left: this('group-spacing');
+
                 &:first-child {
                     margin-left: 0;
                 }
             }
-        
+
             @include modifier('pills') {
                 display: table;
+
                 @include module {
                     display: table-cell;
                     margin-left: 0;
                 }
+
                 @include modifier('round') {
                     @include module {
                         border-radius: 0;
+
                         &:first-child {
-                            border-radius: this('round-radius') 0 0 this('round-radius');
+                            border-top-left-radius: this('round-radius');
+                            border-bottom-left-radius: this('round-radius');
                         }
+
                         &:last-child {
-                            border-radius: 0 this('round-radius') this('round-radius') 0;
+                            border-top-right-radius: this('round-radius');
+                            border-bottom-right-radius: this('round-radius');
                         }
                     }
                 }
@@ -200,9 +201,23 @@
 
         a[class*="#{this('name')}"] {
             color: inherit;
+
             &:hover {
                 color: inherit;
             }
+        }
+
+        //*********************************************************
+        // Pseudo States
+        //*********************************************************
+
+        &:hover {
+            background: darken(this('background'), 10%);
+            text-decoration: none;
+        }
+
+        &:focus {
+            outline: 0;
         }
 
         //*********************************************************
@@ -219,11 +234,11 @@
 
     // Makes input & button elements equal height in Firefox
     input::-moz-focus-inner,
-    button::-moz-focus-inner { 
-        border: 0;
-        padding: 0;
-        margin-top: 1px; 
+    button::-moz-focus-inner {
+        margin-top: 1px;
         margin-bottom: 1px;
+        padding: 0;
+        border: none;
     }
 
 } // @mixin buttons

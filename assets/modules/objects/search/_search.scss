@@ -17,22 +17,23 @@
     @include module {
 
         position: fixed;
-        width: 100%;
-        top: 0;
         z-index: 16;
-        text-align: center;
+        top: 0;
+        width: 100%;
         transform: translateY(-100%);
-                
+        text-align: center;
+
         @include modifier('visible') {
             transform: translateY(0);
         }
-        
+
         @include component('input') {
-            height: 100%;
             width: 100%;
-            border: none;
+            height: 100%;
             padding: 0;
+            border: none;
             outline: 0;
+
             &:focus {
                 &::placeholder {
                     //opacity: 0;
@@ -42,6 +43,7 @@
 
         @include components(('go', 'close')) {
             cursor: pointer;
+
             &:focus {
                 outline: 0;
             }
