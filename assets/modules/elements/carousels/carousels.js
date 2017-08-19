@@ -8,7 +8,7 @@ import defaults from './carousels.json';
  * @param {(String|Object)} els
  * @param {Object} custom
  */
-export function carousel(els = 'carousel', custom) {
+export function carousel(els = 'carousel', custom = {}) {
 
     custom = app.custom('carousels', custom);
 
@@ -21,7 +21,7 @@ export function carousel(els = 'carousel', custom) {
         'navigationItem'     : '.flickity-prev-next-button',
         'navigationItem-prev': '.flickity-prev-next-button.previous',
         'navigationItem-next': '.flickity-prev-next-button.next'
-    }
+    };
 
     app.Synergy(els, function(el, options) {
         // Get options from data-attr (if applicable)
@@ -55,4 +55,4 @@ export function carousel(els = 'carousel', custom) {
     app.config.carousels = Object.assign(defaults.carousels, custom);
 
     return exports;
-};
+}

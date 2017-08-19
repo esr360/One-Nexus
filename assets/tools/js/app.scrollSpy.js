@@ -21,7 +21,7 @@ export function scrollSpy(custom) {
     }, custom);
 
     if (!options.container) {
-        console.warn('ScrollSpy: you must pass a value for "container"')
+        console.warn('ScrollSpy: you must pass a value for "container"');
     }
 
     const spyLinks = document.querySelector(options.container).querySelectorAll(options.element);
@@ -29,7 +29,7 @@ export function scrollSpy(custom) {
     const spyTargets = (targets = []) => {
         spyLinks.forEach(el => targets.push(document.querySelector(el.getAttribute('href'))));
         return targets;
-    }
+    };
 
     window.onscroll = () => {
         var scrollPosition = document.body.scrollTop || document.documentElement.scrollTop;

@@ -7,7 +7,7 @@
         "active-color": "color(brand, brand-2)",
         "background": {
             "color": "color(brand, brand-1)",
-            "image": "null"
+            "image": false
         },
         "fullscreen": {
             "enabled": false,

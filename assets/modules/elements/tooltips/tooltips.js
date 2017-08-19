@@ -9,7 +9,7 @@ import defaults from './tooltips.json';
  * @param {(String|Object)} els
  * @param {Object} custom
  */
-export function tooltips(els = 'tooltip', custom) {
+export function tooltips(els = 'tooltip', custom = {}) {
 
     custom = app.custom('tooltips', custom);
 
@@ -38,4 +38,4 @@ export function tooltips(els = 'tooltip', custom) {
     app.config.tooltips = Object.assign(defaults.tooltips, custom);
 
     return exports;
-};
+}

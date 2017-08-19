@@ -9,7 +9,7 @@ import defaults from './preloader.json';
  * @param {(String|HTMLElement|NodeList)} els
  * @param {Object} custom
  */
-export function preloader(els = 'preloader', custom) {
+export function preloader(els = 'preloader', custom = {}) {
 
     custom = app.custom('preloader', custom);
 
@@ -33,4 +33,4 @@ export function preloader(els = 'preloader', custom) {
     app.config.preloader = Object.assign(defaults.preloader, custom);
 
     return exports;
-};
+}

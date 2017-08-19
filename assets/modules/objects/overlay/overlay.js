@@ -9,7 +9,7 @@ import defaults from './overlay.json';
  * @param {(String|Object)} els
  * @param {Object} custom
  */
-export function overlay(els = 'overlay', custom) {
+export function overlay(els = 'overlay', custom = {}) {
 
     custom = app.custom('overlay', custom);
 
@@ -21,7 +21,7 @@ export function overlay(els = 'overlay', custom) {
             const state = (el.modifier('visible') && operator !== 'show' || operator === 'hide') ? 'remove' : 'add';
 
             el.modifier((flag ? flag + '-' : '') + 'visible', state);
-        }
+        };
 
     }, defaults, custom);
 

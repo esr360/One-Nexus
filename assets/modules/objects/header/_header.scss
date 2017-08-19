@@ -104,7 +104,7 @@
 
         // For JS - will be applied to body element
         @include component('isFixed') {
-            padding-top: this('sticky', 'height');
+            padding-top: this('sticky', 'wrapper', 'height');
         }
 
         //*********************************************************

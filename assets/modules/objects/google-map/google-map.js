@@ -9,7 +9,7 @@ import defaults from './google-map.json';
  * @param {(String|HTMLElement|NodeList)} els
  * @param {Object} custom
  */
-export function googleMap(els = 'google-map', custom) {
+export function googleMap(els = 'google-map', custom = {}) {
 
     custom = app.custom('google-map', custom);
 
@@ -152,7 +152,7 @@ export function googleMap(els = 'google-map', custom) {
                     }
                 ]
             }
-        ]
+        ];
 
         // merge any data-attribute options
         if (el.hasAttribute('data-google-map')) {
@@ -176,4 +176,4 @@ export function googleMap(els = 'google-map', custom) {
     app.config['google-map'] = Object.assign(defaults['google-map'], custom);
 
     return exports;
-};
+}

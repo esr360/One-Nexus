@@ -85,8 +85,8 @@
                     li {
                         &:hover {
                             a {
-                                border-top: this('item', 'top-border');
-                                border-bottom: this('item', 'bottom-border');
+                                border-top: this('item', 'border-top');
+                                border-bottom: this('item', 'border-bottom');
                                 background: transparent;
                                 color: this('item', 'hover', 'color');
                             }

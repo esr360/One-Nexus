@@ -9,7 +9,7 @@ import defaults from './modals.json';
  * @param {(String|Object)} els
  * @param {Object} custom
  */
-export function modal(els = 'modal', custom) {
+export function modal(els = 'modal', custom = {}) {
 
     custom = app.custom('modals', custom);
 
@@ -17,7 +17,11 @@ export function modal(els = 'modal', custom) {
 
         // Create any dynamic modals then re-run the function
         if (!(app.config.modals && 'initialised' in app.config.modals)) {
-            app.config.modals ? app.config.modals.initialised = true : app.config.modals = { initialised: true }
+            if (app.config.modals) {
+                app.config.modals.initialised = true;
+            } else {
+                app.config.modals = { initialised: true };
+            }
 
             initModals(document.querySelectorAll('[data-modal-content]'), options.name);
 
@@ -48,8 +52,9 @@ export function modal(els = 'modal', custom) {
         closeTriggers.forEach(trigger => trigger.addEventListener('click', hide, false));
 
         exports.toggle = operator => {
-            (el.modifier('visible') || operator === 'hide') ? exports.hide() : exports.show();
-        }
+             if (el.modifier('visible') || operator === 'hide') exports.hide(); 
+             else exports.show();
+        };
 
         exports.show = () => toggleModal('show', els, el, options, overlay);
         exports.hide = () => toggleModal('hide', els, el, options, overlay);
@@ -61,7 +66,7 @@ export function modal(els = 'modal', custom) {
     );
 
     return exports;
-};
+}
 
 /**
  * Show/Hide a Modal

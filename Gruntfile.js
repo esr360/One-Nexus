@@ -269,8 +269,10 @@ module.exports = function(grunt) {
          * @see https://github.com/gruntjs/grunt-contrib-jshint
          */
         jshint: {
-            source: [PROJECT.source[0] + '**/*.js'],
-            esversion: 6
+            options: {
+                esversion: 6
+            },
+            source: [PROJECT.source[0] + '**/*.js']
         },
 
         /**

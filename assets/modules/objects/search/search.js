@@ -9,7 +9,7 @@ import defaults from './search.json';
  * @param {(String|HTMLElement|NodeList)} els
  * @param {Object} custom
  */
-export function search(els = 'searchBox', custom) {
+export function search(els = 'searchBox', custom = {}) {
 
     custom = app.custom('search', custom);
 
@@ -34,11 +34,11 @@ export function search(els = 'searchBox', custom) {
             if (state === 'set') {
                 window.setTimeout(() => el.component('input')[0].focus(), 100);
             }
-        }
+        };
 
     }, defaults, custom);
 
     app.config.search = Object.assign(defaults.search, custom);
 
     return exports;
-};
+}

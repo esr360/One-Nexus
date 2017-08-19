@@ -9,7 +9,7 @@ import defaults from './scroll-top.json';
  * @param {(String|HTMLElement|NodeList)} els
  * @param {Object} custom
  */
-export function scrollTop(els = 'scroll-top', custom) {
+export function scrollTop(els = 'scroll-top', custom = {}) {
 
     custom = app.custom('scroll-top', custom);
 
@@ -27,4 +27,4 @@ export function scrollTop(els = 'scroll-top', custom) {
     app.config['scroll-top'] = Object.assign(defaults['scroll-top'], custom);
 
     return exports;
-};
+}

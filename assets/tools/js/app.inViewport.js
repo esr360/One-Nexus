@@ -19,7 +19,7 @@ export function inViewport(custom) {
     }, custom);
 
     if (!options.target) {
-        console.warn('inViewport: you must pass a value for "target"')
+        console.warn('inViewport: you must pass a value for "target"');
     }
 
     const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
@@ -43,8 +43,8 @@ export function inViewport(custom) {
             else if (options.coverage.indexOf('px') >= 0) return elemTop + value;
         }
 
-        else return console.warn('inViewport: you must pass a valid value for "scope"')
-    }
+        else return console.warn('inViewport: you must pass a valid value for "scope"');
+    };
 
     const reached = scope() < scrollBottom;
     const inView  = reached && (scrollTop < scope());

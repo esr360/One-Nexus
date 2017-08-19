@@ -9,7 +9,7 @@ import defaults from './tabs.json';
  * @param {(String|Object)} els
  * @param {Object} custom
  */
-export function tabs(els = 'tabs', custom) {
+export function tabs(els = 'tabs', custom = {}) {
 
     custom = app.custom('tabs', custom);
 
@@ -22,7 +22,7 @@ export function tabs(els = 'tabs', custom) {
             return Array.prototype.filter.call(el.component('item'), el => {
                 return el.parents().length === itemDepth;
             });
-        }
+        };
 
         Array.prototype.forEach.call(el.component('nav')[0].children, (item, index) => {
             item.addEventListener('click', () => {
@@ -42,4 +42,4 @@ export function tabs(els = 'tabs', custom) {
     app.config.tabs = Object.assign(defaults.tabs, custom);
 
     return exports;
-};
+}

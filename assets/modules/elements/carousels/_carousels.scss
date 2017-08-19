@@ -34,7 +34,7 @@
                 border-radius: 0;
             }
 
-            @if this('navigationItem', 'disabled') {
+            @if this('navigationItem', 'disable') {
                 display: none;
             }
 
@@ -59,7 +59,7 @@
             width: this('bullet', 'size');
             height: this('bullet', 'size');
             background-color: this('bullet', 'fill');
-            @if this('bullet', 'disabled') {
+            @if this('bullet', 'disable') {
                 display: none;
             }
 

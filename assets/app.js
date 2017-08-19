@@ -14,7 +14,7 @@ import * as app from './app';
 import Synergy  from '../../../Synergy/src/js/synergy';
 import Flickity from 'flickity';
 
-export { Synergy, Flickity }
+export { Synergy, Flickity };
 
 // Modules
 //*****************************************************************
@@ -46,7 +46,7 @@ export {
     accordion, carousel, modal, progressBar, tabs, tooltips, 
     googleMap, header, overlay, preloader, scrollTop, search, sideNav,
     colors, core, grid, typography
-}
+};
 
 // Tools
 //*****************************************************************

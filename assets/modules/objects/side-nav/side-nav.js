@@ -9,7 +9,7 @@ import defaults from './side-nav.json';
  * @param {(String|HTMLElement|NodeList)} els
  * @param {Object} custom
  */
-export function sideNav(els = 'sideNav', custom) {
+export function sideNav(els = 'sideNav', custom = {}) {
 
     custom = app.custom('side-nav', custom);
 
@@ -41,7 +41,7 @@ export function sideNav(els = 'sideNav', custom) {
         // toggle dropdown on element click
         el.component('dropdown_toggle').forEach(toggle => {
             toggle.addEventListener('click', () => {
-                toggle.nextSibling.classList.toggle('collapsed')
+                toggle.nextSibling.classList.toggle('collapsed');
             });
         });
 
@@ -55,7 +55,7 @@ export function sideNav(els = 'sideNav', custom) {
     app.config['side-nav'] = Object.assign(defaults['side-nav'], custom);
 
     return exports;
-};
+}
 
 /**
  * Show/Hide the Side Navigation

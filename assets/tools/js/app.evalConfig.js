@@ -29,12 +29,12 @@ export function evalConfig(config) {
  */
 function evalValue(value) {
 
-    const isBreakpoint = value => value.indexOf('breakpoint(') == 0;
-    const isColor = value => value.indexOf('color(') == 0;
-    const isPalette = value => value.indexOf('palette(') == 0;
-    const isCore = value => value.indexOf('core(') == 0;
-    const isTypography = value => value.indexOf('typography(') == 0;
-    const isFontSize = value => value.indexOf('font-size(') == 0;
+    const isBreakpoint = value => value.indexOf('breakpoint(') === 0;
+    const isColor = value => value.indexOf('color(') === 0;
+    const isPalette = value => value.indexOf('palette(') === 0;
+    const isCore = value => value.indexOf('core(') === 0;
+    const isTypography = value => value.indexOf('typography(') === 0;
+    const isFontSize = value => value.indexOf('font-size(') === 0;
     
     let [params, requiresEval] = ['', false];
 
@@ -57,7 +57,7 @@ function evalValue(value) {
 
     // If value uses the `palette()` utility function
     else if (isPalette(value)) {
-        value = app.config.colors[params[0]]
+        value = app.config.colors[params[0]];
     }
 
     // If value uses the `core()` function

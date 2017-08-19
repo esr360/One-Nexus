@@ -9,7 +9,7 @@ import defaults from './progress-bars.json';
  * @param {(String|Object)} els
  * @param {Object} custom
  */
-export function progressBar(els = 'progress-bar', custom) {
+export function progressBar(els = 'progress-bar', custom = {}) {
 
     custom = app.custom('progress-bars', custom);
 
@@ -22,4 +22,4 @@ export function progressBar(els = 'progress-bar', custom) {
     app.config['progress-bars'] = Object.assign(defaults['progress-bars'], custom);
 
     return exports;
-};
+}

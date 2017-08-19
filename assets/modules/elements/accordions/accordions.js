@@ -9,7 +9,7 @@ import defaults from './accordions.json';
  * @param {(String|HTMLElement|NodeList)} els
  * @param {Object} custom
  */
-export function accordion(els = 'accordion', custom) {
+export function accordion(els = 'accordion', custom = {}) {
 
     custom = app.custom('accordions', custom);
 
@@ -38,7 +38,7 @@ export function accordion(els = 'accordion', custom) {
     app.config.accordions = Object.assign(defaults.accordions, custom);
 
     return exports;
-};
+}
 
 /**
  * clickHandler

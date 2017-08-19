@@ -9,7 +9,7 @@ import defaults from './header.json';
  * @param {(String|HTMLElement|NodeList)} els
  * @param {Object} custom
  */
-export function header(els = 'header', custom) {
+export function header(els = 'header', custom = {}) {
 
     custom = app.custom('header', custom);
 
@@ -42,7 +42,7 @@ export function header(els = 'header', custom) {
     app.config.header = Object.assign(defaults.header, custom);
 
     return exports;
-};
+}
 
 /**
  * Toggle Header Stickyness
