@@ -23,6 +23,11 @@
         transform: translateY(-100%);
         text-align: center;
 
+        @include component('wrapper') {
+            @include _module('container');
+            height: 100%;
+        }
+
         @include modifier('visible') {
             transform: translateY(0);
         }
