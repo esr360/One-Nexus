@@ -3,20 +3,20 @@
         "name": "carousel",
         "navigationItem": {
             "disable": false,
-            "size": "font-size(size-9)",
-            "background-color": "rgba(white, 0.75)",
-            "arrow-color": "rgba(black, 0.4)",
+            "size": ["#FONT-SIZE", "size-9"],
+            "background-color": ["#COLOR", "opaque", "light-8"],
+            "arrow-color": ["#COLOR", "opaque", "dark-4"],
             "arrow-size": "40%",
             "shape": "circle",
-            "transition": "core(transition)"
+            "transition": ["#CORE", "transition"]
         },
         "bullet": {
             "disable": false,
             "size": "10px",
             "gutter": "25px",
-            "fill": "rgba(black, 0.4)",
-            "active-fill": "grey",
-            "transition": "core(transition)"
+            "fill": ["#COLOR", "opaque", "dark-4"],
+            "active-fill": ["#COLOR", "brand", "brand-3"],
+            "transition": ["#CORE", "transition"]
         },
         "Flickity": {
             "cellAlign": "left",

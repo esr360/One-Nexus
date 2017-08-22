@@ -1,10 +1,10 @@
 {
     "core": {
         "name": "core",
-        "background": "color('greyscale', 'grey-1')",
-        "font-family": "typography('typefaces', 'primary')",
-        "text-color": "typography('colors', 'base')",
-        "font-size": "typography('sizes', 'base')",
+        "background": ["#COLOR", "greyscale", "grey-1"],
+        "font-family": ["#TYPEFACE", "primary"],
+        "text-color": ["#TYPOGRAPHY", "colors", "base"],
+        "font-size": ["#TYPOGRAPHY", "sizes", "base"],
         "margin": "2rem",
         "line-height": "1.4",
         "radius": "0.4em",

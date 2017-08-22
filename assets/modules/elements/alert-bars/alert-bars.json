@@ -1,8 +1,8 @@
 {
     "alert-bars": {
         "name": "alert",
-        "colors": "palette(alert)",
-        "text-color": "color(greyscale, white)",
+        "colors": ["#PALETTE", "alert"],
+        "text-color": ["#COLOR", "greyscale", "white"],
         "icon": {
             "margin-right": "0.5em",
             "line-height": "1.25",

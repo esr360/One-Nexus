@@ -1,5 +1,9 @@
 ## To Do
 
+* move 'base' typography size into 'core' module
+* move eval-config to Synergy
+* move `custom()` to Synergy
+
 ## Fridge
 
 * add global modifiers (e.g. small, large)

@@ -31,14 +31,20 @@ export function carousel(els = 'carousel', custom = {}) {
         }
 
         // Create new Flickity instance
-        var carousel = new app.Flickity(el, options.Flickity);
+        const carousel = new app.Flickity(el, options.Flickity);
 
-        // Add appropriate classes to carousel elements
+        carousel.on('select', () => {
+            // add One-Nexus class to bullet
+            el.querySelector('.dot.is-selected').classList.add(options.name + '_' + 'bullet');
+        });
+
+        // Add appropriate classes to carousel elements for styles
         for (let [key, value] of Object.entries(components)) {
             if (value) {
-                const identifier = `${options.name}_${key}`;
-                const component = el.querySelector(value);
-                component.classList.add(identifier);
+                const identifier = options.name + '_' + key;
+                const components = el.querySelectorAll(value);
+
+                elInit(components, identifier);
             }
         }
 
@@ -49,6 +55,10 @@ export function carousel(els = 'carousel', custom = {}) {
         }
 
         exports.Flickity = carousel;
+
+        function elInit(els, identifier) {
+            els.forEach(el => el.classList.add(identifier));
+        }
 
     }, defaults, custom);
 

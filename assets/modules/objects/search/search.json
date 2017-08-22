@@ -1,18 +1,18 @@
 {
     "search": {
         "name": "searchBox",
-        "background": "color(greyscale, grey-5)",
+        "background": ["#COLOR", "greyscale", "grey-5"],
         "height": "60px",
-        "transition": "core(transition)",
+        "transition": ["#CORE", "transition"],
         "input": {
-            "background": "color(greyscale, grey-5)",
-            "color": "color(greyscale, white)",
+            "background": ["#COLOR", "greyscale", "grey-5"],
+            "color": ["#COLOR", "greyscale", "white"],
             "font-weight": "lighter"
         },
         "placeholder": {
-            "color": "core(text-color)",
+            "color": ["#CORE", "text-color"],
             "font-weight": "lighter",
-            "transition": "core(transition)"
+            "transition": ["#CORE", "transition"]
         }
     }
 }

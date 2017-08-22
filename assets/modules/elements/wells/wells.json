@@ -2,14 +2,15 @@
     "wells": {
         "name": "well",
         "background": "white",
-        "border": "1px solid rgba(black, 0.15)",
+        "border": "1px solid",
+        "border-color": ["#COLOR", "opaque", "dark-2"],
         "border-radius": "0.4em",
         "padding": "1em",
         "color": "inherit",
         "-dark": {
-            "background": "rgba(black, 0.4)",
+            "background": ["#COLOR", "opaque", "dark-4"],
             "border": "none",
-            "color": "white"
+            "color": ["#COLOR", "greyscale", "white"]
         } 
     }
 }

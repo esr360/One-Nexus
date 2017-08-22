@@ -11,7 +11,7 @@ export function evalConfig(config) {
 
     if (typeof config === 'string') {
         return evalValue(config);
-    } 
+    }
 
     else if (typeof config === 'object') {
         for (let key of Object.keys(config)) {

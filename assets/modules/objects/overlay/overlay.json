@@ -1,9 +1,9 @@
 {
     "overlay": {
 		"name": "overlay",
-        "background": "rgba(black, 0.4)",
-        "light-background": "white",
+        "background": ["#COLOR", "opaque", "dark-4"],
+        "light-background": ["#COLOR", "greyscale", "white"],
         "z-index": 11,
-        "transition": "core('transition')"
+        "transition": ["#CORE", "transition"]
     }
 }

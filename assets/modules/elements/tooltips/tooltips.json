@@ -3,19 +3,19 @@
         "name": "tooltip",
         "distance": "-1em",
         "arrow-size": "0.5em",
-        "arrow-color": "rgba(black, 0.75)",
+        "arrow-color": ["#COLOR", "opaque", "dark-8"],
         "content": {
             "max-width": "500px",
             "padding": "0.5em 0.75em",
             "border-radius": "0",
             "line-height": "1.75",
-            "background": "rgba(black, 0.75)",
-            "font-size": "font-size('size-2', $rem: true)",
-            "font-family": "typography('typefaces', 'primary')",
+            "background": ["#COLOR", "opaque", "dark-8"],
+            "font-size": ["#FONT-SIZE", "size-2", true],
+            "font-family": ["#TYPEFACE", "primary"],
             "text-transform": "none",
             "font-weight": "normal",
             "color": "white",
-            "transition": "core('transition')",
+            "transition": ["#CORE", "transition"],
             "z-index": 9999
         }
     }

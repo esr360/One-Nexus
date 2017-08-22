@@ -6,32 +6,32 @@
         },
         "title": {
             "background": "transparent",
-            "color": "core(text-color)",
+            "color": ["#CORE", "text-color"],
             "border": "1px solid rgba(black, 0.15)",
             "border-radius": 0,
             "padding": "1em",
-            "transition": "core(transition)",
+            "transition": ["#CORE", "transition"],
             "hover": {
-                "background":  "color(brand, brand-1)",
-                "color": "color(greyscale, white)"
+                "background": ["#COLOR", "brand", "brand-1"],
+                "color": ["#COLOR", "greyscale", "white"]
             },
             "active": {
-                "background": "color(brand, brand-1)",
-                "color": "color(greyscale, white)",
+                "background": ["#COLOR", "brand", "brand-1"],
+                "color": ["#COLOR", "greyscale", "white"],
                 "border-color": "transparent",
                 "border-radius": 0
             }
         },
         "content": {
-            "background": "color(greyscale, white)",
-            "color": "core(text-color)",
+            "background": ["#COLOR", "greyscale", "white"],
+            "color": ["#CORE", "text-color"],
             "border": "1px solid rgba(black, 0.15)",
             "border-radius": 0,
             "padding": "1.5em"
         },
         "icon": {
             "glyph": "'\\f138'",
-            "color": "rgba(color(greyscale, grey-3), 0.6)"
+            "color": ["#COLOR", "opaque", "dark-4"]
         },
         "animationSpeed": 400,
         "keepOpenModifier": "keepOpen"

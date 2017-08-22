@@ -86,7 +86,9 @@
                         &:hover {
                             a {
                                 border-top: this('item', 'border-top');
+                                border-top-color: this('item', 'border-top-color');
                                 border-bottom: this('item', 'border-bottom');
+                                border-bottom-color: this('item', 'border-bottom-color');
                                 background: transparent;
                                 color: this('item', 'hover', 'color');
                             }

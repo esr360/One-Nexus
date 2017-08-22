@@ -1,17 +1,17 @@
 {
     "footer": {
         "name": "footer",
-        "background": "color(greyscale, grey-6)",
+        "background": ["#COLOR", "greyscale", "grey-6"],
         "wrapper": {
             "padding": "4em 0",
             "font-size": "0.9em",
-            "color": "color(greyscale, grey-3)"
+            "color": ["#COLOR", "greyscale", "grey-3"]
         },
         "link": {
-            "color": "color(greyscale, grey-3)",
+            "color": ["#COLOR", "greyscale", "grey-3"],
             "hover": {
                 "text-decoration": "none",
-                "color": "color(greyscale, white)"
+                "color": ["#COLOR", "greyscale", "white"]
             }
         }
     }

@@ -64,7 +64,7 @@
             }
 
             &.is-selected {
-                color: this('bullet', 'active-fill');
+                background-color: this('bullet', 'active-fill');
             }
         }
 

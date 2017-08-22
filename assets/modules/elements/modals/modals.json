@@ -2,22 +2,22 @@
     "modals": {
         "name": "modal",
         "dafault-animation": "left",
-        "background": "color(greyscale, grey-1)",
-        "color": "core(text-color)",
+        "background": ["#COLOR", "greyscale", "grey-1"],
+        "color": ["#CORE", "text-color"],
         "width": "650px",
         "border-radius": 0,
-        "transition": "core(transition)",
+        "transition": ["#CORE", "transition"],
         "z-index": 14,
         "content": {
             "padding": "2em"
         },
         "close": {
-            "size": "font-size(size-5)",
+            "size": ["#FONT-SIZE", "size-5"],
             "top": "1rem",
             "right": "1rem",
-            "color": "color(greyscale, grey-3)",
-            "hover-color": "color(brand, brand-1)",
-            "transition": "core(transition)"
+            "color": ["#COLOR", "greyscale", "grey-3"],
+            "hover-color": ["#COLOR", "brand", "brand-1"],
+            "transition": ["#CORE", "transition"]
         },
         "overlay": {
             "module": "overlay",

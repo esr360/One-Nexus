@@ -18,9 +18,10 @@
         },
         "-callout": {
             "padding": "0.75em",
-            "font-size": "font-size('size-4')",
+            "font-size": ["#FONT-SIZE", "size-4"],
             "font-style": "italic",
-            "border-left": "7px solid color('brand', 'brand-2')"
+            "border-left": "7px solid",
+            "border-left-color": ["#COLOR", "brand", "brand-2"]
         }
     }
 }

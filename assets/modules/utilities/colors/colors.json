@@ -1,5 +1,16 @@
 {
     "colors": {
+        "brand": {
+            "brand-1": "#2E3882",
+            "brand-2": "#06d2ff",
+            "brand-3": "#04CEC0"
+        },
+        "alert":{
+            "error": "#D9434E",
+            "help": "#F5BA42",
+            "info": "#4B8CDC",
+            "success": "#3BB85D"
+        },
         "greyscale": {
             "white": "#ffffff",
             "grey-1": "#f8f8f8",
@@ -13,18 +24,9 @@
         "opaque": {
             "dark-1": "rgba(black, 0.1)",
             "dark-2": "rgba(black, 0.2)",
-            "dark-8": "rgba(black, 0.8)"
-        },
-        "brand": {
-            "brand-1": "#2E3882",
-            "brand-2": "#06d2ff",
-            "brand-3": "#04CEC0"
-        },
-        "alert":{
-            "error": "#D9434E",
-            "help": "#F5BA42",
-            "info": "#4B8CDC",
-            "success": "#3BB85D"
+            "dark-4": "rgba(black, 0.4)",
+            "dark-8": "rgba(black, 0.8)",
+            "light-8": "rgba(white, 0.8)"
         },
         "validation":{
             "valid": "#00B16A",

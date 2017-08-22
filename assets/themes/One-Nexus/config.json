@@ -9,6 +9,9 @@
             }
         },
         "colors": {
+            "brand": {
+                "brand-1": "red"
+            },
             "opaque": {
                 "dark-2": "rgba(black, 0.2)"
             }

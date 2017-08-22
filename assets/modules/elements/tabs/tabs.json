@@ -3,30 +3,33 @@
         "name": "tabs",
         "nav": {
             "item": {
-                "transition": "core(transition)",
-                "color": "core(text-color)",
+                "transition": ["#CORE", "transition"],
+                "color": ["#CORE", "text-color"],
                 "background": "transparent",
                 "round-radius": "0.6em",
                 "padding": "0.75em 1.25em",
-                "border": "1px solid color(greyscale, grey-3)",
+                "border": "1px solid",
+                "border-color": ["#COLOR", "greyscale", "grey-3"],
                 "hover": {
-                    "color": "color(greyscale, grey-5)",
-                    "background": "darken(color(greyscale, grey-1), 4%)"
+                    "color": ["#COLOR", "greyscale", "white"],
+                    "background": ["#COLOR", "brand", "brand-3"],
+                    "border-color": ["#COLOR", "brand", "brand-3"]
                 },
                 "active": {
-                    "color": "color(greyscale, white)",
-                    "background": "color(brand, brand-1)",
-                    "border-color": "color(brand, brand-1)"
+                    "color": ["#COLOR", "greyscale", "white"],
+                    "background": ["#COLOR", "brand", "brand-1"],
+                    "border-color": ["#COLOR", "brand", "brand-1"]
                 }
             }
         },
         "content": {
-            "color": "core(text-color)",
-            "background": "color(greyscale, white)",
-            "border": "1px solid color(greyscale, grey-2)",
+            "color": ["#CORE", "text-color"],
+            "background": ["#COLOR", "greyscale", "white"],
+            "border": "1px solid",
+            "border-color": ["#COLOR", "greyscale", "grey-2"],
             "padding": "1.5em",
             "glueHeight": "6px",
-            "glueColor": "color(brand, brand-1)"
+            "glueColor": ["#COLOR", "brand", "brand-1"]
         },
         "activeClass": "active"
     }

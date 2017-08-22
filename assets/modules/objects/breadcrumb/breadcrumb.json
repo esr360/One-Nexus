@@ -3,10 +3,10 @@
         "name": "breadcrumb",
         "font-size": "0.9em",
         "divider-icon": "'\\f105'",
-        "icon-color": "core(text-color)",
+        "icon-color": ["#CORE", "text-color"],
         "link": {
             "border-bottom": "1px dotted transparent",
-            "transition": "core(transition)"
+            "transition": ["#CORE", "transition"]
         },
         "link-hover": {
             "border-bottom-color": "currentColor"

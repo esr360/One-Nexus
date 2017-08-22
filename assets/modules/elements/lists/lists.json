@@ -3,6 +3,6 @@
         "name": "list",
         "inline-spacing": "1em",
         "arrow-icon": "'\\f138'",
-        "arrow-color": "color('brand', 'brand-1')"
+        "arrow-color": ["#COLOR", "brand", "brand-1"]
     }
 }
