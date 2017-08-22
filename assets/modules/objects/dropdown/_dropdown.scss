@@ -110,6 +110,7 @@
                         li {
                             a {
                                 border-left: this('link', 'border-top');
+                                border-left-color: this('link', 'border-top-color');
                             }
                         }
                     }
