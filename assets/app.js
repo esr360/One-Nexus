@@ -89,5 +89,3 @@ Element.prototype.parents = function(selector) {
 //*****************************************************************
 
 smoothScroll();
-
-scrollSpy({container: '.scrollSpy_links'});

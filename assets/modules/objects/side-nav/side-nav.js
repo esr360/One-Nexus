@@ -50,9 +50,9 @@ export function sideNav(els = 'sideNav', custom = {}) {
 
         exports.toggle = operator => toggleSideNav(el, operator, options);
 
-    }, defaults, custom);
+    }, defaults, custom, app.evalConfig);
 
-    app.config['side-nav'] = Object.assign(defaults['side-nav'], custom);
+    app.config['side-nav'] = app.parse(defaults['side-nav'], custom);
 
     return exports;
 }

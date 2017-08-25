@@ -9,7 +9,7 @@ import * as app from '../../app';
  */
 export function evalConfig(config) {
 
-    if (typeof config === 'string') {
+    if (config instanceof Array) {
         return evalValue(config);
     }
 
@@ -29,51 +29,57 @@ export function evalConfig(config) {
  */
 function evalValue(value) {
 
-    const isBreakpoint = value => value.indexOf('breakpoint(') === 0;
-    const isColor = value => value.indexOf('color(') === 0;
-    const isPalette = value => value.indexOf('palette(') === 0;
-    const isCore = value => value.indexOf('core(') === 0;
-    const isTypography = value => value.indexOf('typography(') === 0;
-    const isFontSize = value => value.indexOf('font-size(') === 0;
+    const FUNCTIONS = [
+        'breakpoint',
+        'color',
+        'palette',
+        'core',
+        'typography',
+        'typeface',
+        'font-size'
+    ];
     
-    let [params, requiresEval] = ['', false];
+    let requiresEval = false;
 
-    if (
-        isBreakpoint(value) || isColor(value) || isPalette(value) || isCore(value) || 
-        isTypography(value) || isFontSize(value)
-    ) {
-        [params, requiresEval] = [getParams(value), true];
-    }
+    FUNCTIONS.forEach(func => {
 
-    // If value uses the `breakpoint()` utility function
-    if (isBreakpoint(value)) {
-        value = app.config.grid.breakpoints[params[0]];
-    }
+        const FUNC_NAME = getFunctionName(value);
+        const PARAMS = getParams(value);
 
-    // If value uses the `color()` utility function
-    else if (isColor(value)) {
-        value = app.config.colors[params[0]][params[1]];
-    }
+        if (FUNC_NAME === func) {
 
-    // If value uses the `palette()` utility function
-    else if (isPalette(value)) {
-        value = app.config.colors[params[0]];
-    }
+            requiresEval = true;
 
-    // If value uses the `core()` function
-    else if (isCore(value)) {
-        value = app.config.core[params[0]];
-    }
+            if (FUNC_NAME === 'breakpoint') {
+                value = app.config.grid.breakpoints[PARAMS[0]];
+            }
 
-    // If value uses the `typography()` function
-    else if (isTypography(value)) {
-        value = app.config.typography[params[0]][params[1]];
-    }
+            else if (FUNC_NAME === 'color') {
+                value = app.config.colors[PARAMS[0]][PARAMS[1]];
+            }
 
-    // If value uses the `font-size()` function
-    else if (isFontSize(value)) {
-        value = app.config.typography.sizes[params[0]];
-    }
+            else if (FUNC_NAME === 'palette') {
+                value = app.config.colors[PARAMS[0]];
+            }
+
+            else if (FUNC_NAME === 'core') {
+                value = app.config.core[PARAMS[0]];
+            }
+
+            else if (FUNC_NAME === 'typography') {
+                value = app.config.typography[PARAMS[0]][PARAMS[1]];
+            }
+
+            else if (FUNC_NAME === 'typeface') {
+                value = app.config.typography.typefaces[PARAMS[0]];
+            }
+
+            else if (FUNC_NAME === 'font-size') {
+                value = app.config.typography.sizes[PARAMS[0]];
+            }
+        }
+
+    });
 
     // recurse the function if returned value also needs to be evaluated
     if (requiresEval) value = evalValue(value);
@@ -82,10 +88,23 @@ function evalValue(value) {
 }
 
 /**
- * Get function parameters from a stringified value
+ * Get function name
+ * 
+ * @param {String} string 
+ */
+function getFunctionName(value) {
+    if (value instanceof Array && typeof value[0] === 'string' && value[0].indexOf('#') === 0) {
+        return value[0].slice(1).toLowerCase();
+    }
+
+    return value;
+}
+
+/**
+ * Get function parameters
  * 
  * @param {String} value 
  */
 function getParams(value) {
-    return value.match(/\(([^)]+)\)/)[1].replace(/'/g, "").split(', ');
+    return (value instanceof Array) ? value.slice(1) : value;
 }

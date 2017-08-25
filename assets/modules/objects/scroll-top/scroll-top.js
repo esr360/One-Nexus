@@ -22,9 +22,9 @@ export function scrollTop(els = 'scroll-top', custom = {}) {
         exports.show = () => el.modifier('visible', 'add');
         exports.hide = () => el.modifier('visible', 'remove');
 
-    }, defaults, custom);
+    }, defaults, custom, app.evalConfig);
 
-    app.config['scroll-top'] = Object.assign(defaults['scroll-top'], custom);
+    app.config['scroll-top'] = app.parse(defaults['scroll-top'], custom);
 
     return exports;
 }

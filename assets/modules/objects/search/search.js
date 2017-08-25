@@ -36,9 +36,9 @@ export function search(els = 'searchBox', custom = {}) {
             }
         };
 
-    }, defaults, custom);
+    }, defaults, custom, app.evalConfig);
 
-    app.config.search = Object.assign(defaults.search, custom);
+    app.config.search = app.parse(defaults.search, custom);
 
     return exports;
 }

@@ -15,10 +15,11 @@ module.exports = function() {
         'One-Nexus'
     ];
         
-    //Set your desired development environment
+    // Set your desired development environment
     this.env = 'dev';
 
-    //Map the project's architecture into one Grunt can use
+    // Map the project's architecture into one Grunt can use
+    // Paths ae relative to the project root
     this.project = {
         dist: [        'dist/', {
             images:    'dist/assets/images/',

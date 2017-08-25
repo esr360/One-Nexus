@@ -60,9 +60,9 @@ export function carousel(els = 'carousel', custom = {}) {
             els.forEach(el => el.classList.add(identifier));
         }
 
-    }, defaults, custom);
+    }, defaults, custom, app.evalConfig);
 
-    app.config.carousels = Object.assign(defaults.carousels, custom);
+    app.config.carousels = app.parse(defaults.carousels, custom);
 
     return exports;
 }

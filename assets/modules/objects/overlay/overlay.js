@@ -23,9 +23,9 @@ export function overlay(els = 'overlay', custom = {}) {
             el.modifier((flag ? flag + '-' : '') + 'visible', state);
         };
 
-    }, defaults, custom);
+    }, defaults, custom, app.evalConfig);
 
-    app.config.overlay = Object.assign(defaults.overlay, custom);
+    app.config.overlay = app.parse(defaults.overlay, custom);
 
     return exports;
 }

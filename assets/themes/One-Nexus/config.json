@@ -11,6 +11,9 @@
                 "dark-2": "rgba(black, 0.2)"
             }
         },
+        "core": {
+            "font-family": ["#TYPEFACE", "secondary"]
+        },
         "header": {
             "foo": ["#PALETTE", "brand"],
             "sticky": {

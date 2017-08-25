@@ -9,7 +9,5 @@ import defaults from './grid.json';
  * @param {Object} custom
  */
 export function grid(custom) {
-    custom = app.custom('grid', custom);
-
-    app.config.grid = Object.assign(defaults.grid, custom);
+    app.config.grid = app.parse(defaults.grid, app.custom('grid', custom));
 }

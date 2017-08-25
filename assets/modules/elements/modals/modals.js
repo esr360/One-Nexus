@@ -59,9 +59,9 @@ export function modal(els = 'modal', custom = {}) {
         exports.show = () => toggleModal('show', els, el, options, overlay);
         exports.hide = () => toggleModal('hide', els, el, options, overlay);
 
-    }, defaults, custom);
+    }, defaults, custom, app.evalConfig);
 
-    app.config.modals = Object.assign(
+    app.config.modals = app.parse(
         (app.config.modals) ? app.config.modals : '', defaults.modals, custom
     );
 

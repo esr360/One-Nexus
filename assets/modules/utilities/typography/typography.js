@@ -9,7 +9,5 @@ import defaults from './typography.json';
  * @param {Object} custom
  */
 export function typography(custom) {
-    custom = app.custom('typography', custom);
-
-    app.config.typography = Object.assign(defaults.typography, custom);
+    app.config.typography = app.parse(defaults.typography, app.custom('typography', custom));
 }

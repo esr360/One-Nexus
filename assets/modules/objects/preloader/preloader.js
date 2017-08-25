@@ -28,9 +28,9 @@ export function preloader(els = 'preloader', custom = {}) {
             (el.modifier('hidden') && operator !== 'hide' || operator === 'show') ? 'unset' : 'set'
         );
 
-    }, defaults, custom);
+    }, defaults, custom, app.evalConfig);
 
-    app.config.preloader = Object.assign(defaults.preloader, custom);
+    app.config.preloader = app.parse(defaults.preloader, custom);
 
     return exports;
 }

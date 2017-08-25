@@ -9,7 +9,7 @@ import * as app from '../../app';
  * @param {Object} custom
  */
 export function custom(module, custom) {
-    if (typeof app.theme[module] !== 'undefined' && !custom) {
+    if (typeof app.theme[module] !== 'undefined' && (!custom || custom !== {})) {
         return app.theme[module];
     }
     return custom;

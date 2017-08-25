@@ -37,9 +37,9 @@ export function tabs(els = 'tabs', custom = {}) {
             });
         });
 
-    }, defaults, custom);
+    }, defaults, custom, app.evalConfig);
 
-    app.config.tabs = Object.assign(defaults.tabs, custom);
+    app.config.tabs = app.parse(defaults.tabs, custom);
 
     return exports;
 }

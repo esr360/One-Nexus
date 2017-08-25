@@ -171,9 +171,9 @@ export function googleMap(els = 'google-map', custom = {}) {
         // create the google map
         google.maps.event.addDomListener(window, 'load', new google.maps.Map(el, options.googleApi));
 
-    }, defaults, custom);
+    }, defaults, custom, app.evalConfig);
 
-    app.config['google-map'] = Object.assign(defaults['google-map'], custom);
+    app.config['google-map'] = app.parse(defaults['google-map'], custom);
 
     return exports;
 }

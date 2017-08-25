@@ -17,9 +17,9 @@ export function progressBar(els = 'progress-bar', custom = {}) {
         const progress = el.getAttribute('data-progress');
 
         el.setAttribute('value', progress.replace(/[^-\d\.]/g, ''));
-    }, defaults, custom);
+    }, defaults, custom, app.evalConfig);
 
-    app.config['progress-bars'] = Object.assign(defaults['progress-bars'], custom);
+    app.config['progress-bars'] = app.deepextend(defaults['progress-bars'], custom);
 
     return exports;
 }

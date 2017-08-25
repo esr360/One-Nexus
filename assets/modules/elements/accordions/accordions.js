@@ -33,9 +33,9 @@ export function accordion(els = 'accordion', custom = {}) {
 
         exports.toggle = (type, target) => toggleAccordion(type, el, target, options);
 
-    }, defaults, custom);
+    }, defaults, custom, app.evalConfig);
 
-    app.config.accordions = Object.assign(defaults.accordions, custom);
+    app.config.accordions = app.parse(defaults.accordions, custom);
 
     return exports;
 }

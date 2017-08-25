@@ -9,7 +9,5 @@ import defaults from './core.json';
  * @param {Object} custom
  */
 export function core(custom) {
-    custom = app.custom('core', custom);
-
-    app.config.core = Object.assign(defaults.core, custom);
+    app.config.core = app.parse(defaults.core, app.custom('core', custom));
 }

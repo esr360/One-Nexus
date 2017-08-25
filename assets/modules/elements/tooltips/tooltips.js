@@ -33,9 +33,9 @@ export function tooltips(els = 'tooltip', custom = {}) {
         el.setAttribute('ontouchstart', '');
         el.insertAdjacentHTML('beforeend', template);
 
-    }, defaults, custom);
+    }, defaults, custom, app.evalConfig);
 
-    app.config.tooltips = Object.assign(defaults.tooltips, custom);
+    app.config.tooltips = app.parse(defaults.tooltips, custom);
 
     return exports;
 }

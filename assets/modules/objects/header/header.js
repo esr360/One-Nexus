@@ -37,9 +37,9 @@ export function header(els = 'header', custom = {}) {
         exports.dropdownShowOverlay = () => app.overlay(options.overlay).show('navDropown');
         exports.dropdownHideOverlay = () => app.overlay(options.overlay).hide('navDropown');
 
-    }, defaults, custom);
+    }, defaults, custom, app.evalConfig);
 
-    app.config.header = Object.assign(defaults.header, custom);
+    app.config.header = app.parse(defaults.header, custom);
 
     return exports;
 }

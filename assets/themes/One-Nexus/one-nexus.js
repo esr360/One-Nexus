@@ -9,16 +9,16 @@ import * as app from '../../app';
 import config from './config.json';
 
 app.theme  = config.app;
-app.config = app.evalConfig(app.config);
+app.config = app.theme;
 
 ///************************************************************
 /// Utilities
 ///************************************************************
 
 app.colors();
-app.core();
 app.grid();
 app.typography();
+app.core();
 
 ///************************************************************
 /// Elements
@@ -42,3 +42,9 @@ app.preloader();
 app.scrollTop();
 app.search();
 app.sideNav();
+
+///************************************************************
+/// Export Options
+///************************************************************
+
+window.APPUI.config = app.evalConfig(app.config);

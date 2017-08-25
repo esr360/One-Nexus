@@ -1,5 +1,6 @@
 ## To Do
 
+* replace most uses of 'primary' font with 'core' font-family
 * move 'base' typography size into 'core' module
 * move eval-config to Synergy
 * move `custom()` to Synergy
