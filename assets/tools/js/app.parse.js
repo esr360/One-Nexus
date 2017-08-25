@@ -9,5 +9,10 @@ import * as app from '../../app';
  * @param {Object} custom
  */
 export function parse(defaults, custom) {
-    return app.evalConfig(app.deepextend(defaults, custom));
+    const config = app.evalConfig(app.deepextend(defaults, custom));
+
+    delete config.modifierGlue;
+    delete config.componentGlue;
+
+    return config;
 }

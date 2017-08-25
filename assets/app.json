@@ -3,5 +3,5 @@
     "sass-config-parser": "eval-config",
     "module-namespace": "OneNexus-",
     "component-glue": "'_'",
-    "modifier-glue": "'---'"
+    "modifier-glue": "'-'"
 }
