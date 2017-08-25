@@ -5,6 +5,9 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
+// Export global app config
+export { default as global } from './app.json';
+// Import app into itself
 import * as app from './app';
 
 // Vendor
@@ -64,7 +67,7 @@ import { scrollSpy       } from './tools/js/app.scrollSpy';
 
 export { 
     custom, evalConfig, inViewport, isValidSelector, media, parents, 
-    parse, scrollSpy
+    parse, smoothScroll, scrollSpy
 };
 
 // Attach `app` to the Window object

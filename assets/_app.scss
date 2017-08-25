@@ -5,11 +5,9 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-// Asset Path
-$asset-path: '../..' !default;
-
-// Configuration Parser
-$config-parser: 'eval-config';
+// Import global app configuration
+// Path is relative to ./themes/[THEME] at compile-time
+@import '../../app.json';
 
 //*****************************************************************
 // Vendor Files

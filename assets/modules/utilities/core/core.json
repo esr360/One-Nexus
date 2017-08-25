@@ -4,7 +4,7 @@
         "background": ["#COLOR", "greyscale", "grey-1"],
         "font-family": ["#TYPEFACE", "primary"],
         "text-color": ["#TYPOGRAPHY", "colors", "base"],
-        "font-size": ["#TYPOGRAPHY", "sizes", "base"],
+        "font-size": ["#TYPOGRAPHY", "sizes", "size-3"],
         "margin": "2rem",
         "line-height": "1.4",
         "radius": "0.4em",

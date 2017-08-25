@@ -1,9 +1,6 @@
 ## To Do
 
 * replace most uses of 'primary' font with 'core' font-family
-* move 'base' typography size into 'core' module
-* move eval-config to Synergy
-* move `custom()` to Synergy
 
 ## Fridge
 
@@ -56,3 +53,4 @@
 * change all sass module extends to _module alias
 * get rid of clickHelper?
 * remove @author
+* move 'base' typography size into 'core' module
