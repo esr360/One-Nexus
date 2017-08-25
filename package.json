@@ -27,6 +27,7 @@
     "Kayzen-GS": "^2.4.0",
     "Sass-Boost": "^1.1.0",
     "Synergy": "^3.7.0",
+    "deep-extend": "^0.5.0",
     "flickity": "^2.0.8",
     "normalize-scss": "^7.0.0",
     "spinners": "^1.2.2"

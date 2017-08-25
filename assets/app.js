@@ -11,10 +11,11 @@ import * as app from './app';
 //*****************************************************************
 
 //import Synergy  from 'Synergy';
-import Synergy  from '../../../Synergy/src/js/synergy';
-import Flickity from 'flickity';
+import Synergy    from '../../../Synergy/src/js/synergy';
+import deepextend from 'deep-extend';
+import Flickity   from 'flickity';
 
-export { Synergy, Flickity };
+export { Synergy, deepextend, Flickity };
 
 // Modules
 //*****************************************************************
@@ -51,19 +52,19 @@ export {
 // Tools
 //*****************************************************************
 
-export const config = {};
-
 import { custom          } from './tools/js/app.custom';
 import { evalConfig      } from './tools/js/app.evalConfig';
 import { inViewport      } from './tools/js/app.inViewport';
 import { isValidSelector } from './tools/js/app.isValidSelector';
 import { media           } from './tools/js/app.media';
 import { parents         } from './tools/js/app.parents';
+import { parse           } from './tools/js/app.parse';
 import { smoothScroll    } from './tools/js/app.smoothScroll';
 import { scrollSpy       } from './tools/js/app.scrollSpy';
 
 export { 
-    custom, evalConfig, inViewport, isValidSelector, media, parents, scrollSpy
+    custom, evalConfig, inViewport, isValidSelector, media, parents, 
+    parse, scrollSpy
 };
 
 // Attach `app` to the Window object

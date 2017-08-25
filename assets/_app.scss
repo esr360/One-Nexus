@@ -8,6 +8,9 @@
 // Asset Path
 $asset-path: '../..' !default;
 
+// Configuration Parser
+$config-parser: 'eval-config';
+
 //*****************************************************************
 // Vendor Files
 //*****************************************************************
@@ -28,6 +31,8 @@ $asset-path: '../..' !default;
 //*****************************************************************
 
 @import 'tools/scss/background';
+@import 'tools/scss/custom';
+@import 'tools/scss/eval-config';
 @import 'tools/scss/fill-parent';
 @import 'tools/scss/font-sizes';
 @import 'tools/scss/horizontal-center';

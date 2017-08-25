@@ -1,7 +1,7 @@
 {
     "header": {
         "name": "header",
-        "background": "core(background)",
+        "background": ["#CORE", "background"],
         "font-size": "1em",
         "bar": true,
         "wrapper": {
