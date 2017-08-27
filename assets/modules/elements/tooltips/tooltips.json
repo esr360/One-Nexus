@@ -11,7 +11,7 @@
             "line-height": "1.75",
             "background": ["#COLOR", "opaque", "dark-8"],
             "font-size": ["#FONT-SIZE", "size-2", true],
-            "font-family": ["#TYPEFACE", "primary"],
+            "font-family": ["#CORE", "font-family"],
             "text-transform": "none",
             "font-weight": "normal",
             "color": "white",

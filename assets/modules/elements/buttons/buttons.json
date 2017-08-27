@@ -8,7 +8,7 @@
         "v-padding": "0.65em",
         "line-height": "1",
         "font-weight": "normal",
-        "font-family": ["#TYPEFACE", "primary"],
+        "font-family": ["#CORE", "font-family"],
         "border-width": "1px",
         "border-style": "solid",
         "disabled-opacity": "0.6",

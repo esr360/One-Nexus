@@ -1,6 +1,6 @@
 /**
- * Breadcrumb helper
- * @author [@esr360](http://twitter.com/esr360)
+ * Breadcrumb
+ * 
  * @description Create a breadcrumb from a specified path
  */
 module.exports.register = function(Handlebars, options) {
