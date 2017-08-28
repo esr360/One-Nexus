@@ -101,7 +101,7 @@
 ///
 /// @return {*} - the desired value
 @function typography($group, $key) {
-    @return map-get(typography-config($group), $key);
+    @return eval-config(map-get(typography-config($group), $key));
 }
 
 /// Function to get desired typeface value
