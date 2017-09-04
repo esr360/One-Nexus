@@ -21,7 +21,7 @@
 * Create multiple themes using your components
 * Includes everything needed to develop your project's independent front-end
 
-# One-Nexus Wiki
+## One-Nexus Wiki
 
 > For interactive demos, visit the [One-Nexus Website](#TODO)
 
