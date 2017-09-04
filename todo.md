@@ -1,7 +1,5 @@
 ## To Do
 
-* fix config parser - core.text-color > typography.base not working
-
 ## Fridge
 
 * add global modifiers (e.g. small, large)
@@ -55,3 +53,4 @@
 * remove @author
 * move 'base' typography size into 'core' module
 * replace most uses of 'primary' font with 'core' font-family
+* fix config parser - core.text-color > typography.base not working
