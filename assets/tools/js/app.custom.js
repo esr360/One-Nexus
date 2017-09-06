@@ -10,7 +10,7 @@ import * as app from '../../app';
  */
 export function custom(module, custom) {
 
-    if (typeof app.theme[module] !== 'undefined' && (!custom || custom !== {})) {
+    if (app.theme && typeof app.theme[module] !== 'undefined' && (!custom || custom !== {})) {
         custom = app.theme[module];
     }
 

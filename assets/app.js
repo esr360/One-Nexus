@@ -5,10 +5,12 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
+// Expose the app object
+import * as app from './app';
 // Export global app config
 export { default as global } from './app.json';
-// Import app into itself
-import * as app from './app';
+// Instantiate the configuration object 
+export const config = {};
 
 // Vendor
 //*****************************************************************
