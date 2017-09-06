@@ -9,7 +9,6 @@ import * as app from '../../app';
 import config from './config.json';
 
 app.theme  = config.app;
-app.config = app.theme;
 
 ///************************************************************
 /// Utilities

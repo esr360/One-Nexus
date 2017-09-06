@@ -79,15 +79,15 @@ window.APPUI = window.APPUI || app;
 //*****************************************************************
 
 Element.prototype.component = function(component, set) {
-    return app.Synergy(this).component(component, set, this);
+    return Synergy(this).component(component, set, this);
 };
 
 Element.prototype.modifier = function(modifier, set) {
-    return app.Synergy(this).modifier(modifier, set, this);
+    return Synergy(this).modifier(modifier, set, this);
 };
 
 Element.prototype.parents = function(selector) {
-	return app.parents(this, selector);
+	return parents(this, selector);
 };
 
 // App-Level Functions
