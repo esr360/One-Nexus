@@ -7,8 +7,10 @@
 
 // Expose the app object
 import * as app from './app';
+
 // Export global app config
 export { default as global } from './app.json';
+
 // Instantiate the configuration object 
 export const config = {};
 
