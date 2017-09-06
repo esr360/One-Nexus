@@ -52,8 +52,6 @@ module.exports = function() {
 
     // Set the scripts used to create the theme's main js file
     this.scripts = [
-        this.project.vendor + 'Synergy/src/js/synergy.js',
-        this.project.source[0] + 'modules/**/*.js',
         this.project.source[1].themes[1].theme + '<%=theme%>.js'
     ],
 
