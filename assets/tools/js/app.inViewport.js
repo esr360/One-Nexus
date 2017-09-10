@@ -1,3 +1,5 @@
+import * as app from '../../app';
+
 /**
  * Determine if an element is in the viewport
  * 
@@ -13,6 +15,7 @@ export function inViewport(custom) {
      * @param {('reached'|'inView')} options.scope - determine how the scope should work
      */
     const options = Object.assign({
+        container: document.body,
         target: null,
         coverage: 'top',
         scope: 'inView'
@@ -22,10 +25,10 @@ export function inViewport(custom) {
         console.warn('inViewport: you must pass a value for "target"');
     }
 
-    const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+    const scrollTop = options.container.scrollTop;
     const scrollBottom = scrollTop + Math.max(document.documentElement.clientHeight, window.innerHeight);
 
-    const elemTop = options.target.getBoundingClientRect().top + scrollTop;
+    const elemTop = app.elementOffset(options.target, options.container);
     const elemHeight = options.target.clientHeight;
 
     const scope = () => {
