@@ -5,6 +5,7 @@
  * 
  * @param {String} media
  * @param {String} value
+ * @param {Object} app
  */
 export function media(media, value, app) {
     if (value.indexOf('break') === 0) {

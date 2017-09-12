@@ -28,8 +28,13 @@ export function tabs(els = 'tabs', custom = {}) {
             item.addEventListener('click', () => {
                 Array.prototype.forEach.call(item.parentNode.children, sibling => {
                     sibling.modifier('active', 'unset');
+
+                    if (options.activeClass) sibling.classList.remove(options.activeClass);
                 });
+
                 item.modifier('active', 'set');
+
+                if (options.activeClass) item.classList.add(options.activeClass);
                 // Hide previously selected item
                 tabItems().forEach(tab => tab.style.display = 'none');
                 // Show new item

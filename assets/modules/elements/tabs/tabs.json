@@ -30,7 +30,6 @@
             "padding": "1.5em",
             "glueHeight": "6px",
             "glueColor": ["#COLOR", "brand", "brand-1"]
-        },
-        "activeClass": "active"
+        }
     }
 }
