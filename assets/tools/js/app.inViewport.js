@@ -11,7 +11,7 @@ export function inViewport(custom) {
 
     /**
      * @param {HTMLElement} options.target - the target element
-     * @param {('top'|'middle'|'bottom'|'$%'|'$px')} options.coverage - point which the element is considered to be in the viepwport
+     * @param {('top'|'middle'|'bottom')} options.coverage - point which the element is considered to be in the viepwport
      * @param {('reached'|'inView')} options.scope - determine how the scope should work
      */
     const options = Object.assign({
