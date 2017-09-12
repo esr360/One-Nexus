@@ -5,6 +5,8 @@ import * as app from '../../app';
  * 
  * @access public
  * 
+ * @todo currently only tested when container is NOT document.body
+ * 
  * @param {Object} custom - where custom options are passed
  */
 export function inViewport(custom) {
@@ -26,12 +28,16 @@ export function inViewport(custom) {
     }
 
     const scrollTop = options.container.scrollTop;
-    const scrollBottom = scrollTop + Math.max(document.documentElement.clientHeight, window.innerHeight);
 
-    const elemTop = app.elementOffset(options.target, options.container);
+    const elemTop = (options.target.getBoundingClientRect().top - window.innerHeight) + scrollTop;
     const elemHeight = options.target.clientHeight;
 
-    const scope = () => {
+    const scope = getScope();
+
+    const reached = (scrollTop > scope);
+    const inView  = reached && (scrollTop < (elemTop + elemHeight + window.innerHeight));
+
+    function getScope() {
         if (options.coverage === 'top') return elemTop;
 
         else if (options.coverage === 'middle') return elemTop + (elemHeight/2);
@@ -46,12 +52,8 @@ export function inViewport(custom) {
             else if (options.coverage.indexOf('px') >= 0) return elemTop + value;
         }
 
-        else return console.warn('inViewport: you must pass a valid value for "scope"');
-    };
-
-    const reached = scope() < scrollBottom;
-    const inView  = reached && (scrollTop < scope());
+        else return console.warn('inViewport: you must pass a valid value for "scope"');        
+    }
 
     return options.scope === 'reached' ? reached : inView;
-
 }

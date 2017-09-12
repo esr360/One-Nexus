@@ -60,7 +60,6 @@ export {
 //*****************************************************************
 
 import { custom          } from './tools/js/app.custom';
-import { elementOffset   } from './tools/js/app.elementOffset';
 import { evalConfig      } from './tools/js/app.evalConfig';
 import { inViewport      } from './tools/js/app.inViewport';
 import { isValidSelector } from './tools/js/app.isValidSelector';
@@ -71,8 +70,8 @@ import { smoothScroll    } from './tools/js/app.smoothScroll';
 import { scrollSpy       } from './tools/js/app.scrollSpy';
 
 export { 
-    custom, elementOffset, evalConfig, inViewport, isValidSelector, 
-    media, parents, parse, smoothScroll, scrollSpy
+    custom, evalConfig, inViewport, isValidSelector, media, parents, 
+    parse, smoothScroll, scrollSpy
 };
 
 // Attach `app` to the Window object
