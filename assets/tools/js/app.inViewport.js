@@ -5,8 +5,6 @@ import * as app from '../../app';
  * 
  * @access public
  * 
- * @todo currently only tested when container is NOT document.body
- * 
  * @param {Object} custom - where custom options are passed
  */
 export function inViewport(custom) {
