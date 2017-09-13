@@ -78,7 +78,7 @@ module.exports = function(grunt) {
                 src: PROJECT.dist[1].themes[1].theme
             }
         },
-        
+
         /**
          * Copy
          * @see https://github.com/gruntjs/grunt-contrib-copy
@@ -242,7 +242,7 @@ module.exports = function(grunt) {
             themes: {
                 files: [{ 
                     src: PROJECT.dist[1].themes[1].theme + '**/*.js',
-                    dest: PROJECT.dist[1].scripts,
+                    dest: PROJECT.dist[1].themes[1].theme,
                     expand: true,
                     flatten: true,
                     rename: function(dest, src) { 
