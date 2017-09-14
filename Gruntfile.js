@@ -40,19 +40,9 @@ module.exports = function(grunt) {
 
         /**
          * Text Replace
-         * @note used to dynamically update theme name in .scss file
          * @see https://github.com/yoniholmes/grunt-text-replace
          */
-        replace: {
-            sassTheme: {
-                src: PROJECT.source[0] + DIST + '.scss',
-                overwrite: true, 
-                replacements: [{
-                    from: /\$theme(.*?);/g,
-                    to: '$theme : \'<%=theme%>\' !default;'
-                }]
-            }
-        },
+        replace: {},
         
         /**
          * Clean
@@ -390,7 +380,7 @@ module.exports = function(grunt) {
                 files: [
                     PROJECT.source[0] + SRC + '.js',
                     SCRIPTS,
-                    PROJECT.source[0] + 'tools/**/*.js',
+                    PROJECT.source[0] + 'tools/**/*.js'
                 ],
                 tasks: [
                     'jshint',
@@ -514,7 +504,6 @@ module.exports = function(grunt) {
         var tasks = [
             'clean:dist',
             'clean:theme',
-            'replace:sassTheme',
             'lint',
             'test',
             'sass:' + environment,
