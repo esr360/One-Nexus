@@ -5,39 +5,41 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-module.exports = function() {
+module.exports = function config() {
 
     // Set the default theme to compile assets for
-    this.theme = 'One-Nexus';
+    this.theme = 'one-nexus';
 
     // List of all themes used by the project
     this.themes = [
-        'One-Nexus'
+        'one-nexus'
     ];
         
-    // Set your desired development environment
+    // Set the desired development environment
     this.env = 'dev';
+
+    // Lint files when compiling them
+    this.lint = false;
+
+    // Test files when compiling them
+    this.test = true;
 
     // Map the project's architecture into one Grunt can use
     // Paths ae relative to the project root
     this.project = {
+        source: [      'src/', {
+            images:    'src/images/',
+            scripts:   'src/modules/',
+            styles:    'src/modules/',
+            theme:     'src/themes/<%=theme%>/',
+            templates: 'templates/'
+        }],
         dist: [        'dist/', {
             images:    'dist/assets/images/',
             scripts:   'dist/assets/scripts/',
             styles:    'dist/assets/styles/',
-            themes: [  'dist/assets/themes/', {
-                theme: 'dist/assets/themes/<%=theme%>/'
-            }],
+            theme:     'dist/assets/themes/<%=theme%>/',
             templates: 'dist/'
-        }],
-        source: [      'assets/', {
-            images:    'assets/images/',
-            scripts:   'assets/modules/',
-            styles:    'assets/modules/',
-            themes: [  'assets/themes/', {
-                theme: 'assets/themes/<%=theme%>/'
-            }],
-            templates: 'templates/'
         }],
         vendor:        'node_modules/',
         docs: [        'docs/', {
@@ -50,16 +52,11 @@ module.exports = function() {
         }]
     };
 
-    // Set the scripts used to create the theme's main js file
-    this.scripts = [
-        this.project.source[1].themes[1].theme + '<%=theme%>.js'
-    ],
-
     // Set all optional scripts to be used by the project
-    this.globalScripts = [];
+    this.scripts = [];
 
     // Set all optional styles to be used by the project
-    this.globalStyles = [
+    this.styles = [
         project.vendor + 'flickity/dist/flickity.css'
     ];
 
