@@ -1,7 +1,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/esr360/One-Nexus/blob/master/LICENSE)
 [![GitHub license](https://api.travis-ci.org/esr360/One-Nexus.svg)](https://travis-ci.org/esr360/One-Nexus)
 
-<img src="https://raw.githubusercontent.com/esr360/One-Nexus/master/assets/images/logo.png" width="270">
+<img src="https://raw.githubusercontent.com/esr360/One-Nexus/master/src/images/logo.png" width="270">
 
 > One-Nexus is a toolkit for architecting and constructing front-end user-interfaces
 
