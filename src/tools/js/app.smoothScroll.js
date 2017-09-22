@@ -20,7 +20,7 @@ export function smoothScroll(custom) {
     }, custom);
 
     // Define smooth scroll links
-    const scrollToggle = document.querySelectorAll('a:not([rel="modal"])');
+    const scrollToggle = document.querySelectorAll('a[href^="#"]:not([rel="modal"])');
 
     // Function to animate the scroll
     const smoothScroll = (anchor, duration) => {

@@ -91,8 +91,3 @@ Element.prototype.modifier = function(modifier, set) {
 Element.prototype.parents = function(selector) {
 	return parents(this, selector);
 };
-
-// App-Level Functions
-//*****************************************************************
-
-smoothScroll();
