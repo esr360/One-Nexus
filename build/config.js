@@ -57,7 +57,7 @@ module.exports = function config() {
 
     // Set all optional styles to be used by the project
     this.styles = [
-        project.vendor + 'flickity/dist/flickity.css'
+        this.project.vendor + 'flickity/dist/flickity.css'
     ];
 
     // The name of your project's source asset
