@@ -82,7 +82,7 @@
             &:hover {
                 border-color: this('background');
                 background: this('background');
-                color: color('greyscale', 'white');
+                color: color('greyscale', white);
             }
 
             $border-palettes: if(this('border-palettes'), this('border-palettes'), this('palettes'));
@@ -101,7 +101,7 @@
                         }
                     } @else {
                         &:hover {
-                            color: color('greyscale', 'white');
+                            color: color('greyscale', white);
                         }
                     }
 
