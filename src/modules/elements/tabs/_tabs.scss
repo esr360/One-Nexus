@@ -116,11 +116,11 @@
         }
 
         @include component('item') {
-            display: none;
+            display: none !important;
 
             // @TODO change to modifier
             &.active {
-                display: block;
+                display: block !important;
             }
         }
 
