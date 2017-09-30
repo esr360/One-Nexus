@@ -42,6 +42,10 @@
                     background: this('parent', 'background');
                     color: this('parent', 'color');
                 }
+
+                li:hover & {
+                    color: this('parent', 'color');
+                }
             }
         }
 
