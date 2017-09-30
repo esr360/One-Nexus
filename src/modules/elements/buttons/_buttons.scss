@@ -197,6 +197,20 @@
                 }
             }
 
+            @include modifier('stack') {
+                @media (max-width: breakpoint('break-1')) {
+                    @include module {
+                        display: block;
+                        margin-left: 0;
+                        margin-right: 0;
+                        text-align: center;
+                        &:not(:first-child) {
+                            margin-top: 1em;
+                        }
+                    }
+                }
+            }
+
         }
 
         a[class*="#{this('name')}"] {
