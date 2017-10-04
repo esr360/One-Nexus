@@ -94,7 +94,7 @@ Retrieve an existing breakpoint value
 
 Further to all the default examples provided by [Kayzen-GS](http://esr360.github.io/Kayzen-GS/), One-Nexus also comes with some other useful Grid System helpers.
 
-> For conditional responsive visibility helper classes, see the [`Helpers`](#TODO) module
+> For conditional responsive visibility helper classes, see the [`Helpers`](https://github.com/esr360/One-Nexus/tree/master/src/modules/utilities/helpers#min-bp) module
 
 #### Vertical Rhythm
 

@@ -10,7 +10,7 @@
 
 ### Quick Look
 
-> Tip: Utilise the [Button](#TODO) classes to style the scrollTop element
+> Tip: Utilise the [Button](https://github.com/esr360/One-Nexus/tree/master/src/modules/elements/buttons#examples) classes to style the scrollTop element
 
 ```html
 <a class="scroll-top button-icon-border" href="#site-content">
@@ -20,7 +20,7 @@
 
 ### Options
 
-For default values view the [`scroll-top.json`](scroll-top.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
+For default values view the [`scroll-top.json`](scroll-top.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
 
 <table class="table">
     <thead>

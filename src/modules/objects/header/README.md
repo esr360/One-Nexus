@@ -14,7 +14,7 @@
 
 ### Quick Look
 
-> The `header` module extends the [`logo`](#TODO), [`navigation`](#TODO) and [`overlay`](#TODO) modules
+> The `header` module extends the [`logo`](https://github.com/esr360/One-Nexus/tree/master/src/modules/objects/logo), [`navigation`](https://github.com/esr360/One-Nexus/tree/master/src/modules/objects/navigation) and [`overlay`](https://github.com/esr360/One-Nexus/tree/master/src/modules/objects/overlay) modules
 
 ```html
 <header class="header">
@@ -37,7 +37,7 @@
 
 ### Options
 
-For default values view the [`header.json`](header.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
+For default values view the [`header.json`](header.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
 
 <table class="table">
     <thead>
@@ -81,11 +81,11 @@ For default values view the [`header.json`](header.json) file. Standard CSS prop
         </tr>
         <tr>
             <td>overlay</td>
-            <td>[Synergy Selector](#TODO) (ID or module name only) for the [overlay module](#TODO)</td>
+            <td><a href="https://github.com/esr360/Synergy/wiki/JavaScript#parameter---els">Synergy Selector</a> (ID or module name only) for the <a href="https://github.com/esr360/One-Nexus/tree/master/src/modules/objects/overlay">overlay module</a></td>
         </tr>
         <tr>
             <td>navigation</td>
-            <td>Synergy Selector](#TODO) (ID or module name only) for the [navigation module](#TODO)</td>
+            <td><a href="https://github.com/esr360/Synergy/wiki/JavaScript#parameter---els">Synergy Selector</a> (ID or module name only) for the <a href="https://github.com/esr360/One-Nexus/tree/master/src/modules/objects/navigation">navigation module</a></td>
         </tr>
     </tbody>
 </table>

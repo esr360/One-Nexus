@@ -36,7 +36,7 @@ app.custom(module, custom);
         </tr>
         <tr>
             <td>custom</td>
-            <td>Configuraton to use instead of the values found in the global <a href="#TODO">`app.theme` Object</a></td>
+            <td>Configuraton to use instead of the values found in the global <a href="https://github.com/esr360/One-Nexus/wiki/Themes#one-nexusjs">`app.theme` Object</a></td>
         </tr>
     </tbody>
 </table>
@@ -171,7 +171,7 @@ if (app.media('min-width', '960px')) {
 }
 ```
 
-Using keys from the [`Grid`](#TODO) module:
+Using keys from the [`Grid`](https://github.com/esr360/One-Nexus/tree/master/src/modules/utilities/grid#options) module:
 
 ```js
 if (app.media('min-width', 'break-3')) {

@@ -26,7 +26,7 @@ One-Nexus provides some useful Sass tools to facilitate development and ehance y
 
 #### Example 1
 
-Sample config [[source]](#todo):
+Sample config [[source]](https://github.com/esr360/One-Nexus/tree/master/src/modules/objects/billboard#options):
 
 ```json
 {
@@ -34,12 +34,12 @@ Sample config [[source]](#todo):
         "background": {
             "color": "#00A9FF",
             "image": "url('bg.png')"
-        },
+        }
     }
 }
 ```
 
-Inside the Billboard module [[source]](#todo):
+Inside the Billboard module [[source]](https://github.com/esr360/One-Nexus/blob/master/src/modules/objects/billboard/_billboard.scss#L23):
 
 ```scss
 @include module('billboard') {
@@ -301,7 +301,7 @@ retrieve-value($module, $args);
 
 #### Example
 
-Calling a module with the name of another module [[source]](#todo):
+Calling a module with the name of another module [[source]](https://github.com/esr360/One-Nexus/blob/master/src/modules/objects/dropdown/_dropdown.scss#L17):
 
 ```scss
 // retrieve the 'name' value from the 'navigation' module

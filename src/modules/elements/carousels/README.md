@@ -29,7 +29,7 @@ To create a carousel, add the `carousel` class to a container of elements which 
 
 ### Options
 
-For default values view the [`carousels.json`](carousels.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
+For default values view the [`carousels.json`](carousels.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
 
 <table class="table">
     <thead>

@@ -35,7 +35,7 @@
 
 ### Options
 
-For default values view the [`buttons.json`](buttons.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
+For default values view the [`buttons.json`](buttons.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
 
 <table class="table">
     <thead>
@@ -75,7 +75,7 @@ For default values view the [`buttons.json`](buttons.json) file. Standard CSS pr
         </tr>
         <tr>
             <td><code>palettes</code></td>
-            <td>A list of <a href="#TODO">color palettes</a> to create modifiers for</td>
+            <td>A list of <a href="https://github.com/esr360/One-Nexus/tree/master/src/modules/utilities/colors#default-colors">color palettes</a> to create modifiers for</td>
         </tr>
         <tr>
             <td><code>sizes</code></td>
@@ -162,7 +162,7 @@ This option accepts an object and will create a modifier for each key using the 
 <button class="button-size-8">Size 8 Button</button>
 ```
 
-By default, a value of <code>typography-config('sizes')</code> is passed to the "sizes" option, which is a funtion to fetch the font sizes from the <a href="#TODO">Typography module</a>.
+By default, a value of <code>typography-config('sizes')</code> is passed to the "sizes" option, which is a funtion to fetch the font sizes from the <a href="https://github.com/esr360/One-Nexus/tree/master/src/modules/utilities/typography#default-values">Typography module</a>.
 
 ### Sass
 

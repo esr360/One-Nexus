@@ -198,7 +198,7 @@ Turn an element greyscale
 
 #### .min-#{$bp}
 
-Show only when resolution is at least X, where X is a value from the ['breakpoints'](#TODO) Grid System option
+Show only when resolution is at least X, where X is a value from the ['breakpoints'](https://github.com/esr360/One-Nexus/tree/master/src/modules/utilities/grid#options) Grid System option
 
 ```html
 <div class="min-break-1">...</div>
@@ -207,7 +207,7 @@ Show only when resolution is at least X, where X is a value from the ['breakpoin
 
 #### .max-#{$bp}
 
-Show only when resolution is at most X, where X is a value from the ['breakpoints'](#TODO) Grid System option
+Show only when resolution is at most X, where X is a value from the ['breakpoints'](https://github.com/esr360/One-Nexus/tree/master/src/modules/utilities/grid#options) Grid System option
 
 ```html
 <div class="max-break-1">...</div>

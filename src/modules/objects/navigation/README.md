@@ -10,7 +10,7 @@
 
 ### Quick Look
 
-The Navigation module appears inside the [Header](#TODO) module by default, along with the [Logo](#TODO) module.
+The Navigation module appears inside the [Header](https://github.com/esr360/One-Nexus/tree/master/src/modules/objects/header) module by default, along with the [Logo](https://github.com/esr360/One-Nexus/tree/master/src/modules/objects/logo) module.
 
 ```html
 <nav class="navigation">
@@ -22,11 +22,11 @@ The Navigation module appears inside the [Header](#TODO) module by default, alon
 </nav>
 ```
 
-> For nested/dropdown menus, look to the [Dropdown](#TODO) module
+> For nested/dropdown menus, look to the [Dropdown](https://github.com/esr360/One-Nexus/tree/master/src/modules/objects/dropdown) module
 
 ### Options
 
-For default values view the [`navigation.json`](navigation.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
+For default values view the [`navigation.json`](navigation.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
 
 <table class="table">
     <thead>

@@ -12,7 +12,7 @@
 
 ### Quick Look
 
-> You can populate the Side-Nav from an existing menu (see the module's [options](#options)) - by default the [Navigation](#TODO) module is used to populate the Side-Nav
+> You can populate the Side-Nav from an existing menu (see the module's [options](#options)) - by default the [Navigation](https://github.com/esr360/One-Nexus/tree/master/src/modules/objects/navigation) module is used to populate the Side-Nav
 
 ```html
 <div class="sideNav">
@@ -24,7 +24,7 @@
 
 ### Options
 
-For default values view the [`side-nav.json`](side-nav.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
+For default values view the [`side-nav.json`](side-nav.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
 
 <table class="table">
     <thead>

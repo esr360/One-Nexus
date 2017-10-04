@@ -10,7 +10,7 @@
 
 ### Quick Look
 
-> This module is an extension of the [Navigation](#TODO) module
+> This module is an extension of the [Navigation](https://github.com/esr360/One-Nexus/tree/master/src/modules/objects/navigation) module
 
 ```html
 <nav class="navigation">
@@ -36,7 +36,7 @@
 
 ### Options
 
-For default values view the [`dropdown.json`](dropdown.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [read more](#TODO).
+For default values view the [`dropdown.json`](dropdown.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
 
 <table class="table">
     <thead>
