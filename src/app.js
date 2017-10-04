@@ -17,8 +17,10 @@ export const config = {};
 // Vendor
 //*****************************************************************
 
-//import Synergy  from 'Synergy';
-import Synergy    from '../../../Synergy/src/js/synergy';
+//import Synergy from '../../../Synergy/src/js/synergy'; // works
+//import Synergy from './Synergy/src/js/synergy'; // works
+//import Synergy from '../node_modules/Synergy/src/js/synergy' // doesn't work
+//import Synergy from 'Synergy'; // doesn't work
 import deepextend from 'deep-extend';
 import Flickity   from 'flickity';
 
