@@ -15,7 +15,7 @@ module.exports = function config() {
         'one-nexus'
     ];
         
-    // Set the desired development environment
+    // Set the desired development environment ('dev'|'prod')
     this.env = 'dev';
 
     // Lint files when compiling them

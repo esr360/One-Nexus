@@ -23,9 +23,7 @@ module.exports = function(config) {
 
         scripts: {
             files: [
-                config.scripts,
-                config.project.source[0] + 'tools/**/*.js',
-                config.project.source[0] + config.src + '.js'
+                config.project.source[0] + '**/*.js'
             ],
             tasks: require('../compile')({
                 theme: config.theme,

@@ -34,11 +34,14 @@ export function tabs(els = 'tabs', custom = {}) {
 
                 item.modifier('active', 'set');
 
-                if (options.activeClass) item.classList.add(options.activeClass);
+                if (options.activeClass) {
+                    item.classList.add(options.activeClass)
+                };
+
                 // Hide previously selected item
-                tabItems().forEach(tab => tab.style.display = 'none');
+                tabItems().forEach(tab => tab.modifier('active', 'unset'));
                 // Show new item
-                tabItems()[index].style.display = 'block';
+                tabItems()[index].modifier('active', 'set');
             });
         });
 
