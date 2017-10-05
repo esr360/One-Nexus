@@ -3,8 +3,6 @@
  * @see https://github.com/sindresorhus/grunt-contrib-sass
  */
 module.exports = function(config) {
-    const destPath = config.project.dist[1].theme + config.dist + '.css'
-
     return {
         dev: {
             options: {
@@ -12,7 +10,10 @@ module.exports = function(config) {
                 require: 'sass-json-vars'
             },
             files: {
-                [destPath]: config.project.source[1].theme + '<%=theme%>.scss'
+                //[config.project.dist[1].theme + config.dist + '.css']: 
+                'dist/assets/themes/One-Nexus/<%=theme%>.css': 
+                'src/themes/One-Nexus/<%=theme%>.scss'
+                //config.project.source[1].theme + '<%=theme%>.scss'
             }
         },
         prod: {
