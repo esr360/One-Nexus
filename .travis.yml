@@ -6,9 +6,8 @@ before_install:
     - gem install sass
     - gem install scss-lint
     - gem install sass-json-vars
-    - npm install -g grunt-cli 
+    - npm install -g grunt-cli
 install: 
     - npm install
 before_script:
-    - node --version
     - grunt theme
