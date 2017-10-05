@@ -10,10 +10,8 @@ module.exports = function(config) {
                 require: 'sass-json-vars'
             },
             files: {
-                //[config.project.dist[1].theme + config.dist + '.css']: 
-                'dist/assets/themes/One-Nexus/<%=theme%>.css': 
-                'src/themes/One-Nexus/One-Nexus.scss'
-                //config.project.source[1].theme + '<%=theme%>.scss'
+                [config.project.dist[1].theme + config.dist + '.css']: 
+                config.project.source[1].theme + '<%=theme%>.scss'
             }
         },
         prod: {
