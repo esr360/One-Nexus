@@ -5,7 +5,7 @@
 module.exports = function(config) {
     return {
         options: {
-            transform: [['babelify', {presets: ['es2015']}]]
+            transform: [['babelify', {global: true, presets: ['es2015']}]]
         },
         dist: {
             src: config.project.source[1].theme + '<%=theme%>.js',

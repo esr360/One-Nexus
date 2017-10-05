@@ -55,7 +55,7 @@ module.exports = function(grunt) {
         watch       : require('./build/tasks/watch')(CONFIG),
         notify      : require('./build/tasks/notify')(CONFIG)
     });
-    
+
     /**************************************************************
      * Custom Tasks
      *************************************************************/
