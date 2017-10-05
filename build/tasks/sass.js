@@ -12,7 +12,7 @@ module.exports = function(config) {
             files: {
                 //[config.project.dist[1].theme + config.dist + '.css']: 
                 'dist/assets/themes/One-Nexus/<%=theme%>.css': 
-                'src/themes/One-Nexus/<%=theme%>.scss'
+                'src/themes/One-Nexus/one-nexus.scss'
                 //config.project.source[1].theme + '<%=theme%>.scss'
             }
         },
