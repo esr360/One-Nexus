@@ -36,19 +36,19 @@ For default values view the [`grid.json`](grid.json) file.
         </tr>
         <tr>
             <td>options {}</td>
-            <td>The [Kayzen-GS](http://esr360.github.io/Kayzen-GS/docs/#variable-kayzenGS) options to be modified</td>
+            <td>The <a href="http://esr360.github.io/Kayzen-GS/docs/#variable-kayzenGS">Kayzen-GS</a> options to be modified</td>
         </tr>
         <tr>
             <td>settings {}</td>
-            <td>The [Kayzen-GS](http://esr360.github.io/Kayzen-GS/docs/#variable-kayzenGS) settings to be modified</td>
+            <td>The <a href="http://esr360.github.io/Kayzen-GS/docs/#variable-kayzenGS">Kayzen-GS</a> settings to be modified</td>
         </tr>
         <tr>
             <td>breakpoints {}</td>
-            <td>The [breakpoints](https://github.com/esr360/Kayzen-GS#breakpoints) to use when generating the Grid System styles</td>
+            <td>The <a href="https://github.com/esr360/Kayzen-GS#breakpoints">breakpoints</a> to use when generating the Grid System styles</td>
         </tr>
         <tr>
             <td>fractions {}</td>
-            <td>The [fractions](https://github.com/esr360/Kayzen-GS#fractions) to use when generating the Grid System styles</td>
+            <td>The <a href="https://github.com/esr360/Kayzen-GS#fractions">fractions</a> to use when generating the Grid System styles</td>
         </tr>
     </tbody>
 </table>
