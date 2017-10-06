@@ -29,7 +29,7 @@
 
 ### Table of Contents
 
-* [Getting Started](https://github.com/esr360/One-Nexus/wiki/Tools)
+* [Getting Started](https://github.com/esr360/One-Nexus/wiki/Getting-Started)
 * [Introduction](https://github.com/esr360/One-Nexus/wiki/Introduction)
 * [UI Modules](https://github.com/esr360/One-Nexus/wiki/UI-Modules)
 * [Themes](https://github.com/esr360/One-Nexus/wiki/Themes)
