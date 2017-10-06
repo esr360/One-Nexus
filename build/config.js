@@ -19,7 +19,7 @@ module.exports = function config() {
     this.env = 'dev';
 
     // Lint files when compiling them
-    this.lint = false;
+    this.lint = true;
 
     // Test files when compiling them
     this.test = true;

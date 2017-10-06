@@ -56,8 +56,8 @@
             }
 
             ::selection {
-                background-color: color('brand', 'brand-1');
-                color: color('greyscale', white);
+                background-color: this('selection-background');
+                color: this('selection-color');
                 text-shadow: none;
             }
 

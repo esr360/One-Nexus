@@ -5,6 +5,8 @@
         "font-family": ["#TYPEFACE", "primary"],
         "text-color": ["#TYPOGRAPHY", "colors", "base"],
         "font-size": ["#TYPOGRAPHY", "sizes", "size-3"],
+        "selection-background": ["#COLOR", "brand", "brand-1"],
+        "selection-color": ["#COLOR", "greyscale", "white"],
         "margin": "2rem",
         "line-height": "1.4",
         "radius": "0.4em",

@@ -16,7 +16,7 @@ linters:
     enabled: false
 
   ColorKeyword:
-    enabled: true
+    enabled: false
 
   ColorVariable:
     enabled: true
