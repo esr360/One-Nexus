@@ -25,7 +25,7 @@
 
 ## One-Nexus Wiki
 
-> For interactive demos, visit the [One-Nexus Website](http://onenexus.io/)
+> For interactive demos, visit the [One-Nexus Github-Pages Website](http://esr360.github.io/One-Nexus/dist/)
 
 ### Table of Contents
 
