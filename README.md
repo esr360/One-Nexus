@@ -1,11 +1,13 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/esr360/One-Nexus/blob/master/LICENSE)
 [![GitHub license](https://api.travis-ci.org/esr360/One-Nexus.svg)](https://travis-ci.org/esr360/One-Nexus)
 
-<img src="https://raw.githubusercontent.com/esr360/One-Nexus/master/src/images/logo.png" width="270">
+<a href="http://onenexus.io/">
+    <img src="https://raw.githubusercontent.com/esr360/One-Nexus/master/src/images/logo.png" width="270">
+</a>
 
 > One-Nexus is a toolkit for architecting and constructing front-end user-interfaces
 
-[Visit Website](http://esr360.github.io/One-Nexus/) | 
+[Visit Website](http://onenexus.io/) | 
 [View SassDoc Documentation](http://esr360.github.io/One-Nexus/docs/sass) |
 [View JSDoc Documentation](http://esr360.github.io/One-Nexus/docs/sass)
 
@@ -13,7 +15,7 @@
 
 * Configure your entire project's UI from a single JSON file
 * Modular and configurable UI components
-* [Bespoke responsive grid system](https://github.com/esr360/One-Nexus#responsive-grid-system)
+* [Bespoke responsive grid system](https://github.com/esr360/One-Nexus/wiki/Grid-System)
 * Built with Sass and Vanilla JavaScript (no jQuery!)
 * Optional Handlebars templates
 * Sass and JS unit testing
@@ -23,7 +25,7 @@
 
 ## One-Nexus Wiki
 
-> For interactive demos, visit the [One-Nexus Website](#TODO)
+> For interactive demos, visit the [One-Nexus Website](http://onenexus.io/)
 
 ### Table of Contents
 
