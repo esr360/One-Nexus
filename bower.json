@@ -1,10 +1,10 @@
  {
-    "name": "One-Nexus",
+    "name": "one-nexus",
     "version": "3.0.0",
-    "description": "A modular UI toolkit.",
+    "description": "A toolkit for architecting and constructing modular front-end user-interfaces",
     "main": [
-        "assets/themes/One-Nexus/_one-nexus.scss",
-        "assets/themes/One-Nexus/one-nexus.js"
+        "src/themes/One-Nexus/one-nexus.scss",
+        "src/themes/One-Nexus/one-nexus.js"
     ],
     "keywords": [
         "css",
