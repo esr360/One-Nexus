@@ -10,4 +10,4 @@ before_install:
 install: 
     - npm install
 before_script:
-    - grunt theme
+    - grunt theme --env=prod
