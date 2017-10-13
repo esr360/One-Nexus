@@ -27,21 +27,21 @@ export function tabs(els = 'tabs', custom = {}) {
         Array.prototype.forEach.call(el.component('nav')[0].children, (item, index) => {
             item.addEventListener('click', () => {
                 Array.prototype.forEach.call(item.parentNode.children, sibling => {
-                    sibling.modifier('active', 'unset');
+                    sibling.modifier('active', 'remove');
 
                     if (options.activeClass) sibling.classList.remove(options.activeClass);
                 });
 
-                item.modifier('active', 'set');
+                item.modifier('active', 'add');
 
                 if (options.activeClass) {
                     item.classList.add(options.activeClass);
                 }
 
                 // Hide previously selected item
-                tabItems().forEach(tab => tab.modifier('active', 'unset'));
+                tabItems().forEach(tab => tab.modifier('active', 'remove'));
                 // Show new item
-                tabItems()[index].modifier('active', 'set');
+                tabItems()[index].modifier('active', 'add');
             });
         });
 
