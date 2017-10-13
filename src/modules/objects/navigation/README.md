@@ -1,4 +1,4 @@
-## Logo
+## Navigation
 
 ##### Components
 

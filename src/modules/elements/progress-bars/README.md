@@ -1,4 +1,4 @@
-## One-Nexus Progress Bars
+## Progress Bars
 
 ##### Components
 

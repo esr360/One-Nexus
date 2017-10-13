@@ -1,4 +1,4 @@
-## One-Nexus Carousels
+## Carousels
 
 ##### Components
 

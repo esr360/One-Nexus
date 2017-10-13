@@ -1,4 +1,4 @@
-## One-Nexus tabs
+## Tabs
 
 ##### Components
 

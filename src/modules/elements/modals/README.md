@@ -1,4 +1,4 @@
-## One-Nexus modals
+## Modals
 
 ##### Components
 

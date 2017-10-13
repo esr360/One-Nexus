@@ -1,4 +1,4 @@
-## One-Nexus Alert Bars/Boxes
+## Alert Bars/Boxes
 
 ##### Components
 

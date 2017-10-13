@@ -1,4 +1,4 @@
-## One-Nexus Accordions
+## Accordions
 
 ##### Components
 

@@ -1,4 +1,4 @@
-## One-Nexus tabs
+## Tooltips
 
 ##### Components
 

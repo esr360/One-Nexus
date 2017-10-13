@@ -1,4 +1,4 @@
-## One-Nexus Buttons
+## Buttons
 
 ##### Components
 

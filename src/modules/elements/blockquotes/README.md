@@ -1,4 +1,4 @@
-## One-Nexus Blockquotes
+## Blockquotes
 
 ##### Components
 
