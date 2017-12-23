@@ -28,15 +28,22 @@
     "Sass-Boost": "^1.1.0",
     "Synergy": "^3.8.1",
     "deep-extend": "^0.5.0",
+    "detect-browser": "^2.0.0",
     "flickity": "^2.0.8",
+    "jquery": "^3.2.1",
     "normalize-scss": "^7.0.0",
+    "pubsub-js": "^1.5.7",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "spinners": "^1.2.2"
   },
   "devDependencies": {
     "assemble-handlebars": "^0.3.0",
     "autoprefixer": "^6.3.1",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
     "babelify": "^7.3.0",
     "grunt": "^0.4.5",
@@ -64,6 +71,15 @@
     "sass-true": "^3.0.0-beta.1"
   },
   "browserify": {
-    "transform": [["babelify", {"presets": ["es2015"]}]]
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
   }
 }

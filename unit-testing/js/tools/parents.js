@@ -5,7 +5,7 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-import { parents } from '../../../src/tools/js/app.parents';
+import { parents } from '../../../src/ui/tools/js/app.parents';
 
 const assert = require('assert');
 const jsdom  = require('jsdom-global')();

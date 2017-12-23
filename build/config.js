@@ -19,7 +19,7 @@ module.exports = function config() {
     this.env = 'dev';
 
     // Lint files when compiling them
-    this.lint = true;
+    this.lint = false;
 
     // Test files when compiling them
     this.test = true;
@@ -28,10 +28,10 @@ module.exports = function config() {
     // Paths ae relative to the project root
     this.project = {
         source: [      'src/', {
-            images:    'src/images/',
-            scripts:   'src/modules/',
-            styles:    'src/modules/',
-            theme:     'src/themes/<%=theme%>/',
+            images:    'src/ui/images/',
+            scripts:   'src/ui/modules/',
+            styles:    'src/ui/modules/',
+            theme:     'src/ui/themes/<%=theme%>/',
             templates: 'templates/'
         }],
         dist: [        'dist/', {
