@@ -12,8 +12,7 @@ module.exports = function clean(custom) {
         environment: 'dev',
         theme: 'one-nexus',
         clean: [
-            'app', 
-            'theme'
+            'app'
         ],
         assets: [
             'styles', 
@@ -34,26 +33,15 @@ module.exports = function clean(custom) {
     // Clean app assets
     if (options.clean.includes('app')) {
         if (options.assets.includes('styles')) {
-            tasks.push(`clean:${envToClean}AppStyles`);
+            tasks.push(`clean:${envToClean}Styles`);
         }
 
         if (options.assets.includes('scripts')) {
-            tasks.push(`clean:${envToClean}AppScripts`);
+            tasks.push(`clean:${envToClean}Scripts`);
         }
 
         if (options.assets.includes('images')) {
-            tasks.push(`clean:appImages`);
-        }
-    }
-
-    // Clean theme assets
-    if (options.clean.includes('theme')) {
-        if (options.assets.includes('styles')) {
-            tasks.push(`clean:${envToClean}ThemeStyles`);
-        }
-
-        if (options.assets.includes('scripts')) {
-            tasks.push(`clean:${envToClean}ThemeScripts`);
+            tasks.push(`clean:images`);
         }
     }
 

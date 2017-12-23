@@ -9,7 +9,7 @@ module.exports = function(config) {
         },
         dist: {
             src: config.project.source[0] + 'app.js',
-            dest: config.project.dist[1].theme + config.dist + '.js'
+            dest: config.project.dist[1].scripts + config.dist + '.js'
         }
     }
 }

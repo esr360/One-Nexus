@@ -16,16 +16,6 @@ module.exports = function(config) {
                 dest: config.project.dist[1].styles,
                 ext: '.min.css'
             }]
-        },
-
-        theme: {
-            files: [{
-                expand: true,
-                cwd: config.project.dist[1].theme,
-                src: ['*.css', '!*.min.css'],
-                dest: config.project.dist[1].theme,
-                ext: '.min.css'
-            }]
         }
     }
 }

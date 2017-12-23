@@ -8,43 +8,24 @@ module.exports = function(config) {
             src: config.project.dist[0]
         },
 
-        appImages: {
+        images: {
             src: config.project.dist[1].images
         },
 
-        devAppStyles: [
-            config.project.dist[1].styles + '**/*.css',
-            '!' + config.project.dist[1].styles + '**/*.min.css'
+        devStyles: [
+            config.project.dist[1].styles + '**/*.css', '!' + config.project.dist[1].styles + '**/*.min.css'
         ],
 
-        devAppScripts: [
-            config.project.dist[1].scripts + '**/*.js',
-            '!' + config.project.dist[1].scripts + '**/*.min.js'
+        devScripts: [
+            config.project.dist[1].scripts + '**/*.js', '!' + config.project.dist[1].scripts + '**/*.min.js'
         ],
 
-        prodAppStyles: [
+        prodStyles: [
             config.project.dist[1].styles + '**/*.min.css'
         ],
 
-        prodAppScripts: [
+        prodScripts: [
             config.project.dist[1].scripts + '**/*.min.js'
         ],
-
-        devThemeStyles: [
-            config.project.dist[1].theme + config.dist + '.css',
-            config.project.dist[1].theme + '*.css.map'
-        ],
-
-        devThemeScripts: [
-            config.project.dist[1].theme + config.dist + '.js'
-        ],
-
-        prodThemeStyles: [
-            config.project.dist[1].theme + config.dist + '.min.css'
-        ],
-
-        prodThemeScripts: [
-            config.project.dist[1].theme + config.dist + '.min.js'
-        ]
     }
 }

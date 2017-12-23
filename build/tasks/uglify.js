@@ -23,21 +23,6 @@ module.exports = function(config) {
                     return dest + '/' + src.replace('.js', '.min.js'); 
                 }
             }]
-        },
-
-        theme: {
-            files: [{ 
-                src: [
-                    config.project.dist[1].theme + '**/*.js',
-                    '!' + config.project.dist[1].theme + '**/*min.js',
-                ],
-                dest: config.project.dist[1].theme,
-                expand: true,
-                flatten: true,
-                rename: (dest, src) => { 
-                    return dest + '/' + src.replace('.js', '.min.js'); 
-                }
-            }]
         }
     }
 }

@@ -42,7 +42,7 @@ module.exports = function compile(custom) {
                 }));
             }
 
-            tasks.push('copy:appStyles');
+            tasks.push('copy:styles');
 
             if (options.environment === 'prod') {
                 tasks.push('cssmin:app');
@@ -64,7 +64,7 @@ module.exports = function compile(custom) {
                 }));
             }
 
-            tasks.push('copy:appScripts');
+            tasks.push('copy:scripts');
 
             if (options.environment === 'prod') {
                 tasks.push('uglify:app');
@@ -78,7 +78,7 @@ module.exports = function compile(custom) {
         }
 
         if (options.assets.includes('images')) {
-            tasks.push('copy:appImages');
+            tasks.push('copy:images');
         }
     }
 

@@ -24,7 +24,6 @@ module.exports = function(grunt) {
     CONFIG.src     = grunt.option('src')     || CONFIG.src;
     CONFIG.dist    = grunt.option('dist')    || CONFIG.dist;
     CONFIG.scripts = grunt.option('scripts') || CONFIG.scripts;
-    CONFIG.scripts = grunt.option('scripts') || CONFIG.scripts;
     CONFIG.styles  = grunt.option('styles')  || CONFIG.styles;
     CONFIG.lint    = grunt.option('lint')    || CONFIG.lint;
     CONFIG.test    = grunt.option('test')    || CONFIG.test;

@@ -4,7 +4,7 @@
  */
 module.exports = function(config) {
     return {
-        appStyles: {
+        styles: {
             files: [{
                 src: [config.styles],
                 dest: config.project.dist[1].styles,
@@ -13,7 +13,7 @@ module.exports = function(config) {
             }]
         },
 
-        appScripts: {
+        scripts: {
             files: [{
                 src: [config.scripts],
                 dest: config.project.dist[1].scripts,
@@ -22,21 +22,13 @@ module.exports = function(config) {
             }]
         },
 
-        appImages: {
-            files: [
-                {
-                    cwd: config.project.source[1].images,
-                    src: '**/*',
-                    dest: config.project.dist[1].images,
-                    expand: true
-                },
-                {
-                    cwd: config.project.vendor + 'LivIconsEvo/svg',
-                    src: '**/*.svg',
-                    dest: config.project.dist[1].images + 'LivIcons/',
-                    expand: true
-                }
-            ]
+        images: {
+            files: [{
+                cwd: config.project.source[1].images,
+                src: '**/*',
+                dest: config.project.dist[1].images,
+                expand: true
+            }]
         }
     }
 }

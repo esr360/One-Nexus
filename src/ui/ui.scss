@@ -6,8 +6,8 @@
 ///****************************************************************
 
 // Import global app configuration
-// Path is relative to ./themes/[THEME] at compile-time
-@import '../../ui.json';
+// Path is relative to ../app.scss at compile-time
+@import 'ui/ui.json';
 
 //*****************************************************************
 // Vendor Files
@@ -21,7 +21,7 @@
 @import '../../node_modules/Synergy/dist/synergy';
 
 // CSS librarys
-@import '../../styles/flickity.css';
+@import 'flickity.css';
 
 //*****************************************************************
 // Tools
