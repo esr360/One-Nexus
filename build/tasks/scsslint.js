@@ -4,7 +4,7 @@
  */
 module.exports = function(config) {
     return {
-        source: [config.project.source[0] + '**/*.scss'],
+        source: [config.project.source + '**/*.scss'],
         options: {
             config: '.scss-lint.yml',
             colorizeOutput: false

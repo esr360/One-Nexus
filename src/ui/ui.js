@@ -17,7 +17,6 @@ export const config = {};
 // Vendor
 //*****************************************************************
 
-import $ from 'jquery';
 import deepextend from 'deep-extend';
 import Browser from 'detect-browser';
 import Flickity from 'flickity';
@@ -113,8 +112,6 @@ export {
 app.publish     = PubSub.publish;
 app.subscribe   = PubSub.subscribe;
 
-window.$        = $;
-window.jQuery   = $;
 window.React    = React;
 window.ReactDOM = ReactDOM;
 window.APPUI    = window.APPUI || app;

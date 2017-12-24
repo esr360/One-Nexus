@@ -22,10 +22,10 @@ module.exports = function(config) {
                 message: 'All images have been copied to the distribution directory'
             }
         },
-        templates: {
+        views: {
             options: {
-                title: 'Templates Compiled',
-                message: 'All templates have been successfully compiled!'
+                title: 'Views Compiled',
+                message: 'All views have been successfully compiled!'
             }
         },
         dist: {

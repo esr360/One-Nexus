@@ -2,9 +2,8 @@
  * Compile assets
  * 
  * @example compile({
- *     theme: 'one-nexus', 
  *     environment: 'prod',
- *     assets: ['scss'],
+ *     compile: {ui: ['styles', 'scripts']},
  *     test: false
  * });
  */
@@ -12,17 +11,10 @@ module.exports = function compile(custom) {
 
     const options = Object.assign({
         environment: 'dev',
-        theme: 'one-nexus',
-        compile: [
-            'app', 
-            'theme',
-            'templates'
-        ],
-        assets: [
-            'styles', 
-            'scripts', 
-            'images',
-        ],
+        compile: {
+            ui:  ['styles', 'scripts', 'images'],
+            app: ['styles', 'scripts', 'images', 'views']
+        },
         lint: true,
         test: true,
         docs: true,
@@ -31,66 +23,9 @@ module.exports = function compile(custom) {
 
     let tasks = [];
 
-    // Compile app assets
-    if (options.compile.includes('app')) {
-        if (options.assets.includes('styles')) {
-            if (options.environment === 'dev') {
-                tasks = tasks.concat(require('./clean')({
-                    environment: options.environment,
-                    clean: ['app'],
-                    assets: ['styles']
-                }));
-            }
-
-            tasks.push('copy:styles');
-
-            if (options.environment === 'prod') {
-                tasks.push('cssmin:app');
-
-                tasks = tasks.concat(require('./clean')({
-                    environment: options.environment,
-                    clean: ['app'],
-                    assets: ['styles']
-                }));
-            }
-        }
-
-        if (options.assets.includes('scripts')) {
-            if (options.environment === 'dev') {
-                tasks = tasks.concat(require('./clean')({
-                    environment: options.environment,
-                    clean: ['app'],
-                    assets: ['scripts']
-                }));
-            }
-
-            tasks.push('copy:scripts');
-
-            if (options.environment === 'prod') {
-                tasks.push('uglify:app');
-    
-                tasks = tasks.concat(require('./clean')({
-                    environment: options.environment,
-                    clean: ['app'],
-                    assets: ['scripts']
-                }));
-            }
-        }
-
-        if (options.assets.includes('images')) {
-            tasks.push('copy:images');
-        }
-    }
-
-    // Compile theme assets
-    if (options.compile.includes('theme')) {
-        tasks = tasks.concat(require('./clean')({
-            environment: options.environment,
-            theme: options.theme,
-            clean: ['theme']
-        }));
-
-        if (options.assets.includes('styles')) {
+    // Create UI assets
+    if ('ui' in options.compile) {
+        if (options.compile.ui.includes('styles')) {
             if (options.lint) {
                 tasks.push('scsslint');
             }
@@ -110,18 +45,16 @@ module.exports = function compile(custom) {
             );
 
             if (options.environment === 'prod') {
-                tasks.push('cssmin:theme');
+                tasks.push('cssmin:app');
             }
 
             tasks = tasks.concat(require('./clean')({
                 environment: options.environment,
-                theme: options.theme,
-                clean: ['theme'],
-                assets: ['styles']
+                clean: ['styles'],
             }));
         }
 
-        if (options.assets.includes('scripts')) {
+        if (options.compile.ui.includes('scripts')) {
             if (options.lint) {
                 tasks.push('jshint');
             }
@@ -137,21 +70,51 @@ module.exports = function compile(custom) {
             tasks.push('browserify');
 
             if (options.environment === 'prod') {
-                tasks.push('uglify:theme');
+                tasks.push('uglify:app');
             }
 
             tasks = tasks.concat(require('./clean')({
                 environment: options.environment,
-                theme: options.theme,
-                clean: ['theme'],
-                assets: ['scripts']
+                clean: ['scripts'],
             }));
+        }
+
+        if (options.compile.ui.includes('images')) {
+            tasks.push('copy:images');
         }
     }
 
-    // Compile templates
-    if (options.compile.includes('templates')) {
-        tasks.push('assemble');    
+    // Create other app assets
+    if ('app' in options.compile) {
+        if (options.compile.app.includes('styles')) {
+            tasks.push('copy:styles');
+
+            if (options.environment === 'prod') {
+                tasks.push('cssmin:app');
+
+                tasks = tasks.concat(require('./clean')({
+                    environment: options.environment,
+                    clean: ['styles']
+                }));
+            }
+        }
+
+        if (options.compile.app.includes('scripts')) {
+            tasks.push('copy:scripts');
+
+            if (options.environment === 'prod') {
+                tasks.push('uglify:app');
+    
+                tasks = tasks.concat(require('./clean')({
+                    environment: options.environment,
+                    clean: ['scripts']
+                }));
+            }
+        }
+
+        if (options.compile.app.includes('views')) {
+            tasks.push('copy:view');
+        }
     }
 
     return tasks;

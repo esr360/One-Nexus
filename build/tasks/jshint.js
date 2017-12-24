@@ -7,6 +7,6 @@ module.exports = function(config) {
         options: {
             esversion: 6
         },
-        source: [config.project.source[0] + '**/*.js']
+        source: [config.project.source + '**/*.js']
     }
 }

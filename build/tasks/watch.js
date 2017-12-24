@@ -9,12 +9,11 @@ module.exports = function(config) {
         },
 
         scss: {
-            files: [config.project.source[0] + '**/*.scss'],
+            files: [config.project.source + '**/*.scss'],
             tasks: require('../compile')({
                 theme: config.theme,
                 environment: config.env,
-                compile: ['theme'],
-                assets: ['styles'],
+                compile: {ui: ['styles']},
                 lint: config.lint,
                 test: config.test,
                 docs: false
@@ -23,13 +22,12 @@ module.exports = function(config) {
 
         scripts: {
             files: [
-                config.project.source[0] + '**/*.js'
+                config.project.source + '**/*.{js,jsx}'
             ],
             tasks: require('../compile')({
                 theme: config.theme,
                 environment: config.env,
-                compile: ['theme'],
-                assets: ['scripts'],
+                compile: {ui: ['scripts']},
                 lint: config.lint,
                 test: config.test,
                 docs: false
@@ -37,12 +35,11 @@ module.exports = function(config) {
         },
 
         config: {
-            files: [config.project.source[0] + '**/*.json'],
+            files: [config.project.source + '**/*.json'],
             tasks: require('../compile')({
                 theme: config.theme,
                 environment: config.env,
-                compile: ['theme'],
-                assets: ['styles', 'scripts'],
+                compile: {ui: ['styles', 'scripts']},
                 lint: false,
                 test: config.test,
                 docs: false
@@ -50,17 +47,16 @@ module.exports = function(config) {
         },
 
         images: {
-            files: config.project.source[1].images + '**/*',
+            files: config.project.ui[1].images + '**/*',
             tasks: require('../compile')({
-                compile: ['app'],
-                assets: ['images']
+                compile: {ui: ['images']},
             })
         },
 
-        templates: {
-            files: config.project.source[1].templates + '**/*',
+        views: {
+            files: config.project.source + 'index.html',
             tasks: require('../compile')({
-                compile: ['templates']
+                compile: {app: ['views']},
             })
         },
 

@@ -1,20 +1,15 @@
 /**
- * Compile app/theme
+ * Clean app
  * 
  * @example clean({
- *     theme: 'one-nexus', 
- *     assets: ['scss']
+ *     clean: ['styles']
  * });
  */
 module.exports = function clean(custom) {
 
     const options = Object.assign({
         environment: 'dev',
-        theme: 'one-nexus',
         clean: [
-            'app'
-        ],
-        assets: [
             'styles', 
             'scripts', 
             'images'
@@ -31,18 +26,16 @@ module.exports = function clean(custom) {
     let tasks = [];
 
     // Clean app assets
-    if (options.clean.includes('app')) {
-        if (options.assets.includes('styles')) {
-            tasks.push(`clean:${envToClean}Styles`);
-        }
+    if (options.clean.includes('styles')) {
+        tasks.push(`clean:${envToClean}Styles`);
+    }
 
-        if (options.assets.includes('scripts')) {
-            tasks.push(`clean:${envToClean}Scripts`);
-        }
+    if (options.clean.includes('scripts')) {
+        tasks.push(`clean:${envToClean}Scripts`);
+    }
 
-        if (options.assets.includes('images')) {
-            tasks.push(`clean:images`);
-        }
+    if (options.clean.includes('images')) {
+        tasks.push(`clean:images`);
     }
 
     return tasks;

@@ -11,7 +11,7 @@ module.exports = function(config) {
             },
             files: {
                 [config.project.dist[1].styles + config.dist + '.css']: 
-                config.project.source[0] + 'app.scss'
+                config.project.source + 'app.scss'
             }
         },
         prod: {
@@ -22,7 +22,7 @@ module.exports = function(config) {
             },
             files: {
                 [config.project.dist[1].styles + config.dist + '.min.css']: 
-                config.project.source[0] + 'app.scss'
+                config.project.source + config.src + '.scss'
             }
         }
     }

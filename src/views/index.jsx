@@ -5,6 +5,6 @@ const panels = [
     {title: 'fizz', content: 'buzz'},
 ];
 
-export function index() {
+export default function index() {
     ReactDOM.render(<app.Accordion panels={panels} />, document.getElementById('react'));
 }

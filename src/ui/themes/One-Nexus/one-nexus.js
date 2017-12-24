@@ -8,9 +8,10 @@
 import * as app from '../../ui';
 import config from './config.json';
 
+// @TODO this doesn't seem to work
 app.theme  = config.app;
 
-export function theme() {
+export default function theme() {
 
     ///************************************************************
     /// Utilities
@@ -41,13 +42,13 @@ export function theme() {
     app.header();
     app.preloader();
     app.scrollTop();
-    app.search();
+    //app.search();
     app.sideNav();
 
+    ///************************************************************
+    /// Export Options
+    ///************************************************************
+    
+    window.APPUI.config = app.evalConfig(app.config);
+
 }
-
-///************************************************************
-/// Export Options
-///************************************************************
-
-window.APPUI.config = app.evalConfig(app.config);

@@ -7,7 +7,7 @@ module.exports = function(config) {
         dist : {
             src: [
                 'Gruntfile.js', 
-                config.project.source[0] + '**/*.js'
+                config.project.source + '**/*.js'
             ],
             options: {
                 destination: config.project.docs[1].scripts

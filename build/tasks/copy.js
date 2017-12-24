@@ -24,11 +24,18 @@ module.exports = function(config) {
 
         images: {
             files: [{
-                cwd: config.project.source[1].images,
+                cwd: config.project.ui[1].images,
                 src: '**/*',
                 dest: config.project.dist[1].images,
                 expand: true
             }]
+        },
+
+        view: {
+            src: config.project.source + 'index.html',
+            dest: config.project.dist[1].views,
+            expand: true,
+            flatten: true
         }
     }
 }

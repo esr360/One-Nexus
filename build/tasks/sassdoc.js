@@ -6,7 +6,7 @@ module.exports = function(config) {
     return {
         dist: {
             src: [
-                config.project.source[0] + '**/*.scss'
+                config.project.source + '**/*.scss'
             ],
             options: {
                 dest: config.project.docs[1].styles

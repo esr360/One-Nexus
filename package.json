@@ -68,7 +68,8 @@
     "jsdom-global": "^3.0.2",
     "mocha": "^3.4.2",
     "nopt-grunt-fix": "^1.0.0",
-    "sass-true": "^3.0.0-beta.1"
+    "sass-true": "^3.0.0-beta.1",
+    "uglifyify": "^4.0.5"
   },
   "browserify": {
     "transform": [

@@ -1,5 +1,8 @@
+// Expose the app object
+import * as app from './app';
+
 // Theme
-import * as Theme from './ui/themes/One-Nexus/one-nexus';
+import Theme from './ui/themes/One-Nexus/one-nexus';
 
 // UI Components
 import { Accordion } from './ui/modules/elements/accordions/accordions.jsx';
@@ -7,8 +10,8 @@ import { Accordion } from './ui/modules/elements/accordions/accordions.jsx';
 export { Accordion };
 
 // Views
-import { index } from './views/index.jsx';
+import Index from './views/index.jsx';
 
-index();
+Index();
 
-Theme.theme();
+Theme();

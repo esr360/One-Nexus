@@ -5,10 +5,13 @@
 module.exports = function(config) {
     return {
         options: {
-            transform: [['babelify', {global: true, presets: ['es2015']}]]
+            transform: [
+                ['babelify',  {global: true, presets: ['react', 'es2015']}], 
+                ['uglifyify', {global: true}]
+            ]
         },
         dist: {
-            src: config.project.source[0] + 'app.js',
+            src: config.project.source + config.src + '.js',
             dest: config.project.dist[1].scripts + config.dist + '.js'
         }
     }
