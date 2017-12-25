@@ -1,20 +1,18 @@
 /**
- * Compile assets
+ * Generate array of tasks to build app
  * 
- * @example compile({
+ * @example build({
  *     environment: 'prod',
- *     compile: {ui: ['styles', 'scripts']},
+ *     compile: ['styles', 'scripts'],
  *     test: false
  * });
  */
-module.exports = function compile(custom) {
+module.exports = function build(custom) {
 
     const options = Object.assign({
         environment: 'dev',
-        compile: {
-            ui:  ['styles', 'scripts', 'images'],
-            app: ['styles', 'scripts', 'images', 'views']
-        },
+        compile: ['styles', 'scripts', 'images', 'views'],
+        assets: ['styles', 'scripts', 'images'],
         lint: true,
         test: true,
         docs: true,
@@ -23,17 +21,16 @@ module.exports = function compile(custom) {
 
     let tasks = [];
 
-    // Create UI assets
-    if ('ui' in options.compile) {
-        if (options.compile.ui.includes('styles')) {
+    if (options.compile) {
+        if (options.compile.includes('styles')) {
             if (options.lint) {
                 tasks.push('scsslint');
             }
-    
+
             if (options.test) {
                 tasks.push('mochaTest:scss');
             }
-    
+
             if (options.docs) {
                 tasks.push('sassdoc');
             }
@@ -54,15 +51,15 @@ module.exports = function compile(custom) {
             }));
         }
 
-        if (options.compile.ui.includes('scripts')) {
+        if (options.compile.includes('scripts')) {
             if (options.lint) {
                 tasks.push('jshint');
             }
-    
+
             if (options.test) {
                 tasks.push('mochaTest:js');
             }
-    
+
             if (options.docs) {
                 tasks.push('jsdoc');
             }
@@ -79,14 +76,17 @@ module.exports = function compile(custom) {
             }));
         }
 
-        if (options.compile.ui.includes('images')) {
+        if (options.compile.includes('images')) {
             tasks.push('copy:images');
+        }
+
+        if (options.compile.includes('views')) {
+            tasks.push('copy:views');
         }
     }
 
-    // Create other app assets
-    if ('app' in options.compile) {
-        if (options.compile.app.includes('styles')) {
+    if (options.assets) {
+        if (options.assets.includes('styles')) {
             tasks.push('copy:styles');
 
             if (options.environment === 'prod') {
@@ -99,21 +99,17 @@ module.exports = function compile(custom) {
             }
         }
 
-        if (options.compile.app.includes('scripts')) {
+        if (options.assets.includes('scripts')) {
             tasks.push('copy:scripts');
 
             if (options.environment === 'prod') {
                 tasks.push('uglify:app');
-    
+
                 tasks = tasks.concat(require('./clean')({
                     environment: options.environment,
                     clean: ['scripts']
                 }));
             }
-        }
-
-        if (options.compile.app.includes('views')) {
-            tasks.push('copy:view');
         }
     }
 

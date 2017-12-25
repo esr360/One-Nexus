@@ -17,16 +17,19 @@ module.exports = function(grunt) {
      * @see /build/config.js
      *************************************************************/
 
-    CONFIG.theme   = grunt.option('theme')   || CONFIG.theme;
-    CONFIG.themes  = grunt.option('themes')  || CONFIG.themes;
-    CONFIG.env     = grunt.option('env')     || CONFIG.env;
-    CONFIG.project = grunt.option('project') || CONFIG.project;
-    CONFIG.src     = grunt.option('src')     || CONFIG.src;
-    CONFIG.dist    = grunt.option('dist')    || CONFIG.dist;
-    CONFIG.scripts = grunt.option('scripts') || CONFIG.scripts;
-    CONFIG.styles  = grunt.option('styles')  || CONFIG.styles;
-    CONFIG.lint    = grunt.option('lint')    || CONFIG.lint;
-    CONFIG.test    = grunt.option('test')    || CONFIG.test;
+    CONFIG.theme   = setConfig(CONFIG, 'theme');
+    CONFIG.themes  = setConfig(CONFIG, 'themes');
+    CONFIG.env     = setConfig(CONFIG, 'env');
+    CONFIG.compile = setConfig(CONFIG, 'compile');
+    CONFIG.assets  = setConfig(CONFIG, 'assets');
+    CONFIG.project = setConfig(CONFIG, 'project');
+    CONFIG.src     = setConfig(CONFIG, 'src');
+    CONFIG.dist    = setConfig(CONFIG, 'dist');
+    CONFIG.scripts = setConfig(CONFIG, 'scripts');
+    CONFIG.styles  = setConfig(CONFIG, 'styles');
+    CONFIG.lint    = setConfig(CONFIG, 'lint');
+    CONFIG.test    = setConfig(CONFIG, 'test');
+    CONFIG.docs    = setConfig(CONFIG, 'docs');
 
     /**************************************************************
      * Default Tasks
@@ -58,50 +61,24 @@ module.exports = function(grunt) {
     /**************************************************************
      * Custom Tasks
      *************************************************************/
-    
-    // Default Grunt task
-    grunt.registerTask('default', [
-        'theme:' + CONFIG.theme,
-        'browserSync',
-        'watch'
-    ]);
 
-    // Compile a specific theme
-    grunt.registerTask('theme', target => {
-        grunt.config('theme', target || CONFIG.theme);
-
-        grunt.task.run(require('./build/compile')({
-            theme: CONFIG.theme,
+    grunt.registerTask('build', () => {
+        grunt.task.run(require('./build/build')({
+            theme: theme || CONFIG.theme,
             environment: CONFIG.env,
+            compile: CONFIG.compile,
+            assets: CONFIG.assets,
             lint: CONFIG.lint,
             test: CONFIG.test,
+            docs: CONFIG.docs,
         }));
     });
 
-    // Compile all themes
-    grunt.registerTask('themes', () => {
-        themes.forEach(theme => {
-            grunt.task.run('theme:' + theme);
-        });
-    });
-        
-    // Lint
-    grunt.registerTask('lint', [
-        'scsslint',
-        'jshint'
-    ]);
-        
-    // Test
-    grunt.registerTask('test', [
-        'mochacli:scss'
+    // Default Grunt task
+    grunt.registerTask('default', [
+        'build', 'browserSync', 'watch'
     ]);
 
-    // Docs
-    grunt.registerTask('docs', [
-        'sassdoc',
-        'jsdoc'
-    ]);
-    
     /**************************************************************
      * Load NPM Tasks
      *************************************************************/
@@ -123,5 +100,19 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-sassdoc');
     grunt.loadNpmTasks('grunt-scss-lint');
+    
+    /**************************************************************
+     * Tools/Utilities
+     *************************************************************/
+
+    /**
+     * Set configuration value
+     * 
+     * @param {*} config 
+     * @param {*} key 
+     */
+    function setConfig(config, key) {
+        return (grunt.option(key) !== undefined) ? grunt.option(key) : config[key];
+    }
 
 };

@@ -18,20 +18,27 @@ module.exports = function config() {
     // Set the desired development environment ('dev'|'prod')
     this.env = 'dev';
 
+    // Set the app assets to compile into the 'dist' directory
+    this.compile = ['styles', 'scripts', 'images', 'views'];
+
+    // Set the other assets to copy into the 'dist' directory
+    this.assets = ['styles', 'scripts', 'images'];
+
     // Lint files when compiling them
-    this.lint = false;
+    this.lint = true;
 
     // Test files when compiling them
     this.test = true;
 
     // Map the project's architecture into one Grunt can use
-    // Paths ae relative to the project root
+    // Paths are relative to the project root
     this.project = {
         source:        'src/',
         ui: [          'src/ui', {
             images:    'src/ui/images/',
             theme:     'src/ui/themes/<%=theme%>/',
         }],
+        views:         'src/',
         dist: [        'dist/', {
             images:    'dist/assets/images/',
             scripts:   'dist/assets/scripts/',
@@ -57,11 +64,11 @@ module.exports = function config() {
         this.project.vendor + 'flickity/dist/flickity.css'
     ];
 
-    // The name of your project's source asset
-    this.src = 'app';
+    // The name of your project's source files
+    this.src = 'app'; // {this.src}.js | {this.src}.scss
 
-    //The name of your project's compiled & distributed asset
-    this.dist = 'app';
+    //The name of your project's compiled & distributed files
+    this.dist = 'app'; // {this.dist}.js | {this.dist}.css
 
     return this;
 }

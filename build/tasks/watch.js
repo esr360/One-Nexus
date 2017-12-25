@@ -10,10 +10,11 @@ module.exports = function(config) {
 
         scss: {
             files: [config.project.source + '**/*.scss'],
-            tasks: require('../compile')({
+            tasks: require('../build')({
                 theme: config.theme,
                 environment: config.env,
-                compile: {ui: ['styles']},
+                compile: ['styles'],
+                assets: false,
                 lint: config.lint,
                 test: config.test,
                 docs: false
@@ -21,13 +22,12 @@ module.exports = function(config) {
         },
 
         scripts: {
-            files: [
-                config.project.source + '**/*.{js,jsx}'
-            ],
-            tasks: require('../compile')({
+            files: [config.project.source + '**/*.{js,jsx}'],
+            tasks: require('../build')({
                 theme: config.theme,
                 environment: config.env,
-                compile: {ui: ['scripts']},
+                compile: ['scripts'],
+                assets: false,
                 lint: config.lint,
                 test: config.test,
                 docs: false
@@ -36,10 +36,11 @@ module.exports = function(config) {
 
         config: {
             files: [config.project.source + '**/*.json'],
-            tasks: require('../compile')({
+            tasks: require('../build')({
                 theme: config.theme,
                 environment: config.env,
-                compile: {ui: ['styles', 'scripts']},
+                compile: ['styles', 'scripts'],
+                assets: false,
                 lint: false,
                 test: config.test,
                 docs: false
@@ -48,15 +49,17 @@ module.exports = function(config) {
 
         images: {
             files: config.project.ui[1].images + '**/*',
-            tasks: require('../compile')({
-                compile: {ui: ['images']},
+            tasks: require('../build')({
+                compile: ['images'],
+                assets: false
             })
         },
 
         views: {
             files: config.project.source + 'index.html',
-            tasks: require('../compile')({
-                compile: {app: ['views']},
+            tasks: require('../build')({
+                compile: ['views'],
+                assets: false
             })
         },
 

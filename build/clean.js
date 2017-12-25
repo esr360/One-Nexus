@@ -9,11 +9,7 @@ module.exports = function clean(custom) {
 
     const options = Object.assign({
         environment: 'dev',
-        clean: [
-            'styles', 
-            'scripts', 
-            'images'
-        ],
+        clean: ['styles', 'scripts', 'images'],
         nuke: false
     }, custom);
 

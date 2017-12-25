@@ -31,8 +31,8 @@ module.exports = function(config) {
             }]
         },
 
-        view: {
-            src: config.project.source + 'index.html',
+        views: {
+            src: config.project.views + '**/*.{html,hbs}',
             dest: config.project.dist[1].views,
             expand: true,
             flatten: true
