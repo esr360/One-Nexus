@@ -5,9 +5,10 @@
 module.exports = function(config) {
     return {
         options: {
+            watch: true,
             transform: [
                 ['babelify',  {global: true, presets: ['react', 'es2015']}], 
-                ['uglifyify', {global: true}]
+                //['uglifyify', {global: true}]
             ]
         },
         dist: {

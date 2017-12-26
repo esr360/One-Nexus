@@ -32,6 +32,7 @@
     "flickity": "^2.0.8",
     "jquery": "^3.2.1",
     "normalize-scss": "^7.0.0",
+    "prop-types": "^15.6.0",
     "pubsub-js": "^1.5.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -72,10 +73,11 @@
     "uglifyify": "^4.0.5"
   },
   "scripts": {
-    "compile:dev": "",
-    "compile:prod": "",
+    "start": "grunt",
+    "build:dev": "grunt build --env=dev --compile=styles,scripts,images,views --assets=styles,scripts",
+    "build:prod": "grunt build --env=prod --compile=styles,scripts,images,views --assets=styles,scripts",
     "lint": "grunt jshint && grunt scsslint",
-    "test": "grunt mochacli:scss",
+    "test": "grunt mochaTest:js && grunt mochaTest:scss",
     "docs": "grunt jsdoc && grunt sassdoc"
   },
   "browserify": {
@@ -84,7 +86,7 @@
         "babelify",
         {
           "presets": [
-            "react", 
+            "react",
             "es2015"
           ]
         }

@@ -64,7 +64,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', () => {
         grunt.task.run(require('./build/build')({
-            theme: theme || CONFIG.theme,
+            theme: CONFIG.theme,
             environment: CONFIG.env,
             compile: CONFIG.compile,
             assets: CONFIG.assets,

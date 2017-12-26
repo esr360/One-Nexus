@@ -23,7 +23,8 @@ import Flickity from 'flickity';
 import PubSub from 'pubsub-js';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Synergy from 'Synergy';
+//import Synergy from 'Synergy';
+import { default as Synergy, Module, Component } from '../../../../Synergy/src/js/synergy';
 
 export { 
     Browser,
@@ -32,7 +33,9 @@ export {
     PubSub,
     React,
     ReactDOM,
-    Synergy
+    Synergy,
+    Module,
+    Component
 };
 
 // Modules
@@ -106,15 +109,16 @@ export {
     scrollSpy
 };
 
-
 //*****************************************************************
 
-app.publish     = PubSub.publish;
-app.subscribe   = PubSub.subscribe;
+app.publish      = PubSub.publish;
+app.subscribe    = PubSub.subscribe;
 
-window.React    = React;
-window.ReactDOM = ReactDOM;
-window.APPUI    = window.APPUI || app;
+window.React     = React;
+window.ReactDOM  = ReactDOM;
+window.Module    = Module;
+window.Component = Component;
+window.APPUI     = window.APPUI || app;
 
 // Global Methods
 //*****************************************************************

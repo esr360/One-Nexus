@@ -8,12 +8,12 @@ import defaults from './accordions.json';
  * @param {Object} content
  */
 export const Accordion = ({name = defaults.accordions.name, panels}) => (
-    <div className={name}>
+    <Module name={name}>
         {panels.map(({title, content}, index) => (
-            <div className={`${name}_section`} key={index}>
-                <div className={`${name}_title`}>{title}</div>
-                <div className={`${name}_content`}>{content}</div>
-            </div>
+            <Component name="section" key={index}>
+                <Component name="title">{title}</Component>
+                <Component name="content">{content}</Component>
+            </Component>
         ))}
-    </div>
+    </Module>
 );
