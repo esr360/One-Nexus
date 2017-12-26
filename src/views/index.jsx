@@ -5,8 +5,13 @@ const panels = [
     {title: 'fizz', content: 'buzz'},
 ];
 
-export default function index() {
-    ReactDOM.render(
-        <app.Accordion panels={panels} modifiers={['foo', 'bar']} />, document.getElementById('react')
-    );
+export default class Index extends React.Component {
+    render() {
+        return (
+            <div>
+                <app.Accordion panels={panels} />
+                <app.Accordion panels={panels} modifiers={['foo', 'bar']} />
+            </div>
+        )
+    }
 }

@@ -13,7 +13,6 @@ export const Accordion = ({name = defaults.accordions.name, panels, modifiers}) 
             <Component name="section" key={index}>
                 <Component name="title" modifiers={['fizz', 'buzz']}>{title}</Component>
                 <Component name="content">{content}</Component>
-                <Component name="ting" module="skraa">Ting</Component>
             </Component>
         ))}
     </Module>
