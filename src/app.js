@@ -5,48 +5,54 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-// Theme
-import UI from './ui/themes/One-Nexus/one-nexus';
+import App from './app.jsx';
 
-export { UI };
-
-// React Router
+// React
 //*****************************************************************
 
-import { 
-    HashRouter,
-    Switch,
-    Route,
-    Link
-} from 'react-router-dom';
+import { HashRouter, Switch, Route, Link } from 'react-router-dom';
+export { HashRouter, Switch, Route, Link };
 
-export { 
-    HashRouter,
-    Switch,
-    Route,
-    Link
-};
+// Synergy
+//*****************************************************************
 
-// UI Components
+import { Module, Component } from '../../../Synergy/src/js/synergy';
+
+[window.Module, window.Component] = [Module, Component];
+
+// Theme/UI
+//*****************************************************************
+
+import UI from './ui/themes/One-Nexus/one-nexus';
+export { UI };
+
+// UI React Components
 //*****************************************************************
 
 export { Accordion } from './ui/modules/elements/accordions/accordions.jsx';
+export { AlertBar } from './ui/modules/elements/alert-bars/alert-bars.jsx';
 
 // Views
 //*****************************************************************
 
-import Index from './views/index.jsx';
-import Accordions from './views/modules/elements/accordions.jsx';
+// Layouts
+import Core from './views/layouts/core.jsx';
 
-export { 
-    Index,
-    Accordions
-};
+export const layouts = { Core };
+
+// Pages
+import Index from './views/pages/index.jsx';
+import Accordions from './views/pages/modules/elements/accordions.jsx';
+import AlertBars from './views/pages/modules/elements/alert-bars.jsx';
+
+export const pages = { 
+    Index, 
+    Accordions,
+    AlertBars
+ }
 
 // Render DOM
 //*****************************************************************
-
-import App from './app.jsx';
 
 ReactDOM.render(
     <HashRouter><App /></HashRouter>, document.getElementById('app'), UI

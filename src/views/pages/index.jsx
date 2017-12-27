@@ -1,4 +1,4 @@
-import * as app from '../app';
+import * as app from '../../app';
 
 const panels = [
     {title: 'foo', content: 'bar'},
@@ -8,10 +8,10 @@ const panels = [
 export default class Index extends React.Component {
     render() {
         return (
-            <div>
+            <app.layouts.Core>
                 <app.Accordion panels={panels} />
                 <app.Accordion panels={panels} modifiers={['foo', 'bar']} />
-            </div>
+            </app.layouts.Core>
         )
     }
 }

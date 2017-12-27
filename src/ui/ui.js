@@ -21,21 +21,14 @@ import deepextend from 'deep-extend';
 import Browser from 'detect-browser';
 import Flickity from 'flickity';
 import PubSub from 'pubsub-js';
-import React from 'react';
-import ReactDOM from 'react-dom';
-//import Synergy from 'Synergy';
-import { default as Synergy, Module, Component } from '../../../../Synergy/src/js/synergy';
+import Synergy from 'Synergy';
 
 export { 
     Browser,
     deepextend,
     Flickity,
     PubSub,
-    React,
-    ReactDOM,
-    Synergy,
-    Module,
-    Component
+    Synergy
 };
 
 // Modules
@@ -111,14 +104,8 @@ export {
 
 //*****************************************************************
 
-app.publish      = PubSub.publish;
-app.subscribe    = PubSub.subscribe;
-
-window.React     = React;
-window.ReactDOM  = ReactDOM;
-window.Module    = Module;
-window.Component = Component;
-window.APPUI     = window.APPUI || app;
+app.publish   = PubSub.publish;
+app.subscribe = PubSub.subscribe;
 
 // Global Methods
 //*****************************************************************
