@@ -5,24 +5,26 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-// Expose the app object
-import * as app from './app';
-import App from './app.jsx';
-
 // Theme
-import Theme  from './ui/themes/One-Nexus/one-nexus';
+import UI from './ui/themes/One-Nexus/one-nexus';
 
-export { Theme };
+export { UI };
 
 // React Router
 //*****************************************************************
 
 import { 
-    HashRouter, Switch,  Route,  Link 
+    HashRouter,
+    Switch,
+    Route,
+    Link
 } from 'react-router-dom';
 
 export { 
-    HashRouter, Switch, Route, Link 
+    HashRouter,
+    Switch,
+    Route,
+    Link
 };
 
 // UI Components
@@ -36,11 +38,16 @@ export { Accordion } from './ui/modules/elements/accordions/accordions.jsx';
 import Index from './views/index.jsx';
 import Accordions from './views/modules/elements/accordions.jsx';
 
-export { Index, Accordions };
+export { 
+    Index,
+    Accordions
+};
 
 // Render DOM
 //*****************************************************************
 
+import App from './app.jsx';
+
 ReactDOM.render(
-    <HashRouter><App /></HashRouter>, document.getElementById('app'), Theme
+    <HashRouter><App /></HashRouter>, document.getElementById('app'), UI
 );

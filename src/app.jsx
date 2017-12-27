@@ -1,10 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import * as app from './app';
 
 export default class App extends React.Component {
     render() {
-        window.addEventListener('hashchange', app.Theme, false);
+        window.addEventListener('hashchange', app.UI, false);
 
         return (
             <div>
