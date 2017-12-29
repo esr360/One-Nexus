@@ -1,6 +1,19 @@
 {
-    "asset-path": "'../..'",
-    "sass-config-parser": "eval-config",
-    "component-glue": "'_'",
-    "modifier-glue": "'-'"
+    "ui": {
+        "asset-path": "'../..'",
+        "sass-config-parser": "eval-config",
+        "component-glue": "'_'",
+        "modifier-glue": "'-'",
+        "theme": {
+            "foo": "bar",
+            "colors": {
+                "brand": {
+                    "brand-1": "pink"
+                }
+            },
+            "accordions": {
+                "foo": "bar"
+            }
+        }
+    }
 }

@@ -5,41 +5,44 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-import * as app from '../../ui';
+import * as UI from '../../ui';
 import config from './config.json';
 
-export default function theme() {
+export default function theme(custom) {
+
+    const options = UI.deepextend(config.theme, custom);
 
     ///************************************************************
     /// Utilities
     ///************************************************************
 
-    app.colors();
-    app.grid();
-    app.typography();
-    app.core();
+    UI.colors();
+    UI.grid();
+    UI.typography();
+    UI.core();
 
     ///************************************************************
     /// Elements
     ///************************************************************
 
-    app.accordion();
-    app.carousel();
-    app.modal();
-    app.overlay();
-    app.progressBar();
-    app.tabs();
-    app.tooltips();
+    UI.accordion(options.accordions);
+    // UI.carousel();
+    // UI.modal();
+    // UI.overlay();
+    // UI.progressBar();
+    // UI.tabs();
+    // UI.tooltips();
 
     ///************************************************************
     /// Objects
     ///************************************************************
 
-    app.googleMap();
-    app.header();
-    app.preloader();
-    app.scrollTop();
-    //app.search();
-    app.sideNav();
+    // UI.googleMap();
+    // UI.header();
+    // UI.preloader();
+    // UI.scrollTop();
+    // UI.search();
+    // UI.sideNav();
 
+    window.APPUI = UI.evalConfig(UI.deepextend(UI.config, options));
 }

@@ -5,13 +5,20 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
+import config from './config.json'
 import App from './app.jsx';
 
-// React
+// Theme/UI
 //*****************************************************************
 
-import { HashRouter, Switch, Route, Link } from 'react-router-dom';
-export { HashRouter, Switch, Route, Link };
+import { UI } from './ui/ui';
+export { UI };
+
+// React Router
+//*****************************************************************
+
+import { HashRouter, Link } from 'react-router-dom';
+export { HashRouter, Link };
 
 // Synergy
 //*****************************************************************
@@ -19,12 +26,6 @@ export { HashRouter, Switch, Route, Link };
 import { Module, Component } from '../../../Synergy/src/js/synergy';
 
 [window.Module, window.Component] = [Module, Component];
-
-// Theme/UI
-//*****************************************************************
-
-import UI from './ui/themes/One-Nexus/one-nexus';
-export { UI };
 
 // UI React Components
 //*****************************************************************
@@ -45,7 +46,7 @@ import Index from './views/pages/index.jsx';
 import Accordions from './views/pages/modules/elements/accordions.jsx';
 import AlertBars from './views/pages/modules/elements/alert-bars.jsx';
 
-export const pages = { 
+export const pages = {
     Index, 
     Accordions,
     AlertBars
@@ -55,5 +56,5 @@ export const pages = {
 //*****************************************************************
 
 ReactDOM.render(
-    <HashRouter><App /></HashRouter>, document.getElementById('app'), UI
+    <HashRouter><App /></HashRouter>, app, () => UI(config.app.ui)
 );

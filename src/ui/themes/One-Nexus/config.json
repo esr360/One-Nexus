@@ -1,9 +1,16 @@
 {
-    "app": {
+    "theme": {
+        "accordions": {
+            "ding": "dong"
+        },
         "buttons": {
             "border-palettes": ["brand", "alert"]
         },
-        "colors": {},
+        "colors": {
+            "brand": {
+                "brand-1": "black"
+            }
+        },
         "core": {},
         "header": {},
         "billboard": {

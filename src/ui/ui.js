@@ -5,14 +5,9 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-// Expose the app object
-import * as app from './ui';
-
 // Export global app config
-export { default as global } from './ui.json';
-
-// Instantiate the configuration object 
-export const config = {};
+import config from './ui.json';
+export { config };
 
 // Vendor
 //*****************************************************************
@@ -35,7 +30,7 @@ export {
 //*****************************************************************
 
 // Elements
-import { accordion } from './modules/elements/accordions/accordions';
+import accordion from './modules/elements/accordions/accordions';
 import { carousel } from './modules/elements/carousels/carousels';
 import { modal } from './modules/elements/modals/modals';
 import { progressBar } from './modules/elements/progress-bars/progress-bars';
@@ -104,8 +99,19 @@ export {
 
 //*****************************************************************
 
-app.publish   = PubSub.publish;
-app.subscribe = PubSub.subscribe;
+UI.publish   = PubSub.publish;
+UI.subscribe = PubSub.subscribe;
+
+// Theme
+//*****************************************************************
+
+import THEME from './themes/One-Nexus/one-nexus';
+
+export function UI(custom) {
+    config.ui = deepextend(config.ui, custom);
+
+    THEME(deepextend(config.ui.theme, custom.theme));
+}
 
 // Global Methods
 //*****************************************************************

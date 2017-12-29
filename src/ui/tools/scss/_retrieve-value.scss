@@ -13,11 +13,11 @@
     $namespace: nth($module, 1);
     $defaults:  nth($module, 2);
 
-    // First see if the value exists in the global $app
-    @if (variable-exists('app')) {
-        @if map-has-key($app, $namespace) {
-            @if map-get-deep($app, $namespace, $args...) {
-                @return map-get-deep($app, $namespace, $args...);
+    // First see if the value exists in the global $theme
+    @if (variable-exists('theme')) {
+        @if map-has-key($theme, $namespace) {
+            @if map-get-deep($theme, $namespace, $args...) {
+                @return map-get-deep($theme, $namespace, $args...);
             }
         }
     }

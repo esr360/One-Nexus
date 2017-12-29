@@ -9,11 +9,9 @@ import defaults from './accordions.json';
  * @param {(String|HTMLElement|NodeList)} els
  * @param {Object} custom
  */
-export function accordion(els = defaults.accordions.name, custom = {}) {
+export default function accordion(custom = {}) {
 
-    custom = app.custom('accordions', custom);
-
-    app.Synergy(els, (el, options) => {
+    app.Synergy(custom.name || defaults.accordions.name, (el, options) => {
 
         if (!el.getAttribute('data-initialised')) {
             el.component('section').forEach((section, index) => {

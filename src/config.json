@@ -1,0 +1,21 @@
+{
+    "app": {
+        "theme": "One-Nexus",
+        "ui": {
+            "component-glue": "'_'",
+            "modifier-glue": "'-'",
+            "fizz": "buzz",
+            "theme": {
+                "fizz": "buzz",
+                "colors": {
+                    "brand": {
+                        "brand-1": "blue"
+                    }
+                },
+                "accordions": {
+                    "fizz": "buzz"
+                }
+            }
+        }
+    }
+}

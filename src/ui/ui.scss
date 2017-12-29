@@ -5,10 +5,6 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-// Import global app configuration
-// Path is relative to ../app.scss at compile-time
-@import 'ui/ui.json';
-
 //*****************************************************************
 // Vendor Files
 //*****************************************************************
@@ -22,6 +18,22 @@
 
 // CSS librarys
 @import 'flickity.css';
+
+//*****************************************************************
+// Configuration
+//*****************************************************************
+
+// Import global app configuration
+// Path is relative to ../app.scss at compile-time
+@import 'ui/ui.json';
+
+// Merge config with app-level config
+$ui: map-merge-deep($ui, map-get($app, 'ui'));
+
+// Synergy variables
+$modifier-glue     : map-get($ui, 'modifier-glue');
+$component-glue    : map-get($ui, 'component-glue');
+$sass-config-parser: map-get($ui, 'sass-config-parser');
 
 //*****************************************************************
 // Tools

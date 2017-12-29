@@ -8,6 +8,13 @@
 @import '../../ui';
 @import 'ui/themes/One-Nexus/config.json';
 
+// Merge config with UI-level config
+$theme: map-merge-deep($theme, map-get($ui, 'theme'));
+
+///************************************************************
+/// CSS Reset
+///************************************************************
+
 @include normalize;
 
 ///************************************************************

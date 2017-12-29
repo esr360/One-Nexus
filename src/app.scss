@@ -5,5 +5,8 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-// Import UI Theme
+// Import config
+@import 'config.json';
+
+// Import UI/theme
 @import 'ui/themes/One-Nexus/one-nexus';
