@@ -6,8 +6,12 @@
 ///****************************************************************
 
 import * as UI from '../../ui';
-import config from './config.json';
+import config from './theme.json';
 
+/**
+ * @example import One_Nexus from './themes/One-Nexus/theme'
+ * @param {Object} custom 
+ */
 export default function theme(custom) {
 
     const options = UI.deepextend(config.theme, custom);

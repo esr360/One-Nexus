@@ -5,7 +5,7 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-import config from './config.json'
+import config from './app.json'
 import App from './app.jsx';
 
 // Theme/UI

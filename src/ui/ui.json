@@ -5,10 +5,12 @@
         "component-glue": "'_'",
         "modifier-glue": "'-'",
         "theme": {
-            "foo": "bar",
+            "name": "One-Nexus",
+            "foo": ["#COLOR", "brand", "brand-5"],
             "colors": {
                 "brand": {
-                    "brand-1": "pink"
+                    "brand-1": "pink",
+                    "brand-5": "aqua"
                 }
             },
             "accordions": {

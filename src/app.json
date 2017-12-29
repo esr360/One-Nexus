@@ -1,12 +1,12 @@
 {
     "app": {
-        "theme": "One-Nexus",
         "ui": {
             "component-glue": "'_'",
             "modifier-glue": "'-'",
             "fizz": "buzz",
             "theme": {
-                "fizz": "buzz",
+                "name": "One-Nexus",
+                "fizz": ["#COLOR", "brand", "brand-5"],
                 "colors": {
                     "brand": {
                         "brand-1": "blue"

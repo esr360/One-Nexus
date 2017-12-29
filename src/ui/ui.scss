@@ -27,7 +27,7 @@
 // Path is relative to ../app.scss at compile-time
 @import 'ui/ui.json';
 
-// Merge config with app-level config
+// Merge UI config with app-level config
 $ui: map-merge-deep($ui, map-get($app, 'ui'));
 
 // Synergy variables
@@ -100,3 +100,9 @@ $sass-config-parser: map-get($ui, 'sass-config-parser');
 @import 'modules/objects/scroll-top/scroll-top';
 @import 'modules/objects/search/search';
 @import 'modules/objects/side-nav/side-nav';
+
+//*****************************************************************
+// Themes
+//*****************************************************************
+
+@import 'themes/One-Nexus/theme';

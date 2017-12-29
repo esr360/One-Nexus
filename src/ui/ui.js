@@ -5,7 +5,7 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-// Export global app config
+import * as ui from './ui';
 import config from './ui.json';
 export { config };
 
@@ -77,6 +77,7 @@ export {
 
 import { custom } from './tools/js/app.custom';
 import { evalConfig } from './tools/js/app.evalConfig';
+import { formatThemeName } from './tools/js/app.formatThemeName';
 import { inViewport } from './tools/js/app.inViewport';
 import { isValidSelector } from './tools/js/app.isValidSelector';
 import { media } from './tools/js/app.media';
@@ -88,6 +89,7 @@ import { scrollSpy } from './tools/js/app.scrollSpy';
 export { 
     custom,
     evalConfig,
+    formatThemeName,
     inViewport,
     isValidSelector,
     media,
@@ -97,20 +99,17 @@ export {
     scrollSpy
 };
 
-//*****************************************************************
-
-UI.publish   = PubSub.publish;
-UI.subscribe = PubSub.subscribe;
-
 // Theme
 //*****************************************************************
 
-import THEME from './themes/One-Nexus/one-nexus';
+export { default as One_Nexus } from './themes/One-Nexus/theme';
 
 export function UI(custom) {
     config.ui = deepextend(config.ui, custom);
 
-    THEME(deepextend(config.ui.theme, custom.theme));
+    const theme = ui[formatThemeName(config.ui.theme.name)];
+
+    return theme(deepextend(config.ui.theme, custom.theme));
 }
 
 // Global Methods
