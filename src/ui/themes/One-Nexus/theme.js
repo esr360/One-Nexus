@@ -12,7 +12,7 @@ import config from './theme.json';
  * @example import One_Nexus from './themes/One-Nexus/theme'
  * @param {Object} custom 
  */
-export default function theme(custom) {
+export default function(custom) {
 
     const options = UI.deepextend(config.theme, custom);
 

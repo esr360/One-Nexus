@@ -4,8 +4,8 @@
             "component-glue": "'_'",
             "modifier-glue": "'-'",
             "fizz": "buzz",
-            "theme": {
-                "name": "One-Nexus",
+            "theme": "One-Nexus",
+            "modules": {
                 "fizz": ["#COLOR", "brand", "brand-5"],
                 "colors": {
                     "brand": {

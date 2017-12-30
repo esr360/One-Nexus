@@ -11,7 +11,7 @@ import App from './app.jsx';
 // Theme/UI
 //*****************************************************************
 
-import { UI } from './ui/ui';
+import UI from './ui/ui';
 export { UI };
 
 // React Router
@@ -30,8 +30,14 @@ import { Module, Component } from '../../../Synergy/src/js/synergy';
 // UI React Components
 //*****************************************************************
 
+// Elements
 export { Accordion } from './ui/modules/elements/accordions/accordions.jsx';
 export { AlertBar } from './ui/modules/elements/alert-bars/alert-bars.jsx';
+
+// Objects
+export { Header } from './ui/modules/objects/header/header.jsx';
+export { Logo } from './ui/modules/objects/logo/logo.jsx';
+export { Navigation } from './ui/modules/objects/navigation/navigation.jsx';
 
 // Views
 //*****************************************************************

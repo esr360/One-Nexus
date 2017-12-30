@@ -67,7 +67,7 @@ module.exports = function config() {
     // The name of your project's source files
     this.src = 'app'; // {this.src}.js | {this.src}.scss
 
-    //The name of your project's compiled & distributed files
+    // The name of your project's compiled & distributed files
     this.dist = 'app'; // {this.dist}.js | {this.dist}.css
 
     return this;

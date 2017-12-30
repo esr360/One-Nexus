@@ -4,8 +4,8 @@
         "sass-config-parser": "eval-config",
         "component-glue": "'_'",
         "modifier-glue": "'-'",
-        "theme": {
-            "name": "One-Nexus",
+        "theme": "One-Nexus",
+        "modules": {
             "foo": ["#COLOR", "brand", "brand-5"],
             "colors": {
                 "brand": {

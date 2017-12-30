@@ -7,10 +7,10 @@
 
 @import 'ui/themes/One-Nexus/theme.json';
 
-@if map-get-deep($ui, 'theme', 'name') == 'One-Nexus' {
+@if map-get-deep($ui, 'theme') == 'One-Nexus' {
 
     // Merge config with UI-level config
-    $theme: map-merge-deep($theme, map-get($ui, 'theme'));
+    $theme: map-merge-deep($theme, map-get($ui, 'modules'));
 
     ///************************************************************
     /// CSS Reset

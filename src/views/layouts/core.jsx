@@ -4,6 +4,8 @@ export default class Core extends React.Component {
     render() {
         return (
             <main>
+                <app.Header />
+
                 <div className="container">
                     <div>
                         <app.Link to='/'>Home</app.Link>

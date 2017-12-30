@@ -5,7 +5,7 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-import * as ui from './ui';
+import * as UI from './ui';
 import config from './ui.json';
 export { config };
 
@@ -104,23 +104,20 @@ export {
 
 export { default as One_Nexus } from './themes/One-Nexus/theme';
 
-export function UI(custom) {
+export default function(custom) {
     config.ui = deepextend(config.ui, custom);
-
-    const theme = ui[formatThemeName(config.ui.theme.name)];
-
-    return theme(deepextend(config.ui.theme, custom.theme));
+    UI[formatThemeName(config.ui.theme)](config.ui.modules);
 }
 
 // Global Methods
 //*****************************************************************
 
-Element.prototype.component = function(component, set) {
-    return Synergy(this).component(component, set, this);
+Element.prototype.component = function(component, operator) {
+    return Synergy(this).component(component, operator, this);
 };
 
-Element.prototype.modifier = function(modifier, set) {
-    return Synergy(this).modifier(modifier, set, this);
+Element.prototype.modifier = function(modifier, operator) {
+    return Synergy(this).modifier(modifier, operator, this);
 };
 
 Element.prototype.parents = function(selector) {
