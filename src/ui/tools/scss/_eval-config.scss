@@ -14,7 +14,7 @@
                 $func: str-replace($func, '#', '');
                 $func: to-lower-case($func);
 
-                @return call($func, $params...);
+                @return call(get-function($func), $params...);
             }
         }
     }
