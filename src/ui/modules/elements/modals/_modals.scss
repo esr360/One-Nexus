@@ -39,31 +39,23 @@
 
             transition: core('transition');
 
-            @include modifiers(('top', 'bottom')) {
-                @include modifier('visible') {
-                    top: 50%;
-                }
-            }
-
             @include modifier('top') {
                 top: 45%;
+                top: 50%;
             }
 
             @include modifier('bottom') {
                 top: 55%;
-            }
-
-            @include modifiers(('left', 'right')) {
-                @include modifier('visible') {
-                    transform: translateX(0) translateY(-50%);
-                }
+                top: 50%;
             }
 
             @include modifier('left') {
+                transform: translateX(0) translateY(-50%);
                 transform: translateX(-15%) translateY(-50%);
             }
 
             @include modifier('right') {
+                transform: translateX(0) translateY(-50%);
                 transform: translateX(15%) translateY(-50%);
             }
 
@@ -72,6 +64,9 @@
 
                 @include modifier('visible') {
                     transform: scale(1) translateY(-50%);
+                    @include modifier('fizz') {
+                        content: "buzz";
+                    }
                 }
             }
 
