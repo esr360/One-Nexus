@@ -5,31 +5,14 @@ import defaults from './navigation.json';
  *
  * @param {String} props.name
  * @param {Array}  props.modifiers
+ * @param {Array}  props.items
  */
-export const Navigation = ({name = defaults.navigation.name, modifiers}) => (
+export const Navigation = ({name = defaults.navigation.name, modifiers, items}) => (
     <Module name={name} modifiers={modifiers} className="min-break-3">
         <ul>
-            <li>
-                <a href="#">Link 1</a>
-                <ul>
-                    <li>
-                        <a href="#">Link 1</a>
-                        <ul>
-                            <li><a href="#">Link 3</a></li>
-                            <li>
-                                <a href="#">Link 1</a>
-                                <ul>
-                                    <li><a href="#">Link 2</a></li>
-                                    <li><a href="#">Link 3</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Link 3</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
+            {items.map((item, index) => (
+                <li key={index}>item</li>
+            ))}
         </ul>
     </Module>
 );

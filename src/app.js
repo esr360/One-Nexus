@@ -5,8 +5,12 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-import config from './app.json'
 import App from './app.jsx';
+import initialConfig from './app.json';
+
+export const config = JSON.parse(
+    JSON.stringify(initialConfig).replace(/"'/g,'"').replace(/'"/g,'"')
+);
 
 // Theme/UI
 //*****************************************************************
@@ -19,6 +23,8 @@ export { UI };
 
 import { HashRouter, Link } from 'react-router-dom';
 export { HashRouter, Link };
+
+export { default as PropTypes } from 'prop-types';
 
 // Synergy
 //*****************************************************************
@@ -62,5 +68,5 @@ export const pages = {
 //*****************************************************************
 
 ReactDOM.render(
-    <HashRouter><App /></HashRouter>, app, () => UI(config.app.ui)
+    <HashRouter><App data={config.app.views} /></HashRouter>, app, () => UI(config.app.ui)
 );

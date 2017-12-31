@@ -70,5 +70,8 @@ module.exports = function config() {
     // The name of your project's compiled & distributed files
     this.dist = 'app'; // {this.dist}.js | {this.dist}.css
 
+    // Use Node-Sass to compile Sass?
+    this.nodeSass = true;
+
     return this;
 }

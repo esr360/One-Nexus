@@ -11,7 +11,7 @@
 
 // Sass librarys
 @import '../../node_modules/normalize-scss/sass/normalize';
-@import '../../node_modules/Kayzen-GS/dist/kayzen-gs';
+@import '../../node_modules/Kayzen-GS/dist/kayzen-gs.scss';
 @import '../../node_modules/Sass-Boost/dist/sass-boost';
 @import '../../node_modules/spinners/stylesheets/spinners';
 @import '../../node_modules/Synergy/dist/synergy';
@@ -25,7 +25,7 @@
 
 // Import global app configuration
 // Path is relative to ../app.scss at compile-time
-@import 'ui/ui.json';
+@import 'ui.json';
 
 // Merge UI config with app-level config
 $ui: map-merge-deep($ui, map-get($app, 'ui'));

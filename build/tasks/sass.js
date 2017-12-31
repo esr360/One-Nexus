@@ -3,7 +3,7 @@
  * @see https://github.com/sindresorhus/grunt-contrib-sass
  */
 module.exports = function(config) {
-    return {
+    const rubySass = {
         dev: {
             options: {
                 style: 'expanded',
@@ -26,4 +26,20 @@ module.exports = function(config) {
             }
         }
     }
+
+    const nodeSass = {
+        dev: {
+            options: {
+                sourceMap: true,
+                importer: require('node-sass-json-importer'),
+                outputStyle: 'expanded'
+            },
+            files: {
+                [config.project.dist[1].styles + config.dist + '.css']: 
+                config.project.source + 'app.scss'
+            }
+        }
+    }
+
+    return config.nodeSass ? nodeSass : rubySass;
 }

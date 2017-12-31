@@ -6,10 +6,10 @@ import defaults from './logo.json';
  * @param {String} props.name
  * @param {Array}  props.modifiers
  */
-export const Logo = ({name = defaults.logo.name, modifiers}) => (
+export const Logo = ({name = defaults.logo.name, modifiers, href, src, alt}) => (
     <Module name={name} modifiers={modifiers}>
-        <a href="" alt="One-Nexus logo">
-            <img src="assets/images/logo-light.png" alt="One-Nexus Logo" />
+        <a href={href} alt={alt}>
+            <img src={src} alt={alt} />
         </a>
     </Module>
 );

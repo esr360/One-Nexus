@@ -17,19 +17,19 @@ module.exports = function(grunt) {
      * @see /build/config.js
      *************************************************************/
 
-    CONFIG.theme   = setConfig(CONFIG, 'theme');
-    CONFIG.themes  = setConfig(CONFIG, 'themes');
-    CONFIG.env     = setConfig(CONFIG, 'env');
-    CONFIG.compile = setConfig(CONFIG, 'compile');
-    CONFIG.assets  = setConfig(CONFIG, 'assets');
-    CONFIG.project = setConfig(CONFIG, 'project');
-    CONFIG.src     = setConfig(CONFIG, 'src');
-    CONFIG.dist    = setConfig(CONFIG, 'dist');
-    CONFIG.scripts = setConfig(CONFIG, 'scripts');
-    CONFIG.styles  = setConfig(CONFIG, 'styles');
-    CONFIG.lint    = setConfig(CONFIG, 'lint');
-    CONFIG.test    = setConfig(CONFIG, 'test');
-    CONFIG.docs    = setConfig(CONFIG, 'docs');
+    CONFIG.theme    = setConfig(CONFIG, 'theme');
+    CONFIG.themes   = setConfig(CONFIG, 'themes');
+    CONFIG.env      = setConfig(CONFIG, 'env');
+    CONFIG.compile  = setConfig(CONFIG, 'compile');
+    CONFIG.assets   = setConfig(CONFIG, 'assets');
+    CONFIG.project  = setConfig(CONFIG, 'project');
+    CONFIG.src      = setConfig(CONFIG, 'src');
+    CONFIG.dist     = setConfig(CONFIG, 'dist');
+    CONFIG.scripts  = setConfig(CONFIG, 'scripts');
+    CONFIG.styles   = setConfig(CONFIG, 'styles');
+    CONFIG.lint     = setConfig(CONFIG, 'lint');
+    CONFIG.test     = setConfig(CONFIG, 'test');
+    CONFIG.docs     = setConfig(CONFIG, 'docs');
 
     /**************************************************************
      * Default Tasks
@@ -90,7 +90,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-csscomb');
@@ -100,6 +99,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-sassdoc');
     grunt.loadNpmTasks('grunt-scss-lint');
+    grunt.loadNpmTasks(
+        CONFIG.nodeSass ? 'grunt-sass':'grunt-contrib-sass'
+    );
     
     /**************************************************************
      * Tools/Utilities
