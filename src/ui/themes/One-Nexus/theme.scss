@@ -5,7 +5,7 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-@import 'ui/themes/One-Nexus/theme.json';
+@import 'theme.json';
 
 @if map-get-deep($ui, 'theme') == 'One-Nexus' {
 
