@@ -71,7 +71,7 @@ module.exports = function config() {
     this.dist = 'app'; // {this.dist}.js | {this.dist}.css
 
     // Use Node-Sass to compile Sass?
-    this.nodeSass = false;
+    this.nodeSass = true;
 
     return this;
 }
