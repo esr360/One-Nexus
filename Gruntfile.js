@@ -45,7 +45,6 @@ module.exports = function(grunt) {
         cssmin      : require('./build/tasks/cssmin')(CONFIG),
         postcss     : require('./build/tasks/postcss')(CONFIG),
         csscomb     : require('./build/tasks/csscomb')(CONFIG),
-        browserify  : require('./build/tasks/browserify')(CONFIG),
         uglify      : require('./build/tasks/uglify')(CONFIG),
         scsslint    : require('./build/tasks/scsslint')(CONFIG),
         jshint      : require('./build/tasks/jshint')(CONFIG),
@@ -55,7 +54,8 @@ module.exports = function(grunt) {
         assemble    : require('./build/tasks/assemble')(CONFIG),
         browserSync : require('./build/tasks/browserSync')(CONFIG),
         watch       : require('./build/tasks/watch')(CONFIG),
-        notify      : require('./build/tasks/notify')(CONFIG)
+        webpack     : require('./build/tasks/webpack')(CONFIG),
+        notify      : require('./build/tasks/notify')(CONFIG),
     });
 
     /**************************************************************
@@ -83,9 +83,7 @@ module.exports = function(grunt) {
      * Load NPM Tasks
      *************************************************************/
     
-    grunt.loadNpmTasks('grunt-assemble');
     grunt.loadNpmTasks('grunt-browser-sync');
-    grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -99,6 +97,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-sassdoc');
     grunt.loadNpmTasks('grunt-scss-lint');
+    grunt.loadNpmTasks('grunt-webpack');
     grunt.loadNpmTasks(
         CONFIG.nodeSass ? 'grunt-sass':'grunt-contrib-sass'
     );

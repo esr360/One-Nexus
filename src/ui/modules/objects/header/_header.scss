@@ -28,10 +28,8 @@
 
         // Header Bar
         @include option('bar') {
-            @include module {
-                @include component('wrapper') {
-                    display: table;
-                }
+            @include component('wrapper') {
+                display: table;
             }
 
             @include modules(('logo', 'navigation')) {
@@ -66,10 +64,8 @@
             @include get-styles(this('sticky'));
 
             @include modifier('fixed') {
-                @include module {
-                    @include component('wrapper') {
-                        @include get-styles(this('sticky', 'wrapper'));
-                    }
+                @include component('wrapper') {
+                    @include get-styles(this('sticky', 'wrapper'));
                 }
 
                 @include module('logo') {

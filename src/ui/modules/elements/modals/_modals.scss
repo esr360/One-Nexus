@@ -64,9 +64,6 @@
 
                 @include modifier('visible') {
                     transform: scale(1) translateY(-50%);
-                    @include modifier('fizz') {
-                        content: "buzz";
-                    }
                 }
             }
 

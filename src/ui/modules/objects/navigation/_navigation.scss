@@ -104,10 +104,8 @@
         //*********************************************************
 
         @include option('noIcons') {
-            @include module {
-                @include component('icon') {
-                    display: none;
-                }
+            @include component('icon') {
+                display: none;
             }
         }
 

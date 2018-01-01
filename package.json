@@ -40,18 +40,15 @@
     "spinners": "^1.2.2"
   },
   "devDependencies": {
-    "assemble-handlebars": "^0.3.0",
     "autoprefixer": "^6.3.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.24.1",
+    "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
-    "babelify": "^7.3.0",
     "grunt": "^0.4.5",
-    "grunt-assemble": "^0.4.0",
     "grunt-browser-sync": "^2.2.0",
-    "grunt-browserify": "^5.0.0",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-copy": "^0.8.1",
     "grunt-contrib-cssmin": "^1.0.2",
@@ -67,6 +64,7 @@
     "grunt-sass": "^2.0.0",
     "grunt-sassdoc": "^2.0.2",
     "grunt-scss-lint": "^0.3.8",
+    "grunt-webpack": "^3.0.2",
     "jsdom": "^11.0.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^3.4.2",
@@ -74,7 +72,7 @@
     "node-sass-json-importer": "^3.0.2",
     "nopt-grunt-fix": "^1.0.0",
     "sass-true": "^3.0.0-beta.1",
-    "uglifyify": "^4.0.5"
+    "webpack": "^3.10.0"
   },
   "scripts": {
     "start": "grunt",
@@ -83,18 +81,5 @@
     "lint": "grunt jshint && grunt scsslint",
     "test": "grunt mochaTest:js && grunt mochaTest:scss",
     "docs": "grunt jsdoc && grunt sassdoc"
-  },
-  "browserify": {
-    "transform": [
-      [
-        "babelify",
-        {
-          "presets": [
-            "react",
-            "es2015"
-          ]
-        }
-      ]
-    ]
   }
 }

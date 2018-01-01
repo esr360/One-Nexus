@@ -64,7 +64,7 @@ module.exports = function build(custom) {
                 tasks.push('jsdoc');
             }
 
-            tasks.push('browserify');
+            tasks.push('webpack');
 
             if (options.environment === 'prod') {
                 tasks.push('uglify:app');
