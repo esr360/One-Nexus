@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+var StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
 
@@ -27,7 +28,11 @@ module.exports = {
             template: path.join('src', 'index.html'),
         }),
         new CopyWebpackPlugin([
-        ])
+        ]),
+        new StyleLintPlugin({
+            context: 'src/ui/',
+            configFile: './stylelint.config.js'
+        })
     ],
 
     module: {

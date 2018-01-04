@@ -25,6 +25,7 @@
         @include component('group') {
 
             @include vertical-rhythm('bottom');
+
             position: relative;
             margin-bottom: (core('margin') / 2);
 
@@ -41,7 +42,6 @@
             }
 
             @include modifier('validate') {
-
                 display: table;
                 width: 100%;
 
@@ -81,13 +81,13 @@
                         }
                     }
                 }
-
             } // modifier('validate')
 
         } // component('group')
 
         @include component('icon') {
             @include vertical-center();
+
             position: absolute;
             left: 0.75em;
             color: this('input', 'color');

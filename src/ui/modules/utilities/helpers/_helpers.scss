@@ -79,6 +79,7 @@
 
     .disabled, %disabled {
         @extend %greyscale;
+
         opacity: 0.8;
     }
 

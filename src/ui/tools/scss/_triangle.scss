@@ -36,20 +36,23 @@
             border-top: solid map-get($config, 'size') map-get($config, 'color');
             border-right: solid map-get($config, 'size') transparent;
             border-left: solid map-get($config, 'size') transparent;
-        } @else if map-get($config, 'position') == bottom {
+        }
+        @else if map-get($config, 'position') == bottom {
             bottom: 100%;
             left: 50%;
             border-right: solid map-get($config, 'size') transparent;
             border-bottom: solid map-get($config, 'size') map-get($config, 'color');
             border-left: solid map-get($config, 'size') transparent;
-        } @else if map-get($config, 'position') == left {
+        }
+        @else if map-get($config, 'position') == left {
             top: 50%;
             right: -#{map-get($config, size)};
             transform: translateY(-50%);
             border-top: solid map-get($config, 'size') transparent;
             border-bottom: solid map-get($config, 'size') transparent;
             border-left: solid map-get($config, 'size') map-get($config, 'color');
-        } @else if map-get($config, 'position') == right {
+        }
+        @else if map-get($config, 'position') == right {
             top: 50%;
             right: 100%;
             transform: translateY(-50%);

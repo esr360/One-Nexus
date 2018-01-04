@@ -40,6 +40,7 @@
 
         @include component('close') {
             @include horizontal-center();
+
             position: absolute;
             text-align: center;
         }

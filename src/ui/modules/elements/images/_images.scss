@@ -26,6 +26,7 @@
             @include component('figure') {
                 @include horizontal-center();
                 @include vertical-center();
+
                 margin-right: auto !important;
                 margin-left: auto !important;
             }

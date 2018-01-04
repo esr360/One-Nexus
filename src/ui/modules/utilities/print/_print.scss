@@ -9,7 +9,6 @@
         @at-root {
 
             @media print {
-
                 * {
                     background: transparent !important;
                     color: color('greyscale', 'black') !important;
@@ -18,7 +17,6 @@
                 }
 
                 a, a:visited {
-
                     color: color('greyscale', 'grey-5') !important;
                     text-decoration: underline;
 
@@ -31,7 +29,6 @@
                     abbr::after {
                         content: ' (' attr(title) ')';
                     }
-
                 }
 
                 .ir a::after,
@@ -70,7 +67,6 @@
                 h3 {
                     page-break-after: avoid;
                 }
-
             } // @media print
 
         }

@@ -41,6 +41,7 @@
         // Absolute Position Header
         @include option('absolute') {
             @include get-styles(this('absolute'));
+
             position: absolute;
             width: 100%;
         }
@@ -88,12 +89,14 @@
 
         @include component('wrapper') {
             @include _module('container');
+
             transition: height core('transition');
         }
 
         @include module('sideNav') {
             @include component('toggle') {
                 @include vertical-center();
+
                 right: 0;
             }
         }

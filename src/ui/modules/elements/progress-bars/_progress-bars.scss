@@ -16,6 +16,7 @@
 
     @include module {
 
+        // Core Styles
         display: block;
         position: relative;
         width: 100%;
@@ -38,6 +39,7 @@
 
         &::before {
             @include vertical-center();
+
             content: attr(data-progress);
             left: 0.5em;
             color: this('value-color');
@@ -62,7 +64,6 @@
     //*************************************************************
 
     progress {
-
         &::-webkit-progress-bar {
             height: this('height');
             background: this('background');
@@ -76,7 +77,6 @@
         &::-moz-progress-bar {
             background: this('fill-background');
         }
-
     }
 
 } // @mixin progress-bars

@@ -22,6 +22,7 @@
 
         a {
             @include get-styles(this('link'));
+
             &:hover {
                 @include get-styles(this('link', 'hover'));
             }

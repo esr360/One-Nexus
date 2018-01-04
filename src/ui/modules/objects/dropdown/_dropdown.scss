@@ -18,12 +18,10 @@
 
         // parent menus
         ul {
-
             margin: 0;
 
             // show the dropdown
             li {
-
                 position: relative;
 
                 &:hover {
@@ -37,15 +35,14 @@
 
             // dropdown menus
             ul {
-
                 @include _module('list', ('reset'), false);
+
                 visibility: hidden;
                 position: absolute;
                 z-index: 7;
                 opacity: 0;
 
                 li {
-
                     position: relative;
 
                     a {
@@ -59,9 +56,10 @@
                             padding-right: this('link', 'padding') + 1rem;
 
                             &::after {
+                                @include vertical-center();
+
                                 content: this('dropdown-icon');
                                 right: 0.75em;
-                                @include vertical-center();
                             }
                         }
                     }
@@ -114,16 +112,13 @@
                             }
                         }
                     }
-
                 } // li
-
             } // ul
 
             // first level only
             > ul {
                 padding-top: this('top-position');
             }
-
         } // ul (parent)
 
         //*********************************************************

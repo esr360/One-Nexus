@@ -30,7 +30,8 @@
 
             @if this('navigationItem', 'shape') == 'circle' {
                 border-radius: 50%;
-            } @else if this('navigationItem', 'shape') == 'square' {
+            }
+            @else if this('navigationItem', 'shape') == 'square' {
                 border-radius: 0;
             }
 
@@ -41,6 +42,7 @@
             svg {
                 @include horizontal-center();
                 @include vertical-center();
+
                 width: this('navigationItem', 'arrow-size');
                 height: this('navigationItem', 'arrow-size');
             }

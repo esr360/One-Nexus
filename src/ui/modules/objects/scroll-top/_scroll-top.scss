@@ -16,6 +16,7 @@
 
     @include module {
 
+        // Core Styles
         display: none;
         visibility: hidden;
         position: fixed;
@@ -25,7 +26,6 @@
         left: nth(this('position'), 4);
         transform: translateZ(0);
         opacity: 0;
-
 
         @media (min-width: this('hide-below')) {
             display: block;

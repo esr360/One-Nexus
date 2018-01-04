@@ -98,6 +98,7 @@
 
             @include modifier('glue') {
                 $tabs-glue: this('content', 'glueHeight');
+
                 z-index: 2;
                 top: -2px;
                 margin-top: $tabs-glue;

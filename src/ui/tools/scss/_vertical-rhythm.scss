@@ -15,9 +15,11 @@
 @mixin vertical-rhythm($position: null) {
     @if $position == 'top' {
         @include top-rhythm;
-    } @else if $position == 'bottom' {
+    }
+    @else if $position == 'bottom' {
         @include bottom-rhythm;
-    } @else {
+    }
+    @else {
         @include top-rhythm;
         @include bottom-rhythm;
     }

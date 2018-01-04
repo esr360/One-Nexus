@@ -36,7 +36,6 @@
         }
 
         @include modifier('animate') {
-
             transition: core('transition');
 
             @include modifier('top') {
@@ -66,7 +65,6 @@
                     transform: scale(1) translateY(-50%);
                 }
             }
-
         }
 
         //*********************************************************

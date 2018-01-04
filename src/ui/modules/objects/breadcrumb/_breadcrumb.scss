@@ -17,10 +17,12 @@
 
     @include module {
 
+        // Core Styles
         @include object;
 
         > ul {
             @include _module('list', ('reset'), false);
+
             margin-left: 0;
         }
 

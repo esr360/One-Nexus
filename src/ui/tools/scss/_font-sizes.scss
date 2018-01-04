@@ -82,7 +82,8 @@
                 @media screen and (min-width: $max-vw) {
                     font-size: $max-font-size;
                 }
-            } @else {
+            }
+            @else {
                 font-size: $value;
             }
         }
