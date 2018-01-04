@@ -1,5 +1,3 @@
-const webpackConfig = require('../../webpack.config.js');
-
 /**
  * Webpack
  * @see https://github.com/webpack-contrib/grunt-webpack
@@ -11,7 +9,12 @@ module.exports = function(config) {
             watch: false,
             keepalive: false
         },
-        prod: webpackConfig,
-        dev: Object.assign({ watch: true }, webpackConfig)
+
+        prod: Object.assign({ 
+        }, config.webpackConfig),
+
+        dev: Object.assign({ 
+            watch: true 
+        }, config.webpackConfig)
     }
 }

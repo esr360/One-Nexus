@@ -21,31 +21,20 @@ module.exports = function(config) {
             })
         },
 
-        scripts: {
-            files: [config.project.source + '**/*.{js,jsx}'],
-            tasks: require('../build')({
-                theme: config.theme,
-                environment: config.env,
-                compile: ['scripts'],
-                assets: false,
-                lint: config.lint,
-                test: config.test,
-                docs: false
-            })
-        },
-
-        config: {
-            files: [config.project.source + '**/*.json'],
-            tasks: require('../build')({
-                theme: config.theme,
-                environment: config.env,
-                compile: ['styles', 'scripts'],
-                assets: false,
-                lint: false,
-                test: config.test,
-                docs: false
-            })
-        },
+        // Since moving from Browserify to Webpack, we no longer
+        // need to watch the JS files. @TODO - remove the below
+        // scripts: {
+        //     files: [config.project.source + '**/*.{js,jsx}'],
+        //     tasks: require('../build')({
+        //         theme: config.theme,
+        //         environment: config.env,
+        //         compile: ['scripts'],
+        //         assets: false,
+        //         lint: config.lint,
+        //         test: config.test,
+        //         docs: false
+        //     })
+        // },
 
         images: {
             files: config.project.ui[1].images + '**/*',
@@ -63,9 +52,17 @@ module.exports = function(config) {
             })
         },
 
-        grunt: {
-            files: 'Gruntfile.js',
-            tasks: ['theme:' + config.theme]
+        config: {
+            files: [config.project.source + '**/*.json'],
+            tasks: require('../build')({
+                theme: config.theme,
+                environment: config.env,
+                compile: ['styles'],
+                assets: false,
+                lint: false,
+                test: config.test,
+                docs: false
+            })
         }
     }
 }

@@ -3,6 +3,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch, Route } from 'react-router-dom';
 
+// Stylesheet
+import './app.scss';
+
 [window.React, window.ReactDOM] = [React, ReactDOM];
 
 /**

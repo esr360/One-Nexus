@@ -1,20 +1,63 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/app.js',
+
+    entry: {
+        app: './src/app.js'
+    },
+
     output: {
         path: path.resolve(__dirname, 'dist/assets/scripts'),
-        filename: 'app.js'
+        filename: 'app.js',
+        publicPath: '/assets/scripts/'
     },
+
+    devServer: {
+        contentBase: './dist',
+        publicPath: '/assets/scripts/',
+        hot: true
+    },
+
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({
+            template: path.join('src', 'index.html'),
+        }),
+        new CopyWebpackPlugin([
+        ])
+    ],
+
     module: {
         loaders: [
-            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-            { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                loaders: ['babel-loader']
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    {loader: 'style-loader'}, 
+                    {loader: 'css-loader'}, 
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                            importer: [require('node-sass-json-importer')],
+                            outputStyle: 'expanded'
+                        }
+                    }
+                ]
+            }
         ]
     },
+
     stats: {
         colors: true
     },
+
     devtool: 'source-map'
 };

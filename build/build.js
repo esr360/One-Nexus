@@ -67,7 +67,7 @@ module.exports = function build(custom) {
             tasks.push('webpack');
 
             if (options.environment === 'prod') {
-                tasks.push('uglify:app');
+                //tasks.push('uglify:app');
             }
 
             tasks = tasks.concat(require('./clean')({

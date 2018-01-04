@@ -62,7 +62,7 @@ export const pages = {
     Index, 
     Accordions,
     AlertBars
- }
+}
 
 // Render DOM
 //*****************************************************************

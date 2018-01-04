@@ -31,6 +31,10 @@ module.exports = function(grunt) {
     CONFIG.test     = setConfig(CONFIG, 'test');
     CONFIG.docs     = setConfig(CONFIG, 'docs');
 
+    if (process && process.env) {
+        process.env.NODE_ENV = (CONFIG.env === 'prod') ? 'production' : 'development';
+    }
+
     /**************************************************************
      * Default Tasks
      * @see /build/tasks/

@@ -31,7 +31,7 @@ module.exports = function config() {
     this.test = true;
 
     // Map the project's architecture into one Grunt can use
-    // Paths are relative to the project root
+    // Paths are relative to the project root, not to this file
     this.project = {
         source:        'src/',
         ui: [          'src/ui', {
@@ -56,10 +56,10 @@ module.exports = function config() {
         }]
     };
 
-    // Set all optional scripts to be used by the project
+    // Set all vendor scripts to be used by the project
     this.scripts = [];
 
-    // Set all optional styles to be used by the project
+    // Set all vendor styles to be used by the project
     this.styles = [
         this.project.vendor + 'flickity/dist/flickity.css'
     ];
@@ -70,8 +70,11 @@ module.exports = function config() {
     // The name of your project's compiled & distributed files
     this.dist = 'app'; // {this.dist}.js | {this.dist}.css
 
-    // Use Node-Sass to compile Sass?
+    // Use Node-Sass to compile Sass? (instead of Ruby)
     this.nodeSass = true;
+
+    // Webpack configuration
+    this.webpackConfig = require('../webpack.config.js');
 
     return this;
 }

@@ -38,6 +38,17 @@ module.exports = function(config) {
                 [config.project.dist[1].styles + config.dist + '.css']: 
                 config.project.source + 'app.scss'
             }
+        },
+        prod: {
+            options: {
+                sourceMap: false,
+                importer: require('node-sass-json-importer'),
+                outputStyle: 'compressed'
+            },
+            files: {
+                [config.project.dist[1].styles + config.dist + '.min.css']: 
+                config.project.source + 'app.scss'
+            }
         }
     }
 
