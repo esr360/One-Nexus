@@ -52,8 +52,8 @@ export function modal(els = 'modal', custom = {}) {
         closeTriggers.forEach(trigger => trigger.addEventListener('click', hide, false));
 
         exports.toggle = operator => {
-             if (el.modifier('visible') || operator === 'hide') exports.hide(); 
-             else exports.show();
+            if (el.modifier('visible') || operator === 'hide') exports.hide(); 
+            else exports.show();
         };
 
         exports.show = () => toggleModal('show', els, el, options, overlay);

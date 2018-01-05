@@ -3,9 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch, Route } from 'react-router-dom';
 
-// Stylesheet
-import './app.scss';
-
 [window.React, window.ReactDOM] = [React, ReactDOM];
 
 /**
@@ -13,6 +10,12 @@ import './app.scss';
  */
 export default class App extends React.Component {
     render() {
+        // Stylesheet
+        if (process.env.NODE_ENV === 'development') {
+            require('./app.scss');
+            console.log(document.getElementById('app-styles'));
+        }
+
         window.addEventListener('hashchange', app.UI, false);
 
         return (
