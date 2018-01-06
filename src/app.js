@@ -5,26 +5,25 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-import App from './app.jsx';
 import initialConfig from './app.json';
 
 export const config = JSON.parse(
     JSON.stringify(initialConfig).replace(/"'/g,'"').replace(/'"/g,'"')
 );
 
+//*****************************************************************
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server';
+import { Link, StaticRouter, HashRouter, Switch, Route } from 'react-router-dom';
+export { Link, StaticRouter, HashRouter, Switch, Route };
+
 // Theme/UI
 //*****************************************************************
 
 import UI from './ui/ui';
 export { UI };
-
-// React Router
-//*****************************************************************
-
-import { HashRouter, Link } from 'react-router-dom';
-export { HashRouter, Link };
-
-export { default as PropTypes } from 'prop-types';
 
 // Synergy
 //*****************************************************************
@@ -64,9 +63,43 @@ export const pages = {
     AlertBars
 }
 
-// Render DOM
 //*****************************************************************
 
-ReactDOM.render(
-    <HashRouter><App data={config.app.views} /></HashRouter>, app, () => UI(config.app.ui)
+const Html = props => (
+    <html>
+        <head>
+            <title>My Static Site</title>
+        </head>
+        <body>
+            <div id='app'>
+                {props.children}
+            </div>
+            <script src='assets/scripts/app.js'></script>
+        </body> 
+    </html>
 );
+
+import App from './app.jsx';
+
+//*****************************************************************
+
+// Call the UI function on the React DOM once it has loaded
+var ReactDOMLoaded = setInterval(() => {
+    if (document.getElementById('app') !== '') {
+        UI(config.app.ui);
+
+        clearInterval(ReactDOMLoaded);
+    }
+}, 100);
+
+export default locals => ReactDOMServer.renderToStaticMarkup(
+    <StaticRouter location={locals.path} context={{}}>
+        <Html><App data={config.app.views} /></Html>
+    </StaticRouter>
+);
+
+if (process.env.APP_ENV === 'web') {
+    ReactDOM.render(
+        <HashRouter><App data={config.app.views} /></HashRouter>, document.getElementById('app')
+    )
+}

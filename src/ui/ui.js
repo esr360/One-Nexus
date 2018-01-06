@@ -104,7 +104,7 @@ export {
 
 export { default as One_Nexus } from './themes/One-Nexus/theme';
 
-export default function(custom) {
+export default function(custom, callback) {
     config.ui = deepextend(config.ui, custom);
     UI[formatThemeName(config.ui.theme)](config.ui.modules);
 }
