@@ -1,65 +1,68 @@
-const path = require('path');
-const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
-const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
-const WriteFilePlugin = require('write-file-webpack-plugin');
-const jsdom  = require('jsdom-global')();
+// Core packages
+import path from 'path';
+import webpack from 'webpack';
+// Plugins & loaders
+import Autoprefixer from 'autoprefixer';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import NodeSassJsonImporter from 'node-sass-json-importer';
+import StyleLintPlugin from 'stylelint-webpack-plugin';
+import WriteFilePlugin from 'write-file-webpack-plugin';
+import StaticSiteGenerator from './build/plugins/static-site-generator.js';
 
-import { Module, Component } from '../../Synergy/src/js/synergy';
+export default function(env) {
 
-module.exports = env => {
+    // Is this config loaded from `webpack-dev-server` ?
+    const isDevServer = path.basename(require.main.filename) === 'webpack-dev-server.js';
 
-    // Are we coming from `webpack-dev-server` command ?
-    const isDevServer = !env || env && !env.build;
+    // Are we building for a non-production environment?
+    const isNonProd = isDevServer || env && env.build === 'development';
 
-    // Are we building for a development environment?
-    const isDevEnv = isDevServer || env && env.build === 'development';
-
-    // Are we building static files (as opposed to a react app)?
+    // Are we building static files as opposed to a single page app?
     const staticBuild = env && env.static;
 
+    const JsLoader = {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loaders: [
+            'babel-loader',
+            'eslint-loader'
+        ],
+    };
+
+    const SassLoader = {
+        test: /\.scss$/,
+        use: [
+            {loader: 'style-loader'}, 
+            {loader: 'css-loader'},
+            {loader: 'postcss-loader', options: {
+                sourceMap: true,
+                plugins: () => [Autoprefixer]
+            }}, 
+            {loader: 'sass-loader', options: {
+                sourceMap: true,
+                importer: [NodeSassJsonImporter],
+                outputStyle: 'expanded'
+            }}
+        ]
+    };
+
     // Define default loaders
-    let loaders = [
-        {
-            test: /\.(js|jsx)$/,
-            exclude: /node_modules/,
-            loaders: [
-                'babel-loader',
-                'eslint-loader'
-            ],
-        },
-        {
-            test: /\.scss$/,
-            use: [
-                {loader: 'style-loader'}, 
-                {loader: 'css-loader'},
-                {loader: 'postcss-loader', options: {
-                    sourceMap: true,
-                    plugins: () => [require('autoprefixer')]
-                }}, 
-                {loader: 'sass-loader', options: {
-                    sourceMap: true,
-                    importer: [require('node-sass-json-importer')],
-                    outputStyle: 'expanded'
-                }}
-            ]
-        }
-    ];
+    let loaders = [ JsLoader, SassLoader ];
 
     // Define default plugins
     let plugins = [
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify(isDevServer ? 'development' : 'production'),
-                APP_ENV: JSON.stringify(staticBuild ? 'node' : 'web')
+                APP_ENV : JSON.stringify(staticBuild ? 'node' : 'web')
             }
         }),
         new CopyWebpackPlugin([
             { from: 'src/ui/images', to: 'assets/images' }
         ]),
         new webpack.ProvidePlugin({
-            'React': 'react'
+            React: 'react'
         }),
         new StyleLintPlugin({
             context: 'src/ui/',
@@ -67,31 +70,26 @@ module.exports = env => {
         })
     ];
 
-    if (staticBuild) {
-        plugins.push(
-            new StaticSiteGeneratorPlugin({
-                crawl: true,
-                globals: {
-                    window: window,
-                    document: document,
-                    React: require('react'),
-                    ReactDOM: require('react-dom'),
-                    Module,
-                    Component
-                }
-            })
-        );
-    } else {
+    if (isDevServer) {
         plugins.push(
             new WriteFilePlugin(),
             new webpack.HotModuleReplacementPlugin()
         );
     }
 
+    if (staticBuild) {
+        plugins.push(StaticSiteGenerator);
+    } else {
+        plugins.push(
+            new HtmlWebpackPlugin({
+                template: 'src/views/layouts/foo.jsx',
+                inject: false
+            })
+        )
+    }
+
     return {
-        entry: {
-            app: './src/app.js'
-        },
+        entry: './src/app.js',
 
         output: {
             path: path.resolve(__dirname, 'dist/'),
@@ -99,8 +97,6 @@ module.exports = env => {
             publicPath: '/',
             libraryTarget: 'umd'
         },
-
-        target: 'web',
 
         devServer: {
             contentBase: './dist',
@@ -111,14 +107,10 @@ module.exports = env => {
 
         plugins,
 
-        module: {
-            loaders
-        },
+        module: { loaders },
 
-        stats: {
-            colors: true
-        },
+        stats: { colors: true },
 
-        devtool: isDevEnv ? 'source-map' : false
+        devtool: isNonProd ? 'source-map' : false
     }
 };

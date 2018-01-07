@@ -65,19 +65,7 @@ export const pages = {
 
 //*****************************************************************
 
-const Html = props => (
-    <html>
-        <head>
-            <title>My Static Site</title>
-        </head>
-        <body>
-            <div id='app'>
-                {props.children}
-            </div>
-            <script src='assets/scripts/app.js'></script>
-        </body> 
-    </html>
-);
+import { Html } from './views/layouts/foo.jsx';
 
 import App from './app.jsx';
 
