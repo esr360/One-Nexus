@@ -81,7 +81,7 @@
     "build": "npm run build:prod",
     "build:dev": "webpack --env.build=development",
     "build:prod": "webpack --env.build=production",
-    "build:static": "webpack --env.static=true --env.build=development",
+    "build:static": "webpack --env.static=true --env.build=development && npm run sass:dev",
     "lint": "",
     "docs": "",
     "test": "mocha unit-testing/js/tests.js unit-testing/scss/tests.js --require babel-register",

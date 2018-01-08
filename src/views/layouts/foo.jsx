@@ -5,10 +5,13 @@ export class Html extends React.Component {
         return (
             <html>
                 <head>
-                    <title>My Static Site</title>
+                    <title>Title</title>
                 </head>
                 <body>
                     <div id='app'>{this.props.children}</div>
+
+                    {this.props.styles && <link href='assets/styles/app.css' rel='stylesheet' />}
+
                     <script type="text/javascript" src='assets/scripts/app.js'></script>
                 </body> 
             </html>
@@ -16,4 +19,4 @@ export class Html extends React.Component {
     }
 }
 
-export default props => ReactDOMServer.renderToStaticMarkup(<Html {...props} />);
+export default props => ReactDOMServer.renderToStaticMarkup(<Html />);

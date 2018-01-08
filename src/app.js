@@ -65,11 +65,8 @@ export const pages = {
 
 //*****************************************************************
 
-import { Html } from './views/layouts/foo.jsx';
-
 import App from './app.jsx';
-
-//*****************************************************************
+import { Html } from './views/layouts/foo.jsx';
 
 // Call the UI function on the React DOM once it has loaded
 var ReactDOMLoaded = setInterval(() => {
@@ -82,7 +79,7 @@ var ReactDOMLoaded = setInterval(() => {
 
 export default locals => ReactDOMServer.renderToStaticMarkup(
     <StaticRouter location={locals.path} context={{}}>
-        <Html><App data={config.app.views} /></Html>
+        <Html styles={true}><App data={config.app.views} /></Html>
     </StaticRouter>
 );
 
