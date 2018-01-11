@@ -28,7 +28,7 @@ export { UI };
 // Synergy
 //*****************************************************************
 
-import { Module, Component } from '../../../Synergy/src/js/synergy';
+import { Module, Component } from 'Synergy';
 
 [window.Module, window.Component] = [Module, Component];
 
