@@ -24,7 +24,7 @@
 
 ### Options
 
-For default values view the [`alert-bars.json`](alert-bars.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
+For default values view the [`alert-bar.json`](alert-bar.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
 
 <table class="table">
     <thead>
@@ -49,12 +49,12 @@ For default values view the [`alert-bars.json`](alert-bars.json) file. Standard 
     </tbody>
 </table>
 
-Pass custom options to the `alert-bars` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `alert-bar` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
     "app": {
-        "alert-bars": {
+        "alert-bar": {
             "colors": {
                 "carrot": "#F97E52",
                 "error" : "#DA4D44",
@@ -67,13 +67,13 @@ Pass custom options to the `alert-bars` object in your theme's config file (e.g.
 
 ### Sass
 
-Load the accordion styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `alert-bars()` mixin:
+Load the accordion styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `alert-bar()` mixin:
 
 ```scss
 @import '../../app';
 @import './config.json';
 
-@include alert-bars();
+@include alert-bar();
 ```
 
 ### Examples

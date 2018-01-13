@@ -8,10 +8,10 @@ const panels = [
 export default class Accordions extends React.Component {
     render() {
         return (
-            <app.layouts.Core {...app.config.app.views}>
+            <app.layouts.Base {...app.config.app.views}>
                 <app.Accordion panels={panels} />
                 <app.Accordion panels={panels} modifiers={['foo', 'bar']} />
-            </app.layouts.Core>
+            </app.layouts.Base>
         )
     }
 }

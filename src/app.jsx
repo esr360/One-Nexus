@@ -2,7 +2,7 @@ import * as app from './app';
 import { Switch, Route } from 'react-router-dom';
 
 // Stylesheet
-if (process.env.NODE_ENV === 'development') {
+if (process.env.APP_ENV === 'web') {
     require('./app.scss');
 }
 

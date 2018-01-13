@@ -11,6 +11,7 @@ export const config = JSON.parse(
     JSON.stringify(initialConfig).replace(/"'/g,'"').replace(/'"/g,'"')
 );
 
+// React
 //*****************************************************************
 
 import React from 'react';
@@ -23,12 +24,13 @@ export { Link, StaticRouter, HashRouter, Switch, Route };
 //*****************************************************************
 
 import UI from './ui/ui';
-export { UI };
 
 // Synergy
 //*****************************************************************
 
-import { Module, Component } from '../../../Synergy/src/js/synergy';
+// import { Module, Component } from 'Synergy';
+import Module from '../../../Synergy/src/js/module.jsx';
+import Component from '../../../Synergy/src/js/component.jsx';
 
 [window.Module, window.Component] = [Module, Component];
 
@@ -37,7 +39,7 @@ import { Module, Component } from '../../../Synergy/src/js/synergy';
 
 // Elements
 export { Accordion } from './ui/modules/elements/accordions/accordions.jsx';
-export { AlertBar } from './ui/modules/elements/alert-bars/alert-bars.jsx';
+export { default as Alert } from './ui/modules/elements/alert-bar/alert-bar.jsx';
 
 // Objects
 export { Header } from './ui/modules/objects/header/header.jsx';
@@ -48,9 +50,9 @@ export { Navigation } from './ui/modules/objects/navigation/navigation.jsx';
 //*****************************************************************
 
 // Layouts
-import Core from './views/layouts/core.jsx';
+import Base from './views/layouts/base.jsx';
 
-export const layouts = { Core };
+export const layouts = { Base };
 
 // Pages
 import Index from './views/pages/index.jsx';
@@ -63,31 +65,33 @@ export const pages = {
     AlertBars
 }
 
+// Render App
 //*****************************************************************
-
-import { Html } from './views/layouts/foo.jsx';
 
 import App from './app.jsx';
+import { Core } from './views/core.jsx';
 
-//*****************************************************************
-
-// Call the UI function on the React DOM once it has loaded
-var ReactDOMLoaded = setInterval(() => {
-    if (document.getElementById('app') !== '') {
-        UI(config.app.ui);
-
-        clearInterval(ReactDOMLoaded);
-    }
-}, 100);
-
+// Render on the server for static pages
 export default locals => ReactDOMServer.renderToStaticMarkup(
     <StaticRouter location={locals.path} context={{}}>
-        <Html><App data={config.app.views} /></Html>
+        <Core styles={true}><App data={config.app.views} /></Core>
     </StaticRouter>
 );
 
+// Render on the client for standard React app
 if (process.env.APP_ENV === 'web') {
     ReactDOM.render(
-        <HashRouter><App data={config.app.views} /></HashRouter>, document.getElementById('app')
+        <HashRouter><App data={config.app.views} /></HashRouter>, app, () => UI(config.app.ui)
     )
+}
+
+// Call the UI function once the react app has loaded
+if (process.env.APP_ENV === 'node') {
+    var ReactDOMLoaded = setInterval(() => {
+        if (document.getElementById('app') !== '') {
+            UI(config.app.ui);
+    
+            clearInterval(ReactDOMLoaded);
+        }
+    }, 100);
 }

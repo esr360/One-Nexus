@@ -1,14 +1,12 @@
-// Core packages
 import path from 'path';
 import webpack from 'webpack';
-// Plugins & loaders
-import Autoprefixer from 'autoprefixer';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import NodeSassJsonImporter from 'node-sass-json-importer';
 import StyleLintPlugin from 'stylelint-webpack-plugin';
 import WriteFilePlugin from 'write-file-webpack-plugin';
-import StaticSiteGenerator from './build/plugins/static-site-generator.js';
+import StaticSiteGenerator from './build/plugins/static-site-generator';
+import JsLoader from './build/loaders/js';
+import SassLoader from './build/loaders/sass';
 
 export default function(env) {
 
@@ -21,35 +19,6 @@ export default function(env) {
     // Are we building static files as opposed to a single page app?
     const staticBuild = env && env.static;
 
-    const JsLoader = {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loaders: [
-            'babel-loader',
-            'eslint-loader'
-        ],
-    };
-
-    const SassLoader = {
-        test: /\.scss$/,
-        use: [
-            {loader: 'style-loader'}, 
-            {loader: 'css-loader'},
-            {loader: 'postcss-loader', options: {
-                sourceMap: true,
-                plugins: () => [Autoprefixer]
-            }}, 
-            {loader: 'sass-loader', options: {
-                sourceMap: true,
-                importer: [NodeSassJsonImporter],
-                outputStyle: 'expanded'
-            }}
-        ]
-    };
-
-    // Define default loaders
-    let loaders = [ JsLoader, SassLoader ];
-
     // Define default plugins
     let plugins = [
         new webpack.DefinePlugin({
@@ -58,12 +27,12 @@ export default function(env) {
                 APP_ENV : JSON.stringify(staticBuild ? 'node' : 'web')
             }
         }),
-        new CopyWebpackPlugin([
-            { from: 'src/ui/images', to: 'assets/images' }
-        ]),
         new webpack.ProvidePlugin({
             React: 'react'
         }),
+        new CopyWebpackPlugin([
+            { from: 'src/ui/images', to: 'assets/images' }
+        ]),
         new StyleLintPlugin({
             context: 'src/ui/',
             configFile: './stylelint.config.js'
@@ -77,16 +46,12 @@ export default function(env) {
         );
     }
 
-    if (staticBuild) {
-        plugins.push(StaticSiteGenerator);
-    } else {
-        plugins.push(
-            new HtmlWebpackPlugin({
-                template: 'src/views/layouts/foo.jsx',
-                inject: false
-            })
-        )
-    }
+    plugins.push(
+        staticBuild ? StaticSiteGenerator : new HtmlWebpackPlugin({
+            template: 'src/views/core.jsx',
+            inject: false
+        })
+    )
 
     return {
         entry: './src/app.js',
@@ -107,7 +72,7 @@ export default function(env) {
 
         plugins,
 
-        module: { loaders },
+        module: { loaders: [ JsLoader, SassLoader ] },
 
         stats: { colors: true },
 
