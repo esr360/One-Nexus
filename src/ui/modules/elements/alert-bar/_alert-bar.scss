@@ -47,6 +47,9 @@
                 margin-right: 0;
                 float: right;
             }
+            @include modifier('close') {
+                cursor: pointer;
+            }
         }
 
         //*********************************************************
