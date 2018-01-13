@@ -11,11 +11,11 @@
 <table>
     <tr>
         <td><b>Default</b></td>
-        <td><b><code>true</code></b></td>
+        <td><code>true</code></td>
     </tr>
     <tr>
         <td><b>Type</b></td>
-        <td><b><code>Bool</code></b></td>
+        <td><code>Bool</code></td>
     </tr>
 </table>
 
@@ -36,11 +36,11 @@
 <table>
     <tr>
         <td><b>Default</b></td>
-        <td><b><code>false</code></b></td>
+        <td><code>false</code></td>
     </tr>
     <tr>
         <td><b>Type</b></td>
-        <td><b><code>Bool</code></b></td>
+        <td><code>Bool</code></td>
     </tr>
 </table>
 
@@ -61,11 +61,11 @@
 <table>
     <tr>
         <td><b>Default</b></td>
-        <td><b><code>alert</code></b></td>
+        <td><code>alert</code></td>
     </tr>
     <tr>
         <td><b>Type</b></td>
-        <td><b><code>String</code></b></td>
+        <td><code>String</code></td>
     </tr>
 </table>
 
@@ -86,11 +86,11 @@
 <table>
     <tr>
         <td><b>Default</b></td>
-        <td><b><code>'success'</code></b></td>
+        <td><code>'success'</code></td>
     </tr>
     <tr>
         <td><b>Type</b></td>
-        <td><b><code>String</code></b></td>
+        <td><code>String</code></td>
     </tr>
 </table>
 
@@ -113,11 +113,11 @@
 <table>
     <tr>
         <td><b>Default</b></td>
-        <td><b><code>false</code></b></td>
+        <td><code>false</code></td>
     </tr>
     <tr>
         <td><b>Type</b></td>
-        <td><b><code>(String|Array)</code></b></td>
+        <td><code>(String|Array)</code></td>
     </tr>
 </table>
 
