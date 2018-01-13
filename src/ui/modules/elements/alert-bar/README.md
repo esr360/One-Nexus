@@ -3,6 +3,7 @@
 <details>
 <summary>Render Using React</summary>
 
+
 ```jsx
 <Alert>This is an error alert</Alert>
 ```
@@ -22,7 +23,7 @@
 <Alert name='alert'>This is an alert</Alert>
 ```
 
-Output:
+###### Output:
 
 ```html
 <div class="alert">This is an alert</div>
@@ -31,6 +32,17 @@ Output:
 ### Prop.alert
 
 > The type/color of alert
+
+<table>
+    <tr>
+        <td><b>Default</b></td>
+        <td><b><code>'success'</code></b></td>
+    </tr>
+</table>
+
+```jsx
+<Alert alert='success'>This is an alert</Alert>
+```
 
 </details>
 
