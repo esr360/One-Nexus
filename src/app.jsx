@@ -1,9 +1,10 @@
 import * as app from './app';
-import React from 'react';
-import ReactDOM from 'react-dom';
 import { Switch, Route } from 'react-router-dom';
 
-[window.React, window.ReactDOM] = [React, ReactDOM];
+// Stylesheet
+if (process.env.NODE_ENV === 'development') {
+    require('./app.scss');
+}
 
 /**
  * App JSX Component

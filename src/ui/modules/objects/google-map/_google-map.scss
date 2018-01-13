@@ -1,4 +1,4 @@
-@import 'ui/modules/objects/google-map/google-map.json';
+@import 'google-map.json';
 /// Google Map
 ///
 /// @access public
@@ -16,6 +16,7 @@
 
     @include module {
 
+        // Core Styles
         display: block;
         width: 100%;
         background: color('opaque', 'dark-2');

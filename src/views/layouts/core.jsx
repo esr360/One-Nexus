@@ -10,7 +10,7 @@ export default class Core extends React.Component {
                 <app.Header {...this.props.header} content={
                     <Component name='wrapper'>
                         <app.Logo {...this.props.logo} />
-                        <app.Navigation {...this.props.navigation} />
+                        {/* <app.Navigation {...this.props.navigation} /> */}
 
                         <div className='sideNav_toggle button-icon-primary max-break-3'>
                             <i className='fa fa-bars'></i>

@@ -1,4 +1,4 @@
-@import 'ui/modules/objects/header/header.json';
+@import 'header.json';
 /// Header
 ///
 /// @access public
@@ -28,10 +28,8 @@
 
         // Header Bar
         @include option('bar') {
-            @include module {
-                @include component('wrapper') {
-                    display: table;
-                }
+            @include component('wrapper') {
+                display: table;
             }
 
             @include modules(('logo', 'navigation')) {
@@ -43,6 +41,7 @@
         // Absolute Position Header
         @include option('absolute') {
             @include get-styles(this('absolute'));
+
             position: absolute;
             width: 100%;
         }
@@ -66,10 +65,8 @@
             @include get-styles(this('sticky'));
 
             @include modifier('fixed') {
-                @include module {
-                    @include component('wrapper') {
-                        @include get-styles(this('sticky', 'wrapper'));
-                    }
+                @include component('wrapper') {
+                    @include get-styles(this('sticky', 'wrapper'));
                 }
 
                 @include module('logo') {
@@ -92,12 +89,14 @@
 
         @include component('wrapper') {
             @include _module('container');
+
             transition: height core('transition');
         }
 
         @include module('sideNav') {
             @include component('toggle') {
                 @include vertical-center();
+
                 right: 0;
             }
         }

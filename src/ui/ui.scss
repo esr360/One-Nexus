@@ -18,15 +18,14 @@
 @import '../../../../Synergy/src/scss/synergy';
 
 // CSS librarys
-@import 'flickity.css';
+@import '../../node_modules/flickity/dist/flickity';
 
 //*****************************************************************
 // Configuration
 //*****************************************************************
 
 // Import global app configuration
-// Path is relative to ../app.scss at compile-time
-@import 'ui/ui.json';
+@import 'ui.json';
 
 // Merge UI config with app-level config
 $ui: map-merge-deep($ui, map-get($app, 'ui'));

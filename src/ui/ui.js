@@ -16,7 +16,7 @@ import deepextend from 'deep-extend';
 import Browser from 'detect-browser';
 import Flickity from 'flickity';
 import PubSub from 'pubsub-js';
-import Synergy from 'Synergy';
+import Synergy from '../../../../Synergy/src/js/synergy';
 
 export { 
     Browser,
@@ -104,7 +104,7 @@ export {
 
 export { default as One_Nexus } from './themes/One-Nexus/theme';
 
-export default function(custom) {
+export default function(custom, callback) {
     config.ui = deepextend(config.ui, custom);
     UI[formatThemeName(config.ui.theme)](config.ui.modules);
 }

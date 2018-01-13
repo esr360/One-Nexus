@@ -1,4 +1,4 @@
-@import 'ui/modules/elements/tooltips/tooltips.json';
+@import 'tooltips.json';
 /// Tooltips
 ///
 /// @access public
@@ -73,12 +73,15 @@
                     ));
                     @if $tooltip-position == top {
                         transform: translateX(-50%) translateY(-100%);
-                    } @else if $tooltip-position == bottom {
+                    }
+                    @else if $tooltip-position == bottom {
                         transform: translateX(-50%) translateY(100%);
-                    } @else if $tooltip-position == left {
+                    }
+                    @else if $tooltip-position == left {
                         top: 50%;
                         transform: translateX(-100%) translateY(-50%);
-                    } @else if $tooltip-position == right {
+                    }
+                    @else if $tooltip-position == right {
                         top: 50%;
                         transform: translateX(100%) translateY(-50%);
                     }

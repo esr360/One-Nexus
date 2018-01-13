@@ -1,4 +1,4 @@
-@import 'ui/modules/elements/accordions/accordions.json';
+@import 'accordions.json';
 /// Accordions
 ///
 /// @access public
@@ -43,7 +43,6 @@
         }
 
         @include component('title') {
-
             display: block;
             margin: 0;
             backface-visibility: hidden;

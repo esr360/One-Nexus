@@ -1,4 +1,4 @@
-@import 'ui/modules/utilities/typography/typography.json';
+@import 'typography.json';
 /// Typography
 ///
 /// @access public
@@ -128,7 +128,8 @@
     $size: typography('sizes', $size);
     @if not $rem {
         @return $size;
-    } @else {
+    }
+    @else {
         $size: $size / ($size * 0 + 1);
         @return unquote('#{$size}rem');
     }

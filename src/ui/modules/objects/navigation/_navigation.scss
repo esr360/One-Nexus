@@ -1,4 +1,4 @@
-@import 'ui/modules/objects/navigation/navigation.json';
+@import 'navigation.json';
 /// Navigation
 ///
 /// @access public
@@ -24,6 +24,7 @@
         li {
             a {
                 @include get-styles(this('global-item'));
+
                 display: block;
 
                 &:hover {
@@ -34,8 +35,8 @@
 
         // parent level only
         > ul {
-
             @include _module('list', ('reset'), false);
+
             vertical-align: middle;
 
             > li {
@@ -67,6 +68,7 @@
                         // if item has child menu
                         &:not(:only-child) {
                             @include get-styles(this('item', 'has-child', 'hover'));
+
                             border-bottom-color: transparent;
                         }
                     }
@@ -84,7 +86,6 @@
                 }
 
             } // > li
-
         } // > ul
 
         // Larger Resolutions
@@ -104,10 +105,8 @@
         //*********************************************************
 
         @include option('noIcons') {
-            @include module {
-                @include component('icon') {
-                    display: none;
-                }
+            @include component('icon') {
+                display: none;
             }
         }
 

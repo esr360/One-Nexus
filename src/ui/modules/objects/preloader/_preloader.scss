@@ -1,4 +1,4 @@
-@import 'ui/modules/objects/preloader/preloader.json';
+@import 'preloader.json';
 /// Preloader
 ///
 /// @access public
@@ -40,6 +40,7 @@
 
         @include component('close') {
             @include horizontal-center();
+
             position: absolute;
             text-align: center;
         }

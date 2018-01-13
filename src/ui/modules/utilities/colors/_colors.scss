@@ -1,4 +1,4 @@
-@import 'ui/modules/utilities/colors/colors.json';
+@import 'colors.json';
 /// Colors
 ///
 /// @access public
@@ -86,13 +86,9 @@
     @each $color-stop in $color-stops {
         $color: nth($color-stop, 1);
 
-        $updated-color-stop: list-replace(
-            $color-stop, $color, map-search($colors, $color)
-        );
+        $updated-color-stop: list-replace($color-stop, $color, map-search($colors, $color));
 
-        $color-stops: list-replace(
-            $color-stops, $color-stop, $updated-color-stop
-        );
+        $color-stops: list-replace($color-stops, $color-stop, $updated-color-stop);
     }
 
     $color-stops: join($color-stops, (), comma);

@@ -1,4 +1,4 @@
-@import 'ui/modules/elements/buttons/buttons.json';
+@import 'buttons.json';
 /// Buttons
 ///
 /// @access public
@@ -50,7 +50,8 @@
                 @if is-grayscale($color, $key) {
                     @if (lightness($color) < $threshold) {
                         color: this('color');
-                    } @else {
+                    }
+                    @else {
                         color: typography('colors', 'base');
                     }
                 }
@@ -99,7 +100,8 @@
                                 color: typography('colors', 'base');
                             }
                         }
-                    } @else {
+                    }
+                    @else {
                         &:hover {
                             color: this('color');
                         }

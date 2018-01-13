@@ -9,6 +9,7 @@
 
     &::before {
         @include fill-parent();
+
         content: '';
         z-index: 0;
         background: $background;

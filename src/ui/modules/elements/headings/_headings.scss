@@ -1,4 +1,4 @@
-@import 'ui/modules/elements/headings/headings.json';
+@import 'headings.json';
 /// Headings
 ///
 /// @access public
@@ -58,6 +58,7 @@
         @include component('group') {
 
             @include vertical-rhythm('bottom');
+
             position: relative;
             margin-bottom: core('margin');
             background-size: cover;
@@ -65,6 +66,7 @@
 
             @include module('heading') {
                 @include vertical-rhythm;
+
                 margin-top: 0.5em;
                 margin-bottom: 0.5em;
                 line-height: this('group_heading-lineHeight');

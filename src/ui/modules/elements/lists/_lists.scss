@@ -1,4 +1,4 @@
-@import 'ui/modules/elements/lists/lists.json';
+@import 'lists.json';
 /// Buttons
 ///
 /// @access public
@@ -51,6 +51,7 @@
 
         @include modifier('arrow') {
             @include extend('reset');
+
             > li {
                 position: relative;
                 margin-bottom: 0;
@@ -59,6 +60,7 @@
 
                 &::before {
                     @include vertical-center();
+
                     content: this('arrow-icon');
                     display: inline-block;
                     left: 0;

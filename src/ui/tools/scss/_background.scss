@@ -10,13 +10,9 @@
 
     @if type-of($custom) == 'map' {
 
-        $_color: if(
-            this('background', 'color'), this('background', 'color'), ''
-        );
+        $_color: if(this('background', 'color'), this('background', 'color'), '');
 
-        $_image: if(
-            this('background', 'image'), this('background', 'image'), ''
-        );
+        $_image: if(this('background', 'image'), this('background', 'image'), '');
 
         $config: map-merge((
             'color' : $_color,
@@ -32,7 +28,8 @@
             background-size: cover;
         }
 
-    } @else {
+    }
+    @else {
         background: $custom;
     }
 
