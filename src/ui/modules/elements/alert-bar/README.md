@@ -3,12 +3,12 @@
 <details>
     <summary>Render Using React</summary>
 
-    ```jsx
-    <Alert alert='error'>This is an error alert</Alert>
-    <Alert alert='info'>This is an informative alert</Alert>
-    <Alert alert='success'>This is a success alert</Alert>
-    <Alert alert='help'>This is a help alert</Alert>
-    ```
+```jsx
+<Alert alert='error'>This is an error alert</Alert>
+<Alert alert='info'>This is an informative alert</Alert>
+<Alert alert='success'>This is a success alert</Alert>
+<Alert alert='help'>This is a help alert</Alert>
+```
 </details>
 
 ### Quick Look
