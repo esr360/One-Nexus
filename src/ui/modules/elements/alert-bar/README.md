@@ -5,6 +5,7 @@
 ```
 <details>
 <summary>Prop.bar</summary>
+---
 
 > Set to append `bar` modifier
 
