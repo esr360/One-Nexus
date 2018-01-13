@@ -149,6 +149,30 @@
 </div>
 ```
 
+#### Close Icon
+
+> If your alert has a close icon, you cannot also have another __right-aligned__ icon
+
+```jsx
+<Alert close>This is an alert</Alert>
+```
+
+###### Output:
+
+```html
+<div class="alert-bar">
+    <div class="alert_icon-close-right fa fa-times"></div> This is an alert
+</div>
+```
+
+##### onClick function
+
+You can pass a function as your value for the `close` parameter to be called onClick of the close icon:
+
+```jsx
+<Alert close={() => console.log(this)}>This is an alert</Alert>
+```
+
 ### Quick Look
 
 ##### Using HTML
