@@ -1,14 +1,37 @@
 ## Alert Bars/Boxes
 
 <details>
-    <summary>Render Using React</summary>
+<summary>Render Using React</summary>
 
 ```jsx
-<Alert alert='error'>This is an error alert</Alert>
-<Alert alert='info'>This is an informative alert</Alert>
-<Alert alert='success'>This is a success alert</Alert>
-<Alert alert='help'>This is a help alert</Alert>
+<Alert>This is an error alert</Alert>
 ```
+
+### Prop.name
+
+> Module name to be used for output
+
+<table>
+    <tr>
+        <td><b>Default</b></td>
+        <td><b><code>alert</code></b></td>
+    </tr>
+</table>
+
+```jsx
+<Alert name='alert'>This is an alert</Alert>
+```
+
+Output:
+
+```html
+<div class="alert">This is an alert</div>
+```
+
+### Prop.alert
+
+> The type/color of alert
+
 </details>
 
 ### Quick Look
