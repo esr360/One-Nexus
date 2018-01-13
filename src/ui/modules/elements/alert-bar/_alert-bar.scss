@@ -1,14 +1,14 @@
-@import 'alert-bars.json';
+@import 'alert-bar.json';
 /// Alert Bars
 ///
 /// @access public
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin alert-bars($custom: custom('alert-bars')) {
+@mixin alert-bar($custom: custom('alert-bar')) {
 
     // Configuration
-    $alert-bars: config($alert-bars, $custom);
+    $alert-bar: config($alert-bar, $custom);
 
     //*************************************************************
     // Module
@@ -82,4 +82,4 @@
 
     } // module
 
-} // @mixin alert-bars
+} // @mixin alert-bar

@@ -48,7 +48,7 @@ export default function(env) {
 
     plugins.push(
         staticBuild ? StaticSiteGenerator : new HtmlWebpackPlugin({
-            template: 'src/views/layouts/foo.jsx',
+            template: 'src/views/core.jsx',
             inject: false
         })
     )

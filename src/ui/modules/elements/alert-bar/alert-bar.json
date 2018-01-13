@@ -1,5 +1,5 @@
 {
-    "alert-bars": {
+    "alert-bar": {
         "name": "alert",
         "colors": ["#PALETTE", "alert"],
         "text-color": ["#COLOR", "greyscale", "white"],
