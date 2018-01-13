@@ -4,7 +4,7 @@
 <Alert>This is an error alert</Alert>
 ```
 <details>
-<summary><h3>Prop.bar</h3></summary>
+<summary>Prop.bar</summary>
 
 > Set to append `bar` modifier
 
