@@ -3,8 +3,8 @@
 ```jsx
 <Alert>This is an error alert</Alert>
 ```
-
-### Prop.bar
+<details>
+<summary><h3>Prop.bar</h3></summary>
 
 > Set to append `bar` modifier
 
@@ -28,6 +28,8 @@
 ```html
 <div class="alert-bar">This is an alert</div>
 ```
+
+</details>
 
 ### Prop.box
 
