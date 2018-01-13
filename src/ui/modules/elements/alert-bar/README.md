@@ -1,25 +1,25 @@
 ## Alert Bars/Boxes
 
-##### Components
+<details>
+    <summary>Render Using React</summary>
 
-* icon
-
-##### Modifiers
-
-* bar
-* box
-* {color}
+    ```jsx
+    <Alert alert='error'>This is an error alert</Alert>
+    <Alert alert='info'>This is an informative alert</Alert>
+    <Alert alert='success'>This is a success alert</Alert>
+    <Alert alert='help'>This is a help alert</Alert>
+    ```
+</details>
 
 ### Quick Look
 
+##### Using HTML
+
 ```html
-<div class="alert-bar-help">A helpful alert bar.</div>
-
-<p class="alert-bar-info">An informative alert bar.</p>
-
-<div class="alert-bar-success"><p>A successful alert bar.</p></div>
-
-<span class="alert-bar-error">An error alert bar.</span>
+<div class="alert-bar-error">This is an error alert</div>
+<p class="alert-bar-info">This is an informative alert</p>
+<div class="alert-bar-success"><p>This is a success alert</p></div>
+<span class="alert-bar-help">This is a help alert</span>
 ```
 
 ### Options
