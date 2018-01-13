@@ -1,22 +1,72 @@
 import * as app from '../../../../app';
 
+import SyntaxHighlighter from 'react-syntax-highlighter/prism';
+import { xonokai } from 'react-syntax-highlighter/styles/prism';
+
 export default class AlertBars extends React.Component {
     render() {
         return (
             <app.layouts.Base {...app.config.app.views}>
 
-                <app.Alert className='object' alert='error'>Alert Bar 1</app.Alert>
+                <app.Heading light size='7'>Alert Bars/Boxes</app.Heading>
 
-                <app.Alert className='object' alert='help' icon='desktop' close={true}>Alert Bar 2</app.Alert>
+                <div className="well">
+                    <app.Alert>This is an alert</app.Alert>
+                </div>
 
-                <app.Alert className='object' modifiers={['fizz']} icon={['desktop', 'right']}>Alert Bar 3</app.Alert>
+                <h2 className="heading-size-5">Props.bar</h2>
 
-                <app.Alert className='object' bar alert='info'>Alert Bar 4</app.Alert>
+                <div class="row">
+                    <div class="span-6">
+                        <table class="table">
+                            <tr>
+                                <td><b>Default</b></td>
+                                <td><code>true</code></td>
+                            </tr>
+                            <tr>
+                                <td><b>Type</b></td>
+                                <td><code>Bool</code></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
 
-                <app.Alert className='object' box alert='info' close>
-                    <h4>Alert Bar 4</h4>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </app.Alert>
+                <SyntaxHighlighter language='jsx' style={xonokai}>{
+                    '<Alert bar>This is an alert</Alert>'
+                }</SyntaxHighlighter>
+
+                <h2 className="heading-size-3">Output:</h2>
+
+                <SyntaxHighlighter language='html' style={xonokai}>{
+                    '<div class="alert-bar">This is an alert</div>'
+                }</SyntaxHighlighter>
+
+                <h2 className="heading-size-5">Props.box</h2>
+
+                <div class="row">
+                    <div class="span-6">
+                        <table class="table">
+                            <tr>
+                                <td><b>Default</b></td>
+                                <td><code>false</code></td>
+                            </tr>
+                            <tr>
+                                <td><b>Type</b></td>
+                                <td><code>Bool</code></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <SyntaxHighlighter language='jsx' style={xonokai}>{
+                    '<Alert box>This is an alert</Alert>'
+                }</SyntaxHighlighter>
+
+                <h2 className="heading-size-3">Output:</h2>
+
+                <SyntaxHighlighter language='html' style={xonokai}>{
+                    '<div class="alert-box">This is an alert</div>'
+                }</SyntaxHighlighter>
 
             </app.layouts.Base>
         )

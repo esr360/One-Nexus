@@ -1,14 +1,14 @@
-@import 'headings.json';
-/// Headings
+@import 'heading.json';
+/// Heading
 ///
 /// @access public
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin headings($custom: custom('headings')) {
+@mixin heading($custom: custom('heading')) {
 
     // Configuration
-    $headings: config($headings, $custom);
+    $heading: config($heading, $custom);
 
     //*************************************************************
     // Module
@@ -56,7 +56,6 @@
         //*********************************************************
 
         @include component('group') {
-
             @include vertical-rhythm('bottom');
 
             position: relative;
@@ -71,7 +70,6 @@
                 margin-bottom: 0.5em;
                 line-height: this('group_heading-lineHeight');
             }
-
         }
 
         //*********************************************************
@@ -82,4 +80,4 @@
 
     } // module
 
-} // @mixin headings
+} // @mixin heading

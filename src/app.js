@@ -40,6 +40,7 @@ import Component from '../../../Synergy/src/js/component.jsx';
 // Elements
 export { Accordion } from './ui/modules/elements/accordions/accordions.jsx';
 export { default as Alert } from './ui/modules/elements/alert-bar/alert-bar.jsx';
+export { default as Heading } from './ui/modules/elements/heading/heading.jsx';
 
 // Objects
 export { Header } from './ui/modules/objects/header/header.jsx';
@@ -52,7 +53,9 @@ export { Navigation } from './ui/modules/objects/navigation/navigation.jsx';
 // Layouts
 import Base from './views/layouts/base.jsx';
 
-export const layouts = { Base };
+export const layouts = { 
+    Base
+};
 
 // Pages
 import Index from './views/pages/index.jsx';

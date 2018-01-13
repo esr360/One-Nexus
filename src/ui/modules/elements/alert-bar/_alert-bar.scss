@@ -28,10 +28,6 @@
         // Modifiers
         //*********************************************************
 
-        @include modifier('box') {
-            @include object;
-        }
-
         @each $name, $color in this('colors') {
             @include modifier($name) {
                 background-color: $color;

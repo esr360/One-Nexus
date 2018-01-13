@@ -1,5 +1,5 @@
 {
-    "headings": {
+    "heading": {
         "name": "heading",
         "group_heading-lineHeight": 0.8,
         "sizes": ["#TYPOGRAPHY-CONFIG", "sizes"]
