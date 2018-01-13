@@ -1,11 +1,57 @@
 ## Alert Bars/Boxes
 
-<details>
-<summary>Render Using React</summary>
-
-
 ```jsx
 <Alert>This is an error alert</Alert>
+```
+
+### Prop.bar
+
+> Set to append `bar` modifier
+
+<table>
+    <tr>
+        <td><b>Default</b></td>
+        <td><b><code>true</code></b></td>
+    </tr>
+    <tr>
+        <td><b>Type</b></td>
+        <td><b><code>Bool</code></b></td>
+    </tr>
+</table>
+
+```jsx
+<Alert bar>This is an alert</Alert>
+```
+
+###### Output:
+
+```html
+<div class="alert-bar">This is an alert</div>
+```
+
+### Prop.box
+
+> Set to append `box` modifier
+
+<table>
+    <tr>
+        <td><b>Default</b></td>
+        <td><b><code>false</code></b></td>
+    </tr>
+    <tr>
+        <td><b>Type</b></td>
+        <td><b><code>Bool</code></b></td>
+    </tr>
+</table>
+
+```jsx
+<Alert box>This is an alert</Alert>
+```
+
+###### Output:
+
+```html
+<div class="alert-box">This is an alert</div>
 ```
 
 ### Prop.name
@@ -17,16 +63,20 @@
         <td><b>Default</b></td>
         <td><b><code>alert</code></b></td>
     </tr>
+    <tr>
+        <td><b>Type</b></td>
+        <td><b><code>String</code></b></td>
+    </tr>
 </table>
 
 ```jsx
-<Alert name='alert'>This is an alert</Alert>
+<Alert name='notice'>This is an alert</Alert>
 ```
 
 ###### Output:
 
 ```html
-<div class="alert">This is an alert</div>
+<div class="notice-bar">This is an alert</div>
 ```
 
 ### Prop.alert
@@ -38,13 +88,66 @@
         <td><b>Default</b></td>
         <td><b><code>'success'</code></b></td>
     </tr>
+    <tr>
+        <td><b>Type</b></td>
+        <td><b><code>String</code></b></td>
+    </tr>
 </table>
+
+> Possible colors are set in the [module's configuration](#TODO)
 
 ```jsx
 <Alert alert='success'>This is an alert</Alert>
 ```
 
-</details>
+###### Output:
+
+```html
+<div class="alert-bar-success">This is an alert</div>
+```
+
+### Prop.icon
+
+> Add an icon to the alert
+
+<table>
+    <tr>
+        <td><b>Default</b></td>
+        <td><b><code>false</code></b></td>
+    </tr>
+    <tr>
+        <td><b>Type</b></td>
+        <td><b><code>(String|Array)</code></b></td>
+    </tr>
+</table>
+
+> Keyword should correspond to a [FontAwesome icon](http://fontawesome.io/icons/) name
+
+```jsx
+<Alert icon='exclamation-triangle'>This is an alert</Alert>
+```
+
+###### Output:
+
+```html
+<div class="alert-bar">
+    <div class="alert_icon fa fa-exclamation-triangle"></div> This is an alert
+</div>
+```
+
+#### Right-Aligned Icon
+
+```jsx
+<Alert icon={['exclamation-triangle', 'right']}>This is an alert</Alert>
+```
+
+###### Output:
+
+```html
+<div class="alert-bar">
+    <div class="alert_icon-right fa fa-exclamation-triangle"></div> This is an alert
+</div>
+```
 
 ### Quick Look
 
