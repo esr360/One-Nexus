@@ -1,13 +1,9 @@
 import defaults from './Heading.json';
 
 /**
- * Render Accordion component
+ * Render Heading component
  *
  * @prop {String} name
- * @prop {Bool} bar
- * @prop {Bool} box
- * @prop {(Bool|Array} icon
- * @prop {Array} modifiers
  */
 export default class Heading extends React.Component {
     render() {
@@ -15,13 +11,13 @@ export default class Heading extends React.Component {
 
         if (this.props.size) modifiers.push(`size-${this.props.size}`);
 
-        ['heavy', 'light', 'uppercase', 'flush'].forEach(prop => {
+        ['heavy', 'light', 'uppercase', 'flush', 'fluid'].forEach(prop => {
             if (this.props[prop]) modifiers.push(prop);
         });
 
         return (
             <Module 
-                tag='h3' 
+                tag={`h${this.props.heading}`} 
                 name={this.props.name} 
                 modifiers={modifiers} 
                 className={this.props.className}
@@ -37,5 +33,7 @@ Heading.defaultProps = {
     alert: 'success',
     bar: true,
     box: false,
-    icon: false
+    icon: false,
+    fluid: true,
+    heading: 3
 };
