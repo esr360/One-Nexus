@@ -20,6 +20,14 @@
             "overlay": {
                 "enabled": true
             }
+        },
+        "tables": {
+            "background": "white",
+            "padding": "1em",
+            "border": "1px solid rgba(0,0,0,0.1)",
+            "-small": {
+                "max-width": "450px"
+            }
         }
     }
 }

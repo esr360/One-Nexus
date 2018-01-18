@@ -1,7 +1,7 @@
 import defaults from './alert-bar.json';
 
 /**
- * Render Accordion component
+ * Render Alert component
  *
  * @prop {String} name
  * @prop {Bool} bar

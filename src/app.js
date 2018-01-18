@@ -41,6 +41,8 @@ import Component from '../../../Synergy/src/js/component.jsx';
 export { Accordion } from './ui/modules/elements/accordions/accordions.jsx';
 export { default as Alert } from './ui/modules/elements/alert-bar/alert-bar.jsx';
 export { default as Heading } from './ui/modules/elements/heading/heading.jsx';
+export { default as Table } from './ui/modules/elements/tables/table.jsx';
+export { default as Well } from './ui/modules/elements/wells/well.jsx';
 
 // Objects
 export { Header } from './ui/modules/objects/header/header.jsx';
@@ -49,6 +51,9 @@ export { Navigation } from './ui/modules/objects/navigation/navigation.jsx';
 
 // Views
 //*****************************************************************
+
+// Tools
+export { default as SyntaxHighlighter } from './views/tools/syntaxHighlighter.jsx';
 
 // Layouts
 import Base from './views/layouts/base.jsx';

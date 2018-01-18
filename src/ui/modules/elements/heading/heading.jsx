@@ -1,4 +1,4 @@
-import defaults from './Heading.json';
+import defaults from './heading.json';
 
 /**
  * Render Heading component

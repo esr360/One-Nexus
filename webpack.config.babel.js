@@ -72,7 +72,15 @@ export default function(env) {
 
         plugins,
 
-        module: { loaders: [ JsLoader, SassLoader ] },
+        module: { loaders: [ 
+            JsLoader, 
+            SassLoader,
+            {
+                test: /\.css$/,  
+                include: /node_modules/,  
+                loaders: ['style-loader', 'css-loader'],
+           }
+        ] },
 
         stats: { colors: true },
 
