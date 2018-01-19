@@ -12,14 +12,26 @@ import defaults from './alert-bar.json';
 export default class Alert extends React.Component {
     render() {
         let modifiers = this.props.modifiers || [];
+        let className = this.props.className || '';
 
         if (this.props.bar) modifiers.push('bar');
         if (this.props.box) modifiers.push('box');
 
-        modifiers.push(this.props.alert);
+        const alert = () => {
+            if (this.props.success) return 'success';
+            if (this.props.error) return 'error';
+            if (this.props.help) return 'help';
+            if (this.props.info) return 'info';
+
+            return this.props.alert;
+        }
+
+        modifiers.push(alert());
+
+        if (this.props.object) className += 'object';
 
         return (
-            <Module name={this.props.name} modifiers={modifiers} className={this.props.className}>
+            <Module name={this.props.name} modifiers={modifiers} className={className}>
                 {this.props.icon && 
                     <Component 
                         name='icon' 
@@ -50,5 +62,6 @@ Alert.defaultProps = {
     alert: 'success',
     bar: true,
     box: false,
+    object: true,
     icon: false
 };

@@ -41,6 +41,8 @@ import Component from '../../../Synergy/src/js/component.jsx';
 export { Accordion } from './ui/modules/elements/accordions/accordions.jsx';
 export { default as Alert } from './ui/modules/elements/alert-bar/alert-bar.jsx';
 export { default as Heading } from './ui/modules/elements/heading/heading.jsx';
+export { default as List } from './ui/modules/elements/lists/list.jsx';
+export { ListItem } from './ui/modules/elements/lists/list.jsx';
 export { default as Table } from './ui/modules/elements/tables/table.jsx';
 export { default as Well } from './ui/modules/elements/wells/well.jsx';
 

@@ -11,32 +11,20 @@ export default class SyntaxHighlighter extends React.Component {
     }
 }
 
-function process(str) {
-    const div = document.createElement('div');
+function process(string) {
+    let lines = string.split('\n');
 
-    div.innerHTML = str.trim();
+    if (lines[0] === '') lines.shift();
 
-    return format(div, 0).innerHTML
-        .replace(/(^[ \t]*\n)/gm, '')
-        .replace(/\=\"\"/gi, '');
-}
+    const matches = /^[\s\t]+/.exec(lines[0]);
 
-function format(node, level) {
-    var indentBefore = new Array(level++ + 1).join('    ');
-    var indentAfter = new Array(level - 1).join('    ');
-    var textNode;
+    if (matches) var indentation = matches[0];
 
-    for (var i = 0; i < node.children.length; i++) {
-        textNode = document.createTextNode('\n' + indentBefore);
-        node.insertBefore(textNode, node.children[i]);
-
-        format(node.children[i], level);
-
-        if (node.lastElementChild == node.children[i]) {
-            textNode = document.createTextNode('\n' + indentAfter);
-            node.appendChild(textNode);
-        }
+    if (indentation) {
+        lines = lines.map(function(line) {
+            return line.replace(indentation, '').replace(/\t/g, '    ')
+        });
     }
 
-    return node;
+    return indentation ? lines.join('\n').trim() : string;
 }

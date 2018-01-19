@@ -3,6 +3,8 @@
         "accordions": {
             "ding": "dong"
         },
+        "alert-bar": {
+        },
         "buttons": {
             "border-palettes": ["brand", "alert"]
         },
@@ -23,7 +25,7 @@
         },
         "tables": {
             "background": "white",
-            "padding": "1em",
+            "padding": "0.5em 1em",
             "border": "1px solid rgba(0,0,0,0.1)",
             "-small": {
                 "max-width": "450px"
