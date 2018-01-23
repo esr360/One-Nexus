@@ -17,7 +17,7 @@ export default class App extends React.Component {
             <Switch>
                 <Route path='/' exact component={app.pages.Index} />
                 <Route path='/accordions' component={app.pages.Accordions} />
-                <Route path='/alert-bars' component={app.pages.AlertBars} />
+                <Route path='/alert' component={app.pages.AlertBars} />
             </Switch>
         )
     }

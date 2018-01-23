@@ -39,7 +39,7 @@ import Component from '../../../Synergy/src/js/component.jsx';
 
 // Elements
 export { Accordion } from './ui/modules/elements/accordions/accordions.jsx';
-export { default as Alert } from './ui/modules/elements/alert-bar/alert-bar.jsx';
+export { default as Alert } from './ui/modules/elements/alert/alert.jsx';
 export { default as Heading } from './ui/modules/elements/heading/heading.jsx';
 export { default as List } from './ui/modules/elements/lists/list.jsx';
 export { ListItem } from './ui/modules/elements/lists/list.jsx';
@@ -67,12 +67,12 @@ export const layouts = {
 // Pages
 import Index from './views/pages/index.jsx';
 import Accordions from './views/pages/modules/elements/accordions.jsx';
-import AlertBars from './views/pages/modules/elements/alert-bars.jsx';
+import Alert from './views/pages/modules/elements/alert.jsx';
 
 export const pages = {
     Index, 
     Accordions,
-    AlertBars
+    Alert
 }
 
 // Render App

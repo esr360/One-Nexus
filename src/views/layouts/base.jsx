@@ -22,7 +22,7 @@ export default class Base extends React.Component {
                     <div>
                         <app.Link to='/'>Home</app.Link>
                         <app.Link to='/accordions'>Accordions</app.Link>
-                        <app.Link to='/alert-bars'>Alert Bars</app.Link>
+                        <app.Link to='/alert'>Alert Bars</app.Link>
                     </div>
 
                     {this.props.children}

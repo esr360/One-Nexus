@@ -3,7 +3,7 @@
         "accordions": {
             "ding": "dong"
         },
-        "alert-bar": {
+        "alert": {
         },
         "buttons": {
             "border-palettes": ["brand", "alert"]

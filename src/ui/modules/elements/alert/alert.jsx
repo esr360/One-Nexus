@@ -1,4 +1,4 @@
-import defaults from './alert-bar.json';
+import defaults from './alert.json';
 
 /**
  * Render Alert component
@@ -58,7 +58,7 @@ export default class Alert extends React.Component {
 }
 
 Alert.defaultProps = {
-    name: defaults['alert-bar'].name,
+    name: defaults['alert'].name,
     alert: 'success',
     bar: true,
     box: false,
