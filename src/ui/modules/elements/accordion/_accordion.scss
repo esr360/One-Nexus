@@ -1,14 +1,14 @@
-@import 'accordions.json';
-/// Accordions
+@import 'accordion.json';
+/// Accordion
 ///
 /// @access public
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin accordions($custom: custom('accordions')) {
+@mixin accordion($custom: custom('accordion')) {
 
     // Configuration
-    $accordions: config($accordions, $custom);
+    $accordion: config($accordion, $custom);
 
     //*************************************************************
     // Module
@@ -93,4 +93,4 @@
 
     } // module
 
-} // @mixin accordions
+} // @mixin accordion

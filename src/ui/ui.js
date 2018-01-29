@@ -30,7 +30,7 @@ export {
 //*****************************************************************
 
 // Elements
-import accordion from './modules/elements/accordions/accordions';
+import accordion from './modules/elements/accordion/accordion';
 import { carousel } from './modules/elements/carousels/carousels';
 import { modal } from './modules/elements/modals/modals';
 import { progressBar } from './modules/elements/progress-bars/progress-bars';

@@ -21,14 +21,14 @@ export default class AlertBars extends React.Component {
                 </app.Well>
 
                 <app.List>
-                    <app.ListItem><a href="#">Configuration</a></app.ListItem>
-                    <app.ListItem><a href="#">Styles</a></app.ListItem>
-                    <app.ListItem><a href="#">Interactions</a></app.ListItem>
-                    <app.ListItem><a href="#">Render With React</a></app.ListItem>
-                    <app.ListItem><a href="#">Examples</a></app.ListItem>
+                    <app.ListItem><app.Link to='#configuration'>Configuration</app.Link></app.ListItem>
+                    <app.ListItem><app.Link to='#styles'>Styles</app.Link></app.ListItem>
+                    <app.ListItem><app.Link to='#interactions'>Interactions</app.Link></app.ListItem>
+                    <app.ListItem><app.Link to='#render-with-react'>Render With React</app.Link></app.ListItem>
+                    <app.ListItem><app.Link to='#examples'>Examples</app.Link></app.ListItem>
                 </app.List>
 
-                <div className="object">
+                <app.Section id='configuration'>
                     <app.Heading heading='3' size='5'>Configuration</app.Heading>
 
                     <app.Alert alert="info"><a href="#">Learn more</a> about module configutation</app.Alert>
@@ -77,29 +77,29 @@ export default class AlertBars extends React.Component {
                     <app.Heading heading='5' size='2'>Usage:</app.Heading>
 
                     <app.SyntaxHighlighter language='jsx'>{
-                        '<Alert alert="grape">This is an alert</Alert>'
+                        '<Alert grape>This is an alert</Alert>'
                     }</app.SyntaxHighlighter>
 
                     <app.SyntaxHighlighter language='html'>{
                         '<div class="alert-bar-grape">This is an alert</div>'
                     }</app.SyntaxHighlighter>
-                </div>
+                </app.Section>
 
-                <div className="object">
+                <app.Section id='styles'>
                     <app.Heading heading='3' size='5'>Styles</app.Heading>
 
                     <app.Alert alert="help">Edit styles in <a href="#">ui/modules/elements/alert/_alert.scss</a></app.Alert>
 
                     <app.Alert alert="info"><a href="#">Learn how to modify styles using the above configuration</a> so you don't have to touch the source</app.Alert>
-                </div>
+                </app.Section>
 
-                <div className="object">
+                <app.Section id='interactions'>
                     <app.Heading heading='3' size='5'>Interactions</app.Heading>
 
                     <p><i>This module has no interactions.</i></p>
-                </div>
+                </app.Section>
 
-                <div className="object">
+                <app.Section id='render-with-react'>
                     <app.Heading heading='3' size='5'>Render With React</app.Heading>
 
                     <app.SyntaxHighlighter language='jsx'>{
@@ -107,16 +107,16 @@ export default class AlertBars extends React.Component {
                     }</app.SyntaxHighlighter>
 
                     <app.List>
-                        <app.ListItem><a href="#">Props.bar</a></app.ListItem>
-                        <app.ListItem><a href="#">Props.box</a></app.ListItem>
-                        <app.ListItem><a href="#">Props.name</a></app.ListItem>
-                        <app.ListItem><a href="#">Props.alert</a></app.ListItem>
-                        <app.ListItem><a href="#">Props.icon</a></app.ListItem>
-                        <app.ListItem><a href="#">Props.close</a></app.ListItem>
-                        <app.ListItem><a href="#">Props.object</a></app.ListItem>
+                        <app.ListItem><app.Link to='#props.bar'>Props.bar</app.Link></app.ListItem>
+                        <app.ListItem><app.Link to='#props.box'>Props.box</app.Link></app.ListItem>
+                        <app.ListItem><app.Link to='#props.name'>Props.name</app.Link></app.ListItem>
+                        <app.ListItem><app.Link to='#props.alert'>Props.alert</app.Link></app.ListItem>
+                        <app.ListItem><app.Link to='#props.icon'>Props.icon</app.Link></app.ListItem>
+                        <app.ListItem><app.Link to='#props.close'>Props.close</app.Link></app.ListItem>
+                        <app.ListItem><app.Link to='#props.object'>Props.object</app.Link></app.ListItem>
                     </app.List>
 
-                    <div className="object">
+                    <app.Section id='props.bar'>
                         <app.Heading size='5'>Props.bar</app.Heading>
 
                         <app.Table small content={[{
@@ -139,9 +139,9 @@ export default class AlertBars extends React.Component {
                         <app.Well>
                             <app.Alert bar>This is an alert</app.Alert>
                         </app.Well>
-                    </div>
+                    </app.Section>
 
-                    <div className="object">
+                    <app.Section id='props.box'>
                         <app.Heading size='5'>Props.box</app.Heading>
 
                         <app.Table small content={[{
@@ -164,9 +164,9 @@ export default class AlertBars extends React.Component {
                         <app.Well>
                             <app.Alert box>This is an alert</app.Alert>
                         </app.Well>
-                    </div>
+                    </app.Section>
 
-                    <div className="object">
+                    <app.Section id='props.name'>
                         <app.Heading size='5'>Props.name</app.Heading>
 
                         <app.Table small content={[{
@@ -183,9 +183,9 @@ export default class AlertBars extends React.Component {
                         <app.SyntaxHighlighter language='html'>{
                             '<div class="notice-bar">This is an alert</div>'
                         }</app.SyntaxHighlighter>
-                    </div>
+                    </app.Section>
 
-                    <div className="object">
+                    <app.Section id='props.alert'>
                         <app.Heading size='5'>Props.alert</app.Heading>
 
                         <app.Table small content={[{
@@ -203,18 +203,14 @@ export default class AlertBars extends React.Component {
                             '<div class="alert-bar-success">This is an alert</div>'
                         }</app.SyntaxHighlighter>
 
-                        <p>For the default <code>success</code>, <code>error</code>, <code>info</code> and <code>help</code> alerts, you can directly reference these as a prop name:</p>
+                        <p>You can directly reference available alerts as a prop name:</p>
 
                         <app.SyntaxHighlighter language='jsx'>{`
                             <Alert success>This is an alert</Alert>
-                            <Alert error>This is an alert</Alert>
-                            <Alert info>This is an alert</Alert>
-                            <Alert help>This is an alert</Alert>
                         `}</app.SyntaxHighlighter>
+                    </app.Section>
 
-                    </div>
-
-                    <div className="object">
+                    <app.Section id='props.icon'>
                         <app.Heading size='5'>Props.icon</app.Heading>
 
                         <app.Table small content={[{
@@ -257,9 +253,9 @@ export default class AlertBars extends React.Component {
                         <app.Well>
                             <app.Alert icon={['exclamation-triangle', 'right']}>This is an alert</app.Alert>
                         </app.Well>
-                    </div>
+                    </app.Section>
 
-                    <div className="object">
+                    <app.Section id='props.close'>
                         <app.Heading size='5'>Props.close</app.Heading>
 
                         <app.Alert info>This prop cannot be used in conjunction with a right-aligned icon</app.Alert>
@@ -285,12 +281,12 @@ export default class AlertBars extends React.Component {
                         <app.SyntaxHighlighter language='jsx'>{
                             `<Alert close={callback}>This is an alert</Alert>`
                         }</app.SyntaxHighlighter>
-                    </div>
-                </div>
+                    </app.Section>
+                </app.Section>
 
-                <div className="object">
+                <app.Section id='examples'>
                     <app.Heading heading='3' size='5'>Examples</app.Heading>
-                </div>
+                </app.Section>
 
             </app.layouts.Base>
         )

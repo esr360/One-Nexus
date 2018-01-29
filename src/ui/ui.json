@@ -13,7 +13,7 @@
                     "brand-5": "aqua"
                 }
             },
-            "accordions": {
+            "accordion": {
                 "foo": "bar"
             }
         }

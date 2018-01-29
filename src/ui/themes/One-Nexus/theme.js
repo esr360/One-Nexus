@@ -29,7 +29,7 @@ export default function(custom) {
     /// Elements
     ///************************************************************
 
-    UI.accordion(options.accordions);
+    UI.accordion(options.accordion);
     // UI.carousel();
     // UI.modal();
     // UI.overlay();

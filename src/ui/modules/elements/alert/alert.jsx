@@ -4,6 +4,7 @@ import defaults from './alert.json';
  * Render Alert component
  *
  * @prop {String} name
+ * @prop {String} alert
  * @prop {Bool} bar
  * @prop {Bool} box
  * @prop {(Bool|Array} icon
@@ -14,24 +15,20 @@ export default class Alert extends React.Component {
         let modifiers = this.props.modifiers || [];
         let className = this.props.className || '';
 
-        if (this.props.bar) modifiers.push('bar');
-        if (this.props.box) modifiers.push('box');
+        let alerts = [];
 
-        const alert = () => {
-            if (this.props.success) return 'success';
-            if (this.props.error) return 'error';
-            if (this.props.help) return 'help';
-            if (this.props.info) return 'info';
-
-            return this.props.alert;
+        if (window.APPUI && window.APPUI.colors && window.APPUI.colors.alert) {
+            alerts = Object.keys(window.APPUI.colors.alert);
         }
 
-        modifiers.push(alert());
+        if (!Object.keys(this.props).some(alert => alerts.includes(alert))) {
+            modifiers.push(this.props.alert);
+        }
 
-        if (this.props.object) className += 'object';
+        if (this.props.object) className = className + 'object';
 
         return (
-            <Module name={this.props.name} modifiers={modifiers} className={className}>
+            <Module {...this.props} name={this.props.name} modifiers={modifiers} className={className}>
                 {this.props.icon && 
                     <Component 
                         name='icon' 
@@ -58,7 +55,7 @@ export default class Alert extends React.Component {
 }
 
 Alert.defaultProps = {
-    name: defaults['alert'].name,
+    name: defaults.alert.name,
     alert: 'success',
     bar: true,
     box: false,

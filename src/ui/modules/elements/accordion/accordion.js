@@ -1,5 +1,5 @@
 import * as app from '../../../ui';
-import defaults from './accordions.json';
+import defaults from './accordion.json';
 
 /**
  * Accordion
@@ -11,7 +11,7 @@ import defaults from './accordions.json';
  */
 export default function accordion(custom = {}) {
 
-    app.Synergy(custom.name || defaults.accordions.name, (el, options) => {
+    app.Synergy(custom.name || defaults.accordion.name, (el, options) => {
 
         if (!el.getAttribute('data-initialised')) {
             el.component('section').forEach((section, index) => {
@@ -34,7 +34,7 @@ export default function accordion(custom = {}) {
 
     }, defaults, custom, app.evalConfig);
 
-    app.config.accordions = app.parse(defaults.accordions, custom);
+    app.config.accordion = app.parse(defaults.accordion, custom);
 
     return exports;
 }
