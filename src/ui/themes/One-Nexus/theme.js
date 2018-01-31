@@ -48,5 +48,5 @@ export default function(custom) {
     // UI.search();
     // UI.sideNav();
 
-    window.APPUI = UI.evalConfig(UI.deepextend(UI.config, options));
+    window.THEME = UI.evalConfig(UI.deepextend(UI.config, options));
 }
