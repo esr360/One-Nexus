@@ -108,6 +108,7 @@ export default function(custom, callback) {
     config.ui = deepextend(config.ui, custom);
     UI[formatThemeName(config.ui.theme)](config.ui.modules);
     window.UI = UI;
+    window.Synergy.CssClassProps = config.ui['css-class-props'];
 }
 
 // Global Methods

@@ -9,4 +9,4 @@ export default class Section extends React.Component {
             </div>
         )
     }
-}
+};

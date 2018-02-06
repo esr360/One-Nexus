@@ -13,22 +13,18 @@ import defaults from './alert.json';
 export default class Alert extends React.Component {
     render() {
         let modifiers = this.props.modifiers || [];
-        let className = this.props.className || '';
-
         let alerts = [];
 
-        if (window.APPUI && window.APPUI.colors && window.APPUI.colors.alert) {
-            alerts = Object.keys(window.APPUI.colors.alert);
+        if (window.THEME && window.THEME.colors && window.THEME.colors.alert) {
+            alerts = Object.keys(window.THEME.colors.alert);
         }
 
         if (!Object.keys(this.props).some(alert => alerts.includes(alert))) {
             modifiers.push(this.props.alert);
         }
 
-        if (this.props.object) className = className + 'object';
-
         return (
-            <Module {...this.props} name={this.props.name} modifiers={modifiers} className={className}>
+            <Module {...this.props} modifiers={modifiers}>
                 {this.props.icon && 
                     <Component 
                         name='icon' 

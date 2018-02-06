@@ -16,7 +16,7 @@ export default class AlertBars extends React.Component {
                 <app.Well>
                     <app.Alert box>
                         <app.Heading heading='3' size='5'>This is an alert box</app.Heading>
-                        <p>Lorem ipsum dolor sit amet</p>
+                        <app.Paragraph object="false">Lorem ipsum dolor sit amet</app.Paragraph>
                     </app.Alert>
                 </app.Well>
 

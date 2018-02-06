@@ -5,6 +5,7 @@
         "component-glue": "'_'",
         "modifier-glue": "'-'",
         "theme": "One-Nexus",
+        "css-class-props": ["object"],
         "modules": {
             "foo": ["#COLOR", "brand", "brand-5"],
             "colors": {

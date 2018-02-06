@@ -11,17 +11,8 @@ export default class Heading extends React.Component {
 
         if (this.props.size) modifiers.push(`size-${this.props.size}`);
 
-        ['heavy', 'light', 'uppercase', 'flush', 'fluid'].forEach(prop => {
-            if (this.props[prop]) modifiers.push(prop);
-        });
-
         return (
-            <Module 
-                tag={`h${this.props.heading}`} 
-                name={this.props.name} 
-                modifiers={modifiers} 
-                className={this.props.className}
-            >
+            <Module {...this.props} tag={`h${this.props.heading}`} modifiers={modifiers}>
                 {this.props.children}
             </Module>
         )
@@ -29,11 +20,7 @@ export default class Heading extends React.Component {
 }
 
 Heading.defaultProps = {
-    name: defaults['heading'].name,
-    alert: 'success',
-    bar: true,
-    box: false,
-    icon: false,
+    name: defaults.heading.name,
     fluid: true,
     heading: 3
 };

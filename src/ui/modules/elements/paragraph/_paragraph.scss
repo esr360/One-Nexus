@@ -1,0 +1,27 @@
+@import 'paragraph.json';
+/// Paragraph
+///
+/// @access public
+/// @group elements
+///
+/// @param {map} $custom - where custom config will be passed
+@mixin paragraph($custom: custom('paragraph')) {
+
+    // Configuration
+    $paragraph: config($paragraph, $custom);
+
+    //*************************************************************
+    // Module
+    //*************************************************************
+
+    @include module {
+
+        //*********************************************************
+        // Custom Content
+        //*********************************************************
+
+        @content;
+
+    } // module
+
+} // @mixin paragraph

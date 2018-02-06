@@ -10,7 +10,7 @@ import defaults from './accordion.json';
 export default class Accordion extends React.Component {
     render() {
         return (
-            <Module name={this.props.name} modifiers={this.props.modifiers}>
+            <Module {...this.props}>
                 {this.props.panels.map(({title, content}, index) => (
                     <Component name="section" key={index}>
                         <Component name="title" modifiers={['fizz', 'buzz']}>{title}</Component>

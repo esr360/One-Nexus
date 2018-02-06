@@ -7,19 +7,19 @@ import defaults from './lists.json';
  */
 export default class List extends React.Component {
     render() {
-        let modifiers = this.props.modifiers || [];
-
-        ['reset', 'clear', 'inline', 'divider', 'arrow', 'group'].forEach(prop => {
-            if (this.props[prop]) modifiers.push(prop);
-        });
-
         return (
-            <Module tag={this.props.tag} name={this.props.name} modifiers={modifiers} className={this.props.className}>
+            <Module {...this.props}>
                 {this.props.children}
             </Module>
         )
     }
 }
+
+List.defaultProps = {
+    name: defaults.lists.name,
+    clear: true,
+    tag: 'ul'
+};
 
 /**
  * Render List Item
@@ -33,9 +33,3 @@ export class ListItem extends React.Component {
         )
     }
 }
-
-List.defaultProps = {
-    name: defaults['lists'].name,
-    clear: true,
-    tag: 'ul'
-};

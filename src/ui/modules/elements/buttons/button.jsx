@@ -7,11 +7,8 @@ import defaults from './buttons.json';
  */
 export default class Button extends React.Component {
     render() {
-        let modifiers = this.props.modifiers || [];
-        let className = this.props.className || '';
-
         return (
-            <Module name={this.props.name} modifiers={modifiers} className={className}>
+            <Module {...this.props}>
                 {this.props.children}
             </Module>
         )
@@ -19,5 +16,5 @@ export default class Button extends React.Component {
 }
 
 Button.defaultProps = {
-    name: defaults['buttons'].name
+    name: defaults.buttons.name
 };

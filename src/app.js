@@ -29,16 +29,11 @@ import UI from './ui/ui';
 // Synergy
 //*****************************************************************
 
-// import { Module, Component } from 'Synergy';
 import Module from '../../../Synergy/src/js/module.jsx';
 import { default as Component, Group, Wrapper } from '../../../Synergy/src/js/component.jsx';
 
-window.Synergy = Synergy;
 window.Module = Module;
 window.Component = Component;
-
-// Blacklisted modifiers
-Synergy.blacklistedModifiers = ['object'];
 
 // UI React Components
 //*****************************************************************
@@ -49,6 +44,7 @@ export { default as Alert } from './ui/modules/elements/alert/alert.jsx';
 export { default as Button } from './ui/modules/elements/buttons/button.jsx';
 export { default as Heading } from './ui/modules/elements/heading/heading.jsx';
 export { default as List, ListItem } from './ui/modules/elements/lists/list.jsx';
+export { default as Paragraph } from './ui/modules/elements/paragraph/paragraph.jsx';
 export { default as Table } from './ui/modules/elements/tables/table.jsx';
 export { default as Well } from './ui/modules/elements/wells/well.jsx';
 
