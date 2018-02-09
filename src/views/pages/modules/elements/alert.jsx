@@ -9,15 +9,12 @@ export default class AlertBars extends React.Component {
 
                 <app.Heading heading='3' size='5'>Quick Look</app.Heading>
 
-                <app.Well>
-                    <app.Alert>This is an alert bar</app.Alert>
-                </app.Well>
+                <app.SyntaxHighlighter language='jsx'>{
+                    '<Alert>This is a default alert</Alert>'
+                }</app.SyntaxHighlighter>
 
                 <app.Well>
-                    <app.Alert box>
-                        <app.Heading heading='3' size='5'>This is an alert box</app.Heading>
-                        <app.Paragraph object="false">Lorem ipsum dolor sit amet</app.Paragraph>
-                    </app.Alert>
+                    <app.Alert>This is a default alert</app.Alert>
                 </app.Well>
 
                 <app.List>
@@ -31,14 +28,33 @@ export default class AlertBars extends React.Component {
                 <app.Section id='configuration'>
                     <app.Heading heading='3' size='5'>Configuration</app.Heading>
 
-                    <app.Alert alert="info"><a href="#">Learn more</a> about module configutation</app.Alert>
+                    <app.Alert alert="help"><a href="#">Learn more</a> about module configutation</app.Alert>
+                    <app.Alert alert="info"><i>Icons</i> in the <i>alerts</i> section use FontAwesome keywords</app.Alert>
 
                     <app.SyntaxHighlighter language='json'>{`
                         "alert": {
                             "name": "alert",
-                            "colors": ["#PALETTE", "alert"],
+                            "alerts": {
+                                "error": {
+                                    "color": ["#COLOR", "alert", "error"],
+                                    "icon": "times"
+                                },
+                                "success": {
+                                    "color": ["#COLOR", "alert", "success"],
+                                    "icon": "check"
+                                },
+                                "info": {
+                                    "color": ["#COLOR", "alert", "info"],
+                                    "icon": "info-circle"
+                                },
+                                "help": {
+                                    "color": ["#COLOR", "alert", "help"],
+                                    "icon": "question-circle"
+                                }
+                            },
                             "text-color": ["#COLOR", "greyscale", "white"],
                             "icon": {
+                                "enable-by-default": true,
                                 "margin-right": "0.5em",
                                 "line-height": "1.25",
                                 "-right": {
@@ -56,18 +72,23 @@ export default class AlertBars extends React.Component {
 
                     <app.Heading heading='4' size='3'>Colors</app.Heading>
 
-                    <p>The recommended way to add/edit the available alert colors is to modify the <a href="#">Alert color palette</a>.</p>
-
-                    <p>You can alternatively use a custom set of colors by changing the "colors" value in the configuration:</p>
-
                     <app.SyntaxHighlighter language='json'>{`
                         {
                             "theme": {
                                 "alert": {
-                                    "colors": {
-                                        "carrot": "#F58220",
-                                        "grape": "#421C52",
-                                        "banana": "#FEDF49",
+                                    "alerts": {
+                                        "carrot": {
+                                            "color": "#F58220",
+                                            "icon": "times"
+                                        },
+                                        "grape": {
+                                            "color": "#421C52",
+                                            "icon": "check"
+                                        },
+                                        "banana": {
+                                            "color": "#FEDF49",
+                                            "icon": "info-circle"
+                                        }
                                     }
                                 }
                             }
@@ -88,9 +109,9 @@ export default class AlertBars extends React.Component {
                 <app.Section id='styles'>
                     <app.Heading heading='3' size='5'>Styles</app.Heading>
 
-                    <app.Alert alert="help">Edit styles in <a href="#">ui/modules/elements/alert/_alert.scss</a></app.Alert>
+                    <app.Alert alert="info">Edit styles in <a href="#">ui/modules/elements/alert/_alert.scss</a></app.Alert>
 
-                    <app.Alert alert="info"><a href="#">Learn how to modify styles using the above configuration</a> so you don't have to touch the source</app.Alert>
+                    <app.Alert alert="help"><a href="#">Learn how to modify styles using the above configuration</a> so you don't have to touch the source</app.Alert>
                 </app.Section>
 
                 <app.Section id='interactions'>
@@ -107,13 +128,12 @@ export default class AlertBars extends React.Component {
                     }</app.SyntaxHighlighter>
 
                     <app.List>
+                        <app.ListItem><app.Link to='#props.bar'>[...Global.props]</app.Link></app.ListItem>
                         <app.ListItem><app.Link to='#props.bar'>Props.bar</app.Link></app.ListItem>
                         <app.ListItem><app.Link to='#props.box'>Props.box</app.Link></app.ListItem>
-                        <app.ListItem><app.Link to='#props.name'>Props.name</app.Link></app.ListItem>
                         <app.ListItem><app.Link to='#props.alert'>Props.alert</app.Link></app.ListItem>
                         <app.ListItem><app.Link to='#props.icon'>Props.icon</app.Link></app.ListItem>
                         <app.ListItem><app.Link to='#props.close'>Props.close</app.Link></app.ListItem>
-                        <app.ListItem><app.Link to='#props.object'>Props.object</app.Link></app.ListItem>
                     </app.List>
 
                     <app.Section id='props.bar'>
@@ -164,25 +184,6 @@ export default class AlertBars extends React.Component {
                         <app.Well>
                             <app.Alert box>This is an alert</app.Alert>
                         </app.Well>
-                    </app.Section>
-
-                    <app.Section id='props.name'>
-                        <app.Heading size='5'>Props.name</app.Heading>
-
-                        <app.Table small content={[{
-                            default: 'alert',
-                            type: 'String'
-                        }]} />
-
-                        <app.SyntaxHighlighter language='jsx'>{
-                            `<Alert name='notice'>This is an alert</Alert>`
-                        }</app.SyntaxHighlighter>
-
-                        <app.Heading heading='4' size='3'>Output:</app.Heading>
-
-                        <app.SyntaxHighlighter language='html'>{
-                            '<div class="notice-bar">This is an alert</div>'
-                        }</app.SyntaxHighlighter>
                     </app.Section>
 
                     <app.Section id='props.alert'>
