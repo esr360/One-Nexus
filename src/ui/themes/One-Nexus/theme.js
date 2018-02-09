@@ -30,6 +30,7 @@ export default function(custom) {
     ///************************************************************
 
     UI.accordion(options.accordion);
+    UI.alert(options.alert);
     // UI.carousel();
     // UI.modal();
     // UI.overlay();

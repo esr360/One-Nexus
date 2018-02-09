@@ -13,36 +13,46 @@ import defaults from './alert.json';
 export default class Alert extends React.Component {
     render() {
         let modifiers = this.props.modifiers || [];
-        let alerts = [];
+        let alert = this.props.alert;
+        let icon = this.props.icon;
+        let hasAlertProp = false;
 
-        if (window.THEME && window.THEME.colors && window.THEME.colors.alert) {
-            alerts = Object.keys(window.THEME.colors.alert);
+        if (global.THEME && global.THEME.alert) {
+            const alerts = Object.keys(global.THEME.alert.alerts);
+
+            if (!icon && global.THEME.alert.icon['enable-by-default']) {
+                icon = global.THEME.alert.alerts[alert].icon;
+
+                Object.keys(this.props).forEach(prop => {
+                    if (alerts.includes(prop)) icon = global.THEME.alert.alerts[prop].icon;
+                });
+            }
+
+            hasAlertProp = Object.keys(this.props).some(prop => alerts.includes(prop));
         }
 
-        if (!Object.keys(this.props).some(alert => alerts.includes(alert))) {
-            modifiers.push(this.props.alert);
-        }
+        if (!hasAlertProp) modifiers.push(this.props.alert);
 
         return (
             <Module {...this.props} modifiers={modifiers}>
-                {this.props.icon && 
-                    <Component 
-                        name='icon' 
-                        modifiers={[(this.props.icon[1] === 'right') && 'right']} 
-                        className={`fa fa-${Array.isArray(this.props.icon) ? this.props.icon[0] : this.props.icon}`}
+                {icon &&
+                    <Component
+                        name='icon'
+                        modifiers={[(icon[1] === 'right') && 'right']}
+                        className={`fa fa-${Array.isArray(icon) ? icon[0] : icon}`}
                     ></Component>
                 }
 
-                {this.props.close && 
+                {this.props.close &&
                     <Component
-                        name='icon' 
-                        onClick={typeof this.props.close === 'function' ? this.props.close : undefined} 
-                        modifiers={['close', 'right']} 
+                        name='icon'
+                        onClick={typeof this.props.close === 'function' ? this.props.close : undefined}
+                        modifiers={['close', 'right']}
                         className={`fa fa-times`}
                     ></Component>
                 }
 
-                {this.props.box ? 
+                {this.props.box ?
                     <Component name='content'>{this.props.children}</Component> : this.props.children
                 }
             </Module>

@@ -1,9 +1,27 @@
 {
     "alert": {
         "name": "alert",
-        "colors": ["#PALETTE", "alert"],
+        "alerts": {
+            "error": {
+                "color": ["#COLOR", "alert", "error"],
+                "icon": "times"
+            },
+            "success": {
+                "color": ["#COLOR", "alert", "success"],
+                "icon": "check"
+            },
+            "info": {
+                "color": ["#COLOR", "alert", "info"],
+                "icon": "info-circle"
+            },
+            "help": {
+                "color": ["#COLOR", "alert", "help"],
+                "icon": "question-circle"
+            }
+        },
         "text-color": ["#COLOR", "greyscale", "white"],
         "icon": {
+            "enable-by-default": true,
             "margin-right": "0.5em",
             "line-height": "1.25",
             "-right": {

@@ -31,6 +31,7 @@ export {
 
 // Elements
 import accordion from './modules/elements/accordion/accordion';
+import alert from './modules/elements/alert/alert';
 import { carousel } from './modules/elements/carousels/carousels';
 import { modal } from './modules/elements/modals/modals';
 import { progressBar } from './modules/elements/progress-bars/progress-bars';
@@ -53,12 +54,13 @@ import { grid } from './modules/utilities/grid/grid';
 import { typography  } from './modules/utilities/typography/typography';
 
 export { 
-    accordion, 
-    carousel, 
-    modal, 
-    progressBar, 
+    accordion,
+    alert,
+    carousel,
+    modal,
+    progressBar,
     tabs,
-    tooltips, 
+    tooltips,
     googleMap,
     header,
     overlay,

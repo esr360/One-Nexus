@@ -286,6 +286,13 @@ export default class AlertBars extends React.Component {
 
                 <app.Section id='examples'>
                     <app.Heading heading='3' size='5'>Examples</app.Heading>
+
+                    <app.Alert error>You need to define the callback function yourself</app.Alert>
+                    <app.Alert success>You need to define the callback function yourself</app.Alert>
+                    <app.Alert info>You need to define the callback function yourself</app.Alert>
+                    <app.Alert help>You need to define the callback function yourself</app.Alert>
+
+                    <app.Alert alert="help">You need to define the callback function yourself</app.Alert>
                 </app.Section>
 
             </app.layouts.Base>

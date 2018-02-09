@@ -28,9 +28,9 @@
         // Modifiers
         //*********************************************************
 
-        @each $name, $color in this('colors') {
-            @include modifier($name) {
-                background-color: $color;
+        @each $alert in this('alerts') {
+            @include modifier(nth($alert, 1)) {
+                background-color: map-get(nth($alert, 2), 'color');
             }
         }
 

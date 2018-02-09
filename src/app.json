@@ -26,6 +26,11 @@
             "theme": "One-Nexus",
             "modules": {
                 "fizz": ["#COLOR", "brand", "brand-5"],
+                "alert": {
+                    "icon": {
+                        "enable-by-default": true
+                    }
+                },
                 "colors": {
                     "brand": {
                         "brand-1": "blue"
