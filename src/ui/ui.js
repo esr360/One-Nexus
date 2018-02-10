@@ -80,6 +80,7 @@ export {
 import { custom } from './tools/js/app.custom';
 import { evalConfig } from './tools/js/app.evalConfig';
 import { formatThemeName } from './tools/js/app.formatThemeName';
+import { get } from './tools/js/app.get';
 import { inViewport } from './tools/js/app.inViewport';
 import { isValidSelector } from './tools/js/app.isValidSelector';
 import { media } from './tools/js/app.media';
@@ -92,6 +93,7 @@ export {
     custom,
     evalConfig,
     formatThemeName,
+    get,
     inViewport,
     isValidSelector,
     media,

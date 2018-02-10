@@ -18,6 +18,8 @@ export default class Alert extends React.Component {
         let icon = this.props.icon;
         let hasAlertProp = false;
 
+        console.log(app.get(global.THEME.alert.alerts));
+
         if (global.THEME && global.THEME.alert) {
             const alerts = Object.keys(global.THEME.alert.alerts);
 
