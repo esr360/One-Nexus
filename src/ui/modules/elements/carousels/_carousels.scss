@@ -78,6 +78,7 @@
             @include component('pagination') {
                 visibility: hidden;
                 opacity: 0;
+                content: 'fizzbuzz';
             }
         }
 

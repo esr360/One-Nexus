@@ -21,7 +21,7 @@ export default class Alert extends React.Component {
         if (global.THEME && global.THEME.alert) {
             const alerts = Object.keys(global.THEME.alert.alerts);
 
-            if ((!icon || icon === 'right') && global.THEME.alert.icon['enable-by-default']) {
+            if ((icon === undefined || icon === 'right') && global.THEME.alert.icon['enable-by-default']) {
                 icon = global.THEME.alert.alerts[alert].icon;
 
                 Object.keys(this.props).forEach(prop => {
@@ -71,5 +71,5 @@ Alert.defaultProps = {
     bar: true,
     box: false,
     object: true,
-    icon: false
+    icon: undefined
 };

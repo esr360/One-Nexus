@@ -21,12 +21,7 @@
         },
         "text-color": ["#COLOR", "greyscale", "white"],
         "icon": {
-            "enable-by-default": true,
-            "margin-right": "0.5em",
-            "line-height": "1.25",
-            "-right": {
-                "margin-left": "0.5em"
-            }
+            "enable-by-default": true
         },
         "-bar": {
             "padding": "0.85em"

@@ -1,11 +1,16 @@
 import * as app from '../../../../app';
 
 export default class AlertBars extends React.Component {
+
+    DEMO__HIDE_ALERT(alert) {
+        document.getElementById('alert-demo').classList.add('hidden');
+    }
+
     render() {
         return (
             <app.layouts.Base {...app.config.app.views}>
 
-                <app.Heading heading='2' size='7'>Alert Bars/Boxes</app.Heading>
+                <app.Heading heading='2' size='7'>Alert</app.Heading>
 
                 <app.Heading heading='3' size='5'>Quick Look</app.Heading>
 
@@ -29,7 +34,6 @@ export default class AlertBars extends React.Component {
                     <app.Heading heading='3' size='5'>Configuration</app.Heading>
 
                     <app.Alert alert="help"><a href="#">Learn more</a> about module configutation</app.Alert>
-                    <app.Alert alert="info"><i>Icons</i> in the <i>alerts</i> section use FontAwesome keywords</app.Alert>
 
                     <app.SyntaxHighlighter language='json'>{`
                         "alert": {
@@ -70,40 +74,17 @@ export default class AlertBars extends React.Component {
                         }
                     `}</app.SyntaxHighlighter>
 
-                    <app.Heading heading='4' size='3'>Colors</app.Heading>
+                    <app.Heading heading='5' size='4'>alert.alerts</app.Heading>
 
-                    <app.SyntaxHighlighter language='json'>{`
-                        {
-                            "theme": {
-                                "alert": {
-                                    "alerts": {
-                                        "carrot": {
-                                            "color": "#F58220",
-                                            "icon": "times"
-                                        },
-                                        "grape": {
-                                            "color": "#421C52",
-                                            "icon": "check"
-                                        },
-                                        "banana": {
-                                            "color": "#FEDF49",
-                                            "icon": "info-circle"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    `}</app.SyntaxHighlighter>
+                    <app.List>
+                        <app.ListItem><b>color: </b> The background color of the alert</app.ListItem>
+                        <app.ListItem><b>icon:</b> <a href="https://fontawesome.com/v4.7.0/icons/" target="blank">FontAwesome</a> keyword for the alert's icon</app.ListItem>
+                    </app.List>
 
-                    <app.Heading heading='5' size='2'>Usage:</app.Heading>
+                    <app.Heading heading='5' size='4'>alert.icon['enable-by-default']</app.Heading>
 
-                    <app.SyntaxHighlighter language='jsx'>{
-                        '<Alert grape>This is an alert</Alert>'
-                    }</app.SyntaxHighlighter>
+                    <app.Paragraph>Set to show the alert's icon by default</app.Paragraph>
 
-                    <app.SyntaxHighlighter language='html'>{
-                        '<div class="alert-bar-grape">This is an alert</div>'
-                    }</app.SyntaxHighlighter>
                 </app.Section>
 
                 <app.Section id='styles'>
@@ -111,7 +92,7 @@ export default class AlertBars extends React.Component {
 
                     <app.Alert alert="info">Edit styles in <a href="#">ui/modules/elements/alert/_alert.scss</a></app.Alert>
 
-                    <app.Alert alert="help"><a href="#">Learn how to modify styles using the above configuration</a> so you don't have to touch the source</app.Alert>
+                    <app.Alert alert="help"><a href="#">Learn how to modify styles using the above configuration</a> so you don't have to touch the source code</app.Alert>
                 </app.Section>
 
                 <app.Section id='interactions'>
@@ -215,45 +196,104 @@ export default class AlertBars extends React.Component {
                         <app.Heading size='5'>Props.icon</app.Heading>
 
                         <app.Table small content={[{
-                            default: 'false',
+                            default: 'undefined',
                             type: '(String|Array)'
                         }]} />
 
-                        <app.SyntaxHighlighter language='jsx'>{
-                            `<Alert icon='exclamation-triangle'>This is an alert</Alert>`
-                        }</app.SyntaxHighlighter>
+                        <app.List>
+                            <app.ListItem>
+                                <app.Link to='#overwrite-default-icon'>Overwrite default icon</app.Link>
+                            </app.ListItem>
+                            <app.ListItem>
+                                <app.Link to='#disable-default-icon'>Disable default icon</app.Link>
+                            </app.ListItem>
+                            <app.ListItem>
+                                <app.Link to='#right-aligned-icon'>Right-aligned icon</app.Link>
+                            </app.ListItem>
+                            <app.ListItem>
+                                <app.Link to='#right-aligned-custom-icon'>Right-aligned custom icon</app.Link>
+                            </app.ListItem>
+                        </app.List>
 
-                        <app.Heading heading='4' size='3'>Output:</app.Heading>
+                        <app.Section id='overwrite-default-icon'>
+                            <app.Heading size='4'>Overwrite default icon</app.Heading>
 
-                        <app.SyntaxHighlighter language='html'>{`
-                            <div class="alert-bar">
-                                <div class="alert_icon fa fa-exclamation-triangle"></div> This is an alert
-                            </div>
-                        `}</app.SyntaxHighlighter>
+                            <app.SyntaxHighlighter language='jsx'>{
+                                `<Alert icon='exclamation-triangle'>This is an alert</Alert>`
+                            }</app.SyntaxHighlighter>
 
-                        <app.Heading heading='4' size='3'>Preview:</app.Heading>
+                            <app.Heading heading='4' size='3'>Output:</app.Heading>
 
-                        <app.Well>
-                            <app.Alert icon='exclamation-triangle'>This is an alert</app.Alert>
-                        </app.Well>
+                            <app.SyntaxHighlighter language='html'>{`
+                                <div class="alert-bar">
+                                    <div class="alert_icon fa fa-exclamation-triangle"></div> This is an alert
+                                </div>
+                            `}</app.SyntaxHighlighter>
 
-                        <app.Heading heading='4' size='3'>With right-aligned icon:</app.Heading>
+                            <app.Heading heading='4' size='3'>Preview:</app.Heading>
 
-                        <app.Alert info>A right-aligned icon cannot be used in conjunction with the <code>close</code> prop</app.Alert>
+                            <app.Well>
+                                <app.Alert icon='exclamation-triangle'>This is an alert</app.Alert>
+                            </app.Well>
+                        </app.Section>
 
-                        <app.SyntaxHighlighter language='jsx'>{
-                            `<Alert icon={['exclamation-triangle', 'right']}>This is an alert</Alert>`
-                        }</app.SyntaxHighlighter>
+                        <app.Section id='disable-default-icon'>
+                            <app.Heading size='4'>Disable default icon</app.Heading>
 
-                        <app.SyntaxHighlighter language='html'>{`
-                            <div class="alert-bar">
-                                <div class="alert_icon-right fa fa-exclamation-triangle"></div> This is an alert
-                            </div>
-                        `}</app.SyntaxHighlighter>
+                            <app.SyntaxHighlighter language='jsx'>{
+                                `<Alert icon={false}>This is an alert</Alert>`
+                            }</app.SyntaxHighlighter>
 
-                        <app.Well>
-                            <app.Alert icon={['exclamation-triangle', 'right']}>This is an alert</app.Alert>
-                        </app.Well>
+                            <app.Heading heading='4' size='3'>Output:</app.Heading>
+
+                            <app.SyntaxHighlighter language='html'>{`
+                                <div class="alert-bar">This is an alert</div>
+                            `}</app.SyntaxHighlighter>
+
+                            <app.Heading heading='4' size='3'>Preview:</app.Heading>
+
+                            <app.Well>
+                                <app.Alert icon={false}>This is an alert</app.Alert>
+                            </app.Well>
+                        </app.Section>
+
+                        <app.Section id='right-aligned-icon'>
+                            <app.Heading size='4'>Right-aligned icon:</app.Heading>
+
+                            <app.Alert info>A right-aligned icon cannot be used in conjunction with the <code>close</code> prop</app.Alert>
+
+                            <app.SyntaxHighlighter language='jsx'>{
+                                `<Alert icon='right'>This is an alert</Alert>`
+                            }</app.SyntaxHighlighter>
+
+                            <app.SyntaxHighlighter language='html'>{`
+                                <div class="alert-bar">
+                                    <div class="alert_icon-right fa fa-check"></div> This is an alert
+                                </div>
+                            `}</app.SyntaxHighlighter>
+
+                            <app.Well>
+                                <app.Alert icon='right'>This is an alert</app.Alert>
+                            </app.Well>
+                        </app.Section>
+
+                        <app.Section id='right-aligned-custom-icon'>
+                            <app.Heading size='4'>Right-aligned custom icon:</app.Heading>
+
+                            <app.SyntaxHighlighter language='jsx'>{
+                                `<Alert icon={['exclamation-triangle', 'right']}>This is an alert</Alert>`
+                            }</app.SyntaxHighlighter>
+
+                            <app.SyntaxHighlighter language='html'>{`
+                                <div class="alert-bar">
+                                    <div class="alert_icon-right fa fa-exclamation-triangle"></div> This is an alert
+                                </div>
+                            `}</app.SyntaxHighlighter>
+
+                            <app.Well>
+                                <app.Alert icon={['exclamation-triangle', 'right']}>This is an alert</app.Alert>
+                            </app.Well>
+                        </app.Section>
                     </app.Section>
 
                     <app.Section id='props.close'>
@@ -288,12 +328,31 @@ export default class AlertBars extends React.Component {
                 <app.Section id='examples'>
                     <app.Heading heading='3' size='5'>Examples</app.Heading>
 
-                    <app.Alert error>You need to define the callback function yourself</app.Alert>
+                    <app.SyntaxHighlighter language='js'>{`
+                        function hideAlert() {
+                            document.getElementById('alert-demo').classList.add('hidden');
+                        }
+                    `}</app.SyntaxHighlighter>
+
+                    <app.SyntaxHighlighter language='jsx'>{`
+                        <Alert id='alert-demo' box error close={hideAlert}>
+                            <app.Heading size='6'>...</app.Heading>
+                            <app.Paragraph>...</app.Paragraph>
+                        </Alert>
+                    `}</app.SyntaxHighlighter>
+
+                    <app.Alert box error close={this.DEMO__HIDE_ALERT}>
+                        <app.Heading size='6'>
+                            You are not allowed to perform this action
+                        </app.Heading>
+                        <app.Paragraph>
+                            It looks like you are trying to perform an action that you are not authorised to perform.
+                        </app.Paragraph>
+                    </app.Alert>
+
                     <app.Alert success>You need to define the callback function yourself</app.Alert>
                     <app.Alert info>You need to define the callback function yourself</app.Alert>
                     <app.Alert help>You need to define the callback function yourself</app.Alert>
-
-                    <app.Alert alert="help">You need to define the callback function yourself</app.Alert>
                 </app.Section>
 
             </app.layouts.Base>

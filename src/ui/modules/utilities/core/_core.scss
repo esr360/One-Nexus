@@ -45,6 +45,12 @@
                 font-size: this('font-size');
             }
 
+            code {
+                background: rgba(black, 0.2);
+                border-radius: 0.2em;
+                padding: 0.2em 0.4em;
+            }
+
             @keyframes spin {
                 0% {
                     transform: rotate(0deg);
