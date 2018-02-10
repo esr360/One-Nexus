@@ -1,3 +1,5 @@
+import * as UI from '../../../ui';
+import * as $alert from './alert';
 import defaults from './alert.json';
 
 /**
@@ -13,30 +15,26 @@ import defaults from './alert.json';
 export default class Alert extends React.Component {
 
     componentWillMount() {
+        const config = UI.get().config('alert');
+        const alerts = config ? Object.keys(config.alerts) : [];
+        const hasAlertProp = Object.keys(this.props).some(prop => alerts.includes(prop)) || false;
+
         let modifiers = this.props.modifiers || [];
-        let alert = this.props.alert;
         let icon = this.props.icon;
-        let hasAlertProp = false;
 
-        console.log(app.get(global.THEME.alert.alerts));
+        if (!hasAlertProp) modifiers.push(this.props.alert);
 
-        if (global.THEME && global.THEME.alert) {
-            const alerts = Object.keys(global.THEME.alert.alerts);
+        if (config && (icon === undefined || icon === 'right') && !this.props.box && config.icon['enable-by-default']) {
+            icon = config.alerts[this.props.alert].icon;
 
-            if ((icon === undefined || icon === 'right') && global.THEME.alert.icon['enable-by-default']) {
-                icon = global.THEME.alert.alerts[alert].icon;
-
-                Object.keys(this.props).forEach(prop => {
-                    if (alerts.includes(prop)) icon = global.THEME.alert.alerts[prop].icon;
-                });
-            }
-
-            hasAlertProp = Object.keys(this.props).some(prop => alerts.includes(prop));
+            Object.keys(this.props).forEach(prop => {
+                if (alerts.includes(prop)) icon = config.alerts[prop].icon;
+            });
         }
 
-        if (!hasAlertProp) modifiers.push(alert);
-
-        [this.modifiers, this.icon] = [modifiers, icon];
+        this.close = (this.props.close === true) ? $alert.dismiss : this.props.close;
+        this.modifiers = modifiers;
+        this.icon = icon;
     }
 
     render() {
@@ -53,7 +51,7 @@ export default class Alert extends React.Component {
                 {this.props.close &&
                     <Component
                         name='icon'
-                        onClick={typeof this.props.close === 'function' ? this.props.close : undefined}
+                        onClick={this.close}
                         modifiers={['close', 'right']}
                         className={`fa fa-times`}
                     ></Component>

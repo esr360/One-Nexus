@@ -6,16 +6,20 @@
  * @param {Object} deepKey
  * @param {Function} callback
  */
-export default function get(deepKey, callback) {
+export default function get(deepKey, callback, parent) {
     let value;
 
     try {
-        value = deepKey;
+        value = parent ? eval(`${parent}.${deepKey}`) : eval(deepKey);
     } catch(error) {
         value = false;
     }
 
-    if (value && typeof calback === 'function') {
-        callback(deepkey);
+    if (value && typeof callback === 'function') {
+        callback(value);
     }
+
+    exports.config = module => get(`window.UI.config.${module}`);
+
+    return deepKey ? value : exports;
 }

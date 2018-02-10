@@ -83,7 +83,9 @@ export default class AlertBars extends React.Component {
 
                     <app.Heading heading='5' size='4'>alert.icon['enable-by-default']</app.Heading>
 
-                    <app.Paragraph>Set to show the alert's icon by default</app.Paragraph>
+                    <app.Well>
+                        <app.Paragraph>Set to show the alert's icon by default</app.Paragraph>
+                    </app.Well>
 
                 </app.Section>
 
@@ -98,7 +100,23 @@ export default class AlertBars extends React.Component {
                 <app.Section id='interactions'>
                     <app.Heading heading='3' size='5'>Interactions</app.Heading>
 
-                    <p><i>This module has no interactions.</i></p>
+                    <app.Alert alert="info">Interactions are defined in <a href="#">ui/modules/elements/alert/alert.js</a></app.Alert>
+
+                    <app.Heading heading='4' size='4'>Dismiss</app.Heading>
+
+                    <app.Well>
+                        <app.Paragraph>Hide an Alert</app.Paragraph>
+                    </app.Well>
+
+                    <app.SyntaxHighlighter language='html'>{`
+                        <div class="alert-bar" id="alert-demo">...</div>
+                    `}</app.SyntaxHighlighter>
+
+                    <app.SyntaxHighlighter language='js'>{`
+                        const alert = document.getElementById('alert-demo');
+
+                        window.UI.alert().dismiss(alert);
+                    `}</app.SyntaxHighlighter>
                 </app.Section>
 
                 <app.Section id='render-with-react'>
@@ -260,7 +278,7 @@ export default class AlertBars extends React.Component {
                         <app.Section id='right-aligned-icon'>
                             <app.Heading size='4'>Right-aligned icon:</app.Heading>
 
-                            <app.Alert info>A right-aligned icon cannot be used in conjunction with the <code>close</code> prop</app.Alert>
+                            <app.Alert info>A right-aligned icon cannot be used in conjunction with the <code className='code'>close</code> prop</app.Alert>
 
                             <app.SyntaxHighlighter language='jsx'>{
                                 `<Alert icon='right'>This is an alert</Alert>`
@@ -311,37 +329,36 @@ export default class AlertBars extends React.Component {
                             </div>
                         `}</app.SyntaxHighlighter>
 
+                        <app.Alert info>Clicking the close icon triggers the <code className='code'>dismiss</code> <app.Link to='#interactions'>interaction</app.Link> by default</app.Alert>
+
                         <app.Well>
                             <app.Alert close>This is an alert</app.Alert>
                         </app.Well>
 
-                        <app.Heading heading='4' size='3'>With callback function onClick:</app.Heading>
-
-                        <app.Alert info>You need to define the callback function yourself</app.Alert>
-
-                        <app.SyntaxHighlighter language='jsx'>{
-                            `<Alert close={callback}>This is an alert</Alert>`
-                        }</app.SyntaxHighlighter>
+                        <app.Heading heading='4' size='4'>Custom callback function onClick:</app.Heading>
+    
+                        <app.SyntaxHighlighter language='js'>{`
+                            function hideAlert() {
+                                document.getElementById('alert-demo').classList.add('hidden');
+                            }
+                        `}</app.SyntaxHighlighter>
+    
+                        <app.SyntaxHighlighter language='jsx'>{`
+                            <Alert id='alert-demo' close={hideAlert}>...</Alert>
+                        `}</app.SyntaxHighlighter>
+    
+                        <app.Well>
+                            <app.Alert id='alert-demo' close={this.DEMO__HIDE_ALERT}>
+                                Click the X icon to initiate the callback function
+                            </app.Alert>
+                        </app.Well>
                     </app.Section>
                 </app.Section>
 
                 <app.Section id='examples'>
-                    <app.Heading heading='3' size='5'>Examples</app.Heading>
+                    <app.Heading size='5'>Examples</app.Heading>
 
-                    <app.SyntaxHighlighter language='js'>{`
-                        function hideAlert() {
-                            document.getElementById('alert-demo').classList.add('hidden');
-                        }
-                    `}</app.SyntaxHighlighter>
-
-                    <app.SyntaxHighlighter language='jsx'>{`
-                        <Alert id='alert-demo' box error close={hideAlert}>
-                            <app.Heading size='6'>...</app.Heading>
-                            <app.Paragraph>...</app.Paragraph>
-                        </Alert>
-                    `}</app.SyntaxHighlighter>
-
-                    <app.Alert box error close={this.DEMO__HIDE_ALERT}>
+                    <app.Alert box error>
                         <app.Heading size='6'>
                             You are not allowed to perform this action
                         </app.Heading>

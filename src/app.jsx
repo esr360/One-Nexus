@@ -11,7 +11,7 @@ if (process.env.APP_ENV === 'web') {
  */
 export default class App extends React.Component {
     render() {
-        window.addEventListener('hashchange', app.UI, false);
+        //window.addEventListener('hashchange', app.UI, false);
 
         return (
             <Switch>
