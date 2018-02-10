@@ -36,9 +36,7 @@
 
         @include modifier('box') {
             @include component('icon') {
-                @include modifier('right') {
-                    float: right;
-                }
+                float: left;
             }
         }
 
