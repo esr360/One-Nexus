@@ -46,20 +46,20 @@
         // Components
         //*********************************************************
 
-        @include component('icon') {
-            margin-right: 0.5em;
-            line-height: 1.25;
+        @include component('icon', (
+            margin-right: 0.5em,
+            line-height: 1.25,
 
-            @include modifier('right') {
-                margin-right: 0;
-                margin-left: 0.5em;
-                float: right;
-            }
+            modifier('right'): (
+                margin-right: 0,
+                margin-left: 0.5em,
+                float: right
+            ),
 
-            @include modifier('close') {
-                cursor: pointer;
-            }
-        }
+            modifier('close'): (
+                cursor: pointer
+            )
+        ));
 
         //*********************************************************
         // Pseudo States

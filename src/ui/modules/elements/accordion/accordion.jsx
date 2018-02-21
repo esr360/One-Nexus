@@ -13,7 +13,9 @@ export default class Accordion extends React.Component {
             <Module {...this.props}>
                 {this.props.panels.map(({title, content}, index) => (
                     <Component name="section" key={index}>
-                        <Component name="title">{title}</Component>
+                        <Component name="title">
+                            <Component name="toggle" className="fa fa-chevron-circle-down" /> {title}
+                        </Component>
                         <Component name="content">{content}</Component>
                     </Component>
                 ))}

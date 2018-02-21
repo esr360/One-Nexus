@@ -95,7 +95,8 @@ export default locals => ReactDOMServer.renderToStaticMarkup(
 if (process.env.APP_ENV === 'web') {
     UI(config.app.ui);
 
-    ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app)
+    //ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app)
+    ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app, () => UI(config.app.ui))
 }
 
 // Call the UI function once the react app has loaded

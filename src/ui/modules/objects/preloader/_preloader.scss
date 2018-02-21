@@ -33,7 +33,7 @@
         //*********************************************************
 
         @include component('spinner') {
-            @include spinner(this('spinner')...);
+            @include spinner(this('styles')...);
             @include vertical-center();
             @include horizontal-center();
         }

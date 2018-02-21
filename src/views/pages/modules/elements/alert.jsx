@@ -27,7 +27,6 @@ export default class AlertBars extends React.Component {
                     <app.ListItem><app.Link to='#styles'>Styles</app.Link></app.ListItem>
                     <app.ListItem><app.Link to='#interactions'>Interactions</app.Link></app.ListItem>
                     <app.ListItem><app.Link to='#render-with-react'>Render With React</app.Link></app.ListItem>
-                    <app.ListItem><app.Link to='#examples'>Examples</app.Link></app.ListItem>
                 </app.List>
 
                 <app.Section id='configuration'>
@@ -353,23 +352,6 @@ export default class AlertBars extends React.Component {
                             </app.Alert>
                         </app.Well>
                     </app.Section>
-                </app.Section>
-
-                <app.Section id='examples'>
-                    <app.Heading size='5'>Examples</app.Heading>
-
-                    <app.Alert box error>
-                        <app.Heading size='6'>
-                            You are not allowed to perform this action
-                        </app.Heading>
-                        <app.Paragraph>
-                            It looks like you are trying to perform an action that you are not authorised to perform.
-                        </app.Paragraph>
-                    </app.Alert>
-
-                    <app.Alert success>You need to define the callback function yourself</app.Alert>
-                    <app.Alert info>You need to define the callback function yourself</app.Alert>
-                    <app.Alert help>You need to define the callback function yourself</app.Alert>
                 </app.Section>
 
             </app.layouts.Base>

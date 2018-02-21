@@ -17,14 +17,6 @@
     @include module {
 
         //*********************************************************
-        // Core Styles
-        //*********************************************************
-
-        @include vertical-rhythm('bottom');
-
-        margin-bottom: core('margin');
-
-        //*********************************************************
         // Components
         //*********************************************************
 
@@ -42,6 +34,26 @@
             }
         }
 
+        @include component('title', (
+            display: block,
+            margin: 0,
+            backface-visibility: hidden,
+            font-weight: normal,
+            line-height: 1,
+            cursor: pointer,
+            active: (
+                component('toggle'): (
+                    transform: rotate(90deg) translateZ(0),
+                    color: this('title', 'hover', 'color')
+                )
+            ),
+            hover:  (
+                component('toggle'): (
+                    color: this('title', 'active', 'color')
+                )
+            )
+        ));
+
         @include component('title') {
             display: block;
             margin: 0;
@@ -51,39 +63,34 @@
             cursor: pointer;
 
             @include modifier('active') {
-                // open/close icon
-                &::after {
+                @include component('toggle') {
                     transform: rotate(90deg) translateZ(0);
                     color: this('title', 'hover', 'color');
                 }
             }
 
-            // open/close icon
-            &::after {
-                content: this('icon', 'glyph');
-                float: right;
-                transition: core('transition');
-                color: this('icon', 'color');
-                font-family: FontAwesome;
-                line-height: 0.75;
-            }
-
-            &:hover {
-                &::after {
+            @include hover {
+                @include component('toggle') {
                     color: this('title', 'active', 'color');
                 }
             }
         }
 
-        @include component('content') {
-            display: none;
-            margin: 0;
-            margin-top: -1px;
+        @include component('toggle', (
+            float: right,
+            transition: core('transition'),
+            color: this('icon', 'color'),
+            line-height: 0.75
+        ));
 
-            @include modifier('active') {
-                display: block;
-            }
-        }
+        @include component('content', (
+            display: none,
+            margin: 0,
+            margin-top: -1px,
+            modifier('active'): (
+                display: block
+            )
+        ));
 
         //*********************************************************
         // Custom Content
