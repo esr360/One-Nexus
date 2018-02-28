@@ -10,7 +10,7 @@ export default class Accordions extends React.Component {
         return (
             <app.layouts.Base {...app.config.app.views}>
                 <app.Accordion panels={panels} />
-                <app.Accordion panels={panels} modifiers={['foo', 'bar']} />
+                <app.Accordion panels={panels} modifiers={['foo', 'keepOpen']} />
             </app.layouts.Base>
         )
     }

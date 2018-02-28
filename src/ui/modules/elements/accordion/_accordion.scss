@@ -47,7 +47,7 @@
                     color: this('title', 'hover', 'color')
                 )
             ),
-            hover:  (
+            hover: (
                 component('toggle'): (
                     color: this('title', 'active', 'color')
                 )

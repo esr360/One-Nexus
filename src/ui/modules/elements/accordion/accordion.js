@@ -10,27 +10,33 @@ import defaults from './accordion.json';
  * @param {Object} custom
  */
 export default function accordion(custom = {}) {
+    app.Synergy(custom.name || defaults.accordion.name, (accordion, options) => {
 
-    app.Synergy(custom.name || defaults.accordion.name, (el, options) => {
-
-        if (!el.getAttribute('data-initialised')) {
-            el.component('section').forEach((section, index) => {
+        if (!accordion.getAttribute('data-initialised')) {
+            accordion.component('section').forEach((section, index) => {
                 if (section.modifier('active')) {
                     section.component('content')[0].modifier('active', 'set');
                 }
 
                 section.component('title')[0].addEventListener('click', () => {
-                    clickHandler(el, section, options);
+                    var active = section.modifier('active', 'isset');
+
+                    if (!accordion.modifier(options.keepOpenModifier)) {
+                        accordion.component('section').forEach(el => toggleAccordion('close', accordion, el, options));
+                    }
+                
+                    if (active) {
+                        toggleAccordion('close', accordion, section, options);
+                    } else {
+                        toggleAccordion('open', accordion, section, options);
+                    }
                 }, false);
             });
-            el.setAttribute('data-initialised', true);
+            accordion.setAttribute('data-initialised', true);
         }
 
-        exports.open  = target => exports.toggle('open', target);
-
-        exports.close = target => exports.toggle('close', target);
-
-        exports.toggle = (type, target) => toggleAccordion(type, el, target, options);
+        exports.open  = target => toggleAccordion('open', accordion, target, options);
+        exports.close = target => toggleAccordion('close', accordion, target, options);
 
     }, defaults, custom, app.evalConfig);
 
@@ -40,39 +46,13 @@ export default function accordion(custom = {}) {
 }
 
 /**
- * clickHandler
- * 
- * @access private
- * 
- * @param {Object} accordion
- * @param {Object} section
- * @param {Object} options
- */
-function clickHandler(accordion, section, options) {
-    var active = section.modifier('active', 'isset');
-
-    if (!accordion.modifier(options.keepOpenModifier)) {
-        accordion.component('section').forEach(el => toggleAccordion('close', accordion, el, options));
-    }
-
-    if (active) {
-        toggleAccordion('close', accordion, section, options);
-    } else {
-        toggleAccordion('open', accordion, section, options);
-    }
-}
-
-/**
  * toggleAccordion
- * 
- * @access private
  * 
  * @param {('open'|'close')} type
  * @param {HTMLElement} parent
  * @param {(String|Number|HTMLElement|NodeList)} target
- * @param {Object} options
  */
-function toggleAccordion(type, parent, target, options) {
+export function toggleAccordion(type, parent, target, options) {
     let section;
 
     const operator = (type === 'open') ? 'set' : 'unset';
@@ -87,15 +67,28 @@ function toggleAccordion(type, parent, target, options) {
         section = parent.component('section');
     }
 
-    if (section instanceof NodeList) {
-        section.forEach(el => toggleActiveClass(el));
-    } else {
-        toggleActiveClass(section);
+    if (type === 'open' && !parent.modifier(options.keepOpenModifier)) {
+        // @TODO
+        // parent.component('section').forEach(el => toggleActiveClass(el, 'close'));
     }
 
-    function toggleActiveClass(el) {
-        el.modifier('active', operator);
-        el.component('title')[0].modifier('active', operator);
-        el.component('content')[0].modifier('active', operator);
+    if (section instanceof NodeList) {
+        section.forEach(el => toggleActiveClass(el, operator));
+    } else {
+        toggleActiveClass(section, operator);
     }
+}
+
+/**
+ * toggleActiveClass
+ * 
+ * @access private
+ * 
+ * @param el
+ * @param operator
+ */
+function toggleActiveClass(el, operator) {
+    el.modifier('active', operator);
+    el.component('title')[0].modifier('active', operator);
+    el.component('content')[0].modifier('active', operator);
 }
