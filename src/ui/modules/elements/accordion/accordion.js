@@ -56,9 +56,9 @@ export function toggleAccordion(type, parent, target, options) {
         section = parent.component('section');
     }
 
+    // close sibling sections
     if (type === 'open' && !parent.modifier(options.keepOpenModifier)) {
-        // @TODO
-        // parent.component('section').forEach(el => toggleActiveClass(el, 'close'));
+        parent.component('section').forEach(el => toggleActiveClass(el, 'unset'));
     }
 
     if (section instanceof NodeList) {
