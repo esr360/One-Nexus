@@ -12,28 +12,17 @@ import defaults from './accordion.json';
 export default function accordion(custom = {}) {
     app.Synergy(custom.name || defaults.accordion.name, (accordion, options) => {
 
-        if (!accordion.getAttribute('data-initialised')) {
-            accordion.component('section').forEach((section, index) => {
-                if (section.modifier('active')) {
-                    section.component('content')[0].modifier('active', 'set');
-                }
+        accordion.component('section').forEach(section => {
+            if (section.modifier('active')) {
+                section.component('content')[0].modifier('active', 'set');
+            }
 
-                section.component('title')[0].addEventListener('click', () => {
-                    var active = section.modifier('active', 'isset');
-
-                    if (!accordion.modifier(options.keepOpenModifier)) {
-                        accordion.component('section').forEach(el => toggleAccordion('close', accordion, el, options));
-                    }
-                
-                    if (active) {
-                        toggleAccordion('close', accordion, section, options);
-                    } else {
-                        toggleAccordion('open', accordion, section, options);
-                    }
-                }, false);
-            });
-            accordion.setAttribute('data-initialised', true);
-        }
+            section.component('title')[0].addEventListener('click', () => {
+                var active = section.modifier('active', 'isset');
+            
+                toggleAccordion(active ? 'close' : 'open', accordion, section, options);
+            }, false);
+        });
 
         exports.open  = target => toggleAccordion('open', accordion, target, options);
         exports.close = target => toggleAccordion('close', accordion, target, options);
