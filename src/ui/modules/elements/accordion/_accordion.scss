@@ -1,7 +1,6 @@
 @import 'accordion.json';
 /// Accordion
 ///
-/// @access public
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
@@ -41,45 +40,16 @@
             font-weight: normal,
             line-height: 1,
             cursor: pointer,
-            active: (
+            'active': (
                 component('toggle'): (
-                    transform: rotate(90deg) translateZ(0),
-                    color: this('title', 'hover', 'color')
-                )
-            ),
-            hover: (
-                component('toggle'): (
-                    color: this('title', 'active', 'color')
+                    transform: rotate(90deg) translateZ(0)
                 )
             )
         ));
 
-        @include component('title') {
-            display: block;
-            margin: 0;
-            backface-visibility: hidden;
-            font-weight: normal;
-            line-height: 1;
-            cursor: pointer;
-
-            @include modifier('active') {
-                @include component('toggle') {
-                    transform: rotate(90deg) translateZ(0);
-                    color: this('title', 'hover', 'color');
-                }
-            }
-
-            @include hover {
-                @include component('toggle') {
-                    color: this('title', 'active', 'color');
-                }
-            }
-        }
-
         @include component('toggle', (
             float: right,
             transition: core('transition'),
-            color: this('icon', 'color'),
             line-height: 0.75
         ));
 
@@ -87,7 +57,7 @@
             display: none,
             margin: 0,
             margin-top: -1px,
-            modifier('active'): (
+            'active': (
                 display: block
             )
         ));

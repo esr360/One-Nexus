@@ -1,16 +1,14 @@
-import * as app from '../../../ui';
+import * as UI from '../../../ui';
 import defaults from './accordion.json';
 
 /**
  * Accordion
  * 
- * @access public
- * 
  * @param {(String|HTMLElement|NodeList)} els
  * @param {Object} custom
  */
 export default function accordion(custom = {}) {
-    app.Synergy(custom.name || defaults.accordion.name, (accordion, options) => {
+    UI.Synergy(custom.name || defaults.accordion.name, (accordion, options) => {
 
         accordion.component('section').forEach(section => {
             if (section.modifier('active')) {
@@ -20,31 +18,44 @@ export default function accordion(custom = {}) {
             section.component('title')[0].addEventListener('click', () => {
                 var active = section.modifier('active', 'isset');
             
-                toggleAccordion(active ? 'close' : 'open', accordion, section, options);
+                toggle(section, active ? 'close' : 'open', accordion, options);
             }, false);
         });
 
-        exports.open  = target => toggleAccordion('open', accordion, target, options);
-        exports.close = target => toggleAccordion('close', accordion, target, options);
+        exports.open  = target => toggle(target, 'open', accordion, options);
+        exports.close = target => toggle(target, 'close', accordion, options);
 
-    }, defaults, custom, app.evalConfig);
+    }, defaults, custom, UI.evalConfig);
 
-    app.config.accordion = app.parse(defaults.accordion, custom);
+    UI.config.accordion = UI.parse(defaults.accordion, custom);
 
     return exports;
 }
 
 /**
- * toggleAccordion
+ * Toggle an accordion section
  * 
+ * @param {(String|Number|HTMLElement|NodeList)} target
  * @param {('open'|'close')} type
  * @param {HTMLElement} parent
- * @param {(String|Number|HTMLElement|NodeList)} target
+ * @param {Object} options
  */
-export function toggleAccordion(type, parent, target, options) {
-    let section;
+export function toggle(target, type, parent, options = defaults) {
+    let section, operator;
 
-    const operator = (type === 'open') ? 'set' : 'unset';
+    // merge passed options with window options
+    options = UI.deepextend(options, UI.get().config('accordion'));
+
+    // determine target accordion section
+    if (typeof target === 'object' && ('target' in target)) {
+        target.target.parents().forEach(parent => {
+            if (parent.component('section') === true) {
+                return target = parent;
+            }
+        });
+    }
+
+    parent = parent || target.closest('[data-module]');
 
     if (typeof target === 'string') {
         section = parent.querySelectorAll(target);
@@ -56,8 +67,14 @@ export function toggleAccordion(type, parent, target, options) {
         section = parent.component('section');
     }
 
+    if (type) {
+        operator = (type === 'open') ? 'set' : 'unset';
+    } else {
+        operator = target.modifier('active') === true ? 'unset' : 'set';
+    }
+
     // close sibling sections
-    if (type === 'open' && !parent.modifier(options.keepOpenModifier)) {
+    if (operator === 'set' && (!parent.modifier(options.keepOpenModifier))) {
         parent.component('section').forEach(el => toggleActiveClass(el, 'unset'));
     }
 
@@ -69,7 +86,7 @@ export function toggleAccordion(type, parent, target, options) {
 }
 
 /**
- * toggleActiveClass
+ * Toggle acive modifiers on accordion elements
  * 
  * @access private
  * 

@@ -13,13 +13,19 @@
             "transition": ["#CORE", "transition"],
             "hover": {
                 "background": ["#COLOR", "brand", "brand-1"],
-                "color": ["#COLOR", "greyscale", "white"]
+                "color": ["#COLOR", "greyscale", "white"],
+                "component('toggle')": {
+                    "color": ["#COLOR", "greyscale", "white"]
+                }
             },
             "active": {
                 "background": ["#COLOR", "brand", "brand-1"],
                 "color": ["#COLOR", "greyscale", "white"],
                 "border-color": "transparent",
-                "border-radius": 0
+                "border-radius": 0,
+                "component('toggle')": {
+                    "color": ["#COLOR", "greyscale", "white"]
+                }
             }
         },
         "content": {
@@ -29,8 +35,7 @@
             "border-radius": 0,
             "padding": "1.5em"
         },
-        "icon": {
-            "glyph": "'\\f138'",
+        "toggle": {
             "color": ["#COLOR", "opaque", "dark-4"]
         },
         "animationSpeed": 400,
