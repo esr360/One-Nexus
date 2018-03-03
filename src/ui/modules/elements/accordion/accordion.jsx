@@ -11,7 +11,8 @@ import defaults from './accordion.json';
  */
 export default class Accordion extends React.Component {
     render() {
-        var foo = (<div>potato</div>);
+        console.log($accordion.toggle)
+        console.log(global.UI.accordion().toggle)
         return (
             <Module {...this.props}>
                 {this.props.panels.map(({title, content}, index) => (
@@ -19,7 +20,7 @@ export default class Accordion extends React.Component {
                         <Component name="title" onClick={$accordion.toggle}>
                             <Component name="toggle" className="fa fa-chevron-circle-down" /> {title}
                         </Component>
-                        <Component name="content">{foo}</Component>
+                        <Component name="content">{content}</Component>
                     </Component>
                 ))}
             </Module>

@@ -48,7 +48,7 @@ export function toggle(target, type, parent, options = defaults) {
 
     // determine target accordion section
     if (typeof target === 'object' && ('target' in target)) {
-        target.target.parents().forEach(parent => {
+        target.target.parents().reverse().forEach(parent => {
             if (parent.component('section') === true) {
                 return target = parent;
             }
@@ -74,7 +74,7 @@ export function toggle(target, type, parent, options = defaults) {
     }
 
     // close sibling sections
-    if (operator === 'set' && (!parent.modifier(options.keepOpenModifier))) {
+    if (operator === 'set' && (parent.modifier(options.keepOpenModifier) !== true)) {
         parent.component('section').forEach(el => toggleActiveClass(el, 'unset'));
     }
 
