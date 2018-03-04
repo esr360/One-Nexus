@@ -22,7 +22,7 @@
 ### Quick Look
 
 ```jsx
-<app.Accordion panels={[
+<Accordion panels={[
     {title: 'foo', content: 'bar'},
     {title: 'fizz', content: 'buzz'}
 ]} />
@@ -39,6 +39,57 @@
         <div class="accordion_content">buzz</div>
     </div>
 </div>
+```
+
+## Configuration
+
+> [Learn more]() about module configutation
+
+```json
+{
+    "accordion": {
+        "name": "accordion",
+        "section": {
+            "vertical-rhythm": 0
+        },
+        "title": {
+            "background": "transparent",
+            "color": ["#CORE", "text-color"],
+            "border": "1px solid rgba(black, 0.15)",
+            "border-radius": 0,
+            "padding": "1em",
+            "transition": ["#CORE", "transition"],
+            "hover": {
+                "background": ["#COLOR", "brand", "brand-1"],
+                "color": ["#COLOR", "greyscale", "white"],
+                "component('toggle')": {
+                    "color": ["#COLOR", "greyscale", "white"]
+                }
+            },
+            "active": {
+                "background": ["#COLOR", "brand", "brand-1"],
+                "color": ["#COLOR", "greyscale", "white"],
+                "border-color": "transparent",
+                "border-radius": 0,
+                "component('toggle')": {
+                    "color": ["#COLOR", "greyscale", "white"]
+                }
+            }
+        },
+        "content": {
+            "background": ["#COLOR", "greyscale", "white"],
+            "color": ["#CORE", "text-color"],
+            "border": "1px solid rgba(black, 0.15)",
+            "border-radius": 0,
+            "padding": "1.5em"
+        },
+        "toggle": {
+            "color": ["#COLOR", "opaque", "dark-4"]
+        },
+        "animationSpeed": 400,
+        "keepOpenModifier": "keepOpen"
+    }
+}
 ```
 
 ### Options
