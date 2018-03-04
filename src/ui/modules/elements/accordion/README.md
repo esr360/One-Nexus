@@ -134,6 +134,11 @@ UI.accordion(parent).toggle(target, type);
             <td>(String | Number | HTMLElement | NodeList)</td>
             <td>The target section(s) to toggle</td>
         </tr>
+        <tr>
+            <td>Type (optional)</td>
+            <td>('open' | 'close')</td>
+            <td>The type of toggle to perform (dynamically determined if not passed)</td>
+        </tr>
     </tbody>
 </table>
 
@@ -142,6 +147,9 @@ UI.accordion(parent).toggle(target, type);
 ```js
 // Toggle first section of accordion with ID 'foo'
 UI.accordion(document.getElementById('foo')).toggle(1);
+
+// Toggle section with ID 'bar' on accordion with ID 'foo'
+UI.accordion(document.getElementById('foo')).toggle(document.getElementById('bar'));
 ```
 
 ### Open/Close
