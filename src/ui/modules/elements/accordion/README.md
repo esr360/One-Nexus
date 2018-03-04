@@ -114,15 +114,15 @@ UI.accordion(parent).toggle(target, type);
 <table>
     <thead>
         <tr>
-            <td>Parameter</td>
-            <td>Type</td>
-            <td>Description</td>
+            <td><b>Parameter</b></td>
+            <td><b>Type</b></td>
+            <td><b>Description<b/></td>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>Parent</td>
-            <td>[Synergy selector]()</td>
+            <td><a href="#">Synergy selector</a></td>
             <td>The accordion on which to toggle sections</td>
         </tr>
         <tr>
