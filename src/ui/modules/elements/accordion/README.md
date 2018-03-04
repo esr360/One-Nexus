@@ -172,19 +172,19 @@ UI.accordion('#foo').toggle(2, 'close');
 
 ```js
 // Opens all sections of accordion with ID 'foo'
-app.accordion(document.getElementById('foo')).open();
+UI.accordion(document.getElementById('foo')).open();
 
 // Opens first section of accordion with ID 'foo'
-app.accordion(document.getElementById('foo')).open(1);
+UI.accordion(document.getElementById('foo')).open(1);
 
 // Opens first section of all accordions
-app.accordion().open(1);
+UI.accordion().open(1);
 
 // Opens all sections with class 'foo' for all accordions
-app.accordion().open(document.querySelectorAll('.foo'));
+UI.accordion().open(document.querySelectorAll('.foo'));
 
 // Opens all sections with class 'foo' for all accordions
-app.accordion().open('.foo');
+UI.accordion().open('.foo');
 ```
 
 ### Close
@@ -193,10 +193,10 @@ app.accordion().open('.foo');
 
 ```js
 // Closes all sections of accordion with ID 'foo'
-app.accordion(document.getElementById('foo')).close();
+UI.accordion(document.getElementById('foo')).close();
 
 // Closes first section of accordion with ID 'foo'
-app.accordion(document.getElementById('foo')).close(1);
+UI.accordion(document.getElementById('foo')).close(1);
 ```
 
 ## Rendering

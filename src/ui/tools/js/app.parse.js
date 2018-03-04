@@ -9,6 +9,8 @@ import * as app from '../../ui';
  * @param {Object} custom
  */
 export function parse(defaults, custom) {
+    custom = (custom instanceof HTMLElement || custom instanceof NodeList) ? {} : custom;
+
     const config = app.evalConfig(app.deepextend(defaults, custom));
 
     delete config.modifierGlue;

@@ -7,8 +7,8 @@ import defaults from './accordion.json';
  * @param {(String|HTMLElement|NodeList)} els
  * @param {Object} custom
  */
-export default function accordion(custom = {}) {
-    UI.Synergy(custom.name || defaults.accordion.name, (accordion, options) => {
+export default function accordion(custom) {
+    UI.Synergy(custom || defaults.accordion.name, (accordion, options) => {
 
         accordion.component('section').forEach(section => {
             if (section.modifier('active')) {
