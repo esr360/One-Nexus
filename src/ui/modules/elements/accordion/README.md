@@ -5,6 +5,7 @@
 * [Styles]()
 * [Interactions]()
 * [Rendering]()
+* [Examples]()
 
 ## About
 
@@ -92,37 +93,52 @@
 }
 ```
 
-### Options
+## Styles
 
-<table class="table">
+## Interactions
+
+> [Learn more]() about module interactions
+
+### Toggle
+
+> Toggle one or more sections of an accordion
+
+```js
+UI.accordion(parent).toggle(target, type);
+```
+
+<table>
     <thead>
         <tr>
-            <th>Option</th>
-            <th>Description</th>
+            <td>Parameter</td>
+            <td>Type</td>
+            <td>Description</td>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>name</td>
-            <td>The name used when generating the CSS selector</td>
+            <td>Parent</td>
+            <td>[Synergy selector]()</td>
+            <td>The accordion on which to toggle sections</td>
+        </tr>
+        <tr>
+            <td>Target</td>
+            <td>(String | Number | HTMLElement | NodeList)</td>
+            <td>The target section(s) to toggle</td>
         </tr>
     </tbody>
 </table>
 
+#### Examples
 
-```json
-{
-    "app": {
-        "accordions": {}
-    }
-}
+```js
+// Toggle first section of accordion with ID 'foo'
+UI.accordion(document.getElementById('foo')).toggle(1);
 ```
 
-#### API
+### Open/Close
 
-##### Open/Close
-
-You can open or close specific sections of an accordion by using either the `.open()` or `.close()` methods.
+> Open or close one or more sections of an accordion
 
 ```js
 // Opens all sections of accordion with ID 'foo'
@@ -141,7 +157,9 @@ app.accordion().open(document.querySelectorAll('.foo'));
 app.accordion().open('.foo');
 ```
 
-### Examples
+## Rendering
+
+## Examples
 
 #### Open by Default
 
