@@ -22,12 +22,16 @@
 
 ### Quick Look
 
+###### React
+
 ```jsx
 <Accordion panels={[
     {title: 'foo', content: 'bar'},
     {title: 'fizz', content: 'buzz'}
 ]} />
 ```
+
+###### HTML
 
 ```html
 <div class="accordion">
