@@ -21,7 +21,8 @@ export default class Accordions extends React.Component {
                                 ]} />
                             )}
                         ]} />
-                    )}
+                    )},
+                    {title: 'fizz', content: <div>buzz</div>}
                 ]} />
             </app.layouts.Base>
         )

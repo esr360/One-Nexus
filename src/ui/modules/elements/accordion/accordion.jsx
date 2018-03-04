@@ -1,5 +1,3 @@
-import * as UI from '../../../ui';
-import * as $accordion from './accordion';
 import defaults from './accordion.json';
 
 /**
@@ -10,14 +8,15 @@ import defaults from './accordion.json';
  * @param {Array}  props.modifiers
  */
 export default class Accordion extends React.Component {
+    // Methods
+    toggle() {}
+
     render() {
-        console.log($accordion.toggle)
-        console.log(global.UI.accordion().toggle)
         return (
             <Module {...this.props}>
                 {this.props.panels.map(({title, content}, index) => (
                     <Component name="section" key={index}>
-                        <Component name="title" onClick={$accordion.toggle}>
+                        <Component name="title" onClick={this.toggle}>
                             <Component name="toggle" className="fa fa-chevron-circle-down" /> {title}
                         </Component>
                         <Component name="content">{content}</Component>
