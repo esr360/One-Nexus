@@ -99,6 +99,10 @@
 
 > [Learn more]() about module interactions
 
+* [Toggle]()
+* [Open]()
+* [Close]()
+
 ### Toggle
 
 > Toggle one or more sections of an accordion
