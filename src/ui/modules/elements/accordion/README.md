@@ -137,7 +137,7 @@ UI.accordion(parent).toggle(target, type);
         <tr>
             <td>Type (optional)</td>
             <td>('open' | 'close')</td>
-            <td>The type of toggle to perform (dynamically determined if not passed)</td>
+            <td>The type of toggle to perform</td>
         </tr>
     </tbody>
 </table>
