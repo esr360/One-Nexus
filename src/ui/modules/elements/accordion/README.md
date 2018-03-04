@@ -142,6 +142,8 @@ UI.accordion(parent).toggle(target, type);
     </tbody>
 </table>
 
+> `type` will dynamically be determined if not passed
+
 #### Examples
 
 ```js
@@ -150,11 +152,23 @@ UI.accordion(document.getElementById('foo')).toggle(1);
 
 // Toggle section with ID 'bar' on accordion with ID 'foo'
 UI.accordion(document.getElementById('foo')).toggle(document.getElementById('bar'));
+
+// Toggle sections with class 'foo' on accordion with ID 'foo'
+UI.accordion(document.getElementById('foo')).toggle('.foo');
+
+// Toggle first section of all accordions
+UI.accordion().toggle(1);
+
+// Open first section of all accordions
+UI.accordion().toggle(1, 'open');
+
+// Close second section of accordion with ID 'foo'
+UI.accordion('#foo').toggle(2, 'close');
 ```
 
-### Open/Close
+### Open
 
-> Open or close one or more sections of an accordion
+> Open one or more sections of an accordion
 
 ```js
 // Opens all sections of accordion with ID 'foo'
@@ -171,6 +185,18 @@ app.accordion().open(document.querySelectorAll('.foo'));
 
 // Opens all sections with class 'foo' for all accordions
 app.accordion().open('.foo');
+```
+
+### Close
+
+> Close one or more sections of an accordion
+
+```js
+// Closes all sections of accordion with ID 'foo'
+app.accordion(document.getElementById('foo')).close();
+
+// Closes first section of accordion with ID 'foo'
+app.accordion(document.getElementById('foo')).close(1);
 ```
 
 ## Rendering
