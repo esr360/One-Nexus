@@ -8,19 +8,21 @@ import defaults from './accordion.json';
  * @param {Object} custom
  */
 export default function accordion(custom) {
-    UI.Synergy(custom || defaults.accordion.name, (accordion, options) => {
+    UI.Synergy(typeof custom !== 'undefined' ? custom : defaults.accordion.name, (accordion, options) => {
 
-        accordion.component('section').forEach(section => {
-            if (section.modifier('active')) {
-                section.component('content')[0].modifier('active', 'set');
-            }
+        if (!(custom instanceof HTMLElement) && accordion.length) {
+            accordion.component('section').forEach(section => {
+                if (section.modifier('active')) {
+                    section.component('content')[0].modifier('active', 'set');
+                }
 
-            section.component('title')[0].addEventListener('click', () => {
-                var active = section.modifier('active', 'isset');
-            
-                toggle(section, active ? 'close' : 'open', accordion, options);
-            }, false);
-        });
+                section.component('title')[0].addEventListener('click', () => {
+                    var active = section.modifier('active', 'isset');
+                
+                    toggle(section, active ? 'close' : 'open', accordion, options);
+                }, false);
+            });
+        }
 
         exports.open  = target => toggle(target, 'open', accordion, options);
         exports.close = target => toggle(target, 'close', accordion, options);
@@ -42,6 +44,10 @@ export default function accordion(custom) {
  */
 export function toggle(target, type, parent, options = defaults) {
     let section, operator;
+
+    if (parent === false) {
+        return 'accordion.js: no matching elements found for `parent`'
+    }
 
     // merge passed options with window options
     options = UI.deepextend(options, UI.get().config('accordion'));
@@ -78,11 +84,13 @@ export function toggle(target, type, parent, options = defaults) {
         parent.component('section').forEach(el => toggleActiveClass(el, 'unset'));
     }
 
-    if (section instanceof NodeList) {
+    if (section instanceof NodeList || section instanceof Array) {
         section.forEach(el => toggleActiveClass(el, operator));
     } else {
         toggleActiveClass(section, operator);
     }
+
+    return parent;
 }
 
 /**
