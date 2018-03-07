@@ -24,9 +24,9 @@ export default function accordion(custom) {
             });
         }
 
-        exports.open = target => toggle(target, 'open', accordion, options);
-        exports.close = target => toggle(target, 'close', accordion, options);
-        exports.toggle = target => toggle(target, false, accordion, options);
+        exports.open = target => toggle(target, 'open', UI.Synergy(custom).query, options);
+        exports.close = target => toggle(target, 'close', UI.Synergy(custom).query, options);
+        exports.toggle = target => toggle(target, false, UI.Synergy(custom).query, options);
 
     }, defaults, custom, UI.evalConfig);
 
@@ -48,6 +48,10 @@ export function toggle(target, type, parent, options = defaults, keepOpen = fals
 
     if (parent === false) {
         return 'accordion.js: no matching elements found for `parent`'
+    }
+
+    if (parent instanceof NodeList) {
+        return parent.forEach(child => toggle(target, type, child, options, keepOpen));
     }
 
     // merge passed options with window options

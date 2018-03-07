@@ -1,11 +1,11 @@
 # One-Nexus Accordion
 
-* [About]()
-* [Configuration]()
-* [Styles]()
-* [Interactions]()
-* [Rendering]()
-* [Examples]()
+* [About](#about)
+* [Configuration](#configuration)
+* [Styles](#styles)
+* [Interactions](#interactions)
+* [Rendering](#rendering)
+* [Examples](#examples)
 
 ## About
 
@@ -36,11 +36,15 @@
 ```html
 <div class="accordion">
     <div class="accordion_section">
-        <div class="accordion_title">foo</div>
+        <div class="accordion_title">
+            <div class="accordion_toggle fa fa-chevron-circle-down"></div> foo
+        </div>
         <div class="accordion_content">bar</div>
     </div>
     <div class="accordion_section">
-        <div class="accordion_title">fizz</div>
+        <div class="accordion_title">
+            <div class="accordion_toggle fa fa-chevron-circle-down"></div> fizz
+        </div>
         <div class="accordion_content">buzz</div>
     </div>
 </div>
@@ -112,7 +116,7 @@
 > Toggle one or more sections of an accordion
 
 ```js
-UI.accordion(parent).toggle(target, type);
+UI.accordion(parent).toggle(target);
 ```
 
 <table>
@@ -134,15 +138,8 @@ UI.accordion(parent).toggle(target, type);
             <td>(String | Number | HTMLElement | NodeList)</td>
             <td>The target section(s) to toggle</td>
         </tr>
-        <tr>
-            <td>Type (optional)</td>
-            <td>('open' | 'close')</td>
-            <td>The type of toggle to perform</td>
-        </tr>
     </tbody>
 </table>
-
-> `type` will dynamically be determined if not passed
 
 #### Examples
 
@@ -153,22 +150,48 @@ UI.accordion(document.getElementById('foo')).toggle(1);
 // Toggle section with ID 'bar' on accordion with ID 'foo'
 UI.accordion(document.getElementById('foo')).toggle(document.getElementById('bar'));
 
+// Toggle section with ID 'bar' on accordion with ID 'foo'
+UI.accordion('#foo').toggle('#bar');
+
 // Toggle sections with class 'foo' on accordion with ID 'foo'
 UI.accordion(document.getElementById('foo')).toggle('.foo');
 
-// Toggle first section of all accordions
-UI.accordion().toggle(1);
+// Toggle second section on all accordions with class 'accordion'
+UI.accordion('.accordion').toggle(2);
 
-// Open first section of all accordions
-UI.accordion().toggle(1, 'open');
-
-// Close second section of accordion with ID 'foo'
-UI.accordion('#foo').toggle(2, 'close');
+// Toggle sections with class 'foo' on all accordions with class 'accordion'
+UI.accordion('.accordion').toggle('.foo');
 ```
 
 ### Open
 
 > Open one or more sections of an accordion
+
+```js
+UI.accordion(parent).open(target);
+```
+
+<table>
+    <thead>
+        <tr>
+            <td><b>Parameter</b></td>
+            <td><b>Type</b></td>
+            <td><b>Description<b/></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Parent</td>
+            <td><a href="#">Synergy selector</a></td>
+            <td>The accordion on which to open sections</td>
+        </tr>
+        <tr>
+            <td>Target</td>
+            <td>(String | Number | HTMLElement | NodeList)</td>
+            <td>The target section(s) to open</td>
+        </tr>
+    </tbody>
+</table>
 
 ```js
 // Opens all sections of accordion with ID 'foo'
