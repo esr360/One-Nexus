@@ -24,8 +24,9 @@ export default function accordion(custom) {
             });
         }
 
-        exports.open  = target => toggle(target, 'open', accordion, options);
+        exports.open = target => toggle(target, 'open', accordion, options);
         exports.close = target => toggle(target, 'close', accordion, options);
+        exports.toggle = target => toggle(target, false, accordion, options);
 
     }, defaults, custom, UI.evalConfig);
 
@@ -42,7 +43,7 @@ export default function accordion(custom) {
  * @param {HTMLElement} parent
  * @param {Object} options
  */
-export function toggle(target, type, parent, options = defaults) {
+export function toggle(target, type, parent, options = defaults, keepOpen = false) {
     let section, operator;
 
     if (parent === false) {
@@ -51,6 +52,8 @@ export function toggle(target, type, parent, options = defaults) {
 
     // merge passed options with window options
     options = UI.deepextend(options, UI.get().config('accordion'));
+
+    options.keepOpen = (options.keepOpen === true) ? true : false;
 
     // determine target accordion section
     if (typeof target === 'object' && ('target' in target)) {
@@ -73,14 +76,18 @@ export function toggle(target, type, parent, options = defaults) {
         section = parent.component('section');
     }
 
+    if (section.constructor === Array) {
+        return section.forEach(section => toggle(section, type, parent, options, true));
+    }
+
     if (type) {
         operator = (type === 'open') ? 'set' : 'unset';
     } else {
-        operator = target.modifier('active') === true ? 'unset' : 'set';
+        operator = section.modifier('active') === true ? 'unset' : 'set';
     }
 
     // close sibling sections
-    if (operator === 'set' && (parent.modifier(options.keepOpenModifier) !== true)) {
+    if (operator === 'set' && (parent.modifier(options.keepOpenModifier) !== true && keepOpen === false)) {
         parent.component('section').forEach(el => toggleActiveClass(el, 'unset'));
     }
 
