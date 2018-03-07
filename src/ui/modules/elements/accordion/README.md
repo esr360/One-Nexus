@@ -215,6 +215,32 @@ UI.accordion().open('.foo');
 > Close one or more sections of an accordion
 
 ```js
+UI.accordion(parent).close(target);
+```
+
+<table>
+    <thead>
+        <tr>
+            <td><b>Parameter</b></td>
+            <td><b>Type</b></td>
+            <td><b>Description<b/></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Parent</td>
+            <td><a href="#">Synergy selector</a></td>
+            <td>The accordion on which to close sections</td>
+        </tr>
+        <tr>
+            <td>Target</td>
+            <td>(String | Number | HTMLElement | NodeList)</td>
+            <td>The target section(s) to close</td>
+        </tr>
+    </tbody>
+</table>
+
+```js
 // Closes all sections of accordion with ID 'foo'
 UI.accordion(document.getElementById('foo')).close();
 
