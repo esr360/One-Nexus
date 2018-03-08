@@ -280,7 +280,7 @@ UI.accordion().close('.foo');
 ]} />
 ```
 
-* [/[...Global.props/]]()
+* [[...Global.props]]()
 * [Props.panels]()
 
 ### Props.panels
@@ -294,14 +294,14 @@ UI.accordion().close('.foo');
 
 ```jsx
 const panels = [
-    {title: 'foo', content: 'bar'},
-    {title: <div>alpha</div>, content: <div>beta</div>}
+    { title: 'foo', content: 'bar' },
+    { title: <div>alpha</div>, content: <div>beta</div> }
 ];
 
 <Accordion panels={panels} />
 ```
 
-#### Panel Title
+#### Panel.title
 
 <table>
     <tr>
@@ -310,7 +310,7 @@ const panels = [
     </tr>
 </table>
 
-#### Panel Content
+#### Panel.content
 
 <table>
     <tr>
@@ -339,7 +339,7 @@ Accordions can be nested:
 ]} />
 ```
 
-#### Active by default
+#### Panel.active
 
 <table>
     <tr>
@@ -350,8 +350,8 @@ Accordions can be nested:
 
 ```jsx
 <Accordion panels={[
-    {title: 'alpha', content: 'beta'}
-    {title: 'foo', content: 'bar', active: true}
+    { title: 'alpha', content: 'beta' }
+    { title: 'foo', content: 'bar', active: true }
 ]} />
 ```
 
@@ -362,7 +362,7 @@ Accordions can be nested:
 ###### JSX
 
 ```jsx
-<Accordion keepOpen panels={[
+<Accordion panels={[
     {title: 'foo', content: 'bar', active: true},
     {title: 'fizz', content: 'buzz'}
 ]} />
