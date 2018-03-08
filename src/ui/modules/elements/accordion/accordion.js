@@ -8,7 +8,10 @@ import defaults from './accordion.json';
  * @param {Object} custom
  */
 export default function accordion(custom) {
-    UI.Synergy(typeof custom !== 'undefined' ? custom : defaults.accordion.name, (accordion, options) => {
+
+    const TARGET = UI.getTarget('accordion', defaults, custom);
+
+    UI.Synergy(TARGET, (accordion, options) => {
 
         if (!(custom instanceof HTMLElement) && accordion.length) {
             accordion.component('section').forEach(section => {
@@ -24,9 +27,9 @@ export default function accordion(custom) {
             });
         }
 
-        exports.open = target => toggle(target, 'open', UI.Synergy(custom).query, options);
-        exports.close = target => toggle(target, 'close', UI.Synergy(custom).query, options);
-        exports.toggle = target => toggle(target, false, UI.Synergy(custom).query, options);
+        exports.open = target => toggle(target, 'open', UI.Synergy(TARGET).query, options);
+        exports.close = target => toggle(target, 'close', UI.Synergy(TARGET).query, options);
+        exports.toggle = target => toggle(target, false, UI.Synergy(TARGET).query, options);
 
     }, defaults, custom, UI.evalConfig);
 
@@ -91,7 +94,7 @@ export function toggle(target, type, parent, options = defaults, keepOpen = fals
     }
 
     // close sibling sections
-    if (operator === 'set' && (parent.modifier(options.keepOpenModifier) !== true && keepOpen === false)) {
+    if (operator === 'set' && (parent.modifier(options.keepOpenModifier) !== true) && keepOpen === false) {
         parent.component('section').forEach(el => toggleActiveClass(el, 'unset'));
     }
 

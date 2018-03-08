@@ -103,6 +103,8 @@
 
 ## Styles
 
+> [Learn more]() about module styles
+
 ## Interactions
 
 > [Learn more]() about module interactions
@@ -161,6 +163,12 @@ UI.accordion('.accordion').toggle(2);
 
 // Toggle sections with class 'foo' on all accordions with class 'accordion'
 UI.accordion('.accordion').toggle('.foo');
+
+// Toggle first section on all accordions
+UI.accordion().toggle(1);
+
+// Toggle all sections on all accordions
+UI.accordion().toggle();
 ```
 
 ### Open
@@ -192,6 +200,8 @@ UI.accordion(parent).open(target);
         </tr>
     </tbody>
 </table>
+
+#### Examples
 
 ```js
 // Opens all sections of accordion with ID 'foo'
@@ -240,25 +250,131 @@ UI.accordion(parent).close(target);
     </tbody>
 </table>
 
+#### Examples
+
 ```js
 // Closes all sections of accordion with ID 'foo'
 UI.accordion(document.getElementById('foo')).close();
 
 // Closes first section of accordion with ID 'foo'
 UI.accordion(document.getElementById('foo')).close(1);
+
+// Closes first section of all accordions
+UI.accordion().close(1);
+
+// Closes all sections with class 'foo' for all accordions
+UI.accordion().close(document.querySelectorAll('.foo'));
+
+// Closes all sections with class 'foo' for all accordions
+UI.accordion().close('.foo');
 ```
 
 ## Rendering
 
+> [Learn more]() about rendering modules
+
+```jsx
+<Accordion panels={[
+    {title: 'foo', content: 'bar'},
+    {title: 'fizz', content: 'buzz'}
+]} />
+```
+
+* [/[...Global.props/]]()
+* [Props.panels]()
+
+### Props.panels
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>Array</code></td>
+    </tr>
+</table>
+
+```jsx
+const panels = [
+    {title: 'foo', content: 'bar'},
+    {title: <div>alpha</div>, content: <div>beta</div>}
+];
+
+<Accordion panels={panels} />
+```
+
+#### Panel Title
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td>JSX</td>
+    </tr>
+</table>
+
+#### Panel Content
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td>JSX</td>
+    </tr>
+</table>
+
+Accordions can be nested:
+
+```jsx
+<Accordion panels={[
+    {title: 'foo', content: 'bar'},
+    {title: 'fizz', content: (
+        <Accordion panels={[
+            {title: 'foo', content: 'bar'},
+            {title: 'fizz', content: (
+                <Accordion panels={[
+                    {title: 'foo', content: 'bar'},
+                    {title: 'fizz', content: <div>potato</div>}
+                ]} />
+            )}
+        ]} />
+    )},
+    {title: 'fizz', content: <div>buzz</div>}
+]} />
+```
+
+#### Active by default
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>Bool</code></td>
+    </tr>
+</table>
+
+```jsx
+<Accordion panels={[
+    {title: 'alpha', content: 'beta'}
+    {title: 'foo', content: 'bar', active: true}
+]} />
+```
+
 ## Examples
 
-#### Open by Default
+#### Default Open Section
 
-Add the `active` class to any sections you wish to be open by default.
+###### JSX
+
+```jsx
+<Accordion keepOpen panels={[
+    {title: 'foo', content: 'bar', active: true},
+    {title: 'fizz', content: 'buzz'}
+]} />
+```
+
+###### HTML
+
+Add the `active` modifier to any sections you wish to be open by default
 
 ```html
 <div class="accordion">
-    <div class="accordion_section active">
+    <div class="accordion_section-active">
         ...
     </div>
     <div class="accordion_section">
@@ -270,6 +386,17 @@ Add the `active` class to any sections you wish to be open by default.
 #### Multiple Open Sections
 
 To allow accordions to have multiple open sections simultaneously, add the `keepOpen` modifier to the target accordion:
+
+###### JSX
+
+```jsx
+<Accordion keepOpen panels={[
+    {title: 'foo', content: 'bar'},
+    {title: 'fizz', content: 'buzz'}
+]} />
+```
+
+###### HTML
 
 ```html
 <div class="accordion-keepOpen">
