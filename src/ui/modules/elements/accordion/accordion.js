@@ -83,6 +83,8 @@ export function toggle(target, type, parent, options = defaults, keepOpen = fals
         section = parent.component('section');
     }
 
+    if (!section) return;
+
     if (section.constructor === Array) {
         return section.forEach(section => toggle(section, type, parent, options, true));
     }
