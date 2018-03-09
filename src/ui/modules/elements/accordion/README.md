@@ -19,7 +19,11 @@
 ### Modifiers
 
 * [...Global modifiers]()
-* keepOpen
+* [keepOpen](keepOpen)
+
+#### KeepOpen
+
+> Allows multiple accordion panels to be open simultaneously
 
 ### Quick Look
 
@@ -102,9 +106,9 @@
 }
 ```
 
-Pass custom options to the `accordion` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `accordion` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../ui/themes/One-Nexus/theme.json)):
 
-```json
+```js
 {
     "app": {
         "accordion": {
@@ -122,11 +126,11 @@ Pass custom options to the `accordion` object in your theme's config file (e.g. 
 
 > [Learn more]() about module interactions
 
-* [Toggle]()
-* [Open]()
-* [Close]()
+* [Toggle](#toggle)
+* [Open](#open)
+* [Close](#close)
 
-> Interactions are defined in [ui/modules/elements/alert/alert.js]()
+> Interactions are defined in [ui/modules/elements/accordion/accordion.js](../../../ui/modules/elements/accordion/accordion.js)
 
 ### Toggle
 
@@ -296,7 +300,7 @@ UI.accordion().close('.foo');
 ```
 
 * [[...Global props]]()
-* [Props.panels]()
+* [Props.panels](#props.panels)
 
 ### Props.panels
 

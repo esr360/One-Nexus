@@ -17,7 +17,7 @@
 ### Modifiers
 
 * [...Global modifiers]()
-* [...alert.alerts]()
+* [...alert.alerts](#configuation)
 
 ### Quick Look
 
@@ -73,9 +73,9 @@
 }
 ```
 
-Pass custom options to the `alert` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `alert` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../ui/themes/One-Nexus/theme.json)):
 
-```json
+```js
 {
     "app": {
         "alert": {
@@ -97,9 +97,9 @@ Pass custom options to the `alert` object in your theme's config file (e.g. [the
 
 > [Learn more]() about module interactions
 
-* [Dismiss]()
+* [Dismiss](#dismiss)
 
-> Interactions are defined in [ui/modules/elements/accordion/accordion.js]()
+> Interactions are defined in [ui/modules/elements/alert/alert.js]()
 
 ### Dismiss
 
@@ -155,10 +155,10 @@ UI.alert().dismiss();
 ```
 
 * [[...Global props]]()
-* [Props.bar]()
-* [Props.box]()
-* [Props.alert]()
-* [Props.icon]()
+* [Props.bar](#props.bar)
+* [Props.box](#props.box)
+* [Props.alert](#props.alert)
+* [Props.icon](#props.icon)
 
 ### Props.bar
 
@@ -225,7 +225,7 @@ UI.alert().dismiss();
     </tr>
 </table>
 
-> Possible colors are set in the [module's configuration](#configuration)
+> Available values are set in the [module's configuration](#configuration)
 
 ```jsx
 <Alert alert='success'>This is an alert</Alert>
