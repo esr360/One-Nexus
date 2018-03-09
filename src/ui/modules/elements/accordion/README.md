@@ -300,7 +300,7 @@ UI.accordion().close('.foo');
 ```
 
 * [[...Global props]]()
-* [Props.panels](#props.panels)
+* [Props.panels](#propspanels)
 
 ### Props.panels
 

@@ -155,10 +155,10 @@ UI.alert().dismiss();
 ```
 
 * [[...Global props]]()
-* [Props.bar](#props.bar)
-* [Props.box](#props.box)
-* [Props.alert](#props.alert)
-* [Props.icon](#props.icon)
+* [Props.bar](#propsbar)
+* [Props.box](#propsbox)
+* [Props.alert](#propsalert)
+* [Props.icon](#propsicon)
 
 ### Props.bar
 

@@ -47,7 +47,6 @@ export default function accordion(custom) {
  * @param {Object} options
  */
 export function toggle(target, type, parent, options = defaults, keepOpen = false) {
-    console.log(options);
     let section, operator;
 
     if (parent === false) {
