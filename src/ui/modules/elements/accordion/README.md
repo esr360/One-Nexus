@@ -106,7 +106,7 @@
 }
 ```
 
-Pass custom options to the `accordion` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../ui/themes/One-Nexus/theme.json)):
+Pass custom options to the `accordion` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
 
 ```js
 {
@@ -130,7 +130,7 @@ Pass custom options to the `accordion` object in your theme's config file (e.g. 
 * [Open](#open)
 * [Close](#close)
 
-> Interactions are defined in [ui/modules/elements/accordion/accordion.js](../../../ui/modules/elements/accordion/accordion.js)
+> Interactions are defined in [ui/modules/elements/accordion/accordion.js](../../../modules/elements/accordion/accordion.js)
 
 ### Toggle
 

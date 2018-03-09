@@ -73,7 +73,7 @@
 }
 ```
 
-Pass custom options to the `alert` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../ui/themes/One-Nexus/theme.json)):
+Pass custom options to the `alert` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
 
 ```js
 {
