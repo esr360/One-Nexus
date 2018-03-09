@@ -1,5 +1,3 @@
-import * as UI from '../../../ui';
-import * as $alert from './alert';
 import defaults from './alert.json';
 
 /**
@@ -9,10 +7,11 @@ import defaults from './alert.json';
  * @prop {String} alert
  * @prop {Bool} bar
  * @prop {Bool} box
- * @prop {(Bool|Array} icon
- * @prop {Array} modifiers
+ * @prop {(Bool|Array)} icon
  */
 export default class Alert extends React.Component {
+    // Methods
+    dismiss() {}
 
     componentWillMount() {
         const config = UI.get().config('alert');
@@ -33,7 +32,6 @@ export default class Alert extends React.Component {
             });
         }
 
-        this.close = (this.props.close === true) ? $alert.dismiss : this.props.close;
         this.modifiers = modifiers;
         this.icon = icon;
     }
@@ -52,7 +50,7 @@ export default class Alert extends React.Component {
                 {this.props.close &&
                     <Component
                         name='icon'
-                        onClick={this.close}
+                        onClick={this.dismiss}
                         modifiers={['close', 'right']}
                         className={`fa fa-times`}
                     />

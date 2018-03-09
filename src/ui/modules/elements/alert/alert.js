@@ -7,7 +7,11 @@ import defaults from './alert.json';
  * @param {Object} custom
  */
 export default function alert(custom) {
-    UI.Synergy(custom.name || defaults.alert.name, (alert, options) => {
+
+    const TARGET = UI.getTarget('accordion', defaults, custom);
+
+    UI.Synergy(TARGET, (alert, options) => {
+
         let close;
 
         alert.component('icon').forEach(icon => {
@@ -17,6 +21,7 @@ export default function alert(custom) {
         if (close) close.addEventListener('click', () => dismiss(alert), false);
 
         exports.dismiss = (alert = alert) => dismiss(alert);
+
     }, defaults, custom, UI.evalConfig);
 
     UI.config.alert = UI.parse(defaults.alert, custom);

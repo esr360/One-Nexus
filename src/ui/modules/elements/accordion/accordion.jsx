@@ -5,7 +5,6 @@ import defaults from './accordion.json';
  *
  * @param {String} props.name
  * @param {Array}  props.panels
- * @param {Array}  props.modifiers
  */
 export default class Accordion extends React.Component {
     // Methods

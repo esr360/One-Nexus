@@ -1,13 +1,13 @@
 # One-Nexus Accordion
 
-* [About](#about)
+* [Overview](#overview)
 * [Configuration](#configuration)
 * [Styles](#styles)
 * [Interactions](#interactions)
 * [Rendering](#rendering)
 * [Examples](#examples)
 
-## About
+## Overview
 
 ### Components
 
@@ -18,6 +18,7 @@
 
 ### Modifiers
 
+* [...Global modifiers]()
 * keepOpen
 
 ### Quick Look
@@ -101,6 +102,18 @@
 }
 ```
 
+Pass custom options to the `accordion` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+
+```json
+{
+    "app": {
+        "accordion": {
+            ...
+        }
+    }
+}
+```
+
 ## Styles
 
 > [Learn more]() about module styles
@@ -112,6 +125,8 @@
 * [Toggle]()
 * [Open]()
 * [Close]()
+
+> Interactions are defined in [ui/modules/elements/alert/alert.js]()
 
 ### Toggle
 
@@ -133,7 +148,7 @@ UI.accordion(parent).toggle(target);
         <tr>
             <td>Parent</td>
             <td><a href="#">Synergy selector</a></td>
-            <td>The accordion on which to toggle sections</td>
+            <td>The accordion(s) on which to toggle sections</td>
         </tr>
         <tr>
             <td>Target</td>
@@ -280,7 +295,7 @@ UI.accordion().close('.foo');
 ]} />
 ```
 
-* [[...Global.props]]()
+* [[...Global props]]()
 * [Props.panels]()
 
 ### Props.panels
@@ -323,19 +338,19 @@ Accordions can be nested:
 
 ```jsx
 <Accordion panels={[
-    {title: 'foo', content: 'bar'},
-    {title: 'fizz', content: (
+    {title: ..., content: 'bar'},
+    {title: ..., content: (
         <Accordion panels={[
-            {title: 'foo', content: 'bar'},
-            {title: 'fizz', content: (
+            {title: ..., content: 'bar'},
+            {title: ..., content: (
                 <Accordion panels={[
-                    {title: 'foo', content: 'bar'},
-                    {title: 'fizz', content: <div>potato</div>}
+                    {title: ..., content: 'bar'},
+                    {title: ..., content: <div>potato</div>}
                 ]} />
             )}
         ]} />
     )},
-    {title: 'fizz', content: <div>buzz</div>}
+    {title: ..., content: <div>buzz</div>}
 ]} />
 ```
 
@@ -350,61 +365,7 @@ Accordions can be nested:
 
 ```jsx
 <Accordion panels={[
-    { title: 'alpha', content: 'beta' }
-    { title: 'foo', content: 'bar', active: true }
+    { title: ..., content: ... }
+    { title: ..., content: ..., active: true }
 ]} />
-```
-
-## Examples
-
-#### Default Open Section
-
-###### JSX
-
-```jsx
-<Accordion panels={[
-    {title: 'foo', content: 'bar', active: true},
-    {title: 'fizz', content: 'buzz'}
-]} />
-```
-
-###### HTML
-
-Add the `active` modifier to any sections you wish to be open by default
-
-```html
-<div class="accordion">
-    <div class="accordion_section-active">
-        ...
-    </div>
-    <div class="accordion_section">
-        ...
-    </div>
-</div>
-```
-
-#### Multiple Open Sections
-
-To allow accordions to have multiple open sections simultaneously, add the `keepOpen` modifier to the target accordion:
-
-###### JSX
-
-```jsx
-<Accordion keepOpen panels={[
-    {title: 'foo', content: 'bar'},
-    {title: 'fizz', content: 'buzz'}
-]} />
-```
-
-###### HTML
-
-```html
-<div class="accordion-keepOpen">
-    <div class="accordion_section">
-        ...
-    </div>
-    <div class="accordion_section">
-        ...
-    </div>
-</div>
 ```
