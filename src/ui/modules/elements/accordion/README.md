@@ -395,8 +395,8 @@ Accordions can be nested:
 
 ```jsx
 <Accordion panels={[
-    { title: ..., content: ... }
-    { title: ..., content: ..., active: true }
+    {title: ..., content: ...}
+    {title: ..., content: ..., active: true}
 ]} />
 ```
 
