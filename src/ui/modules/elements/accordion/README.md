@@ -324,6 +324,26 @@ const panels = [
 <Accordion panels={panels} />
 ```
 
+###### Output:
+
+```html
+<div class="accordion">
+    <div class="accordion_section">
+        <div class="accordion_title">
+            <div class="accordion_toggle fa fa-chevron-circle-down"></div> foo
+        </div>
+        <div class="accordion_content">bar</div>
+    </div>
+    <div class="accordion_section">
+        <div class="accordion_title">
+            <div class="accordion_toggle fa fa-chevron-circle-down"></div>
+            <div>alpha</div>
+        </div>
+        <div class="accordion_content"><div>beta</div></div>
+    </div>
+</div>
+```
+
 #### Panel.title
 
 <table>
@@ -346,13 +366,13 @@ Accordions can be nested:
 
 ```jsx
 <Accordion panels={[
-    {title: ..., content: 'bar'},
+    {title: ..., content: 'alpha'},
     {title: ..., content: (
         <Accordion panels={[
-            {title: ..., content: 'bar'},
+            {title: ..., content: 'beta'},
             {title: ..., content: (
                 <Accordion panels={[
-                    {title: ..., content: 'bar'},
+                    {title: ..., content: 'gamma'},
                     {title: ..., content: <div>potato</div>}
                 ]} />
             )}
@@ -364,7 +384,7 @@ Accordions can be nested:
 
 #### Panel.active
 
-> Set panel(s) to be active by default
+> Set panel(s) to be active (open) by default
 
 <table>
     <tr>
@@ -378,4 +398,13 @@ Accordions can be nested:
     { title: ..., content: ... }
     { title: ..., content: ..., active: true }
 ]} />
+```
+
+###### Output:
+
+```html
+<div class="accordion">
+    <div class="accordion_section">...</div>
+    <div class="accordion_section-active">...</div>
+</div>
 ```
