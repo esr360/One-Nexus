@@ -20,7 +20,7 @@
 > [Learn more](#) about modifiers
 
 * [...Global modifiers]()
-* [...alert.alerts](#configuation)
+* [...alert.alerts](#configuration)
 
 ### Quick Look
 

@@ -92,8 +92,8 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 ```
 
 * [[...Global props]]()
-* [Props.content](#propsbar)
-* [Props.footer](#propsbox)
+* [Props.content](#propscontent)
+* [Props.footer](#propsfooter)
 
 ### Props.content
 
