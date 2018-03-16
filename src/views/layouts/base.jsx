@@ -21,8 +21,9 @@ export default class Base extends React.Component {
                 <div className="container">
                     <div>
                         <app.Link to='/'>Home</app.Link>
-                        <app.Link to='/accordions'>Accordions</app.Link>
-                        <app.Link to='/alert'>Alert Bars</app.Link>
+                        <app.Link to='/accordion'>Accordions</app.Link>
+                        <app.Link to='/alert'>Alert</app.Link>
+                        <app.Link to='/blockquote'>Blockquote</app.Link>
                     </div>
 
                     {this.props.children}

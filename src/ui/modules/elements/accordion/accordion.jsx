@@ -14,11 +14,11 @@ export default class Accordion extends React.Component {
         return (
             <Module {...this.props}>
                 {this.props.panels.map(({title, content, active}, index) => (
-                    <Component modifiers={active ? ['active'] : false} name="section" key={index}>
-                        <Component modifiers={active ? ['active'] : false} name="title" onClick={this.toggle}>
-                            <Component name="toggle" className="fa fa-chevron-circle-down" /> {title}
+                    <Component modifiers={active ? ['active'] : false} name='section' key={index}>
+                        <Component modifiers={active ? ['active'] : false} name='title' onClick={this.toggle}>
+                            <Component name='toggle' className='fa fa-chevron-circle-down' /> {title}
                         </Component>
-                        <Component modifiers={active ? ['active'] : false} name="content">{content}</Component>
+                        <Component modifiers={active ? ['active'] : false} name='content'>{content}</Component>
                     </Component>
                 ))}
             </Module>

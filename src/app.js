@@ -41,6 +41,7 @@ window.Component = Component;
 // Elements
 export { default as Accordion } from './ui/modules/elements/accordion/accordion.jsx';
 export { default as Alert } from './ui/modules/elements/alert/alert.jsx';
+export { default as Blockquote } from './ui/modules/elements/blockquotes/blockquote.jsx';
 export { default as Button } from './ui/modules/elements/buttons/button.jsx';
 export { default as Heading } from './ui/modules/elements/heading/heading.jsx';
 export { default as List, ListItem } from './ui/modules/elements/lists/list.jsx';
@@ -71,11 +72,13 @@ export const layouts = {
 import Index from './views/pages/index.jsx';
 import Accordion from './views/pages/modules/elements/accordion.jsx';
 import Alert from './views/pages/modules/elements/alert.jsx';
+import Blockquote from './views/pages/modules/elements/blockquote.jsx';
 
 export const pages = {
     Index, 
     Accordion,
-    Alert
+    Alert,
+    Blockquote
 }
 
 // Render App
