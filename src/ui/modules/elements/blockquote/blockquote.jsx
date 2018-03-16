@@ -1,4 +1,4 @@
-import defaults from './blockquotes.json';
+import defaults from './blockquote.json';
 /**
  * Render Blockquote module
  *
@@ -10,13 +10,13 @@ export default class Blockquote extends React.Component {
         return (
             <Module {...this.props}>
                 <Component name='content'>{this.props.content}</Component>
-                {this.props.footer && <Component name='footer'>{this.props.footer}</Component>}
+                {this.props.footer && <Component name='footer' tag='footer'>{this.props.footer}</Component>}
             </Module>
         )
     }
 }
 
 Blockquote.defaultProps = {
-    name: defaults.blockquotes.name,
+    name: defaults.blockquote.name,
     object: true
 };

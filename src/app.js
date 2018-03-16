@@ -41,7 +41,7 @@ window.Component = Component;
 // Elements
 export { default as Accordion } from './ui/modules/elements/accordion/accordion.jsx';
 export { default as Alert } from './ui/modules/elements/alert/alert.jsx';
-export { default as Blockquote } from './ui/modules/elements/blockquotes/blockquote.jsx';
+export { default as Blockquote } from './ui/modules/elements/blockquote/blockquote.jsx';
 export { default as Button } from './ui/modules/elements/buttons/button.jsx';
 export { default as Heading } from './ui/modules/elements/heading/heading.jsx';
 export { default as List, ListItem } from './ui/modules/elements/lists/list.jsx';

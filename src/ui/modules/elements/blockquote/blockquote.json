@@ -1,5 +1,5 @@
 {
-    "blockquotes": {
+    "blockquote": {
         "name": "blockquote",
         "font-family": ["Georgia", "serif"],
         "-callout": {
