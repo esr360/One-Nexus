@@ -11,12 +11,16 @@
 
 ### Components
 
+> [Learn more](#) about components
+
 * content
 * section
 * title
 * toggle
 
 ### Modifiers
+
+> [Learn more](#) about modifiers
 
 * [...Global modifiers]()
 * [keepOpen](#keepopen)
@@ -359,6 +363,8 @@ Accordions can be nested:
 ```
 
 #### Panel.active
+
+> Set panel(s) to be active by default
 
 <table>
     <tr>

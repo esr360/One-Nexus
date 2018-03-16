@@ -11,10 +11,14 @@
 
 ### Components
 
+> [Learn more](#) about components
+
 * content
 * icon
 
 ### Modifiers
+
+> [Learn more](#) about modifiers
 
 * [...Global modifiers]()
 * [...alert.alerts](#configuation)
