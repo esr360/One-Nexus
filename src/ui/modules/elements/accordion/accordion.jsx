@@ -1,9 +1,7 @@
 import defaults from './accordion.json';
-
 /**
- * Render Accordion component
+ * Render Accordion module
  *
- * @param {String} props.name
  * @param {Array}  props.panels
  */
 export default class Accordion extends React.Component {

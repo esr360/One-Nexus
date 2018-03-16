@@ -1,6 +1,5 @@
 import * as UI from '../../../ui';
 import defaults from './alert.json';
-
 /**
  * Alert
  * 

@@ -1,9 +1,7 @@
 import defaults from './alert.json';
-
 /**
- * Render Alert component
+ * Render Alert module
  *
- * @prop {String} name
  * @prop {String} alert
  * @prop {Bool} bar
  * @prop {Bool} box
