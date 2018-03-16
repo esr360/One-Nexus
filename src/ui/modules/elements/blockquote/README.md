@@ -5,7 +5,6 @@
 * [Styles](#styles)
 * [Interactions](#interactions)
 * [Rendering](#rendering)
-* [Examples](#examples)
 
 ## Overview
 
