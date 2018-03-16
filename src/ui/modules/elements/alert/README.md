@@ -130,7 +130,6 @@ UI.alert(alert).dismiss();
     </tbody>
 </table>
 
-
 #### Examples
 
 ```js
@@ -155,7 +154,7 @@ UI.alert().dismiss();
 > [Learn more]() about rendering modules
 
 ```jsx
-<Alert>This is an error alert</Alert>
+<Alert>This is an alert</Alert>
 ```
 
 * [[...Global props]]()
