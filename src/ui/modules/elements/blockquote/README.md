@@ -19,7 +19,7 @@
 
 > [Learn more](#) about modifiers
 
-* [...Global modifiers]()
+* [[...Global modifiers]](#TODO)
 * [callout](#configuration)
 
 ### Quick Look
@@ -94,7 +94,7 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 * [[...Global props]]()
 * [Props.content](#propscontent)
 * [Props.footer](#propsfooter)
-* [Blockquote Alerts](#TODO)
+* [Blockquote Alerts](#blockquote-alerts)
 
 ### Props.content
 
