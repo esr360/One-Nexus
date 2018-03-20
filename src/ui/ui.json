@@ -16,6 +16,12 @@
             },
             "accordion": {
                 "foo": "bar"
+            },
+            "button": {
+                "palettes": [
+                    "brand", "greyscale", "alert", "social", 
+                    {"foo": "blue", "bar": "#FF5733"}
+                ]
             }
         }
     }

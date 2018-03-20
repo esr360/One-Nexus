@@ -19,8 +19,8 @@
 
 > [Learn more](#) about modifiers
 
-* [[...Global modifiers][(#TODO)
-* [...alert.alerts](#configuration)
+* [[...Global modifiers]][(#TODO)
+* [[...alert.alerts]](#configuration)
 
 ### Quick Look
 

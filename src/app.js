@@ -34,6 +34,8 @@ import { default as Component, Group, Wrapper } from '../../../Synergy/src/js/co
 
 window.Module = Module;
 window.Component = Component;
+window.Group = Group;
+window.Wrapper = Wrapper;
 
 // UI React Components
 //*****************************************************************
@@ -73,12 +75,14 @@ import Index from './views/pages/index.jsx';
 import Accordion from './views/pages/modules/elements/accordion.jsx';
 import Alert from './views/pages/modules/elements/alert.jsx';
 import Blockquote from './views/pages/modules/elements/blockquote.jsx';
+import Button from './views/pages/modules/elements/button.jsx';
 
 export const pages = {
     Index, 
     Accordion,
     Alert,
-    Blockquote
+    Blockquote,
+    Button
 }
 
 // Render App

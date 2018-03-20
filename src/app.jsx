@@ -19,6 +19,7 @@ export default class App extends React.Component {
                 <Route path='/accordion' component={app.pages.Accordion} />
                 <Route path='/alert' component={app.pages.Alert} />
                 <Route path='/blockquote' component={app.pages.Blockquote} />
+                <Route path='/button' component={app.pages.Button} />
             </Switch>
         )
     }
