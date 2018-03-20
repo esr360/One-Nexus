@@ -117,7 +117,7 @@ This will create a modifier for each color in each palette, with the color's key
 
 If you only want to create modifiers for specific colors in a certain palette, you can pass the keys like so:
 
-```json
+```js
 "palettes": [
     "brand", 
     {"greyscale": ["grey-1", "grey-3", "grey-4"]}, 
@@ -128,7 +128,7 @@ If you only want to create modifiers for specific colors in a certain palette, y
 
 You can also create new palettes:
 
-```json
+```js
 "palettes": [
     {"foo": "blue", "bar": "#FF5733"}
 ]
@@ -154,7 +154,7 @@ Using your new values like so:
 
 This option accepts an object and will create a modifier for each key using the key's value for the modifier's font-size:
 
-```json
+```js
 "sizes": {
     "size-1": "0.67em",
     "size-2": "0.83em",
