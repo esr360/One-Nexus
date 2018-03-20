@@ -126,11 +126,10 @@ If you only want to create modifiers for specific colors in a certain palette, y
 ]
 ```
 
-You can also pass new colors as an object:
+You can also create new palettes:
 
 ```json
 "palettes": [
-    "brand", "greyscale", "alert", "social", 
     {"foo": "blue", "bar": "#FF5733"}
 ]
 ```
