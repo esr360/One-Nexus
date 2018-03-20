@@ -1,5 +1,5 @@
 {
-    "buttons": {
+    "button": {
         "name": "button",
         "color": ["#COLOR", "greyscale", "white"],
         "background": ["#COLOR", "greyscale", "grey-4"],

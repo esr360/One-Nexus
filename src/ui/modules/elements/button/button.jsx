@@ -1,4 +1,4 @@
-import defaults from './buttons.json';
+import defaults from './button.json';
 
 /**
  * Render Button module
@@ -16,5 +16,5 @@ export default class Button extends React.Component {
 }
 
 Button.defaultProps = {
-    name: defaults.buttons.name
+    name: defaults.button.name
 };

@@ -1,14 +1,14 @@
-@import 'buttons.json';
-/// Buttons
+@import 'button.json';
+/// Button
 ///
 /// @access public
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin buttons($custom: custom('buttons')) {
+@mixin button($custom: custom('button')) {
 
     // Configuration
-    $buttons: config($buttons, $custom);
+    $button: config($button, $custom);
 
     //*************************************************************
     // Module
@@ -258,4 +258,4 @@
         border: none;
     }
 
-} // @mixin buttons
+} // @mixin button
