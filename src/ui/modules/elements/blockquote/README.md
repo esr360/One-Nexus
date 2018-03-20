@@ -143,7 +143,7 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 
 ### Blockquote Alerts
 
-> The Blockquote module works well in combination with the [Alert](#TODO) module ([learn more](#TODO))
+> The Blockquote module works well in combination with the [Alert](#TODO) module ([learn more](#TODO) about combining modules)
 
 ```jsx
 <app.Blockquote 

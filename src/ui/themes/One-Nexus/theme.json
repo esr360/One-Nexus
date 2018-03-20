@@ -10,7 +10,8 @@
         },
         "colors": {
             "brand": {
-                "brand-1": "black"
+                "brand-1": "black",
+                "brand-6": "grey"
             }
         },
         "core": {},

@@ -22,7 +22,7 @@
     /// Skeleton
     ///************************************************************
 
-    @include colors(map-get($theme, 'colors'));
+    @include colors;
     @include typography;
     @include grid;
     @include container;
