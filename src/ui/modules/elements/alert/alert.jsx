@@ -12,7 +12,7 @@ export default class Alert extends React.Component {
     dismiss() {}
 
     componentWillMount() {
-        const config = UI.get().config('alert');
+        const config = (global.UI && global.UI.config) ? global.UI.config.alert : null;
         const alerts = config ? Object.keys(config.alerts) : [];
 
         let modifiers = this.props.modifiers || [];

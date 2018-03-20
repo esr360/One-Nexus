@@ -5,7 +5,7 @@
         },
         "alert": {
         },
-        "buttons": {
+        "button": {
             "border-palettes": ["brand", "alert"]
         },
         "colors": {

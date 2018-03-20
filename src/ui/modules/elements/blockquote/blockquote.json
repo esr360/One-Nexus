@@ -6,12 +6,12 @@
             "padding": "0.5em 0.75em",
             "font-size": ["#FONT-SIZE", "size-5"],
             "border-left": "7px solid",
-            "border-left-color": ["#COLOR", "greyscale", "grey-2"]
+            "border-left-color": ["#COLOR", "opaque", "dark-1"]
         },
         "footer": {
             "font-size": ["#FONT-SIZE", "size-2"],
             "font-style": "italic",
-            "color": ["#COLOR", "greyscale", "grey-3"]
+            "color": ["#COLOR", "opaque", "dark-4"]
         }
     }
 }

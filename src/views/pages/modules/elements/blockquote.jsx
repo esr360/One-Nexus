@@ -11,6 +11,8 @@ export default class Blockquote extends React.Component {
                 <app.Blockquote content='Lorem ipsum dolor sit amet' footer='Someone Famous' />
                 <app.Blockquote callout content='Lorem ipsum dolor sit amet' footer='Someone Famous' />
 
+                <app.Blockquote Alert Button content='Lorem ipsum dolor sit amet' />
+
             </app.layouts.Base>
         )
     }

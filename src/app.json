@@ -36,8 +36,8 @@
                         "brand-1": "blue"
                     }
                 },
-                "accordions": {
-                    "fizz": "buzz"
+                "accordion": {
+                    "fizz": "foo"
                 }
             }
         }

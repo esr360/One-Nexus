@@ -1,6 +1,7 @@
 {
     "alert": {
         "name": "alert",
+        "methods": ["dismiss"],
         "alerts": {
             "error": {
                 "color": ["#COLOR", "alert", "error"],

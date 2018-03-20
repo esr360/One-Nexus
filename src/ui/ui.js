@@ -113,9 +113,28 @@ export { default as One_Nexus } from './themes/One-Nexus/theme';
 
 export default function(custom, callback) {
     config.ui = deepextend(config.ui, custom);
+    
     UI[formatThemeName(config.ui.theme)](config.ui.modules);
+
+    let modules = {};
+
+    // get module config
+    Object.entries(UI.config).forEach(entry => {
+        modules[entry[0]] = { config: entry[1] }
+    });
+
+    // get module methods
+    Object.keys(UI).map(entry => UI[entry]).forEach(method => {
+        if (typeof method === 'function' && UI.config[method.name]) {
+            modules[method.name].methods = method(UI.config[method.name]);
+        }
+    });
+
     window.UI = UI;
+
     window.Synergy.CssClassProps = config.ui['css-class-props'];
+    window.Synergy.config = UI.config.ui;
+    window.Synergy.modules = modules;
 }
 
 // Global Methods
