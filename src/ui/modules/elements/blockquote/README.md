@@ -33,10 +33,10 @@
 ###### HTML
 
 ```html
-<div class="blockquote">
+<blockquote class="blockquote">
     <div class="blockquote_content">This is a blockquote</div>
     <div class="blockquote_footer">Optional blockquote footer</div>
-</div>
+</blockquote>
 ```
 
 ## Configuration
@@ -94,6 +94,7 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 * [[...Global props]]()
 * [Props.content](#propscontent)
 * [Props.footer](#propsfooter)
+* [Blockquote Alerts](#TODO)
 
 ### Props.content
 
@@ -111,11 +112,11 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 ###### Output:
 
 ```html
-<div class="blockquote">
+<blockquote class="blockquote">
     <div class="blockquote_content">
         <div>Blockquote content</div>
     </div>
-</div>
+</blockquote>
 ```
 
 ### Props.footer
@@ -134,8 +135,30 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 ###### Output:
 
 ```html
-<div class="blockquote">
+<blockquote class="blockquote">
     <div class="blockquote_content">...</div>
     <div class="blockquote_footer">Optional blockquote footer</div>
-</div>
+</blockquote>
+```
+
+### Blockquote Alerts
+
+> The Blockquote module works well in combination with the [Alert](#TODO) module ([learn more](#TODO))
+
+```jsx
+<app.Blockquote 
+    Alert='success' 
+    callout 
+    content='Lorem ipsum dolor sit amet' 
+    footer='Someone Famous'
+/>
+```
+
+###### Output:
+
+```html
+<blockquote class="blockquote-callout alert-success">
+    <div class="blockquote_content">Lorem ipsum dolor sit amet</div>
+    <div class="blockquote_footer">Someone Famous</div>
+</blockquote>
 ```
