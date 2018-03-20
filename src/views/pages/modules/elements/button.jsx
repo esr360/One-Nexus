@@ -6,8 +6,10 @@ export default class Button extends React.Component {
             <app.layouts.Base {...app.config.app.views}>
 
                 <Group object>
-                    <app.Button size-4>Button</app.Button>
-                    <app.Button>Button</app.Button>
+                    <app.Button facebook>Button</app.Button>
+                    <app.Button brand-1>Button</app.Button>
+                    <app.Button grey-3>Button</app.Button>
+                    <app.Button success>Button</app.Button>
                 </Group>
 
             </app.layouts.Base>

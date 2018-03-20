@@ -72,16 +72,16 @@
         $max-font-size: $value;
 
         @include modifier($key) {
+            font-size: $value;
+
             @if map-get($font-sizes, 'fluid-scaling') == true {
                 @include fluid-scaling($min-font-size, $max-font-size, $min-vw, $max-vw);
             }
+
             @if map-get($font-sizes, 'fluid-scaling') == 'modifier' {
                 @include modifier('fluid') {
                     @include fluid-scaling($min-font-size, $max-font-size, $min-vw, $max-vw);
                 }
-            }
-            @else {
-                font-size: $value;
             }
         }
     }
@@ -89,8 +89,6 @@
 }
 
 @mixin fluid-scaling($min-font-size, $max-font-size, $min-vw, $max-vw) {
-    font-size: $min-font-size;
-
     @media screen and (min-width: $min-vw) {
         font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / (#{strip-unit($max-vw - $min-vw)} / 10)));
     }
