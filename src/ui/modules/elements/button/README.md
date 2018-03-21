@@ -84,7 +84,6 @@
         <tr>
             <th>Option</th>
             <th>Type</th>
-            <th>Description</th>
         </tr>
     </thead>
     <tbody>
