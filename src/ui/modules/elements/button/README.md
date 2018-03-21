@@ -82,7 +82,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Option &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+            <th>Option &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
             <th>Type</th>
         </tr>
     </thead>
