@@ -109,6 +109,32 @@
 }
 ```
 
+> Certain values from the above configuration are excluded from the below table ([learn more](#TODO))
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>section['vertical-rhythm']</code></td>
+            <td>The vertical specing between each separate accordion</td>
+        </tr>
+        <tr>
+            <td><code>animationSpeed</code></td>
+            <td>The duration (in `ms`) for the open/close animation</td>
+        </tr>
+        <tr>
+            <td><code>keepOpenModifier</code></td>
+            <td>The modifier to be used for accordions which allow for multiple open panels simultaneously</td>
+        </tr>
+    </tbody>
+</table>
+
 Pass custom options to the `accordion` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
 
 ```js

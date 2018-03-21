@@ -66,14 +66,66 @@
         "group-spacing": "0.5em",
         "group-stack": "break-1",
         "palettes": ["brand", "greyscale", "alert", "social"],
+        "border-palettes": false,
         "sizes": ["#TYPOGRAPHY-CONFIG", "sizes"],
         "active": {
             "background": ["#COLOR", "brand", "brand-1"],
             "color": ["#COLOR", "greyscale", "white"]
-        }
+        },
+        "greyscale-text-threshold": 77
     }
 }
 ```
+
+> Certain values from the above configuration are excluded from the below table ([learn more](#TODO))
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>disabled-opacity</code></td>
+            <td>The opacity to be used when a Button has the `disabled` modifier</td>
+        </tr>
+        <tr>
+            <td><code>round-radius</code></td>
+            <td>The border-radius to be used when a Button has the `round` modifier</td>
+        </tr>
+        <tr>
+            <td><code>group-spacing</code></td>
+            <td>The margin between each Button when contained within a <a href="#TODO">Group component</a></td>
+        </tr>
+        <tr>
+            <td><code>group-stack</code></td>
+            <td>The browser window width at which Buttons within a <a href="#TODO">Group component</a> should become stacked</td>
+        </tr>
+        <tr>
+            <td><code>palettes</code></td>
+            <td>Array of palettes to be used to generate Button colors</td>
+        </tr>
+        <tr>
+            <td><code>border-palettes</code></td>
+            <td>Array of palettes to be used to generate Button colors for Buttons with the `border` modifier (falsey value will default to the value used by the `palettes` option)</td>
+        </tr>
+        <tr>
+            <td><code>sizes</code></td>
+            <td>Object of font-size to use to generate Buttons</td>
+        </tr>
+        <tr>
+            <td><code>active</code></td>
+            <td>Styles for Buttons with a `active` modifier</td>
+        </tr>
+        <tr>
+            <td><code>greyscale-text-threshold</code></td>
+            <td>The background-color threshold at which dark text should be applied to a Button with a bright background color</td>
+        </tr>
+    </tbody>
+</table>
 
 Pass custom options to the `button` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
 

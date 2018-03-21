@@ -76,6 +76,32 @@
 }
 ```
 
+> Certain values from the above configuration are excluded from the below table ([learn more](#TODO))
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>alerts[alert].color</code></td>
+            <td>The background color for the specified alert</td>
+        </tr>
+        <tr>
+            <td><code>alerts[alert].icon</code></td>
+            <td><a href="http://fontawesome.io/icons/">FontAwesome</a> icon name to use as the alert icon</td>
+        </tr>
+        <tr>
+            <td><code>icon['enable-by-default']</code></td>
+            <td>Show an alert's icon by default (without passing a modifier/prop)</td>
+        </tr>
+    </tbody>
+</table>
+
 Pass custom options to the `alert` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
 
 ```js

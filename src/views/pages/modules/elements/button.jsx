@@ -8,8 +8,9 @@ export default class Button extends React.Component {
                 <Group object>
                     <app.Button facebook>Button</app.Button>
                     <app.Button brand-1>Button</app.Button>
-                    <app.Button grey-3>Button</app.Button>
+                    <app.Button grey-2>Button</app.Button>
                     <app.Button success>Button</app.Button>
+                    <app.Button success disabled>Button</app.Button>
                 </Group>
 
             </app.layouts.Base>

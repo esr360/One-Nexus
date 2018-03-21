@@ -36,15 +36,12 @@
         // Colors
         //*********************************************************
 
-        // Point at which light/dark background changes for greyscale buttons
-        $threshold: 77%;
-
         @each $key, $color in merge-palettes(this('palettes')) {
             @include modifier($key) {
                 background: $color;
 
                 @if is-grayscale($color, $key) {
-                    @if (lightness($color) < $threshold) {
+                    @if (lightness($color) < percentage(this('greyscale-text-threshold'))/100) {
                         color: this('color');
                     }
                     @else {

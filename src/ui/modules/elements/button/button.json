@@ -10,15 +10,17 @@
         "font-family": ["#CORE", "font-family"],
         "border-width": "1px",
         "border-style": "solid",
-        "disabled-opacity": "0.6",
+        "disabled-opacity": 0.6,
         "round-radius": "0.4em",
         "group-spacing": "0.5em",
         "group-stack": "break-1",
         "palettes": ["brand", "greyscale", "alert", "social"],
+        "border-palettes": false,
         "sizes": ["#TYPOGRAPHY-CONFIG", "sizes"],
         "active": {
             "background": ["#COLOR", "brand", "brand-1"],
             "color": ["#COLOR", "greyscale", "white"]
-        }
+        },
+        "greyscale-text-threshold": 77
     }
 }

@@ -43,6 +43,7 @@
 /// @return {map} - new map containing all desired colors and values
 @function merge-palettes($palettes) {
     $new-palette: ();
+
     @each $palette in $palettes {
         // is the value a string? (an entire palette)
         @if type-of($palette) == 'string' {
