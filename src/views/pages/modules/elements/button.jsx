@@ -10,7 +10,8 @@ export default class Button extends React.Component {
                     <app.Button brand-1>Button</app.Button>
                     <app.Button grey-2>Button</app.Button>
                     <app.Button success>Button</app.Button>
-                    <app.Button success disabled>Button</app.Button>
+                    <app.Button error disabled>Button</app.Button>
+                    <app.Button href='#'>Button</app.Button>
                 </Group>
 
             </app.layouts.Base>

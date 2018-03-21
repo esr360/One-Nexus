@@ -127,7 +127,7 @@
         }
 
         @include modifier('icon') {
-            padding: this('v-padding');
+            padding: 0.65em; // @TODO add to config
             text-align: center;
 
             .fa {

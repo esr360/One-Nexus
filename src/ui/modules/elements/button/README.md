@@ -82,8 +82,8 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Option &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-            <th>Type</th>
+            <th>Option</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>

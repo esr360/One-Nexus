@@ -5,9 +5,14 @@ import defaults from './button.json';
  * @prop {String} name
  */
 export default class Button extends React.Component {
+
+    componentWillMount() {
+        this.tag = this.props.href ? 'a' : false;
+    }
+
     render() {
         return (
-            <Module {...this.props}>
+            <Module tag={this.tag} {...this.props}>
                 {this.props.children}
             </Module>
         )
