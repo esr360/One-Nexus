@@ -82,7 +82,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th style="width:25%">Option</th>
+            <th>Option</th>
             <th>Type</th>
         </tr>
     </thead>
@@ -246,3 +246,9 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 ```
 
 * [[...Global props]](#TODO)
+
+<style>
+    th:first-child {
+        width: 28%;
+    }
+</style>
