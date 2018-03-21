@@ -120,7 +120,7 @@
             <td>Styles for Buttons with a `active` modifier</td>
         </tr>
         <tr>
-            <td><code>greyscale-text-threshold</code></td>
+            <td><code>greyscale‐text‐threshold</code></td>
             <td>The background-color threshold at which dark text should be applied to a Button with a bright background color</td>
         </tr>
     </tbody>
@@ -246,9 +246,3 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 ```
 
 * [[...Global props]](#TODO)
-
-<style>
-    th:first-child {
-        width: 28%;
-    }
-</style>
