@@ -1,5 +1,5 @@
-import * as app from '../../../ui';
-import defaults from './carousels.json';
+import * as UI from '../../../ui';
+import defaults from './carousel.json';
 /**
  * Carousel
  * 
@@ -8,9 +8,9 @@ import defaults from './carousels.json';
  * @param {(String|Object)} els
  * @param {Object} custom
  */
-export function carousel(els = 'carousel', custom = {}) {
+export function carousel(custom) {
 
-    custom = app.custom('carousels', custom);
+    const TARGET = UI.getTarget('carousel', defaults, custom);
 
     // Map Flickity elements to One-Nexus components
     const components = {
@@ -23,7 +23,7 @@ export function carousel(els = 'carousel', custom = {}) {
         'navigationItem-next': '.flickity-prev-next-button.next'
     };
 
-    app.Synergy(els, function(el, options) {
+    UI.Synergy(TARGET, (el, options) => {
         // Get options from data-attr (if applicable)
         if (el.hasAttribute('data-carousel')) {
             const dataOptions = JSON.parse(el.getAttribute('data-carousel'));
@@ -31,7 +31,7 @@ export function carousel(els = 'carousel', custom = {}) {
         }
 
         // Create new Flickity instance
-        const carousel = new app.Flickity(el, options.Flickity);
+        const carousel = new UI.Flickity(el, options.Flickity);
 
         carousel.on('select', () => {
             // add One-Nexus class to bullet
@@ -60,9 +60,9 @@ export function carousel(els = 'carousel', custom = {}) {
             els.forEach(el => el.classList.add(identifier));
         }
 
-    }, defaults, custom, app.evalConfig);
+    }, defaults, custom, UI.evalConfig);
 
-    app.config.carousels = app.parse(defaults.carousels, custom);
+    UI.config.carousel = UI.parse(defaults.carousel, custom);
 
     return exports;
 }

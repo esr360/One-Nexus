@@ -76,13 +76,37 @@ import Accordion from './views/pages/modules/elements/accordion.jsx';
 import Alert from './views/pages/modules/elements/alert.jsx';
 import Blockquote from './views/pages/modules/elements/blockquote.jsx';
 import Button from './views/pages/modules/elements/button.jsx';
+import Carousel from './views/pages/modules/elements/carousel.jsx';
+import Form from './views/pages/modules/elements/form.jsx';
+import Heading from './views/pages/modules/elements/heading.jsx';
+import Image from './views/pages/modules/elements/image.jsx';
+import List from './views/pages/modules/elements/list.jsx';
+import Modal from './views/pages/modules/elements/modal.jsx';
+import Paragraph from './views/pages/modules/elements/paragraph.jsx';
+import ProgressBar from './views/pages/modules/elements/progress-bar.jsx';
+import Table from './views/pages/modules/elements/table.jsx';
+import Tabs from './views/pages/modules/elements/tabs.jsx';
+import Tooltip from './views/pages/modules/elements/tooltip.jsx';
+import Well from './views/pages/modules/elements/well.jsx';
 
 export const pages = {
     Index, 
     Accordion,
     Alert,
     Blockquote,
-    Button
+    Button,
+    Carousel,
+    Form,
+    Heading,
+    Image,
+    List,
+    Modal,
+    Paragraph,
+    ProgressBar,
+    Table,
+    Tabs,
+    Tooltip,
+    Well
 }
 
 // Render App
@@ -102,8 +126,8 @@ export default locals => ReactDOMServer.renderToStaticMarkup(
 if (process.env.APP_ENV === 'web') {
     UI(config.app.ui);
 
-    ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app)
-    //ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app, () => UI(config.app.ui))
+    //ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app)
+    ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app, () => UI(config.app.ui))
 }
 
 // Call the UI function once the react app has loaded

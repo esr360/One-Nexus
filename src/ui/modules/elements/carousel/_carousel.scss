@@ -1,14 +1,13 @@
-@import 'carousels.json';
+@import 'carousel.json';
 /// Carousels
 ///
-/// @access public
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin carousels($custom: custom('carousels')) {
+@mixin carousel($custom: custom('carousel')) {
 
     // Configuration
-    $carousels: config($carousels, $custom);
+    $carousel: config($carousel, $custom);
 
     //*************************************************************
     // Module
@@ -61,6 +60,7 @@
             width: this('bullet', 'size');
             height: this('bullet', 'size');
             background-color: this('bullet', 'fill');
+
             @if this('bullet', 'disable') {
                 display: none;
             }
@@ -95,4 +95,4 @@
 
     } // module
 
-} // @mixin carousels
+} // @mixin carousel
