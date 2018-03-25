@@ -106,3 +106,11 @@ $sass-config-parser: map-get($ui, 'sass-config-parser');
 //*****************************************************************
 
 @import 'themes/One-Nexus/theme';
+
+@include module('myModule') {
+    @include component('myComponent') {
+        @include modifier('myModifier') {
+            content: 'fizzbuzz';
+        }
+    }
+}

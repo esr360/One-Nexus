@@ -10,7 +10,7 @@
 
 ### Components
 
-> [Learn more](#) about components
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
 
 * content
 * section
@@ -19,9 +19,9 @@
 
 ### Modifiers
 
-> [Learn more](#) about modifiers
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
 
-* [[...Global modifiers]](#TODO)
+* [[...Global modifiers]](https://github.com/esr360/One-Nexus/wiki/Global-Modifiers)
 * [keepOpen](#keepopen)
 
 #### KeepOpen
@@ -60,7 +60,7 @@
 
 ## Configuration
 
-> [Learn more]() about module configutation
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
 
 ```json
 {
@@ -109,7 +109,7 @@
 }
 ```
 
-> Certain values from the above configuration are excluded from the below table ([learn more](#TODO))
+> Certain values from the above configuration are excluded from the below table ([learn more](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules#documenting-configuration-properties))
 
 <table class="table">
     <thead>
@@ -148,11 +148,11 @@ Pass custom options to the `accordion` object in your theme's config file (e.g. 
 
 ## Styles
 
-> [Learn more]() about module styles
+> [Learn more](#TODO) about module styles
 
 ## Interactions
 
-> [Learn more]() about module interactions
+> [Learn more](#TODO) about module interactions
 
 * [Toggle](#toggle)
 * [Open](#open)
@@ -318,7 +318,7 @@ UI.accordion().close('.foo');
 
 ## Rendering
 
-> [Learn more]() about rendering modules
+> [Learn more](#TODO) about rendering modules
 
 ```jsx
 <Accordion panels={[
@@ -327,7 +327,7 @@ UI.accordion().close('.foo');
 ]} />
 ```
 
-* [[...Global props]]()
+* [[...Global props]](#TODO)
 * [Props.panels](#propspanels)
 
 ### Props.panels
