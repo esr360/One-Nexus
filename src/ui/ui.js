@@ -33,7 +33,7 @@ export {
 // Elements
 import accordion from './modules/elements/accordion/accordion';
 import alert from './modules/elements/alert/alert';
-import { carousel } from './modules/elements/carousel/carousel';
+import carousel from './modules/elements/carousel/carousel';
 import { modal } from './modules/elements/modals/modals';
 import { progressBar } from './modules/elements/progress-bars/progress-bars';
 import { tabs } from './modules/elements/tabs/tabs';

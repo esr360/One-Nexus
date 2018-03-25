@@ -45,6 +45,7 @@ export { default as Accordion } from './ui/modules/elements/accordion/accordion.
 export { default as Alert } from './ui/modules/elements/alert/alert.jsx';
 export { default as Blockquote } from './ui/modules/elements/blockquote/blockquote.jsx';
 export { default as Button } from './ui/modules/elements/button/button.jsx';
+export { default as Carousel } from './ui/modules/elements/carousel/carousel.jsx';
 export { default as Heading } from './ui/modules/elements/heading/heading.jsx';
 export { default as List, ListItem } from './ui/modules/elements/lists/list.jsx';
 export { default as Paragraph } from './ui/modules/elements/paragraph/paragraph.jsx';
