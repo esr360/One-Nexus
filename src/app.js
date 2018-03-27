@@ -29,8 +29,10 @@ import UI from './ui/ui';
 // Synergy
 //*****************************************************************
 
-import Module from '../../../Synergy/src/js/module.jsx';
-import { default as Component, Group, Wrapper } from '../../../Synergy/src/js/component.jsx';
+import { Module } from 'Synergy';
+import { Component, Group, Wrapper } from 'Synergy';
+//import Module from '../../../Synergy/src/js/module.jsx';
+//import { default as Component, Group, Wrapper } from '../../../Synergy/src/js/component.jsx';
 
 window.Module = Module;
 window.Component = Component;

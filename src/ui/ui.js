@@ -16,8 +16,8 @@ import deepextend from 'deep-extend';
 import Browser from 'detect-browser';
 import Flickity from 'flickity';
 import PubSub from 'pubsub-js';
-//import { Synergy } from 'Synergy';
-import Synergy from '../../../../Synergy/src/js/synergy';
+import { Synergy } from 'Synergy';
+//import Synergy from '../../../../Synergy/src/js/synergy';
 
 export { 
     Browser,
