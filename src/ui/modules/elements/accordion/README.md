@@ -148,11 +148,11 @@ Pass custom options to the `accordion` object in your theme's config file (e.g. 
 
 ## Styles
 
-> [Learn more](#TODO) about module styles
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
 
 ## Interactions
 
-> [Learn more](#TODO) about module interactions
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions) about module interactions
 
 * [Toggle](#toggle)
 * [Open](#open)

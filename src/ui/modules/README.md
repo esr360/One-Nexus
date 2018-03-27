@@ -1,8 +1,8 @@
 ### Documenting configuration properties
 
-When documenting the configuration properties for a module, some properties are excluded from documentation table. If a property is missing from the documentation table it is because of one or more of the following:
+When documenting the configuration properties for a module, some properties are excluded from the documentation table. If a property is missing from the documentation table, it is for one of the following reasons:
 
-* The property corresponds to a valid CSS property - this is treated as regular CSS. To learn more about the property, see the [Mozilla MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference).
+* The property corresponds to a valid CSS property - this is treated as regular CSS. To learn more about the property, look it up on the [Mozilla MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference).
 
 * The property is a [global property](#TODO) and is documented there.
 
