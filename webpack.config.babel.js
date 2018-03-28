@@ -28,7 +28,8 @@ export default function(env) {
             }
         }),
         new webpack.ProvidePlugin({
-            React: 'react'
+            React: 'react',
+            Constructor: ['../../../../../../../Synergy/src/js/module.jsx', 'Constructor']
         }),
         new CopyWebpackPlugin([
             { from: 'src/ui/images', to: 'assets/images' }

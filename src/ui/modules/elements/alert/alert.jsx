@@ -7,31 +7,32 @@ import defaults from './alert.json';
  * @prop {Bool} box
  * @prop {(Bool|Array)} icon
  */
-export default class Alert extends React.Component {
+export default class Alert extends Constructor {
     // Methods
     dismiss() {}
 
-    componentWillMount() {
-        const config = (global.UI && global.UI.config) ? global.UI.config.alert : null;
-        const alerts = config ? Object.keys(config.alerts) : [];
+    constructor(props) {
+        super(props);
 
-        let modifiers = this.props.modifiers || [];
-        let icon = this.props.icon;
+        this.alerts = this.config ? Object.keys(this.config.alerts) : [];
+        this.modifiers = this.props.modifiers || [];
+        this.icon = this.props.icon;
 
-        if (!Object.keys(this.props).some(prop => alerts.includes(prop))) {
-            modifiers.push(this.props.alert);   
+        if (!Object.keys(this.props).some(prop => this.alerts.includes(prop))) {
+            this.modifiers.push(this.props.alert);   
         }
 
-        if (config && (icon === undefined || icon === 'right') && !this.props.box && config.icon['enable-by-default']) {
-            icon = config.alerts[this.props.alert].icon;
+        if (this.config && this.hasCustomIcon(this.icon) && !this.props.box && this.config.icon['default-enable']) {
+            this.icon = this.config.alerts[this.props.alert].icon;
 
             Object.keys(this.props).forEach(prop => {
-                if (alerts.includes(prop)) icon = config.alerts[prop].icon;
+                if (this.alerts.includes(prop)) this.icon = this.config.alerts[prop].icon;
             });
         }
+    }
 
-        this.modifiers = modifiers;
-        this.icon = icon;
+    hasCustomIcon(icon) {
+        return icon === undefined || icon === 'right';
     }
 
     render() {

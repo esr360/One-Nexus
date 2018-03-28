@@ -64,7 +64,7 @@
         },
         "text-color": ["#COLOR", "greyscale", "white"],
         "icon": {
-            "enable-by-default": true
+            "default-enable": true
         },
         "-bar": {
             "padding": "0.85em"
@@ -95,7 +95,7 @@
             <td><a href="http://fontawesome.io/icons/">FontAwesome</a> icon name to use as the alert icon</td>
         </tr>
         <tr>
-            <td><code>icon['enable-by-default']</code></td>
+            <td><code>icon['default-enable']</code></td>
             <td>Show an alert's icon by default (without passing a modifier/prop)</td>
         </tr>
     </tbody>

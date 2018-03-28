@@ -28,7 +28,7 @@
                 "fizz": ["#COLOR", "brand", "brand-5"],
                 "alert": {
                     "icon": {
-                        "enable-by-default": true
+                        "default-enable": true
                     }
                 },
                 "colors": {

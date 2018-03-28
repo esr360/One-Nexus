@@ -29,12 +29,13 @@ import UI from './ui/ui';
 // Synergy
 //*****************************************************************
 
-import { Module } from 'Synergy';
-import { Component, Group, Wrapper } from 'Synergy';
-//import Module from '../../../Synergy/src/js/module.jsx';
-//import { default as Component, Group, Wrapper } from '../../../Synergy/src/js/component.jsx';
+// import { Module } from 'Synergy';
+// import { Component, Group, Wrapper } from 'Synergy';
+import { default as Module, _Module } from '../../../Synergy/src/js/module.jsx';
+import { default as Component, Group, Wrapper } from '../../../Synergy/src/js/component.jsx';
 
 window.Module = Module;
+window._Module = _Module;
 window.Component = Component;
 window.Group = Group;
 window.Wrapper = Wrapper;

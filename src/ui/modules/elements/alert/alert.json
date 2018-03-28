@@ -22,7 +22,7 @@
         },
         "text-color": ["#COLOR", "greyscale", "white"],
         "icon": {
-            "enable-by-default": true
+            "default-enable": true
         },
         "-bar": {
             "padding": "0.85em"

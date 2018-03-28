@@ -57,7 +57,7 @@ export default class AlertBars extends React.Component {
                             },
                             "text-color": ["#COLOR", "greyscale", "white"],
                             "icon": {
-                                "enable-by-default": true,
+                                "default-enable": true,
                                 "margin-right": "0.5em",
                                 "line-height": "1.25",
                                 "-right": {
@@ -80,7 +80,7 @@ export default class AlertBars extends React.Component {
                         <app.ListItem><b>icon:</b> <a href="https://fontawesome.com/v4.7.0/icons/" target="blank">FontAwesome</a> keyword for the alert's icon</app.ListItem>
                     </app.List>
 
-                    <app.Heading heading='5' size='4'>alert.icon['enable-by-default']</app.Heading>
+                    <app.Heading heading='5' size='4'>alert.icon['default-enable']</app.Heading>
 
                     <app.Well>
                         <app.Paragraph>Set to show the alert's icon by default</app.Paragraph>
