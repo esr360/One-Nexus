@@ -1,6 +1,7 @@
 {
     "accordion": {
         "name": "accordion",
+        "methods": ["toggle", "open", "close"],
         "section": {
             "vertical-rhythm": 0
         },

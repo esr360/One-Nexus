@@ -4,10 +4,7 @@ import defaults from './accordion.json';
  *
  * @param {Array}  props.panels
  */
-export default class Accordion extends React.Component {
-    // Methods
-    toggle() {}
-
+export default class Accordion extends Constructor {
     render() {
         return (
             <Module {...this.props}>

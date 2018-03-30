@@ -5,7 +5,7 @@ import defaults from './blockquote.json';
  * @param {*} props.content
  * @param {*} props.footer
  */
-export default class Blockquote extends React.Component {
+export default class Blockquote extends Constructor {
     render() {
         return (
             <Module {...this.props}>

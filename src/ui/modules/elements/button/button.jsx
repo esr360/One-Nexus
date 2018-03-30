@@ -4,7 +4,7 @@ import defaults from './button.json';
  *
  * @prop {String} name
  */
-export default class Button extends React.Component {
+export default class Button extends Constructor {
 
     componentWillMount() {
         this.tag = this.props.href ? 'a' : false;
