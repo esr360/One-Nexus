@@ -8,8 +8,6 @@ import defaults from './alert.json';
  * @prop {(Bool|Array)} icon
  */
 export default class Alert extends Constructor {
-    // Methods
-    dismiss() {}
 
     constructor(props) {
         super(props);

@@ -79,7 +79,7 @@
             "hover": {
                 "background": ["#COLOR", "brand", "brand-1"],
                 "color": ["#COLOR", "greyscale", "white"],
-                "component('toggle')": {
+                "component(toggle)": {
                     "color": ["#COLOR", "greyscale", "white"]
                 }
             },
@@ -88,7 +88,7 @@
                 "color": ["#COLOR", "greyscale", "white"],
                 "border-color": "transparent",
                 "border-radius": 0,
-                "component('toggle')": {
+                "component(toggle)": {
                     "color": ["#COLOR", "greyscale", "white"]
                 }
             }

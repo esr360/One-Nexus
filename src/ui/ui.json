@@ -22,6 +22,11 @@
                     "brand", "greyscale", "alert", "social", 
                     {"foo": "blue", "bar": "#FF5733"}
                 ]
+            },
+            "carousel": {
+                "navigationItem": {
+                    "disable": false
+                }
             }
         }
     }

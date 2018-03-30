@@ -34,7 +34,7 @@ export default function carousel(custom) {
  * @param {*} el 
  * @param {Object} options 
  */
-export function init(el, options, carousel) {
+export function init(el, options = UI.config.carousel, carousel) {
 
     // Map Flickity elements to One-Nexus components
     const components = {
