@@ -1,6 +1,4 @@
-# One-Nexus Carousel
-
-> The One-Nexus carousels use [Flickity](https://flickity.metafizzy.co/)
+# One-Nexus Form
 
 * [Overview](#overview)
 * [Configuration](#configuration)
@@ -9,6 +7,24 @@
 * [Rendering](#rendering)
 
 ## Overview
+
+### Quick Look
+
+###### React
+
+```jsx
+<Carousel slides={[
+    <img src="https://picsum.photos/640/480" />
+]} />
+```
+
+###### HTML
+
+```html
+<div class="carousel">
+    <img src="https://picsum.photos/640/480" />
+</div>
+```
 
 ### Components
 
@@ -27,36 +43,6 @@
 
 > Removes the carousel pagination bullets
 
-#### Hide-navigation
-
-> Removes the carousel navigation arrows
-
-### Quick Look
-
-###### React
-
-```jsx
-<Carousel slides={[
-    <img src="https://picsum.photos/640/480" />,
-    <img src="https://picsum.photos/640/480" />,
-    <img src="https://picsum.photos/640/480" />,
-    <img src="https://picsum.photos/640/480" />,
-    <img src="https://picsum.photos/640/480" />
-]} />
-```
-
-###### HTML
-
-```html
-<div class="carousel">
-    <img src="https://picsum.photos/640/480" />
-    <img src="https://picsum.photos/640/480" />
-    <img src="https://picsum.photos/640/480" />
-    <img src="https://picsum.photos/640/480" />
-    <img src="https://picsum.photos/640/480" />
-</div>
-```
-
 ## Configuration
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
@@ -68,24 +54,8 @@
         "navigationItem": {
             "disable": false,
             "size": ["#FONT-SIZE", "size-10"],
-            "background-color": ["#COLOR", "opaque", "light-8"],
-            "arrow-color": ["#COLOR", "opaque", "dark-4"],
-            "arrow-size": "40%",
-            "shape": "circle",
-            "transition": ["#CORE", "transition"]
+            "background-color": ["#COLOR", "opaque", "light-8"]
         },
-        "bullet": {
-            "disable": false,
-            "size": "10px",
-            "gutter": "25px",
-            "fill": ["#COLOR", "opaque", "dark-4"],
-            "active-fill": ["#COLOR", "brand", "brand-3"],
-            "transition": ["#CORE", "transition"]
-        },
-        "Flickity": {
-            "cellAlign": "left",
-            "contain": true
-        }
     }
 }
 ```
@@ -105,44 +75,8 @@
             <td>Hide navigation buttons by default</td>
         </tr>
         <tr>
-            <td><code>navigationItem.size</code></td>
-            <td>The size of the next/previous buttons</td>
-        </tr>
-        <tr>
-            <td><code>navigationItem['arrow-color']</code></td>
-            <td>The arrow color of the next/previous buttons</td>
-        </tr>
-        <tr>
-            <td><code>navigationItem['arrow-size']</code></td>
-            <td>The size of the next/previous buttons</td>
-        </tr>
-        <tr>
-            <td><code>navigationItem.shape</code></td>
-            <td>The shape of the next/previous buttons [circle|square]</td>
-        </tr>
-        <tr>
-            <td><code>bullets.disable</code></td>
-            <td>Hide the pagination/bullets by default</td>
-        </tr>
-        <tr>
             <td><code>bullets.size</code></td>
             <td>The size for pagination bullets</td>
-        </tr>
-        <tr>
-            <td><code>bullets.gutter</code></td>
-            <td>The space between the carousel viewport and the pagination</td>
-        </tr>
-        <tr>
-            <td><code>bullets.fill</code></td>
-            <td>The color for pagination bullets</td>
-        </tr>
-        <tr>
-            <td><code>bullets['active-fill']</code></td>
-            <td>The color for the active pagination bullet</td>
-        </tr>
-        <tr>
-            <td><code>Flickity</code></td>
-            <td>Object of [Flickity options](https://flickity.metafizzy.co/options.html) to pass to carousels</td>
         </tr>
     </tbody>
 </table>
@@ -166,8 +100,6 @@ Pass custom options to the `carousel` object in your theme's config file (e.g. [
 ## Interactions
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions) about module interactions
-
-> See the [Flickity methods](https://flickity.metafizzy.co/api.html) for available interactions
 
 ### Flickity method example
 
@@ -196,7 +128,6 @@ UI.carousel(carousel).Flickity.previous();
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [Props.slides](#propsslides)
-* [Props.options](#propsoptions)
 
 ### Props.slides
 
@@ -224,33 +155,5 @@ const slides = [
     <img src="https://picsum.photos/640/480" />
     <div>Carousel slide</div>
     <img src="https://picsum.photos/640/480" />
-</div>
-```
-
-### Props.options
-
-> Object of [Flickity options](https://flickity.metafizzy.co/options.html) to pass to carousel
-
-<table>
-    <tr>
-        <td><b>Type</b></td>
-        <td><code>Object</code></td>
-    </tr>
-</table>
-
-```jsx
-const options = {
-    contain: true, 
-    initialIndex: 1
-}
-
-<Carousel slides={...} options={options} />
-```
-
-###### Output
-
-```html
-<div class="carousel" data-carousel='{"contain": true, "initialIndex": 1}'>
-    ...
 </div>
 ```

@@ -21,8 +21,8 @@ export default class App extends React.Component {
                 <Route path='/blockquote' component={app.pages.Blockquote} />
                 <Route path='/button' component={app.pages.Button} />
                 <Route path='/carousel' component={app.pages.Carousel} />
-                {/* <Route path='/form' component={app.pages.Form} />
-                <Route path='/heading' component={app.pages.Heading} />
+                <Route path='/form' component={app.pages.Form} />
+                {/* <Route path='/heading' component={app.pages.Heading} />
                 <Route path='/image' component={app.pages.Image} />
                 <Route path='/list' component={app.pages.List} />
                 <Route path='/modal' component={app.pages.Modal} />
