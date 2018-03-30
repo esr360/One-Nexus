@@ -10,16 +10,16 @@
 
 ### Components
 
-> [Learn more](#) about components
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
 
 * content
 * footer
 
 ### Modifiers
 
-> [Learn more](#) about modifiers
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
 
-* [[...Global modifiers]](#TODO)
+* [[...Global modifiers]](https://github.com/esr360/One-Nexus/wiki/Global-Modifiers)
 * [callout](#configuration)
 
 ### Quick Look
@@ -41,7 +41,7 @@
 
 ## Configuration
 
-> [Learn more]() about module configutation
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
 
 ```json
 {
@@ -77,7 +77,7 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 
 ## Styles
 
-> [Learn more]() about module styles
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
 
 ## Interactions
 
@@ -85,13 +85,13 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 
 ## Rendering
 
-> [Learn more]() about rendering modules
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
 ```jsx
 <Blockquote content='This is a blockquote' />
 ```
 
-* [[...Global props]]()
+* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [Props.content](#propscontent)
 * [Props.footer](#propsfooter)
 * [Blockquote Alerts](#blockquote-alerts)
@@ -143,7 +143,7 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 
 ### Blockquote Alerts
 
-> The Blockquote module works well in combination with the [Alert](#TODO) module ([learn more](#TODO) about combining modules)
+> The Blockquote module works well in combination with the [Alert](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/elements/alert) module ([learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#combining-modules) about combining modules)
 
 ```jsx
 <app.Blockquote 
