@@ -179,7 +179,7 @@ UI.accordion(parent).toggle(target);
     <tbody>
         <tr>
             <td>Parent</td>
-            <td><a href="#">Synergy selector</a></td>
+            <td><a href="https://github.com/esr360/Synergy/wiki/JavaScript#parameter---els">Synergy selector</a></td>
             <td>The accordion(s) on which to toggle sections</td>
         </tr>
         <tr>
@@ -237,7 +237,7 @@ UI.accordion(parent).open(target);
     <tbody>
         <tr>
             <td>Parent</td>
-            <td><a href="#">Synergy selector</a></td>
+            <td><a href="https://github.com/esr360/Synergy/wiki/JavaScript#parameter---els">Synergy selector</a></td>
             <td>The accordion on which to open sections</td>
         </tr>
         <tr>
@@ -286,7 +286,7 @@ UI.accordion(parent).close(target);
     <tbody>
         <tr>
             <td>Parent</td>
-            <td><a href="#">Synergy selector</a></td>
+            <td><a href="https://github.com/esr360/Synergy/wiki/JavaScript#parameter---els">Synergy selector</a></td>
             <td>The accordion on which to close sections</td>
         </tr>
         <tr>
