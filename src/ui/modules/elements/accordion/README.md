@@ -8,26 +8,6 @@
 
 ## Overview
 
-### Components
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
-
-* content
-* section
-* title
-* toggle
-
-### Modifiers
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
-
-* [[...Global modifiers]](https://github.com/esr360/One-Nexus/wiki/Global-Modifiers)
-* [keepOpen](#keepopen)
-
-#### KeepOpen
-
-> Allows multiple accordion panels to be open simultaneously
-
 ### Quick Look
 
 ###### React
@@ -57,6 +37,26 @@
     </div>
 </div>
 ```
+
+### Components
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
+
+* content
+* section
+* title
+* toggle
+
+### Modifiers
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
+
+* [[...Global modifiers]](https://github.com/esr360/One-Nexus/wiki/Global-Modifiers)
+* [keepOpen](#keepopen)
+
+#### KeepOpen
+
+> Allows multiple accordion panels to be open simultaneously
 
 ## Configuration
 
@@ -318,6 +318,8 @@ UI.accordion().close('.foo');
 
 ## Rendering
 
+> If you are *not* using React, simply look to the 'Output' section of any example
+
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
 ```jsx
@@ -348,7 +350,7 @@ const panels = [
 <Accordion panels={panels} />
 ```
 
-###### Output:
+###### Output
 
 ```html
 <div class="accordion">
@@ -424,7 +426,7 @@ Accordions can be nested:
 ]} />
 ```
 
-###### Output:
+###### Output
 
 ```html
 <div class="accordion">

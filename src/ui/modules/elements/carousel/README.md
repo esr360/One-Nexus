@@ -10,30 +10,7 @@
 
 ## Overview
 
-### Components
-
-> [Learn more](#) about components
-
-* slide
-* navigationItem
-* pagination
-* bullet
-
-### Modifiers
-
-> [Learn more](#) about modifiers
-
-* [[...Global modifiers]](#TODO)
-* [hide-pagination](#TODO)
-* [hide-navigation](#TODO)
-
-#### Hide-pagination
-
-> Removes the carousel pagination bullets
-
-#### Hide-navigation
-
-> Removes the carousel navigation arrows
+### Quick Look
 
 ###### React
 
@@ -59,9 +36,34 @@
 </div>
 ```
 
+### Components
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
+
+* slide
+* navigationItem
+* pagination
+* bullet
+
+### Modifiers
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
+
+* [[...Global modifiers]](https://github.com/esr360/One-Nexus/wiki/Global-Modifiers)
+* [hide-pagination](#hide-pagination)
+* [hide-navigation](#hide-navigation)
+
+#### Hide-pagination
+
+> Removes the carousel pagination bullets
+
+#### Hide-navigation
+
+> Removes the carousel navigation arrows
+
 ## Configuration
 
-> [Learn more]() about module configutation
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
 
 ```json
 {
@@ -92,7 +94,7 @@
 }
 ```
 
-> Certain values from the above configuration are excluded from the below table ([learn more](#TODO))
+> Certain values from the above configuration are excluded from the below table ([learn more](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules#documenting-configuration-properties))
 
 <table class="table">
     <thead>
@@ -163,11 +165,11 @@ Pass custom options to the `carousel` object in your theme's config file (e.g. [
 
 ## Styles
 
-> [Learn more]() about module styles
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
 
 ## Interactions
 
-> [Learn more]() about module interactions
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions) about module interactions
 
 > See the [Flickity methods](https://flickity.metafizzy.co/api.html) for available interactions
 
@@ -186,7 +188,7 @@ UI.carousel(carousel).Flickity.previous();
 
 > If you are *not* using React, simply look to the 'Output' section of any example
 
-> [Learn more]() about rendering modules
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
 ```jsx
 <Carousel slides={[
@@ -196,9 +198,9 @@ UI.carousel(carousel).Flickity.previous();
 ]} />
 ```
 
-* [[...Global props]]()
-* [Props.slides](#TODO)
-* [Props.options](#TODO)
+* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [Props.slides](#propsslides)
+* [Props.options](#propsoptions)
 
 ### Props.slides
 
@@ -219,12 +221,12 @@ const slides = [
 <Carousel slides={slides} />
 ```
 
-###### Output:
+###### Output
 
 ```html
 <div class="carousel">
     <img src="https://picsum.photos/640/480" />
-    <img src="https://picsum.photos/640/480" />
+    <div>Carousel slide</div>
     <img src="https://picsum.photos/640/480" />
 </div>
 ```
@@ -249,7 +251,7 @@ const options = {
 <Carousel slides={...} options={options} />
 ```
 
-###### Output:
+###### Output
 
 ```html
 <div class="carousel" data-carousel='{"contain": true, "initialIndex": 1}'>

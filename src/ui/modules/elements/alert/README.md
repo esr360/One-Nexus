@@ -8,20 +8,6 @@
 
 ## Overview
 
-### Components
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
-
-* content
-* icon
-
-### Modifiers
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
-
-* [[...Global modifiers]](https://github.com/esr360/One-Nexus/wiki/Global-Modifiers)
-* [[...alert.alerts]](#configuration)
-
 ### Quick Look
 
 ###### React
@@ -35,6 +21,20 @@
 ```html
 <div class="alert-bar">This is an alert</div>
 ```
+
+### Components
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
+
+* content
+* icon
+
+### Modifiers
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
+
+* [[...Global modifiers]](https://github.com/esr360/One-Nexus/wiki/Global-Modifiers)
+* [[...alert.alerts]](#configuration)
 
 ## Configuration
 
@@ -175,6 +175,8 @@ UI.alert().dismiss();
 
 ## Rendering
 
+> If you are *not* using React, simply look to the 'Output' section of any example
+
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
 ```jsx
@@ -206,7 +208,7 @@ UI.alert().dismiss();
 <Alert bar>This is an alert</Alert>
 ```
 
-###### Output:
+###### Output
 
 ```html
 <div class="alert-bar">This is an alert</div>
@@ -231,7 +233,7 @@ UI.alert().dismiss();
 <Alert box>This is an alert</Alert>
 ```
 
-###### Output:
+###### Output
 
 ```html
 <div class="alert-box">This is an alert</div>
@@ -258,7 +260,7 @@ UI.alert().dismiss();
 <Alert alert='success'>This is an alert</Alert>
 ```
 
-###### Output:
+###### Output
 
 ```html
 <div class="alert-bar-success">This is an alert</div>
@@ -285,7 +287,7 @@ UI.alert().dismiss();
 <Alert icon='exclamation-triangle'>This is an alert</Alert>
 ```
 
-###### Output:
+###### Output
 
 ```html
 <div class="alert-bar">
@@ -299,7 +301,7 @@ UI.alert().dismiss();
 <Alert icon={['exclamation-triangle', 'right']}>This is an alert</Alert>
 ```
 
-###### Output:
+###### Output
 
 ```html
 <div class="alert-bar">
@@ -315,7 +317,7 @@ UI.alert().dismiss();
 <Alert close>This is an alert</Alert>
 ```
 
-###### Output:
+###### Output
 
 ```html
 <div class="alert-bar">

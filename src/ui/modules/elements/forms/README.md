@@ -1,129 +1,256 @@
-## Forms
+# One-Nexus Carousel
 
-##### Components
+> The One-Nexus carousels use [Flickity](https://flickity.metafizzy.co/)
 
-* label
-* group(-compound, -has-icon, -validate)
-* input
-* icon
-* bullet
+* [Overview](#overview)
+* [Configuration](#configuration)
+* [Styles](#styles)
+* [Interactions](#interactions)
+* [Rendering](#rendering)
 
-##### Modifiers
+## Overview
 
-* _This module has no modifiers_
+### Components
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
+
+* slide
+
+### Modifiers
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
+
+* [[...Global modifiers]](https://github.com/esr360/One-Nexus/wiki/Global-Modifiers)
+* [hide-pagination](#hide-pagination)
+
+#### Hide-pagination
+
+> Removes the carousel pagination bullets
+
+#### Hide-navigation
+
+> Removes the carousel navigation arrows
 
 ### Quick Look
 
-```html
-<form class="form">
-    <div class="form_group">
-        <label class="form_label">Your Name</label>
-        <input class="form_input" type="text" placeholder="E.g. John Doe">
-    </div>
-    <div class="form_group">
-        <label class="form_label">Your Message</label>
-        <textarea class="form_input" placeholder="Enter your message..."></textarea>
-    </div>
-    <button class="button" type="submit">Submit</button>
-</form>
+###### React
+
+```jsx
+<Carousel slides={[
+    <img src="https://picsum.photos/640/480" />,
+    <img src="https://picsum.photos/640/480" />,
+    <img src="https://picsum.photos/640/480" />,
+    <img src="https://picsum.photos/640/480" />,
+    <img src="https://picsum.photos/640/480" />
+]} />
 ```
 
-### Options
+###### HTML
 
-For default values view the [`forms.json`](forms.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
+```html
+<div class="carousel">
+    <img src="https://picsum.photos/640/480" />
+    <img src="https://picsum.photos/640/480" />
+    <img src="https://picsum.photos/640/480" />
+    <img src="https://picsum.photos/640/480" />
+    <img src="https://picsum.photos/640/480" />
+</div>
+```
+
+## Configuration
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
+
+```json
+{
+    "carousel": {
+        "name": "carousel",
+        "navigationItem": {
+            "disable": false,
+            "size": ["#FONT-SIZE", "size-10"],
+            "background-color": ["#COLOR", "opaque", "light-8"],
+            "arrow-color": ["#COLOR", "opaque", "dark-4"],
+            "arrow-size": "40%",
+            "shape": "circle",
+            "transition": ["#CORE", "transition"]
+        },
+        "bullet": {
+            "disable": false,
+            "size": "10px",
+            "gutter": "25px",
+            "fill": ["#COLOR", "opaque", "dark-4"],
+            "active-fill": ["#COLOR", "brand", "brand-3"],
+            "transition": ["#CORE", "transition"]
+        },
+        "Flickity": {
+            "cellAlign": "left",
+            "contain": true
+        }
+    }
+}
+```
+
+> Certain values from the above configuration are excluded from the below table ([learn more](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules#documenting-configuration-properties))
 
 <table class="table">
     <thead>
         <tr>
             <th>Option</th>
             <th>Description</th>
-            <th>Default</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><code>name</code></td>
-            <td>The name used when generating the CSS selector</td>
-            <td><code>'form'</code></td>
+            <td><code>navigationItem.disable</code></td>
+            <td>Hide navigation buttons by default</td>
         </tr>
         <tr>
-            <td><code>valid-color</code></td>
-            <td>The color for valid HTML5 inputs</td>
-            <td><code>color('validation', 'valid')</code></td>
+            <td><code>navigationItem.size</code></td>
+            <td>The size of the next/previous buttons</td>
         </tr>
         <tr>
-            <td><code>invalid-color</code></td>
-            <td>The color for invalid HTML5 inputs</td>
-            <td><code>color('validation', 'valid')</code></td>
+            <td><code>navigationItem['arrow-color']</code></td>
+            <td>The arrow color of the next/previous buttons</td>
+        </tr>
+        <tr>
+            <td><code>navigationItem['arrow-size']</code></td>
+            <td>The size of the next/previous buttons</td>
+        </tr>
+        <tr>
+            <td><code>navigationItem.shape</code></td>
+            <td>The shape of the next/previous buttons [circle|square]</td>
+        </tr>
+        <tr>
+            <td><code>bullets.disable</code></td>
+            <td>Hide the pagination/bullets by default</td>
+        </tr>
+        <tr>
+            <td><code>bullets.size</code></td>
+            <td>The size for pagination bullets</td>
+        </tr>
+        <tr>
+            <td><code>bullets.gutter</code></td>
+            <td>The space between the carousel viewport and the pagination</td>
+        </tr>
+        <tr>
+            <td><code>bullets.fill</code></td>
+            <td>The color for pagination bullets</td>
+        </tr>
+        <tr>
+            <td><code>bullets['active-fill']</code></td>
+            <td>The color for the active pagination bullet</td>
+        </tr>
+        <tr>
+            <td><code>Flickity</code></td>
+            <td>Object of [Flickity options](https://flickity.metafizzy.co/options.html) to pass to carousels</td>
         </tr>
     </tbody>
 </table>
 
-Pass custom options to the `forms` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `carousel` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
 
-```json
+```js
 {
     "app": {
-        "forms": {
-            "valid-color": "#00cbff",
-            "invalid-color": "#8700ff"
+        "carousel": {
+            ...
         }
     }
 }
 ```
 
-### Sass
+## Styles
 
-Load the carousel styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `forms()` mixin:
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
 
-```scss
-@import '../../app';
-@import './config.json';
+## Interactions
 
-@include forms();
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions) about module interactions
+
+> See the [Flickity methods](https://flickity.metafizzy.co/api.html) for available interactions
+
+### Flickity method example
+
+```js
+// This should refer to an instantiated One-Nexus carousel
+const carousel = document.getElementById('foo');
+
+// Flickity API
+UI.carousel(carousel).Flickity.next();
+UI.carousel(carousel).Flickity.previous();
 ```
 
-### Examples
+## Rendering
 
-#### With HTML5 Validation
+> If you are *not* using React, simply look to the 'Output' section of any example
 
-```html
-<form class="form">
-    <div class="form_group-validate">
-        <input required type="text" class="form_input" placeholder="E.g. John Doe">
-        <label class="form_label">Your Name</label>
-    </div>
-    <div class="form_group-validate">
-        <textarea required class="form_input" placeholder="Enter your message..."></textarea>
-        <label class="form_label">Your Message</label>
-    </div>
-    <button type="submit" class="button">Submit</button>
-</form>
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
+
+```jsx
+<Carousel slides={[
+    <img src="https://picsum.photos/640/480" />,
+    <img src="https://picsum.photos/640/480" />,
+    <img src="https://picsum.photos/640/480" />
+]} />
 ```
 
-#### Form Group With Icon
+* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [Props.slides](#propsslides)
+* [Props.options](#propsoptions)
 
-```html
-<form class="form">
-    <label class="form_label">Username</label>
-    <div class="form_group-has-icon">
-        <input type="text" class="form_input" placeholder="Ex: SkyUX">
-        <i class="form_icon fa fa-user"></i>
-    </div>
-</form>
+### Props.slides
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>Array</code></td>
+    </tr>
+</table>
+
+```jsx
+const slides = [
+    <img src="https://picsum.photos/640/480" />,
+    <div>Carousel slide</div>,
+    <img src="https://picsum.photos/640/480" />
+]
+
+<Carousel slides={slides} />
 ```
 
-#### Tighter Form Groups (with icons)
+###### Output
 
 ```html
-<form class="form">
-    <div class="form_group-compound-has-icon">
-        <input type="text" class="form_input" placeholder="Username">
-        <i class="form_icon fa fa-user"></i>
-    </div>
-    <div class="form_group-compound-has-icon">
-        <input type="password" class="form_input" placeholder="••••••••">
-        <i class="form_icon fa fa-key"></i>
-    </div>
-</form>
+<div class="carousel">
+    <img src="https://picsum.photos/640/480" />
+    <div>Carousel slide</div>
+    <img src="https://picsum.photos/640/480" />
+</div>
+```
+
+### Props.options
+
+> Object of [Flickity options](https://flickity.metafizzy.co/options.html) to pass to carousel
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>Object</code></td>
+    </tr>
+</table>
+
+```jsx
+const options = {
+    contain: true, 
+    initialIndex: 1
+}
+
+<Carousel slides={...} options={options} />
+```
+
+###### Output
+
+```html
+<div class="carousel" data-carousel='{"contain": true, "initialIndex": 1}'>
+    ...
+</div>
 ```

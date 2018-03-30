@@ -8,20 +8,6 @@
 
 ## Overview
 
-### Components
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
-
-* content
-* footer
-
-### Modifiers
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
-
-* [[...Global modifiers]](https://github.com/esr360/One-Nexus/wiki/Global-Modifiers)
-* [callout](#configuration)
-
 ### Quick Look
 
 ###### React
@@ -38,6 +24,20 @@
     <div class="blockquote_footer">Optional blockquote footer</div>
 </blockquote>
 ```
+
+### Components
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
+
+* content
+* footer
+
+### Modifiers
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
+
+* [[...Global modifiers]](https://github.com/esr360/One-Nexus/wiki/Global-Modifiers)
+* [callout](#configuration)
 
 ## Configuration
 
@@ -85,6 +85,8 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 
 ## Rendering
 
+> If you are *not* using React, simply look to the 'Output' section of any example
+
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
 ```jsx
@@ -109,7 +111,7 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 <Blockquote content={<div>Blockquote content</div>} />
 ```
 
-###### Output:
+###### Output
 
 ```html
 <blockquote class="blockquote">
@@ -132,7 +134,7 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 <Blockquote content={...} footer='Optional blockquote footer'} />
 ```
 
-###### Output:
+###### Output
 
 ```html
 <blockquote class="blockquote">
@@ -154,7 +156,7 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 />
 ```
 
-###### Output:
+###### Output
 
 ```html
 <blockquote class="blockquote-callout alert-success">
