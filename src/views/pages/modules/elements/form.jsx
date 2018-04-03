@@ -8,9 +8,10 @@ export default class Form extends React.Component {
                 <div class="row object">
                     <div class="span-6">
 
-                        <app.Form inputs={[
+                        <app.Form fields={[
                             {
                                 type: 'text',
+                                id: 'userName',
                                 name: 'fizzBuzz',
                                 label: 'Username',
                                 placeholder: 'E.g. SkyUX',
@@ -19,6 +20,7 @@ export default class Form extends React.Component {
                             },
                             {
                                 type: 'password',
+                                id: 'userPassword',
                                 label: 'Password',
                                 placeholder: '••••••••',
                                 icon: 'key',
@@ -26,13 +28,19 @@ export default class Form extends React.Component {
                             },
                             {
                                 type: 'textarea',
-                                placeholder: 'Enter your message...'
-                            },
-                            {
-                                type: 'submit',
-                                text: 'Submit'
+                                id: 'textarea',
+                                placeholder: 'Enter your message...',
+                                rules: [
+                                    // {
+                                    //     testField: 'userPassword',
+                                    //     condition: field => field.val !== 'foo'
+                                    // },
+                                    // ['userPassword', field => field.val !== 'foo'],
+                                    // ['IdForSomeOtherCheckbox', true],
+                                    (userName, userPassword) => (userName.value === userPassword.value)
+                                ]
                             }
-                        ]} />
+                        ]} submit='Login' />
 
                         <form class="form">
                             <div class="form_group">
