@@ -1,13 +1,13 @@
-@import 'forms.json';
-/// Forms
+@import 'form.json';
+/// Form
 ///
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin forms($custom: custom('forms')) {
+@mixin form($custom: custom('form')) {
 
     // Configuration
-    $forms: config($forms, $custom);
+    $form: config($form, $custom);
 
     //*************************************************************
     // Module
@@ -123,4 +123,4 @@
 
     } // module
 
-} // @mixin forms
+} // @mixin form

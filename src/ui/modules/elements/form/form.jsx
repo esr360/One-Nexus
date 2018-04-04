@@ -1,4 +1,4 @@
-import defaults from './forms.json';
+import defaults from './form.json';
 /**
  * Render Form module
  */
@@ -31,7 +31,25 @@ export default class Form extends Constructor {
             'week'
         ]
 
-        this.onBlur = subject => {
+        this.validate = () => {
+            this.props.fields.forEach((properties, index) => {
+                const target = document.getElementById(properties.id);
+
+                if (properties.validation) {
+                    let isValid = true;
+
+                    properties.validation.forEach(rule => {
+                        if (typeof rule === 'function') {
+                            if (!rule(target)) isValid = false;
+                        }
+                    });
+
+                    console.log(isValid);
+                }
+            });
+        }
+
+        this.setState = () => {
             this.props.fields.forEach((properties, index) => {
                 const target = document.getElementById(properties.id);
 
@@ -51,7 +69,8 @@ export default class Form extends Constructor {
                             });
 
                             if (!rule(...fields)) action = 'hide';
-                        }
+                        } 
+                        else if (!rule) action = 'hide';
                     });
 
                     target.style.display = (action === 'hide') ? 'none' : 'block';
@@ -60,31 +79,46 @@ export default class Form extends Constructor {
         }
     }
 
+    componentDidMount() {
+        this.validate();
+        this.setState();
+    }
+
     render() {
         return (
             <Module {...this.props}>
                 {this.props.fields.map((properties, index) => (
-                    <Component name='group'>
+                    <Component name='group' key={index}>
                         {properties.label && 
-                            <Component name='label'>{properties.label}</Component>
+                            <Component name='label' htmlFor={properties.id}>{properties.label}</Component>
                         }
 
                         {this.inputTypes.includes(properties.type) && 
                             <Component 
                                 name='input' 
                                 type={properties.type}
-                                onBlur={this.onBlur}
+                                onKeyUp={() => { this.setState, this.validate() }}
                                 id={properties.id}
-                                elementName={properties.name} 
+                                elementname={properties.name} 
                                 placeholder={properties.placeholder} 
                             />
                         }
 
                         {this.otherTypes.includes(properties.type) && 
                             <input 
+                                id={properties.id}
                                 type={properties.type} 
-                                elementName={properties.name} 
+                                elementname={properties.name} 
                                 placeholder={properties.placeholder} 
+                            />
+                        }
+
+                        {properties.type === 'checkbox' && 
+                            <Component 
+                                name='input'
+                                onChange={this.setState}
+                                type='checkbox'
+                                id={properties.id}
                             />
                         }
 
@@ -114,6 +148,6 @@ export default class Form extends Constructor {
 }
 
 Form.defaultProps = {
-    name: defaults.forms.name,
+    name: defaults.form.name,
     object: true
 };

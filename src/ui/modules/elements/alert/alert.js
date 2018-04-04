@@ -7,7 +7,7 @@ import defaults from './alert.json';
  */
 export default function alert(custom) {
 
-    const TARGET = UI.getTarget('accordion', defaults, custom);
+    const TARGET = UI.getTarget('alert', defaults, custom);
 
     UI.Synergy(TARGET, (alert, options) => {
 

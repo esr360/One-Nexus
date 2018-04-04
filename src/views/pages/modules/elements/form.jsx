@@ -5,8 +5,8 @@ export default class Form extends React.Component {
         return (
             <app.layouts.Base {...app.config.app.views}>
 
-                <div class="row object">
-                    <div class="span-6">
+                <div className="row object">
+                    <div className="span-6">
 
                         <app.Form fields={[
                             {
@@ -16,7 +16,10 @@ export default class Form extends React.Component {
                                 label: 'Username',
                                 placeholder: 'E.g. SkyUX',
                                 icon: 'user',
-                                validate: true
+                                validation: [
+                                    field => field.value.length > 0,
+                                    //field => field.value.matches(validationQuery)
+                                ]
                             },
                             {
                                 type: 'password',
@@ -27,63 +30,64 @@ export default class Form extends React.Component {
                                 validate: true
                             },
                             {
+                                type: 'checkbox',
+                                label: 'IdForSomeOtherCheckbox',
+                                id: 'IdForSomeOtherCheckbox'
+                            },
+                            {
                                 type: 'textarea',
                                 id: 'textarea',
                                 placeholder: 'Enter your message...',
                                 rules: [
-                                    // {
-                                    //     testField: 'userPassword',
-                                    //     condition: field => field.val !== 'foo'
-                                    // },
-                                    // ['userPassword', field => field.val !== 'foo'],
-                                    // ['IdForSomeOtherCheckbox', true],
+                                    userPassword => userPassword.value !== 'foo',
+                                    IdForSomeOtherCheckbox => IdForSomeOtherCheckbox.checked,
                                     (userName, userPassword) => (userName.value === userPassword.value)
                                 ]
                             }
                         ]} submit='Login' />
 
-                        <form class="form">
-                            <div class="form_group">
-                                <label class="form_label">Your Name</label>
-                                <input class="form_input" type="text" placeholder="E.g. John Doe" />
+                        <form className="form">
+                            <div className="form_group">
+                                <label className="form_label">Your Name</label>
+                                <input className="form_input" type="text" placeholder="E.g. John Doe" />
                             </div>
-                            <div class="form_group">
-                                <label class="form_label">Your Message</label>
-                                <textarea class="form_input" placeholder="Enter your message..."></textarea>
+                            <div className="form_group">
+                                <label className="form_label">Your Message</label>
+                                <textarea className="form_input" placeholder="Enter your message..."></textarea>
                             </div>
-                            <button class="button" type="submit">Submit</button>
+                            <button className="button" type="submit">Submit</button>
                         </form>
 
-                        <form class="form">
-                            <div class="form_group-validate">
-                                <input required type="text" class="form_input" placeholder="E.g. John Doe" />
-                                <label class="form_label">Your Name</label>
+                        <form className="form">
+                            <div className="form_group-validate">
+                                <input required type="text" className="form_input" placeholder="E.g. John Doe" />
+                                <label className="form_label">Your Name</label>
                             </div>
-                            <div class="form_group-validate">
-                                <textarea required class="form_input" placeholder="Enter your message..."></textarea>
-                                <label class="form_label">Your Message</label>
+                            <div className="form_group-validate">
+                                <textarea required className="form_input" placeholder="Enter your message..."></textarea>
+                                <label className="form_label">Your Message</label>
                             </div>
-                            <button type="submit" class="button">Submit</button>
+                            <button type="submit" className="button">Submit</button>
                         </form>
 
-                        <form class="form">
-                            <label class="form_label">Username</label>
-                            <div class="form_group-has-icon">
-                                <input type="text" class="form_input" placeholder="Ex: SkyUX" />
-                                <i class="form_icon fa fa-user"></i>
+                        <form className="form">
+                            <label className="form_label">Username</label>
+                            <div className="form_group-has-icon">
+                                <input type="text" className="form_input" placeholder="Ex: SkyUX" />
+                                <i className="form_icon fa fa-user"></i>
                             </div>
                         </form>
 
-                        <form class="form">
-                            <div class="form_group-compound-has-icon">
-                                <input type="text" class="form_input" placeholder="Username" />
-                                <i class="form_icon fa fa-user"></i>
+                        <form className="form">
+                            <div className="form_group-compound-has-icon">
+                                <input type="text" className="form_input" placeholder="Username" />
+                                <i className="form_icon fa fa-user"></i>
                             </div>
-                            <div class="form_group-compound-has-icon">
-                                <input type="password" class="form_input" placeholder="••••••••" />
-                                <i class="form_icon fa fa-key"></i>
+                            <div className="form_group-compound-has-icon">
+                                <input type="password" className="form_input" placeholder="••••••••" />
+                                <i className="form_icon fa fa-key"></i>
                             </div>
-                            <button type="submit" class="button">Submit</button>
+                            <button type="submit" className="button">Submit</button>
                         </form>
                     </div>
                 </div>

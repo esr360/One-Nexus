@@ -1,6 +1,7 @@
 {
-    "forms": {
+    "form": {
         "name": "form",
+        "methods": ["validate"],
         "label": {
             "transition": ["#CORE", "transition"],
             "color": ["#CORE", "text-color"]
