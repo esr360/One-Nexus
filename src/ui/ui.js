@@ -34,6 +34,7 @@ export {
 import accordion from './modules/elements/accordion/accordion';
 import alert from './modules/elements/alert/alert';
 import carousel from './modules/elements/carousel/carousel';
+import form from './modules/elements/form/form';
 import { modal } from './modules/elements/modals/modals';
 import { progressBar } from './modules/elements/progress-bars/progress-bars';
 import { tabs } from './modules/elements/tabs/tabs';
@@ -58,6 +59,7 @@ export {
     accordion,
     alert,
     carousel,
+    form,
     modal,
     progressBar,
     tabs,

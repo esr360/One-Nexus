@@ -30,58 +30,10 @@ export default class Form extends Constructor {
             'time',
             'week'
         ]
-
-        this.validate = () => {
-            this.props.fields.forEach((properties, index) => {
-                const target = document.getElementById(properties.id);
-
-                if (properties.validation) {
-                    let isValid = true;
-
-                    properties.validation.forEach(rule => {
-                        if (typeof rule === 'function') {
-                            if (!rule(target)) isValid = false;
-                        }
-                    });
-
-                    console.log(isValid);
-                }
-            });
-        }
-
-        this.setState = () => {
-            this.props.fields.forEach((properties, index) => {
-                const target = document.getElementById(properties.id);
-
-                if (properties.rules) {
-                    let action = 'show';
-
-                    properties.rules.forEach(rule => {
-                        if (typeof rule === 'function') {
-                            // get field ids from stringified function
-                            const ids = String(rule).match(/\(([^)]+)\)/)[1].replace(/\s/g, '').split(',');
-
-                            let fields = [];
-
-                            // get field from id
-                            ids.forEach(field => {
-                                fields.push(document.getElementById(field));
-                            });
-
-                            if (!rule(...fields)) action = 'hide';
-                        } 
-                        else if (!rule) action = 'hide';
-                    });
-
-                    target.style.display = (action === 'hide') ? 'none' : 'block';
-                }
-            });
-        }
     }
 
     componentDidMount() {
-        this.validate();
-        this.setState();
+        this.setState(this.props.fields);
     }
 
     render() {
@@ -90,17 +42,22 @@ export default class Form extends Constructor {
                 {this.props.fields.map((properties, index) => (
                     <Component name='group' key={index}>
                         {properties.label && 
-                            <Component name='label' htmlFor={properties.id}>{properties.label}</Component>
+                            <Component name='label' htmlFor={properties.id}>
+                                {properties.label}
+                            </Component>
                         }
 
-                        {this.inputTypes.includes(properties.type) && 
-                            <Component 
-                                name='input' 
+                        {this.inputTypes.includes(properties.type) &&
+                            <Component
+                                name='input'
                                 type={properties.type}
-                                onKeyUp={() => { this.setState, this.validate() }}
                                 id={properties.id}
-                                elementname={properties.name} 
-                                placeholder={properties.placeholder} 
+                                elementname={properties.name}
+                                placeholder={properties.placeholder}
+                                onKeyUp={() => {
+                                    this.setState(this.props.fields)
+                                    this.validate(properties.id, properties.validation)
+                                }}
                             />
                         }
 
@@ -116,7 +73,7 @@ export default class Form extends Constructor {
                         {properties.type === 'checkbox' && 
                             <Component 
                                 name='input'
-                                onChange={this.setState}
+                                onChange={() => this.setState(this.props.fields)}
                                 type='checkbox'
                                 id={properties.id}
                             />

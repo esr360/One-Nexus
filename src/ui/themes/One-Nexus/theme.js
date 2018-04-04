@@ -32,6 +32,7 @@ export default function(custom) {
     UI.accordion(options.accordion);
     UI.alert(options.alert);
     UI.carousel();
+    UI.form();
     // UI.modal();
     // UI.overlay();
     // UI.progressBar();

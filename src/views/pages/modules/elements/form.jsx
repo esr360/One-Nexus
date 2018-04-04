@@ -17,7 +17,7 @@ export default class Form extends React.Component {
                                 placeholder: 'E.g. SkyUX',
                                 icon: 'user',
                                 validation: [
-                                    field => field.value.length > 0,
+                                    field => field.value.length > 3,
                                     //field => field.value.matches(validationQuery)
                                 ]
                             },
