@@ -22,26 +22,55 @@ export default function form(custom) {
 }
 
 /**
- * Validate a field
+ * Check if an input value is valid
  * 
  * @param {*} field 
  * @param {*} validators 
  */
-export function validate(field, validators) {
+export function validate(field, validators, handler = handleValidation) {
+    if (!field) return;
+
     if (typeof field === 'string') {
         field = document.getElementById(field);
     }
 
-    let isValid = true;
+    let [isValid, message] = [true, 'Invalid field'];
 
     if (validators) validators.forEach(rule => {
         if (typeof rule === 'function') {
-            if (!rule(field)) isValid = false;
+            if (!rule(field)) {
+                isValid = false;
+            }
         }
-        else if (!rule) isValid = false;
+        else if (typeof rule.rule === 'function') {
+            if (!rule.rule(field)) {
+                isValid = false;
+            }
+        }
+        else if (!rule) {
+            isValid = false;
+        }
+
+        message = rule.message || message;
     });
 
-    console.log(isValid);
+    handler(isValid, field, message);
+
+    return isValid;
+}
+
+/**
+ * Handle input validation
+ * 
+ * @access private
+ * 
+ * @param {*} field 
+ * @param {*} isValid 
+ */
+function handleValidation(isValid, field, message) {
+    if (field) field.setCustomValidity(isValid ? '' : message);
+
+    return;
 }
 
 /**

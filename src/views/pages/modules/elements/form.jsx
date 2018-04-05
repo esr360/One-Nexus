@@ -16,9 +16,15 @@ export default class Form extends React.Component {
                                 label: 'Username',
                                 placeholder: 'E.g. SkyUX',
                                 icon: 'user',
-                                validation: [
-                                    field => field.value.length > 3,
-                                    //field => field.value.matches(validationQuery)
+                                required: true,
+                                validate: [
+                                    {
+                                        rule: field => field.value.length > 3,
+                                        message: 'Must be more than 3 characters'
+                                    },
+                                    //field => field.value.length > 3,
+                                    //field => field.value.matches(validationQuery),
+                                    //field => validateUserName(field)
                                 ]
                             },
                             {
@@ -26,8 +32,7 @@ export default class Form extends React.Component {
                                 id: 'userPassword',
                                 label: 'Password',
                                 placeholder: '••••••••',
-                                icon: 'key',
-                                validate: true
+                                icon: 'key'
                             },
                             {
                                 type: 'checkbox',
@@ -45,6 +50,18 @@ export default class Form extends React.Component {
                                 ]
                             }
                         ]} submit='Login' />
+
+                        <Module name='form'>
+                            <Component name='group'>
+                                <Component name='label'>Field Label</Component>
+                                <Component name='input' placeholder='Field input' required />
+                            </Component>
+                            <Component name='group'>
+                                <Component name='label'>Textarea Label</Component>
+                                <Component name='input' tag='textarea' placeholder='Field textarea' />
+                            </Component>
+                            <Component name='submit' type='submit' tag='input' className='button' value='Submit button' />
+                        </Module>
 
                         <form className="form">
                             <div className="form_group">

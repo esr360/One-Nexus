@@ -40,8 +40,9 @@ export default class Form extends Constructor {
         return (
             <Module {...this.props}>
                 {this.props.fields.map((properties, index) => (
-                    <Component name='group' key={index}>
-                        {properties.label && 
+                    <Component name='group' key={index} modifiers={properties.validate && ['validate']}>
+
+                        {properties.label && !properties.validate && 
                             <Component name='label' htmlFor={properties.id}>
                                 {properties.label}
                             </Component>
@@ -54,9 +55,10 @@ export default class Form extends Constructor {
                                 id={properties.id}
                                 elementname={properties.name}
                                 placeholder={properties.placeholder}
+                                onFocus={() => this.validate(properties.id, properties.validate)}
                                 onKeyUp={() => {
                                     this.setState(this.props.fields)
-                                    this.validate(properties.id, properties.validation)
+                                    this.validate(properties.id, properties.validate)
                                 }}
                             />
                         }
@@ -64,9 +66,10 @@ export default class Form extends Constructor {
                         {this.otherTypes.includes(properties.type) && 
                             <input 
                                 id={properties.id}
-                                type={properties.type} 
-                                elementname={properties.name} 
-                                placeholder={properties.placeholder} 
+                                type={properties.type}
+                                elementname={properties.name}
+                                placeholder={properties.placeholder}
+                                required={properties.required}
                             />
                         }
 
@@ -87,6 +90,12 @@ export default class Form extends Constructor {
                                 placeholder={properties.placeholder} 
                             />
                         }
+
+                        {properties.label && properties.validate &&
+                            <Component name='label' htmlFor={properties.id}>
+                                {properties.label}
+                            </Component>
+                        }
                     </Component>
                 ))}
 
@@ -96,7 +105,12 @@ export default class Form extends Constructor {
                         tag='input'
                         className='button'
                         type='submit'
-                        value={this.props.submit} 
+                        value={this.props.submit}
+                        onClick={() => {
+                            this.props.fields.forEach(properties => {
+                                this.validate(properties.id, properties.validate)
+                            })
+                        }}
                     />
                 }
             </Module>

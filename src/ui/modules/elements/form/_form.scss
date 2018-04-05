@@ -73,8 +73,8 @@
                                 }
 
                                 &::placeholder {
-                                    border-color: this('invalid-color');
-                                    color: this('invalid-color');
+                                    border-color: this('valid-color');
+                                    color: this('valid-color');
                                 }
                             }
                         }
