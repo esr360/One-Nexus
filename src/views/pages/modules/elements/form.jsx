@@ -10,6 +10,29 @@ export default class Form extends React.Component {
 
                         <app.Form fields={[
                             {
+                                legend: 'Login',
+                                // legend: {
+                                //     title: 'Fieldset Legend',
+                                //     class: 'heading-size-5'
+                                // },
+                                fields: [
+                                    {
+                                        type: 'text',
+                                        id: 'fooBar',
+                                        name: 'fooBar',
+                                        label: 'Foo Bar',
+                                        placeholder: 'fooBar'
+                                    },
+                                    {
+                                        type: 'password',
+                                        id: 'userPassword',
+                                        label: 'Password',
+                                        placeholder: '••••••••',
+                                        icon: 'key'
+                                    }
+                                ]
+                            },
+                            {
                                 type: 'text',
                                 id: 'userName',
                                 name: 'fizzBuzz',
@@ -26,13 +49,6 @@ export default class Form extends React.Component {
                                     //field => field.value.matches(validationQuery),
                                     //field => validateUserName(field)
                                 ]
-                            },
-                            {
-                                type: 'password',
-                                id: 'userPassword',
-                                label: 'Password',
-                                placeholder: '••••••••',
-                                icon: 'key'
                             },
                             {
                                 type: 'checkbox',
@@ -52,14 +68,30 @@ export default class Form extends React.Component {
                         ]} submit='Login' />
 
                         <Module name='form'>
-                            <Component name='group'>
-                                <Component name='label'>Field Label</Component>
-                                <Component name='input' placeholder='Field input' required />
+                            <Component name='group' tag='fieldset'>
+                                <Component name='legend' className='heading-size-4'>Fieldset Legend</Component>
+                                <Component name='group'>
+                                    <Component name='label'>Field Label</Component>
+                                    <Component name='input' placeholder='Field input' required />
+                                </Component>
+                                <Component name='group'>
+                                    <Component name='label'>Textarea Label</Component>
+                                    <Component name='input' tag='textarea' placeholder='Field textarea' />
+                                </Component>
                             </Component>
-                            <Component name='group'>
-                                <Component name='label'>Textarea Label</Component>
-                                <Component name='input' tag='textarea' placeholder='Field textarea' />
+
+                            <Component name='group' tag='fieldset'>
+                                <Component name='legend' className='heading-size-4'>Fieldset Legend</Component>
+                                <Component name='group'>
+                                    <Component name='label'>Field Label</Component>
+                                    <Component name='input' placeholder='Field input' required />
+                                </Component>
+                                <Component name='group'>
+                                    <Component name='label'>Textarea Label</Component>
+                                    <Component name='input' tag='textarea' placeholder='Field textarea' />
+                                </Component>
                             </Component>
+
                             <Component name='submit' type='submit' tag='input' className='button' value='Submit button' />
                         </Module>
 

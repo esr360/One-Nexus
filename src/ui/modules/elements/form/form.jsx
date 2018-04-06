@@ -39,65 +39,8 @@ export default class Form extends Constructor {
     render() {
         return (
             <Module {...this.props}>
-                {this.props.fields.map((properties, index) => (
-                    <Component name='group' key={index} modifiers={properties.validate && ['validate']}>
 
-                        {properties.label && !properties.validate && 
-                            <Component name='label' htmlFor={properties.id}>
-                                {properties.label}
-                            </Component>
-                        }
-
-                        {this.inputTypes.includes(properties.type) &&
-                            <Component
-                                name='input'
-                                type={properties.type}
-                                id={properties.id}
-                                elementname={properties.name}
-                                placeholder={properties.placeholder}
-                                onFocus={() => this.validate(properties.id, properties.validate)}
-                                onKeyUp={() => {
-                                    this.setState(this.props.fields)
-                                    this.validate(properties.id, properties.validate)
-                                }}
-                            />
-                        }
-
-                        {this.otherTypes.includes(properties.type) && 
-                            <input 
-                                id={properties.id}
-                                type={properties.type}
-                                elementname={properties.name}
-                                placeholder={properties.placeholder}
-                                required={properties.required}
-                            />
-                        }
-
-                        {properties.type === 'checkbox' && 
-                            <Component 
-                                name='input'
-                                onChange={() => this.setState(this.props.fields)}
-                                type='checkbox'
-                                id={properties.id}
-                            />
-                        }
-
-                        {properties.type === 'textarea' && 
-                            <Component 
-                                name='input'
-                                id={properties.id}
-                                tag='textarea' 
-                                placeholder={properties.placeholder} 
-                            />
-                        }
-
-                        {properties.label && properties.validate &&
-                            <Component name='label' htmlFor={properties.id}>
-                                {properties.label}
-                            </Component>
-                        }
-                    </Component>
-                ))}
+                <RenderFields fields={this.props.fields} />
 
                 {this.props.submit &&
                     <Component
@@ -115,6 +58,86 @@ export default class Form extends Constructor {
                 }
             </Module>
         )
+    }
+}
+
+class RenderFields extends Form {
+    render() {
+        return this.props.fields.map((properties, index) => {
+            if (properties.fields) {
+                return (
+                    <Component name='fieldset'>
+                        {properties.legend && (
+                            <Component name='legend' className={properties.legend.class && properties.legend.class}>
+                                { typeof properties.legend === 'object' ? properties.legend.title : properties.legend }
+                            </Component>
+                        )}
+
+                        <RenderFields fields={properties.fields} />
+                    </Component>
+                )
+            } else {
+                return (
+                    <Component name='group' key={index} modifiers={properties.validate && ['validate']}>
+
+                        {properties.label && !properties.validate && (
+                            <Component name='label' htmlFor={properties.id}>
+                                {properties.label}
+                            </Component>
+                        )}
+
+                        {this.inputTypes.includes(properties.type) && (
+                            <Component
+                                name='input'
+                                type={properties.type}
+                                id={properties.id}
+                                elementname={properties.name}
+                                placeholder={properties.placeholder}
+                                onFocus={() => this.validate(properties.id, properties.validate)}
+                                onKeyUp={() => {
+                                    this.setState(this.props.fields)
+                                    this.validate(properties.id, properties.validate)
+                                }}
+                            />
+                        )}
+
+                        {this.otherTypes.includes(properties.type) && (
+                            <input 
+                                id={properties.id}
+                                type={properties.type}
+                                elementname={properties.name}
+                                placeholder={properties.placeholder}
+                                required={properties.required}
+                            />
+                        )}
+
+                        {properties.type === 'checkbox' && (
+                            <Component 
+                                name='input'
+                                onChange={() => this.setState(this.props.fields)}
+                                type='checkbox'
+                                id={properties.id}
+                            />
+                        )}
+
+                        {properties.type === 'textarea' && (
+                            <Component 
+                                name='input'
+                                id={properties.id}
+                                tag='textarea' 
+                                placeholder={properties.placeholder} 
+                            />
+                        )}
+
+                        {properties.label && properties.validate && (
+                            <Component name='label' htmlFor={properties.id}>
+                                {properties.label}
+                            </Component>
+                        )}
+                    </Component>
+                )
+            }
+        });
     }
 }
 
