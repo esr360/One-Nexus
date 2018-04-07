@@ -61,6 +61,9 @@ export default class Form extends Constructor {
     }
 }
 
+/**
+ * Render form fields
+ */
 class RenderFields extends Form {
 
     constructor(props, context) {
@@ -77,7 +80,9 @@ class RenderFields extends Form {
             'render',
             'fields',
             'legend',
-            'fieldset'
+            'fieldset',
+            'before',
+            'after'
         ];
 
         let inputProps = [];
@@ -101,17 +106,7 @@ class RenderFields extends Form {
         return this.props.fields.map((properties, index) => {
 
             if (properties.type === 'fieldset') {
-                return (
-                    <Component name='fieldset'>
-                        {properties.legend && (
-                            <Component name='legend' className={properties.legend.class && properties.legend.class}>
-                                { typeof properties.legend === 'object' ? properties.legend.title : properties.legend }
-                            </Component>
-                        )}
-
-                        <RenderFields fields={properties.fields} formFields={this.props.formFields || this.props.fields} />
-                    </Component>
-                )
+                return <RenderFieldset {...this.props} fieldProperties={properties} />
             }
 
             return (
@@ -171,26 +166,48 @@ class RenderFields extends Form {
                     )}
 
                     {properties.fieldset && (
-                        <Component name='fieldset' {...this.getInputProps(properties.fieldset)}>
-                            {properties.fieldset.legend && (
-                                <Component 
-                                    name='legend' 
-                                    className={properties.fieldset.legend.class && properties.fieldset.legend.class}
-                                >
-                                    { typeof properties.fieldset.legend === 'object' ? 
-                                        properties.fieldset.legend.title : 
-                                        properties.fieldset.legend 
-                                    }
-                                </Component>
-                            )}
+                        <RenderFieldset {...this.props} fieldProperties={properties.fieldset} />
+                    )}
 
-                            <RenderFields fields={properties.fieldset.fields} formFields={this.props.fields} />
-                        </Component>
+                    {properties.after && (
+                        <div {...this.getInputProps(properties.after)}>{ properties.after.render }</div>
                     )}
                 </Component>
             )
         });
     }
+}
+
+/**
+ * Render form fieldset
+ */
+class RenderFieldset extends RenderFields {
+    
+    constructor(props, context) {
+        super(props, context);
+
+        this.properties = this.props.fieldProperties;
+    }
+
+    render() {
+        return (
+            <Component name='fieldset' {...this.getInputProps(this.properties)}>
+                {this.properties.legend && (
+                    <Component name='legend' className={this.properties.legend.class && this.properties.legend.class}>
+                        { typeof this.properties.legend === 'object' ? 
+                            this.properties.legend.title : 
+                            this.properties.legend 
+                        }
+                    </Component>
+                )}
+
+                <RenderFields 
+                    fields={this.properties.fields} 
+                    formFields={this.props.formFields || this.props.fields} />
+            </Component>
+        )
+    }
+
 }
 
 Form.defaultProps = {

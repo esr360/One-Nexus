@@ -8,89 +8,111 @@ export default class Form extends React.Component {
                 <div className="row object">
                     <div className="span-6">
 
+                        <app.Heading size='4' heading='2'>Signup Form</app.Heading>
+
                         <app.Form fields={[
                             {
                                 type: 'fieldset',
-                                legend: 'Login',
-                                // legend: {
-                                //     title: 'Fieldset Legend',
-                                //     class: 'heading-size-5'
-                                // },
+                                id: 'loginDetails',
+                                legend: 'Login Details',
                                 fields: [
                                     {
                                         type: 'text',
-                                        id: 'userName',
-                                        name: 'fooBar',
-                                        label: 'Foo Bar',
-                                        placeholder: 'fooBar',
-                                        modifiers: ['foo']
+                                        label: 'Username',
+                                        id: 'username',
+                                        required: true,
+                                        validate: [
+                                            {
+                                                rule: field => field.value.length > 3,
+                                                message: 'Must be more than 3 characters'
+                                            }
+                                        ]
                                     },
                                     {
                                         type: 'password',
-                                        id: 'userPassword',
                                         label: 'Password',
-                                        placeholder: '••••••••',
-                                        icon: 'key'
+                                        id: 'userPassword',
+                                        required: true,
+                                        validate: [
+                                            {
+                                                rule: field => field.value.length > 8,
+                                                message: 'Must be more than 8 characters'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        type: 'password',
+                                        id: 'passwordReEnter',
+                                        label: 'Re-enter Password',
+                                        required: true,
+                                        validate: [
+                                            {
+                                                rule: (userPassword, passwordReEnter) => {
+                                                    return passwordReEnter.value === userPassword.value;
+                                                },
+                                                message: 'Passwords do not match'
+                                            }
+                                        ]
                                     }
                                 ]
                             },
                             {
-                                type: 'text',
-                                id: 'fizzBuzz',
-                                name: 'fizzBuzz',
-                                label: 'Username',
-                                placeholder: 'E.g. SkyUX',
-                                icon: 'user',
-                                required: true,
-                                validate: [
+                                type: 'fieldset',
+                                id: 'personalDetails',
+                                legend: 'Personal Details',
+                                fields: [
                                     {
-                                        rule: field => field.value.length > 3,
-                                        message: 'Must be more than 3 characters'
+                                        type: 'email',
+                                        label: 'Email Address',
+                                        required: true
                                     },
-                                    //field => field.value.length > 3
+                                    {
+                                        type: 'tel',
+                                        label: 'Phone Number'
+                                    },
+                                    {
+                                        type: 'checkbox',
+                                        id: 'isHomeless',
+                                        label: 'I\'m homeless'
+                                    },
+                                    {
+                                        type: 'fieldset',
+                                        legend: 'Address',
+                                        id: 'address',
+                                        fields: [
+                                            {
+                                                type: 'text',
+                                                label: 'Address Line 1'
+                                            },
+                                            {
+                                                type: 'text',
+                                                label: 'Address Line 2'
+                                            },
+                                            {
+                                                type: 'text',
+                                                label: 'City'
+                                            },
+                                            {
+                                                type: 'text',
+                                                label: 'Postcode'
+                                            }
+                                        ],
+                                        rules: [isHomeless => !isHomeless.checked]
+                                    }
                                 ]
                             },
                             {
                                 type: 'checkbox',
-                                label: 'IdForSomeOtherCheckbox',
-                                id: 'IdForSomeOtherCheckbox',
-                                fieldset: {
-                                    legend: 'Ting tong',
-                                    id: 'tingTong',
-                                    fields: [
-                                        {
-                                            type: 'HTML',
-                                            id: 'customrender1',
-                                            render: <app.Alert>Custom render 1</app.Alert>,
-                                            rules: [
-                                                userPassword => userPassword.value === 'foo'
-                                            ]
-                                        }
-                                    ],
-                                    rules: [
-                                        IdForSomeOtherCheckbox => IdForSomeOtherCheckbox.checked
-                                    ]
+                                id: 'freeSpam',
+                                label: 'I would like to receive free spam',
+                                after: {
+                                    id: 'freeSpamAlert',
+                                    className: 'object-small',
+                                    render: <app.Alert>You will receive free spam</app.Alert>,
+                                    rules: [freeSpam => freeSpam.checked]
                                 }
-                            },
-                            {
-                                type: 'HTML',
-                                id: 'customrender2',
-                                render: <app.Alert>Custom render 2</app.Alert>,
-                                rules: [
-                                    IdForSomeOtherCheckbox => IdForSomeOtherCheckbox.checked,
-                                ]
-                            },
-                            {
-                                type: 'textarea',
-                                id: 'textarea',
-                                placeholder: 'Enter your message...',
-                                rules: [
-                                    userPassword => userPassword.value !== 'foo',
-                                    IdForSomeOtherCheckbox => IdForSomeOtherCheckbox.checked,
-                                    (userName, userPassword) => (userName.value === userPassword.value)
-                                ]
                             }
-                        ]} submit='Login' />
+                        ]} submit='Sign up' />
 
                         <Module name='form'>
                             <Component name='group' tag='fieldset'>

@@ -81,6 +81,7 @@ export {
 //*****************************************************************
 
 import { custom } from './tools/js/app.custom';
+import dynamicCallback from './tools/js/app.dynamicCallback';
 import { evalConfig } from './tools/js/app.evalConfig';
 import { formatThemeName } from './tools/js/app.formatThemeName';
 import get from './tools/js/app.get';
@@ -95,6 +96,7 @@ import { scrollSpy } from './tools/js/app.scrollSpy';
 
 export { 
     custom,
+    dynamicCallback,
     evalConfig,
     formatThemeName,
     get,

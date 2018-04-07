@@ -38,10 +38,10 @@ export function validate(field, validators, handler = handleValidation) {
 
     if (validators) validators.forEach(rule => {
         if (typeof rule === 'function') {
-            if (!rule(field)) isValid = false;
+            if (!UI.dynamicCallback(rule, field, 'field')) isValid = false;
         }
         else if (typeof rule.rule === 'function') {
-            if (!rule.rule(field)) isValid = false;
+            if (!UI.dynamicCallback(rule.rule, field, 'field')) isValid = false;
         }
         else if (!rule) isValid = false;
 
@@ -54,27 +54,15 @@ export function validate(field, validators, handler = handleValidation) {
 }
 
 /**
- * Handle input validation
- * 
- * @access private
- * 
- * @param {*} field 
- * @param {*} isValid 
- */
-function handleValidation(isValid, field, message) {
-    if (field) field.setCustomValidity(isValid ? '' : message);
-
-    return;
-}
-
-/**
  * Set field states
  * 
  * @param {*} fields 
  */
 export function setState(fields) {
     fields.forEach(properties => {
-        if (properties.type == 'fieldset' && properties.fields) {
+        if (properties.type === 'fieldset' && properties.fields) {
+            if (properties.rules) callRules(document.getElementById(properties.id), properties.rules);
+
             return setState(properties.fields);
         }
 
@@ -85,26 +73,38 @@ export function setState(fields) {
 
             setState(properties.fieldset.fields);
         }
+
+        if (properties.after) {
+            callRules(document.getElementById(properties.after.id), properties.after.rules);
+        }
     });
 }
 
+/**
+ * Handle input validation
+ * 
+ * @access private
+ * 
+ * @param {*} field 
+ * @param {*} isValid 
+ */
+function handleValidation(isValid, field, message) {
+    if (field) field.setCustomValidity(isValid ? '' : message);
+}
+
+/**
+ * Call display rules on field
+ * 
+ * @param {*} target 
+ * @param {*} rules 
+ */
 function callRules(target, rules) {
     if (rules) {
         let action = 'show';
 
         rules.forEach(rule => {
             if (typeof rule === 'function') {
-                // get field ids from stringified function
-                const ids = String(rule).match(/\(([^)]+)\)/)[1].replace(/\s/g, '').split(',');
-
-                let fields = [];
-
-                // get field from id
-                ids.forEach(field => {
-                    fields.push(document.getElementById(field));
-                });
-
-                if (!rule(...fields)) action = 'hide';
+                if (!UI.dynamicCallback(rule)) action = 'hide';
             }
             else if (!rule) action = 'hide';
         });
