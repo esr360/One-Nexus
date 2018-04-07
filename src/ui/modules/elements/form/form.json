@@ -14,7 +14,7 @@
             "transition": ["#CORE", "transition"],
             "font-family": ["#CORE", "font-family"]
         },
-        "component(legend)": {
+        "legend": {
             "margin-bottom": "1rem",
             "font-size": ["#FONT-SIZE", "size-4"]
         },

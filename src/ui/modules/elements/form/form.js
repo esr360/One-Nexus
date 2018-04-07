@@ -38,18 +38,12 @@ export function validate(field, validators, handler = handleValidation) {
 
     if (validators) validators.forEach(rule => {
         if (typeof rule === 'function') {
-            if (!rule(field)) {
-                isValid = false;
-            }
+            if (!rule(field)) isValid = false;
         }
         else if (typeof rule.rule === 'function') {
-            if (!rule.rule(field)) {
-                isValid = false;
-            }
+            if (!rule.rule(field)) isValid = false;
         }
-        else if (!rule) {
-            isValid = false;
-        }
+        else if (!rule) isValid = false;
 
         message = rule.message || message;
     });
@@ -80,29 +74,41 @@ function handleValidation(isValid, field, message) {
  */
 export function setState(fields) {
     fields.forEach(properties => {
-        const target = document.getElementById(properties.id);
+        if (properties.type == 'fieldset' && properties.fields) {
+            return setState(properties.fields);
+        }
 
-        if (properties.rules) {
-            let action = 'show';
+        callRules(document.getElementById(properties.id), properties.rules);
 
-            properties.rules.forEach(rule => {
-                if (typeof rule === 'function') {
-                    // get field ids from stringified function
-                    const ids = String(rule).match(/\(([^)]+)\)/)[1].replace(/\s/g, '').split(',');
+        if (properties.fieldset) {
+            callRules(document.getElementById(properties.fieldset.id), properties.fieldset.rules);
 
-                    let fields = [];
-
-                    // get field from id
-                    ids.forEach(field => {
-                        fields.push(document.getElementById(field));
-                    });
-
-                    if (!rule(...fields)) action = 'hide';
-                } 
-                else if (!rule) action = 'hide';
-            });
-
-            target.style.display = (action === 'hide') ? 'none' : 'block';
+            setState(properties.fieldset.fields);
         }
     });
+}
+
+function callRules(target, rules) {
+    if (rules) {
+        let action = 'show';
+
+        rules.forEach(rule => {
+            if (typeof rule === 'function') {
+                // get field ids from stringified function
+                const ids = String(rule).match(/\(([^)]+)\)/)[1].replace(/\s/g, '').split(',');
+
+                let fields = [];
+
+                // get field from id
+                ids.forEach(field => {
+                    fields.push(document.getElementById(field));
+                });
+
+                if (!rule(...fields)) action = 'hide';
+            }
+            else if (!rule) action = 'hide';
+        });
+
+        target.style.display = (action === 'hide') ? 'none' : 'block';
+    }
 }

@@ -10,6 +10,7 @@ export default class Form extends React.Component {
 
                         <app.Form fields={[
                             {
+                                type: 'fieldset',
                                 legend: 'Login',
                                 // legend: {
                                 //     title: 'Fieldset Legend',
@@ -18,10 +19,11 @@ export default class Form extends React.Component {
                                 fields: [
                                     {
                                         type: 'text',
-                                        id: 'fooBar',
+                                        id: 'userName',
                                         name: 'fooBar',
                                         label: 'Foo Bar',
-                                        placeholder: 'fooBar'
+                                        placeholder: 'fooBar',
+                                        modifiers: ['foo']
                                     },
                                     {
                                         type: 'password',
@@ -34,7 +36,7 @@ export default class Form extends React.Component {
                             },
                             {
                                 type: 'text',
-                                id: 'userName',
+                                id: 'fizzBuzz',
                                 name: 'fizzBuzz',
                                 label: 'Username',
                                 placeholder: 'E.g. SkyUX',
@@ -45,15 +47,38 @@ export default class Form extends React.Component {
                                         rule: field => field.value.length > 3,
                                         message: 'Must be more than 3 characters'
                                     },
-                                    //field => field.value.length > 3,
-                                    //field => field.value.matches(validationQuery),
-                                    //field => validateUserName(field)
+                                    //field => field.value.length > 3
                                 ]
                             },
                             {
                                 type: 'checkbox',
                                 label: 'IdForSomeOtherCheckbox',
-                                id: 'IdForSomeOtherCheckbox'
+                                id: 'IdForSomeOtherCheckbox',
+                                fieldset: {
+                                    legend: 'Ting tong',
+                                    id: 'tingTong',
+                                    fields: [
+                                        {
+                                            type: 'HTML',
+                                            id: 'customrender1',
+                                            render: <app.Alert>Custom render 1</app.Alert>,
+                                            rules: [
+                                                userPassword => userPassword.value === 'foo'
+                                            ]
+                                        }
+                                    ],
+                                    rules: [
+                                        IdForSomeOtherCheckbox => IdForSomeOtherCheckbox.checked
+                                    ]
+                                }
+                            },
+                            {
+                                type: 'HTML',
+                                id: 'customrender2',
+                                render: <app.Alert>Custom render 2</app.Alert>,
+                                rules: [
+                                    IdForSomeOtherCheckbox => IdForSomeOtherCheckbox.checked,
+                                ]
                             },
                             {
                                 type: 'textarea',

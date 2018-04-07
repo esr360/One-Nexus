@@ -19,14 +19,17 @@
         // Components
         //*********************************************************
 
+        @include component('legend');
+
         @include component('label');
 
         @include component('group') {
 
             @include vertical-rhythm('bottom');
 
+            @include object(core('margin') / 2);
+
             position: relative;
-            margin-bottom: (core('margin') / 2);
 
             @include modifier('compound') {
                 margin-bottom: (core('margin') / 4);
