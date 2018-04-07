@@ -12,9 +12,23 @@ export default class Form extends React.Component {
 
                         <app.Form fields={[
                             {
+                                type: 'text',
+                                label: 'Username'
+                            },
+                            {
+                                type: 'password',
+                                label: 'Password'
+                            }
+                        ]} submit='Login' />
+
+                        <app.Form fields={[
+                            {
                                 type: 'fieldset',
                                 id: 'loginDetails',
-                                legend: 'Login Details',
+                                legend: {
+                                    title: 'Login Details',
+                                    className: 'foo'
+                                },
                                 fields: [
                                     {
                                         type: 'text',

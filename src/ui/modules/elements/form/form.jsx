@@ -81,6 +81,7 @@ class RenderFields extends Form {
             'fields',
             'legend',
             'fieldset',
+            'tag',
             'before',
             'after'
         ];
@@ -193,7 +194,7 @@ class RenderFieldset extends RenderFields {
         return (
             <Component name='fieldset' {...this.getInputProps(this.properties)}>
                 {this.properties.legend && (
-                    <Component name='legend' className={this.properties.legend.class && this.properties.legend.class}>
+                    <Component name='legend' {...this.getInputProps(this.properties.legend)}>
                         { typeof this.properties.legend === 'object' ? 
                             this.properties.legend.title : 
                             this.properties.legend 
