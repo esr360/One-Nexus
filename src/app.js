@@ -40,6 +40,13 @@ window.Component = Component;
 window.Group = Group;
 window.Wrapper = Wrapper;
 
+// Kayzen-GS
+//*****************************************************************
+
+import { Row, Column } from '../../../Kayzen-GS/src/js/index.js';
+
+[window.Row, window.Column] = [Row, Column];
+
 // UI React Components
 //*****************************************************************
 

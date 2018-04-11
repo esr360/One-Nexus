@@ -23,6 +23,10 @@
 
         @include component('label');
 
+        @include component('checkbox') {
+            height: 1em;
+        }
+
         @include component('group') {
 
             @include vertical-rhythm('bottom');
@@ -108,6 +112,8 @@
                 outline: 0;
             }
         }
+
+        @include component('submit');
 
         //*********************************************************
         // Child Elements

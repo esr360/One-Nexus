@@ -39,22 +39,23 @@ export default class Form extends Constructor {
     render() {
         return (
             <Module {...this.props}>
-
                 <RenderFields fields={this.props.fields} />
 
                 {this.props.submit &&
-                    <Component
-                        name='submit'
-                        tag='input'
-                        className='button'
-                        type='submit'
-                        value={this.props.submit}
-                        onClick={() => {
-                            this.props.fields.forEach(properties => {
-                                this.validate(properties.id, properties.validate)
-                            })
-                        }}
-                    />
+                    <Component name='footer' className='object'>
+                        <Component
+                            name='submit'
+                            tag='input'
+                            className='button'
+                            type='submit'
+                            value={this.props.submit}
+                            onClick={() => {
+                                this.props.fields.forEach(properties => {
+                                    this.validate(properties.id, properties.validate)
+                                })
+                            }}
+                        />
+                    </Component>
                 }
             </Module>
         )
@@ -88,7 +89,7 @@ class RenderFields extends Form {
 
         let inputProps = [];
 
-        for (let prop in props) {
+        if (typeof props === 'object') for (let prop in props) {
             if (prop === 'name') {
                 inputProps.elementname = props[prop];
             }
@@ -110,6 +111,10 @@ class RenderFields extends Form {
                 return <RenderFieldset {...this.props} fieldProperties={properties} />
             }
 
+            const label = <Component name='label' htmlFor={properties.id}>
+                {properties.label}
+            </Component>
+
             return (
                 <Component name='group' key={index} modifiers={properties.validate && ['validate']}>
 
@@ -117,11 +122,7 @@ class RenderFields extends Form {
                         <div {...this.getInputProps(properties)}>{ properties.render }</div>
                     )}
 
-                    {properties.label && !properties.validate && (
-                        <Component name='label' htmlFor={properties.id}>
-                            {properties.label}
-                        </Component>
-                    )}
+                    {properties.label && !properties.validate && (properties.type !== 'checkbox') && label}
 
                     {this.inputTypes.includes(properties.type) && (
                         <Component
@@ -142,13 +143,19 @@ class RenderFields extends Form {
                     )}
 
                     {properties.type === 'checkbox' && (
-                        <Component 
-                            name='input'
+                        <Row>
+                            <Column align='middle'>
+                                <Component 
+                                    name='checkbox'
+                                    tag='input'
 
-                            {...this.getInputProps(properties)}
+                                    {...this.getInputProps(properties)}
 
-                            onChange={() => this.setState(this.props.formFields || this.props.fields)}
-                        />
+                                    onChange={() => this.setState(this.props.formFields || this.props.fields)}
+                                />
+                            </Column>
+                            {properties.label && <Column align='middle'>{label}</Column>}
+                        </Row>
                     )}
 
                     {properties.type === 'textarea' && (
@@ -160,11 +167,7 @@ class RenderFields extends Form {
                         />
                     )}
 
-                    {properties.label && properties.validate && (
-                        <Component name='label' htmlFor={properties.id}>
-                            {properties.label}
-                        </Component>
-                    )}
+                    {properties.label && properties.validate && (properties.type !== 'checkbox') && label}
 
                     {properties.fieldset && (
                         <RenderFieldset {...this.props} fieldProperties={properties.fieldset} />

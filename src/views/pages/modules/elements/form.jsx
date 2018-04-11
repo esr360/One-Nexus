@@ -10,16 +10,47 @@ export default class Form extends React.Component {
 
                         <app.Heading size='4' heading='2'>Signup Form</app.Heading>
 
-                        <app.Form fields={[
-                            {
-                                type: 'text',
-                                label: 'Username'
-                            },
-                            {
-                                type: 'password',
-                                label: 'Password'
-                            }
-                        ]} submit='Login' />
+                        <Row reverse column-width={{
+                            'default': 3,
+                            'break-1': 'full', 
+                            'break-2': 'half', 
+                            'break-3': 'third'
+                        }}>
+                            <Column push={6}>Column 1</Column>
+                            <Column>Column 2</Column>
+                            <Column pull={6}>Column 3</Column>
+                            <Column>Column 4</Column>
+                        </Row>
+
+                        <Row flow>
+                            <Column width={{
+                                default: 3,
+                                'break-1': 'full', 
+                                'break-2': 'half',
+                                'break-3': 'third'
+                            }}>Column</Column>
+
+                            <Column width={{
+                                default: 3,
+                                'break-1': 'full', 
+                                'break-2': 'half',
+                                'break-3': 'third'
+                            }}>Column</Column>
+
+                            <Column width={{
+                                default: 3,
+                                'break-1': 'full', 
+                                'break-2': 'half',
+                                'break-3': 'third'
+                            }}>Column</Column>
+
+                            <Column width={{
+                                default: 3,
+                                'break-1': 'full', 
+                                'break-2': 'half',
+                                'break-3': 'third'
+                            }}>Column</Column>
+                        </Row>
 
                         <app.Form fields={[
                             {
@@ -87,31 +118,31 @@ export default class Form extends React.Component {
                                     {
                                         type: 'checkbox',
                                         id: 'isHomeless',
-                                        label: 'I\'m homeless'
-                                    },
-                                    {
-                                        type: 'fieldset',
-                                        legend: 'Address',
-                                        id: 'address',
-                                        fields: [
-                                            {
-                                                type: 'text',
-                                                label: 'Address Line 1'
-                                            },
-                                            {
-                                                type: 'text',
-                                                label: 'Address Line 2'
-                                            },
-                                            {
-                                                type: 'text',
-                                                label: 'City'
-                                            },
-                                            {
-                                                type: 'text',
-                                                label: 'Postcode'
-                                            }
-                                        ],
-                                        rules: [isHomeless => !isHomeless.checked]
+                                        label: 'I\'m homeless',
+                                        fieldset: {
+                                            type: 'fieldset',
+                                            legend: 'Address',
+                                            id: 'address',
+                                            fields: [
+                                                {
+                                                    type: 'text',
+                                                    label: 'Address Line 1'
+                                                },
+                                                {
+                                                    type: 'text',
+                                                    label: 'Address Line 2'
+                                                },
+                                                {
+                                                    type: 'text',
+                                                    label: 'City'
+                                                },
+                                                {
+                                                    type: 'text',
+                                                    label: 'Postcode'
+                                                }
+                                            ],
+                                            rules: [isHomeless => !isHomeless.checked]
+                                        }
                                     }
                                 ]
                             },
