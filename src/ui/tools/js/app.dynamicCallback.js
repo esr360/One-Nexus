@@ -9,8 +9,14 @@
  * dynamicCallback(foo => foo.tagName === 'INPUT' && foo.value.length > 8);
  */
 export default function dynamicCallback(callback, element, scope) {
-    // get field ids from stringified function
-    const ids = String(callback).match(/\(([^)]+)\)/)[1].replace(/\s/g, '').split(',');
+    // get ids from stringified function
+    const ids = (() => {
+        if (String(callback).match(/\(([^)]+)\)/)) {
+            return String(callback).match(/\(([^)]+)\)/)[1].replace(/\s/g, '').split(',');
+        } else {
+            return String(callback).substr(0, String(callback).indexOf(' ')).replace(/\s/g, '').split(',');
+        }
+    })();
 
     let elements = [];
 
