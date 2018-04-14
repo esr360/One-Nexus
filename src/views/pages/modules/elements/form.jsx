@@ -10,48 +10,6 @@ export default class Form extends React.Component {
 
                         <app.Heading size='4' heading='2'>Signup Form</app.Heading>
 
-                        <Row reverse column-width={{
-                            'default': 3,
-                            'break-1': 'full', 
-                            'break-2': 'half', 
-                            'break-3': 'third'
-                        }}>
-                            <Column push={6}>Column 1</Column>
-                            <Column>Column 2</Column>
-                            <Column pull={6}>Column 3</Column>
-                            <Column>Column 4</Column>
-                        </Row>
-
-                        <Row flow>
-                            <Column width={{
-                                default: 3,
-                                'break-1': 'full', 
-                                'break-2': 'half',
-                                'break-3': 'third'
-                            }}>Column</Column>
-
-                            <Column width={{
-                                default: 3,
-                                'break-1': 'full', 
-                                'break-2': 'half',
-                                'break-3': 'third'
-                            }}>Column</Column>
-
-                            <Column width={{
-                                default: 3,
-                                'break-1': 'full', 
-                                'break-2': 'half',
-                                'break-3': 'third'
-                            }}>Column</Column>
-
-                            <Column width={{
-                                default: 3,
-                                'break-1': 'full', 
-                                'break-2': 'half',
-                                'break-3': 'third'
-                            }}>Column</Column>
-                        </Row>
-
                         <app.Form fields={[
                             {
                                 type: 'fieldset',
@@ -157,7 +115,7 @@ export default class Form extends React.Component {
                                     rules: [freeSpam => freeSpam.checked]
                                 }
                             }
-                        ]} submit='Sign up' />
+                        ]} submit={{ text: 'Sign Up', className: 'button-size-4-brand-1' }} />
 
                         <Module name='form'>
                             <Component name='group' tag='fieldset'>

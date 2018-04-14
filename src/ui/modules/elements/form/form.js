@@ -43,7 +43,7 @@ export function validate(field, validators, handler = handleValidation) {
         else if (typeof rule.rule === 'function') {
             if (!UI.dynamicCallback(rule.rule, field, 'field')) isValid = false;
         }
-        else if (!rule) isValid = false;
+        else if ((typeof rule.rule !== 'undefined' && !rule.rule) || !rule) isValid = false;
 
         message = rule.message || message;
     });

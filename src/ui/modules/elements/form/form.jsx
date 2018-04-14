@@ -32,47 +32,8 @@ export default class Form extends Constructor {
         ]
     }
 
-    componentDidMount() {
-        this.setState(this.props.fields);
-    }
-
-    render() {
-        return (
-            <Module {...this.props}>
-                <RenderFields fields={this.props.fields} />
-
-                {this.props.submit &&
-                    <Component name='footer' className='object'>
-                        <Component
-                            name='submit'
-                            tag='input'
-                            className='button'
-                            type='submit'
-                            value={this.props.submit}
-                            onClick={() => {
-                                this.props.fields.forEach(properties => {
-                                    this.validate(properties.id, properties.validate)
-                                })
-                            }}
-                        />
-                    </Component>
-                }
-            </Module>
-        )
-    }
-}
-
-/**
- * Render form fields
- */
-class RenderFields extends Form {
-
-    constructor(props, context) {
-        super(props, context);
-    }
-
     getInputProps(props) {
-        let blackList = [
+        const blackList = [
             'validate',
             'label',
             'icon',
@@ -104,6 +65,48 @@ class RenderFields extends Form {
         return inputProps;
     }
 
+    componentDidMount() {
+        this.setState(this.props.fields);
+    }
+
+    render() {
+        return (
+            <Module {...this.props}>
+                <RenderFields fields={this.props.fields} />
+
+                {this.props.submit &&
+                    <Component name='footer' className='object'>
+                        <Component
+                            name='submit'
+                            tag='input'
+                            type='submit'
+                            className='button'
+                            value={typeof this.props.submit === 'object' ? this.props.submit.text : this.props.submit}
+
+                            onClick={() => {
+                                this.props.fields.forEach(properties => {
+                                    this.validate(properties.id, properties.validate);
+                                });
+                            }}
+
+                            {...this.getInputProps(this.props.submit)}
+                        />
+                    </Component>
+                }
+            </Module>
+        )
+    }
+}
+
+/**
+ * Render form fields
+ */
+class RenderFields extends Form {
+
+    constructor(props, context) {
+        super(props, context);
+    }
+
     render() {
         return this.props.fields.map((properties, index) => {
 
@@ -111,9 +114,11 @@ class RenderFields extends Form {
                 return <RenderFieldset {...this.props} fieldProperties={properties} />
             }
 
-            const label = <Component name='label' htmlFor={properties.id}>
-                {properties.label}
-            </Component>
+            const label = (
+                <Component name='label' htmlFor={properties.id}>
+                    {properties.label}
+                </Component>
+            );
 
             return (
                 <Component name='group' key={index} modifiers={properties.validate && ['validate']}>

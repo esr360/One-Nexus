@@ -160,12 +160,126 @@ UI.form().setState(fields);
     </tbody>
 </table>
 
-#### Examples
+#### Example
+
+> Hide the `Address` fieldset if the `isHomeless` checkbox is checked
+
+```html
+<form class="form">
+    <div class="form_group">
+        <input type="checkbox" id="isHomeless" class="form_checkbox">
+        <label for="isHomeless" class="form_label">I'm homeless</label>
+
+        <fieldset id="address" class="form_fieldset">
+            ...
+        </fieldset>
+    </div>
+</form>
+```
 
 ```js
 UI.form().setState([
-    {}
+    {
+        id: 'address',
+        rules: [document.getElementById('isHomeless').checked]
+    }
 ]);
+
+// For a more readable result you can do the following to achieve the same thing:
+UI.form().setState([
+    {
+        id: 'address',
+        rules: [isHomeless => isHomeless.checked]
+    }
+]);
+```
+
+### validate
+
+> Determine if a field is valid
+
+```js
+UI.form().validate(field, validators, callback[isValid, field, message]);
+```
+
+<table>
+    <thead>
+        <tr>
+            <td><b>Parameter</b></td>
+            <td><b>Type</b></td>
+            <td><b>Description<b/></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Field</td>
+            <td><code>HTMLELment</code> | <code>String</code></td>
+            <td>HTMLElement or ID of HTMLElement to validate</td>
+        </tr>
+        <tr>
+            <td>Validators</td>
+            <td><code>Array</code></td>
+            <td>Array of <a href="#TODO">validators</a> to apply</td>
+        </tr>
+        <tr>
+            <td>Callback</td>
+            <td><code>Function</code></td>
+            <td>Callback function to run after validation has taken place</td>
+        </tr>
+        <tr>
+            <td>Callback.isValid</td>
+            <td><code>Bool</code></td>
+            <td>Boolean value stating whether or not the field is valid</td>
+        </tr>
+        <tr>
+            <td>Callback.field</td>
+            <td><code>HTMLElement</code></td>
+            <td>The HTMLElement of the field</td>
+        </tr>
+        <tr>
+            <td>Callback.message</td>
+            <td><code>String</code></td>
+            <td>The error message for the validator</td>
+        </tr>
+    </tbody>
+</table>
+
+#### Example
+
+```html
+<div class="form_group-validate">
+    <input class="form_input" type="password" id="userPassword" required>
+    <label class="form_label" for="userPassword">Password</label>
+</div>
+<div class="form_group-validate">
+    <input class="form_input" type="password" id="passwordReEnter" required>
+    <label class="form_label" for="passwordReEnter">Re-enter Password</label>
+</div>
+```
+
+```js
+function callback(isValid, field, errorMessage) {
+    if (!isValid) {
+        field.classList.add('invalid');
+
+        alert(errorMessage);
+    }
+}
+
+UI.form().validate(document.getElementById('passwordReEnter'), [
+    {
+        rule: document.getElementById('passwordReEnter').value === document.getElementById('userPassword').value,
+        message: 'Passwords do not match'
+    }
+], callback);
+
+// For a more readable result you can do the following to achieve the same thing:
+UI.form().validate('passwordReEnter', [
+    {
+        rule: (userPassword, passwordReEnter) => passwordReEnter.value === userPassword.value,
+        message: 'Passwords do not match'
+    }
+], callback);
 ```
 
 ## Rendering
@@ -175,17 +289,25 @@ UI.form().setState([
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
 ```jsx
-<Carousel slides={[
-    <img src="https://picsum.photos/640/480" />,
-    <img src="https://picsum.photos/640/480" />,
-    <img src="https://picsum.photos/640/480" />
-]} />
+<Form fields={[
+    {
+        type: 'text',
+        label: 'Username'
+    },
+    {
+        type: 'password',
+        label: 'Password'
+    }
+]} submit='Login' />
 ```
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [Props.slides](#propsslides)
+* [Props.fields](#TODO)
+* [Props.submit](#TODO)
 
-### Props.slides
+### Props.fields
+
+> Array of [FieldDraft](#TODO)'s to render
 
 <table>
     <tr>
@@ -195,23 +317,123 @@ UI.form().setState([
 </table>
 
 ```jsx
-const slides = [
-    <img src="https://picsum.photos/640/480" />,
-    <div>Carousel slide</div>,
-    <img src="https://picsum.photos/640/480" />
+const fields = [
+    {
+        type: 'fieldset',
+        id: 'loginDetails',
+        legend: {
+            title: 'Login Details'
+        },
+        fields: [
+            {
+                type: 'text',
+                label: 'Username',
+                id: 'username',
+                required: true,
+                validate: [
+                    {
+                        rule: field => field.value.length > 3,
+                        message: 'Must be more than 3 characters'
+                    }
+                ]
+            },
+            {
+                type: 'password',
+                label: 'Password',
+                id: 'userPassword',
+                required: true,
+                validate: [
+                    {
+                        rule: field => field.value.length > 8,
+                        message: 'Must be more than 8 characters'
+                    }
+                ]
+            },
+            {
+                type: 'password',
+                id: 'passwordReEnter',
+                label: 'Re-enter Password',
+                required: true,
+                validate: [
+                    {
+                        rule: (userPassword, passwordReEnter) => {
+                            return passwordReEnter.value === userPassword.value;
+                        },
+                        message: 'Passwords do not match'
+                    }
+                ]
+            }
+        ]
+    }
 ]
 
-<Carousel slides={slides} />
+<Form fields={fields} />
 ```
 
 ###### Output
 
 ```html
-<div class="carousel">
-    <img src="https://picsum.photos/640/480" />
-    <div>Carousel slide</div>
-    <img src="https://picsum.photos/640/480" />
-</div>
+<form class="form">
+    <fieldset id="loginDetails" class="form_fieldset">
+        <legend class="form_legend">Login Details</legend>
+        <div class="form_group-validate">
+            <input class="form_input" type="text" id="username" required>
+            <label class="form_label" for="username">Username</label>
+        </div>
+        <div class="form_group-validate">
+            <input class="form_input" type="password" id="userPassword" required>
+            <label class="form_label" for="userPassword">Password</label>
+        </div>
+        <div class="form_group-validate">
+            <input class="form_input" type="password" id="passwordReEnter" required>
+            <label class="form_label" for="passwordReEnter">Re-enter Password</label>
+        </div>
+    </fieldset>
+    <footer class="form_footer object">
+        <input type="submit" class="form_submit button" value="Submit">
+    </footer>
+</form>
+```
+
+### Props.submit
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>String</code> | <code>Object</code></td>
+    </tr>
+</table>
+
+```jsx
+<Form fields={...} submit='Sign Up' />
+```
+
+###### Output
+
+```html
+<form class="form">
+    ...
+    <footer class="form_footer object">
+        <input type="submit" class="form_submit button" value="Sign Up">
+    </footer>
+</form>
+```
+
+#### With Custom Attributes
+
+```jsx
+<Form fields={...} submit={{ text: 'Sign Up', className: 'button-size-4-brand-1' }} />
+```
+
+###### Output
+
+```html
+<form class="form">
+    ...
+    <footer class="form_footer object">
+        <input type="submit" class="form_submit button-size-4-brand-1" value="Sign Up">
+    </footer>
+</form>
 ```
 
 ## Representations
@@ -265,7 +487,7 @@ A FieldDraft is a JavaScript Object which represents a Form group.
         <tr>
             <td><code>fields</code></td>
             <td><code>array</code></td>
-            <td>Array of <a href="#TODO">FieldDraft</a>'s to use when <code>type</code> is <code>'fieldset'</code></td>
+            <td>Array of <a href="#TODO">FieldDraft</a>'s to use when <code>type</code> is <code>'fieldset'</code>, or to pass to the `fieldset` parameter</td>
         </tr>
         <tr>
             <td><code>fieldset</code></td>
@@ -386,9 +608,43 @@ Field will be hidden:
 
 #### FieldDraft.validate
 
+> An array of conditions which will determine whether or not the field is valid
+
+* For a field to be valid, all conditions must return `true`
+
+```js
+{
+    validate: [
+        // The current field's value must be more than 3 characters
+        field => field.value.length > 3,
+
+        // `foo` and `bar` will dynamically fetch inputs with the
+        // corresponding IDs of `foo` and `bar` - condition will test
+        // whether the values for inputs `foo` and `bar` are equal
+        (foo, bar) => foo.value === bar.value,
+
+        // Set a custom error message
+        {
+            rule: field => field.value.length > 3,
+            message: 'Must be more than 3 characters'
+        }
+    ]
+}
+```
+
 #### FieldDraft.fieldset
 
+> Create a child fieldset element
+
+```js
+{
+    fieldset: {...FieldDraft}
+}
+```
+
 #### FieldDraft.legend
+
+> For use when `type` is `fieldset` or when using the `fieldset` parameter
 
 ##### Basic example
 
@@ -411,3 +667,33 @@ Field will be hidden:
 ```
 
 #### FieldDraft.before/FieldDraft.after
+
+> Insert content before or after the field group's content
+
+```jsx
+{
+    before: <app.Alert>Alert Message</app.Alert>,
+    after: <app.Alert>Alert Message</app.Alert>
+}
+```
+
+#####  Conditional visiblity
+
+```jsx
+after: {
+    id: 'freeSpamAlert',
+    render: <app.Alert>You will receive free spam</app.Alert>,
+    rules: [someCheckbox => someCheckbox.checked]
+}
+```
+
+##### Custom attributes
+
+
+```jsx
+after: {
+    render: <app.Alert>Alert Message</app.Alert>,
+    className: 'object-small',
+    ...
+}
+```

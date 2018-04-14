@@ -74,7 +74,7 @@
                             }
 
                             &:valid {
-                                &, ~ label, ~ .form_icon {
+                                &, ~ label, ~ #{selector($module, 'icon')} {
                                     border-color: this('valid-color');
                                     color: this('valid-color');
                                 }
