@@ -48,6 +48,7 @@
 
 * group
 * label
+* legend
 * input
 * fieldset
 * submit
@@ -165,16 +166,14 @@ UI.form().setState(fields);
 > Hide the `Address` fieldset if the `isHomeless` checkbox is checked
 
 ```html
-<form class="form">
-    <div class="form_group">
-        <input type="checkbox" id="isHomeless" class="form_checkbox">
-        <label for="isHomeless" class="form_label">I'm homeless</label>
+<div class="form_group">
+    <input type="checkbox" id="isHomeless" class="form_checkbox">
+    <label for="isHomeless" class="form_label">I'm homeless</label>
 
-        <fieldset id="address" class="form_fieldset">
-            ...
-        </fieldset>
-    </div>
-</form>
+    <fieldset id="address" class="form_fieldset">
+        ...
+    </fieldset>
+</div>
 ```
 
 ```js
@@ -307,7 +306,7 @@ UI.form().validate('passwordReEnter', [
 
 ### Props.fields
 
-> Array of [FieldDraft](#TODO)'s to render
+> Array of [FieldDraft](#fielddraft)'s to render
 
 <table>
     <tr>
@@ -471,7 +470,7 @@ A FieldDraft is a JavaScript Object which represents a Form group.
         </tr>
         <tr>
             <td><code>legend</code></td>
-            <td><code>string | object</code></td>
+            <td><code>string</code> | <code>object</code></td>
             <td>The group's <a href="#">legend</a> if <code>type</code> is <code>'fieldset'</code></td>
         </tr>
         <tr>
@@ -487,7 +486,7 @@ A FieldDraft is a JavaScript Object which represents a Form group.
         <tr>
             <td><code>fields</code></td>
             <td><code>array</code></td>
-            <td>Array of <a href="#TODO">FieldDraft</a>'s to use when <code>type</code> is <code>'fieldset'</code>, or to pass to the `fieldset` parameter</td>
+            <td>Array of <a href="#fielddraft">FieldDraft</a>'s to use when <code>type</code> is <code>fieldset</code>, or to pass to the <code>fieldset</code> parameter</td>
         </tr>
         <tr>
             <td><code>fieldset</code></td>
@@ -638,7 +637,7 @@ Field will be hidden:
 
 ```js
 {
-    fieldset: {...FieldDraft}
+    fieldset: {[...FieldDraft]}
 }
 ```
 
@@ -672,8 +671,8 @@ Field will be hidden:
 
 ```jsx
 {
-    before: <app.Alert>Alert Message</app.Alert>,
-    after: <app.Alert>Alert Message</app.Alert>
+    before: <div class="alert">Alert Message</div>,
+    after: <div class="alert">Alert Message</div>
 }
 ```
 
@@ -682,7 +681,7 @@ Field will be hidden:
 ```jsx
 after: {
     id: 'freeSpamAlert',
-    render: <app.Alert>You will receive free spam</app.Alert>,
+    render: <div class="alert">You will receive free spam</div>,
     rules: [someCheckbox => someCheckbox.checked]
 }
 ```
@@ -692,7 +691,7 @@ after: {
 
 ```jsx
 after: {
-    render: <app.Alert>Alert Message</app.Alert>,
+    render: <div class="alert">Alert Message</div>,
     className: 'object-small',
     ...
 }

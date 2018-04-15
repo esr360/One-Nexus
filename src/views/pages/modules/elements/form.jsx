@@ -115,7 +115,7 @@ export default class Form extends React.Component {
                                     rules: [freeSpam => freeSpam.checked]
                                 }
                             }
-                        ]} submit={{ text: 'Sign Up', className: 'button-size-4-brand-1' }} />
+                        ]} submit='Sign up' />
 
                         <Module name='form'>
                             <Component name='group' tag='fieldset'>
