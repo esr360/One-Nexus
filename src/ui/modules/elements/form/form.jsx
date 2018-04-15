@@ -107,6 +107,15 @@ class RenderFields extends Form {
         super(props, context);
     }
 
+    componentModifiers(properties) {
+        let modifiers = [];
+
+        if (properties.validate) modifiers.push('validate');
+        if (properties.icon) modifiers.push('has-icon');
+
+        return modifiers;
+    }
+
     render() {
         return this.props.fields.map((properties, index) => {
 
@@ -121,7 +130,7 @@ class RenderFields extends Form {
             );
 
             return (
-                <Component name='group' key={index} modifiers={properties.validate && ['validate']}>
+                <Component name='group' key={index} {...this.getInputProps(properties.groupProps)} modifiers={this.componentModifiers(properties)}>
 
                     {properties.type ==='HTML' && (
                         <div {...this.getInputProps(properties)}>{ properties.render }</div>
@@ -130,17 +139,23 @@ class RenderFields extends Form {
                     {properties.label && !properties.validate && (properties.type !== 'checkbox') && label}
 
                     {this.inputTypes.includes(properties.type) && (
-                        <Component
-                            name='input'
+                        <Component name='inputWrapper'>
+                            <Component
+                                name='input'
 
-                            {...this.getInputProps(properties)}
+                                {...this.getInputProps(properties)}
 
-                            onFocus={() => this.validate(properties.id, properties.validate)}
-                            onKeyUp={() => {
-                                this.setState(this.props.formFields || this.props.fields);
-                                this.validate(properties.id, properties.validate);
-                            }}
-                        />
+                                onFocus={() => this.validate(properties.id, properties.validate)}
+                                onKeyUp={() => {
+                                    this.setState(this.props.formFields || this.props.fields);
+                                    this.validate(properties.id, properties.validate);
+                                }}
+                            />
+
+                            {properties.icon && (
+                                <Component tag='i' name='icon' className={`fa fa-${properties.icon}`} />
+                            )}
+                        </Component>
                     )}
 
                     {this.otherTypes.includes(properties.type) && (

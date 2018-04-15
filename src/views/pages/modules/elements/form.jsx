@@ -23,6 +23,7 @@ export default class Form extends React.Component {
                                         type: 'text',
                                         label: 'Username',
                                         id: 'username',
+                                        icon: 'user',
                                         required: true,
                                         validate: [
                                             {
@@ -34,6 +35,7 @@ export default class Form extends React.Component {
                                     {
                                         type: 'password',
                                         label: 'Password',
+                                        icon: 'key',
                                         id: 'userPassword',
                                         required: true,
                                         validate: [
@@ -77,6 +79,9 @@ export default class Form extends React.Component {
                                         type: 'checkbox',
                                         id: 'isHomeless',
                                         label: 'I\'m homeless',
+                                        groupProps: {
+                                            className: 'well-border'
+                                        },
                                         fieldset: {
                                             type: 'fieldset',
                                             legend: 'Address',

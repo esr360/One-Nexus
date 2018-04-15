@@ -27,6 +27,12 @@
             height: 1em;
         }
 
+        @include component('inputWrapper') {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
         @include component('group') {
 
             @include vertical-rhythm('bottom');
@@ -97,6 +103,7 @@
             position: absolute;
             left: 0.75em;
             color: this('input', 'color');
+            transition: core('transition');
         }
 
         @include component('input') {

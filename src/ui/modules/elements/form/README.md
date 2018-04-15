@@ -315,6 +315,82 @@ UI.form().validate('passwordReEnter', [
     </tr>
 </table>
 
+#### Basic Example
+
+```jsx
+const fields = [
+    {
+        type: 'text',
+        label: 'Username'
+    },
+    {
+        type: 'password',
+        label: 'Password'
+    }
+];
+
+<Form fields={fields} />
+```
+
+#### With Fieldset Type
+
+```jsx
+const fields = [
+    {
+        type: 'fieldset',
+        legend: 'Login',
+        fields: [
+            {
+                type: 'text',
+                label: 'Username'
+            },
+            {
+                type: 'password',
+                label: 'Password'
+            }
+        ]
+    }
+];
+
+<Form fields={fields} />
+```
+
+#### With Child Fieldset
+
+```jsx
+const fields = [
+    {
+        type: 'checkbox',
+        label: 'Receive post',
+        fieldset: {
+            legend: 'Address',
+            fields: [
+                {
+                    type: 'text',
+                    label: 'Address Line 1'
+                },
+                {
+                    type: 'text',
+                    label: 'Address Line 2'
+                },
+                {
+                    type: 'text',
+                    label: 'City'
+                },
+                {
+                    type: 'text',
+                    label: 'Postcode'
+                }
+            ]
+        }
+    }
+];
+
+<Form fields={fields} />
+```
+
+#### With Validation
+
 ```jsx
 const fields = [
     {
@@ -393,6 +469,8 @@ const fields = [
     </footer>
 </form>
 ```
+
+#### With Display Rules
 
 ### Props.submit
 

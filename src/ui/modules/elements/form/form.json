@@ -3,8 +3,7 @@
         "name": "form",
         "methods": ["setState", "validate"],
         "label": {
-            "transition": ["#CORE", "transition"],
-            "color": ["#CORE", "text-color"]
+            "transition": ["#CORE", "transition"]
         },
         "input": {
             "color": ["#CORE", "text-color"],
