@@ -130,7 +130,12 @@ class RenderFields extends Form {
             );
 
             return (
-                <Component name='group' key={index} {...this.getInputProps(properties.groupProps)} modifiers={this.componentModifiers(properties)}>
+                <Component 
+                    name='group' 
+                    key={index}
+                    modifiers={this.componentModifiers(properties)}
+                    {...this.getInputProps(properties.groupProps)} 
+                >
 
                     {properties.type ==='HTML' && (
                         <div {...this.getInputProps(properties)}>{ properties.render }</div>

@@ -396,9 +396,7 @@ const fields = [
     {
         type: 'fieldset',
         id: 'loginDetails',
-        legend: {
-            title: 'Login Details'
-        },
+        legend: 'Login Details',
         fields: [
             {
                 type: 'text',
@@ -472,6 +470,8 @@ const fields = [
 
 #### With Display Rules
 
+TODO
+
 ### Props.submit
 
 <table>
@@ -519,13 +519,15 @@ const fields = [
 
 A FieldDraft is a JavaScript Object which represents a Form group.
 
-* [FieldDraft.type](#)
-* [FieldDraft.label](#)
-* [FieldDraft.rules](#)
-* [FieldDraft.validate](#)
-* [FieldDraft.fieldset](#)
-* [FieldDraft.legend](#)
-* [FieldDraft.before/FieldDraft.after](#)
+* [FieldDraft.type](#TODO)
+* [FieldDraft.label](#TODO)
+* [FieldDraft.legend](#TODO)
+* [FieldDraft.icon](#TODO)
+* [FieldDraft.rules](#TODO)
+* [FieldDraft.validate](#TODO)
+* [FieldDraft.fieldset](#TODO)
+* [FieldDraft.groupProps](#TODO)
+* [FieldDraft.before/FieldDraft.after](#TODO)
 
 <table class="table">
     <thead>
@@ -552,6 +554,11 @@ A FieldDraft is a JavaScript Object which represents a Form group.
             <td>The group's <a href="#">legend</a> if <code>type</code> is <code>'fieldset'</code></td>
         </tr>
         <tr>
+            <td><code>icon</code></td>
+            <td><code>string</code></td>
+            <td><a href="http://fontawesome.io/icons/">FontAwesome</a> icon name</td>
+        </tr>
+        <tr>
             <td><code>validate</code></td>
             <td><code>array</code></td>
             <td><a href="#TODO">Validator</a> conditions to determine whether the field should validate</td>
@@ -570,6 +577,11 @@ A FieldDraft is a JavaScript Object which represents a Form group.
             <td><code>fieldset</code></td>
             <td><code>object</code></td>
             <td>Add a child fieldset (see <a href="#">FieldDraft.fieldset</a>)</td>
+        </tr>
+        <tr>
+            <td><code>groupProps</code></td>
+            <td><code>Object</code></td>
+            <td>Properties to pass to the Form `group` Component</td>
         </tr>
         <tr>
             <td><code>before</code></td>
@@ -636,6 +648,40 @@ The `type` parameter for a FieldDraft can be one of the following:
         className: 'heading-size-4',
         ...
     }
+}
+```
+
+#### FieldDraft.legend
+
+> For use when `type` is `fieldset` or when using the `fieldset` parameter
+
+##### Basic example
+
+```js
+{
+    legend: 'Legend title'
+}
+```
+
+##### Pass custom attributes
+
+```js
+{
+    legend: {
+        title: 'Legend title',
+        className: 'heading-size-4',
+        ...
+    }
+}
+```
+
+#### FieldDraft.icon
+
+> Value should correspond to a [FontAwesome icon name](http://fontawesome.io/icons/)
+
+```js
+{
+    icon: 'user'
 }
 ```
 
@@ -719,28 +765,22 @@ Field will be hidden:
 }
 ```
 
-#### FieldDraft.legend
-
-> For use when `type` is `fieldset` or when using the `fieldset` parameter
-
-##### Basic example
+#### FieldDraft.groupProps
 
 ```js
 {
-    legend: 'Legend title'
+    groupProps: {
+        className: 'well-border'
+    }
 }
 ```
 
-##### Pass custom attributes
+##### Output
 
 ```js
-{
-    legend: {
-        title: 'Legend title',
-        className: 'heading-size-4',
-        ...
-    }
-}
+<div class="form_group well-border">
+    ...
+</div>
 ```
 
 #### FieldDraft.before/FieldDraft.after
