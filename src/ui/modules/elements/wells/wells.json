@@ -4,13 +4,18 @@
         "background": "white",
         "border": "1px solid",
         "border-color": ["#COLOR", "opaque", "dark-2"],
-        "border-radius": "0.4em",
         "padding": "1em",
         "color": "inherit",
         "-dark": {
             "background": ["#COLOR", "opaque", "dark-4"],
             "border": "none",
             "color": ["#COLOR", "greyscale", "white"]
-        } 
+        },
+        "-round": {
+            "border-radius": "0.4em"
+        },
+        "-border": {
+            "background": "transparent"
+        }
     }
 }
