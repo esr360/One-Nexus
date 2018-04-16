@@ -38,7 +38,9 @@
         <label class="form_label">Password</label>
         <input class="form_input" type="password">
     </div>
-    <input class="form_submit button" type="submit" value="Login">
+    <footer class="form_footer object">
+        <input class="form_submit button" type="submit" value="Login">
+    </footer>
 </form>
 ```
 
@@ -330,6 +332,70 @@ const fields = [
 ];
 
 <Form fields={fields} />
+```
+
+##### Output
+
+```html
+<form class="form">
+    <div class="form_group">
+        <label class="form_label">Username</label>
+        <input class="form_input" type="text" >
+    </div>
+    <div class="form_group">
+        <label class="form_label">Password</label>
+        <input class="form_input" type="password">
+    </div>
+    <footer class="form_footer object">
+        <input class="form_submit button" type="submit" value="Submit">
+    </footer>
+</form>
+```
+
+
+#### With Input Icon
+
+> Value should correspond to a [FontAwesome icon name](http://fontawesome.io/icons/)
+
+```jsx
+const fields = [
+    {
+        type: 'text',
+        icon: 'user',
+        label: 'Username'
+    },
+    {
+        type: 'password',
+        icon: 'key',
+        label: 'Password'
+    }
+];
+
+<Form fields={fields} />
+```
+
+##### Output
+
+```html
+<form class="form">
+    <div class="form_group-validate-has-icon">
+        <div class="form_inputWrapper">
+            <input class="form_input" type="text" id="username" required>
+            <i class="form_icon fa fa-user"></i>
+        </div>
+        <label for="username" class="form_label">Username</label>
+    </div>
+    <div class="form_group-validate-has-icon">
+        <div class="form_inputWrapper">
+            <input class="form_input" type="password" id="userPassword" required>
+            <i class="form_icon fa fa-key"></i>
+        </div>
+        <label for="userPassword" class="form_label">Password</label>
+    </div>
+    <footer class="form_footer object">
+        <input class="form_submit button" type="submit" value="Submit">
+    </footer>
+</form>
 ```
 
 #### With Fieldset Type
