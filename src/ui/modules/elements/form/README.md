@@ -355,7 +355,7 @@ const fields = [
 
 #### With Input Icon
 
-> Value should correspond to a [FontAwesome icon name](http://fontawesome.io/icons/)
+> `icon` value should correspond to a [FontAwesome icon name](http://fontawesome.io/icons/)
 
 ```jsx
 const fields = [
@@ -421,6 +421,10 @@ const fields = [
 <Form fields={fields} />
 ```
 
+##### Output
+
+TODO
+
 #### With Child Fieldset
 
 ```jsx
@@ -455,7 +459,13 @@ const fields = [
 <Form fields={fields} />
 ```
 
+##### Output
+
+TODO
+
 #### With Validation
+
+> If you are not using Ract, you can handle validation manually using the [`validate` interaction](#TODO)
 
 ```jsx
 const fields = [
@@ -509,32 +519,9 @@ const fields = [
 <Form fields={fields} />
 ```
 
-###### Output
-
-```html
-<form class="form">
-    <fieldset id="loginDetails" class="form_fieldset">
-        <legend class="form_legend">Login Details</legend>
-        <div class="form_group-validate">
-            <input class="form_input" type="text" id="username" required>
-            <label class="form_label" for="username">Username</label>
-        </div>
-        <div class="form_group-validate">
-            <input class="form_input" type="password" id="userPassword" required>
-            <label class="form_label" for="userPassword">Password</label>
-        </div>
-        <div class="form_group-validate">
-            <input class="form_input" type="password" id="passwordReEnter" required>
-            <label class="form_label" for="passwordReEnter">Re-enter Password</label>
-        </div>
-    </fieldset>
-    <footer class="form_footer object">
-        <input type="submit" class="form_submit button" value="Submit">
-    </footer>
-</form>
-```
-
 #### With Display Rules
+
+> If you are not using Ract, you can handle display rules manually using the [`setState` interaction](#TODO)
 
 TODO
 
@@ -648,6 +635,11 @@ A FieldDraft is a JavaScript Object which represents a Form group.
             <td><code>groupProps</code></td>
             <td><code>Object</code></td>
             <td>Properties to pass to the Form `group` Component</td>
+        </tr>
+        <tr>
+            <td><code>Compound</code></td>
+            <td><code>Bool</code></td>
+            <td>If <code>true</code>, form group will has smaller top/bottom margin</td>
         </tr>
         <tr>
             <td><code>before</code></td>
