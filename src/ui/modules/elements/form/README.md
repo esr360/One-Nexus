@@ -220,7 +220,7 @@ UI.form().validate(field, validators, callback[isValid, field, message]);
         <tr>
             <td>Validators</td>
             <td><code>Array</code></td>
-            <td>Array of <a href="#TODO">validators</a> to apply</td>
+            <td>Array of <a href="#fielddraftvalidate">validators</a> to apply</td>
         </tr>
         <tr>
             <td>Callback</td>
@@ -303,8 +303,8 @@ UI.form().validate('passwordReEnter', [
 ```
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [Props.fields](#TODO)
-* [Props.submit](#TODO)
+* [Props.fields](#propsfields)
+* [Props.submit](#propssubmit)
 
 ### Props.fields
 
@@ -415,6 +415,10 @@ const fields = [
                 label: 'Password'
             }
         ]
+    },
+    {
+        type: 'fieldset',
+        ...
     }
 ];
 
@@ -423,7 +427,31 @@ const fields = [
 
 ##### Output
 
-TODO
+```html
+<form class="form object">
+    <fieldset class="form_fieldset">
+        <legend class="form_legend">Login</legend>
+        <div class="form_group">
+            <label class="form_label">Username</label>
+            <div class="form_inputWrapper">
+                <input class="form_input" type="text">
+            </div>
+        </div>
+        <div class="form_group">
+            <label class="form_label">Password</label>
+            <div class="form_inputWrapper">
+                <input class="form_input" type="password">
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="form_fieldset">
+        ...
+    </fieldset>
+    <footer class="form_footer object">
+        <input class="form_submit button" type="submit">
+    </footer>
+</form>
+```
 
 #### With Child Fieldset
 
@@ -461,11 +489,56 @@ const fields = [
 
 ##### Output
 
-TODO
+```html
+<form class="form object">
+    <div class="form_group">
+        <div class="row">
+            <div class="span va-middle">
+                <input class="form_checkbox" type="checkbox">
+            </div>
+            <div class="span va-middle">
+                <label class="form_label">Receive post</label>
+            </div>
+        </div>
+        <fieldset class="form_fieldset">
+            <legend class="form_legend">Address</legend>
+            <div class="form_group">
+                <label class="form_label">Address Line 1</label>
+                <div class="form_inputWrapper">
+                    <input class="form_input" type="text">
+                </div>
+            </div>
+            <div class="form_group">
+                <label class="form_label">Address Line 2</label>
+                <div class="form_inputWrapper">
+                    <input class="form_input" type="text">
+                </div>
+            </div>
+            <div class="form_group">
+                <label class="form_label">City</label>
+                <div class="form_inputWrapper">
+                    <input class="form_input" type="text">
+                </div>
+            </div>
+            <div class="form_group">
+            <label class="form_label">Postcode</label>
+                <div class="form_inputWrapper">
+                    <input class="form_input" type="text">
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <footer class="form_footer object">
+        <input class="form_submit button" type="submit">
+    </footer>
+</form>
+```
 
 #### With Validation
 
-> If you are not using Ract, you can handle validation manually using the [`validate` interaction](#TODO)
+> If you are not using Ract, you can handle validation manually using the [`validate` interaction](#validate)
+
+> See the [FieldDraft.validate section](#fielddraftvalidate) for more info
 
 ```jsx
 const fields = [
@@ -521,16 +594,46 @@ const fields = [
 
 #### With Display Rules
 
-> If you are not using Ract, you can handle display rules manually using the [`setState` interaction](#TODO)
+> If you are not using Ract, you can handle display rules manually using the [`setState` interaction](#setstate)
 
-TODO
+> See the [FieldDraft.rules section](#fielddraftrules) for more info
+
+```jsx
+const fields = [
+    {
+        type: 'checkbox',
+        id: 'isHomeless',
+        label: 'I\'m homeless',
+        fieldset: {
+            type: 'fieldset',
+            legend: 'Address',
+            id: 'address',
+            fields: [
+                ...
+            ],
+            // #Address fieldset will only be shown if
+            // the #isHomeless checkbox is not checked
+            // (i.e it will be hidden if it is checked)
+            rules: [isHomeless => !isHomeless.checked]
+        }
+    }
+];
+
+<Form fields={fields} />
+```
 
 ### Props.submit
+
+> To disable the submit button, set the value to `false`
 
 <table>
     <tr>
         <td><b>Type</b></td>
         <td><code>String</code> | <code>Object</code></td>
+    </tr>
+    <tr>
+        <td><b>Default</b></td>
+        <td><code>Submit</code></td>
     </tr>
 </table>
 
@@ -544,7 +647,7 @@ TODO
 <form class="form">
     ...
     <footer class="form_footer object">
-        <input type="submit" class="form_submit button" value="Sign Up">
+        <input class="form_submit button" type="submit" value="Sign Up">
     </footer>
 </form>
 ```
@@ -561,7 +664,7 @@ TODO
 <form class="form">
     ...
     <footer class="form_footer object">
-        <input type="submit" class="form_submit button-size-4-brand-1" value="Sign Up">
+        <input class="form_submit button-size-4-brand-1" type="submit" value="Sign Up">
     </footer>
 </form>
 ```
@@ -572,15 +675,15 @@ TODO
 
 A FieldDraft is a JavaScript Object which represents a Form group.
 
-* [FieldDraft.type](#TODO)
-* [FieldDraft.label](#TODO)
-* [FieldDraft.legend](#TODO)
-* [FieldDraft.icon](#TODO)
-* [FieldDraft.rules](#TODO)
-* [FieldDraft.validate](#TODO)
-* [FieldDraft.fieldset](#TODO)
-* [FieldDraft.groupProps](#TODO)
-* [FieldDraft.before/FieldDraft.after](#TODO)
+* [FieldDraft.type](#fielddrafttype)
+* [FieldDraft.label](#fielddraftlabel)
+* [FieldDraft.legend](#fielddraftlegend)
+* [FieldDraft.icon](#fielddrafticon)
+* [FieldDraft.rules](#fielddraftrules)
+* [FieldDraft.validate](#fielddraftvalidate)
+* [FieldDraft.fieldset](#fielddraftfieldset)
+* [FieldDraft.groupProps](#fielddraftgroupprops)
+* [FieldDraft.before/FieldDraft.after](#fielddraftbeforefielddraftafter)
 
 <table class="table">
     <thead>
@@ -594,7 +697,7 @@ A FieldDraft is a JavaScript Object which represents a Form group.
         <tr>
             <td><code>type</code></td>
             <td><code>string</code></td>
-            <td>The <a href="#TODO">type</a> of Form group</td>
+            <td>The <a href="#fielddrafttype">type</a> of Form group</td>
         </tr>
         <tr>
             <td><code>label</code></td>
@@ -614,12 +717,12 @@ A FieldDraft is a JavaScript Object which represents a Form group.
         <tr>
             <td><code>validate</code></td>
             <td><code>array</code></td>
-            <td><a href="#TODO">Validator</a> conditions to determine whether the field should validate</td>
+            <td><a href="#fielddraftvalidate">Validator</a> conditions to determine whether the field should validate</td>
         </tr>
         <tr>
             <td><code>rules</code></td>
             <td><code>array</code></td>
-            <td><a href="#TODO">Rules</a> to determine whether the field should be visible</td>
+            <td><a href="#fielddraftrules">Rules</a> to determine whether the field should be visible</td>
         </tr>
         <tr>
             <td><code>fields</code></td>

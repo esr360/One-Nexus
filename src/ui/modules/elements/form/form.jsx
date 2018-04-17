@@ -74,7 +74,7 @@ export default class Form extends Constructor {
             <Module {...this.props}>
                 <RenderFields fields={this.props.fields} />
 
-                {this.props.submit &&
+                {this.props.submit !== false &&
                     <Component name='footer' className='object'>
                         <Component
                             name='submit'
