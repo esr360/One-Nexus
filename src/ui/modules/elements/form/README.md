@@ -613,7 +613,7 @@ const fields = [
             ],
             // #Address fieldset will only be shown if
             // the #isHomeless checkbox is not checked
-            // (i.e it will be hidden if it is checked)
+            // - i.e it will be hidden if it is checked
             rules: [isHomeless => !isHomeless.checked]
         }
     }
@@ -846,6 +846,18 @@ The `type` parameter for a FieldDraft can be one of the following:
 }
 ```
 
+##### Output
+
+```html
+<div class="form_group-has-icon">
+    <label class="form_label" for="username">Username</label>
+    <div class="form_inputWrapper">
+        <input class="form_input" type="text" id="username" required>
+        <i class="form_icon fa fa-user"></i>
+    </div>
+</div>
+```
+
 #### FieldDraft.rules
 
 > An array of conditions which will determine whether or not the field will be visible
@@ -894,7 +906,7 @@ Field will be hidden:
 
 > An array of conditions which will determine whether or not the field is valid
 
-* For a field to be valid, all conditions must return `true`
+> For a field to be valid, all conditions must return `true`
 
 ```js
 {

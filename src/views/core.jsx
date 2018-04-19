@@ -6,6 +6,8 @@ export class Core extends React.Component {
             <html>
                 <head>
                     <title>Title</title>
+
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
                 </head>
                 <body>
                     <div id='app'>{this.props.children}</div>
@@ -13,8 +15,6 @@ export class Core extends React.Component {
                     {this.props.styles && <link href='assets/styles/app.css' rel='stylesheet' />}
 
                     <script type="text/javascript" src='assets/scripts/app.js'></script>
-
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
                 </body> 
             </html>
         )

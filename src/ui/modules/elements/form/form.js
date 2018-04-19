@@ -89,7 +89,17 @@ export function setState(fields) {
  * @param {*} isValid 
  */
 function handleValidation(isValid, field, message) {
+    const parentGroup = field.parents('[class*="group"]')[0];
+
+    parentGroup.modifier(isValid ? 'isInvalid' : 'isValid', 'remove');
+    parentGroup.modifier(isValid ? 'isValid' : 'isInvalid', 'add');
+
     if (field) field.setCustomValidity(isValid ? '' : message);
+
+    field.addEventListener('blur', () => {
+        parentGroup.modifier('isValid', 'remove');
+        parentGroup.modifier('isInvalid', 'remove');
+    });
 }
 
 /**

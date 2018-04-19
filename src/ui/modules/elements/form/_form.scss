@@ -19,10 +19,6 @@
         // Components
         //*********************************************************
 
-        @include component('legend');
-
-        @include component('label');
-
         @include component('checkbox') {
             height: 1em;
         }
@@ -46,10 +42,8 @@
             }
 
             @include modifier('has-icon') {
-                @include module {
-                    @include component('input') {
-                        padding-left: 2em;
-                    }
+                @include component('input') {
+                    padding-left: 2em;
                 }
             }
 
@@ -57,50 +51,41 @@
                 display: table;
                 width: 100%;
 
-                label {
+                @include modifier('isValid') {
+                    @include components(('label', 'icon', 'input')) {
+                        color: this('valid-color');
+                        border-color: currentColor;
+                    }
+                }
+
+                @include modifier('isInvalid') {
+                    @include components(('label', 'icon', 'input')) {
+                        color: this('invalid-color');
+                        border-color: currentColor;
+                    }
+                }
+
+                @include component('label') {
                     display: table-header-group;
                 }
 
-                @include module {
-                    @include component('input') {
-                        display: table-footer-group;
-                        float: left;
-
-                        &:focus {
-                            &:invalid {
-                                &, ~ label, ~ #{selector($module, 'icon')} {
-                                    border-color: this('invalid-color');
-                                    color: this('invalid-color');
-                                }
-
-                                &::placeholder {
-                                    border-color: this('invalid-color');
-                                    color: this('invalid-color');
-                                }
-                            }
-
-                            &:valid {
-                                &, ~ label, ~ #{selector($module, 'icon')} {
-                                    border-color: this('valid-color');
-                                    color: this('valid-color');
-                                }
-
-                                &::placeholder {
-                                    border-color: this('valid-color');
-                                    color: this('valid-color');
-                                }
-                            }
-                        }
-                    }
+                @include component('input') {
+                    display: table-footer-group;
+                    float: left;
                 }
             } // modifier('validate')
 
         } // component('group')
 
+        @include component('field') {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
         @include component('icon') {
             @include vertical-center();
 
-            position: absolute;
             left: 0.75em;
             color: this('input', 'color');
             transition: core('transition');
@@ -119,6 +104,10 @@
                 outline: 0;
             }
         }
+
+        @include component('legend');
+
+        @include component('label');
 
         @include component('submit');
 

@@ -137,14 +137,10 @@ class RenderFields extends Form {
                     {...this.getInputProps(properties.groupProps)} 
                 >
 
-                    {properties.type ==='HTML' && (
-                        <div {...this.getInputProps(properties)}>{ properties.render }</div>
-                    )}
-
-                    {properties.label && !properties.validate && (properties.type !== 'checkbox') && label}
+                    {properties.label && (properties.type !== 'checkbox') && label}
 
                     {this.inputTypes.includes(properties.type) && (
-                        <Component name='inputWrapper'>
+                        <Component name='field'>
                             <Component
                                 name='input'
 
@@ -192,7 +188,9 @@ class RenderFields extends Form {
                         />
                     )}
 
-                    {properties.label && properties.validate && (properties.type !== 'checkbox') && label}
+                    {properties.type ==='HTML' && (
+                        <div {...this.getInputProps(properties)}>{ properties.render }</div>
+                    )}
 
                     {properties.fieldset && (
                         <RenderFieldset {...this.props} fieldProperties={properties.fieldset} />
