@@ -112,6 +112,7 @@ class RenderFields extends Form {
 
         if (properties.validate) modifiers.push('validate');
         if (properties.icon) modifiers.push('has-icon');
+        if (properties.compound) modifiers.push('compound');
 
         return modifiers;
     }

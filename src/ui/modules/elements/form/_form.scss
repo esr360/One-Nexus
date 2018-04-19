@@ -31,8 +31,6 @@
 
         @include component('group') {
 
-            @include vertical-rhythm('bottom');
-
             @include object(core('margin') / 2);
 
             position: relative;
@@ -48,9 +46,6 @@
             }
 
             @include modifier('validate') {
-                display: table;
-                width: 100%;
-
                 @include modifier('isValid') {
                     @include components(('label', 'icon', 'input')) {
                         color: this('valid-color');
@@ -63,15 +58,6 @@
                         color: this('invalid-color');
                         border-color: currentColor;
                     }
-                }
-
-                @include component('label') {
-                    display: table-header-group;
-                }
-
-                @include component('input') {
-                    display: table-footer-group;
-                    float: left;
                 }
             } // modifier('validate')
 

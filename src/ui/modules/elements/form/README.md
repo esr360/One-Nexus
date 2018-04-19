@@ -379,18 +379,18 @@ const fields = [
 ```html
 <form class="form">
     <div class="form_group-validate-has-icon">
-        <div class="form_inputWrapper">
+        <label for="username" class="form_label">Username</label>
+        <div class="form_field">
             <input class="form_input" type="text" id="username" required>
             <i class="form_icon fa fa-user"></i>
         </div>
-        <label for="username" class="form_label">Username</label>
     </div>
     <div class="form_group-validate-has-icon">
-        <div class="form_inputWrapper">
+        <label for="userPassword" class="form_label">Password</label>
+        <div class="form_field">
             <input class="form_input" type="password" id="userPassword" required>
             <i class="form_icon fa fa-key"></i>
         </div>
-        <label for="userPassword" class="form_label">Password</label>
     </div>
     <footer class="form_footer object">
         <input class="form_submit button" type="submit" value="Submit">
@@ -433,13 +433,13 @@ const fields = [
         <legend class="form_legend">Login</legend>
         <div class="form_group">
             <label class="form_label">Username</label>
-            <div class="form_inputWrapper">
+            <div class="form_field">
                 <input class="form_input" type="text">
             </div>
         </div>
         <div class="form_group">
             <label class="form_label">Password</label>
-            <div class="form_inputWrapper">
+            <div class="form_field">
                 <input class="form_input" type="password">
             </div>
         </div>
@@ -504,25 +504,25 @@ const fields = [
             <legend class="form_legend">Address</legend>
             <div class="form_group">
                 <label class="form_label">Address Line 1</label>
-                <div class="form_inputWrapper">
+                <div class="form_field">
                     <input class="form_input" type="text">
                 </div>
             </div>
             <div class="form_group">
                 <label class="form_label">Address Line 2</label>
-                <div class="form_inputWrapper">
+                <div class="form_field">
                     <input class="form_input" type="text">
                 </div>
             </div>
             <div class="form_group">
                 <label class="form_label">City</label>
-                <div class="form_inputWrapper">
+                <div class="form_field">
                     <input class="form_input" type="text">
                 </div>
             </div>
             <div class="form_group">
-            <label class="form_label">Postcode</label>
-                <div class="form_inputWrapper">
+                <label class="form_label">Postcode</label>
+                <div class="form_field">
                     <input class="form_input" type="text">
                 </div>
             </div>
@@ -682,6 +682,7 @@ A FieldDraft is a JavaScript Object which represents a Form group.
 * [FieldDraft.rules](#fielddraftrules)
 * [FieldDraft.validate](#fielddraftvalidate)
 * [FieldDraft.fieldset](#fielddraftfieldset)
+* [FieldDraft.compound](#fielddraftcompound)
 * [FieldDraft.groupProps](#fielddraftgroupprops)
 * [FieldDraft.before/FieldDraft.after](#fielddraftbeforefielddraftafter)
 
@@ -846,13 +847,13 @@ The `type` parameter for a FieldDraft can be one of the following:
 }
 ```
 
-##### Output
+##### Sample Output
 
 ```html
 <div class="form_group-has-icon">
     <label class="form_label" for="username">Username</label>
-    <div class="form_inputWrapper">
-        <input class="form_input" type="text" id="username" required>
+    <div class="form_field">
+        <input class="form_input" type="text" id="username">
         <i class="form_icon fa fa-user"></i>
     </div>
 </div>
@@ -938,6 +939,27 @@ Field will be hidden:
 }
 ```
 
+#### FieldDraft.compound
+
+> Create tighter form groups
+
+```js
+{
+    compound: true
+}
+```
+
+##### Sample Output
+
+```html
+<div class="form_group-compound">
+    <input type="text" class="form_input" placeholder="Username">
+</div>
+<div class="form_group-compound">
+    <input type="password" class="form_input" placeholder="••••••••">
+</div>
+```
+
 #### FieldDraft.groupProps
 
 ```js
@@ -948,7 +970,7 @@ Field will be hidden:
 }
 ```
 
-##### Output
+##### Sample Output
 
 ```js
 <div class="form_group well-border">
