@@ -15,8 +15,7 @@ export default class Form extends React.Component {
                                 type: 'fieldset',
                                 id: 'loginDetails',
                                 legend: {
-                                    title: 'Login Details',
-                                    className: 'foo'
+                                    title: 'Login Details'
                                 },
                                 fields: [
                                     {
@@ -68,6 +67,7 @@ export default class Form extends React.Component {
                                 fields: [
                                     {
                                         type: 'email',
+                                        id: 'email',
                                         label: 'Email Address',
                                         required: true
                                     },
@@ -110,16 +110,98 @@ export default class Form extends React.Component {
                                 ]
                             },
                             {
-                                type: 'checkbox',
-                                id: 'freeSpam',
-                                label: 'I would like to receive free spam',
+                                type: 'select',
+                                id: 'country',
+                                label: 'Country',
+                                required: true,
+                                options: [
+                                    {
+                                        value: 'Choose your county',
+                                        selected: true,
+                                        disabled: true
+                                    },
+                                    { value: 'UK' },
+                                    { value: 'USA' }
+                                ],
+                                validate: [country => country.value === 'UK']
+                            },
+                            {
+                                type: 'fieldset',
+                                id: 'offers',
+                                legend: 'Offers',
+                                fields: [
+                                    {
+                                        type: 'checkbox',
+                                        id: 'freeSpam',
+                                        label: 'I would like to receive free spam',
+                                        after: {
+                                            id: 'freeSpamAlert',
+                                            className: 'object-small',
+                                            render: <app.Alert>You will receive free spam</app.Alert>,
+                                            rules: [freeSpam => freeSpam.checked]
+                                        }
+                                    },
+                                    {
+                                        type: 'checkbox',
+                                        id: 'freePizza',
+                                        label: 'I would like to receive a free large pizza',
+                                        after: {
+                                            id: 'freePizzaAlert',
+                                            className: 'object-small',
+                                            render: <app.Alert alert='info'>You will receive one large pizza</app.Alert>,
+                                            rules: [freePizza => freePizza.checked]
+                                        }
+                                    },
+                                    {
+                                        type: 'fieldset',
+                                        legend: {
+                                            title: 'Choose one:',
+                                            className: 'heading-size-3'
+                                        },
+                                        fields: [
+                                            {
+                                                type: 'radio',
+                                                name: 'choose-one',
+                                                id: 'freeXbox',
+                                                label: 'Free Xbox 360',
+                                                required: true
+                                            },
+                                            {
+                                                type: 'radio',
+                                                name: 'choose-one',
+                                                id: 'freePS4',
+                                                label: 'Free Playstation 4',
+                                                required: true
+                                            },
+                                            {
+                                                type: 'radio',
+                                                name: 'choose-one',
+                                                id: 'freeCheese',
+                                                label: 'Free slice of cheddar cheese',
+                                                required: true
+                                            },
+                                            {
+                                                type: 'radio',
+                                                name: 'choose-one',
+                                                id: 'giveUs10Bux',
+                                                label: 'You agree to give us $10',
+                                                required: true
+                                            }
+                                        ]
+                                    }
+                                ],
+                                rules: [country => country.value !== 'USA'],
+                                // @TODO see why this doesn't render
                                 after: {
-                                    id: 'freeSpamAlert',
+                                    id: 'freeBoth',
                                     className: 'object-small',
-                                    render: <app.Alert>You will receive free spam</app.Alert>,
-                                    rules: [freeSpam => freeSpam.checked]
+                                    render: <app.Alert alert='help'>You want free spam and free pizza??</app.Alert>,
+                                    rules: [
+                                        freeSpam => freeSpam.checked,
+                                        freePizza => freePizza.checked
+                                    ]
                                 }
-                            }
+                            },
                         ]} submit='Sign up' />
 
                         <Module name='form'>

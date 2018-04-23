@@ -45,7 +45,8 @@ export default class Form extends Constructor {
             'fieldset',
             'tag',
             'before',
-            'after'
+            'after',
+            'options'
         ];
 
         let inputProps = [];
@@ -63,6 +64,19 @@ export default class Form extends Constructor {
         };
 
         return inputProps;
+    }
+
+    validateFields(field) {
+        if (field.constructor === Array) {
+            field.forEach($field => this.validateFields($field));
+        }
+
+        if (field.fields) return this.validateFields(field.fields);
+
+        if (field.id) {
+            //console.log(field.id);
+            this.validate(field.id, field.validate);
+        }
     }
 
     componentDidMount() {
@@ -83,11 +97,7 @@ export default class Form extends Constructor {
                             className='button'
                             value={typeof this.props.submit === 'object' ? this.props.submit.text : this.props.submit}
 
-                            onClick={() => {
-                                this.props.fields.forEach(properties => {
-                                    this.validate(properties.id, properties.validate);
-                                });
-                            }}
+                            onClick={() => this.validateFields(this.props.fields)}
 
                             {...this.getInputProps(this.props.submit)}
                         />
@@ -110,9 +120,11 @@ class RenderFields extends Form {
     componentModifiers(properties) {
         let modifiers = [];
 
-        if (properties.validate) modifiers.push('validate');
+        if (properties.validate || properties.required) modifiers.push('validate');
         if (properties.icon) modifiers.push('has-icon');
         if (properties.compound) modifiers.push('compound');
+
+        if (properties.type === 'select') modifiers.push('isSelect');
 
         return modifiers;
     }
@@ -138,7 +150,7 @@ class RenderFields extends Form {
                     {...this.getInputProps(properties.groupProps)} 
                 >
 
-                    {properties.label && (properties.type !== 'checkbox') && label}
+                    {properties.label && (properties.type !== 'checkbox' && properties.type !== 'radio') && label}
 
                     {this.inputTypes.includes(properties.type) && (
                         <Component name='field'>
@@ -147,10 +159,10 @@ class RenderFields extends Form {
 
                                 {...this.getInputProps(properties)}
 
-                                onFocus={() => this.validate(properties.id, properties.validate)}
+                                onFocus={() => this.validateFields(properties)}
                                 onKeyUp={() => {
                                     this.setState(this.props.formFields || this.props.fields);
-                                    this.validate(properties.id, properties.validate);
+                                    this.validateFields(properties);
                                 }}
                             />
 
@@ -164,16 +176,19 @@ class RenderFields extends Form {
                         <input {...this.getInputProps(properties)}/>
                     )}
 
-                    {properties.type === 'checkbox' && (
+                    {(properties.type === 'checkbox' || properties.type === 'radio') && (
                         <Row>
                             <Column align='middle'>
                                 <Component 
-                                    name='checkbox'
+                                    name={properties.type}
                                     tag='input'
 
                                     {...this.getInputProps(properties)}
 
-                                    onChange={() => this.setState(this.props.formFields || this.props.fields)}
+                                    onChange={() => {
+                                        this.setState(this.props.formFields || this.props.fields);
+                                        this.validateFields(properties);
+                                    }}
                                 />
                             </Column>
                             {properties.label && <Column align='middle'>{label}</Column>}
@@ -187,6 +202,27 @@ class RenderFields extends Form {
 
                             {...this.getInputProps(properties)}
                         />
+                    )}
+
+                    {properties.type === 'select' && (
+                        <Component name='field'>
+                            <Component 
+                                name='select'
+
+                                {...this.getInputProps(properties)}
+
+                                onChange={() => {
+                                    this.setState(this.props.formFields || this.props.fields);
+                                    this.validateFields(properties);
+                                }}
+                            >
+                                {properties.options.map((options, index) => (
+                                    <option value={options.value} {...this.getInputProps(options)}>
+                                        { options.value }
+                                    </option>
+                                ))}
+                            </Component>
+                        </Component>
                     )}
 
                     {properties.type ==='HTML' && (

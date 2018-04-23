@@ -40,26 +40,42 @@
             }
 
             @include modifier('has-icon') {
-                @include component('input') {
+                @include components(('input', 'select')) {
                     padding-left: 2em;
                 }
             }
 
             @include modifier('validate') {
                 @include modifier('isValid') {
-                    @include components(('label', 'icon', 'input')) {
+                    @include components(('label', 'field', 'icon', 'input', 'select')) {
                         color: this('valid-color');
                         border-color: currentColor;
                     }
                 }
 
                 @include modifier('isInvalid') {
-                    @include components(('label', 'icon', 'input')) {
+                    @include components(('label', 'field', 'icon', 'input', 'select')) {
                         color: this('invalid-color');
                         border-color: currentColor;
                     }
                 }
             } // modifier('validate')
+
+            @include modifier('isSelect') {
+                position: relative;
+
+                @include component('field') {
+                    &::after {
+                        @include vertical-center;
+
+                        right: 1em;
+                        font-size: 0.9em;
+                        font-family: FontAwesome;
+                        color: inherit;
+                        content: '\f0d7';
+                    }
+                }
+            }
 
         } // component('group')
 
@@ -91,6 +107,10 @@
             }
         }
 
+        @include component('select') {
+            width: 100%;
+        }
+
         @include component('legend');
 
         @include component('label');
@@ -104,6 +124,14 @@
         fieldset {
             padding: 0;
             border: none;
+        }
+
+        select {
+            appearance: none;
+
+            &:focus {
+                outline: none;
+            }
         }
 
         //*********************************************************

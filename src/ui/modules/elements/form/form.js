@@ -34,6 +34,18 @@ export function validate(field, validators, handler = handleValidation) {
         field = document.getElementById(field);
     }
 
+    field.setCustomValidity('');
+
+    const inputTypes = [
+        'text',
+        'email',
+        'password',
+        'search',
+        'tel',
+        'url',
+        'number'
+    ];
+
     let [isValid, message] = [true, 'Invalid field'];
 
     if (validators) validators.forEach(rule => {
@@ -43,10 +55,21 @@ export function validate(field, validators, handler = handleValidation) {
         else if (typeof rule.rule === 'function') {
             if (!UI.dynamicCallback(rule.rule, field, 'field')) isValid = false;
         }
-        else if ((typeof rule.rule !== 'undefined' && !rule.rule) || !rule) isValid = false;
+        else if ((typeof rule.rule !== 'undefined' && !rule.rule) || !rule) {
+            isValid = false;
+        }
 
-        message = rule.message || message;
+        if (rule !== true && rule.rule !== true) {
+            message = rule.message || message;
+        }
     });
+
+    // Field is 'required'
+    if (typeof field.getAttribute('required') !== 'undefined' && field.getAttribute('required') !== false) {
+        if (field.validity.valid === false) {
+            [isValid, message] = [false, field.validationMessage];
+        }
+    }
 
     handler(isValid, field, message);
 
@@ -88,18 +111,37 @@ export function setState(fields) {
  * @param {*} field 
  * @param {*} isValid 
  */
-function handleValidation(isValid, field, message) {
+function handleValidation(isValid, field, message, recurse = true) {
+    if (field.type === 'radio' && recurse) {
+        return handleValidation(isValid, document.querySelectorAll(`input[name="${field.name}"]`), message)
+    }
+
+    if (field instanceof NodeList) {
+        return field.forEach($field => handleValidation(isValid, $field, message, false));
+    }
+
     const parentGroup = field.parents('[class*="group"]')[0];
 
-    parentGroup.modifier(isValid ? 'isInvalid' : 'isValid', 'remove');
-    parentGroup.modifier(isValid ? 'isValid' : 'isInvalid', 'add');
+    if (parentGroup) {
+        parentGroup.modifier(isValid ? 'isInvalid' : 'isValid', 'remove');
+        parentGroup.modifier(isValid ? 'isValid' : 'isInvalid', 'add');
 
-    if (field) field.setCustomValidity(isValid ? '' : message);
+        if (field) field.setCustomValidity(isValid ? '' : message);
+    
+        field.addEventListener('blur', () => {
+            parentGroup.modifier('isValid', 'remove');
+            parentGroup.modifier('isInvalid', 'remove');
 
-    field.addEventListener('blur', () => {
-        parentGroup.modifier('isValid', 'remove');
-        parentGroup.modifier('isInvalid', 'remove');
-    });
+            if (field.type === 'radio') {
+                [...document.querySelectorAll(`input[name="${field.name}"]`)].forEach(radio => {
+                    const parentGroup = radio.parents('[class*="group"]')[0];
+
+                    parentGroup.modifier('isValid', 'remove');
+                    parentGroup.modifier('isInvalid', 'remove');
+                });
+            }
+        });
+    }
 }
 
 /**
