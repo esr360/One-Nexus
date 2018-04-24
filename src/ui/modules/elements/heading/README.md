@@ -1,66 +1,85 @@
-## Headings
+# One-Nexus Heading
 
-##### Components
+* [Overview](#overview)
+* [Configuration](#configuration)
+* [Styles](#styles)
+* [Interactions](#interactions)
+* [Rendering](#rendering)
 
-* group
-
-##### Modifiers
-
-* size-{x}
-* heavy
-* light
-* uppercase
-* flush
-
+## Overview
 
 ### Quick Look
 
-```html
-<h1 class="heading-size-8">Size 8 Heading</h1>
+###### React
 
-<h3 class="heading-size-6-heavy">Size 6 Heavy Heading</h3>
-
-<div class="heading-size-4-light-uppercase">Size 4 Light Uppercase Heading</div>
-
-<span class="heading-flush-uppercase-size-2">Flushed Uppercase Size 2 Heading</div>
-
-<h4 class="heading">Default Heading</h4>
+```jsx
+<Heading>Heading</Heading>
 ```
 
-### Options
+###### HTML
 
-For default values view the [`forms.json`](forms.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
+```html
+<h3 class="heading">Button</h3>
+```
+
+### Components
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
+
+* group
+
+### Modifiers
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
+
+* [[...Global modifiers]](https://github.com/esr360/One-Nexus/wiki/Global-Modifiers)
+* [[...button.sizes]](#sizes)
+* [heavy](#TODO)
+* [light](#TODO)
+* [uppercase](#TODO)
+* [flush](#TODO)
+
+## Configuration
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
+
+```json
+{
+    "heading": {
+        "name": "heading",
+        "group_heading-lineHeight": 0.8,
+        "sizes": ["#TYPOGRAPHY-CONFIG", "sizes"]
+    }
+}
+```
+
+> Certain values from the above configuration are excluded from the below table ([learn more](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules#documenting-configuration-properties))
 
 <table class="table">
     <thead>
         <tr>
             <th>Option</th>
             <th>Description</th>
-            <th>Default</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><code>name</code></td>
-            <td>The name used when generating the CSS selector</td>
-        </tr>
-        <tr>
             <td><code>group_heading-lineHeight</code></td>
-            <td>The line-height for headings contained within a `heading_group` component</td>
+            <td>Line-height for heading inside a <code>group</code> component</td>
         </tr>
         <tr>
             <td><code>sizes</code></td>
-            <td>An object where each key will create a modifier using the value for its font size</td>
+            <td>Object of font-size to use to generate Buttons (<a href="#sizes">learn more</a>)</td>
         </tr>
     </tbody>
 </table>
 
-Pass custom options to the `forms` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `heading` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
 
-```json
+```js
 {
     "app": {
-        "headings": {
+        "heading": {
             "sizes": {
                 "small": "8px",
                 "large": "20px"
@@ -74,7 +93,7 @@ Pass custom options to the `forms` object in your theme's config file (e.g. [the
 
 This option accepts an object and will create a modifier for each key using the key's value for the modifier's font-size:
 
-```json
+```js
 "sizes": {
     "size-1": "0.67em",
     "size-2": "0.83em",
@@ -88,30 +107,67 @@ This option accepts an object and will create a modifier for each key using the 
 }
 ```
 
+```jsx
+<Button size-8>Button</Button>
+```
+
 ```html
-<h4 class="heading-size-8">Size 8 Heading</h4>
+<button class="button-size-8">Size 8 Button</button>
 ```
 
-By default, a value of <code>typography-config('sizes')</code> is passed to the "sizes" option, which is a funtion to fetch the font sizes from the <a href="https://github.com/esr360/One-Nexus/tree/master/src/modules/utilities/typography#default-values">Typography module</a>.
+By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to the "sizes" option, which will fetch the font sizes from the [Typography module](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/utilities/typography).
 
-### Sass
+## Styles
 
-Load the form styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `forms()` mixin:
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
 
-```scss
-@import '../../app';
-@import './config.json';
+## Interactions
 
-@include forms();
+> This module has no interactions
+
+## Rendering
+
+> If you are *not* using React, simply look to the 'Output' section of any example
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
+
+```jsx
+<Heading>Button</Heading>
 ```
 
-### Examples
+* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 
-#### Heading Group
+### Button Group
+
+```jsx
+<Group>
+    <Heading heading={2}>Primary Heading</Heading>
+    <Heading heading={3}>Secondary heading</Heading>
+</Group>
+```
+
+##### Output
 
 ```html
 <div class="heading_group">
-    <h3 class="heading-size-6">Primary Heading</h3>
-    <h4 class="heading-light-size-4">Secondary Heading</h4>
-</div>
+    <h2 class="heading">Primary heading</h2>
+    <h3 class="heading">Secondary heading</h3>
+</Group>
+```
+
+### Flushed Headings (no margin)
+
+```css
+margin-top: 0 !important;
+margin-bottom: 0 !important;
+```
+
+```jsx
+<Heading flush>Flushed Heading</Heading>
+```
+
+##### Output
+
+```html
+<h3 class="heading-flush">Flushed Heading</h3>
 ```
