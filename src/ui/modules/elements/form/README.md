@@ -71,10 +71,17 @@
         "name": "form",
         "methods": ["setState", "validate"],
         "label": {
-            "transition": ["#CORE", "transition"],
-            "color": ["#CORE", "text-color"]
+            "transition": ["#CORE", "transition"]
         },
         "input": {
+            "color": ["#CORE", "text-color"],
+            "border": "1px solid",
+            "border-color": ["#COLOR", "greyscale", "grey-3"],
+            "padding": "0.75em",
+            "transition": ["#CORE", "transition"],
+            "font-family": ["#CORE", "font-family"]
+        },
+        "select": {
             "color": ["#CORE", "text-color"],
             "border": "1px solid",
             "border-color": ["#COLOR", "greyscale", "grey-3"],
