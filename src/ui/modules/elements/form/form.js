@@ -120,27 +120,39 @@ function handleValidation(isValid, field, message, recurse = true) {
         return field.forEach($field => handleValidation(isValid, $field, message, false));
     }
 
+    toggleStyles(field, isValid);
+
+    if (field) field.setCustomValidity(isValid ? '' : message);
+
+    field.addEventListener('blur', () => {
+        toggleStyles(field, 'remove');
+
+        if (field.type === 'radio') {
+            [...document.querySelectorAll(`input[name="${field.name}"]`)].forEach(radio => {
+                toggleStyles(field, 'remove');
+            });
+        }
+    });
+}
+
+/**
+ * Toggle validation styles on a field
+ * 
+ * @param {*} field 
+ * @param {*} isValid 
+ */
+function toggleStyles(field, operator) {
     const parentGroup = field.parents('[class*="group"]')[0];
 
     if (parentGroup) {
-        parentGroup.modifier(isValid ? 'isInvalid' : 'isValid', 'remove');
-        parentGroup.modifier(isValid ? 'isValid' : 'isInvalid', 'add');
+        if (typeof operator === 'boolean') {
+            parentGroup.modifier(operator ? 'isInvalid' : 'isValid', 'remove');
+            parentGroup.modifier(operator ? 'isValid' : 'isInvalid', 'add');
+        }
 
-        if (field) field.setCustomValidity(isValid ? '' : message);
-    
-        field.addEventListener('blur', () => {
-            parentGroup.modifier('isValid', 'remove');
-            parentGroup.modifier('isInvalid', 'remove');
-
-            if (field.type === 'radio') {
-                [...document.querySelectorAll(`input[name="${field.name}"]`)].forEach(radio => {
-                    const parentGroup = radio.parents('[class*="group"]')[0];
-
-                    parentGroup.modifier('isValid', 'remove');
-                    parentGroup.modifier('isInvalid', 'remove');
-                });
-            }
-        });
+        if (operator === 'remove') {
+            ['isValid', 'isInvalid'].forEach(modifier => parentGroup.modifier(modifier, 'remove'));
+        }
     }
 }
 
