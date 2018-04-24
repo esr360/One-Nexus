@@ -708,7 +708,7 @@ A FieldDraft is a JavaScript Object which represents a Form group.
         <tr>
             <td><code>legend</code></td>
             <td><code>string</code> | <code>object</code></td>
-            <td>The group's <a href="#">legend</a> if <code>type</code> is <code>'fieldset'</code></td>
+            <td>The group's <a href="#fielddraftlegend">legend</a> if <code>type</code> is <code>'fieldset'</code></td>
         </tr>
         <tr>
             <td><code>icon</code></td>
@@ -733,7 +733,7 @@ A FieldDraft is a JavaScript Object which represents a Form group.
         <tr>
             <td><code>fieldset</code></td>
             <td><code>object</code></td>
-            <td>Add a child fieldset (see <a href="#">FieldDraft.fieldset</a>)</td>
+            <td>Add a child fieldset (see <a href="#fielddraftfieldset">FieldDraft.fieldset</a>)</td>
         </tr>
         <tr>
             <td><code>groupProps</code></td>
@@ -748,12 +748,12 @@ A FieldDraft is a JavaScript Object which represents a Form group.
         <tr>
             <td><code>before</code></td>
             <td>object</td>
-            <td>HTML/JSX to insert before the group's field(s) (see <a href="#">FieldDraft.before</a>)</td>
+            <td>HTML/JSX to insert before the group's field(s) (see <a href="#fielddraftbeforefielddraftafter">FieldDraft.before</a>)</td>
         </tr>
         <tr>
             <td><code>after</code></td>
             <td>object</td>
-            <td>HTML/JSX to insert after the group's field(s) (see <a href="#">FieldDraft.after</a>)</td>
+            <td>HTML/JSX to insert after the group's field(s) (see <a href="#fielddraftbeforefielddraftafter">FieldDraft.after</a>)</td>
         </tr>
         <tr>
             <td><code>render</code></td>
@@ -935,7 +935,7 @@ Field will be hidden:
 
 ```js
 {
-    fieldset: {[...FieldDraft]}
+    fieldset: {...FieldDraft}
 }
 ```
 
