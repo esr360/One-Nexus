@@ -32,17 +32,60 @@
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
 
-* [[...Global modifiers]](https://github.com/esr360/One-Nexus/wiki/Global-Modifiers)
-* [[...button.palettes.palette]](#color-palettes)
-* [[...button.sizes]](#sizes)
-* [block](#TODO)
-* [border](#TODO)
-* [disabled](#TODO)
-* [round](#TODO)
-* [oval/circle](#TODO)
-* [sharp](#TODO)
-* [icon](#TODO)
-* [active](#TODO)
+<table class="table">
+    <thead>
+        <tr>
+            <th>Modifier</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="https://github.com/esr360/One-Nexus/wiki/Global-Modifiers">[...Global modifiers]</a></td>
+            <td>Modifiers that can be applied to any module</td>
+        </tr>
+        <tr>
+            <td><a href="#color-palettes">[...button.palettes.palette]</a></td>
+            <td>Alternative</td>
+        </tr>
+        <tr>
+            <td><a href="#sizes">[...button.sizes]</a></td>
+            <td>Alternative</td>
+        </tr>
+        <tr>
+            <td><code>block</code></td>
+            <td>Full-width buttons with centrally aligned text</td>
+        </tr>
+        <tr>
+            <td><code>border</code></td>
+            <td>Buttons with transparent background and a border</td>
+        </tr>
+        <tr>
+            <td><code>disabled</code></td>
+            <td>Disabled/Opaque buttons</td>
+        </tr>
+        <tr>
+            <td><code>round</code></td>
+            <td>Buttons with rounded corners</td>
+        </tr>
+        <tr>
+            <td><code>oval</code> / <code>circle</code></td>
+            <td>Buttons with fully rounded corners to form a circular/oval shape</td>
+        </tr>
+        <tr>
+            <td><code>sharp</code></td>
+            <td>Force buttons to not have round corners</td>
+        </tr>
+        <tr>
+            <td><code>icon</code></td>
+            <td>Used for buttons which contain an icon instead of text</td>
+        </tr>
+        <tr>
+            <td><code>active</code></td>
+            <td>Signals that the button is in the <code>active</code> state</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Configuration
 
