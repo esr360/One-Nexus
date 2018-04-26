@@ -104,9 +104,32 @@ export function setState(fields) {
 }
 
 /**
+ * Call display rules on field
+ * 
+ * @private
+ * 
+ * @param {*} target 
+ * @param {*} rules 
+ */
+function callRules(target, rules) {
+    if (rules) {
+        let action = 'show';
+
+        rules.forEach(rule => {
+            if (typeof rule === 'function') {
+                if (!UI.dynamicCallback(rule)) action = 'hide';
+            }
+            else if (!rule) action = 'hide';
+        });
+
+        target.style.display = (action === 'hide') ? 'none' : 'block';
+    }
+}
+
+/**
  * Handle input validation
  * 
- * @access private
+ * @private
  * 
  * @param {*} field 
  * @param {*} isValid 
@@ -129,7 +152,7 @@ function handleValidation(isValid, field, message, recurse = true) {
 
         if (field.type === 'radio') {
             [...document.querySelectorAll(`input[name="${field.name}"]`)].forEach(radio => {
-                toggleStyles(field, 'remove');
+                toggleStyles(radio, 'remove');
             });
         }
     });
@@ -137,6 +160,8 @@ function handleValidation(isValid, field, message, recurse = true) {
 
 /**
  * Toggle validation styles on a field
+ * 
+ * @private
  * 
  * @param {*} field 
  * @param {*} isValid 
@@ -153,26 +178,5 @@ function toggleStyles(field, operator) {
         if (operator === 'remove') {
             ['isValid', 'isInvalid'].forEach(modifier => parentGroup.modifier(modifier, 'remove'));
         }
-    }
-}
-
-/**
- * Call display rules on field
- * 
- * @param {*} target 
- * @param {*} rules 
- */
-function callRules(target, rules) {
-    if (rules) {
-        let action = 'show';
-
-        rules.forEach(rule => {
-            if (typeof rule === 'function') {
-                if (!UI.dynamicCallback(rule)) action = 'hide';
-            }
-            else if (!rule) action = 'hide';
-        });
-
-        target.style.display = (action === 'hide') ? 'none' : 'block';
     }
 }
