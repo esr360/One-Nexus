@@ -49,17 +49,28 @@
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
 
-* [[...Global modifiers]](https://github.com/esr360/One-Nexus/wiki/Global-Modifiers)
-* [hide-pagination](#hide-pagination)
-* [hide-navigation](#hide-navigation)
-
-#### Hide-pagination
-
-> Removes the carousel pagination bullets
-
-#### Hide-navigation
-
-> Removes the carousel navigation arrows
+<table class="table">
+    <thead>
+        <tr>
+            <th>Modifier</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="https://github.com/esr360/One-Nexus/wiki/Global-Modifiers">[...Global modifiers]</a></td>
+            <td>Modifiers that can be applied to any module</td>
+        </tr>
+        <tr>
+            <td><a href="#hide-pagination"><code>hide-pagination</code></a></td>
+            <td>Removes the carousel pagination bullets</td>
+        </tr>
+        <tr>
+            <td><a href="#hide-navigation"><code>hide-navigation</code></a></td>
+            <td>Removes the carousel navigation arrows</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Configuration
 

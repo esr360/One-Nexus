@@ -19,7 +19,7 @@
 ###### HTML
 
 ```html
-<h3 class="heading">Button</h3>
+<h3 class="heading">Heading</h3>
 ```
 
 ### Components
@@ -32,12 +32,40 @@
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
 
-* [[...Global modifiers]](https://github.com/esr360/One-Nexus/wiki/Global-Modifiers)
-* [[...button.sizes]](#sizes)
-* [heavy](#TODO)
-* [light](#TODO)
-* [uppercase](#TODO)
-* [flush](#TODO)
+<table class="table">
+    <thead>
+        <tr>
+            <th>Modifier</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="https://github.com/esr360/One-Nexus/wiki/Global-Modifiers">[...Global modifiers]</a></td>
+            <td>Modifiers that can be applied to any module</td>
+        </tr>
+        <tr>
+            <td><a href="#sizes">[...heading.sizes]</a></td>
+            <td>The different size modifiers for headings</td>
+        </tr>
+        <tr>
+            <td><a href="#pagination"><code>heavy</code></a></td>
+            <td>Heading with bolder text</td>
+        </tr>
+        <tr>
+            <td><a href="#pagination"><code>light</code></a></td>
+            <td>Heading with lighter/thinner text</td>
+        </tr>
+        <tr>
+            <td><a href="#pagination"><code>uppercase</code></a></td>
+            <td>Heading with uppercase text</td>
+        </tr>
+        <tr>
+            <td><a href="#pagination"><code>flush</code></a></td>
+            <td>Heading with no top/bottom margin</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Configuration
 
@@ -69,7 +97,7 @@
         </tr>
         <tr>
             <td><code>sizes</code></td>
-            <td>Object of font-size to use to generate Buttons (<a href="#sizes">learn more</a>)</td>
+            <td>Object of font sizes to use to generate modifiers (<a href="#sizes">learn more</a>)</td>
         </tr>
     </tbody>
 </table>
@@ -108,11 +136,11 @@ This option accepts an object and will create a modifier for each key using the 
 ```
 
 ```jsx
-<Button size-8>Button</Button>
+<Heading size-8>Heading</Heading>
 ```
 
 ```html
-<button class="button-size-8">Size 8 Button</button>
+<h3 class="heading-size-8">Size 8 Heading</h3>
 ```
 
 By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to the "sizes" option, which will fetch the font sizes from the [Typography module](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/utilities/typography).
@@ -132,12 +160,12 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
 ```jsx
-<Heading>Button</Heading>
+<Heading>Heading</Heading>
 ```
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 
-### Button Group
+### Heading Group
 
 ```jsx
 <Group>

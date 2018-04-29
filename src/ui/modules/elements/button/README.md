@@ -46,11 +46,11 @@
         </tr>
         <tr>
             <td><a href="#color-palettes">[...button.palettes.palette]</a></td>
-            <td>Alternative</td>
+            <td>The color palettes to use to generate color modifiers</td>
         </tr>
         <tr>
             <td><a href="#sizes">[...button.sizes]</a></td>
-            <td>Alternative</td>
+            <td>The different size modifiers for buttons</td>
         </tr>
         <tr>
             <td><code>block</code></td>
@@ -156,11 +156,11 @@
         </tr>
         <tr>
             <td><code>sizes</code></td>
-            <td>Object of font-size to use to generate Buttons</td>
+            <td>Object of font sizes to use to generate modifiers (<a href="#sizes">learn more</a>)</td>
         </tr>
         <tr>
             <td><code>active</code></td>
-            <td>Styles for Buttons with a `active` modifier</td>
+            <td>Styles for Buttons with the <code>active</code> modifier</td>
         </tr>
         <tr>
             <td><code>greyscale-text-threshold</code></td>
