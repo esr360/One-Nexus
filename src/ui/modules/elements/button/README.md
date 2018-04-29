@@ -181,7 +181,7 @@ Pass custom options to the `button` object in your theme's config file (e.g. [ui
 }
 ```
 
-#### Tip: Combine commonly reused modifiers [Learn More](#TODO)
+#### Tip: Combine commonly reused modifiers ([Learn More](#TODO))
 
 If you are commonly reusing the same combination of modifiers multiple times, you can combine them into a new modifier:
 
@@ -353,9 +353,9 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 
 ```jsx
 <Group pills>
-    <app.Button>Button</app.Button>
-    <app.Button>Button</app.Button>
-    <app.Button>Button</app.Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
 </Group>
 ```
 
@@ -373,9 +373,9 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 
 ```jsx
 <Group round pills>
-    <app.Button>Button</app.Button>
-    <app.Button>Button</app.Button>
-    <app.Button>Button</app.Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
 </Group>
 ```
 
