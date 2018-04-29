@@ -21,7 +21,11 @@
                 "palettes": [
                     "brand", "greyscale", "alert", "social", 
                     {"foo": "blue", "bar": "#FF5733"}
-                ]
+                ],
+                "combine": {
+                    "primary" : ["round", "size-4", "brand-1"],
+                    "social"  : ["icon", "oval", "size-6", "brand-2"]
+                }
             },
             "carousel": {
                 "navigationItem": {

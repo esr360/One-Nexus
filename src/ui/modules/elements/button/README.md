@@ -181,6 +181,43 @@ Pass custom options to the `button` object in your theme's config file (e.g. [ui
 }
 ```
 
+#### Tip: Combine commonly reused modifiers [Learn More](#TODO)
+
+If you are commonly reusing the same combination of modifiers multiple times, you can combine them into a new modifier:
+
+```js
+"button" {
+    ...
+    "combine": {
+        "primary" : ["round", "size-4", "brand-1"],
+        "social"  : ["icon", "oval", "size-6", "brand-2"]
+    }
+}
+```
+
+##### Usage
+
+###### React
+
+```jsx
+<Button primary>Button</Button>
+
+// Equivilent to:
+<Button round size-4 brand-1>Button</Button>
+
+// Equivilent to:
+<Button modifiers={['round', 'size-4', 'brand-1']}>Button</Button>
+```
+
+###### HTML
+
+```html
+<button class="button-primary">Button</button>
+
+<!-- Equivilent to: -->
+<button class="button-round-size-4-brand-1">Button</button>
+```
+
 #### Color Palettes
 
 This option accepts a list of palettes defined by the [Colors](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/utilities/colors) module.
@@ -310,4 +347,44 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
     <button class="button">Button</button>
     <button class="button">Button</button>
 </Group>
+```
+
+#### Pills Group
+
+```jsx
+<Group pills>
+    <app.Button>Button</app.Button>
+    <app.Button>Button</app.Button>
+    <app.Button>Button</app.Button>
+</Group>
+```
+
+##### Output
+
+```html
+<div class="button_group-pills">
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+</div>
+```
+
+#### Round Pills Group
+
+```jsx
+<Group round pills>
+    <app.Button>Button</app.Button>
+    <app.Button>Button</app.Button>
+    <app.Button>Button</app.Button>
+</Group>
+```
+
+##### Output
+
+```html
+<div class="button_group-pills-round">
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+</div>
 ```

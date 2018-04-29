@@ -14,6 +14,30 @@ export default class Button extends React.Component {
                     <app.Button href='#'>Button</app.Button>
                 </Group>
 
+                <Group object modifiers={['pills']}>
+                    <app.Button>Button</app.Button>
+                    <app.Button>Button</app.Button>
+                    <app.Button>Button</app.Button>
+                </Group>
+
+                <Group object modifiers={['pills', 'round']}>
+                    <app.Button>Button</app.Button>
+                    <app.Button>Button</app.Button>
+                    <app.Button>Button</app.Button>
+                </Group>
+
+                <div class="object button_group-pills">
+                    <button class="button">Button</button>
+                    <button class="button">Button</button>
+                    <button class="button">Button</button>
+                </div>
+
+                <div class="object button_group-pills-round">
+                    <button class="button">Button</button>
+                    <button class="button">Button</button>
+                    <button class="button">Button</button>
+                </div>
+
             </app.layouts.Base>
         )
     }

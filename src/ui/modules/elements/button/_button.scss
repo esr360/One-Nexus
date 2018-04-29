@@ -168,6 +168,7 @@
 
             @include modifier('pills') {
                 display: table;
+                width: 100%;
 
                 @include module {
                     display: table-cell;
@@ -192,9 +193,10 @@
             }
 
             @include modifier('stack') {
-                @media (max-width: breakpoint('break-1')) {
+                @media (max-width: breakpoint(this('group-stack'))) {
                     @include module {
                         display: block;
+                        width: 100%;
                         margin-right: 0;
                         margin-left: 0;
                         text-align: center;
