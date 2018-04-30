@@ -1,4 +1,4 @@
-import defaults from './images.json';
+import defaults from './image.json';
 
 /**
  * Render Image component
@@ -18,5 +18,5 @@ export default class Image extends React.Component {
 }
 
 Image.defaultProps = {
-    name: defaults.images.name
+    name: defaults.image.name
 };

@@ -1,13 +1,13 @@
-@import 'images.json';
-/// Images
+@import 'image.json';
+/// Image
 ///
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin images($custom: custom('images')) {
+@mixin image($custom: custom('image')) {
 
     // Configuration
-    $images: config($images, $custom);
+    $image: config($image, $custom);
 
     //*************************************************************
     // Module
@@ -48,4 +48,4 @@
         max-width: 100%;
     }
 
-} // @mixin images
+} // @mixin image

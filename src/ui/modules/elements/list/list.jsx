@@ -1,4 +1,4 @@
-import defaults from './lists.json';
+import defaults from './list.json';
 
 /**
  * Render List module
@@ -16,7 +16,7 @@ export default class List extends React.Component {
 }
 
 List.defaultProps = {
-    name: defaults.lists.name,
+    name: defaults.list.name,
     clear: true,
     tag: 'ul'
 };

@@ -1,14 +1,13 @@
-@import 'lists.json';
+@import 'list.json';
 /// List
 ///
-/// @access public
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin lists($custom: custom('lists')) {
+@mixin list($custom: custom('list')) {
 
     // Configuration
-    $lists: config($lists, $custom);
+    $list: config($list, $custom);
 
     //*************************************************************
     // Module
@@ -88,4 +87,4 @@
 
     } // module
 
-} // @mixin lists
+} // @mixin list

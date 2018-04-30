@@ -72,7 +72,7 @@ Pass custom options to the `progress-bars` object in your theme's config file (e
 
 ### Sass
 
-Load the progress-bar styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `lists()` mixin:
+Load the progress-bar styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `list()` mixin:
 
 ```scss
 @import '../../app';

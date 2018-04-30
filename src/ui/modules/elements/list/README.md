@@ -1,4 +1,4 @@
-## Lists
+## List
 
 ##### Components
 
@@ -25,7 +25,7 @@
 
 ### Options
 
-For default values view the [`lists.json`](lists.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
+For default values view the [`list.json`](list.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
 
 <table class="table">
     <thead>
@@ -55,12 +55,12 @@ For default values view the [`lists.json`](lists.json) file. Standard CSS proper
     </tbody>
 </table>
 
-Pass custom options to the `lists` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `list` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
 
 ```json
 {
     "app": {
-        "lists": {
+        "list": {
             "arrow-icon": "'\\f138'",
             "arrow-color": "#00a9ff",
         }
@@ -70,13 +70,13 @@ Pass custom options to the `lists` object in your theme's config file (e.g. [the
 
 ### Sass
 
-Load the list styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `lists()` mixin:
+Load the list styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `list()` mixin:
 
 ```scss
 @import '../../app';
 @import './config.json';
 
-@include lists();
+@include list();
 ```
 
 ### Examples
