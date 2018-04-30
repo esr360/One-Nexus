@@ -58,6 +58,7 @@ export { default as Button } from './ui/modules/elements/button/button.jsx';
 export { default as Carousel } from './ui/modules/elements/carousel/carousel.jsx';
 export { default as Form } from './ui/modules/elements/form/form.jsx';
 export { default as Heading } from './ui/modules/elements/heading/heading.jsx';
+export { default as Image } from './ui/modules/elements/images/image.jsx';
 export { default as List, ListItem } from './ui/modules/elements/lists/list.jsx';
 export { default as Paragraph } from './ui/modules/elements/paragraph/paragraph.jsx';
 export { default as Table } from './ui/modules/elements/tables/table.jsx';
