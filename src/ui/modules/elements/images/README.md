@@ -50,7 +50,7 @@
             <td>Modifiers that can be applied to any module</td>
         </tr>
         <tr>
-            <td><a href="#center--xy"><code>center-xy</code></a></td>
+            <td><a href="#center-xy"><code>center-xy</code></a></td>
             <td>Center an image within its parent container</td>
         </tr>
     </tbody>
