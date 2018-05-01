@@ -68,7 +68,7 @@
 }
 ```
 
-Pass custom options to the `heading` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
+Pass custom options to the `image` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
 
 ```js
 {

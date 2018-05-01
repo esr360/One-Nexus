@@ -17,7 +17,6 @@ export default class List extends React.Component {
 
 List.defaultProps = {
     name: defaults.list.name,
-    clear: true,
     tag: 'ul'
 };
 
@@ -28,8 +27,6 @@ List.defaultProps = {
  */
 export class ListItem extends React.Component {
     render() {
-        return (
-            <li>{this.props.children}</li>
-        )
+        return <li>{this.props.children}</li>;
     }
 }

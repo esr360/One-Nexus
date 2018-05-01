@@ -25,12 +25,18 @@
         }
 
         @include modifier('clear') {
-            padding-left: 1em;
+            @include modifier('inline') {
+                padding-left: 0;
+            }
+            @include modifier('inline', 'not') {
+                padding-left: 1em;
+            }
         }
 
         @include modifier('inline') {
             > li {
                 display: inline-block;
+                padding-left: 0;
 
                 + li {
                     margin-left: this('inline-spacing');
