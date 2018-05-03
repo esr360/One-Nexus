@@ -1,5 +1,5 @@
 {
-    "modals": {
+    "modal": {
         "name": "modal",
         "dafault-animation": "left",
         "background": ["#COLOR", "greyscale", "grey-1"],

@@ -60,6 +60,7 @@ export { default as Form } from './ui/modules/elements/form/form.jsx';
 export { default as Heading } from './ui/modules/elements/heading/heading.jsx';
 export { default as Image } from './ui/modules/elements/image/image.jsx';
 export { default as List, ListItem } from './ui/modules/elements/list/list.jsx';
+export { default as Modal } from './ui/modules/elements/modal/modal.jsx';
 export { default as Paragraph } from './ui/modules/elements/paragraph/paragraph.jsx';
 export { default as Table } from './ui/modules/elements/tables/table.jsx';
 export { default as Well } from './ui/modules/elements/wells/well.jsx';

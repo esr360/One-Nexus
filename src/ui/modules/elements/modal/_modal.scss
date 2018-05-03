@@ -1,14 +1,14 @@
-@import 'modals.json';
-/// Modals
+@import 'modal.json';
+/// Modal
 ///
 /// @access public
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin modals($custom: custom('modals')) {
+@mixin modal($custom: custom('modal')) {
 
     // Configuration
-    $modals: config($modals, $custom);
+    $modal: config($modal, $custom);
 
     //*************************************************************
     // Module
@@ -40,22 +40,34 @@
 
             @include modifier('top') {
                 top: 45%;
-                top: 50%;
+
+                @include modifier('visible') {
+                    top: 50%;
+                }
             }
 
             @include modifier('bottom') {
                 top: 55%;
-                top: 50%;
+
+                @include modifier('visible') {
+                    top: 50%;
+                }
             }
 
             @include modifier('left') {
-                transform: translateX(0) translateY(-50%);
                 transform: translateX(-15%) translateY(-50%);
+
+                @include modifier('visible') {
+                    transform: translateX(0) translateY(-50%);
+                }
             }
 
             @include modifier('right') {
-                transform: translateX(0) translateY(-50%);
                 transform: translateX(15%) translateY(-50%);
+
+                @include modifier('visible') {
+                    transform: translateX(0) translateY(-50%);
+                }
             }
 
             @include modifier('zoom') {
@@ -97,4 +109,4 @@
         }
     }
 
-} // @mixin modals
+} // @mixin modal

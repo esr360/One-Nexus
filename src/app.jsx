@@ -25,8 +25,8 @@ export default class App extends React.Component {
                 <Route path='/heading' component={app.pages.Heading} />
                 <Route path='/image' component={app.pages.Image} />
                 <Route path='/list' component={app.pages.List} />
-                {/*<Route path='/modal' component={app.pages.Modal} />
-                <Route path='/paragraph' component={app.pages.Paragraph} />
+                <Route path='/modal' component={app.pages.Modal} />
+                {/*<Route path='/paragraph' component={app.pages.Paragraph} />
                 <Route path='/progress-bar' component={app.pages.ProgressBar} />
                 <Route path='/table' component={app.pages.Table} />
                 <Route path='/tabs' component={app.pages.Tabs} />

@@ -41,6 +41,8 @@ export default class Base extends React.Component {
 
                     {this.props.children}
                 </div>
+
+                <div class="overlay" id="overlay"></div>
             </main>
         )
     }
