@@ -1,5 +1,4 @@
 import defaults from './tables.json';
-
 /**
  * Render Table module
  *

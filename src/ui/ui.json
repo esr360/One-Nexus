@@ -27,6 +27,9 @@
                     "social"  : ["icon", "oval", "size-6", "brand-2"]
                 }
             },
+            "modal": {
+                "buzz": true
+            },
             "carousel": {
                 "navigationItem": {
                     "disable": false

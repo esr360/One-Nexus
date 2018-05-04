@@ -1,71 +1,56 @@
-import * as app from '../../../ui';
+import * as UI from '../../../ui';
 import defaults from './modal.json';
-
 /**
  * Modal
  * 
- * @access public
- * 
- * @param {(String|Object)} els
  * @param {Object} custom
  */
 export default function modal(custom) {
 
-    const els = app.getTarget('modal', defaults, custom);
+    const TARGET = UI.getTarget('modal', defaults, custom);
 
-    app.Synergy(els, (el, options) => {
+    let methods = {};
+
+    UI.Synergy(TARGET, (modal, options) => {
 
         // Create any dynamic modals then re-run the function
-        if (!(app.config.modals && 'initialised' in app.config.modals)) {
-            if (app.config.modals) {
-                app.config.modals.initialised = true;
-            } else {
-                app.config.modals = { initialised: true };
-            }
-
+        if (!(UI.config.modal && UI.config.modal.initialised)) {
             initModals(document.querySelectorAll('[data-modal-content]'), options.name);
 
-            return app.modal(els);
+            return UI.modal(TARGET);
         }
 
-        const overlay = app.Synergy(options.overlay.module).query[0];
-
-        const show = () => toggleModal('show', els, el, options, overlay);
-        const hide = () => toggleModal('hide', els, el, options, overlay);
-
-        // setup animation modifier
-        if (el.modifier('animate') !== true && options['dafault-animation']) {
-            el.modifier(`animate-${options['dafault-animation']}`, 'add');
-        }
+        const overlay = UI.Synergy(options.overlay.module).query[0];
 
         // setup overlay as modal close trigger
         if (options.overlay.clickToClose) {
-            app.Synergy([overlay, options.name]).query.component('close', 'add');
+            UI.Synergy([overlay, options.name]).query.component('close', 'add');
         }
 
-        // Open/Close Triggers
-        const openTriggers  = document.querySelectorAll(`[data-modal-target="${el.id}"], [href="#${el.id}"]`);
-        // @todo add option to change to el.component('close') to protect outside influences
-        const closeTriggers = app.Synergy(options.name).component('close');
+        // setup animation modifier
+        if (modal.modifier('animate') !== true && options['dafault-animation']) {
+            modal.modifier(`animate-${options['dafault-animation']}`, 'add');
+        }
 
-        openTriggers.forEach(trigger => trigger.addEventListener('click', show, false));
-        closeTriggers.forEach(trigger => trigger.addEventListener('click', hide, false));
+        methods.show = () => toggleModal('show', TARGET, modal, options, overlay);
+        methods.hide = () => toggleModal('hide', TARGET, modal, options, overlay);
 
-        exports.toggle = operator => {
-            if (el.modifier('visible') || operator === 'hide') exports.hide(); 
-            else exports.show();
+        methods.toggle = operator => {
+            if (modal.modifier('visible') || operator === 'hide') methods.hide(); 
+            else methods.show();
         };
 
-        exports.show = () => toggleModal('show', els, el, options, overlay);
-        exports.hide = () => toggleModal('hide', els, el, options, overlay);
+        // Open/Close Triggers
+        const openTriggers  = document.querySelectorAll(`[data-modal-target="${modal.id}"], [href="#${modal.id}"]`);
+        // @todo add option to change to modal.component('close') to protect outside influences
+        const closeTriggers = UI.Synergy(options.name).component('close');
 
-    }, defaults, custom, app.evalConfig);
+        openTriggers.forEach(trigger => trigger.addEventListener('click', methods.show, false));
+        closeTriggers.forEach(trigger => trigger.addEventListener('click', methods.hide, false));
 
-    app.config.modal = app.parse(
-        (app.config.modal) ? app.config.modal : '', defaults.modal, custom
-    );
+    }, defaults, custom, UI.evalConfig);
 
-    return exports;
+    return methods;
 }
 
 /**
@@ -73,23 +58,23 @@ export default function modal(custom) {
  * 
  * @access private
  * 
- * @param {('show'|'hide')} type - the type of toggle to activate
+ * @param {('show'|'hide')} state - the type of toggle to activate
  * @param {(String|HTMLElement|NodeList)} all - a Synergy selector to match all modals
  * @param {(String|HTMLElement)} target - a Synergy selector to match the modal of interest
  * @param {Object} options - the module options to use when running the function
  * @param {HTMLElement} [overlay] - the HTML element acting as the page overlay
  */
-function toggleModal(type, all, target, options, overlay) {
+function toggleModal(state, all, target, options, overlay) {
     // close any other currently openened modals
-    if (type === 'show' && app.isValidSelector(all) && document.querySelector(all) !== target) {
-        app.Synergy(all, el => toggleModal('hide', all, el, options, overlay));
+    if (state === 'show' && UI.isValidSelector(all) && document.querySelector(all) !== target) {
+        UI.Synergy(all, el => toggleModal('hide', all, el, options, overlay));
     }
 
     // toggle the page overlay
-    if (options.overlay.enabled) app.overlay(overlay)[type]('dialog');
+    if (options.overlay.enabled) UI.overlay(overlay)[state]('dialog');
 
     // toggle the target modal
-    app.Synergy(target).modifier('visible', (type === 'show') ? 'add' : 'remove');
+    UI.Synergy(target).modifier('visible', (state === 'show') ? 'add' : 'remove');
 }
 
 /**

@@ -3,12 +3,13 @@ import defaults from './accordion.json';
 /**
  * Accordion
  * 
- * @param {(String|HTMLElement|NodeList)} els
  * @param {Object} custom
  */
 export default function accordion(custom) {
 
     const TARGET = UI.getTarget('accordion', defaults, custom);
+
+    let methods = {};
 
     UI.Synergy(TARGET, (accordion, options) => {
 
@@ -26,15 +27,13 @@ export default function accordion(custom) {
             });
         }
 
-        exports.open = target => toggle(target, 'open', UI.Synergy(TARGET).query, options);
-        exports.close = target => toggle(target, 'close', UI.Synergy(TARGET).query, options);
-        exports.toggle = target => toggle(target, false, UI.Synergy(TARGET).query, options);
+        methods.open = target => toggle(target, 'open', UI.Synergy(TARGET).query, options);
+        methods.close = target => toggle(target, 'close', UI.Synergy(TARGET).query, options);
+        methods.toggle = target => toggle(target, false, UI.Synergy(TARGET).query, options);
 
     }, defaults, custom, UI.evalConfig);
 
-    UI.config.accordion = UI.parse(defaults.accordion, custom);
-
-    return exports;
+    return methods;
 }
 
 /**

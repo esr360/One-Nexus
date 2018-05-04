@@ -38,6 +38,9 @@
                 },
                 "accordion": {
                     "fizz": "foo"
+                },
+                "modal": {
+                    "fizz": true
                 }
             }
         }
