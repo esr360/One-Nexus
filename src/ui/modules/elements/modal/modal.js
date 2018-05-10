@@ -12,7 +12,6 @@ export default function modal(custom) {
     let methods = {};
 
     UI.Synergy(TARGET, (modal, options) => {
-
         // Create any dynamic modals then re-run the function
         if (!(UI.config.modal && UI.config.modal.initialised)) {
             initModals(document.querySelectorAll('[data-modal-content]'), options.name);
@@ -28,16 +27,15 @@ export default function modal(custom) {
         }
 
         // setup animation modifier
-        if (modal.modifier('animate') !== true && options['dafault-animation']) {
+        if (modal.modifier('animate') === false && options['dafault-animation']) {
             modal.modifier(`animate-${options['dafault-animation']}`, 'add');
         }
 
-        methods.show = () => toggleModal('show', TARGET, modal, options, overlay);
-        methods.hide = () => toggleModal('hide', TARGET, modal, options, overlay);
+        methods.show = () => toggleModal('show', modal, options, overlay);
+        methods.hide = () => toggleModal('hide', modal, options, overlay);
 
         methods.toggle = operator => {
-            if (modal.modifier('visible') || operator === 'hide') methods.hide(); 
-            else methods.show();
+            methods[(modal.modifier('visible') || operator === 'hide') ? 'hide' : 'show']();
         };
 
         // Open/Close Triggers
@@ -64,10 +62,12 @@ export default function modal(custom) {
  * @param {Object} options - the module options to use when running the function
  * @param {HTMLElement} [overlay] - the HTML element acting as the page overlay
  */
-function toggleModal(state, all, target, options, overlay) {
+function toggleModal(state, target, options, overlay) {
     // close any other currently openened modals
-    if (state === 'show' && UI.isValidSelector(all) && document.querySelector(all) !== target) {
-        UI.Synergy(all, el => toggleModal('hide', all, el, options, overlay));
+    if (state ==='show') {
+        [...document.querySelectorAll(`[data-module="${options.name}"]`)].forEach(modal => {
+            if (modal !== target) toggleModal('hide', modal, options, overlay);
+        });
     }
 
     // toggle the page overlay
