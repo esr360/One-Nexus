@@ -33,7 +33,7 @@ export default function(custom) {
     UI.alert(options.alert);
     UI.carousel();
     UI.form();
-    UI.modal();
+    UI.modal(options.modal);
     UI.overlay();
     // UI.progressBar();
     // UI.tabs();

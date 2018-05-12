@@ -29,6 +29,7 @@ export default function(env) {
         }),
         new webpack.ProvidePlugin({
             React: 'react',
+            ReactDOM: 'react-dom',
             Constructor: ['../../../../../../../Synergy/src/js/module.jsx', 'Constructor']
         }),
         new CopyWebpackPlugin([

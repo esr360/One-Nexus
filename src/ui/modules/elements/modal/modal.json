@@ -1,6 +1,7 @@
 {
     "modal": {
         "name": "modal",
+        "methods": ["show", "hide", "toggle"],
         "dafault-animation": "left",
         "background": ["#COLOR", "greyscale", "grey-1"],
         "color": ["#CORE", "text-color"],

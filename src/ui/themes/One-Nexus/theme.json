@@ -5,6 +5,8 @@
         },
         "alert": {
         },
+        "modal": {
+        },
         "button": {
             "border-palettes": ["brand", "alert"]
         },

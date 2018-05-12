@@ -8,8 +8,7 @@ import defaults from './accordion.json';
 export default function accordion(custom) {
 
     const TARGET = UI.getTarget('accordion', defaults, custom);
-
-    let methods = {};
+    const methods = { toggle };
 
     UI.Synergy(TARGET, (accordion, options) => {
 
@@ -32,6 +31,8 @@ export default function accordion(custom) {
         methods.toggle = target => toggle(target, false, UI.Synergy(TARGET).query, options);
 
     }, defaults, custom, UI.evalConfig);
+
+    UI.config.accordion = UI.parse(defaults.accordion, custom);
 
     return methods;
 }
