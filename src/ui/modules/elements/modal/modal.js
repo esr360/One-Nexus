@@ -9,7 +9,7 @@ export default function modal(custom) {
     // determine target elements
     const TARGET = UI.getTarget('modal', defaults, custom);
     // set methods
-    const methods = { init, toggle };
+    const methods = { toggle };
 
     UI.Synergy(TARGET, (modal, options) => {
         // Create any dynamic modals then re-run the function
@@ -40,14 +40,6 @@ export default function modal(custom) {
     UI.config.modal = UI.parse(defaults.modal, custom);
 
     return methods;
-}
-
-/**
- * Initialise modal element
- * 
- * @param {*} modal
- */
-export function init(modal) {
 }
 
 /**

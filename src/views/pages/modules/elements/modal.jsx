@@ -6,7 +6,11 @@ export default class Modal extends React.Component {
             <app.layouts.Base {...app.config.app.views}>
 
                 <div id="demoTrigger" className='button'>Demo Trigger</div>
-                <app.Modal animate-top trigger={<div>Trigger</div>}>Modal</app.Modal>
+                <app.Modal animate-top trigger='demoTrigger'>Modal 1</app.Modal>
+
+                <app.Modal animate-bottom trigger={<div>Trigger</div>}>Modal 2</app.Modal>
+
+                <app.Modal animate-bottom trigger={<app.Button>Trigger</app.Button>}>Modal 3</app.Modal>
 
                 <button class="button" data-modal-target="modal_1">Modal 1 Trigger</button>
                 <button class="button" data-modal-target="foo">Modal 2 Trigger</button>

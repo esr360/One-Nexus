@@ -1,5 +1,4 @@
 import defaults from './modal.json';
-
 /**
  * Render Modal module
  *
@@ -8,29 +7,31 @@ import defaults from './modal.json';
 export default class Modal extends Constructor {
     constructor(props) {
         super(props);
+
+        this.trigger = this.props.trigger;
     }
 
     componentDidMount() {
-        if (typeof this.props.trigger === 'string') {
-            document.getElementById(this.props.trigger).addEventListener('click', () => {
+        if (typeof this.trigger === 'string') {
+            document.getElementById(this.trigger).addEventListener('click', () => {
                 this.toggle(ReactDOM.findDOMNode(this))
             }, false);
         }
     }
 
     render() {
-        return (
-            <div>
-                {this.props.trigger}
+        return [
+            <Module {...this.props}>
+                <Component name='close'>Close</Component>
+                <Component name='content'>
+                    {this.props.children}
+                </Component>
+            </Module>,
 
-                <Module {...this.props}>
-                    <Component name='close'>Close</Component>
-                    <Component name='content'>
-                        {this.props.children}
-                    </Component>
-                </Module>
-            </div>
-        )
+            React.isValidElement(this.trigger) && React.cloneElement(this.trigger, {
+                onClick: () => this.toggle(ReactDOM.findDOMNode(this))
+            })
+        ]
     }
 }
 
