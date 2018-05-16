@@ -55,9 +55,6 @@
     </tbody>
 </table>
 
-* [[...Global modifiers]](https://github.com/esr360/One-Nexus/wiki/Global-Modifiers)
-* [callout](#configuration)
-
 ## Configuration
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation

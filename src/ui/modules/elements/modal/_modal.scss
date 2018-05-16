@@ -103,6 +103,7 @@
 
     } // module
 
+    //@include module('overlay', $is: ['dialog', ['visible']]) {
     @include module('overlay') {
         &[class*="dialog-visible"] {
             z-index: 12;
