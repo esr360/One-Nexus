@@ -13,17 +13,21 @@
             "padding": "2em"
         },
         "close": {
-            "size": ["#FONT-SIZE", "size-6"],
+            "font-size": ["#FONT-SIZE", "size-6"],
             "top": "1rem",
             "right": "1rem",
             "color": ["#COLOR", "greyscale", "grey-3"],
-            "hover-color": ["#COLOR", "brand", "brand-1"],
-            "transition": ["#CORE", "transition"]
+            "transition": ["#CORE", "transition"],
+            "hover": {
+                "color": ["#COLOR", "brand", "brand-1"]
+            }
         },
         "overlay": {
             "module": "overlay",
             "enabled": true,
-            "clickToClose": true
+            "clickToClose": true,
+            "background": "rgba(black, 0.6)",
+            "z-index": 12
         }
     }
 }

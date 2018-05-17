@@ -1,39 +1,110 @@
-## Modals
+# One-Nexus Modal
 
-##### Components
+* [Overview](#overview)
+* [Configuration](#configuration)
+* [Styles](#styles)
+* [Interactions](#interactions)
+* [Rendering](#rendering)
 
-* content
-* close
-
-##### Modifiers
-
-* visible
-* animate(-top, -bottom, -left, -right, -zoom)
+## Overview
 
 ### Quick Look
 
-```html
-<a href="#modal_1">Modal 1 Trigger</a>
-<a href="#foo">Modal 2 Trigger</a>
+###### React
 
-<div class="modal" id="modal_1">
-    <div class="modal_close"><i class="fa fa-times"></i></div>
-    <div class="modal_content">Modal 1</div>
-</div>
+```jsx
+<Button id="demoTrigger">Modal Trigger</Button>
 
-<div class="modal" id="foo">
-    <div class="modal_content">Modal 2</div>
-    <div class="modal_close">Close Modal</div>
-</div>
-
-<!-- Using data-attribute -->
-
-<a href="#" data-modal-content="<p>Modal 3</p>">Modal 3 Trigger</a>
+<Modal trigger='#demoTrigger'>
+    Modal Content
+</Modal>
 ```
 
-### Options
+###### HTML
 
-For default values view the [`modals.json`](modals.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
+```html
+<button id="demoTrigger" class="button">Modal Trigger</button>
+
+<div class="modal-animate-top">
+    <div class="modal_close">×</div>
+    <div class="modal_content">Modal Content</div>
+</div>
+```
+
+### Components
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
+
+* close
+* content
+
+### Modifiers
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Modifier</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="https://github.com/esr360/One-Nexus/wiki/Global-Modifiers">[...Global modifiers]</a></td>
+            <td>Modifiers that can be applied to any module</td>
+        </tr>
+        <tr>
+            <td><code>animate-{top|bottom|left|right|zoom}</code></td>
+            <td>Applies transition animation to the modal</td>
+        </tr>
+        <tr>
+            <td><code>visible</code></td>
+            <td>Shows the modal</td>
+        </tr>
+    </tbody>
+</table>
+
+## Configuration
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
+
+```json
+{
+    "modal": {
+        "name": "modal",
+        "methods": ["show", "hide", "toggle"],
+        "dafault-animation": "left",
+        "background": ["#COLOR", "greyscale", "grey-1"],
+        "color": ["#CORE", "text-color"],
+        "width": "650px",
+        "border-radius": 0,
+        "transition": ["#CORE", "transition"],
+        "z-index": 14,
+        "content": {
+            "padding": "2em"
+        },
+        "close": {
+            "font-size": ["#FONT-SIZE", "size-6"],
+            "top": "1rem",
+            "right": "1rem",
+            "color": ["#COLOR", "greyscale", "grey-3"],
+            "transition": ["#CORE", "transition"],
+            "hover": {
+                "color": ["#COLOR", "brand", "brand-1"]
+            }
+        },
+        "overlay": {
+            "module": "overlay",
+            "enabled": true,
+            "clickToClose": true,
+            "background": "rgba(black, 0.6)"
+        }
+    }
+}
+```
+
+> Certain values from the above configuration are excluded from the below table ([learn more](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules#documenting-configuration-properties))
 
 <table class="table">
     <thead>
@@ -44,151 +115,198 @@ For default values view the [`modals.json`](modals.json) file. Standard CSS prop
     </thead>
     <tbody>
         <tr>
-            <td>name</td>
-            <td>The name used when generating the CSS selector</td>
+            <td><code>default-animation</code></td>
+            <td>The default animation transition to apply to modals</td>
         </tr>
         <tr>
-            <td>default-animation</td>
-            <td>The default animation style modals should use (top, bottom, left, right, zoom)</td>
+            <td><code>overlay.module</code></td>
+            <td>The name of the module to be used at the page overlay when a modal is visible</td>
         </tr>
         <tr>
-            <td>close.size</td>
-            <td>The font-size for the close icon</td>
+            <td><code>overlay.enabled</code></td>
+            <td>Enable the page overlay when a modal is shown</td>
         </tr>
         <tr>
-            <td>close.hover-color</td>
-            <td>The hover color for the close icon</td>
-        </tr>
-        <tr>
-            <td>overlay.module</td>
-            <td>The name of the module to act as the overlay</td>
-        </tr>
-        <tr>
-            <td>overlay.enabled</td>
-            <td>Display an overlay over the page when a modal is open</td>
-        </tr>
-        <tr>
-            <td>overlay.clickToClose</td>
-            <td>Close the modal if the overlay is clicked</td>
+            <td><code>overlay.clickToClose</code></td>
+            <td>Enable the modal to be closed by clicking the overlay</td>
         </tr>
     </tbody>
 </table>
 
-Pass custom options to the `modals` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `modal` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
 
-```json
+```js
 {
     "app": {
-        "modals": {
-            "default-animation": "zoom",
-            "close": {
-                "size": "font-size(size-5)"
-            },
-            "overlay": {
-                "clickToClose": false
-            }
+        "modal": {
+            ...
         }
     }
 }
 ```
 
-### Sass
+## Styles
 
-Load the modal styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `modals()` mixin:
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
 
-```scss
-@import '../../app';
-@import './config.json';
+## Interactions
 
-@include modals();
-```
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions) about module interactions
 
-### JavaScript
+* [Toggle](#toggle)
+* [Show](#show)
+* [Hide](#hide)
 
-Call the `modal()` function in your theme's main `js` file (e.g. [themes/One-Nexus/One-Nexus.js](../../../themes/One-Nexus/One-Nexus.js)):
+> Interactions are defined in [ui/modules/elements/modal/modal.js](../../../modules/elements/modal/modal.js)
 
-```js
-import * as app from '../../app';
-import config from './config.json';
+### Toggle
 
-app.theme = config.app;
-
-app.modal();
-```
-
-#### API
-
-##### Show/Hide
-
-You can show or hide specific modals by using either the `.show()`, `.hide()` or `.toggle()` methods.
+> Toggle a modal
 
 ```js
-app.modal(document.getElementById('foo')).show();
-
-app.modal(document.getElementById('foo')).hide();
-
-app.modal(document.getElementById('foo')).toggle();
+UI.modal(target).toggle();
 ```
 
-### Examples
+<table>
+    <thead>
+        <tr>
+            <td><b>Parameter</b></td>
+            <td><b>Type</b></td>
+            <td><b>Description<b/></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Target</td>
+            <td>(querySelector|HTMLElement)</td>
+            <td>The target modal to toggle</td>
+        </tr>
+    </tbody>
+</table>
 
-#### Custom Animation
+#### Examples
 
-To open a modal with a different animation to the default one, pass the `animate` modifier, along with a modifier representing the desired animation style.
+```js
+// Toggle modal with ID 'foo'
+UI.modal(document.getElementById('foo')).toggle();
 
-The provided animation styles include:
-
-* top
-* bottom
-* left
-* right
-* zoom
-
-```html
-<a href="#foo">Modal Trigger</a>
-
-<div class="modal-animate-bottom" id="foo">Modal</div>
+// Toggle modal with ID 'foo'
+UI.modal('#foo').toggle();
 ```
 
-#### Creating From Data-Attribute
+### Show
 
-```html
-<a href="#" data-modal-content="Lorem ipsum dolor sit amet">Click Me</a>
+> Show a modal
+
+```js
+UI.modal(target).show();
 ```
 
-> HTML is allowed inside the `data-modal-content` attribute 
+<table>
+    <thead>
+        <tr>
+            <td><b>Parameter</b></td>
+            <td><b>Type</b></td>
+            <td><b>Description<b/></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Target</td>
+            <td>(querySelector|HTMLElement)</td>
+            <td>The target modal to show</td>
+        </tr>
+    </tbody>
+</table>
 
-```html
-<div data-modal-content="<h1 class='heading'>Title</h1><p>Lorem ipsum dolor sit amet</p>">Click Me</div>
+#### Examples
+
+```js
+// Show modal with ID 'foo'
+UI.modal(document.getElementById('foo')).show();
+
+// Show modal with ID 'foo'
+UI.modal('#foo').show();
 ```
 
-##### Passing Custom Style
+### Hide
 
-```html
-<a href="#" data-modal-content="<p>Lorem ipsum dolor sit amet</p>" data-modal-style="zoom">Click Me</a>
+> Hide a modal
+
+```js
+UI.modal(target).hide();
 ```
 
-#### Targeting and Triggering From Data-Attribute
+<table>
+    <thead>
+        <tr>
+            <td><b>Parameter</b></td>
+            <td><b>Type</b></td>
+            <td><b>Description<b/></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Target</td>
+            <td>(querySelector|HTMLElement)</td>
+            <td>The target modal to hide</td>
+        </tr>
+    </tbody>
+</table>
 
-Trigger an existing modal by passing the modal's id to the `data-modal-target` attribute on the desired modal trigger. The element with this attribute will open the modal when clicked.
+#### Examples
 
-```html
-<div data-modal-target="modal-demo">Click Me</div>
+```js
+// Hide modal with ID 'foo'
+UI.modal(document.getElementById('foo')).hide();
 
-<div id="modal-demo" class="modal">...</div>
+// Hide modal with ID 'foo'
+UI.modal('#foo').hide();
 ```
 
-#### Custom/Multiple Close Triggers
+## Rendering
 
-Any element can become a modal close trigger by adding the `modal_close` class to the desired element.
+> If you are *not* using React, simply look to the 'Output' section of any example
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
+
+```jsx
+<Modal trigger={ <Button>Open Modal</Button> }>
+    Modal Content
+</app.Modal>
+```
+
+* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [Props.trigger](#TODO)
+* [Props.close](#TODO)
+* [Props.animate](#TODO)
+
+### Props.trigger
+
+```jsx
+```
+
+###### Output
 
 ```html
-<div data-modal-target="modal-demo">Open Modal</div>
+```
 
-<div class="modal_close">Close Modal</div>
+#### Panel.close
 
-<div id="modal-demo" class="modal">
-    <div class="modal_close">Close Modal</div>
-    ...
-</div>
+```jsx
+```
+
+###### Output
+
+```html
+```
+
+#### Panel.animate
+
+```jsx
+```
+
+###### Output
+
+```html
 ```

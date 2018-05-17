@@ -86,13 +86,8 @@
         @include component('content');
 
         @include component('close') {
-            position: absolute;
-            font-size: this('close', 'size');
             cursor: pointer;
-
-            &:hover {
-                color: this('close', 'hover-color');
-            }
+            position: absolute;
         }
 
         //*********************************************************
@@ -103,10 +98,9 @@
 
     } // module
 
-    //@include module('overlay', $is: ['dialog', ['visible']]) {
     @include module('overlay') {
         &[class*="dialog-visible"] {
-            z-index: 12;
+            @include get-styles(this('overlay'));
         }
     }
 

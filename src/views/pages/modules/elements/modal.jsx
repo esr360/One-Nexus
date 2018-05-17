@@ -5,8 +5,13 @@ export default class Modal extends React.Component {
         return (
             <app.layouts.Base {...app.config.app.views}>
 
-                <div id="demoTrigger" className='button'>Demo Trigger</div>
-                <app.Modal close={ <app.Button>close</app.Button> } trigger='#demoTrigger'>Modal 1</app.Modal>
+                <app.Button data-modal-content='foo'>Foo Trigger</app.Button>
+
+                <app.Button id="demoTrigger">Modal Trigger</app.Button>
+
+                <app.Modal trigger='#demoTrigger'>
+                    Modal Content
+                </app.Modal>
 
                 <app.Modal animate='bottom' trigger={ <div>Trigger</div> }>Modal 2</app.Modal>
 
