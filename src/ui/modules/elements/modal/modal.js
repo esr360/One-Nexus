@@ -12,12 +12,8 @@ export default function modal(custom) {
     const methods = { toggle };
 
     UI.Synergy(TARGET, (modal, options) => {
-        // Create any dynamic modals then re-run the function
-        if (!(UI.config.modal && UI.config.modal.initialised)) {
-            initModals(document.querySelectorAll('[data-modal-content]'), options.name);
-
-            return UI.modal(TARGET);
-        }
+        // Create any dynamic modals
+        initModals(document.querySelectorAll('[data-modal-content]'), options.name);
 
         // setup animation modifier
         if (modal.modifier('animate') === false && options['dafault-animation']) {
@@ -53,6 +49,7 @@ export default function modal(custom) {
  * @param {HTMLElement} [overlay] - the HTML element acting as the page overlay
  */
 export function toggle(target, state, options = defaults, overlay) {
+    console.log('foo')
     // merge passed options with window options
     options = UI.deepextend(options, UI.get().config('modal'));
 
@@ -67,11 +64,22 @@ export function toggle(target, state, options = defaults, overlay) {
         UI.Synergy([overlay, options.name]).query.component('close', 'add');
     }
 
-    // close any other currently openened modals
     if (state ==='show') {
-        [...document.querySelectorAll(`[data-module='${options.name}']`)].forEach(modal => {
-            if (modal !== target) toggle(modal, 'hide', options, overlay);
+        // close any other currently openened modals
+        document.querySelectorAll(`[data-module='${options.name}']`).forEach(modal => {
+            if (modal !== target) {
+                toggle(modal, 'hide', options, overlay);
+            }
         });
+
+        // @todo add option to change to modal.component('close') to protect outside influences
+        const closeTriggers = UI.Synergy(options.name).component('close');
+
+        closeTriggers.forEach(trigger => trigger.addEventListener('click', function handler() {
+            toggle(target, 'hide', options);
+
+            trigger.removeEventListener('click', handler);
+        }, false));
     }
 
     // toggle the page overlay
@@ -79,11 +87,6 @@ export function toggle(target, state, options = defaults, overlay) {
 
     // toggle the target modal
     UI.Synergy(target).modifier('visible', (state === 'show') ? 'add' : 'remove');
-
-    // @todo add option to change to modal.component('close') to protect outside influences
-    const closeTriggers = UI.Synergy(options.name).component('close');
-
-    closeTriggers.forEach(trigger => trigger.addEventListener('click', () => toggle(target, 'hide', options), false));
 }
 
 /**
@@ -97,18 +100,25 @@ export function toggle(target, state, options = defaults, overlay) {
 function initModals(els, namespace) {
     els.forEach((el, index) => {
         const id = el.href ? (el.href.substr(el.href.lastIndexOf('/') + 1).replace(/^#/, '')) : `_modal_${index}`;
+
+        if (document.getElementById(id)) return;
+
         const style = (el.getAttribute('data-modal-style')) ? '-animate-' + el.getAttribute('data-modal-style') : '';
         const content = el.getAttribute('data-modal-content');
         
         const template = [`
             <div class="${namespace}${style}" id="${id}">
-                <div class="${namespace}_close"><i class="fa fa-times"></i></div>
-                <div class="${namespace}_content">${content}</div>
+                <div class="${namespace}${UI.config.ui['component-glue']}close">×</div>
+                <div class="${namespace}${UI.config.ui['component-glue']}content">
+                    ${content}
+                </div>
             </div>
         `];
 
         el.setAttribute('data-modal-target', id);
 
         document.body.insertAdjacentHTML('beforeend', template);
+
+        modal(document.getElementById(id));
     });
 }

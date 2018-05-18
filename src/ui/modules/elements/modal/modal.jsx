@@ -20,9 +20,11 @@ export default class Modal extends Constructor {
     componentDidMount() {
         // toggle modal on click of queried DOM triggers
         if (typeof this.trigger === 'string') {
-            [...document.querySelectorAll(this.trigger)].forEach(trigger => trigger.addEventListener('click', () => {
-                this.toggle(ReactDOM.findDOMNode(this))
-            }, false));
+            document.querySelectorAll(this.trigger).forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    this.toggle(ReactDOM.findDOMNode(this));
+                }, false)
+            });
         }
     }
 
