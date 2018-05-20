@@ -39,18 +39,18 @@
             transition: core('transition');
 
             @include modifier('top') {
-                top: 45%;
+                top: this('top-position') * 0.9;
 
                 @include modifier('visible') {
-                    top: 50%;
+                    top: this('top-position');
                 }
             }
 
             @include modifier('bottom') {
-                top: 55%;
+                top: this('top-position') * 1.1;
 
                 @include modifier('visible') {
-                    top: 50%;
+                    top: this('top-position');
                 }
             }
 

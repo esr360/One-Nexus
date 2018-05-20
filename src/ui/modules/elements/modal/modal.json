@@ -9,6 +9,7 @@
         "border-radius": 0,
         "transition": ["#CORE", "transition"],
         "z-index": 14,
+        "top-position": "50%",
         "content": {
             "padding": "2em"
         },
@@ -26,7 +27,7 @@
             "module": "overlay",
             "enabled": true,
             "clickToClose": true,
-            "background": "rgba(black, 0.6)",
+            "background": "rgba(black, 0.4)",
             "z-index": 12
         }
     }
