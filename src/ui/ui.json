@@ -28,7 +28,8 @@
                 }
             },
             "modal": {
-                "buzz": true
+                "buzz": true,
+                "top-position": "30%"
             },
             "carousel": {
                 "navigationItem": {

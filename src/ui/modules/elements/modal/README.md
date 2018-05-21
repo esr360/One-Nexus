@@ -13,7 +13,7 @@
 ###### React
 
 ```jsx
-<Button id="demoTrigger">Modal Trigger</Button>
+<div id="demoTrigger">Modal Trigger</div>
 
 <Modal trigger='#demoTrigger'>
     Modal Content
@@ -23,7 +23,7 @@
 ###### HTML
 
 ```html
-<button id="demoTrigger" class="button">Modal Trigger</button>
+<div id="demoTrigger">Modal Trigger</div>
 
 <div class="modal-animate-top">
     <div class="modal_close">×</div>
@@ -98,7 +98,7 @@
             "module": "overlay",
             "enabled": true,
             "clickToClose": true,
-            "background": "rgba(black, 0.6)"
+            "background": "rgba(black, 0.4)"
         }
     }
 }

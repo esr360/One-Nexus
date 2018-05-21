@@ -1,5 +1,6 @@
 import * as UI from '../../../ui';
 import defaults from './modal.json';
+
 /**
  * Modal
  * 
@@ -27,9 +28,11 @@ export default function modal(custom) {
             methods[(modal.modifier('visible') || operator === 'hide') ? 'hide' : 'show']();
         };
 
-        const openTriggers  = document.querySelectorAll(`[data-modal-target="${modal.id}"], [href="#${modal.id}"]`);
+        const openTriggers = document.querySelectorAll(`[data-modal-target="${modal.id}"], [href="#${modal.id}"]`);
 
-        openTriggers.forEach(trigger => trigger.addEventListener('click', () => toggle(modal, 'show', options), false));
+        openTriggers.forEach(trigger => trigger.addEventListener('click', () => {
+            toggle(modal, 'show', options);
+        }, false));
 
     }, defaults, custom, UI.evalConfig);
 
@@ -49,7 +52,6 @@ export default function modal(custom) {
  * @param {HTMLElement} [overlay] - the HTML element acting as the page overlay
  */
 export function toggle(target, state, options = defaults, overlay) {
-    console.log('foo')
     // merge passed options with window options
     options = UI.deepextend(options, UI.get().config('modal'));
 
@@ -103,7 +105,7 @@ function initModals(els, namespace) {
 
         if (document.getElementById(id)) return;
 
-        const style = (el.getAttribute('data-modal-style')) ? '-animate-' + el.getAttribute('data-modal-style') : '';
+        const style = el.getAttribute('data-modal-style') ? '-animate-' + el.getAttribute('data-modal-style') : '';
         const content = el.getAttribute('data-modal-content');
         
         const template = [`
