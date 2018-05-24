@@ -58,7 +58,7 @@ export { default as Carousel } from './ui/modules/elements/carousel/carousel.jsx
 export { default as Form } from './ui/modules/elements/form/form.jsx';
 export { default as Heading } from './ui/modules/elements/heading/heading.jsx';
 export { default as Image } from './ui/modules/elements/image/image.jsx';
-export { default as List, ListItem } from './ui/modules/elements/list/list.jsx';
+export { default as List } from './ui/modules/elements/list/list.jsx';
 export { default as Modal } from './ui/modules/elements/modal/modal.jsx';
 export { default as Paragraph } from './ui/modules/elements/paragraph/paragraph.jsx';
 export { default as Table } from './ui/modules/elements/tables/table.jsx';
@@ -139,8 +139,8 @@ export default locals => ReactDOMServer.renderToStaticMarkup(
 if (process.env.APP_ENV === 'web') {
     UI(config.app.ui);
 
-    ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app)
-    //ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app, () => UI(config.app.ui));
+    //ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app)
+    ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app, () => UI(config.app.ui));
 
     // @TODO add BLL logic option
     // if (window.BLL) BLL(app)

@@ -6,6 +6,11 @@ import defaults from './list.json';
  * @prop {String} name
  */
 export default class List extends React.Component {
+    // list item
+    static Item(props) {
+        return <li>{props.children}</li>;
+    }
+
     render() {
         return (
             <Module {...this.props}>
@@ -19,14 +24,3 @@ List.defaultProps = {
     name: defaults.list.name,
     tag: 'ul'
 };
-
-/**
- * Render List Item
- *
- * @prop {String} name
- */
-export class ListItem extends React.Component {
-    render() {
-        return <li>{this.props.children}</li>;
-    }
-}
