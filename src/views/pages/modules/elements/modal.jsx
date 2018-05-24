@@ -5,6 +5,15 @@ export default class Modal extends React.Component {
         return (
             <app.layouts.Base {...app.config.app.views}>
 
+                <Module name='modal' before={
+                    <app.Button onClick={() => UI.modal(this.parent).open()}>Raw Modal</app.Button>
+                }>
+                    <Component name='close' icon onClick={() => UI.modal(this).close()}>×</Component>
+                    <Component name='content'>
+                        Raw Modal Content
+                    </Component>
+                </Module>
+
                 <app.Modal trigger={ <div>Trigger 1</div> }>
                     <app.Modal.close modifiers={['icon']}>close</app.Modal.close>
                     <app.Modal.content>

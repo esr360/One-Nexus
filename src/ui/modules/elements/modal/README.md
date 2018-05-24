@@ -1,10 +1,13 @@
 # One-Nexus Modal
 
+> [Use outside of One-Nexus](#TODO)
+
 * [Overview](#overview)
 * [Configuration](#configuration)
 * [Styles](#styles)
 * [Interactions](#interactions)
-* [Rendering](#rendering)
+* [React Rendering](#reactrendering)
+* [HTML Rendering](#html-rendering)
 
 ## Overview
 
@@ -13,7 +16,7 @@
 ###### React
 
 ```jsx
-<Modal trigger={ <div>Modal Trigger</div> }>
+<Modal trigger={<div>Modal Trigger</div>}>
     Modal Content
 </Modal>
 ```
@@ -190,10 +193,10 @@ UI.modal(target).toggle();
 
 ```js
 // Toggle modal with ID 'foo'
-UI.modal(document.getElementById('foo')).toggle();
+UI.modal('#foo').toggle();
 
 // Toggle modal with ID 'foo'
-UI.modal('#foo').toggle();
+UI.modal(document.getElementById('foo')).toggle();
 ```
 
 ### Show
@@ -225,10 +228,10 @@ UI.modal(target).show();
 
 ```js
 // Show modal with ID 'foo'
-UI.modal(document.getElementById('foo')).show();
+UI.modal('#foo').show();
 
 // Show modal with ID 'foo'
-UI.modal('#foo').show();
+UI.modal(document.getElementById('foo')).show();
 ```
 
 ### Hide
@@ -260,20 +263,22 @@ UI.modal(target).hide();
 
 ```js
 // Hide modal with ID 'foo'
-UI.modal(document.getElementById('foo')).hide();
+UI.modal('#foo').hide();
 
 // Hide modal with ID 'foo'
-UI.modal('#foo').hide();
+UI.modal(document.getElementById('foo')).hide();
 ```
 
-## Rendering
+## React Rendering
 
-> If you are *not* using React, simply look to the 'Output' section of any example (where applicable)
+* [Static Methods](#TODO)
+* [Raw Module](#TODO)
+* [Props](#TODO)
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
 ```jsx
-<Modal trigger={ <Button>Open Modal</Button> }>
+<Modal trigger={<Button>Open Modal</Button>}>
     Modal Content
 </Modal>
 ```
@@ -283,12 +288,23 @@ UI.modal('#foo').hide();
 > [Learn More](#TODO) About rendering modules using their static methods
 
 ```jsx
-<Modal trigger={ <Button>Open Modal</Button> }>
+<Modal trigger={<Button>Open Modal</Button>}>
     <Modal.close modifiers={['icon']}>×</Modal.close>
     <Modal.content>
         Modal Content
     </Modal.content>
 </Modal>
+```
+
+### Raw Module (without using `Modal.jsx`)
+
+```jsx
+<Module name='modal' before={<Button onClick={() => UI.modal(this.parent).open()}>Open Modal</Button>}>
+    <Component name='close' icon onClick={() => UI.modal(this).close()}>×</Component>
+    <Component name='content'>
+        Modal Content
+    </Component>
+</Module>
 ```
 
 ### Props
@@ -304,7 +320,7 @@ UI.modal('#foo').hide();
 > Pass content via the `content` prop instead of passing as children
 
 ```jsx
-<Modal trigger={ <Button>Open Modal</Button> } content='Modal Content' />
+<Modal trigger={<Button>Open Modal</Button>} content='Modal Content' />
 ```
 
 #### Props.trigger
@@ -326,7 +342,7 @@ UI.modal('#foo').hide();
 </table>
 
 ```jsx
-<Modal trigger={ <div>Modal Trigger</div> }>
+<Modal trigger={<div>Modal Trigger</div>}>
     Modal Content
 </Modal>
 ```
@@ -353,3 +369,5 @@ UI.modal('#foo').hide();
 
 ```jsx
 ```
+
+## HTML Rendering
