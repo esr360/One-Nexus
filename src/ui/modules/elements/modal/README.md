@@ -13,9 +13,7 @@
 ###### React
 
 ```jsx
-<div id="demoTrigger">Modal Trigger</div>
-
-<Modal trigger='#demoTrigger'>
+<Modal trigger={ <div>Modal Trigger</div> }>
     Modal Content
 </Modal>
 ```
@@ -23,9 +21,9 @@
 ###### HTML
 
 ```html
-<div id="demoTrigger">Modal Trigger</div>
+<div data-modal-target="demo_modal">Modal Trigger</div>
 
-<div class="modal-animate-top">
+<div id="demo_modal" class="modal-animate-top">
     <div class="modal_close">×</div>
     <div class="modal_content">Modal Content</div>
 </div>
@@ -81,24 +79,28 @@
         "border-radius": 0,
         "transition": ["#CORE", "transition"],
         "z-index": 14,
+        "top-position": "50%",
         "content": {
             "padding": "2em"
         },
         "close": {
-            "font-size": ["#FONT-SIZE", "size-6"],
-            "top": "1rem",
-            "right": "1rem",
-            "color": ["#COLOR", "greyscale", "grey-3"],
-            "transition": ["#CORE", "transition"],
-            "hover": {
-                "color": ["#COLOR", "brand", "brand-1"]
+            "-icon": {
+                "font-size": ["#FONT-SIZE", "size-6"],
+                "top": "1rem",
+                "right": "1rem",
+                "color": ["#COLOR", "greyscale", "grey-3"],
+                "transition": ["#CORE", "transition"],
+                "hover": {
+                    "color": ["#COLOR", "brand", "brand-1"]
+                }
             }
         },
         "overlay": {
             "module": "overlay",
             "enabled": true,
             "clickToClose": true,
-            "background": "rgba(black, 0.4)"
+            "background": "rgba(black, 0.4)",
+            "z-index": 12
         }
     }
 }
@@ -266,47 +268,88 @@ UI.modal('#foo').hide();
 
 ## Rendering
 
-> If you are *not* using React, simply look to the 'Output' section of any example
+> If you are *not* using React, simply look to the 'Output' section of any example (where applicable)
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
 ```jsx
 <Modal trigger={ <Button>Open Modal</Button> }>
     Modal Content
-</app.Modal>
+</Modal>
 ```
 
+### Static Medthods
+
+> [Learn More](#TODO) About rendering modules using their static methods
+
+```jsx
+<Modal trigger={ <Button>Open Modal</Button> }>
+    <Modal.close modifiers={['icon']}>×</Modal.close>
+    <Modal.content>
+        Modal Content
+    </Modal.content>
+</Modal>
+```
+
+### Props
+
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [Props.content](#TODO)
 * [Props.trigger](#TODO)
 * [Props.close](#TODO)
 * [Props.animate](#TODO)
 
-### Props.trigger
+#### Props.content
+
+> Pass content via the `content` prop instead of passing as children
+
+```jsx
+<Modal trigger={ <Button>Open Modal</Button> } content='Modal Content' />
+```
+
+#### Props.trigger
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll">
+                <code>querySelectorall</code>
+            </a> ||
+            <a href="https://reactjs.org/docs/glossary.html#elements"><code>React Element</code></a>
+        </td>
+    </tr>
+    <tr>
+        <td><b>Description</b></td>
+        <td>The element(s) to open the modal when clicked</td>
+    </tr>
+</table>
+
+```jsx
+<Modal trigger={ <div>Modal Trigger</div> }>
+    Modal Content
+</Modal>
+```
+
+```jsx
+<div id="demoTrigger">Modal Trigger</div>
+
+<Modal trigger='#demoTrigger'>
+    Modal Content
+</Modal>
+```
+
+#### Props.close
 
 ```jsx
 ```
 
-###### Output
-
-```html
-```
-
-#### Panel.close
+##### Disable Close Icon
 
 ```jsx
 ```
 
-###### Output
-
-```html
-```
-
-#### Panel.animate
+#### Props.animate
 
 ```jsx
-```
-
-###### Output
-
-```html
 ```

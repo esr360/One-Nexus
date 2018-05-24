@@ -6,7 +6,7 @@ export default class Modal extends React.Component {
             <app.layouts.Base {...app.config.app.views}>
 
                 <app.Modal trigger={ <div>Trigger 1</div> }>
-                    <app.Modal.close>close</app.Modal.close>
+                    <app.Modal.close modifiers={['icon']}>close</app.Modal.close>
                     <app.Modal.content>
                         Modal 1
                     </app.Modal.content>
