@@ -10,7 +10,6 @@ export default class Modal extends Constructor {
 
         this.trigger = this.props.trigger;
         this.modifiers = this.props.modifiers || [];
-        this.close = (typeof this.props.close === 'function') ? this.props.close() : this.props.close;
 
         if (this.props.animate) {
             this.modifiers.push(`animate-${this.props.animate}`);
@@ -18,7 +17,6 @@ export default class Modal extends Constructor {
     }
 
     componentDidMount() {
-        // toggle modal on click of queried DOM triggers
         if (typeof this.trigger === 'string') {
             document.querySelectorAll(this.trigger).forEach(trigger => {
                 trigger.addEventListener('click', () => {
@@ -28,17 +26,28 @@ export default class Modal extends Constructor {
         }
     }
 
+    static close(props) {
+        return props.children && (
+            <Component {...props} name='close'>{props.children}</Component>
+        );
+    }
+
+    static content(props) {
+        return <Component name='content'>{props.content||props.children}</Component>;
+    }
+
     render() {
         return [
             <Module modifiers={this.modifiers} {...this.props}>
-                {this.close && <Component name='close' from={this.close} />}
-
-                <Component name='content'>
-                    {this.props.children}
-                </Component>
+                {this.content([
+                    this.constructor.close({
+                        children: this.props.close, 
+                        modifiers: ['icon']
+                    }),
+                    this.constructor.content(this.props)
+                ])}
             </Module>,
 
-            // toggle modal on click of rendered trigger
             React.isValidElement(this.trigger) && React.cloneElement(this.trigger, {
                 onClick: () => this.toggle(ReactDOM.findDOMNode(this))
             })
@@ -49,5 +58,5 @@ export default class Modal extends Constructor {
 Modal.defaultProps = {
     name: defaults.modal.name,
     animate: 'top',
-    close: () => <Component name='close'>×</Component>
+    close: '×'
 };

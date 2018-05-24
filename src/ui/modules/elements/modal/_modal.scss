@@ -87,7 +87,10 @@
 
         @include component('close') {
             cursor: pointer;
-            position: absolute;
+
+            @include modifier('icon') {
+                position: absolute;
+            }
         }
 
         //*********************************************************

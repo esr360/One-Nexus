@@ -99,7 +99,7 @@ export function toggle(target, state, options = defaults, overlay) {
  * @param {NodeList} els - elements to initialise as modals
  * @param {String} namespace - name of modal module
  */
-function initModals(els, namespace) {
+function initModals(els, namespace, componentGlue = UI.config.ui['component-glue']) {
     els.forEach((el, index) => {
         const id = el.href ? (el.href.substr(el.href.lastIndexOf('/') + 1).replace(/^#/, '')) : `_modal_${index}`;
 
@@ -110,8 +110,8 @@ function initModals(els, namespace) {
         
         const template = [`
             <div class="${namespace}${style}" id="${id}">
-                <div class="${namespace}${UI.config.ui['component-glue']}close">×</div>
-                <div class="${namespace}${UI.config.ui['component-glue']}content">
+                <div class="${namespace}${componentGlue}close">×</div>
+                <div class="${namespace}${componentGlue}content">
                     ${content}
                 </div>
             </div>
