@@ -271,11 +271,14 @@ UI.modal(document.getElementById('foo')).hide();
 
 ## React Rendering
 
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
+
+* [Basic Usage](#TODO)
 * [Static Methods](#TODO)
 * [Raw Module](#TODO)
 * [Props](#TODO)
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
+### Basic Usage
 
 ```jsx
 <Modal trigger={<Button>Open Modal</Button>}>
@@ -283,9 +286,9 @@ UI.modal(document.getElementById('foo')).hide();
 </Modal>
 ```
 
-### Static Medthods
+### Static Methods
 
-> [Learn More](#TODO) About rendering modules using their static methods
+> [Learn more](#TODO) about rendering modules using their static methods
 
 ```jsx
 <Modal trigger={<Button>Open Modal</Button>}>
@@ -298,9 +301,11 @@ UI.modal(document.getElementById('foo')).hide();
 
 ### Raw Module (without using `Modal.jsx`)
 
+> [Learn more](#TODO) about raw modules
+
 ```jsx
-<Module name='modal' before={<Button onClick={() => UI.modal(this.parent).open()}>Open Modal</Button>}>
-    <Component name='close' icon onClick={() => UI.modal(this).close()}>×</Component>
+<Module name='modal' before={target => <Button onClick={() => UI.modal(target()).show()}>Open Modal</Button>}>
+    <Component name='close' modifiers={['icon']}>×</Component>
     <Component name='content'>
         Modal Content
     </Component>
@@ -371,3 +376,12 @@ UI.modal(document.getElementById('foo')).hide();
 ```
 
 ## HTML Rendering
+
+```html
+<div data-modal-target="demo_modal">Modal Trigger</div>
+
+<div id="demo_modal" class="modal-animate-top">
+    <div class="modal_close">×</div>
+    <div class="modal_content">Modal Content</div>
+</div>
+```

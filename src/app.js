@@ -44,7 +44,8 @@ window.Wrapper = Wrapper;
 
 import { Row, Column } from '../../../Kayzen-GS/src/js/index.js';
 
-[window.Row, window.Column] = [Row, Column];
+window.Row = Row; 
+window.Column = Column;
 
 // UI React Components
 //*****************************************************************
@@ -53,16 +54,24 @@ import { Row, Column } from '../../../Kayzen-GS/src/js/index.js';
 export { default as Accordion } from './ui/modules/elements/accordion/accordion.jsx';
 export { default as Alert } from './ui/modules/elements/alert/alert.jsx';
 export { default as Blockquote } from './ui/modules/elements/blockquote/blockquote.jsx';
-export { default as Button } from './ui/modules/elements/button/button.jsx';
+import { default as Button } from './ui/modules/elements/button/button.jsx';
 export { default as Carousel } from './ui/modules/elements/carousel/carousel.jsx';
 export { default as Form } from './ui/modules/elements/form/form.jsx';
 export { default as Heading } from './ui/modules/elements/heading/heading.jsx';
 export { default as Image } from './ui/modules/elements/image/image.jsx';
 export { default as List } from './ui/modules/elements/list/list.jsx';
-export { default as Modal } from './ui/modules/elements/modal/modal.jsx';
+import { default as Modal } from './ui/modules/elements/modal/modal.jsx';
 export { default as Paragraph } from './ui/modules/elements/paragraph/paragraph.jsx';
 export { default as Table } from './ui/modules/elements/tables/table.jsx';
 export { default as Well } from './ui/modules/elements/wells/well.jsx';
+
+export {
+    Button,
+    Modal
+}
+
+window.Button = Button;
+window.Modal = Modal;
 
 // Objects
 export { Header } from './ui/modules/objects/header/header.jsx';
@@ -88,13 +97,13 @@ import Index from './views/pages/index.jsx';
 import Accordion from './views/pages/modules/elements/accordion.jsx';
 import Alert from './views/pages/modules/elements/alert.jsx';
 import Blockquote from './views/pages/modules/elements/blockquote.jsx';
-import Button from './views/pages/modules/elements/button.jsx';
+import _Button from './views/pages/modules/elements/button.jsx';
 import Carousel from './views/pages/modules/elements/carousel.jsx';
 import Form from './views/pages/modules/elements/form.jsx';
 import Heading from './views/pages/modules/elements/heading.jsx';
 import Image from './views/pages/modules/elements/image.jsx';
 import List from './views/pages/modules/elements/list.jsx';
-import Modal from './views/pages/modules/elements/modal.jsx';
+import _Modal from './views/pages/modules/elements/modal.jsx';
 import Paragraph from './views/pages/modules/elements/paragraph.jsx';
 import ProgressBar from './views/pages/modules/elements/progress-bar.jsx';
 import Table from './views/pages/modules/elements/table.jsx';
@@ -107,13 +116,13 @@ export const pages = {
     Accordion,
     Alert,
     Blockquote,
-    Button,
+    Button: _Button,
     Carousel,
     Form,
     Heading,
     Image,
     List,
-    Modal,
+    Modal: _Modal,
     Paragraph,
     ProgressBar,
     Table,
@@ -139,8 +148,8 @@ export default locals => ReactDOMServer.renderToStaticMarkup(
 if (process.env.APP_ENV === 'web') {
     UI(config.app.ui);
 
-    //ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app)
-    ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app, () => UI(config.app.ui));
+    ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app)
+    //ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app, () => UI(config.app.ui));
 
     // @TODO add BLL logic option
     // if (window.BLL) BLL(app)

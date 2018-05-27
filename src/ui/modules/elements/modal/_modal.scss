@@ -19,6 +19,7 @@
         @include vertical-center();
         @include horizontal-center();
 
+        top: this('top-position');
         visibility: hidden;
         position: fixed;
         max-width: 90%;
