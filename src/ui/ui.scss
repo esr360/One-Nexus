@@ -14,8 +14,8 @@
 @import '../../node_modules/Kayzen-GS/dist/kayzen-gs.scss';
 @import '../../node_modules/Sass-Boost/dist/sass-boost';
 @import '../../node_modules/spinners/stylesheets/spinners';
-//@import '../../node_modules/Synergy/dist/synergy';
-@import '../../../Synergy/src/scss/synergy';
+@import '../../node_modules/Synergy/dist/synergy';
+//@import '../../../../Synergy/src/scss/synergy';
 
 // CSS librarys
 @import '../../node_modules/flickity/dist/flickity';
@@ -106,11 +106,3 @@ $sass-config-parser: map-get($ui, 'sass-config-parser');
 //*****************************************************************
 
 @import 'themes/One-Nexus/theme';
-
-@include module('myModule') {
-    @include component('myComponent') {
-        @include modifier('myModifier') {
-            content: 'fizzbuzz';
-        }
-    }
-}

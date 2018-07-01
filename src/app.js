@@ -14,11 +14,10 @@ export const config = JSON.parse(
 // React
 //*****************************************************************
 
-import React from 'react';
-import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server';
 import { HashLink as Link } from 'react-router-hash-link';
 import { StaticRouter, HashRouter, Switch, Route } from 'react-router-dom';
+
 export { Link, StaticRouter, HashRouter, Switch, Route };
 
 // Theme/UI
@@ -29,15 +28,14 @@ import UI from './ui/ui';
 // Synergy
 //*****************************************************************
 
-// import { Module } from 'Synergy';
-// import { Component, Group, Wrapper } from 'Synergy';
-import { default as Module } from '../../../Synergy/src/js/module.jsx';
-import { default as Component, Group, Wrapper } from '../../../Synergy/src/js/component.jsx';
+import * as Synergy from 'Synergy';
+//import * as Synergy from '../../../Synergy/src/index.js';
+//import * as Synergy from '../../../Synergy/dist/synergy.js';
 
-window.Module = Module;
-window.Component = Component;
-window.Group = Group;
-window.Wrapper = Wrapper;
+window.Module = Synergy.Module;
+window.Component = Synergy.Component;
+window.Group = Synergy.Group;
+window.Wrapper = Synergy.Wrapper;
 
 // Kayzen-GS
 //*****************************************************************
@@ -148,8 +146,8 @@ export default locals => ReactDOMServer.renderToStaticMarkup(
 if (process.env.APP_ENV === 'web') {
     UI(config.app.ui);
 
-    ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app)
-    //ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app, () => UI(config.app.ui));
+    //ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app)
+    ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app, () => UI(config.app.ui));
 
     // @TODO add BLL logic option
     // if (window.BLL) BLL(app)

@@ -30,7 +30,9 @@ export default function(env) {
         new webpack.ProvidePlugin({
             React: 'react',
             ReactDOM: 'react-dom',
-            Constructor: ['../../../../../../../Synergy/src/js/module.jsx', 'Constructor']
+            Synergize: ['Synergy', 'Synergize']
+            //Synergize: ['../../../../../../../Synergy/dist/synergy.js', 'Synergize']
+            //Synergize: ['../../../../../../../Synergy/src/js/synergize.js', 'Synergize']
         }),
         new CopyWebpackPlugin([
             { from: 'src/ui/images', to: 'assets/images' }
@@ -74,15 +76,17 @@ export default function(env) {
 
         plugins,
 
-        module: { loaders: [ 
-            JsLoader, 
-            SassLoader,
-            {
-                test: /\.css$/,  
-                include: /node_modules/,  
-                loaders: ['style-loader', 'css-loader'],
-           }
-        ] },
+        module: { 
+            loaders: [ 
+                JsLoader, 
+                SassLoader,
+                {
+                    test: /\.css$/,  
+                    include: /node_modules/,  
+                    loaders: ['style-loader', 'css-loader'],
+                }
+            ] 
+        },
 
         stats: { colors: true },
 
