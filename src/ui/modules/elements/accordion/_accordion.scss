@@ -31,6 +31,16 @@
                     }
                 }
             }
+
+            @include modifier('active') {
+                @include component('toggle') {
+                    transform: rotate(90deg) translateZ(0);
+                }
+
+                @include component('content') {
+                    display: block;
+                }
+            }
         }
 
         @include component('title', (
@@ -39,27 +49,18 @@
             backface-visibility: hidden,
             font-weight: normal,
             line-height: 1,
-            cursor: pointer,
-            'active': (
-                component('toggle'): (
-                    transform: rotate(90deg) translateZ(0)
-                )
-            )
+            cursor: pointer
         ));
 
         @include component('toggle', (
             float: right,
-            transition: core('transition'),
             line-height: 0.75
         ));
 
         @include component('content', (
             display: none,
             margin: 0,
-            margin-top: -1px,
-            'active': (
-                display: block
-            )
+            margin-top: -1px
         ));
 
         //*********************************************************

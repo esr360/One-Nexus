@@ -3,7 +3,18 @@
         "name": "accordion",
         "methods": ["toggle", "open", "close"],
         "section": {
-            "vertical-rhythm": 0
+            "vertical-rhythm": 0,
+            "active": {
+                "component(title)": {
+                    "background": ["#COLOR", "brand", "brand-1"],
+                    "color": ["#COLOR", "greyscale", "white"],
+                    "border-color": "transparent",
+                    "border-radius": 0
+                },
+                "component(toggle)": {
+                    "color": ["#COLOR", "greyscale", "white"]
+                }
+            }
         },
         "title": {
             "background": "transparent",
@@ -18,15 +29,6 @@
                 "component(toggle)": {
                     "color": ["#COLOR", "greyscale", "white"]
                 }
-            },
-            "active": {
-                "background": ["#COLOR", "brand", "brand-1"],
-                "color": ["#COLOR", "greyscale", "white"],
-                "border-color": "transparent",
-                "border-radius": 0,
-                "component(toggle)": {
-                    "color": ["#COLOR", "greyscale", "white"]
-                }
             }
         },
         "content": {
@@ -37,7 +39,8 @@
             "padding": "1.5em"
         },
         "toggle": {
-            "color": ["#COLOR", "opaque", "dark-4"]
+            "color": ["#COLOR", "opaque", "dark-4"],
+            "transition": ["#CORE", "transition"]
         },
         "animationSpeed": 400,
         "keepOpenModifier": "keepOpen"

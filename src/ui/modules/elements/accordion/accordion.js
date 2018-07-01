@@ -13,16 +13,16 @@ export default function accordion(custom) {
     UI.Synergy(TARGET, (accordion, options) => {
 
         if (!(custom instanceof HTMLElement) && accordion.length) {
-            accordion.component('section').forEach(section => {
+            accordion.component('section', section => {
                 if (section.modifier('active')) {
-                    section.component('content')[0].modifier('active', 'set');
+                    section.component('content', content => content.modifier('active', 'set'));
                 }
 
-                section.component('title')[0].addEventListener('click', () => {
+                section.component('title', title => title.addEventListener('click', () => {
                     var active = section.modifier('active', 'isset');
                 
                     toggle(section, active ? 'close' : 'open', accordion, options);
-                }, false);
+                }, false));
             });
         }
 
@@ -92,28 +92,14 @@ export function toggle(target, type, parent, options = defaults, keepOpen = fals
 
     // close sibling sections
     if (operator === 'set' && (parent.modifier(options.keepOpenModifier) !== true) && keepOpen === false) {
-        parent.component('section').forEach(el => toggleActiveClass(el, 'unset'));
+        parent.component('section').forEach(el => el.modifier('active', 'unset'));
     }
 
     if (section instanceof NodeList || section instanceof Array) {
-        section.forEach(el => toggleActiveClass(el, operator));
+        section.forEach(el => el.modifier('active', operator));
     } else {
-        toggleActiveClass(section, operator);
+        section.modifier('active', operator);
     }
 
     return parent;
-}
-
-/**
- * Toggle acive modifiers on accordion elements
- * 
- * @access private
- * 
- * @param el
- * @param operator
- */
-function toggleActiveClass(el, operator) {
-    el.modifier('active', operator);
-    el.component('title')[0].modifier('active', operator);
-    el.component('content')[0].modifier('active', operator);
 }

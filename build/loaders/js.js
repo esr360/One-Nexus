@@ -3,6 +3,6 @@ export default {
     exclude: /node_modules/,
     loaders: [
         'babel-loader',
-        'eslint-loader'
+        //'eslint-loader'
     ],
 };
