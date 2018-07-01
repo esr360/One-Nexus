@@ -4,7 +4,7 @@ import defaults from './button.json';
  *
  * @prop {String} name
  */
-export default class Button extends Constructor {
+export default class Button extends Synergize {
 
     componentWillMount() {
         this.tag = this.props.href ? 'a' : false;

@@ -2,7 +2,7 @@ import defaults from './form.json';
 /**
  * Render Form module
  */
-export default class Form extends Constructor {
+export default class Form extends Synergize {
 
     constructor(props, context) {
         super(props, context);

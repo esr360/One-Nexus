@@ -1,10 +1,11 @@
 import defaults from './modal.json';
+
 /**
  * Render Modal module
  *
  * @prop {String} name
  */
-export default class Modal extends Constructor {
+export default class Modal extends Synergize {
     constructor(props) {
         super(props);
 

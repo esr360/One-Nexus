@@ -7,7 +7,7 @@ import defaults from './alert.json';
  * @prop {Bool} box
  * @prop {(Bool|Array)} icon
  */
-export default class Alert extends Constructor {
+export default class Alert extends Synergize {
 
     constructor(props) {
         super(props);

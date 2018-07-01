@@ -5,7 +5,7 @@ import defaults from './blockquote.json';
  * @param {*} props.content
  * @param {*} props.footer
  */
-export default class Blockquote extends Constructor {
+export default class Blockquote extends Synergize {
     render() {
         return (
             <Module {...this.props}>
