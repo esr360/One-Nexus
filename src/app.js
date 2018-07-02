@@ -11,27 +11,27 @@ export const config = JSON.parse(
     JSON.stringify(initialConfig).replace(/"'/g,'"').replace(/'"/g,'"')
 );
 
+// Tools
+//*****************************************************************
+
+import { parents } from './ui/tools/js/app.parents';
+
 // React
 //*****************************************************************
 
-import ReactDOMServer from 'react-dom/server';
 import { HashLink as Link } from 'react-router-hash-link';
 import { StaticRouter, HashRouter, Switch, Route } from 'react-router-dom';
 
 export { Link, StaticRouter, HashRouter, Switch, Route };
 
-// Theme/UI
-//*****************************************************************
-
-import UI from './ui/ui';
-
 // Synergy
 //*****************************************************************
 
-import * as Synergy from 'Synergy';
-//import * as Synergy from '../../../Synergy/src/index.js';
+//import * as Synergy from 'Synergy';
+import * as Synergy from '../../../Synergy/src/index.js';
 //import * as Synergy from '../../../Synergy/dist/synergy.js';
 
+window.Synergy = Synergy.Synergy;
 window.Module = Synergy.Module;
 window.Component = Synergy.Component;
 window.Group = Synergy.Group;
@@ -75,6 +75,11 @@ window.Modal = Modal;
 export { Header } from './ui/modules/objects/header/header.jsx';
 export { Logo } from './ui/modules/objects/logo/logo.jsx';
 export { Navigation } from './ui/modules/objects/navigation/navigation.jsx';
+
+// Themes
+//*****************************************************************
+
+import one_nexus from './ui/themes/One-Nexus/theme.json';
 
 // Views
 //*****************************************************************
@@ -129,37 +134,24 @@ export const pages = {
     Well
 }
 
+// Global Methods
+//*****************************************************************
+
+Element.prototype.component = function(component, operator) {
+    return Synergy.Synergy(this).component(component, operator, this);
+};
+
+Element.prototype.modifier = function(modifier, operator) {
+    return Synergy.Synergy(this).modifier(modifier, operator, this);
+};
+
+Element.prototype.parents = function(selector) {
+    return parents(this, selector);
+};
+
 // Render App
 //*****************************************************************
 
 import App from './app.jsx';
-import { Core } from './views/core.jsx';
 
-// Render on the server for static pages
-export default locals => ReactDOMServer.renderToStaticMarkup(
-    <StaticRouter location={locals.path} context={{}}>
-        <Core styles={true}><App data={config.app.views} /></Core>
-    </StaticRouter>
-);
-
-// Render on the client for standard React app
-if (process.env.APP_ENV === 'web') {
-    UI(config.app.ui);
-
-    //ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app)
-    ReactDOM.render(<HashRouter><App data={config.app.views} /></HashRouter>, app, () => UI(config.app.ui));
-
-    // @TODO add BLL logic option
-    // if (window.BLL) BLL(app)
-}
-
-// Call the UI function once the react app has loaded
-if (process.env.APP_ENV === 'node') {
-    var ReactDOMLoaded = setInterval(() => {
-        if (document.getElementById('app') !== '') {
-            UI(config.app.ui);
-    
-            clearInterval(ReactDOMLoaded);
-        }
-    }, 100);
-}
+ReactDOM.render(<HashRouter><App theme={one_nexus.theme} /></HashRouter>, app);
