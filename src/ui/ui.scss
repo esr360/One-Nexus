@@ -27,9 +27,6 @@
 // Import global app configuration
 @import 'ui.json';
 
-// Merge UI config with app-level config
-$ui: map-merge-deep($ui, map-get($app, 'ui'));
-
 // Synergy variables
 $modifier-glue     : map-get($ui, 'modifier-glue');
 $component-glue    : map-get($ui, 'component-glue');

@@ -3,25 +3,25 @@
         "views": {
             "navigation": {
                 "items": [
-                    ["link 1", "'/'"],
+                    ["link 1", "/"],
                     ["link 2", [
-                        ["link 2 child", "'/'"],
-                        ["link 2 child 2", "'/'"],
+                        ["link 2 child", "/"],
+                        ["link 2 child 2", "/"],
                         ["link 2 child 3", [
-                            ["link 2 grandchild", "'/'"],
-                            ["link 2 grandchild 2", "'/'"]
+                            ["link 2 grandchild", "/"],
+                            ["link 2 grandchild 2", "/"]
                         ]]
                     ]],
-                    ["link 3", "'/'"]
+                    ["link 3", "/"]
                 ]
             },
             "logo": {
-                "src": "'assets/images/logo-light.png'"
+                "src": "assets/images/logo-light.png"
             }
         },
         "ui": {
-            "component-glue": "'_'",
-            "modifier-glue": "'-'",
+            "component-glue": "_",
+            "modifier-glue": "-",
             "fizz": "buzz",
             "theme": "One-Nexus",
             "modules": {

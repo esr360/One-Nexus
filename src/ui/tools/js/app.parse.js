@@ -1,4 +1,5 @@
-import * as app from '../../ui';
+import { evalConfig } from './app.evalConfig';
+import deepextend from 'deep-extend';
 
 /**
  * Parse
@@ -11,7 +12,7 @@ import * as app from '../../ui';
 export function parse(defaults, custom) {
     custom = (custom instanceof HTMLElement || custom instanceof NodeList) ? {} : custom;
 
-    const config = app.evalConfig(app.deepextend(defaults, custom));
+    const config = evalConfig(deepextend(defaults, custom));
 
     delete config.modifierGlue;
     delete config.componentGlue;

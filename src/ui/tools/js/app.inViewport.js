@@ -1,5 +1,3 @@
-import * as app from '../../ui';
-
 /**
  * Determine if an element is in the viewport
  * 

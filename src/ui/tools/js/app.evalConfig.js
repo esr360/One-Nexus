@@ -1,4 +1,4 @@
-import * as app from '../../ui';
+import * as app from '../../../app';
 
 /**
  * Evaluate function values from configuration
