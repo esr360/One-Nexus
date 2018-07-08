@@ -16,6 +16,9 @@ import parents from './ui/tools/js/app.parents';
 import { HashLink as Link } from 'react-router-hash-link';
 import { StaticRouter, HashRouter, Switch, Route } from 'react-router-dom';
 
+// Flickity
+import Flickity from 'flickity';
+
 // Synergy
 //import * as Synergy from 'Synergy';
 import * as Synergy from '../../../Synergy/src/index.js';
@@ -99,7 +102,6 @@ const modules = {
     Modal,
     Paragraph,
     Table,
-
     Header,
     Logo,
     Navigation
@@ -126,6 +128,8 @@ export {
 //*****************************************************************
 
 Object.assign(window, KayzenGS, Synergy, { ...modules });
+
+window.Synergy.CssClassProps = config.app.ui['css-class-props'];
 
 Element.prototype.component = function(component, operator) {
     return Synergy.Synergy(this).component(component, operator, this);

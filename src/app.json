@@ -27,9 +27,22 @@
             "css-class-props": ["object"],
             "modules": {
                 "fizz": ["#COLOR", "brand", "brand-1"],
+                "accordion": {
+                    "fizz": "foo"
+                },
                 "alert": {
                     "icon": {
                         "default-enable": true
+                    }
+                },
+                "button": {
+                    "palettes": [
+                        "brand", "greyscale", "alert", "social", 
+                        {"foo": "blue", "bar": "#FF5733"}
+                    ],
+                    "combine": {
+                        "primary" : ["round", "size-4", "brand-1"],
+                        "social"  : ["icon", "oval", "size-6", "brand-2"]
                     }
                 },
                 "colors": {
@@ -37,11 +50,14 @@
                         "brand-1": "blue"
                     }
                 },
-                "accordion": {
-                    "fizz": "foo"
+                "carousel": {
+                    "navigationItem": {
+                        "disable": false
+                    }
                 },
                 "modal": {
-                    "fizz": true
+                    "buzz": true,
+                    "top-position": "30%"
                 }
             }
         }

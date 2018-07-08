@@ -96,7 +96,7 @@ $sass-config-parser : map-get-deep($app, 'ui', 'sass-config-parser');
 
     @include normalize;
 
-    /// Skeleton
+    /// Utilities
     @include colors;
     @include typography;
     @include grid;
