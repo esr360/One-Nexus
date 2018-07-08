@@ -24,7 +24,7 @@
     "url": "https://github.com/esr360/One-Nexus/issues"
   },
   "dependencies": {
-    "Kayzen-GS": "^2.4.0",
+    "kayzen-gs": "^2.5.1",
     "Sass-Boost": "^1.1.1",
     "Synergy": "^3.10.3",
     "deep-extend": "^0.5.0",
@@ -62,11 +62,11 @@
     "html-webpack-plugin": "^2.30.1",
     "imports-loader": "^0.7.1",
     "jsdoc": "^3.5.5",
-    "jsdom": "^11.0.0",
+    "jsdom": "^11.11.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^3.4.2",
     "node-sass": "^4.9.0",
-    "node-sass-json-importer": "^3.0.2",
+    "node-sass-json-importer": "^3.3.1",
     "postcss-loader": "^2.0.10",
     "react-hot-loader": "^3.1.3",
     "sass-loader": "^6.0.6",
@@ -96,6 +96,7 @@
     "docs": "npm run docs:js && npm run docs:sass",
     "docs:js": "jsdoc src/ui -r -d docs/js",
     "docs:sass": "sassdoc src/ui -d docs/sass",
-    "sass:dev": "node-sass src/app.scss dist/assets/styles/app.css --output-style=expanded --importer=node_modules/node-sass-json-importer/dist/node-sass-json-importer.js"
+    "sass:devx": "node-sass src/app.scss dist/assets/styles/app.css --output-style=expanded --importer=node_modules/node-sass-json-importer/dist/node-sass-json-importer.js",
+    "sass:dev": "node-sass src/app.scss dist/assets/styles/app.css --output-style=expanded --importer=../../node-sass-json-importer/src/index.js"
   }
 }

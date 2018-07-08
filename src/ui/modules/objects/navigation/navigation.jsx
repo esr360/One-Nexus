@@ -7,7 +7,7 @@ import defaults from './navigation.json';
  * @param {Array}  props.modifiers
  * @param {Array}  props.items
  */
-export const Navigation = ({name = defaults.navigation.name, modifiers, items}) => (
+const Navigation = ({name = defaults.navigation.name, modifiers, items}) => (
     <Module name={name} modifiers={modifiers} className="min-break-3">
         <ul>
             {items.map((item, index) => (
@@ -16,3 +16,5 @@ export const Navigation = ({name = defaults.navigation.name, modifiers, items}) 
         </ul>
     </Module>
 );
+
+export default Navigation;

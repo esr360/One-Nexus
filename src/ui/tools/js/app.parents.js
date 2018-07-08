@@ -7,7 +7,7 @@
  * @param {HTMLElement} elem
  * @param {String} selector
  */
-export function parents(elem, selector) {
+export default function parents(elem, selector) {
     var elements = [];
     var ishaveselector = selector !== undefined;
 

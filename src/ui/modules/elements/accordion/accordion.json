@@ -6,7 +6,7 @@
             "vertical-rhythm": 0,
             "active": {
                 "component(title)": {
-                    "background": ["#COLOR", "brand", "brand-1"],
+                    "background": ["#COLOR", "brand", "brand-2"],
                     "color": ["#COLOR", "greyscale", "white"],
                     "border-color": "transparent",
                     "border-radius": 0

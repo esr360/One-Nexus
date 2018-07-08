@@ -1,5 +1,6 @@
 import Autoprefixer from 'autoprefixer';
-import NodeSassJsonImporter from 'node-sass-json-importer';
+//import NodeSassJsonImporter from 'node-sass-json-importer';
+import NodeSassJsonImporter from '../../../../node-sass-json-importer/src/index';
 
 export default {
     test: /\.scss$/,

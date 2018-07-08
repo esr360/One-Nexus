@@ -22,10 +22,11 @@
         "ui": {
             "component-glue": "_",
             "modifier-glue": "-",
-            "fizz": "buzz",
-            "theme": "One-Nexus",
+            "sass-config-parser": "eval-config",
+            "theme": "one_nexus",
+            "css-class-props": ["object"],
             "modules": {
-                "fizz": ["#COLOR", "brand", "brand-5"],
+                "fizz": ["#COLOR", "brand", "brand-1"],
                 "alert": {
                     "icon": {
                         "default-enable": true

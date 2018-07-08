@@ -4,18 +4,18 @@ export default class Accordions extends React.Component {
     render() {
         return (
             <app.layouts.Base {...app.config.app.views}>
-                <app.Accordion panels={[
+                <Accordion panels={[
                     {title: 'foo', content: 'bar', active: true},
                     {title: 'fizz', content: <div>potato</div>}
                 ]} />
 
-                <app.Accordion keepOpen panels={[
+                <Accordion keepOpen panels={[
                     {title: 'foo', content: 'bar'},
                     {title: 'fizz', content: (
-                        <app.Accordion id='foo' panels={[
+                        <Accordion id='foo' panels={[
                             {title: 'foo', content: 'bar'},
                             {title: 'fizz', content: (
-                                <app.Accordion modifiers={['keepOpen']} panels={[
+                                <Accordion modifiers={['keepOpen']} panels={[
                                     {title: 'foo', content: 'bar'},
                                     {title: 'fizz', content: <div>potato</div>}
                                 ]} />

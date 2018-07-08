@@ -9,8 +9,6 @@ import * as UI from './ui';
 import config from './ui.json';
 export { config };
 
-console.log('foo');
-
 // Vendor
 //*****************************************************************
 
