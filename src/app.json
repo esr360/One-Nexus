@@ -20,10 +20,10 @@
             }
         },
         "ui": {
+            "theme": "one_nexus",
             "component-glue": "_",
             "modifier-glue": "-",
             "sass-config-parser": "eval-config",
-            "theme": "one_nexus",
             "css-class-props": ["object"],
             "modules": {
                 "fizz": ["#COLOR", "brand", "brand-1"],

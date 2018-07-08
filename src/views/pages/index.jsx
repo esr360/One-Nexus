@@ -5,12 +5,12 @@ const panels = [
     {title: 'fizz', content: 'buzz'},
 ];
 
-export default class Index extends React.Component {
-    render() {
-        return (
-            <app.layouts.Base {...app.config.app.views}>
-                <app.Accordion panels={panels} />
-            </app.layouts.Base>
-        )
-    }
-}
+const Index = () => (
+    <app.layouts.Base {...app.config.app.views}>
+        <Accordion panels={panels} />
+
+        <Alert>This is a default alert</Alert>
+    </app.layouts.Base>
+);
+
+export default Index;

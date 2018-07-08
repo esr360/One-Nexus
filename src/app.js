@@ -16,9 +16,6 @@ import parents from './ui/tools/js/app.parents';
 import { HashLink as Link } from 'react-router-hash-link';
 import { StaticRouter, HashRouter, Switch, Route } from 'react-router-dom';
 
-// Flickity
-import Flickity from 'flickity';
-
 // Synergy
 //import * as Synergy from 'Synergy';
 import * as Synergy from '../../../Synergy/src/index.js';
@@ -54,14 +51,10 @@ import Navigation from './ui/modules/objects/navigation/navigation.jsx';
 // Themes
 //*****************************************************************
 
-import one_nexus from './ui/themes/One-Nexus/theme.json';
+import one_nexus from './ui/themes/one_nexus.json';
 
 // Views
 //*****************************************************************
-
-// Tools
-import SyntaxHighlighter from './views/tools/syntaxHighlighter.jsx';
-import Section from './views/tools/section.jsx';
 
 // Layouts
 import Layout_Base from './views/layouts/base.jsx';
@@ -117,9 +110,7 @@ export {
     StaticRouter, 
     HashRouter, 
     Switch, 
-    Route, 
-    SyntaxHighlighter,
-    Section,
+    Route,
     modules,
     layouts
 };

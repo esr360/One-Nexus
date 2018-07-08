@@ -1,4 +1,5 @@
 import defaults from './alert.json';
+
 /**
  * Render Alert module
  *
@@ -7,58 +8,50 @@ import defaults from './alert.json';
  * @prop {Bool} box
  * @prop {(Bool|Array)} icon
  */
-export default class Alert extends Synergize {
+const Alert = props => {
+    const config = Object.assign(defaults.alert, window.theme.alert);
+    const alerts = config ? Object.keys(config.alerts) : [];
+    const hasCustomIcon = icon => icon === undefined || icon === 'right';
 
-    constructor(props) {
-        super(props);
+    let modifiers = props.modifiers || [];
+    let icon = props.icon;
 
-        this.alerts = this.config ? Object.keys(this.config.alerts) : [];
-        this.modifiers = this.props.modifiers || [];
-        this.icon = this.props.icon;
-
-        if (!Object.keys(this.props).some(prop => this.alerts.includes(prop))) {
-            this.modifiers.push(this.props.alert);   
-        }
-
-        if (this.config && this.hasCustomIcon(this.icon) && !this.props.box && this.config.icon['default-enable']) {
-            this.icon = this.config.alerts[this.props.alert].icon;
-
-            Object.keys(this.props).forEach(prop => {
-                if (this.alerts.includes(prop)) this.icon = this.config.alerts[prop].icon;
-            });
-        }
+    if (!Object.keys(props).some(prop => alerts.includes(prop))) {
+        modifiers.push(props.alert);   
     }
 
-    hasCustomIcon(icon) {
-        return icon === undefined || icon === 'right';
+    if (config && hasCustomIcon(icon) && !props.box && config.icon['default-enable']) {
+        icon = config.alerts[props.alert].icon;
+
+        Object.keys(props).forEach(prop => {
+            if (alerts.includes(prop)) icon = config.alerts[prop].icon;
+        });
     }
 
-    render() {
-        return (
-            <Module {...this.props} modifiers={this.modifiers} bar={this.props.box ? false : this.props.bar}>
-                {this.icon &&
-                    <Component
-                        name='icon'
-                        modifiers={[(this.props.icon === 'right' || this.icon[1] === 'right') && 'right']}
-                        className={`fa fa-${Array.isArray(this.icon) ? this.icon[0] : this.icon}`}
-                    />
-                }
+    return (
+        <Module {...props} modifiers={modifiers} bar={props.box ? false : props.bar}>
+            {icon &&
+                <Component
+                    name='icon'
+                    modifiers={[(props.icon === 'right' || icon[1] === 'right') && 'right']}
+                    className={`fa fa-${Array.isArray(icon) ? icon[0] : icon}`}
+                />
+            }
 
-                {this.props.close &&
-                    <Component
-                        name='icon'
-                        onClick={this.dismiss}
-                        modifiers={['close', 'right']}
-                        className={`fa fa-times`}
-                    />
-                }
+            {props.close &&
+                <Component
+                    name='icon'
+                    onClick={dismiss}
+                    modifiers={['close', 'right']}
+                    className={`fa fa-times`}
+                />
+            }
 
-                {this.props.box ?
-                    <Component name='content'>{this.props.children}</Component> : this.props.children
-                }
-            </Module>
-        )
-    }
+            {props.box ?
+                <Component name='content'>{props.children}</Component> : props.children
+            }
+        </Module>
+    );
 }
 
 Alert.defaultProps = {
@@ -69,3 +62,5 @@ Alert.defaultProps = {
     object: true,
     icon: undefined
 };
+
+export default Alert;
