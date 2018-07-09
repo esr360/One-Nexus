@@ -176,7 +176,7 @@ const RenderFields = ({ setState, validate, fields, ...props }) => {
 /**
  * 
  */
-const RenderFieldset = ({ setState, fields, fieldProperties, ...props }) =>  (
+const RenderFieldset = ({ setState, validate, fields, fieldProperties, ...props }) =>  (
     <Component name='fieldset' {...getInputProps(fieldProperties)}>
         {fieldProperties.legend && (
             <Component name='legend' {...getInputProps(fieldProperties.legend)}>
@@ -184,7 +184,7 @@ const RenderFieldset = ({ setState, fields, fieldProperties, ...props }) =>  (
             </Component>
         )}
 
-        <RenderFields setState={setState} fields={fieldProperties.fields} formFields={props.formFields || fields} />
+        <RenderFields setState={setState} validate={validate} fields={fieldProperties.fields} formFields={props.formFields || fields} />
     </Component>
 );
 
@@ -197,7 +197,6 @@ Form.defaultProps = {
 export default Form;
 
 /**
- * 
  * @param {*} field 
  */
 function validateFields(field, validate) {
@@ -251,7 +250,6 @@ function getInputProps(props) {
 }
 
 /**
- * 
  * @param {*} properties 
  */
 function componentModifiers(properties) {
