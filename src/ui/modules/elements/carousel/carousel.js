@@ -1,30 +1,8 @@
-import * as UI from '../../../ui';
+import Flickity from 'flickity';
 import defaults from './carousel.json';
-/**
- * Carousel
- * 
- * @access public
- * 
- * @param {(String|Object)} els
- * @param {Object} custom
- */
-export default function carousel(custom) {
 
-    const TARGET = UI.getTarget('carousel', defaults, custom);
-
-    UI.Synergy(TARGET, (el, options) => {
-
-        const carousel =  new UI.Flickity(el, options.Flickity);
-
-        init(el, options, carousel);
-
-        exports.Flickity = carousel;
-
-    }, defaults, custom, UI.evalConfig);
-
-    UI.config.carousel = UI.parse(defaults.carousel, custom);
-
-    return exports;
+export default {
+    init
 }
 
 /**
@@ -34,7 +12,8 @@ export default function carousel(custom) {
  * @param {*} el 
  * @param {Object} options 
  */
-export function init(el, options = UI.config.carousel, carousel) {
+export function init(el, carousel) {
+    const options = Object.assign(defaults.carousel, window.theme.carousel);
 
     // Map Flickity elements to One-Nexus components
     const components = {
@@ -47,7 +26,7 @@ export function init(el, options = UI.config.carousel, carousel) {
         'navigationItem-next': '.flickity-prev-next-button.next'
     };
 
-    carousel = carousel || new UI.Flickity(el, options.Flickity);
+    carousel = carousel || new Flickity(el, options.Flickity);
 
     // Get options from data-attr (if applicable)
     if (el.hasAttribute('data-carousel')) {
@@ -72,7 +51,7 @@ export function init(el, options = UI.config.carousel, carousel) {
     // Compensate for pagination
     if (!options.navigationItem.disable) {
         const offset = el.component('pagination')[0].clientHeight + parseInt(options.bullet.gutter, 10);
-        el.style.marginBottom = `${offset}px`;
+        el.style.paddingBottom = `${offset}px`;
     }
 
     return { carousel, el };

@@ -5,18 +5,16 @@ import * as app from '../../app';
  */
 const Base = props => (
     <main>
-        <Header {...props.header} content={
-            <Component name='wrapper'>
-                <Logo {...props.logo} />
-                <Navigation {...props.navigation} />
+        <Header {...props.header}>
+            <Logo {...props.logo} />
+            <Navigation {...props.navigation} />
 
-                <div className='sideNav_toggle button-icon-primary max-break-3'>
-                    <i className='fa fa-bars'></i>
-                </div>
-            </Component>
-        } />
+            <div className='sideNav_toggle button-icon-primary max-break-3'>
+                <i className='fa fa-bars'></i>
+            </div>
+        </Header>
 
-        <div className="container">
+        <div className='container'>
             <div>
                 <app.Link to='/'>Home</app.Link>
                 <app.Link to='/accordion'>Accordion</app.Link>
@@ -40,7 +38,7 @@ const Base = props => (
             {props.children}
         </div>
 
-        <div class="overlay" id="overlay"></div>
+        <div className='overlay' id='overlay'></div>
     </main>
 );
 

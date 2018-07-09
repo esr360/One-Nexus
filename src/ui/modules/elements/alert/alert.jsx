@@ -29,7 +29,7 @@ const Alert = props => {
     }
 
     return (
-        <Module {...props} modifiers={modifiers} bar={props.box ? false : props.bar}>
+        <Module name={config.name} {...props} modifiers={modifiers} bar={props.box ? false : props.bar}>
             {icon &&
                 <Component
                     name='icon'
@@ -55,7 +55,6 @@ const Alert = props => {
 }
 
 Alert.defaultProps = {
-    name: defaults.alert.name,
     alert: 'success',
     bar: true,
     box: false,

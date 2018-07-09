@@ -1,22 +1,24 @@
 import defaults from './blockquote.json';
+
 /**
  * Render Blockquote module
  *
  * @param {*} props.content
  * @param {*} props.footer
  */
-export default class Blockquote extends Synergize {
-    render() {
-        return (
-            <Module {...this.props}>
-                <Component name='content'>{this.props.content}</Component>
-                {this.props.footer && <Component name='footer' tag='footer'>{this.props.footer}</Component>}
-            </Module>
-        )
-    }
+const Blockquote = props => {
+    const config = Object.assign(defaults.blockquote, window.theme.blockquote);
+
+    return (
+        <Module name={config.name} {...props}>
+            <Component name='content'>{props.content}</Component>
+            {props.footer && <Component name='footer' tag='footer'>{props.footer}</Component>}
+        </Module>
+    );
 }
 
 Blockquote.defaultProps = {
-    name: defaults.blockquote.name,
     object: true
 };
+
+export default Blockquote;

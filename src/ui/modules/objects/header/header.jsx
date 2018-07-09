@@ -2,16 +2,15 @@ import defaults from './header.json';
 
 /**
  * Render Header component
- *
- * @param {String} props.name
- * @param {Object} props.logo
- * @param {Object} props.navigation
- * @param {Array}  props.modifiers
  */
-const Header = ({name = defaults.header.name, modifiers, content}) => (
-    <Module name={name} modifiers={modifiers}>
-        <Component name='wrapper'>{content}</Component>
-    </Module>
-);
+const Header = props => {
+    const config = Object.assign(defaults.header, window.theme.header);
+
+    return (
+        <Module name={config.name} {...props}>
+            <Component name='wrapper'>{props.children}</Component>
+        </Module>
+    );
+};
 
 export default Header;

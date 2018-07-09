@@ -13,7 +13,6 @@ export default {
  * @param {Object} options
  */
 export function toggle(target, type, parent, keepOpen = false) {
-
     const options = Object.assign(defaults.accordion, window.theme.accordion);
 
     let section, operator;

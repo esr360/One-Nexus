@@ -1,24 +1,9 @@
-import * as UI from '../../../ui';
+import dynamicCallback from '../../../tools/js/app.dynamicCallback';
 import defaults from './form.json';
-/**
- * Form
- * 
- * @param {Object} custom
- */
-export default function form(custom) {
 
-    const TARGET = UI.getTarget('form', defaults, custom);
-
-    UI.Synergy(TARGET, (form, options) => {
-
-        // exports.validate = (field, validators) => validate(field, validators);
-        // exports.setState = fields => setState(fields);
-
-    }, defaults, custom, UI.evalConfig);
-
-    UI.config.form = UI.parse(defaults.form, custom);
-
-    return exports;
+export default {
+    validate,
+    setState
 }
 
 /**
@@ -50,10 +35,10 @@ export function validate(field, validators, handler = handleValidation) {
 
     if (validators) validators.forEach(rule => {
         if (typeof rule === 'function') {
-            if (!UI.dynamicCallback(rule, field, 'field')) isValid = false;
+            if (!dynamicCallback(rule, field, 'field')) isValid = false;
         }
         else if (typeof rule.rule === 'function') {
-            if (!UI.dynamicCallback(rule.rule, field, 'field')) isValid = false;
+            if (!dynamicCallback(rule.rule, field, 'field')) isValid = false;
         }
         else if ((typeof rule.rule !== 'undefined' && !rule.rule) || !rule) {
             isValid = false;
@@ -117,7 +102,7 @@ function callRules(target, rules) {
 
         rules.forEach(rule => {
             if (typeof rule === 'function') {
-                if (!UI.dynamicCallback(rule)) action = 'hide';
+                if (!dynamicCallback(rule)) action = 'hide';
             }
             else if (!rule) action = 'hide';
         });
