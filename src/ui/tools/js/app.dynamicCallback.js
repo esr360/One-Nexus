@@ -21,7 +21,7 @@ export default function dynamicCallback(callback, element, scope) {
     let elements = [];
 
     // get field from id
-    ids.forEach(id => elements.push(id === scope ? element: document.getElementById(id)));
+    ids.forEach(id => elements.push(id === scope ? element : document.getElementById(id)));
 
     return callback(...elements);
 }

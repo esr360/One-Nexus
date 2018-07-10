@@ -1,5 +1,4 @@
 import dynamicCallback from '../../../tools/js/app.dynamicCallback';
-import defaults from './form.json';
 
 export default {
     validate,
@@ -20,16 +19,6 @@ export function validate(field, validators, handler = handleValidation) {
     }
 
     field.setCustomValidity('');
-
-    const inputTypes = [
-        'text',
-        'email',
-        'password',
-        'search',
-        'tel',
-        'url',
-        'number'
-    ];
 
     let [isValid, message] = [true, 'Invalid field'];
 

@@ -5,22 +5,20 @@ import defaults from './list.json';
  *
  * @prop {String} name
  */
-export default class List extends React.Component {
-    // list item
-    static Item(props) {
-        return <li>{props.children}</li>;
-    }
+const List = props => {
+    const config = Object.assign(defaults.list, window.theme.list);
 
-    render() {
-        return (
-            <Module {...this.props}>
-                {this.props.children}
-            </Module>
-        )
-    }
+    return (
+        <Module name={config.name} {...props}>
+            {props.children}
+        </Module>
+    );
 }
 
+List.Item = props => <li>{props.children}</li>;
+
 List.defaultProps = {
-    name: defaults.list.name,
     tag: 'ul'
 };
+
+export default List;

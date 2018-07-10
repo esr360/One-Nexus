@@ -7,12 +7,10 @@ import interactions from './form.js';
 const Form = ({ setState, validate, fields, submit, ...props }) => {
     const config = Object.assign(defaults.form, window.theme.form);
 
-    let form;
-
     window.addEventListener('load', () => setState(fields), true);
 
     return (
-        <Module name={config.name} ref={node => form = node} {...props}>
+        <Module name={config.name} {...props}>
             <RenderFields setState={setState} validate={validate} fields={fields} />
 
             {submit !== false &&
@@ -35,7 +33,7 @@ const Form = ({ setState, validate, fields, submit, ...props }) => {
 }
 
 /**
- * 
+ * Render the fields for the <Form> module
  */
 const RenderFields = ({ setState, validate, fields, ...props }) => {
     const inputTypes = [
@@ -174,7 +172,7 @@ const RenderFields = ({ setState, validate, fields, ...props }) => {
 };
 
 /**
- * 
+ * Render fieldsets within <RenderFields>
  */
 const RenderFieldset = ({ setState, validate, fields, fieldProperties, ...props }) =>  (
     <Component name='fieldset' {...getInputProps(fieldProperties)}>
@@ -197,6 +195,7 @@ Form.defaultProps = {
 export default Form;
 
 /**
+ * Validate a form field or multiple form fields
  * @param {*} field 
  */
 function validateFields(field, validate) {
@@ -212,6 +211,7 @@ function validateFields(field, validate) {
 }
 
 /**
+ * Determine the props to pass to a field component
  * 
  * @param {*} props 
  */
@@ -250,6 +250,8 @@ function getInputProps(props) {
 }
 
 /**
+ * Determine appropriate modifiers for a field component
+ * 
  * @param {*} properties 
  */
 function componentModifiers(properties) {

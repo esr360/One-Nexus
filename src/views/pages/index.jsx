@@ -21,7 +21,69 @@ const Index = () => (
             <img src="https://picsum.photos/640/480" />
         ]} />
 
-        
+        <Form fields={[
+            {
+                type: 'fieldset',
+                id: 'loginDetails',
+                legend: {
+                    title: 'Login Details'
+                },
+                fields: [
+                    {
+                        type: 'text',
+                        label: 'Username',
+                        id: 'username',
+                        icon: 'user',
+                        required: true,
+                        validate: [
+                            {
+                                rule: field => field.value.length > 3,
+                                message: 'Must be more than 3 characters'
+                            }
+                        ]
+                    },
+                    {
+                        type: 'password',
+                        label: 'Password',
+                        icon: 'key',
+                        id: 'userPassword',
+                        required: true,
+                        validate: [
+                            {
+                                rule: field => field.value.length > 8,
+                                message: 'Must be more than 8 characters'
+                            }
+                        ]
+                    },
+                    {
+                        type: 'password',
+                        id: 'passwordReEnter',
+                        label: 'Re-enter Password',
+                        required: true,
+                        validate: [
+                            {
+                                rule: (userPassword, passwordReEnter) => {
+                                    return passwordReEnter.value === userPassword.value;
+                                },
+                                message: 'Passwords do not match'
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]} submit='Sign up' />
+
+        <Heading size={4} heading={2}>Signup Form</Heading>
+
+        <Image src="https://picsum.photos/650/480" />
+
+        <Image center-xy src="https://picsum.photos/650/480" />
+
+        <List reset>
+            <List.Item>Foo</List.Item>
+            <List.Item>Foo</List.Item>
+            <List.Item>Foo</List.Item>
+        </List>
     </app.layouts.Base>
 );
 

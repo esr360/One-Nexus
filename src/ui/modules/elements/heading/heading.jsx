@@ -5,22 +5,21 @@ import defaults from './heading.json';
  *
  * @prop {String} name
  */
-export default class Heading extends React.Component {
-    render() {
-        let modifiers = this.props.modifiers || [];
+const Heading = ({ heading, size, modifiers = [], ...props }) => {
+    const config = Object.assign(defaults.heading, window.theme.heading);
 
-        if (this.props.size) modifiers.push(`size-${this.props.size}`);
+    if (size) modifiers.push(`size-${size}`);
 
-        return (
-            <Module {...this.props} tag={`h${this.props.heading}`} modifiers={modifiers}>
-                {this.props.children}
-            </Module>
-        )
-    }
+    return (
+        <Module name={config.name} tag={`h${heading}`} modifiers={modifiers} {...props}>
+            {props.children}
+        </Module>
+    );
 }
 
 Heading.defaultProps = {
-    name: defaults.heading.name,
     fluid: true,
     heading: 3
 };
+
+export default Heading;

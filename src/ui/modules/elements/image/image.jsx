@@ -5,18 +5,18 @@ import defaults from './image.json';
  *
  * @prop {String} name
  */
-export default class Image extends React.Component {
-    render() {
-        return (
-            <Module {...this.props}>
-                <Component name='figure' tag='img' src={this.props.src}>
-                    {this.props.children}
-                </Component>
-            </Module>
-        )
-    }
+const Image = props => {
+    const config = Object.assign(defaults.image, window.theme.image);
+
+    return (
+        <Module name={config.name} {...props}>
+            <Component name='figure' tag='img' src={props.src}>
+                {props.children}
+            </Component>
+        </Module>
+    );
 }
 
-Image.defaultProps = {
-    name: defaults.image.name
-};
+Image.defaultProps = {};
+
+export default Image;
