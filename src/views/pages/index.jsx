@@ -84,6 +84,10 @@ const Index = () => (
             <List.Item>Foo</List.Item>
             <List.Item>Foo</List.Item>
         </List>
+
+        <Modal trigger={ <div>Modal Trigger</div> }>
+            Modal
+        </Modal>
     </app.layouts.Base>
 );
 

@@ -38,7 +38,7 @@ const Base = props => (
             {props.children}
         </div>
 
-        <div className='overlay' id='overlay'></div>
+        <Overlay id='overlay' />
     </main>
 );
 

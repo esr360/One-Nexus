@@ -47,6 +47,7 @@ import Well from './ui/modules/elements/wells/well.jsx';
 import Header from './ui/modules/objects/header/header.jsx';
 import Logo from './ui/modules/objects/logo/logo.jsx';
 import Navigation from './ui/modules/objects/navigation/navigation.jsx';
+import Overlay from './ui/modules/objects/overlay/overlay.jsx';
 
 // Themes
 //*****************************************************************
@@ -97,7 +98,8 @@ const modules = {
     Table,
     Header,
     Logo,
-    Navigation
+    Navigation,
+    Overlay
 }
 
 const layouts = { 
