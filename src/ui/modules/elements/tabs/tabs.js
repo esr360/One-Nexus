@@ -1,53 +1,26 @@
-import * as app from '../../../ui';
-import defaults from './tabs.json';
+export default {
+    activate
+}
 
-/**
- * Tabs
- * 
- * @access public
- * 
- * @param {(String|Object)} els
- * @param {Object} custom
- */
-export function tabs(els = 'tabs', custom = {}) {
+export function activate(event) {
+    const container = event.target.closest('[data-module]');
+    const navItems = [...event.target.closest('[data-component="nav"]').children];
+    const tabItems = container.component('item');
+    const tabIndex = navItems.indexOf(event.target.hasAttribute('data-component') ? event.target : event.target.closest('[data-component]'));
 
-    custom = app.custom('tabs', custom);
+    navItems.forEach(item => {
+        if (navItems.indexOf(item) === tabIndex) {
+            item.modifier('active', 'add');
+        } else {
+            item.modifier('active', 'remove');
+        }
+    });
 
-    app.Synergy(els, (el, options) => {
-        // Get individual tab items
-        const tabItems = function() {
-            // get depth of target tab items as tabs may be nested
-            const itemDepth = el.component('item')[0].parents().length;
-            // get all items of same depth
-            return Array.prototype.filter.call(el.component('item'), el => {
-                return el.parents().length === itemDepth;
-            });
-        };
-
-        Array.prototype.forEach.call(el.component('nav')[0].children, (item, index) => {
-            item.addEventListener('click', () => {
-                Array.prototype.forEach.call(item.parentNode.children, sibling => {
-                    sibling.modifier('active', 'remove');
-
-                    if (options.activeClass) sibling.classList.remove(options.activeClass);
-                });
-
-                item.modifier('active', 'add');
-
-                if (options.activeClass) {
-                    item.classList.add(options.activeClass);
-                }
-
-                // Hide previously selected item
-                tabItems().forEach(tab => tab.modifier('active', 'remove'));
-                // Show new item
-                tabItems()[index].modifier('active', 'add');
-            });
-        });
-
-    }, defaults, custom, app.evalConfig);
-
-    app.config.tabs = app.parse(defaults.tabs, custom);
-
-    return exports;
+    tabItems.forEach(item => {
+        if (tabItems.indexOf(item) === tabIndex) {
+            item.modifier('active', 'add');
+        } else {
+            item.modifier('active', 'remove');
+        }
+    });
 }

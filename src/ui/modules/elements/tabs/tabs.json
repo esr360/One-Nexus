@@ -2,7 +2,7 @@
     "tabs": {
         "name": "tabs",
         "nav": {
-            "item": {
+            "sub-component(item)": {
                 "transition": ["#CORE", "transition"],
                 "color": ["#CORE", "text-color"],
                 "background": "transparent",
@@ -17,8 +17,7 @@
                 },
                 "active": {
                     "color": ["#COLOR", "greyscale", "white"],
-                    "background": ["#COLOR", "brand", "brand-1"],
-                    "border-color": ["#COLOR", "brand", "brand-1"]
+                    "background": ["#COLOR", "brand", "brand-1"]
                 }
             }
         },

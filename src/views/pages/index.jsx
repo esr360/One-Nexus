@@ -88,6 +88,20 @@ const Index = () => (
         <Modal trigger={ <div>Modal Trigger</div> }>
             Modal
         </Modal>
+
+        <Paragraph>Paragraph</Paragraph>
+
+        <ProgressBar max={100} value={50} />
+
+        <Table content={[{
+            default: 'true',
+            type: 'Bool'
+        }]} />
+
+        <Tabs tabs={[
+            {title: <div><div>foo</div></div> , content: 'bar'},
+            {title: 'fizz' , content: 'buzz'}
+        ]} />
     </app.layouts.Base>
 );
 

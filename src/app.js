@@ -40,7 +40,9 @@ import Image from './ui/modules/elements/image/image.jsx';
 import List from './ui/modules/elements/list/list.jsx';
 import Modal from './ui/modules/elements/modal/modal.jsx';
 import Paragraph from './ui/modules/elements/paragraph/paragraph.jsx';
+import ProgressBar from './ui/modules/elements/progress-bars/progress-bar.jsx';
 import Table from './ui/modules/elements/tables/table.jsx';
+import Tabs from './ui/modules/elements/tabs/tabs.jsx';
 import Well from './ui/modules/elements/wells/well.jsx';
 
 // Objects
@@ -95,7 +97,9 @@ const modules = {
     List,
     Modal,
     Paragraph,
+    ProgressBar,
     Table,
+    Tabs,
     Header,
     Logo,
     Navigation,
