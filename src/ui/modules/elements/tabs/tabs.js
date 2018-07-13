@@ -10,17 +10,17 @@ export function activate(event) {
 
     navItems.forEach(item => {
         if (navItems.indexOf(item) === tabIndex) {
-            item.modifier('active', 'add');
+            item.modifier('active', 'set');
         } else {
-            item.modifier('active', 'remove');
+            item.modifier('active', 'unset');
         }
     });
 
     tabItems.forEach(item => {
         if (tabItems.indexOf(item) === tabIndex) {
-            item.modifier('active', 'add');
+            item.modifier('active', 'set');
         } else {
-            item.modifier('active', 'remove');
+            item.modifier('active', 'unset');
         }
     });
 }

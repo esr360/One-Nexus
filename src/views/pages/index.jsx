@@ -99,8 +99,8 @@ const Index = () => (
         }]} />
 
         <Tabs tabs={[
-            {title: <div><div>foo</div></div> , content: 'bar'},
-            {title: 'fizz' , content: 'buzz'}
+            {title: <div><div>foo</div></div>, content: 'bar', active: true},
+            {title: 'fizz', content: 'buzz'}
         ]} />
     </app.layouts.Base>
 );

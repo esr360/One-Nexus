@@ -12,10 +12,14 @@ const Tabs = ({ tabs, activate, ...props }) => {
     return (
         <Module name={config.name} {...props}>
             <Component name='nav'>
-                {tabs.map((data, index) => <Component name='nav_item' onClick={activate} key={index}>{data.title}</Component>)}
+                {tabs.map(({ active, title }, index) => (
+                    <SubComponent active={active} name='item' onClick={activate} key={index}>{title}</SubComponent>
+                ))}
             </Component>
             <Component name='content'>
-                {tabs.map((data, index) => <Component name='item' key={index}>{data.content}</Component>)}
+                {tabs.map(({ active, content }, index) => (
+                    <Component active={active} name='item' key={index}>{content}</Component>
+                ))}
             </Component>
         </Module>
     );
