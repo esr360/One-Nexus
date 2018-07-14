@@ -110,6 +110,12 @@ const Index = () => (
         <Well>Well</Well>
 
         <Billboard>Billboard</Billboard>
+
+        <Breadcrumb>
+            <Breadcrumb.Item>Level 1</Breadcrumb.Item>
+            <Breadcrumb.Item>Level 2</Breadcrumb.Item>
+            <Breadcrumb.Item>Level 3</Breadcrumb.Item>
+        </Breadcrumb>
     </app.layouts.Base>
 );
 

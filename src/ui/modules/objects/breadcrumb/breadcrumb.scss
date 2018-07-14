@@ -1,8 +1,7 @@
 @import 'breadcrumb.json';
+
 /// Breadcrumb
 ///
-/// @author [@esr360](http://twitter.com/esr360)
-/// @access public
 /// @group objects
 ///
 /// @param {map} $custom - where custom config will be passed
@@ -61,6 +60,6 @@
 
         @content;
 
-    } // module
+    }
 
-} // @mixin breadcrumb
+}
