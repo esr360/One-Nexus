@@ -1,14 +1,14 @@
-@import 'wells.json';
-/// Wells
+@import 'well.json';
+/// Well
 ///
 /// @access public
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin wells($custom:  custom('wells')) {
+@mixin well($custom:  custom('well')) {
 
     // Configuration
-    $wells: config($wells, $custom);
+    $well: config($well, $custom);
 
     //*************************************************************
     // Module
@@ -36,6 +36,6 @@
 
         @content;
 
-    } // module
+    }
 
-} // @mixin wells
+}

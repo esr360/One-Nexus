@@ -56,11 +56,11 @@
 @import './ui/modules/elements/image/image';
 @import './ui/modules/elements/list/list';
 @import './ui/modules/elements/modal/modal';
-@import './ui/modules/elements/progress-bars/progress-bars';
-@import './ui/modules/elements/tables/tables';
+@import './ui/modules/elements/progress-bar/progress-bar';
+@import './ui/modules/elements/table/table';
 @import './ui/modules/elements/tabs/tabs';
-@import './ui/modules/elements/tooltips/tooltips';
-@import './ui/modules/elements/wells/wells';
+@import './ui/modules/elements/tooltip/tooltip';
+@import './ui/modules/elements/well/well';
 
 @import './ui/modules/objects/billboard/billboard';
 @import './ui/modules/objects/breadcrumb/breadcrumb';
@@ -116,11 +116,11 @@ $sass-config-parser : map-get-deep($app, 'ui', 'sass-config-parser');
     @include image;
     @include list;
     @include modal;
-    @include progress-bars;
-    @include tables;
+    @include progress-bar;
+    @include table;
     @include tabs;
-    @include tooltips;
-    @include wells;
+    @include tooltip;
+    @include well;
 
     /// Objects
     @include billboard;

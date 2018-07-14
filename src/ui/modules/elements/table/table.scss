@@ -1,14 +1,14 @@
-@import 'tables.json';
-/// Tables
+@import 'table.json';
+/// table
 ///
 /// @access public
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin tables($custom: custom('tables')) {
+@mixin table($custom: custom('table')) {
 
     // Configuration
-    $tables: config($tables, $custom);
+    $table: config($table, $custom);
 
     //*************************************************************
     // Module
@@ -69,4 +69,4 @@
 
     } // module
 
-} // @mixin tables
+} // @mixin table

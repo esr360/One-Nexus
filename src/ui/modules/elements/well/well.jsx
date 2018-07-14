@@ -1,4 +1,4 @@
-import defaults from './wells.json';
+import defaults from './well.json';
 
 /**
  * Render Well module
@@ -6,7 +6,7 @@ import defaults from './wells.json';
  * @prop {String} name
  */
 const Well = props => {
-    const config = Object.assign(defaults.wells, window.theme.wells);
+    const config = Object.assign(defaults.well, window.theme.well);
 
     return (
         <Module name={config.name} {...props}>

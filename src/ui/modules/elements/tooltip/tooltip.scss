@@ -1,16 +1,16 @@
-@import 'tooltips.json';
+@import 'tooltip.json';
 
-/// Tooltips
+/// tooltip
 ///
 /// @access public
 /// @group elements
-/// @see https://github.com/esr360/K-Tooltips
+/// @see https://github.com/esr360/K-tooltip
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin tooltips($custom: custom('tooltips')) {
+@mixin tooltip($custom: custom('tooltip')) {
 
     // Configuration
-    $tooltips: config($tooltips, $custom);
+    $tooltip: config($tooltip, $custom);
 
     // Positions
     $tooltip-positions: ('top', 'bottom', 'left', 'right');
@@ -101,4 +101,4 @@
 
     } // module
 
-} // @mixin tooltips
+} // @mixin tooltip

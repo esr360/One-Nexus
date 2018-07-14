@@ -1,5 +1,5 @@
 {
-    "tooltips": {
+    "tooltip": {
         "name": "tooltip",
         "distance": "-1em",
         "arrow-size": "0.5em",

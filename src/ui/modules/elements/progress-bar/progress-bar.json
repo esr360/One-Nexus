@@ -1,5 +1,5 @@
 {
-    "progress-bars": {
+    "progress-bar": {
         "name": "progress-bar",
         "background": ["#COLOR", "opaque", "dark-1"],
         "height": "1.5em",

@@ -1,4 +1,4 @@
-import defaults from './tooltips.json';
+import defaults from './tooltip.json';
 
 /**
  * Render Tooltip module
@@ -6,7 +6,7 @@ import defaults from './tooltips.json';
  * @prop {String} name
  */
 const Tooltip = ({ position, ...props }) => {
-    const config = Object.assign(defaults.tooltips, window.theme.tooltips);
+    const config = Object.assign(defaults.tooltip, window.theme.tooltip);
 
     ['top', 'bottom', 'left', 'right'].forEach($position => {
         position = Object.keys(props).includes($position) ? $position : position;

@@ -1,14 +1,15 @@
-@import 'progress-bars.json';
+@import 'progress-bar.json';
+
 /// Progress Bars
 ///
 /// @access public
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
-@mixin progress-bars($custom: custom('progress-bars')) {
+@mixin progress-bar($custom: custom('progress-bar')) {
 
     // Configuration
-    $progress-bars: config($progress-bars, $custom);
+    $progress-bar: config($progress-bar, $custom);
 
     //*************************************************************
     // Module
@@ -79,4 +80,4 @@
         }
     }
 
-} // @mixin progress-bars
+}

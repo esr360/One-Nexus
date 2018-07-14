@@ -1,4 +1,4 @@
-import defaults from './tables.json';
+import defaults from './table.json';
 
 /**
  * Render Table module
@@ -6,7 +6,7 @@ import defaults from './tables.json';
  * @prop {String} name
  */
 const Table = props => {
-    const config = Object.assign(defaults.tables, window.theme.table);
+    const config = Object.assign(defaults.table, window.theme.table);
 
     return (
         <Module name={config.name} {...props}>
