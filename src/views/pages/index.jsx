@@ -102,6 +102,12 @@ const Index = () => (
             {title: <div><div>foo</div></div>, content: 'bar', active: true},
             {title: 'fizz', content: 'buzz'}
         ]} />
+
+        <p>
+            <Tooltip inline right>Tooltip</Tooltip>
+        </p>
+
+        <Well>Well</Well>
     </app.layouts.Base>
 );
 

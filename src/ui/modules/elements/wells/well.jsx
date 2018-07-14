@@ -5,17 +5,18 @@ import defaults from './wells.json';
  *
  * @prop {String} name
  */
-export default class Well extends React.Component {
-    render() {
-        return (
-            <Module {...this.props}>
-                {this.props.children}
-            </Module>
-        )
-    }
+const Well = props => {
+    const config = Object.assign(defaults.wells, window.theme.wells);
+
+    return (
+        <Module name={config.name} {...props}>
+            {props.children}
+        </Module>
+    );
 }
 
 Well.defaultProps = {
-    name: defaults.wells.name,
     object: true
 };
+
+export default Well;

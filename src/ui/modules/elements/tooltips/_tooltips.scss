@@ -1,4 +1,5 @@
 @import 'tooltips.json';
+
 /// Tooltips
 ///
 /// @access public
@@ -24,16 +25,24 @@
         // Core Styles
         //*********************************************************
 
-        position: relative;
         cursor: pointer;
+        position: relative;
+
+        //*********************************************************
+        // Modifiers
+        //*********************************************************
+
+        @include modifier('inline') {
+            display: inline-block;
+
+            @include component('content') {
+                white-space: nowrap;
+            }
+        }
 
         //*********************************************************
         // Components
         //*********************************************************
-
-        @at-root .inline-tooltip {
-            display: inline-block;
-        }
 
         @include component('wrapper') {
             text-align: center;
@@ -47,19 +56,13 @@
             white-space: nowrap;
 
             // Show when parent component is hovered/touched
-            [data-tooltip]:hover &,
-            [data-tooltip]:active & {
+            @include context('parent-hovered') {
                 visibility: visible;
                 opacity: 1;
             }
 
             // Direction Arrow
             @include triangle-core;
-
-            // Inline-Tooltip styles
-            .inline-tooltip & {
-                white-space: nowrap;
-            }
 
             // Positions
             @each $tooltip-position in $tooltip-positions {
@@ -71,6 +74,7 @@
                         'color'    : this('arrow-color'),
                         'size'     : this('arrow-size')
                     ));
+
                     @if $tooltip-position == top {
                         transform: translateX(-50%) translateY(-100%);
                     }
