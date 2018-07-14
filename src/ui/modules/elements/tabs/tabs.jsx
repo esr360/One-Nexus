@@ -4,7 +4,8 @@ import interactions from './tabs.js';
 /**
  * Render Tabs module
  *
- * @prop {String} name
+ * @prop {Array} tabs
+ * @prop {Function} activate
  */
 const Tabs = ({ tabs, activate, ...props }) => {
     const config = Object.assign(defaults.tabs, window.theme.tabs);

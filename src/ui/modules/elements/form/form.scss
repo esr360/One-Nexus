@@ -1,4 +1,5 @@
 @import 'form.json';
+
 /// Form
 ///
 /// @group elements
@@ -140,6 +141,6 @@
 
         @content;
 
-    } // module
+    }
 
-} // @mixin form
+}

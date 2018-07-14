@@ -1,10 +1,8 @@
 @import 'tooltip.json';
 
-/// tooltip
+/// Tooltip
 ///
-/// @access public
 /// @group elements
-/// @see https://github.com/esr360/K-tooltip
 ///
 /// @param {map} $custom - where custom config will be passed
 @mixin tooltip($custom: custom('tooltip')) {
@@ -99,6 +97,6 @@
 
         @content;
 
-    } // module
+    }
 
-} // @mixin tooltip
+}

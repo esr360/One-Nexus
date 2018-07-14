@@ -1,39 +1,38 @@
 import defaults from './alert.json';
+import interactions from './alert.js';
 
 /**
  * Render Alert module
  *
- * @prop {String} alert
- * @prop {Bool} bar
- * @prop {Bool} box
- * @prop {(Bool|Array)} icon
+ * @prop {String} [alert = 'success']
+ * @prop {*} icon
+ * @prop {Function} dismiss
  */
-const Alert = props => {
-    const config = Object.assign(defaults.alert, window.theme.alert);
-    const alerts = config ? Object.keys(config.alerts) : [];
+const Alert = ({ alert, icon, dismiss, ...props }) => {
+    const options = Object.assign(defaults.alert, window.theme.alert);
+    const alerts = options ? Object.keys(options.alerts) : [];
     const hasCustomIcon = icon => icon === undefined || icon === 'right';
 
     let modifiers = props.modifiers || [];
-    let icon = props.icon;
 
     if (!Object.keys(props).some(prop => alerts.includes(prop))) {
-        modifiers.push(props.alert);   
+        modifiers.push(alert);   
     }
 
-    if (config && hasCustomIcon(icon) && !props.box && config.icon['default-enable']) {
-        icon = config.alerts[props.alert].icon;
+    if (options && hasCustomIcon(icon) && !props.box && options.icon['default-enable']) {
+        icon = options.alerts[alert].icon;
 
         Object.keys(props).forEach(prop => {
-            if (alerts.includes(prop)) icon = config.alerts[prop].icon;
+            if (alerts.includes(prop)) icon = options.alerts[prop].icon;
         });
     }
 
     return (
-        <Module name={config.name} {...props} modifiers={modifiers} bar={props.box ? false : props.bar}>
+        <Module name={options.name} {...props} modifiers={modifiers} bar={props.box ? false : props.bar}>
             {icon &&
                 <Component
                     name='icon'
-                    modifiers={[(props.icon === 'right' || icon[1] === 'right') && 'right']}
+                    modifiers={[(icon === 'right' || icon[1] === 'right') && 'right']}
                     className={`fa fa-${Array.isArray(icon) ? icon[0] : icon}`}
                 />
             }
@@ -59,7 +58,8 @@ Alert.defaultProps = {
     bar: true,
     box: false,
     object: true,
-    icon: undefined
+    icon: undefined,
+    dismiss: interactions.dismiss
 };
 
 export default Alert;

@@ -3,7 +3,9 @@ import defaults from './heading.json';
 /**
  * Render Heading component
  *
- * @prop {String} name
+ * @prop {Number} [heading = 3]
+ * @prop {Number} size
+ * @prop {Array} [modifiers = []]
  */
 const Heading = ({ heading, size, modifiers = [], ...props }) => {
     const config = Object.assign(defaults.heading, window.theme.heading);

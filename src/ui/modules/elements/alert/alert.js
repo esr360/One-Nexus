@@ -1,41 +1,19 @@
-import * as UI from '../../../ui';
 import defaults from './alert.json';
-/**
- * Alert
- * 
- * @param {Object} custom
- */
-export default function alert(custom) {
 
-    const TARGET = UI.getTarget('alert', defaults, custom);
-
-    UI.Synergy(TARGET, (alert, options) => {
-
-        let close;
-
-        alert.component('icon').forEach(icon => {
-            if (icon.modifier('close') === true) close = icon;
-        });
-
-        if (close) close.addEventListener('click', () => dismiss(alert), false);
-
-        exports.dismiss = (alert = alert) => dismiss(alert);
-
-    }, defaults, custom, UI.evalConfig);
-
-    UI.config.alert = UI.parse(defaults.alert, custom);
-
-    return exports;
+export default {
+    dismiss
 }
 
 /**
  * Dissmiss an alert
  * 
- * @param {*} alert 
+ * @param {(Object|HTMLElement)} alert 
  */
 export function dismiss(alert) {
+    const options = Object.assign(defaults.alert, window.theme.alert);
+
     if (typeof alert === 'object' && ('target' in alert)) {
-        alert = alert.target.closest('[data-module]');
+        alert = alert.target.closest(`[data-module="${options.name}"]`);
     }
 
     alert.classList.add('hidden');

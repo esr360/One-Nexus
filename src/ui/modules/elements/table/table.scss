@@ -1,7 +1,7 @@
 @import 'table.json';
+
 /// table
 ///
-/// @access public
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
@@ -67,6 +67,6 @@
 
         @content;
 
-    } // module
+    }
 
-} // @mixin table
+}

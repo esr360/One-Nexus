@@ -4,6 +4,11 @@ export default {
     activate
 }
 
+/**
+ * Activate a tab pabel
+ * 
+ * @param {Object} event 
+ */
 export function activate(event) {
     const options = Object.assign(defaults.tabs, window.theme.tabs);
     const container = event.target.closest(`[data-module="${options.name}"]`);

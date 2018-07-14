@@ -2,8 +2,6 @@ import defaults from './image.json';
 
 /**
  * Render Image component
- *
- * @prop {String} name
  */
 const Image = props => {
     const config = Object.assign(defaults.image, window.theme.image);

@@ -4,8 +4,8 @@ import interactions from './accordion.js';
 /**
  * Render Accordion module
  *
- * @param {Array} panels
- * @param {Function} toggle
+ * @prop {Array} panels
+ * @prop {Function} toggle
  */
 const Accordion = ({ panels, toggle, ...props }) => {
     const config = Object.assign(defaults.accordion, window.theme.accordion);

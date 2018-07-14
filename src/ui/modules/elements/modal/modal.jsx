@@ -4,7 +4,11 @@ import interactions from './modal.js';
 /**
  * Render Modal module
  *
- * @prop {String} name
+ * @prop {Function} toggle
+ * @prop {(String|ReactElement)} trigger
+ * @prop {Array} [modifiers = []]
+ * @prop {ReactElement} close
+ * @prop {String} animate
  */
 const Modal = ({ toggle, trigger, modifiers = [], close, animate, ...props }) => {
     const config = Object.assign(defaults.modal, window.theme.modal);

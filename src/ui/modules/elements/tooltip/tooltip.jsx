@@ -3,7 +3,7 @@ import defaults from './tooltip.json';
 /**
  * Render Tooltip module
  *
- * @prop {String} name
+ * @prop {String} [position = 'top]
  */
 const Tooltip = ({ position, ...props }) => {
     const config = Object.assign(defaults.tooltip, window.theme.tooltip);

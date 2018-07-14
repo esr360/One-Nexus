@@ -3,6 +3,11 @@ import interactions from './form.js';
 
 /**
  * Render Form module
+ * 
+ * @prop {Function} setState
+ * @prop {Function} validate
+ * @prop {Array} fields
+ * @prop {*} submit
  */
 const Form = ({ setState, validate, fields, submit, ...props }) => {
     const config = Object.assign(defaults.form, window.theme.form);
@@ -34,6 +39,11 @@ const Form = ({ setState, validate, fields, submit, ...props }) => {
 
 /**
  * Render the fields for the <Form> module
+ * 
+ * @prop {Function} setState
+ * @prop {Function} validate
+ * @prop {Array} fields
+ * 
  */
 const RenderFields = ({ setState, validate, fields, ...props }) => {
     const inputTypes = [
@@ -173,6 +183,11 @@ const RenderFields = ({ setState, validate, fields, ...props }) => {
 
 /**
  * Render fieldsets within <RenderFields>
+ * 
+ * @prop {Function} setState
+ * @prop {Function} validate
+ * @prop {Array} fields
+ * @prop {Object} fieldProperties
  */
 const RenderFieldset = ({ setState, validate, fields, fieldProperties, ...props }) =>  (
     <Component name='fieldset' {...getInputProps(fieldProperties)}>
@@ -196,7 +211,9 @@ export default Form;
 
 /**
  * Validate a form field or multiple form fields
- * @param {*} field 
+ * 
+ * @param {*} field
+ * @param {Function} validate
  */
 function validateFields(field, validate) {
     if (field.constructor === Array) {
@@ -213,7 +230,7 @@ function validateFields(field, validate) {
 /**
  * Determine the props to pass to a field component
  * 
- * @param {*} props 
+ * @param {Object} props 
  */
 function getInputProps(props) {
     const blackList = [
@@ -252,7 +269,7 @@ function getInputProps(props) {
 /**
  * Determine appropriate modifiers for a field component
  * 
- * @param {*} properties 
+ * @param {Object} properties 
  */
 function componentModifiers(properties) {
     let modifiers = [];

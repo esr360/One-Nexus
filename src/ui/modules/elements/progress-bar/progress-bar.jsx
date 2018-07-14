@@ -2,8 +2,6 @@ import defaults from './progress-bar.json';
 
 /**
  * Render Paragraph module
- *
- * @prop {String} name
  */
 const ProgressBar = props => {
     const config = Object.assign(defaults['progress-bar'], window.theme['progress-bar']);

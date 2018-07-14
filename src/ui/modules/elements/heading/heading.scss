@@ -1,4 +1,5 @@
 @import 'heading.json';
+
 /// Heading
 ///
 /// @group elements
@@ -77,6 +78,6 @@
 
         @content;
 
-    } // module
+    }
 
-} // @mixin heading
+}

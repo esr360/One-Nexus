@@ -3,22 +3,22 @@ import defaults from './table.json';
 /**
  * Render Table module
  *
- * @prop {String} name
+ * @prop {Array} name
  */
-const Table = props => {
+const Table = ({ content, ...props }) => {
     const config = Object.assign(defaults.table, window.theme.table);
 
     return (
         <Module name={config.name} {...props}>
             <thead>
                 <tr>
-                    {props.content.map((data, index) => (
+                    {content.map((data, index) => (
                         Object.keys(data).map((heading, index) => <th key={index}>{heading}</th>)
                     ))}
                 </tr>
             </thead>
             <tbody>
-                {props.content.map((data, index) => (
+                {content.map((data, index) => (
                     <tr key={index}>
                         {Object.values(data).map((cell, index) => <td key={index}>{cell}</td>)}
                     </tr>

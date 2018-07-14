@@ -1,7 +1,7 @@
 @import 'modal.json';
+
 /// Modal
 ///
-/// @access public
 /// @group elements
 ///
 /// @param {map} $custom - where custom config will be passed
@@ -100,7 +100,7 @@
 
         @content;
 
-    } // module
+    }
 
     @include module('overlay') {
         &[class*="dialog-visible"] {
@@ -108,4 +108,4 @@
         }
     }
 
-} // @mixin modal
+}

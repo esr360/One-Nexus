@@ -1,4 +1,5 @@
 @import 'alert.json';
+
 /// Alerts
 ///
 /// @group elements
@@ -91,6 +92,6 @@
 
         @content;
 
-    } // module
+    }
 
-} // @mixin alert
+}

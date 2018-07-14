@@ -2,8 +2,6 @@ import defaults from './button.json';
 
 /**
  * Render Button module
- *
- * @prop {String} name
  */
 const Button = props => {
     const config = Object.assign(defaults.button, window.theme.button);

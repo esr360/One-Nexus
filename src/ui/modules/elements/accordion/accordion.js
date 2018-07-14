@@ -9,8 +9,8 @@ export default {
  * 
  * @param {(String|Number|HTMLElement|NodeList)} target
  * @param {('open'|'close')} type
- * @param {HTMLElement} parent
- * @param {Object} options
+ * @param {(HTMLElement|NodeList)} parent
+ * @param {Boolean} [keepOpen = false]
  */
 export function toggle(target, type, parent, keepOpen = false) {
     const options = Object.assign(defaults.accordion, window.theme.accordion);

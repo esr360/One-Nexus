@@ -10,12 +10,9 @@ export default {
 /**
  * Show/Hide a Modal
  * 
- * @access private
- * 
  * @param {(String|HTMLElement)} target - a Synergy selector to match the modal of interest
  * @param {('show'|'hide')} state - the type of toggle to activate
  * @param {Object} options - the module options to use when running the function
- * @param {HTMLElement} [overlay] - the HTML element acting as the page overlay
  */
 export function toggle(target, state, options = defaults.modal) {
     // merge passed options with window options
@@ -59,10 +56,9 @@ export function toggle(target, state, options = defaults.modal) {
 /**
  * Initialise Modals from Data-Attributes
  * 
- * @access private
- * 
  * @param {NodeList} els - elements to initialise as modals
  * @param {String} namespace - name of modal module
+ * @param {String} componentGlue - the glue to connect components
  */
 export function init(els, namespace, componentGlue = '_') {
     els.forEach((el, index) => {

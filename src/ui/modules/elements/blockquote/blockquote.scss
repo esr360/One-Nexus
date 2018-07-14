@@ -1,4 +1,5 @@
 @import 'blockquote.json';
+
 /// Blockquote
 ///
 /// @group elements
@@ -41,6 +42,6 @@
 
         @content;
 
-    } // module
+    }
 
-} // @mixin blockquote
+}

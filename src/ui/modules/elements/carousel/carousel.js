@@ -9,8 +9,7 @@ export default {
  * Initialise carousel element
  * 
  * @param {*} carousel 
- * @param {*} el 
- * @param {Object} options 
+ * @param {HTMLElement} el
  */
 export function init(el, carousel) {
     const options = Object.assign(defaults.carousel, window.theme.carousel);

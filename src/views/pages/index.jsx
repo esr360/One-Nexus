@@ -9,7 +9,7 @@ const Index = () => (
     <app.layouts.Base {...app.config.app.views}>
         <Accordion panels={panels} />
 
-        <Alert>This is a default alert</Alert>
+        <Alert close={true}>This is a default alert</Alert>
 
         <Blockquote content='Lorem ipsum dolor sit amet' />
 
@@ -103,9 +103,9 @@ const Index = () => (
             {title: 'fizz', content: 'buzz'}
         ]} />
 
-        <p>
+        <Well>
             <Tooltip inline right>Tooltip</Tooltip>
-        </p>
+        </Well>
 
         <Well>Well</Well>
     </app.layouts.Base>

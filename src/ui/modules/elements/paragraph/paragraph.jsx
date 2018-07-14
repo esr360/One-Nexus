@@ -2,8 +2,6 @@ import defaults from './paragraph.json';
 
 /**
  * Render Paragraph module
- *
- * @prop {String} name
  */
 const Paragraph = props => {
     const config = Object.assign(defaults.paragraph, window.theme.paragraph);

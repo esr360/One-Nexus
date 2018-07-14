@@ -4,8 +4,8 @@ import interactions from './carousel.js';
 /**
  * Render Carousel module
  *
- * @param {Array} slides
- * @param {Function} init
+ * @prop {Array} slides
+ * @prop {Function} init
  */
 const Carousel = ({ slides, init, ...props }) => {
     const config = Object.assign(defaults.carousel, window.theme.carousel);

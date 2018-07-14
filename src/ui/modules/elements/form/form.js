@@ -8,8 +8,9 @@ export default {
 /**
  * Check if an input value is valid
  * 
- * @param {*} field 
- * @param {*} validators 
+ * @param {(String|HTMLElement)} field
+ * @param {Array} validators
+ * @param {Function} handler
  */
 export function validate(field, validators, handler = handleValidation) {
     if (!field) return;
@@ -53,7 +54,7 @@ export function validate(field, validators, handler = handleValidation) {
 /**
  * Set field states
  * 
- * @param {*} fields 
+ * @param {Object} fields 
  */
 export function setState(fields) {
     fields.forEach(properties => {
@@ -82,8 +83,8 @@ export function setState(fields) {
  * 
  * @private
  * 
- * @param {*} target 
- * @param {*} rules 
+ * @param {HTMLElement} target 
+ * @param {Array} rules 
  */
 function callRules(target, rules) {
     if (rules) {
@@ -105,8 +106,10 @@ function callRules(target, rules) {
  * 
  * @private
  * 
- * @param {*} field 
- * @param {*} isValid 
+ * @param {Boolean} isValid
+ * @param {HTMLElement} field
+ * @param {String} message
+ * @param {Boolean} [recurse = true]
  */
 function handleValidation(isValid, field, message, recurse = true) {
     if (field.type === 'radio' && recurse) {
@@ -137,8 +140,8 @@ function handleValidation(isValid, field, message, recurse = true) {
  * 
  * @private
  * 
- * @param {*} field 
- * @param {*} isValid 
+ * @param {HTMLElement} field 
+ * @param {(Boolean|String)} operator 
  */
 function toggleStyles(field, operator) {
     const parentGroup = field.parents('[class*="group"]')[0];
