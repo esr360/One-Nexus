@@ -40,13 +40,14 @@ import Image from './ui/modules/elements/image/image.jsx';
 import List from './ui/modules/elements/list/list.jsx';
 import Modal from './ui/modules/elements/modal/modal.jsx';
 import Paragraph from './ui/modules/elements/paragraph/paragraph.jsx';
-import ProgressBar from './ui/modules/elements/progress-bars/progress-bar.jsx';
-import Table from './ui/modules/elements/tables/table.jsx';
+import ProgressBar from './ui/modules/elements/progress-bar/progress-bar.jsx';
+import Table from './ui/modules/elements/table/table.jsx';
 import Tabs from './ui/modules/elements/tabs/tabs.jsx';
-import Tooltip from './ui/modules/elements/tooltips/tooltip.jsx';
-import Well from './ui/modules/elements/wells/well.jsx';
+import Tooltip from './ui/modules/elements/tooltip/tooltip.jsx';
+import Well from './ui/modules/elements/well/well.jsx';
 
 // Objects
+import Billboard from './ui/modules/objects/billboard/billboard.jsx';
 import Header from './ui/modules/objects/header/header.jsx';
 import Logo from './ui/modules/objects/logo/logo.jsx';
 import Navigation from './ui/modules/objects/navigation/navigation.jsx';
@@ -103,6 +104,7 @@ const modules = {
     Tabs,
     Tooltip,
     Well,
+    Billboard,
     Header,
     Logo,
     Navigation,

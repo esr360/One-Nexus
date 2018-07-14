@@ -1,7 +1,7 @@
 @import 'billboard.json';
+
 /// Billboard
 ///
-/// @access public
 /// @group objects
 ///
 /// @param {map} $custom - where custom config will be passed
@@ -71,6 +71,6 @@
 
         @content;
 
-    } // module
+    }
 
-} // @mixin billboard
+}

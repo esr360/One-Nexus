@@ -108,6 +108,8 @@ const Index = () => (
         </Well>
 
         <Well>Well</Well>
+
+        <Billboard>Billboard</Billboard>
     </app.layouts.Base>
 );
 
