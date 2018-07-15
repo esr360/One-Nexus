@@ -1,7 +1,7 @@
 @import 'search.json';
+
 /// Search
 ///
-/// @access public
 /// @group objects
 ///
 /// @param {map} $custom - where custom config will be passed
@@ -74,6 +74,6 @@
 
         @content;
 
-    } // module
+    }
 
-} // @mixin search
+}

@@ -109,6 +109,8 @@ const Index = () => (
 
         <Well>Well</Well>
 
+        <Component module='searchBox' name='show'>Search Toggle</Component>
+
         <Billboard>Billboard</Billboard>
 
         <Breadcrumb>

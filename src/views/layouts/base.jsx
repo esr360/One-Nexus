@@ -43,6 +43,10 @@ const Base = props => (
         </Footer>
 
         <Overlay id='overlay' />
+
+        <Preloader />
+
+        <Search />
     </main>
 );
 

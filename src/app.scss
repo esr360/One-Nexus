@@ -15,7 +15,6 @@
 @import '../node_modules/normalize-scss/sass/normalize';
 @import '../node_modules/Kayzen-GS/dist/kayzen-gs.scss';
 @import '../node_modules/Sass-Boost/dist/sass-boost';
-@import '../node_modules/spinners/stylesheets/spinners';
 //@import '../node_modules/Synergy/dist/synergy';
 @import '../../../Synergy/src/scss/synergy';
 
@@ -70,7 +69,6 @@
 @import './ui/modules/objects/navigation/navigation';
 @import './ui/modules/objects/overlay/overlay';
 @import './ui/modules/objects/preloader/preloader';
-@import './ui/modules/objects/scroll-top/scroll-top';
 @import './ui/modules/objects/search/search';
 @import './ui/modules/objects/side-nav/side-nav';
 
@@ -129,7 +127,6 @@ $sass-config-parser : map-get-deep($app, 'ui', 'sass-config-parser');
     @include navigation;
     @include preloader;
     @include side-nav;
-    @include scroll-top;
     @include search;
     @include overlay;
 }

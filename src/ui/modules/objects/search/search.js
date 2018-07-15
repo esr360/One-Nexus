@@ -1,44 +1,30 @@
-import * as app from '../../../ui';
 import defaults from './search.json';
 
-/**
- * Search
- * 
- * @access public
- * 
- * @param {(String|HTMLElement|NodeList)} els
- * @param {Object} custom
- */
-export function search(els = 'searchBox', custom = {}) {
+export default {
+    toggle,
+    init
+}
 
-    custom = app.custom('search', custom);
+export function toggle(operator) {
+    const config = Object.assign(defaults.search, window.theme.search);
 
-    app.Synergy(els, (el, options) => {
+    Synergy(config.name, search => {
+        const state = (search.modifier('visible') && operator !== 'show' || operator === 'hide') ? 'unset' : 'set';
+    
+        search.modifier('visible', state);
+    
+        if (state === 'set') {
+            window.setTimeout(() => search.component('input')[0].focus(), 100);
+        }
+    });
+}
 
-        app.Synergy(options.name).component('toggle').forEach(toggle => {
-            toggle.addEventListener('click', () => exports.toggle());
+export function init() {
+    const config = Object.assign(defaults.search, window.theme.search);
+
+    ['show', 'hide', 'toggle'].forEach(trigger => {
+        [...Synergy(config.name).component(trigger)].forEach(triggerEl => {
+            triggerEl.addEventListener('click', toggle.bind(this, trigger, config), false);
         });
-
-        app.Synergy(options.name).component('close').forEach(close => {
-            close.addEventListener('click', () => exports.hide());
-        });
-
-        exports.show = () => exports.toggle('show');
-        exports.hide = () => exports.toggle('hide');
-
-        exports.toggle = operator => {
-            const state = (el.modifier('visible') && operator !== 'show' || operator === 'hide') ? 'unset' : 'set';
-
-            el.modifier('visible', state);
-
-            if (state === 'set') {
-                window.setTimeout(() => el.component('input')[0].focus(), 100);
-            }
-        };
-
-    }, defaults, custom, app.evalConfig);
-
-    app.config.search = app.parse(defaults.search, custom);
-
-    return exports;
+    });
 }

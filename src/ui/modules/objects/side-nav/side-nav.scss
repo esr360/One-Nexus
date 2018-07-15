@@ -1,7 +1,7 @@
 @import 'side-nav.json';
+
 /// sideNav
 ///
-/// @access public
 /// @group objects
 ///
 /// @param {map} $custom - where custom config will be passed
@@ -141,6 +141,6 @@
 
         @content;
 
-    } // module
+    }
 
-} // @mixin side-nav
+}

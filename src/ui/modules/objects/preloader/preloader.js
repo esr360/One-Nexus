@@ -1,36 +1,13 @@
-import * as app from '../../../ui';
 import defaults from './preloader.json';
 
-/**
- * Preloader
- * 
- * @access public
- * 
- * @param {(String|HTMLElement|NodeList)} els
- * @param {Object} custom
- */
-export function preloader(els = 'preloader', custom = {}) {
+export default {
+    toggle
+}
 
-    custom = app.custom('preloader', custom);
+export function toggle() {
+    const options = Object.assign(defaults.preloader, window.theme.preloader);
 
-    app.Synergy(els, (el, options) => {
-
-        window.addEventListener('load', () => exports.hide());
-
-        app.Synergy(options.name).component('close').forEach(trigger => {
-            trigger.addEventListener('click', () => exports.hide());
-        });
-
-        exports.show = () => exports.toggle('show');
-        exports.hide = () => exports.toggle('hide');
-
-        exports.toggle = operator => el.modifier('hidden', 
-            (el.modifier('hidden') && operator !== 'hide' || operator === 'show') ? 'unset' : 'set'
-        );
-
-    }, defaults, custom, app.evalConfig);
-
-    app.config.preloader = app.parse(defaults.preloader, custom);
-
-    return exports;
+    Synergy(options.name, preloader => {
+        preloader.modifier('hidden', preloader.modifier('hidden', 'isset') ? 'unset' : 'set');
+    });
 }
