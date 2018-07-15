@@ -3,18 +3,25 @@ import defaults from './navigation.json';
 /**
  * Render Navigation component
  *
- * @param {String} props.name
- * @param {Array}  props.modifiers
- * @param {Array}  props.items
+ * @prop {Array} items
  */
-const Navigation = ({name = defaults.navigation.name, modifiers, items}) => (
-    <Module name={name} modifiers={modifiers} className="min-break-3">
-        <ul>
-            {items.map((item, index) => (
-                <li key={index}>item</li>
-            ))}
-        </ul>
-    </Module>
-);
+const Navigation = ({ items, ...props }) => {
+    const config = Object.assign(defaults.navigation, window.theme.navigation);
+
+    return (
+        <Module name={config.name} {...props} className='min-break-3'>
+            <ul>{renderNavItems(items)}</ul>
+        </Module>
+    );
+}
+
+function renderNavItems(items) {
+    return items.map((item, index) => (
+        <li key={index}>
+            <a href={item[1]}>{item[0]}</a>
+            { item[2] && <ul>{renderNavItems(item[2])}</ul> }
+        </li>
+    ));
+}
 
 export default Navigation;

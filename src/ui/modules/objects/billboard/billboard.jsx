@@ -1,7 +1,7 @@
 import defaults from './billboard.json';
 
 /**
- * Render Billboard component
+ * Render Billboard module
  */
 const Billboard = props => {
     const config = Object.assign(defaults.billboard, window.theme.billboard);

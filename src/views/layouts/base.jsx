@@ -38,6 +38,10 @@ const Base = props => (
             {props.children}
         </div>
 
+        <Footer>
+            <a href='#'>Link 1</a>
+        </Footer>
+
         <Overlay id='overlay' />
     </main>
 );

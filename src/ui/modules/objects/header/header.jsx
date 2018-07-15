@@ -1,7 +1,7 @@
 import defaults from './header.json';
 
 /**
- * Render Header component
+ * Render Header module
  */
 const Header = props => {
     const config = Object.assign(defaults.header, window.theme.header);

@@ -1,7 +1,7 @@
 @import 'footer.json';
+
 /// Footer
 ///
-/// @access public
 /// @group objects
 ///
 /// @param {map} $custom - where custom config will be passed
@@ -32,7 +32,9 @@
         // Components
         //*********************************************************
 
-        @include component('wrapper');
+        @include component('wrapper') {
+            @include _module('container');
+        }
 
         //*********************************************************
         // Custom Content
@@ -40,6 +42,6 @@
 
         @content;
 
-    } // module
+    }
 
-} // @mixin footer
+} 

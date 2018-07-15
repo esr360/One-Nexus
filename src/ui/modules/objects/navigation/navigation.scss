@@ -1,12 +1,14 @@
 @import 'navigation.json';
+@import '../dropdown/dropdown';
+
 /// Navigation
 ///
-/// @access public
 /// @group objects
+///
+/// @requires {mixin} dropdown
 ///
 /// @param {map} $custom - where custom config will be passed
 @mixin navigation($custom: custom('navigation')) {
-
     // Config
     $navigation: config($navigation, $custom);
 
@@ -111,11 +113,19 @@
         }
 
         //*********************************************************
+        // Dropdown
+        //*********************************************************
+
+        ul {
+            @include dropdown;
+        }
+
+        //*********************************************************
         // Custom Content
         //*********************************************************
 
         @content;
 
-    } // module
+    }
 
-} // @mixin navigation
+}

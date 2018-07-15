@@ -1,7 +1,7 @@
 import defaults from './breadcrumb.json';
 
 /**
- * Render Breadcrumb component
+ * Render Breadcrumb module
  */
 const Breadcrumb = props => {
     const config = Object.assign(defaults.breadcrumb, window.theme.breadcrumb);
@@ -15,6 +15,8 @@ const Breadcrumb = props => {
 
 Breadcrumb.Item = props => <li>{props.children}</li>;
 
-Breadcrumb.defaultProps = {};
+Breadcrumb.defaultProps = {
+    object: true
+};
 
 export default Breadcrumb;

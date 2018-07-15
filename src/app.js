@@ -49,6 +49,7 @@ import Well from './ui/modules/elements/well/well.jsx';
 // Objects
 import Billboard from './ui/modules/objects/billboard/billboard.jsx';
 import Breadcrumb from './ui/modules/objects/breadcrumb/breadcrumb.jsx';
+import Footer from './ui/modules/objects/footer/footer.jsx';
 import Header from './ui/modules/objects/header/header.jsx';
 import Logo from './ui/modules/objects/logo/logo.jsx';
 import Navigation from './ui/modules/objects/navigation/navigation.jsx';
@@ -107,6 +108,7 @@ const modules = {
     Well,
     Billboard,
     Breadcrumb,
+    Footer,
     Header,
     Logo,
     Navigation,

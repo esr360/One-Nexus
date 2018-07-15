@@ -1,7 +1,7 @@
 {
     "dropdown": {
         "name": "dropdown",
-        "target": "ul ul",
+        "target": "ul",
         "text-align": "left",
         "transition": ["#CORE", "transition"],
         "font-size": ["#FONT-SIZE", "size-2", true],

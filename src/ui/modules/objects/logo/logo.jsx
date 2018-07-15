@@ -3,15 +3,18 @@ import defaults from './logo.json';
 /**
  * Render Logo component
  *
- * @param {String} props.name
- * @param {Array}  props.modifiers
+ * @prop {String} href
+ * @prop {String} src
+ * @prop {String} alt
  */
-const Logo = ({name = defaults.logo.name, modifiers, href, src, alt}) => (
-    <Module name={name} modifiers={modifiers}>
-        <a href={href} alt={alt}>
-            <img src={src} alt={alt} />
-        </a>
-    </Module>
-);
+const Logo = ({ href, src, alt, ...props }) => {
+    const config = Object.assign(defaults.logo, window.theme.logo);
+
+    return (
+        <Module name={config.name} {...props}>
+            <a href={href} alt={alt}><img src={src} alt={alt} /></a>
+        </Module>
+    );
+}
 
 export default Logo;
