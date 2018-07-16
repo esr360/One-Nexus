@@ -48,7 +48,7 @@ const Base = props => (
 
         <Search />
 
-        <SideNav />
+        <SideNav navigation={props.navigation.items} />
     </main>
 );
 

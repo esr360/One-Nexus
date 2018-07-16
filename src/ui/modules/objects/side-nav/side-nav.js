@@ -2,7 +2,7 @@ import defaults from './side-nav.json';
 import overlay from '../../objects/overlay/overlay';
 
 export default {
-    init
+    init, toggle
 }
 
 export function init(navigation) {
@@ -10,18 +10,18 @@ export function init(navigation) {
 
     Synergy(options.name, el => {
         // populate the side-navigation
-        if (navigation) {
+        if (typeof navigation === 'string') {
             el.querySelector('nav').innerHTML = Synergy(navigation).query[0].innerHTML;
         }
 
         // toggle side nav on component click
         Synergy(options.name).component('toggle').forEach(toggle => {
-            toggle.addEventListener('click', () => toggleSideNav(el, 'toggle', options));
+            toggle.addEventListener('click', () => toggle(el, 'toggle', options));
         });
 
         // close side nav on component click
         [...Synergy(options.name).component('close')].forEach(close => {
-            close.addEventListener('click', () => toggleSideNav(el, 'hide', options));
+            close.addEventListener('click', () => toggle(el, 'hide', options));
         });
 
         // insert dropdown toggle element where appropriate
@@ -49,7 +49,7 @@ export function init(navigation) {
  * @param {('show'|'hide')} operator - the type of toggle to activate
  * @param {Object} options - the module options to use
  */
-export function toggleSideNav(el, operator, options) {
+export function toggle(el, operator, options) {
     const state = (el.modifier('visible') || operator === 'hide') ? 'unset' : 'set';
     const overlay_element = overlay.element(options.overlay);
 
@@ -60,7 +60,7 @@ export function toggleSideNav(el, operator, options) {
 
         if (state === 'set') {
             overlay_element.addEventListener('click', function handler() {
-                toggleSideNav(el, 'hide', options);
+                toggle(el, 'hide', options);
 
                 overlay_element.removeEventListener('click', handler);
             }, false);

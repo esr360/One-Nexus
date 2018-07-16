@@ -18,8 +18,7 @@ const Navigation = ({ items, ...props }) => {
 function renderNavItems(items) {
     return items.map((item, index) => (
         <li key={index}>
-            <a href={item[1]}>{item[0]}</a>
-            { item[2] && <ul>{renderNavItems(item[2])}</ul> }
+            <a href={item[1]}>{item[0]}</a> { item[2] && <ul>{renderNavItems(item[2])}</ul> }
         </li>
     ));
 }
