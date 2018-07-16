@@ -1,8 +1,7 @@
 import defaults from './search.json';
 
 export default {
-    toggle,
-    init
+    toggle, init
 }
 
 export function toggle(operator) {
@@ -24,7 +23,7 @@ export function init() {
 
     ['show', 'hide', 'toggle'].forEach(trigger => {
         [...Synergy(config.name).component(trigger)].forEach(triggerEl => {
-            triggerEl.addEventListener('click', toggle.bind(this, trigger, config), false);
+            triggerEl.addEventListener('click', toggle.bind(this, trigger), false);
         });
     });
 }

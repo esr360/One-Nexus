@@ -56,6 +56,7 @@ import Navigation from './ui/modules/objects/navigation/navigation.jsx';
 import Overlay from './ui/modules/objects/overlay/overlay.jsx';
 import Preloader from './ui/modules/objects/preloader/preloader.jsx';
 import Search from './ui/modules/objects/search/search.jsx';
+import SideNav from './ui/modules/objects/side-nav/side-nav.jsx';
 
 // Themes
 //*****************************************************************
@@ -116,7 +117,8 @@ const modules = {
     Navigation,
     Overlay,
     Preloader,
-    Search
+    Search,
+    SideNav
 }
 
 const layouts = { 

@@ -1,31 +1,25 @@
-import * as app from '../../../ui';
 import defaults from './side-nav.json';
 
-/**
- * Side-Nav
- * 
- * @access public
- * 
- * @param {(String|HTMLElement|NodeList)} els
- * @param {Object} custom
- */
-export function sideNav(els = 'sideNav', custom = {}) {
+export default {
+    init
+}
 
-    custom = app.custom('side-nav', custom);
+export function init(navigation) {
+    const options = Object.assign(defaults['side-nav'], window.theme['side-nav']);
 
-    app.Synergy(els, (el, options) => {
+    Synergy(options.name, el => {
         // populate the side-navigation
-        if (options.navigation) {
-            el.querySelector('nav').innerHTML = app.Synergy(options.navigation).query[0].innerHTML;
+        if (navigation) {
+            el.querySelector('nav').innerHTML = Synergy(navigation).query[0].innerHTML;
         }
 
         // toggle side nav on component click
-        app.Synergy(options.name).component('toggle').forEach(toggle => {
+        Synergy(options.name).component('toggle').forEach(toggle => {
             toggle.addEventListener('click', () => exports.toggle());
         });
 
         // close side nav on component click
-        Array.prototype.forEach.call(app.Synergy(options.name).component('close'), close => {
+        Array.prototype.forEach.call(Synergy(options.name).component('close'), close => {
             close.addEventListener('click', () => exports.hide());
         });
 
@@ -44,29 +38,17 @@ export function sideNav(els = 'sideNav', custom = {}) {
                 toggle.nextSibling.classList.toggle('collapsed');
             });
         });
-
-        exports.show = () => exports.toggle('show');
-        exports.hide = () => exports.toggle('hide');
-
-        exports.toggle = operator => toggleSideNav(el, operator, options);
-
-    }, defaults, custom, app.evalConfig);
-
-    app.config['side-nav'] = app.parse(defaults['side-nav'], custom);
-
-    return exports;
+    });
 }
 
 /**
  * Show/Hide the Side Navigation
  * 
- * @access private
- * 
  * @param {HTMLElement} el - the side-nav HTML element 
  * @param {('show'|'hide')} operator - the type of toggle to activate
  * @param {Object} options - the module options to use
  */
-function toggleSideNav(el, operator, options) {
+export function toggleSideNav(el, operator, options) {
     // determine toggle state
     const state = (el.modifier('visible') || operator === 'hide') ? 'unset' : 'set';
     const listener = (state === 'set') ? 'addEventListener' : 'removeEventListener';
@@ -75,11 +57,11 @@ function toggleSideNav(el, operator, options) {
     el.modifier('visible', state);
 
     // toggle overlay
-    if (options.overlay) {
-        app.overlay(options.overlay).toggle('overlaySideNav');
-        // toggle event handler to hide side-nav on overlay click
-        app.Synergy(options.overlay).query[0][listener]('click', exports.hide);
-    }
+    // if (options.overlay) {
+    //     overlay(options.overlay).toggle('overlaySideNav');
+    //     // toggle event handler to hide side-nav on overlay click
+    //     Synergy(options.overlay).query[0][listener]('click', exports.hide);
+    // }
 }
 
 /**

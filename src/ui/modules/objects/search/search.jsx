@@ -18,7 +18,7 @@ const Search = ({ init, toggle, go, close, ...props }) => {
                     <Component name='go' Button={go} tag='button' type='submit'>
                         <i class="fa fa-search"></i>
                     </Component>
-                    <Component name='close' Button={close} tag='button' onClick={toggle}>
+                    <Component name='close' Button={close} tag='button' type='button' onClick={toggle}>
                         <i class="fa fa-times"></i>
                     </Component>
                 </Component>
