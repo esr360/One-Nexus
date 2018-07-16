@@ -50,11 +50,7 @@ export function toggle(target, type, parent, keepOpen = false) {
         return section.forEach(section => toggle(section, type, parent, options, true));
     }
 
-    if (type) {
-        operator = (type === 'open') ? 'set' : 'unset';
-    } else {
-        operator = section.modifier('active') === true ? 'unset' : 'set';
-    }
+    operator = (section.modifier('active') === true || operator === 'close') ? 'unset' : 'set';
 
     // close sibling sections
     if (operator === 'set' && (parent.modifier(options.keepOpenModifier) !== true) && keepOpen === false) {

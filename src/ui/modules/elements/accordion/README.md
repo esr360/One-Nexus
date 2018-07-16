@@ -10,32 +10,11 @@
 
 ### Quick Look
 
-###### React
-
 ```jsx
 <Accordion panels={[
     {title: 'foo', content: 'bar'},
     {title: 'fizz', content: 'buzz'}
 ]} />
-```
-
-###### HTML
-
-```html
-<div class="accordion">
-    <div class="accordion_section">
-        <div class="accordion_title">
-            <div class="accordion_toggle fa fa-chevron-circle-down"></div> foo
-        </div>
-        <div class="accordion_content">bar</div>
-    </div>
-    <div class="accordion_section">
-        <div class="accordion_title">
-            <div class="accordion_toggle fa fa-chevron-circle-down"></div> fizz
-        </div>
-        <div class="accordion_content">buzz</div>
-    </div>
-</div>
 ```
 
 ### Components
@@ -79,7 +58,18 @@
     "accordion": {
         "name": "accordion",
         "section": {
-            "vertical-rhythm": 0
+            "vertical-rhythm": 0,
+            "active": {
+                "component(title)": {
+                    "background": ["#COLOR", "brand", "brand-2"],
+                    "color": ["#COLOR", "greyscale", "white"],
+                    "border-color": "transparent",
+                    "border-radius": 0
+                },
+                "component(toggle)": {
+                    "color": ["#COLOR", "greyscale", "white"]
+                }
+            }
         },
         "title": {
             "background": "transparent",
@@ -94,15 +84,6 @@
                 "component(toggle)": {
                     "color": ["#COLOR", "greyscale", "white"]
                 }
-            },
-            "active": {
-                "background": ["#COLOR", "brand", "brand-1"],
-                "color": ["#COLOR", "greyscale", "white"],
-                "border-color": "transparent",
-                "border-radius": 0,
-                "component(toggle)": {
-                    "color": ["#COLOR", "greyscale", "white"]
-                }
             }
         },
         "content": {
@@ -113,7 +94,8 @@
             "padding": "1.5em"
         },
         "toggle": {
-            "color": ["#COLOR", "opaque", "dark-4"]
+            "color": ["#COLOR", "opaque", "dark-4"],
+            "transition": ["#CORE", "transition"]
         },
         "animationSpeed": 400,
         "keepOpenModifier": "keepOpen"
@@ -167,8 +149,6 @@ Pass custom options to the `accordion` object in your theme's config file (e.g. 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions) about module interactions
 
 * [Toggle](#toggle)
-* [Open](#open)
-* [Close](#close)
 
 > Interactions are defined in [ui/modules/elements/accordion/accordion.js](../../../modules/elements/accordion/accordion.js)
 
@@ -177,7 +157,7 @@ Pass custom options to the `accordion` object in your theme's config file (e.g. 
 > Toggle one or more sections of an accordion
 
 ```js
-UI.accordion(parent).toggle(target);
+toggle(target, type, parent);
 ```
 
 <table>
@@ -190,147 +170,57 @@ UI.accordion(parent).toggle(target);
     </thead>
     <tbody>
         <tr>
-            <td>Parent</td>
-            <td><a href="https://github.com/esr360/Synergy/wiki/JavaScript#parameter---els">Synergy selector</a></td>
-            <td>The accordion(s) on which to toggle sections</td>
+            <td><code>target</code></td>
+            <td><code>(String | Number | HTMLElement | NodeList)<code></td>
+            <td>The target section(s) to toggle <a href="#target">learn more</a></td>
         </tr>
         <tr>
-            <td>Target</td>
-            <td>(String | Number | HTMLElement | NodeList)</td>
-            <td>The target section(s) to toggle</td>
+            <td>[type]</td>
+            <td><code>('show'|'hide'|'toggle')</code></td>
+            <td>The toggle operator (defaults to 'toggle')</td>
+        </tr>
+        <tr>
+            <td>[parent]</td>
+            <td><a href="https://github.com/esr360/Synergy/wiki/JavaScript#parameter---els">Synergy selector</a></td>
+            <td>The accordion(s) on which to toggle sections (<a href="#parent">learn more</a>)</td>
         </tr>
     </tbody>
 </table>
 
+#### Target
+
+* If `target` is a string, it will be passed to a `querySelectorAll` method of the target accordion(s) to determine which panel(s) to toggle
+* If `target` is a number, the nth panel will be toggled on the target accordion(s)
+* If `target` is an HTMLElement, that panel will be toggled
+* If `target` is a NodeList of panels, each panel in the list will be toggled
+
+#### Parent
+
+* If this value is not passed, the function will attempt to determine the parent accordion from the `target` element(s)
+
 #### Examples
 
 ```js
-// Toggle first section of accordion with ID 'foo'
-UI.accordion(document.getElementById('foo')).toggle(1);
+// Toggle section with ID 'bar'
+toggle(document.getElementById('bar'));
+
+// Toggle section with ID 'bar'
+toggle('#bar');
 
 // Toggle section with ID 'bar' on accordion with ID 'foo'
-UI.accordion(document.getElementById('foo')).toggle(document.getElementById('bar'));
+toggle('#bar', 'toggle', '#foo');
 
-// Toggle section with ID 'bar' on accordion with ID 'foo'
-UI.accordion('#foo').toggle('#bar');
+// Close first section of accordion with ID 'foo'
+toggle(1, 'close', '#foo');
 
-// Toggle sections with class 'foo' on accordion with ID 'foo'
-UI.accordion(document.getElementById('foo')).toggle('.foo');
+// Open all sections on all accordions with class 'partyTime'
+toggle('*', 'open', '.partyTime');
 
-// Toggle second section on all accordions with class 'accordion'
-UI.accordion('.accordion').toggle(2);
-
-// Toggle sections with class 'foo' on all accordions with class 'accordion'
-UI.accordion('.accordion').toggle('.foo');
-
-// Toggle first section on all accordions
-UI.accordion().toggle(1);
-
-// Toggle all sections on all accordions
-UI.accordion().toggle();
-```
-
-### Open
-
-> Open one or more sections of an accordion
-
-```js
-UI.accordion(parent).open(target);
-```
-
-<table>
-    <thead>
-        <tr>
-            <td><b>Parameter</b></td>
-            <td><b>Type</b></td>
-            <td><b>Description<b/></td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Parent</td>
-            <td><a href="https://github.com/esr360/Synergy/wiki/JavaScript#parameter---els">Synergy selector</a></td>
-            <td>The accordion on which to open sections</td>
-        </tr>
-        <tr>
-            <td>Target</td>
-            <td>(String | Number | HTMLElement | NodeList)</td>
-            <td>The target section(s) to open</td>
-        </tr>
-    </tbody>
-</table>
-
-#### Examples
-
-```js
-// Opens all sections of accordion with ID 'foo'
-UI.accordion(document.getElementById('foo')).open();
-
-// Opens first section of accordion with ID 'foo'
-UI.accordion(document.getElementById('foo')).open(1);
-
-// Opens first section of all accordions
-UI.accordion().open(1);
-
-// Opens all sections with class 'foo' for all accordions
-UI.accordion().open(document.querySelectorAll('.foo'));
-
-// Opens all sections with class 'foo' for all accordions
-UI.accordion().open('.foo');
-```
-
-### Close
-
-> Close one or more sections of an accordion
-
-```js
-UI.accordion(parent).close(target);
-```
-
-<table>
-    <thead>
-        <tr>
-            <td><b>Parameter</b></td>
-            <td><b>Type</b></td>
-            <td><b>Description<b/></td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Parent</td>
-            <td><a href="https://github.com/esr360/Synergy/wiki/JavaScript#parameter---els">Synergy selector</a></td>
-            <td>The accordion on which to close sections</td>
-        </tr>
-        <tr>
-            <td>Target</td>
-            <td>(String | Number | HTMLElement | NodeList)</td>
-            <td>The target section(s) to close</td>
-        </tr>
-    </tbody>
-</table>
-
-#### Examples
-
-```js
-// Closes all sections of accordion with ID 'foo'
-UI.accordion(document.getElementById('foo')).close();
-
-// Closes first section of accordion with ID 'foo'
-UI.accordion(document.getElementById('foo')).close(1);
-
-// Closes first section of all accordions
-UI.accordion().close(1);
-
-// Closes all sections with class 'foo' for all accordions
-UI.accordion().close(document.querySelectorAll('.foo'));
-
-// Closes all sections with class 'foo' for all accordions
-UI.accordion().close('.foo');
+// Close all sections on all accordions
+toggle('*', 'close', '*');
 ```
 
 ## Rendering
-
-> If you are *not* using React, simply look to the 'Output' section of any example
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
@@ -362,32 +252,12 @@ const panels = [
 <Accordion panels={panels} />
 ```
 
-###### Output
-
-```html
-<div class="accordion">
-    <div class="accordion_section">
-        <div class="accordion_title">
-            <div class="accordion_toggle fa fa-chevron-circle-down"></div> foo
-        </div>
-        <div class="accordion_content">bar</div>
-    </div>
-    <div class="accordion_section">
-        <div class="accordion_title">
-            <div class="accordion_toggle fa fa-chevron-circle-down"></div>
-            <div>alpha</div>
-        </div>
-        <div class="accordion_content"><div>beta</div></div>
-    </div>
-</div>
-```
-
 #### Panel.title
 
 <table>
     <tr>
         <td><b>Type</b></td>
-        <td>JSX</td>
+        <td><a href="https://reactjs.org/docs/glossary.html#elements"><code>React Element</code></td>
     </tr>
 </table>
 
@@ -396,7 +266,7 @@ const panels = [
 <table>
     <tr>
         <td><b>Type</b></td>
-        <td>JSX</td>
+        <td><a href="https://reactjs.org/docs/glossary.html#elements"><code>React Element</code></td>
     </tr>
 </table>
 
@@ -436,13 +306,4 @@ Accordions can be nested:
     {title: ..., content: ...}
     {title: ..., content: ..., active: true}
 ]} />
-```
-
-###### Output
-
-```html
-<div class="accordion">
-    <div class="accordion_section">...</div>
-    <div class="accordion_section-active">...</div>
-</div>
 ```

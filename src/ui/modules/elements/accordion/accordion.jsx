@@ -12,7 +12,7 @@ const Accordion = ({ panels, toggle, ...props }) => {
 
     return (
         <Module name={config.name} {...props}>
-            {panels.map(({title, content, active}, index) => (
+            {panels.map(({ title, content, active }, index) => (
                 <Component modifiers={active ? ['active'] : false} name='section' key={index}>
                     <Component name='title' onClick={toggle}>
                         <Component name='toggle' className='fa fa-chevron-circle-down' /> {title}
