@@ -1,4 +1,5 @@
 import defaults from './side-nav.json';
+import overlay from '../../objects/overlay/overlay';
 
 export default {
     init
@@ -15,12 +16,12 @@ export function init(navigation) {
 
         // toggle side nav on component click
         Synergy(options.name).component('toggle').forEach(toggle => {
-            toggle.addEventListener('click', () => exports.toggle());
+            toggle.addEventListener('click', () => toggleSideNav(el, 'toggle', options));
         });
 
         // close side nav on component click
-        Array.prototype.forEach.call(Synergy(options.name).component('close'), close => {
-            close.addEventListener('click', () => exports.hide());
+        [...Synergy(options.name).component('close')].forEach(close => {
+            close.addEventListener('click', () => toggleSideNav(el, 'hide', options));
         });
 
         // insert dropdown toggle element where appropriate
@@ -49,19 +50,22 @@ export function init(navigation) {
  * @param {Object} options - the module options to use
  */
 export function toggleSideNav(el, operator, options) {
-    // determine toggle state
     const state = (el.modifier('visible') || operator === 'hide') ? 'unset' : 'set';
-    const listener = (state === 'set') ? 'addEventListener' : 'removeEventListener';
+    const overlay_element = overlay.element(options.overlay);
 
-    // toggle sidenav
     el.modifier('visible', state);
 
-    // toggle overlay
-    // if (options.overlay) {
-    //     overlay(options.overlay).toggle('overlaySideNav');
-    //     // toggle event handler to hide side-nav on overlay click
-    //     Synergy(options.overlay).query[0][listener]('click', exports.hide);
-    // }
+    if (options.overlay) {
+        overlay.toggle(overlay_element, operator, 'overlaySideNav');
+
+        if (state === 'set') {
+            overlay_element.addEventListener('click', function handler() {
+                toggleSideNav(el, 'hide', options);
+
+                overlay_element.removeEventListener('click', handler);
+            }, false);
+        }
+    }
 }
 
 /**

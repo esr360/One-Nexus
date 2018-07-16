@@ -28,7 +28,7 @@ export function toggle(target, state, options = defaults.modal) {
         Synergy([overlay_element, options.name]).component('close', 'add');
     }
 
-    if (state ==='show') {
+    if (state === 'show') {
         // close any other currently openened modals
         document.querySelectorAll(`[data-module='${options.name}']`).forEach(modal => {
             if (modal !== target) {

@@ -11,7 +11,7 @@ const SideNav = ({ init, navigation, ...props }) => {
     const config = Object.assign(defaults['side-nav'], window.theme['side-nav']);
 
     window.addEventListener('load', () => {
-        init(typeof navigation === 'function' ? navigation(config) : navigation)
+        init(navigation.constructor === Function ? navigation(config) : config.navigation)
     }, true);
 
     return (

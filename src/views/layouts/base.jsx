@@ -48,18 +48,7 @@ const Base = props => (
 
         <Search />
 
-        <SideNav navigation={[
-            ["link 1", "/"],
-            ["link 2", "/", [
-                ["link 2 child", "/"],
-                ["link 2 child 2", "/"],
-                ["link 2 child 3", "/", [
-                    ["link 2 grandchild", "/"],
-                    ["link 2 grandchild 2", "/"]
-                ]]
-            ]],
-            ["link 3", "/"]
-        ]} />
+        <SideNav />
     </main>
 );
 

@@ -111,6 +111,8 @@ const Index = () => (
 
         <Component module='searchBox' name='show'>Search Toggle</Component>
 
+        <Component module='sideNav' name='toggle'>SideNav Toggle</Component>
+
         <Billboard>Billboard</Billboard>
 
         <Breadcrumb>
