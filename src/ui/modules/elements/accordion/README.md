@@ -17,15 +17,6 @@
 ]} />
 ```
 
-### Components
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
-
-* content
-* section
-* title
-* toggle
-
 ### Modifiers
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
@@ -175,7 +166,7 @@ toggle(target, type, parent);
         <tr>
             <td><code>target</code></td>
             <td><code>(String|Number|HTMLElement|NodeList)</code></td>
-            <td>The target section(s) to toggle <a href="#target">learn more</a></td>
+            <td>The target section(s) to toggle (<a href="#target">learn more</a>)</td>
         </tr>
         <tr>
             <td><code>[type]</code></td>
