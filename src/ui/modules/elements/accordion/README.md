@@ -326,6 +326,8 @@ Accordions can be nested:
 
 ### Props.toggle
 
+> Overwrite the default `toggle` method
+
 <table>
     <tr>
         <td><b>Type</b></td>

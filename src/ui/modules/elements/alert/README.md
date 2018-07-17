@@ -11,7 +11,7 @@
 ### Quick Look
 
 ```jsx
-<Alert>This is an error alert</Alert>
+<Alert>This is an alert</Alert>
 ```
 
 ### Modifiers
@@ -33,6 +33,14 @@
         <tr>
             <td><a href="#configuration">[...alert.alerts]</a></td>
             <td>The different type/styles of alerts</td>
+        </tr>
+        <tr>
+            <td><a href="#configuration"><code>bar</code></a></td>
+            <td>Regular alert bar (applied by default)</td>
+        </tr>
+        <tr>
+            <td><a href="#configuration">box</a></td>
+            <td>Alternative to <code>bar</code> - has more padding</td>
         </tr>
     </tbody>
 </table>
@@ -102,16 +110,33 @@
     </tbody>
 </table>
 
-Pass custom options to the `alert` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
+Pass custom options to the `alert` object in your theme's config file (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
 
 ```js
 {
     "theme": {
         "alert": {
-            "colors": {
-                "carrot": "#F97E52",
-                "error" : "#DA4D44",
-                "rose"  : "#D870AD"
+            "alerts": {
+                "error": {
+                    "color": "red",
+                    "icon": "times"
+                },
+                "success": {
+                    "color": "#39dd65",
+                    "icon": "check"
+                },
+                "info": {
+                    "color": "#27a7fa",
+                    "icon": "info-circle"
+                },
+                "help": {
+                    "color": "#f4cf2c",
+                    "icon": "question-circle"
+                },
+                "danger": {
+                    "color": "darkred",
+                    "icon": "exclamation-triangle"
+                }
             }
         }
     }
@@ -205,11 +230,12 @@ dismiss();
 * [Props.box](#propsbox)
 * [Props.alert](#propsalert)
 * [Props.icon](#propsicon)
+* [Props.close](#propsicon)
 * [Props.dismiss](#propsdismiss)
 
 ### Props.bar
 
-> Set to append `bar` modifier
+> Set to add `bar` modifier
 
 <table>
     <tr>
@@ -228,7 +254,7 @@ dismiss();
 
 ### Props.box
 
-> Set to append `box` modifier
+> Set to add `box` modifier
 
 <table>
     <tr>
@@ -240,6 +266,8 @@ dismiss();
         <td><code>false</code></td>
     </tr>
 </table>
+
+> Setting this to `true` will negative the value of `Props.bar`
 
 ```jsx
 <Alert box>This is an alert</Alert>
@@ -272,12 +300,12 @@ dismiss();
 
 <table>
     <tr>
-        <td><b>Default</b></td>
-        <td><code>false</code></td>
-    </tr>
-    <tr>
         <td><b>Type</b></td>
         <td><code>(String|Array)</code></td>
+    </tr>
+    <tr>
+        <td><b>Default</b></td>
+        <td><code>undefined</code></td>
     </tr>
 </table>
 
@@ -293,7 +321,20 @@ dismiss();
 <Alert icon={['exclamation-triangle', 'right']}>This is an alert</Alert>
 ```
 
-#### Close Icon
+#### Props.close
+
+> Add a close icon which calls the [`dismiss`](#dismiss) interaction when clicked
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>Bool</code></td>
+    </tr>
+    <tr>
+        <td><b>Default</b></td>
+        <td><code>false</code></td>
+    </tr>
+</table>
 
 > If your alert has a close icon, you cannot also have another __right-aligned__ icon
 
@@ -302,6 +343,8 @@ dismiss();
 ```
 
 ### Props.dismiss
+
+> Overwrite the default `dismiss` method
 
 <table>
     <tr>
@@ -329,5 +372,5 @@ import { dismiss } from '../../alert/alert.js';
 ```
 
 ```jsx
-<Alert dismiss={event => dismiss(event.target)}>...</Alert>
+<Alert close dismiss={event => dismiss(event.target)}>...</Alert>
 ```

@@ -22,7 +22,11 @@
 
         display: block;
         position: relative;
-        color: this('text-color');
+
+        // Prioritise alert text color when used with other module
+        &, [data-component] {
+            color: this('text-color');
+        }
 
         //*********************************************************
         // Modifiers
@@ -73,6 +77,7 @@
         // Child Elements
         //*********************************************************
 
+        // @TODO don't hard code module names
         a:not([class*="button"]) {
             border-bottom: 1px dotted;
 

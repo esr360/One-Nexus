@@ -5,6 +5,10 @@ const panels = [
     {title: 'fizz', content: 'buzz'},
 ];
 
+function dismiss(event) {
+    console.log(event);
+}
+
 const Index = () => (
     <app.layouts.Base {...app.config.app.views}>
         <Accordion panels={panels} />
@@ -118,6 +122,8 @@ const Index = () => (
         <Accordion panels={panels} toggle={event => {
             console.log(event)
         }} />
+
+        <Alert close dismiss={event => dismiss(event.target)}>...</Alert>
 
         <Breadcrumb>
             <Breadcrumb.Item>Level 1</Breadcrumb.Item>

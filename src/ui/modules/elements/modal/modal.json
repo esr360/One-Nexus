@@ -18,7 +18,6 @@
                 "font-size": ["#FONT-SIZE", "size-6"],
                 "top": "1rem",
                 "right": "1rem",
-                "color": ["#COLOR", "greyscale", "grey-3"],
                 "transition": ["#CORE", "transition"],
                 "hover": {
                     "color": ["#COLOR", "brand", "brand-1"]
