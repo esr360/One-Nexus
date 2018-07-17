@@ -114,7 +114,7 @@
     </thead>
     <tbody>
         <tr>
-            <td><code>section['vertical-rhythm']</code></td>
+            <td><code>section['vertical—rhythm']</code></td>
             <td>The vertical specing between each separate accordion</td>
         </tr>
         <tr>
@@ -146,7 +146,7 @@ Pass custom options to the `accordion` object in your theme's config file (e.g. 
 
 ## Interactions
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions) about module interactions
+> Module interactions are applied by default within the module's `.jsx` file ([learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions) about module interactions)
 
 * [Toggle](#toggle)
 
@@ -171,16 +171,16 @@ toggle(target, type, parent);
     <tbody>
         <tr>
             <td><code>target</code></td>
-            <td><code>(String | Number | HTMLElement | NodeList)<code></td>
+            <td><code>(String|Number|HTMLElement|NodeList)<code></td>
             <td>The target section(s) to toggle <a href="#target">learn more</a></td>
         </tr>
         <tr>
-            <td>[type]</td>
+            <td><code>[type]</code></td>
             <td><code>('show'|'hide'|'toggle')</code></td>
             <td>The toggle operator (defaults to 'toggle')</td>
         </tr>
         <tr>
-            <td>[parent]</td>
+            <td><code>[parent]</code></td>
             <td><a href="https://github.com/esr360/Synergy/wiki/JavaScript#parameter---els">Synergy selector</a></td>
             <td>The accordion(s) on which to toggle sections (<a href="#parent">learn more</a>)</td>
         </tr>

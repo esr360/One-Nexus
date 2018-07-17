@@ -15,13 +15,13 @@ export function init(navigation) {
         }
 
         // toggle side nav on component click
-        Synergy(options.name).component('toggle').forEach(toggle => {
-            toggle.addEventListener('click', () => toggle(el, 'toggle', options));
+        Synergy(options.name).component('toggle').forEach(toggleElement => {
+            toggleElement.addEventListener('click', () => toggle(el, 'toggle', options));
         });
 
         // close side nav on component click
-        [...Synergy(options.name).component('close')].forEach(close => {
-            close.addEventListener('click', () => toggle(el, 'hide', options));
+        [...Synergy(options.name).component('close')].forEach(closeElement => {
+            closeElement.addEventListener('click', () => toggle(el, 'hide', options));
         });
 
         // insert dropdown toggle element where appropriate

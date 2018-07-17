@@ -30,7 +30,7 @@
         }
 
         @include component('dropdown') {
-            @include component('toggle') {
+            @include sub-component('toggle') {
                 position: absolute;
                 top: 0;
                 right: 0;
