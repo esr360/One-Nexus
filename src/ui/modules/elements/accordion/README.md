@@ -326,12 +326,14 @@ Accordions can be nested:
 
 ### Props.toggle
 
-> Defaults to the [`toggle` interaction](#toggle)
-
 <table>
     <tr>
         <td><b>Type</b></td>
         <td><code>Function</code></td>
+    </tr>
+    <tr>
+        <td><b>Default</b></td>
+        <td><a href="#toggle"><code>interactions.toggle</code></a></td>
     </tr>
 </table>
 

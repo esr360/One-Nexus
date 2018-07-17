@@ -10,24 +10,9 @@
 
 ### Quick Look
 
-###### React
-
 ```jsx
 <Alert>This is an error alert</Alert>
 ```
-
-###### HTML
-
-```html
-<div class="alert-bar">This is an alert</div>
-```
-
-### Components
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
-
-* content
-* icon
 
 ### Modifiers
 
@@ -121,7 +106,7 @@ Pass custom options to the `alert` object in your theme's config file (e.g. [ui/
 
 ```js
 {
-    "app": {
+    "theme": {
         "alert": {
             "colors": {
                 "carrot": "#F97E52",
@@ -139,7 +124,11 @@ Pass custom options to the `alert` object in your theme's config file (e.g. [ui/
 
 ## Interactions
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions) about module interactions
+> Module interactions are applied by default within the module's `.jsx` file ([learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions))
+
+```js
+import interactions from './alert/alert.js';
+```
 
 * [Dismiss](#dismiss)
 
@@ -147,10 +136,14 @@ Pass custom options to the `alert` object in your theme's config file (e.g. [ui/
 
 ### Dismiss
 
-> Dismiss an accordion
+> Dismiss an alert
 
 ```js
-UI.alert(alert).dismiss();
+import { dismiss } from './alert/alert.js';
+```
+
+```js
+dismiss(alert);
 ```
 
 <table>
@@ -174,36 +167,45 @@ UI.alert(alert).dismiss();
 
 ```js
 // Dismiss alert with ID 'foo'
-UI.alert(document.getElementById('foo')).dismiss();
+dismiss(document.getElementById('foo'));
 
 // Dismiss alert with ID 'foo'
-UI.alert('#foo').dismiss();
+dismiss('#foo');
 
 // Dismiss all alerts with class 'alert'
-UI.alert(document.querySelectorAll('.foo')).dismiss();
+dismiss(document.querySelectorAll('.foo'));
 
 // Dismiss all alerts with class 'alert'
-UI.alert('.alert').dismiss();
+dismiss('.alert');
 
 // Dismmiss all alerts
-UI.alert().dismiss();
+dismiss();
 ```
 
 ## Rendering
 
-> If you are *not* using React, simply look to the 'Output' section of any example
-
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
+
+###### Using `<Alert>` Tag
 
 ```jsx
 <Alert>This is an alert</Alert>
 ```
+
+###### Custom Build
+
+```jsx
+<Module name='alert'>This is an alert</Module>
+```
+
+###### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [Props.bar](#propsbar)
 * [Props.box](#propsbox)
 * [Props.alert](#propsalert)
 * [Props.icon](#propsicon)
+* [Props.dismiss](#propsdismiss)
 
 ### Props.bar
 
@@ -224,12 +226,6 @@ UI.alert().dismiss();
 <Alert bar>This is an alert</Alert>
 ```
 
-###### Output
-
-```html
-<div class="alert-bar">This is an alert</div>
-```
-
 ### Props.box
 
 > Set to append `box` modifier
@@ -247,12 +243,6 @@ UI.alert().dismiss();
 
 ```jsx
 <Alert box>This is an alert</Alert>
-```
-
-###### Output
-
-```html
-<div class="alert-box">This is an alert</div>
 ```
 
 ### Props.alert
@@ -276,12 +266,6 @@ UI.alert().dismiss();
 <Alert alert='success'>This is an alert</Alert>
 ```
 
-###### Output
-
-```html
-<div class="alert-bar-success">This is an alert</div>
-```
-
 ### Props.icon
 
 > Add an icon to the alert
@@ -303,26 +287,10 @@ UI.alert().dismiss();
 <Alert icon='exclamation-triangle'>This is an alert</Alert>
 ```
 
-###### Output
-
-```html
-<div class="alert-bar">
-    <div class="alert_icon fa fa-exclamation-triangle"></div> This is an alert
-</div>
-```
-
 #### Right-Aligned Icon
 
 ```jsx
 <Alert icon={['exclamation-triangle', 'right']}>This is an alert</Alert>
-```
-
-###### Output
-
-```html
-<div class="alert-bar">
-    <div class="alert_icon-right fa fa-exclamation-triangle"></div> This is an alert
-</div>
 ```
 
 #### Close Icon
@@ -333,10 +301,33 @@ UI.alert().dismiss();
 <Alert close>This is an alert</Alert>
 ```
 
-###### Output
+### Props.dismiss
 
-```html
-<div class="alert-bar">
-    <div class="alert_icon-close-right fa fa-times"></div> This is an alert
-</div>
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>Function</code></td>
+    </tr>
+    <tr>
+        <td><b>Default</b></td>
+        <td><a href="#dismiss"><code>interactions.dismiss</code></a></td>
+    </tr>
+</table>
+
+```jsx
+<Alert dismiss={event => {
+    // custom dismiss event handler logic...
+}} >
+    ...
+</Alert>
+```
+
+You can import and call the dismiss interaction manually:
+
+```jsx
+import { dismiss } from '../../alert/alert.js';
+```
+
+```jsx
+<Alert dismiss={event => dismiss(event.target)}>...</Alert>
 ```
