@@ -58,7 +58,6 @@
     "accordion": {
         "name": "accordion",
         "section": {
-            "vertical-rhythm": 0,
             "active": {
                 "component(title)": {
                     "background": ["#COLOR", "brand", "brand-2"],
@@ -114,10 +113,6 @@
     </thead>
     <tbody>
         <tr>
-            <td><code>section['vertical-rhythm']</code></td>
-            <td>The vertical specing between each separate accordion</td>
-        </tr>
-        <tr>
             <td><code>animationSpeed</code></td>
             <td>The duration (in <code>ms</code>) for the open/close animation</td>
         </tr>
@@ -128,11 +123,11 @@
     </tbody>
 </table>
 
-Pass custom options to the `accordion` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
+Pass custom options to the `accordion` object in your theme's config file (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
 
 ```js
 {
-    "app": {
+    "theme": {
         "accordion": {
             ...
         }
@@ -146,7 +141,11 @@ Pass custom options to the `accordion` object in your theme's config file (e.g. 
 
 ## Interactions
 
-> Module interactions are applied by default within the module's `.jsx` file ([learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions) about module interactions)
+> Module interactions are applied by default within the module's `.jsx` file ([learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions))
+
+```js
+import interactions from './accordion/accordion.js';
+```
 
 * [Toggle](#toggle)
 
@@ -155,6 +154,10 @@ Pass custom options to the `accordion` object in your theme's config file (e.g. 
 ### Toggle
 
 > Toggle one or more sections of an accordion
+
+```js
+import { toggle } from './accordion/accordion.js';
+```
 
 ```js
 toggle(target, type, parent);
@@ -240,12 +243,12 @@ toggle('*', 'close', '*');
 ```jsx
 <Module name='accordion'>
     <Component name='panel'>
-        <Component name='title' onClick={toggle}>...</Component>
-        <Component name='content'>...</Component>
+        <Component name='title' onClick={toggle}>foo</Component>
+        <Component name='content'>bar</Component>
     </Component>
     <Component name='panel'>
-        <Component name='title' onClick={toggle}>...</Component>
-        <Component name='content'>...</Component>
+        <Component name='title' onClick={toggle}>fizz</Component>
+        <Component name='content'>buzz</Component>
     </Component>
 </Module>
 ```

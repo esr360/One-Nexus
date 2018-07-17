@@ -3,7 +3,6 @@
         "name": "accordion",
         "methods": ["toggle", "open", "close"],
         "section": {
-            "vertical-rhythm": 0,
             "active": {
                 "component(title)": {
                     "background": ["#COLOR", "brand", "brand-2"],

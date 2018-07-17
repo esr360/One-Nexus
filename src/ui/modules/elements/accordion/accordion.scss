@@ -21,11 +21,9 @@
         //*********************************************************
 
         @include component('section') {
-            &:not(:last-child) {
-                margin-bottom: this('section', 'vertical-rhythm');
-            }
+            @include vertical-rhythm('bottom');
 
-            @if (this('section', 'vertical-rhythm') == 0) {
+            @if not this('section', 'margin-bottom') {
                 &:not(:last-child) {
                     > *:first-child, > *:last-child {
                         border-bottom: 0 !important;
