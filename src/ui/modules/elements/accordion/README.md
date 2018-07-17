@@ -114,12 +114,12 @@
     </thead>
     <tbody>
         <tr>
-            <td><code>section['vertical—rhythm']</code></td>
+            <td><code>section['vertical-rhythm']</code></td>
             <td>The vertical specing between each separate accordion</td>
         </tr>
         <tr>
             <td><code>animationSpeed</code></td>
-            <td>The duration (in `ms`) for the open/close animation</td>
+            <td>The duration (in <code>ms</code>) for the open/close animation</td>
         </tr>
         <tr>
             <td><code>keepOpenModifier</code></td>
@@ -171,7 +171,7 @@ toggle(target, type, parent);
     <tbody>
         <tr>
             <td><code>target</code></td>
-            <td><code>(String|Number|HTMLElement|NodeList)<code></td>
+            <td><code>(String|Number|HTMLElement|NodeList)</code></td>
             <td>The target section(s) to toggle <a href="#target">learn more</a></td>
         </tr>
         <tr>
@@ -224,6 +224,8 @@ toggle('*', 'close', '*');
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
+###### Using `<Accordion>` Tag
+
 ```jsx
 <Accordion panels={[
     {title: 'foo', content: 'bar'},
@@ -231,8 +233,28 @@ toggle('*', 'close', '*');
 ]} />
 ```
 
+###### Custom Build
+
+> Assumes `toggle` method is in-scope
+
+```jsx
+<Module name='accordion'>
+    <Component name='panel'>
+        <Component name='title' onClick={toggle}>...</Component>
+        <Component name='content'>...</Component>
+    </Component>
+    <Component name='panel'>
+        <Component name='title' onClick={toggle}>...</Component>
+        <Component name='content'>...</Component>
+    </Component>
+</Module>
+```
+
+###### API
+
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [Props.panels](#propspanels)
+* [Props.toggle](#propstoggle)
 
 ### Props.panels
 
@@ -257,7 +279,7 @@ const panels = [
 <table>
     <tr>
         <td><b>Type</b></td>
-        <td><a href="https://reactjs.org/docs/glossary.html#elements"><code>React Element</code></td>
+        <td><a href="https://reactjs.org/docs/glossary.html#elements">React Element</td>
     </tr>
 </table>
 
@@ -266,7 +288,7 @@ const panels = [
 <table>
     <tr>
         <td><b>Type</b></td>
-        <td><a href="https://reactjs.org/docs/glossary.html#elements"><code>React Element</code></td>
+        <td><a href="https://reactjs.org/docs/glossary.html#elements">React Element</td>
     </tr>
 </table>
 
@@ -306,4 +328,31 @@ Accordions can be nested:
     {title: ..., content: ...}
     {title: ..., content: ..., active: true}
 ]} />
+```
+
+### Props.toggle
+
+> Defaults to the [`toggle` interaction](#toggle)
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>Function</code></td>
+    </tr>
+</table>
+
+```jsx
+<Accordion panels={panels} toggle={event => {
+    // custom toggle event handler logic...
+}} />
+```
+
+You can import and call the toggle interaction manually:
+
+```jsx
+import { toggle } from '../../accordion/accordion.js';
+```
+
+```jsx
+<Accordion panels={panels} toggle={event => toggle(event.target)} />
 ```

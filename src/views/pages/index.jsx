@@ -115,6 +115,10 @@ const Index = () => (
 
         <Billboard>Billboard</Billboard>
 
+        <Accordion panels={panels} toggle={event => {
+            console.log(event)
+        }} />
+
         <Breadcrumb>
             <Breadcrumb.Item>Level 1</Breadcrumb.Item>
             <Breadcrumb.Item>Level 2</Breadcrumb.Item>
