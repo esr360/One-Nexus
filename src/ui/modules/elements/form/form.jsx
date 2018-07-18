@@ -201,11 +201,13 @@ const RenderFieldset = ({ setState, validate, fields, fieldProperties, ...props 
     </Component>
 );
 
-Form.defaultProps = {
-    object: true,
-    setState: interactions.setState,
-    validate: interactions.validate
-};
+Object.assign(Form, interactions, {
+    defaultProps: {
+        object: true,
+        setState: interactions.setState,
+        validate: interactions.validate
+    }
+});
 
 export default Form;
 

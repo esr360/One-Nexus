@@ -134,10 +134,6 @@ Pass custom options to the `accordion` object in your theme's config file (e.g. 
 
 > Module interactions are applied by default within the module's `.jsx` file ([learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions))
 
-```js
-import interactions from './accordion/accordion.js';
-```
-
 * [Toggle](#toggle)
 
 > Interactions are defined in [ui/modules/elements/accordion/accordion.js](../../../modules/elements/accordion/accordion.js)
@@ -147,11 +143,7 @@ import interactions from './accordion/accordion.js';
 > Toggle one or more sections of an accordion
 
 ```js
-import { toggle } from './accordion/accordion.js';
-```
-
-```js
-toggle(target, type, parent);
+Accordion.toggle(target, type, parent);
 ```
 
 <table>
@@ -196,22 +188,22 @@ toggle(target, type, parent);
 
 ```js
 // Toggle section with ID 'bar'
-toggle(document.getElementById('bar'));
+Accordion.toggle(document.getElementById('bar'));
 
 // Toggle section with ID 'bar'
-toggle('#bar');
+Accordion.toggle('#bar');
 
 // Toggle section with ID 'bar' on accordion with ID 'foo'
-toggle('#bar', 'toggle', '#foo');
+Accordion.toggle('#bar', 'toggle', '#foo');
 
 // Close first section of accordion with ID 'foo'
-toggle(1, 'close', '#foo');
+Accordion.toggle(1, 'close', '#foo');
 
 // Open all sections on all accordions with class 'partyTime'
-toggle('*', 'open', '.partyTime');
+Accordion.toggle('*', 'open', '.partyTime');
 
 // Close all sections on all accordions
-toggle('*', 'close', '*');
+Accordion.toggle('*', 'close', '*');
 ```
 
 ## Rendering

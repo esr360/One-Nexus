@@ -12,8 +12,6 @@
 
 ### Quick Look
 
-###### React
-
 ```jsx
 <Carousel slides={[
     <img src="https://picsum.photos/640/480" />,
@@ -23,27 +21,6 @@
     <img src="https://picsum.photos/640/480" />
 ]} />
 ```
-
-###### HTML
-
-```html
-<div class="carousel">
-    <img src="https://picsum.photos/640/480" />
-    <img src="https://picsum.photos/640/480" />
-    <img src="https://picsum.photos/640/480" />
-    <img src="https://picsum.photos/640/480" />
-    <img src="https://picsum.photos/640/480" />
-</div>
-```
-
-### Components
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
-
-* slide
-* navigationItem
-* pagination
-* bullet
 
 ### Modifiers
 
@@ -162,11 +139,11 @@
     </tbody>
 </table>
 
-Pass custom options to the `carousel` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
+Pass custom options to the `carousel` object in your theme's config file (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
 
 ```js
 {
-    "app": {
+    "theme": {
         "carousel": {
             ...
         }
@@ -180,24 +157,29 @@ Pass custom options to the `carousel` object in your theme's config file (e.g. [
 
 ## Interactions
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions) about module interactions
+> Module interactions are applied by default within the module's `.jsx` file ([learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions))
 
 > See the [Flickity methods](https://flickity.metafizzy.co/api.html) for available interactions
 
-### Flickity method example
+### Flickity Method Examples
+
+> See the [`Flickity` interaction](#flickity) for more information
 
 ```js
-// This should refer to an instantiated One-Nexus carousel
-const carousel = document.getElementById('foo');
+Carousel.Flickity('#myCarousel').next();
+```
 
-// Flickity API
-UI.carousel(carousel).Flickity.next();
-UI.carousel(carousel).Flickity.previous();
+```js
+Carousel.Flickity('#myCarousel').pausePlayer();
+```
+
+Reference a React Component:
+
+```js
+Carousel.Flickity(ReactDOM.findDOMNode(myCarousel)).toggleFullscreen();
 ```
 
 ## Rendering
-
-> If you are *not* using React, simply look to the 'Output' section of any example
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
@@ -232,16 +214,6 @@ const slides = [
 <Carousel slides={slides} />
 ```
 
-###### Output
-
-```html
-<div class="carousel">
-    <img src="https://picsum.photos/640/480" />
-    <div>Carousel slide</div>
-    <img src="https://picsum.photos/640/480" />
-</div>
-```
-
 ### Props.options
 
 > Object of [Flickity options](https://flickity.metafizzy.co/options.html) to pass to carousel
@@ -256,16 +228,9 @@ const slides = [
 ```jsx
 const options = {
     contain: true, 
-    initialIndex: 1
+    initialIndex: 1,
+    draggable: false
 }
 
 <Carousel slides={...} options={options} />
-```
-
-###### Output
-
-```html
-<div class="carousel" data-carousel='{"contain": true, "initialIndex": 1}'>
-    ...
-</div>
 ```

@@ -24,9 +24,11 @@ const Accordion = ({ panels, toggle, ...props }) => {
     );
 }
 
-Accordion.defaultProps = {
-    object: true,
-    toggle: interactions.toggle
-};
+Object.assign(Accordion, interactions, {
+    defaultProps: {
+        object: true,
+        toggle: interactions.toggle
+    }
+});
 
 export default Accordion;

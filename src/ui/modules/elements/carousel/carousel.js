@@ -2,7 +2,8 @@ import Flickity from 'flickity';
 import defaults from './carousel.json';
 
 export default {
-    init
+    init, 
+    Flickity: query => Flickity.data(query)
 }
 
 /**
@@ -25,13 +26,13 @@ export function init(el, carousel) {
         'navigationItem-next': '.flickity-prev-next-button.next'
     };
 
-    carousel = carousel || new Flickity(el, options.Flickity);
-
     // Get options from data-attr (if applicable)
     if (el.hasAttribute('data-carousel')) {
         const dataOptions = JSON.parse(el.getAttribute('data-carousel'));
         options.Flickity = Object.assign(options.Flickity, dataOptions);
     }
+
+    carousel = carousel || new Flickity(el, options.Flickity);
 
     carousel.on('select', () => {
         el.querySelectorAll('.dot').forEach(el => el.classList.add(options.name + '_' + 'bullet'));

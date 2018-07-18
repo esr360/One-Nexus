@@ -7,7 +7,7 @@ import interactions from './carousel.js';
  * @prop {Array} slides
  * @prop {Function} init
  */
-const Carousel = ({ slides, init, ...props }) => {
+const Carousel = ({ slides, init, options, ...props }) => {
     const config = Object.assign(defaults.carousel, window.theme.carousel);
 
     let carousel;
@@ -15,15 +15,17 @@ const Carousel = ({ slides, init, ...props }) => {
     window.addEventListener('load', () => init(ReactDOM.findDOMNode(carousel)), true);
 
     return (
-        <Module name={config.name} ref={node => carousel = node} {...props}>
+        <Module name={config.name} data-carousel={JSON.stringify(options)} ref={node => carousel = node} {...props}>
             { slides.map((slide, index) => <Component name='slide' key={index}>{ slide }</Component>) }
         </Module>
     );
 }
 
-Carousel.defaultProps = {
-    object: true,
-    init: interactions.init
-};
+Object.assign(Carousel, interactions, {
+    defaultProps: {
+        object: true,
+        init: interactions.init
+    }
+});
 
 export default Carousel;

@@ -11,6 +11,7 @@ function dismiss(event) {
 
 const Index = () => (
     <app.layouts.Base {...app.config.app.views}>
+    
         <Accordion panels={panels} />
 
         <Alert close={true}>This is a default alert</Alert>
@@ -19,7 +20,7 @@ const Index = () => (
 
         <Button>Button</Button>
 
-        <Carousel slides={[
+        <Carousel id="jizz" slides={[
             <img src="https://picsum.photos/640/480" />,
             <img src="https://picsum.photos/640/480" />,
             <img src="https://picsum.photos/640/480" />

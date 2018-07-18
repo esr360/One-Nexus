@@ -3,34 +3,15 @@
 * [Overview](#overview)
 * [Configuration](#configuration)
 * [Styles](#styles)
-* [Interactions](#interactions)
 * [Rendering](#rendering)
 
 ## Overview
 
 ### Quick Look
 
-###### React
-
 ```jsx
 <Blockquote content='This is a blockquote' footer='Optional blockquote footer' />
 ```
-
-###### HTML
-
-```html
-<blockquote class="blockquote">
-    <div class="blockquote_content">This is a blockquote</div>
-    <div class="blockquote_footer">Optional blockquote footer</div>
-</blockquote>
-```
-
-### Components
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
-
-* content
-* footer
 
 ### Modifiers
 
@@ -83,7 +64,7 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 
 ```js
 {
-    "app": {
+    "theme": {
         "blockquote": {
             ...
         }
@@ -95,19 +76,26 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
 
-## Interactions
-
-> This module has no interactions
-
 ## Rendering
-
-> If you are *not* using React, simply look to the 'Output' section of any example
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
+###### Using `<Blockquote>` Tag
+
 ```jsx
-<Blockquote content='This is a blockquote' />
+<Blockquote content='This is a blockquote' footer='Optional blockquote footer' />
 ```
+
+###### Custom Build
+
+```jsx
+<Module name="blockquote">
+    <Component name='content'>This is a blockquote</Component>
+    <Component name='footer'>Optional blockquote footer</Component>
+</Module>
+```
+
+###### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [Props.content](#propscontent)
@@ -119,7 +107,7 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 <table>
     <tr>
         <td><b>Type</b></td>
-        <td>JSX</td>
+        <td><a href="https://reactjs.org/docs/glossary.html#elements">React Element</td>
     </tr>
 </table>
 
@@ -127,36 +115,17 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 <Blockquote content={<div>Blockquote content</div>} />
 ```
 
-###### Output
-
-```html
-<blockquote class="blockquote">
-    <div class="blockquote_content">
-        <div>Blockquote content</div>
-    </div>
-</blockquote>
-```
-
 ### Props.footer
 
 <table>
     <tr>
         <td><b>Type</b></td>
-        <td>JSX</td>
+        <td><a href="https://reactjs.org/docs/glossary.html#elements">React Element</td>
     </tr>
 </table>
 
 ```jsx
 <Blockquote content={...} footer='Optional blockquote footer'} />
-```
-
-###### Output
-
-```html
-<blockquote class="blockquote">
-    <div class="blockquote_content">...</div>
-    <div class="blockquote_footer">Optional blockquote footer</div>
-</blockquote>
 ```
 
 ### Blockquote Alerts
@@ -170,13 +139,4 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
     content='Lorem ipsum dolor sit amet' 
     footer='Someone Famous'
 />
-```
-
-###### Output
-
-```html
-<blockquote class="blockquote-callout alert-success">
-    <div class="blockquote_content">Lorem ipsum dolor sit amet</div>
-    <div class="blockquote_footer">Someone Famous</div>
-</blockquote>
 ```

@@ -39,7 +39,7 @@
             <td>Regular alert bar (applied by default)</td>
         </tr>
         <tr>
-            <td><a href="#configuration">box</a></td>
+            <td><a href="#configuration"><code>box</code></a></td>
             <td>Alternative to <code>bar</code> - has more padding</td>
         </tr>
     </tbody>
@@ -151,10 +151,6 @@ Pass custom options to the `alert` object in your theme's config file (e.g. [ui/
 
 > Module interactions are applied by default within the module's `.jsx` file ([learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions))
 
-```js
-import interactions from './alert/alert.js';
-```
-
 * [Dismiss](#dismiss)
 
 > Interactions are defined in [ui/modules/elements/alert/alert.js](../../../modules/elements/alert/alert.js)
@@ -164,11 +160,7 @@ import interactions from './alert/alert.js';
 > Dismiss an alert
 
 ```js
-import { dismiss } from './alert/alert.js';
-```
-
-```js
-dismiss(alert);
+Alert.dismiss(alert);
 ```
 
 <table>
@@ -192,19 +184,19 @@ dismiss(alert);
 
 ```js
 // Dismiss alert with ID 'foo'
-dismiss(document.getElementById('foo'));
+Alert.dismiss(document.getElementById('foo'));
 
 // Dismiss alert with ID 'foo'
-dismiss('#foo');
+Alert.dismiss('#foo');
 
 // Dismiss all alerts with class 'alert'
-dismiss(document.querySelectorAll('.foo'));
+Alert.dismiss(document.querySelectorAll('.foo'));
 
 // Dismiss all alerts with class 'alert'
-dismiss('.alert');
+Alert.dismiss('.alert');
 
 // Dismmiss all alerts
-dismiss();
+Alert.dismiss();
 ```
 
 ## Rendering

@@ -3,30 +3,15 @@
 * [Overview](#overview)
 * [Configuration](#configuration)
 * [Styles](#styles)
-* [Interactions](#interactions)
 * [Rendering](#rendering)
 
 ## Overview
 
 ### Quick Look
 
-###### React
-
 ```jsx
 <Button>Button</Button>
 ```
-
-###### HTML
-
-```html
-<button class="button">Button</button>
-```
-
-### Components
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
-
-* group
 
 ### Modifiers
 
@@ -173,7 +158,7 @@ Pass custom options to the `button` object in your theme's config file (e.g. [ui
 
 ```js
 {
-    "app": {
+    "theme": {
         "button": {
             ...
         }
@@ -181,7 +166,7 @@ Pass custom options to the `button` object in your theme's config file (e.g. [ui
 }
 ```
 
-#### Tip: Combine commonly reused modifiers ([Learn More](#TODO))
+#### Tip: Combine commonly reused modifiers ([Learn More](https://github.com/esr360/Synergy/wiki/Sass-Mixin-%E2%80%93-Extend#overview))
 
 If you are commonly reusing the same combination of modifiers multiple times, you can combine them into a new modifier:
 
@@ -197,8 +182,6 @@ If you are commonly reusing the same combination of modifiers multiple times, yo
 
 ##### Usage
 
-###### React
-
 ```jsx
 <Button primary>Button</Button>
 
@@ -207,15 +190,6 @@ If you are commonly reusing the same combination of modifiers multiple times, yo
 
 // Equivilent to:
 <Button modifiers={['round', 'size-4', 'brand-1']}>Button</Button>
-```
-
-###### HTML
-
-```html
-<button class="button-primary">Button</button>
-
-<!-- Equivilent to: -->
-<button class="button-round-size-4-brand-1">Button</button>
 ```
 
 #### Color Palettes
@@ -228,22 +202,11 @@ This option accepts a list of palettes defined by the [Colors](https://github.co
 
 This will create a modifier for each color in each palette, with the color's key as the modifier name.
 
-###### React
-
 ```jsx
 <Button brand-1>Button</Button>
 <Button grey-3>Button</Button>
 <Button success>Button</Button>
 <Button facebook>Button</Button>
-```
-
-###### HTML
-
-```html
-<button class="button-brand-1">Button</button>
-<button class="button-grey-3">Button</button>
-<button class="button-success">Button</button>
-<button class="button-facebook">Button</button>
 ```
 
 If you only want to create modifiers for specific colors in a certain palette, you can pass the keys like so:
@@ -261,24 +224,18 @@ You can also create new palettes:
 
 ```js
 "palettes": [
-    {"foo": "blue", "bar": "#FF5733"}
+    {
+        "foo": "blue", 
+        "bar": "#FF5733"
+    }
 ]
 ```
 
 Using your new values like so:
 
-###### React
-
 ```jsx
 <Button foo>Button</Button>
 <Button bar>Button</Button>
-```
-
-###### HTML
-
-```html
-<button class="button-foo">Button</button>
-<button class="button-bar">Button</button>
 ```
 
 #### Sizes
@@ -303,29 +260,29 @@ This option accepts an object and will create a modifier for each key using the 
 <Button size-8>Button</Button>
 ```
 
-```html
-<button class="button-size-8">Size 8 Button</button>
-```
-
 By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to the "sizes" option, which will fetch the font sizes from the [Typography module](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/utilities/typography).
 
 ## Styles
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
 
-## Interactions
-
-> This module has no interactions
-
 ## Rendering
 
-> If you are *not* using React, simply look to the 'Output' section of any example
-
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
+
+###### Using `<Button>` Tag
 
 ```jsx
 <Button>Button</Button>
 ```
+
+###### Custom Build
+
+```jsx
+<Module name="button">Button</Module>
+```
+
+###### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 

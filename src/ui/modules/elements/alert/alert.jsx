@@ -53,13 +53,15 @@ const Alert = ({ alert, icon, dismiss, ...props }) => {
     );
 }
 
-Alert.defaultProps = {
-    alert: 'success',
-    bar: true,
-    box: false,
-    object: true,
-    icon: undefined,
-    dismiss: interactions.dismiss
-};
+Object.assign(Alert, interactions, {
+    defaultProps: {
+        alert: 'success',
+        bar: true,
+        box: false,
+        object: true,
+        icon: undefined,
+        dismiss: interactions.dismiss
+    }
+});
 
 export default Alert;
