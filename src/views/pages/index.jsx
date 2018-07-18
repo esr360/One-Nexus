@@ -124,6 +124,37 @@ const Index = () => (
             console.log(event)
         }} />
 
+        <Form fields={[
+            {
+                type: 'text',
+                label: 'Username'
+            },
+            {
+                type: 'password',
+                label: 'Password'
+            }
+        ]} submit='Login' />
+
+        <Module name='form'>
+            <Component name='group' validate>
+                <Component name='label'>Username</Component>
+                <Component name='field'>
+                    <Component name='input' required type='text' id='username' />
+                </Component>
+            </Component>
+
+            <Component name='group' validate>
+                <Component name='label'>Password</Component>
+                <Component name='field'>
+                    <Component name='input' required type='password' id='userPassword' />
+                </Component>
+            </Component>
+
+            <Component name='footer' object>
+                <Component name='submit' Button type='submit' value='Login' tag='input' />
+            </Component>
+        </Module>
+
         <Alert close dismiss={event => dismiss(event.target)}>...</Alert>
 
         <Breadcrumb>

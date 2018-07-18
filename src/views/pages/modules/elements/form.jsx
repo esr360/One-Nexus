@@ -200,10 +200,7 @@ const Forms = () => (
                             ]
                         }
                     },
-                ]} submit={{ text: 'Sign Up', Button: ['size-4', 'brand-2'], onClick: e => {
-                    e.preventDefault();
-                    console.log('foo');
-                } }} />
+                ]} submit={{ text: 'Sign Up', Button: ['size-4', 'brand-2'] }} />
 
                 <Module name='form'>
                     <Component name='group' tag='fieldset'>

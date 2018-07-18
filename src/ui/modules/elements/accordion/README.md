@@ -221,16 +221,14 @@ Accordion.toggle('*', 'close', '*');
 
 ###### Custom Build
 
-> Assumes `toggle` method is in-scope
-
 ```jsx
 <Module name='accordion'>
     <Component name='panel'>
-        <Component name='title' onClick={toggle}>foo</Component>
+        <Component name='title' onClick={Accordion.toggle}>foo</Component>
         <Component name='content'>bar</Component>
     </Component>
     <Component name='panel'>
-        <Component name='title' onClick={toggle}>fizz</Component>
+        <Component name='title' onClick={Accordion.toggle}>fizz</Component>
         <Component name='content'>buzz</Component>
     </Component>
 </Module>

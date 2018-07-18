@@ -163,8 +163,6 @@ Pass custom options to the `carousel` object in your theme's config file (e.g. [
 
 ### Flickity Method Examples
 
-> See the [`Flickity` interaction](#flickity) for more information
-
 ```js
 Carousel.Flickity('#myCarousel').next();
 ```
@@ -183,6 +181,8 @@ Carousel.Flickity(ReactDOM.findDOMNode(myCarousel)).toggleFullscreen();
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
+###### Using `<Carousel>` Tag
+
 ```jsx
 <Carousel slides={[
     <img src="https://picsum.photos/640/480" />,
@@ -190,6 +190,24 @@ Carousel.Flickity(ReactDOM.findDOMNode(myCarousel)).toggleFullscreen();
     <img src="https://picsum.photos/640/480" />
 ]} />
 ```
+
+###### Custom Build
+
+```js
+let carousel;
+
+window.addEventListener('load', () => Carousel.init(ReactDOM.findDOMNode(carousel)), true);
+```
+
+```jsx
+<Module name='carousel' ref={node => carousel = node}>
+    <Component name='slide'><img src="https://picsum.photos/640/480" /></Component>
+    <Component name='slide'><img src="https://picsum.photos/640/480" /></Component>
+    <Component name='slide'><img src="https://picsum.photos/640/480" /></Component>
+</Module>
+```
+
+###### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [Props.slides](#propsslides)

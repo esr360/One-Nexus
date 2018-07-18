@@ -203,16 +203,8 @@ Alert.dismiss();
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
-###### Using `<Alert>` Tag
-
 ```jsx
 <Alert>This is an alert</Alert>
-```
-
-###### Custom Build
-
-```jsx
-<Module name='alert'>This is an alert</Module>
 ```
 
 ###### API

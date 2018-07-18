@@ -3,30 +3,15 @@
 * [Overview](#overview)
 * [Configuration](#configuration)
 * [Styles](#styles)
-* [Interactions](#interactions)
 * [Rendering](#rendering)
 
 ## Overview
 
 ### Quick Look
 
-###### React
-
 ```jsx
 <Heading>Heading</Heading>
 ```
-
-###### HTML
-
-```html
-<h3 class="heading">Heading</h3>
-```
-
-### Components
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
-
-* group
 
 ### Modifiers
 
@@ -106,7 +91,7 @@ Pass custom options to the `heading` object in your theme's config file (e.g. [u
 
 ```js
 {
-    "app": {
+    "theme": {
         "heading": {
             "sizes": {
                 "small": "8px",
@@ -139,29 +124,21 @@ This option accepts an object and will create a modifier for each key using the 
 <Heading size-8>Heading</Heading>
 ```
 
-```html
-<h3 class="heading-size-8">Size 8 Heading</h3>
-```
-
 By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to the "sizes" option, which will fetch the font sizes from the [Typography module](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/utilities/typography).
 
 ## Styles
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
 
-## Interactions
-
-> This module has no interactions
-
 ## Rendering
-
-> If you are *not* using React, simply look to the 'Output' section of any example
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
 ```jsx
 <Heading>Heading</Heading>
 ```
+
+###### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 

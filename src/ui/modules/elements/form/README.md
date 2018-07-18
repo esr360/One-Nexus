@@ -174,7 +174,7 @@ Form.setState(fields);
 }
 ```
 
-> Hide the `Address` fieldset if the `isHomeless` checkbox is checked (technically: show the `Address` fieldset is the `isHomeLess` checkbox is not checked)
+> Hide the `Address` fieldset if the `isHomeless` checkbox is checked
 
 ```js
 Form.setState([
@@ -301,6 +301,8 @@ Form.validate(document.getElementById('passwordReEnter'), [
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
+###### Using `<Form>` Tag
+
 ```jsx
 <Form fields={[
     {
@@ -313,6 +315,32 @@ Form.validate(document.getElementById('passwordReEnter'), [
     }
 ]} submit='Login' />
 ```
+
+###### Custom Build
+
+```jsx
+<Module name='form'>
+    <Component name='group' validate>
+        <Component name='label'>Username</Component>
+        <Component name='field'>
+            <Component name='input' required type='text' id='username' />
+        </Component>
+    </Component>
+
+    <Component name='group' validate>
+        <Component name='label'>Password</Component>
+        <Component name='field'>
+            <Component name='input' required type='password' id='userPassword' />
+        </Component>
+    </Component>
+
+    <Component name='footer' object>
+        <Component name='submit' Button type='submit' value='Login' tag='input' />
+    </Component>
+</Module>
+```
+
+###### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [Props.fields](#propsfields)
@@ -876,7 +904,7 @@ The above is syntactic sugar for the [`<Well>` module](https://github.com/esr360
 
 ##### Sample Output
 
-```js
+```html
 <div class="form_group well-border">
     ...
 </div>

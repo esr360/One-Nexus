@@ -270,16 +270,8 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
-###### Using `<Button>` Tag
-
 ```jsx
 <Button>Button</Button>
-```
-
-###### Custom Build
-
-```jsx
-<Module name="button">Button</Module>
 ```
 
 ###### API
