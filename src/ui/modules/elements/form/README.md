@@ -345,6 +345,8 @@ Form.validate(document.getElementById('passwordReEnter'), [
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [Props.fields](#propsfields)
 * [Props.submit](#propssubmit)
+* [Props.setState](#propssetState)
+* [Props.validate](#propsvalidate)
 
 ### Props.fields
 
@@ -356,6 +358,13 @@ Form.validate(document.getElementById('passwordReEnter'), [
         <td><code>Array</code></td>
     </tr>
 </table>
+
+* [Basic Example](#basic-example)
+* [With Input Icon](#with-input-icon)
+* [With Fieldset Type](#with-fieldset-type)
+* [With Child Fieldset](#with-child-fieldset)
+* [With Validation](#with-validation)
+* [With Display Rules](#with-display-rules)
 
 #### Basic Example
 
@@ -460,6 +469,14 @@ const fields = [
 
 > See the [FieldDraft.validate section](#fielddraftvalidate) for more info
 
+This validation rules for each field get called whenever there is:
+
+* an `onClick` event triggered by form's submit button
+* an `onFocus` event triggered by one of the form's fields
+* an `onKeyUp` event triggered by one of the form's fields
+* an `onChange` event triggered by one of the form's radio, checkbox or select elements
+* the page is loaded/refreshed
+
 ```jsx
 const fields = [
     {
@@ -515,6 +532,12 @@ const fields = [
 #### With Display Rules
 
 > See the [FieldDraft.rules section](#fielddraftrules) for more info
+
+The field rules for each field will be called when:
+
+* a `keyUp` event triggered by one of the form's fields
+* an `onChange` event triggered by one of the form's radio, checkbox or select elements
+* the page is loaded/refreshed
 
 ```jsx
 const fields = [
@@ -579,6 +602,117 @@ The above is syntactic sugar for the [`<Button>` module](https://github.com/esr3
 
     // handle form submission...
 }}} />
+```
+
+### Props.setState
+
+> Overwrite the default `setState` method
+
+This method gets called whenever there is:
+
+* a `keyUp` event triggered by one of the form's fields
+* an `onChange` event triggered by one of the form's radio, checkbox or select elements
+* the page is loaded/refreshed
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>Function</code></td>
+    </tr>
+    <tr>
+        <td><b>Default</b></td>
+        <td><a href="#toggle"><code>interactions.setState</code></a></td>
+    </tr>
+</table>
+
+```jsx
+<Form fields={fields} setState={fields => {
+    // manually handle state of fields
+}} />
+```
+
+You can import and call the setState interaction manually:
+
+```jsx
+import { setState } from '../../form/form.js';
+```
+
+```jsx
+<Form fields={fields} setState={fields => setState(fields)} />
+```
+
+### Props.validate
+
+> Overwrite the default `validate` method
+
+This method gets called whenever there is:
+
+* an `onClick` event triggered by form's submit button
+* an `onFocus` event triggered by one of the form's fields
+* an `onKeyUp` event triggered by one of the form's fields
+* an `onChange` event triggered by one of the form's radio, checkbox or select elements
+* the page is loaded/refreshed
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>Function</code></td>
+    </tr>
+    <tr>
+        <td><b>Default</b></td>
+        <td><a href="#toggle"><code>interactions.validate</code></a></td>
+    </tr>
+</table>
+
+> See the [Field-Draft](#fielddraft) section for more information 
+
+```js
+const fields = [
+    {
+        type: 'text',
+        label: 'Username',
+        id: 'username',
+        validate: [
+            {
+                rule: field => field.value.length > 3,
+                message: 'Must be more than 3 characters'
+            }
+        ]
+    },
+    {
+        type: 'password',
+        label: 'Password',
+        id: 'userPassword',
+        validate: [
+            {
+                rule: field => field.value.length > 8,
+                message: 'Must be more than 8 characters'
+            }
+        ]
+    }
+];
+
+const validate = (field, rules) => {
+    rules.forEach(rule => {
+        if (!rule.rule(document.getElementById(field))) {
+            console.log(rule.message);
+        }
+    });
+}
+```
+
+```jsx
+<Form fields={fields} validate={validate} />
+```
+
+You can import and call the validate interaction manually:
+
+```jsx
+import { validate } from '../../form/form.js';
+```
+
+```jsx
+<Form fields={fields} validate={(field, rules) => validate(field, rules)} />
 ```
 
 ## Representations

@@ -174,7 +174,7 @@ Alert.dismiss(alert);
     <tbody>
         <tr>
             <td>Alert</td>
-            <td><a href="#">Synergy selector</a></td>
+            <td><a href="#TODO">Synergy selector</a></td>
             <td>The alert(s) to dismiss</td>
         </tr>
     </tbody>
@@ -197,6 +197,9 @@ Alert.dismiss('.alert');
 
 // Dismmiss all alerts
 Alert.dismiss();
+
+// Dismiss alert from React Component reference
+Alert.dismiss(ReactDOM.findDOMNode(myAlert));
 ```
 
 ## Rendering

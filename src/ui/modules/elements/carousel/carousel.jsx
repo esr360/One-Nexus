@@ -10,12 +10,8 @@ import interactions from './carousel.js';
 const Carousel = ({ slides, init, options, ...props }) => {
     const config = Object.assign(defaults.carousel, window.theme.carousel);
 
-    let carousel;
-
-    window.addEventListener('load', () => init(ReactDOM.findDOMNode(carousel)), true);
-
     return (
-        <Module name={config.name} data-carousel={JSON.stringify(options)} ref={node => carousel = node} {...props}>
+        <Module name={config.name} data-carousel={JSON.stringify(options)} ref={node => init(ReactDOM.findDOMNode(node))} {...props}>
             { slides.map((slide, index) => <Component name='slide' key={index}>{ slide }</Component>) }
         </Module>
     );

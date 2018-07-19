@@ -24,7 +24,6 @@ const Form = ({ setState, validate, fields, submit, ...props }) => {
                         name='submit'
                         tag='input'
                         type='submit'
-                        className='button'
                         value={typeof submit === 'object' ? submit.text : submit}
 
                         onClick={() => validateFields(fields, validate)}
@@ -205,7 +204,8 @@ Object.assign(Form, interactions, {
     defaultProps: {
         object: true,
         setState: interactions.setState,
-        validate: interactions.validate
+        validate: interactions.validate,
+        submit: { text: 'Submit', Button: 'size-3' }
     }
 });
 

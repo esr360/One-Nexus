@@ -159,7 +159,9 @@ Pass custom options to the `carousel` object in your theme's config file (e.g. [
 
 > Module interactions are applied by default within the module's `.jsx` file ([learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions))
 
-> See the [Flickity methods](https://flickity.metafizzy.co/api.html) for available interactions
+* [Init](#toggle)
+
+> See the [Flickity methods](https://flickity.metafizzy.co/api.html) for other available interactions
 
 ### Flickity Method Examples
 
@@ -175,6 +177,41 @@ Reference a React Component:
 
 ```js
 Carousel.Flickity(ReactDOM.findDOMNode(myCarousel)).toggleFullscreen();
+```
+
+### Init
+
+> Initialise a carousel
+
+```js
+Carousel.init(target);
+```
+
+<table>
+    <thead>
+        <tr>
+            <td><b>Parameter</b></td>
+            <td><b>Type</b></td>
+            <td><b>Description<b/></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>target</code></td>
+            <td><code>HTMLElement</code></td>
+            <td>The target modal to toggle</td>
+        </tr>
+    </tbody>
+</table>
+
+#### Examples
+
+```js
+// Initialise carousel from HTML Element
+Carousel.init(document.getElementById('foo'));
+
+// Initialise carousel from React Component reference
+Carousel.init(ReactDOM.findDOMNode(myCarousel), 'show');
 ```
 
 ## Rendering
@@ -193,14 +230,8 @@ Carousel.Flickity(ReactDOM.findDOMNode(myCarousel)).toggleFullscreen();
 
 ###### Custom Build
 
-```js
-let carousel;
-
-window.addEventListener('load', () => Carousel.init(ReactDOM.findDOMNode(carousel)), true);
-```
-
 ```jsx
-<Module name='carousel' ref={node => carousel = node}>
+<Module name='carousel' ref={node => Carousel.init(ReactDOM.findDOMNode(node))}>
     <Component name='slide'><img src="https://picsum.photos/640/480" /></Component>
     <Component name='slide'><img src="https://picsum.photos/640/480" /></Component>
     <Component name='slide'><img src="https://picsum.photos/640/480" /></Component>
@@ -212,6 +243,7 @@ window.addEventListener('load', () => Carousel.init(ReactDOM.findDOMNode(carouse
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [Props.slides](#propsslides)
 * [Props.options](#propsoptions)
+* [Props.init](#propsinit)
 
 ### Props.slides
 
@@ -252,3 +284,33 @@ const options = {
 
 <Carousel slides={...} options={options} />
 ```
+
+### Props.init
+
+> Overwrite the default `init` method
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>Function</code></td>
+    </tr>
+    <tr>
+        <td><b>Default</b></td>
+        <td><a href="#init"><code>interactions.init</code></a></td>
+    </tr>
+</table>
+
+```jsx
+<Carousel slides={slides} init={node => {
+    // custom toggle event handler logic...
+}} />
+```
+
+You can import and call the init interaction manually:
+
+```jsx
+import { init } from '../../carousel/carousel.js';
+```
+
+```jsx
+<Carousel slides={slides} init={node => init(node)} />

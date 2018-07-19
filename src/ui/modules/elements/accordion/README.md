@@ -187,23 +187,26 @@ Accordion.toggle(target, type, parent);
 #### Examples
 
 ```js
-// Toggle section with ID 'bar'
+// Toggle panel with ID 'bar'
 Accordion.toggle(document.getElementById('bar'));
 
-// Toggle section with ID 'bar'
+// Toggle panel with ID 'bar'
 Accordion.toggle('#bar');
 
-// Toggle section with ID 'bar' on accordion with ID 'foo'
+// Toggle panel with ID 'bar' on accordion with ID 'foo'
 Accordion.toggle('#bar', 'toggle', '#foo');
 
-// Close first section of accordion with ID 'foo'
+// Close first panel of accordion with ID 'foo'
 Accordion.toggle(1, 'close', '#foo');
 
-// Open all sections on all accordions with class 'partyTime'
+// Open all panels on all accordions with class 'partyTime'
 Accordion.toggle('*', 'open', '.partyTime');
 
 // Close all sections on all accordions
 Accordion.toggle('*', 'close', '*');
+
+// Toggle panel from React Component reference
+Accordion.toggle(ReactDOM.findDOMNode(myPanel));
 ```
 
 ## Rendering

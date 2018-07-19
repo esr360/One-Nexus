@@ -28,6 +28,41 @@ const Index = () => (
 
         <Form fields={[
             {
+                type: 'text',
+                label: 'Username',
+                id: 'username1',
+                icon: 'user',
+                required: true,
+                validate: [
+                    {
+                        rule: field => field.value.length > 3,
+                        message: 'Must be more than 3 characters'
+                    }
+                ]
+            },
+            {
+                type: 'password',
+                label: 'Password',
+                icon: 'key',
+                id: 'userPassword1',
+                required: true,
+                validate: [
+                    {
+                        rule: field => field.value.length > 8,
+                        message: 'Must be more than 8 characters'
+                    }
+                ]
+            }
+        ]} validate={(field, rules) => {
+            rules.forEach(rule => {
+                if (!rule.rule(document.getElementById(field))) {
+                    console.log(rule.message);
+                }
+            });
+        }} />
+
+        <Form fields={[
+            {
                 type: 'fieldset',
                 id: 'loginDetails',
                 legend: {
@@ -133,27 +168,15 @@ const Index = () => (
                 type: 'password',
                 label: 'Password'
             }
-        ]} submit='Login' />
+        ]} />
 
-        <Module name='form'>
-            <Component name='group' validate>
-                <Component name='label'>Username</Component>
-                <Component name='field'>
-                    <Component name='input' required type='text' id='username' />
-                </Component>
-            </Component>
-
-            <Component name='group' validate>
-                <Component name='label'>Password</Component>
-                <Component name='field'>
-                    <Component name='input' required type='password' id='userPassword' />
-                </Component>
-            </Component>
-
-            <Component name='footer' object>
-                <Component name='submit' Button type='submit' value='Login' tag='input' />
-            </Component>
-        </Module>
+        <Carousel slides={[
+            <img src="https://picsum.photos/640/480" />,
+            <img src="https://picsum.photos/640/480" />,
+            <img src="https://picsum.photos/640/480" />
+        ]} init={event => {
+            console.log(event);
+        }} />
 
         <Alert close dismiss={event => dismiss(event.target)}>...</Alert>
 
