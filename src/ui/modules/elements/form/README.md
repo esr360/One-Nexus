@@ -469,7 +469,7 @@ const fields = [
 
 > See the [FieldDraft.validate section](#fielddraftvalidate) for more info
 
-This validation rules for each field get called whenever there is:
+The validation rules for each field get called whenever there is:
 
 * an `onClick` event triggered by form's submit button
 * an `onFocus` event triggered by one of the form's fields
