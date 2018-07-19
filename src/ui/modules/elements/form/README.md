@@ -743,42 +743,42 @@ A FieldDraft is a JavaScript Object which represents a Form group.
     <tbody>
         <tr>
             <td><code>type</code></td>
-            <td><code>string</code></td>
+            <td><code>String</code></td>
             <td>The <a href="#fielddrafttype">type</a> of Form group</td>
         </tr>
         <tr>
             <td><code>label</code></td>
-            <td><code>string</code></td>
+            <td><code>String</code></td>
             <td>The text to use for the field's label</td>
         </tr>
         <tr>
             <td><code>legend</code></td>
-            <td><code>string</code> | <code>object</code></td>
+            <td><code>String</code> | <code>object</code></td>
             <td>The group's <a href="#fielddraftlegend">legend</a> if <code>type</code> is <code>'fieldset'</code></td>
         </tr>
         <tr>
             <td><code>icon</code></td>
-            <td><code>string</code></td>
+            <td><code>String</code></td>
             <td><a href="http://fontawesome.io/icons/">FontAwesome</a> icon name</td>
         </tr>
         <tr>
             <td><code>validate</code></td>
-            <td><code>array</code></td>
+            <td><code>Array</code></td>
             <td><a href="#fielddraftvalidate">Validator</a> conditions to determine whether the field should validate</td>
         </tr>
         <tr>
             <td><code>rules</code></td>
-            <td><code>array</code></td>
+            <td><code>Array</code></td>
             <td><a href="#fielddraftrules">Rules</a> to determine whether the field should be visible</td>
         </tr>
         <tr>
             <td><code>fields</code></td>
-            <td><code>array</code></td>
+            <td><code>Array</code></td>
             <td>Array of <a href="#fielddraft">FieldDraft</a>'s to use when <code>type</code> is <code>fieldset</code>, or to pass to the <code>fieldset</code> parameter</td>
         </tr>
         <tr>
             <td><code>fieldset</code></td>
-            <td><code>object</code></td>
+            <td><code>Object</code></td>
             <td>Add a child fieldset (see <a href="#fielddraftfieldset">FieldDraft.fieldset</a>)</td>
         </tr>
         <tr>
@@ -793,22 +793,22 @@ A FieldDraft is a JavaScript Object which represents a Form group.
         </tr>
         <tr>
             <td><code>before</code></td>
-            <td>object</td>
-            <td>HTML/JSX to insert before the group's field(s) (see <a href="#fielddraftbeforefielddraftafter">FieldDraft.before</a>)</td>
+            <td><a href="https://reactjs.org/docs/glossary.html#elements">React Element</a></td>
+            <td>Content to insert before the group's field(s) (see <a href="#fielddraftbeforefielddraftafter">FieldDraft.before</a>)</td>
         </tr>
         <tr>
             <td><code>after</code></td>
-            <td>object</td>
-            <td>HTML/JSX to insert after the group's field(s) (see <a href="#fielddraftbeforefielddraftafter">FieldDraft.after</a>)</td>
+            <td><a href="https://reactjs.org/docs/glossary.html#elements">React Element</a></td>
+            <td>Content to insert after the group's field(s) (see <a href="#fielddraftbeforefielddraftafter">FieldDraft.after</a>)</td>
         </tr>
         <tr>
             <td><code>render</code></td>
-            <td>JSX</td>
-            <td>HTML/JSX to render when <code>type</code> is <code>'HTML'</code></td>
+            <td><a href="https://reactjs.org/docs/glossary.html#elements">React Element</a></td>
+            <td>Content to render when <code>type</code> is <code>'HTML'</code></td>
         </tr>
         <tr>
             <td><code>{HTML Attributes}</code></td>
-            <td><code>*</code></td>
+            <td><code>String</code></td>
             <td>Any valid <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes">HTML attribute</a></td>
         </tr>
     </tbody>
