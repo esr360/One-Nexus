@@ -192,11 +192,6 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
-* [Basic Usage](#TODO)
-* [Static Methods](#TODO)
-* [Raw Module](#TODO)
-* [Props](#TODO)
-
 ###### Using `<Carousel>` Tag
 
 ```jsx
@@ -208,7 +203,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 ###### Custom Build
 
 ```jsx
-<Module name='modal' before={target => <Button onClick={() => UI.modal(target())}>Open Modal</Button>}>
+<Module name='modal' before={target => <Button onClick={() => Modal.toggle(target())}>Open Modal</Button>}>
     <Component name='close' modifiers={['icon']}>×</Component>
     <Component name='content'>
         Modal Content
@@ -219,10 +214,22 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 ### Props
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [defaultProps](#defaultprops)
 * [Props.content](#TODO)
 * [Props.trigger](#TODO)
 * [Props.close](#TODO)
 * [Props.animate](#TODO)
+* [Props.toggle](#TODO)
+
+### defaultProps
+
+```js
+{
+    animate: 'top',
+    close: '×',
+    toggle: interactions.toggle
+}
+```
 
 #### Props.content
 
@@ -230,6 +237,10 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 
 ```jsx
 <Modal trigger={<Button>Open Modal</Button>} content='Modal Content' />
+```
+
+```jsx
+<Modal trigger={<Button>Open Modal</Button>} content={<div>Modal Content</div>} />
 ```
 
 #### Props.trigger
@@ -241,7 +252,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
             <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll">
                 <code>querySelectorall</code>
             </a> ||
-            <a href="https://reactjs.org/docs/glossary.html#elements"><code>React Element</code></a>
+            <a href="https://reactjs.org/docs/glossary.html#elements">React Element</a>
         </td>
     </tr>
     <tr>
@@ -266,26 +277,66 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 
 #### Props.close
 
+> Content for the `close` component
+
 ```jsx
+<Modal trigger={<Button>Modal Trigger</Button>} close='×'>
+    Modal Content
+</Modal>
 ```
 
 ##### Disable Close Icon
 
 ```jsx
+<Modal trigger={<Button>Modal Trigger</Button>} close={false}>
+    Modal Content
+</Modal>
 ```
 
 #### Props.animate
 
+> Available animations are defined by the [module's modifiers](#modifiers)
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>('top'|'bottom'|'left'|'right'|'zoom')</code></td>
+    </tr>
+</table>
+
 ```jsx
+<Modal trigger={<Button>Modal Trigger</Button>} animate='zoom'>
+    Modal Content
+</Modal>
 ```
 
-## HTML Rendering
+#### Props.toggle
 
-```html
-<div data-modal-target="demo_modal">Modal Trigger</div>
+> Overwrite the default `toggle` method
 
-<div id="demo_modal" class="modal-animate-top">
-    <div class="modal_close">×</div>
-    <div class="modal_content">Modal Content</div>
-</div>
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>Function</code></td>
+    </tr>
+    <tr>
+        <td><b>Default</b></td>
+        <td><a href="#toggle"><code>interactions.toggle</code></a></td>
+    </tr>
+</table>
+
+```jsx
+<Modal trigger={...} toggle={node => {
+    // custom toggle event handler logic...
+}} />
+```
+
+You can import and call the toggle interaction manually:
+
+```jsx
+import { toggle } from '../../modal/modal.js';
+```
+
+```jsx
+<Modal trigger={...} toggle={node => toggle(node)} />
 ```

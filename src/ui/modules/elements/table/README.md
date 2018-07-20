@@ -1,86 +1,130 @@
-## Tables
+# One-Nexus Accordion
 
-##### Components
+* [Overview](#overview)
+* [Configuration](#configuration)
+* [Styles](#styles)
+* [Rendering](#rendering)
 
-* _This module has no components_
+## Overview
 
-##### Modifiers
-
-* fixed
+> One-Nexus tables use [`rc-table`](https://github.com/react-component/table)
 
 ### Quick Look
 
-```html
+```js
+const columns = [
+    { title: 'Name', dataIndex: 'name', key:'name' }, 
+    { title: 'Age', dataIndex: 'age', key:'age' }, 
+    { title: 'Address', dataIndex: 'address', key:'address' }, 
+    { title: 'Operations', dataIndex: '', key:'operations', render: () => <a href='#'>Delete</a> }
+];
+
+const data = [
+    { name: 'Jack', age: 28, address: 'some where', key:'1' },
+    { name: 'Rose', age: 36, address: 'some where', key:'2' }
+];
+```
+
+```jsx
+<Table columns={columns} data={data} />
+```
+
+### Modifiers
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
+
 <table class="table">
     <thead>
         <tr>
-            <th>Table Heading</th>
-            ...
+            <th>Modifier</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Table Data Cell</td>
-            ...
+            <td><a href="https://github.com/esr360/One-Nexus/wiki/Global-Modifiers">[...Global modifiers]</a></td>
+            <td>Modifiers that can be applied to any module</td>
         </tr>
-        ...
+        <tr>
+            <td><code>fixed</code></td>
+            <td>Apply a `table-layout` of `fixed` to the table</td>
+        </tr>
     </tbody>
 </table>
+
+## Configuration
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
+
+```json
+{
+    "table": {
+        "name": "table",
+        "target": "table",
+        "width": "100%",
+        "cell-padding": "0.6em"
+    }
+}
 ```
 
-### Options
-
-For default values view the [`tables.json`](tables.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
+> Certain values from the above configuration are excluded from the below table ([learn more](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules#documenting-configuration-properties))
 
 <table class="table">
     <thead>
         <tr>
             <th>Option</th>
             <th>Description</th>
-            <th>Default</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><code>name</code></td>
-            <td>The name used when generating the CSS selector</td>
-        </tr>
-        <tr>
             <td><code>cell-padding</code></td>
-            <td>The padding of table cells</td>
+            <td>The padding for table cells</td>
         </tr>
     </tbody>
 </table>
 
-Pass custom options to the `tables` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `table` object in your theme's config file (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
 
-```json
+```js
 {
-    "app": {
-        "tables": {
-            "cell-padding": "6px 10px"
+    "theme": {
+        "table": {
+            ...
         }
     }
 }
 ```
 
-### Sass
+## Styles
 
-Load the table styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `tables()` mixin:
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
 
-```scss
-@import '../../app';
-@import './config.json';
+> Components aren't used for the table; instead the `tbody`, `tr`, `th` and `td` elements are styled directly
 
-@include tables();
+## Rendering
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
+
+```jsx
+<Table columns={columns} data={data} />
 ```
 
-### Examples
+###### API
 
-#### Fixed/Equal Table Column Widths
+> `columns` and `data` are part of the [rc-table API](https://github.com/react-component/table#api)
 
-```html
-<table class="table-fixed">
-    ...
-</table>
+* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [defaultProps](#defaultprops)
+* [rc-table API](https://github.com/react-component/table#api)
+
+> One-Nexus does not load the `rc-table` CSS so some advanced features may not be compatible
+
+### defaultProps
+
+```js
+{
+    tag: 'div',
+    fixed: true
+}
 ```

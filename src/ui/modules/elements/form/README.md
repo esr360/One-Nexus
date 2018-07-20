@@ -201,7 +201,7 @@ Form.setState([
 > Determine if a field is valid
 
 ```js
-Form.validate(field, validators, callback[isValid, field, message]);
+Form.validate(field, validators, callback(isValid, field, message));
 ```
 
 > [Jump to module's application of this interaction](#with-validation)
@@ -217,7 +217,7 @@ Form.validate(field, validators, callback[isValid, field, message]);
     <tbody>
         <tr>
             <td>Field</td>
-            <td><code>HTMLELment</code> | <code>String</code></td>
+            <td><code>HTMLElement</code> | <code>String</code></td>
             <td>HTMLElement or ID of HTMLElement to validate</td>
         </tr>
         <tr>
@@ -230,18 +230,39 @@ Form.validate(field, validators, callback[isValid, field, message]);
             <td><code>Function</code></td>
             <td>Callback function to run after validation has taken place</td>
         </tr>
+    </tbody>
+</table>
+
+* [`callback`](#TODO])
+* [Example](#TODO)
+
+#### `callback`
+
+```js
+callback(isValid, field, message)
+```
+
+<table>
+    <thead>
         <tr>
-            <td>Callback.isValid</td>
+            <td><b>Parameter</b></td>
+            <td><b>Type</b></td>
+            <td><b>Description<b/></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>isValid</td>
             <td><code>Bool</code></td>
             <td>Boolean value stating whether or not the field is valid</td>
         </tr>
         <tr>
-            <td>Callback.field</td>
+            <td>field</td>
             <td><code>HTMLElement</code></td>
             <td>The HTMLElement of the field</td>
         </tr>
         <tr>
-            <td>Callback.message</td>
+            <td>message</td>
             <td><code>String</code></td>
             <td>The error message for the validator</td>
         </tr>
@@ -343,10 +364,22 @@ Form.validate(document.getElementById('passwordReEnter'), [
 ###### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [defaultProps](#defaultprops)
 * [Props.fields](#propsfields)
 * [Props.submit](#propssubmit)
 * [Props.setState](#propssetState)
 * [Props.validate](#propsvalidate)
+
+### defaultProps
+
+```js
+{
+    object: true,
+    setState: interactions.setState,
+    validate: interactions.validate,
+    submit: { text: 'Submit', Button: 'size-3' }
+}
+```
 
 ### Props.fields
 
@@ -471,11 +504,11 @@ const fields = [
 
 The validation rules for each field get called whenever there is:
 
-* an `onClick` event triggered by form's submit button
+* an `onClick` event triggered by the form's submit button
 * an `onFocus` event triggered by one of the form's fields
 * an `onKeyUp` event triggered by one of the form's fields
 * an `onChange` event triggered by one of the form's radio, checkbox or select elements
-* the page is loaded/refreshed
+* a load or refresh of the page
 
 ```jsx
 const fields = [
@@ -621,7 +654,7 @@ This method gets called whenever there is:
     </tr>
     <tr>
         <td><b>Default</b></td>
-        <td><a href="#toggle"><code>interactions.setState</code></a></td>
+        <td><a href="#setstate"><code>interactions.setState</code></a></td>
     </tr>
 </table>
 
@@ -647,11 +680,11 @@ import { setState } from '../../form/form.js';
 
 This method gets called whenever there is:
 
-* an `onClick` event triggered by form's submit button
+* an `onClick` event triggered by the form's submit button
 * an `onFocus` event triggered by one of the form's fields
 * an `onKeyUp` event triggered by one of the form's fields
 * an `onChange` event triggered by one of the form's radio, checkbox or select elements
-* the page is loaded/refreshed
+* a load or refresh of the page
 
 <table>
     <tr>
@@ -660,7 +693,7 @@ This method gets called whenever there is:
     </tr>
     <tr>
         <td><b>Default</b></td>
-        <td><a href="#toggle"><code>interactions.validate</code></a></td>
+        <td><a href="#validate"><code>interactions.validate</code></a></td>
     </tr>
 </table>
 

@@ -5,6 +5,18 @@ const panels = [
     {title: 'fizz', content: 'buzz'},
 ];
 
+const columns = [
+    { title: 'Name', dataIndex: 'name', key:'name' }, 
+    { title: 'Age', dataIndex: 'age', key:'age' }, 
+    { title: 'Address', dataIndex: 'address', key:'address' }, 
+    { title: 'Operations', dataIndex: '', key:'operations', render: () => <a href='#'>Delete</a> }
+];
+
+const data = [
+    { name: 'Jack', age: 28, address: 'some where', key:'1' },
+    { name: 'Rose', age: 36, address: 'some where', key:'2' }
+];
+
 function dismiss(event) {
     console.log(event);
 }
@@ -25,6 +37,13 @@ const Index = () => (
             <img src="https://picsum.photos/640/480" />,
             <img src="https://picsum.photos/640/480" />
         ]} />
+
+        <Module name='modal' before={target => <Button onClick={() => Modal.toggle(target())}>Open Modal</Button>}>
+            <Component name='close' modifiers={['icon']}>×</Component>
+            <Component name='content'>
+                Modal Content
+            </Component>
+        </Module>
 
         <Form fields={[
             {
@@ -131,12 +150,9 @@ const Index = () => (
 
         <Paragraph>Paragraph</Paragraph>
 
-        <ProgressBar max={100} value={50} />
+        <ProgressBar max={100} value={50} text='Almost there...' />
 
-        <Table content={[{
-            default: 'true',
-            type: 'Bool'
-        }]} />
+        <Table columns={columns} data={data} />
 
         <Tabs tabs={[
             {title: <div><div>foo</div></div>, content: 'bar', active: true},
@@ -144,7 +160,7 @@ const Index = () => (
         ]} />
 
         <Well>
-            <Tooltip inline right>Tooltip</Tooltip>
+            <Tooltip inline right content='tooltip content'>Tooltip</Tooltip>
         </Well>
 
         <Well>Well</Well>

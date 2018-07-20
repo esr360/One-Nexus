@@ -6,7 +6,6 @@
         "border-radius": "0",
         "fill-background": ["#COLOR", "brand", "brand-1"],
         "value-color": ["#COLOR", "greyscale", "white"],
-        "value-size": ["#FONT-SIZE", "size-2"],
-        "group-spacing": "0.5em"
+        "value-size": ["#FONT-SIZE", "size-2"]
     }
 }

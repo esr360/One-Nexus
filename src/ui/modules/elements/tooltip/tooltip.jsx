@@ -5,7 +5,7 @@ import defaults from './tooltip.json';
  *
  * @prop {String} [position = 'top]
  */
-const Tooltip = ({ position, ...props }) => {
+const Tooltip = ({ position, content, ...props }) => {
     const config = Object.assign(defaults.tooltip, window.theme.tooltip);
 
     ['top', 'bottom', 'left', 'right'].forEach($position => {
@@ -17,7 +17,7 @@ const Tooltip = ({ position, ...props }) => {
             {props.children}
 
             <Component name='wrapper' modifiers={[position]}>
-                <Component name='content'>Content</Component>
+                <Component name='content'>{content}</Component>
             </Component>
         </Module>
     );

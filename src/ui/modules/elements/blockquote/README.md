@@ -98,9 +98,18 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 ###### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [defaultProps](#defaultprops)
 * [Props.content](#propscontent)
 * [Props.footer](#propsfooter)
 * [Blockquote Alerts](#blockquote-alerts)
+
+### defaultProps
+
+```js
+{
+    object: true
+}
+```
 
 ### Props.content
 

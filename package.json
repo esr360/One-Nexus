@@ -36,6 +36,7 @@
     "prismjs": "^1.9.0",
     "prop-types": "^15.6.0",
     "pubsub-js": "^1.5.7",
+    "rc-table": "^6.2.5",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-router": "^4.2.0",

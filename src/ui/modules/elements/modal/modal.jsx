@@ -39,10 +39,12 @@ const Modal = ({ toggle, trigger, modifiers = [], close, animate, ...props }) =>
     );
 }
 
-Modal.defaultProps = {
-    animate: 'top',
-    close: '×',
-    toggle: interactions.toggle
-};
+Object.assign(Modal, interactions, {
+    defaultProps: {
+        animate: 'top',
+        close: '×',
+        toggle: interactions.toggle
+    }
+});
 
 export default Modal;

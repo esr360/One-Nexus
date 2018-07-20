@@ -131,7 +131,16 @@ Pass custom options to the `list` object in your theme's config file (e.g. [ui/t
 ###### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [defaultProps](#defaultprops)
 * [Static Item](#TODO)
+
+### defaultProps
+
+```js
+{
+    tag: 'ul'
+}
+```
 
 ### Static Item
 

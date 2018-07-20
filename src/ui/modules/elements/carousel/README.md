@@ -241,9 +241,19 @@ Carousel.init(ReactDOM.findDOMNode(myCarousel), 'show');
 ###### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [defaultProps](#defaultprops)
 * [Props.slides](#propsslides)
 * [Props.options](#propsoptions)
 * [Props.init](#propsinit)
+
+### defaultProps
+
+```js
+{
+    object: true,
+    init: interactions.init
+}
+```
 
 ### Props.slides
 

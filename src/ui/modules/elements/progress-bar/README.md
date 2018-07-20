@@ -1,47 +1,49 @@
-## Progress Bars
+# One-Nexus Progress-Bar
 
-##### Components
+* [Overview](#overview)
+* [Configuration](#configuration)
+* [Styles](#styles)
+* [Rendering](#rendering)
 
-* group
-
-##### Modifiers
-
-* _This module has no modifiers_
+## Overview
 
 ### Quick Look
 
-```html
-<progress class="progress-bar" max="100" data-progress="75%"></progress>
+```jsx
+<ProgressBar max={100} value={50} />
 ```
 
-### Options
+## Configuration
 
-For default values view the [`progress-bars.json`](progress-bars.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
+
+```json
+{
+    "progress-bar": {
+        "name": "progress-bar",
+        "background": ["#COLOR", "opaque", "dark-1"],
+        "height": "1.5em",
+        "border-radius": "0",
+        "fill-background": ["#COLOR", "brand", "brand-1"],
+        "value-color": ["#COLOR", "greyscale", "white"],
+        "value-size": ["#FONT-SIZE", "size-2"]
+    }
+}
+```
+
+> Certain values from the above configuration are excluded from the below table ([learn more](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules#documenting-configuration-properties))
 
 <table class="table">
     <thead>
         <tr>
             <th>Option</th>
             <th>Description</th>
-            <th>Default</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><code>name</code></td>
-            <td>The name used when generating the CSS selector</td>
-        </tr>
-        <tr>
-            <td><code>background</code></td>
-            <td>The background color of the un-filled bar</td>
-        </tr>
-        <tr>
             <td><code>fill-background</code></td>
             <td>The fill color of the progress bar</td>
-        </tr>
-        <tr>
-            <td><code>bar-height</code></td>
-            <td>The height of the progress bar</td>
         </tr>
         <tr>
             <td><code>value-color</code></td>
@@ -51,62 +53,57 @@ For default values view the [`progress-bars.json`](progress-bars.json) file. Sta
             <td><code>value-size</code></td>
             <td>The font size of the progress value text</td>
         </tr>
-        <tr>
-            <td><code>group-spacing</code></td>
-            <td>The vertical spacing between each progress bar within a `group` component</td>
-        </tr>
     </tbody>
 </table>
 
-Pass custom options to the `progress-bars` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+Pass custom options to the `accordion` object in your theme's config file (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
 
-```json
+```js
 {
-    "app": {
-        "progress-bars": {
-            "fill-background": "#27E573"
+    "theme": {
+        "accordion": {
+            ...
         }
     }
 }
 ```
 
-### Sass
+## Styles
 
-Load the progress-bar styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `list()` mixin:
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
 
-```scss
-@import '../../app';
-@import './config.json';
+## Rendering
 
-@include progressBars();
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
+
+```jsx
+<ProgressBar max={100} value={50} text='Almost there...' />
 ```
 
-### JavaScript
+###### API
 
-Call the `progressBar()` function in your theme's main `js` file (e.g. [themes/One-Nexus/One-Nexus.js](../../../themes/One-Nexus/One-Nexus.js)):
+> `max` and `value` are part of the standard [HTML `<progress>` element API](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#Attributes)
+
+* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [defaultProps](#defaultprops)
+* [Props.text](#propstoggle)
+
+### defaultProps
 
 ```js
-import * as app from '../../app';
-import config from './config.json';
-
-app.theme = config.app;
-
-app.progressBar();
+{
+    object: true,
+    tag: 'progress'
+}
 ```
 
-### Examples
+### Props.text
 
-#### Progress Bar Group
+> Text value for the progress-bar
 
-```html
-<div class="progress-bar_group">
-    <div class="heading">Foo</div>
-    <progress class="progress-bar" max="100" data-progress="50%"></progress>
-
-    <div class="heading">Bar</div>
-    <progress class="progress-bar" max="100" data-progress="75%"></progress>
-
-    <div class="heading">Fizz</div>
-    <progress class="progress-bar" max="100" data-progress="25%"></progress>
-</div>
-```
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>String</code></td>
+    </tr>
+</table>

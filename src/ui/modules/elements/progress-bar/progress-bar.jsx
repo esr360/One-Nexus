@@ -3,11 +3,11 @@ import defaults from './progress-bar.json';
 /**
  * Render Paragraph module
  */
-const ProgressBar = props => {
+const ProgressBar = ({ text, ...props }) => {
     const config = Object.assign(defaults['progress-bar'], window.theme['progress-bar']);
 
     return (
-        <Module name={config.name} {...props}>
+        <Module data-progress={text} name={config.name} {...props}>
             {props.children}
         </Module>
     );

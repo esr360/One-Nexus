@@ -240,8 +240,18 @@ Accordion.toggle(ReactDOM.findDOMNode(myPanel));
 ###### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [defaultProps](#defaultprops)
 * [Props.panels](#propspanels)
 * [Props.toggle](#propstoggle)
+
+### defaultProps
+
+```js
+{
+    object: true,
+    toggle: interactions.toggle
+}
+```
 
 ### Props.panels
 
@@ -266,7 +276,7 @@ const panels = [
 <table>
     <tr>
         <td><b>Type</b></td>
-        <td><a href="https://reactjs.org/docs/glossary.html#elements">React Element</a></td>
+        <td>(<code>String</code> | <a href="https://reactjs.org/docs/glossary.html#elements">React Element</a> )</td>
     </tr>
 </table>
 
@@ -275,7 +285,7 @@ const panels = [
 <table>
     <tr>
         <td><b>Type</b></td>
-        <td><a href="https://reactjs.org/docs/glossary.html#elements">React Element</a></td>
+        <td>(<code>String</code> | <a href="https://reactjs.org/docs/glossary.html#elements">React Element</a> )</td>
     </tr>
 </table>
 

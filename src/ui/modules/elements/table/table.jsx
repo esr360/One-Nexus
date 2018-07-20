@@ -1,35 +1,22 @@
 import defaults from './table.json';
+import RCTable from 'rc-table';
 
 /**
  * Render Table module
  *
  * @prop {Array} name
  */
-const Table = ({ content, ...props }) => {
+const Table = ({ columns, data, ...props }) => {
     const config = Object.assign(defaults.table, window.theme.table);
 
     return (
-        <Module name={config.name} {...props}>
-            <thead>
-                <tr>
-                    {content.map((data, index) => (
-                        Object.keys(data).map((heading, index) => <th key={index}>{heading}</th>)
-                    ))}
-                </tr>
-            </thead>
-            <tbody>
-                {content.map((data, index) => (
-                    <tr key={index}>
-                        {Object.values(data).map((cell, index) => <td key={index}>{cell}</td>)}
-                    </tr>
-                ))}      
-            </tbody>  
-        </Module>
+        <Module component={RCTable} componentProps={{ columns, data }} name={config.name} {...props}  />
     );
 }
 
 Table.defaultProps = {
-    tag: 'table'
+    tag: 'div',
+    fixed: true
 };
 
 export default Table;

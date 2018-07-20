@@ -213,12 +213,26 @@ Alert.dismiss(ReactDOM.findDOMNode(myAlert));
 ###### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [defaultProps](#defaultprops)
 * [Props.bar](#propsbar)
 * [Props.box](#propsbox)
 * [Props.alert](#propsalert)
 * [Props.icon](#propsicon)
 * [Props.close](#propsicon)
 * [Props.dismiss](#propsdismiss)
+
+### defaultProps
+
+```js
+{
+    alert: 'success',
+    bar: true,
+    box: false,
+    object: true,
+    icon: undefined,
+    dismiss: interactions.dismiss
+}
+```
 
 ### Props.bar
 
