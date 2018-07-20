@@ -1,7 +1,5 @@
 # One-Nexus Modal
 
-> [Use outside of One-Nexus](#TODO)
-
 * [Overview](#overview)
 * [Configuration](#configuration)
 * [Styles](#styles)
@@ -9,6 +7,8 @@
 * [Rendering](#rendering)
 
 ## Overview
+
+### Quick Look
 
 ```jsx
 <Modal trigger={ <Button>Modal Trigger</Button> }>
