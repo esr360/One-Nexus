@@ -154,7 +154,7 @@ const Index = () => (
 
         <Table columns={columns} data={data} />
 
-        <Tabs tabs={[
+        <Tabs content={{ glue: true }} data={[
             {title: <div><div>foo</div></div>, content: 'bar', active: true},
             {title: 'fizz', content: 'buzz'}
         ]} />

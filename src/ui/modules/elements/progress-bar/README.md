@@ -56,12 +56,12 @@
     </tbody>
 </table>
 
-Pass custom options to the `accordion` object in your theme's config file (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
+Pass custom options to the `progress-bar` object in your theme's config file (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
 
 ```js
 {
     "theme": {
-        "accordion": {
+        "progress-bar": {
             ...
         }
     }

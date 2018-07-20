@@ -12,9 +12,21 @@
 
 ```jsx
 <Accordion panels={[
-    {title: 'foo', content: 'bar'},
-    {title: 'fizz', content: 'buzz'}
+    { title: 'foo', content: 'bar' },
+    { title: 'fizz', content: 'buzz' }
 ]} />
+```
+
+###### Internal Interface [[?]](#TODO)
+
+```jsx
+<Module name='accordion'>
+    <Component name='panel' { active }>
+        <Component name='title' />
+        <Component name='content' />
+    </Component>
+    ...
+</Module>
 ```
 
 ### Modifiers

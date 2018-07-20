@@ -1,4 +1,4 @@
-# One-Nexus Accordion
+# One-Nexus Table
 
 * [Overview](#overview)
 * [Configuration](#configuration)
@@ -47,7 +47,7 @@ const data = [
         </tr>
         <tr>
             <td><code>fixed</code></td>
-            <td>Apply a `table-layout` of `fixed` to the table</td>
+            <td>Apply a <code>table-layout</code> of <code>fixed</code> to the table</td>
         </tr>
     </tbody>
 </table>

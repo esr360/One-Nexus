@@ -22,6 +22,25 @@
 ]} />
 ```
 
+###### Internal Interface [[?]](#TODO)
+
+```jsx
+<Module name='carousel' { hide-pagination, hide-navigation }>
+    <Component name='wrapper'>
+        <Component name='slide' />
+        ...
+    </Component>
+
+    <Component name='navigationItem' { (prev | next) } />
+
+    <Component name='pagination'>
+        <Component name='bullet' />
+        ...
+    </Component>
+    ...
+</Module>
+```
+
 ### Modifiers
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers

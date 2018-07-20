@@ -24,6 +24,27 @@
 ]} submit='Login' />
 ```
 
+###### Internal Interface [[?]](#TODO)
+
+```jsx
+<Module name='form'>
+    <Component name='group' { compound, has-icon, validate { isValid, isInvalid }, isSelect }>
+        <Component name='label' />
+
+        <Component name='field'>
+            <Component name='input' />
+            <Component name='icon' />
+        </Component>
+    </Component>
+
+    ...
+
+    <Component name='footer'>
+        <Component name='submit' />
+    </Component>
+</Module>
+```
+
 ### Modifiers
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers

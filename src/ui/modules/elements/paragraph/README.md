@@ -10,10 +10,7 @@
 ### Quick Look
 
 ```jsx
-<Accordion panels={[
-    {title: 'foo', content: 'bar'},
-    {title: 'fizz', content: 'buzz'}
-]} />
+<Paragraph>Lorem ipsum dolor sit amet...</Paragraph>
 ```
 
 ## Configuration
@@ -28,12 +25,12 @@
 }
 ```
 
-Pass custom options to the `accordion` object in your theme's config file (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
+Pass custom options to the `paragraph` object in your theme's config file (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
 
 ```js
 {
     "theme": {
-        "accordion": {
+        "paragraph": {
             ...
         }
     }

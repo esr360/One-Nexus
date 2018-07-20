@@ -13,6 +13,15 @@
 <Blockquote content='This is a blockquote' footer='Optional blockquote footer' />
 ```
 
+###### Internal Interface [[?]](#TODO)
+
+```jsx
+<Module name='blockquote'>
+    <Component name='content' />
+    <Component name='footer' />
+</Module>
+```
+
 ### Modifiers
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
@@ -89,7 +98,7 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 ###### Custom Build
 
 ```jsx
-<Module name="blockquote">
+<Module name='blockquote'>
     <Component name='content'>This is a blockquote</Component>
     <Component name='footer'>Optional blockquote footer</Component>
 </Module>

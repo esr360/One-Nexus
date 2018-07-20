@@ -13,6 +13,21 @@
 <Button>Button</Button>
 ```
 
+###### Internal Interface [[?]](#TODO)
+
+```jsx
+<Button { block, border, disabled, round, oval, circle, sharp, icon, active } />
+```
+
+###### Internal Interface - Button Group
+
+```jsx
+<Group { pills { round }, stack }>
+    <Button />
+    ...
+</Group>
+```
+
 ### Modifiers
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
