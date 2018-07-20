@@ -220,7 +220,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 </Module>
 ```
 
-### Props
+###### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [defaultProps](#defaultprops)
@@ -240,7 +240,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 }
 ```
 
-#### Props.content
+### Props.content
 
 > Pass content via the `content` prop instead of passing as children
 
@@ -252,7 +252,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 <Modal trigger={<Button>Open Modal</Button>} content={<div>Modal Content</div>} />
 ```
 
-#### Props.trigger
+### Props.trigger
 
 <table>
     <tr>
@@ -284,7 +284,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 </Modal>
 ```
 
-#### Props.close
+### Props.close
 
 > Content for the `close` component
 
@@ -294,7 +294,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 </Modal>
 ```
 
-##### Disable Close Icon
+#### Disable Close Icon
 
 ```jsx
 <Modal trigger={<Button>Modal Trigger</Button>} close={false}>
@@ -302,7 +302,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 </Modal>
 ```
 
-#### Props.animate
+### Props.animate
 
 > Available animations are defined by the [module's modifiers](#modifiers)
 
@@ -319,7 +319,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 </Modal>
 ```
 
-#### Props.toggle
+### Props.toggle
 
 > Overwrite the default `toggle` method
 
