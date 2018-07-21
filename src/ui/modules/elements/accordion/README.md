@@ -288,7 +288,7 @@ const panels = [
 <table>
     <tr>
         <td><b>Type</b></td>
-        <td>(<code>String</code> | <a href="https://reactjs.org/docs/glossary.html#elements">React Element</a> )</td>
+        <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
     </tr>
 </table>
 
@@ -297,7 +297,7 @@ const panels = [
 <table>
     <tr>
         <td><b>Type</b></td>
-        <td>(<code>String</code> | <a href="https://reactjs.org/docs/glossary.html#elements">React Element</a> )</td>
+        <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
     </tr>
 </table>
 
