@@ -17,7 +17,7 @@
 ]} />
 ```
 
-###### Internal Interface
+###### Internal Interface [[?]](#TODO)
 
 ```jsx
 <Module name='tabs'>
@@ -110,3 +110,168 @@ Pass custom options to the `tabs` object in your theme's config file (e.g. [ui/t
 ## Styles
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
+
+## Interactions
+
+> Module interactions are applied by default within the module's `.jsx` file ([learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions))
+
+* [Activate](#activate)
+
+> Interactions are defined in [ui/modules/elements/accordion/accordion.js](../../../modules/elements/accordion/accordion.js)
+
+### Activate
+
+> Activate (show) a tab of an accordion
+
+```js
+Tabs.activate(event);
+```
+
+<table>
+    <thead>
+        <tr>
+            <td><b>Parameter</b></td>
+            <td><b>Type</b></td>
+            <td><b>Description<b/></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>event</code></td>
+            <td><code>Object</code></td>
+            <td>The click event of the tab navigation item</td>
+        </tr>
+    </tbody>
+</table>
+
+## Rendering
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
+
+* [Examples](#examples)
+* [API](#api)
+
+### Examples
+
+* [Using `<Tabs>` Tag](#using-tabs-tag)
+* [Custom Build](#custom-build)
+* [Tabs With Glued Content](#tabs-with-glued-content)
+* [Tabs With Center Aligned Navigation](#tabs-with-center-aligned-navigation)
+* [Tabs With Full-Width Navigation](#tabs-with-full-width-navigation)
+
+#### Using `<Tabs>` Tag
+
+```jsx
+<Tabs data={[
+    { title: 'foo', content: 'bar', active: true },
+    { title: 'fizz', content: 'buzz' }
+]} />
+```
+
+#### Custom Build
+
+```jsx
+<Module name='tabs'>
+    <Component name='nav'>
+        <SubComponent name='item' onClick={Tabs.activate} active>foo</SubComponent>
+        <SubComponent name='item' onClick={Tabs.activate}>fizz</SubComponent>
+    </Component>
+
+    <Component name='content'>
+        <Component name='item' active>bar</Component>
+        <Component name='item'>buzz</Component>
+    </Component>
+</Module>
+```
+
+#### Tabs With Glued Content
+
+```jsx
+<Tabs content={{ glue: true }} data={[
+    { title: 'foo', content: 'bar', active: true },
+    { title: 'fizz', content: 'buzz' }
+]} />
+```
+
+#### Tabs With Center Aligned Navigation
+
+```jsx
+<Tabs nav={{ center: true }} data={[
+    { title: 'foo', content: 'bar', active: true },
+    { title: 'fizz', content: 'buzz' }
+]} />
+```
+
+#### Tabs With Full-Width Navigation
+
+```jsx
+<Tabs nav={{ full: true }} data={[
+    { title: 'foo', content: 'bar', active: true },
+    { title: 'fizz', content: 'buzz' }
+]} />
+```
+
+### API
+
+* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [defaultProps](#defaultprops)
+* [Props.data](#propspanels)
+* [Props.activate](#propstoggle)
+
+#### defaultProps
+
+```js
+{
+        object: true,
+        activate: interactions.activate
+}
+```
+
+#### Props.data
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>Array</code></td>
+    </tr>
+</table>
+
+```jsx
+const data = [
+    { title: 'foo', content: 'bar', active: true },
+    { title: 'fizz', content: 'buzz' }
+];
+
+<Tabs data={panels} />
+```
+
+#### Props.activate
+
+> Overwrite the default `activate` method
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>Function</code></td>
+    </tr>
+    <tr>
+        <td><b>Default</b></td>
+        <td><a href="#toggle"><code>interactions.activate</code></a></td>
+    </tr>
+</table>
+
+```jsx
+<Tabs data={data} activate={event => {
+    // custom event handler logic...
+}} />
+```
+
+You can import and call the activate interaction manually:
+
+```jsx
+import { activate } from '../../tabs/tabs.js';
+```
+
+```jsx
+<Accordion data={data} activte={event => activte(event.target)} />
+```

@@ -71,15 +71,21 @@ Pass custom options to the `image` object in your theme's config file (e.g. [ui/
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
+* [Examples](#examples)
+* [API](#api)
+
+### Examples
+
+* [Using `<Image>` Tag](#using-image-tag)
+* [Custom Build](#custom-build)
+
+#### Using `<Image>` Tag
+
 ```jsx
 <Image src='https://picsum.photos/640/480' />
 ```
 
-###### API
-
-* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-
-### Center-XY
+#### Center-XY
 
 ```jsx
 <Image center-xy src='https://picsum.photos/640/480' />
@@ -92,3 +98,7 @@ Pass custom options to the `image` object in your theme's config file (e.g. [ui/
     <img class="image_figure" src="https://picsum.photos/640/480" alt="" />
 </div>
 ```
+
+### API
+
+* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)

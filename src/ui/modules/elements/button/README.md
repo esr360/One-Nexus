@@ -285,24 +285,20 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
+* [Examples](#examples)
+* [API](#api)
+
+### Examples
+
+* [Using `<Button>` Tag](#using-button-tag)
+
+#### Using `<Button>` Tag
+
 ```jsx
 <Button>Button</Button>
 ```
 
-###### API
-
-* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [defaultProps](#defaultprops)
-
-### defaultProps
-
-```js
-{
-    fluid: true
-}
-```
-
-### Button Group
+#### Button Group
 
 ```jsx
 <Group>
@@ -312,7 +308,7 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 </Group>
 ```
 
-##### Output
+###### Output
 
 ```html
 <div class="button_group">
@@ -322,7 +318,7 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 </Group>
 ```
 
-#### Pills Group
+##### Pills Group
 
 ```jsx
 <Group pills>
@@ -332,7 +328,7 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 </Group>
 ```
 
-##### Output
+###### Output
 
 ```html
 <div class="button_group-pills">
@@ -342,7 +338,7 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 </div>
 ```
 
-#### Round Pills Group
+##### Round Pills Group
 
 ```jsx
 <Group round pills>
@@ -352,7 +348,7 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 </Group>
 ```
 
-##### Output
+###### Output
 
 ```html
 <div class="button_group-pills-round">
@@ -360,4 +356,17 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
     <button class="button">Button</button>
     <button class="button">Button</button>
 </div>
+```
+
+### API
+
+* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [defaultProps](#defaultprops)
+
+#### defaultProps
+
+```js
+{
+    fluid: true
+}
 ```

@@ -45,16 +45,25 @@ Pass custom options to the `paragraph` object in your theme's config file (e.g. 
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
+* [Examples](#examples)
+* [API](#api)
+
+### Examples
+
+* [Using `<Paragraph>` Tag](#using-paragraph-tag)
+
+#### Using `<Paragraph>` Tag
+
 ```jsx
 <Paragraph>Lorem ipsum dolor sit amet...</Paragraph>
 ```
 
-###### API
+### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [defaultProps](#defaultprops)
 
-### defaultProps
+#### defaultProps
 
 ```js
 {

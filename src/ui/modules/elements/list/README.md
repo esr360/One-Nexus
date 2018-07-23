@@ -120,6 +120,15 @@ Pass custom options to the `list` object in your theme's config file (e.g. [ui/t
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
+* [Examples](#examples)
+* [API](#api)
+
+### Examples
+
+* [Using `<List>` Tag](#using-list-tag)
+
+#### Using `<List>` Tag
+
 ```jsx
 <List reset inline>
     <List.Item>List item</List.Item>
@@ -128,13 +137,13 @@ Pass custom options to the `list` object in your theme's config file (e.g. [ui/t
 </List>
 ```
 
-###### API
+### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [defaultProps](#defaultprops)
 * [Static Item](#TODO)
 
-### defaultProps
+#### defaultProps
 
 ```js
 {
@@ -142,7 +151,7 @@ Pass custom options to the `list` object in your theme's config file (e.g. [ui/t
 }
 ```
 
-### Static Item
+#### Static Item
 
 > Used for creating [items in a list](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li)
 

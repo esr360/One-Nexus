@@ -26,9 +26,11 @@ const Tabs = ({ data, activate, ...props }) => {
     );
 }
 
-Tabs.defaultProps = {
-    object: true,
-    activate: interactions.activate
-};
+Object.assign(Tabs, interactions, {
+    defaultProps: {
+        object: true,
+        activate: interactions.activate
+    }
+});
 
 export default Tabs;

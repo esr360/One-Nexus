@@ -237,7 +237,15 @@ Carousel.init(ReactDOM.findDOMNode(myCarousel), 'show');
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
-###### Using `<Carousel>` Tag
+* [Examples](#examples)
+* [API](#api)
+
+### Examples
+
+* [Using `<Carousel>` Tag](#using-carousel-tag)
+* [Custom Build](#custom-build)
+
+#### Using `<Carousel>` Tag
 
 ```jsx
 <Carousel slides={[
@@ -247,7 +255,7 @@ Carousel.init(ReactDOM.findDOMNode(myCarousel), 'show');
 ]} />
 ```
 
-###### Custom Build
+#### Custom Build
 
 ```jsx
 <Module name='carousel' ref={node => Carousel.init(ReactDOM.findDOMNode(node))}>
@@ -257,7 +265,7 @@ Carousel.init(ReactDOM.findDOMNode(myCarousel), 'show');
 </Module>
 ```
 
-###### API
+### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [defaultProps](#defaultprops)
@@ -265,7 +273,7 @@ Carousel.init(ReactDOM.findDOMNode(myCarousel), 'show');
 * [Props.options](#propsoptions)
 * [Props.init](#propsinit)
 
-### defaultProps
+#### defaultProps
 
 ```js
 {
@@ -274,7 +282,7 @@ Carousel.init(ReactDOM.findDOMNode(myCarousel), 'show');
 }
 ```
 
-### Props.slides
+#### Props.slides
 
 <table>
     <tr>
@@ -293,7 +301,7 @@ const slides = [
 <Carousel slides={slides} />
 ```
 
-### Props.options
+#### Props.options
 
 > Object of [Flickity options](https://flickity.metafizzy.co/options.html) to pass to carousel
 
@@ -314,7 +322,7 @@ const options = {
 <Carousel slides={...} options={options} />
 ```
 
-### Props.init
+#### Props.init
 
 > Overwrite the default `init` method
 

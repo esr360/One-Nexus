@@ -159,6 +159,11 @@ const Index = () => (
             {title: 'fizz', content: 'buzz'}
         ]} />
 
+        <Tabs nav={{ full: true }} data={[
+            {title: 'foo', content: 'bar', active: true},
+            {title: 'fizz', content: 'buzz'}
+        ]} />
+
         <Well>
             <Tooltip inline right content='tooltip content'>Tooltip</Tooltip>
         </Well>

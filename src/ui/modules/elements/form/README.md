@@ -343,7 +343,15 @@ Form.validate(document.getElementById('passwordReEnter'), [
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
-###### Using `<Form>` Tag
+* [Examples](#examples)
+* [API](#api)
+
+### Examples
+
+* [Using `<Form>` Tag](#using-form-tag)
+* [Custom Build](#custom-build)
+
+#### Using `<Form>` Tag
 
 ```jsx
 <Form fields={[
@@ -358,7 +366,7 @@ Form.validate(document.getElementById('passwordReEnter'), [
 ]} submit='Login' />
 ```
 
-###### Custom Build
+#### Custom Build
 
 ```jsx
 <Module name='form'>
@@ -382,7 +390,7 @@ Form.validate(document.getElementById('passwordReEnter'), [
 </Module>
 ```
 
-###### API
+### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [defaultProps](#defaultprops)
@@ -391,7 +399,7 @@ Form.validate(document.getElementById('passwordReEnter'), [
 * [Props.setState](#propssetState)
 * [Props.validate](#propsvalidate)
 
-### defaultProps
+#### defaultProps
 
 ```js
 {
@@ -402,7 +410,7 @@ Form.validate(document.getElementById('passwordReEnter'), [
 }
 ```
 
-### Props.fields
+#### Props.fields
 
 > Array of [FieldDraft](#fielddraft)'s to render
 
@@ -420,7 +428,7 @@ Form.validate(document.getElementById('passwordReEnter'), [
 * [With Validation](#with-validation)
 * [With Display Rules](#with-display-rules)
 
-#### Basic Example
+##### Basic Example
 
 ```jsx
 const fields = [
@@ -437,7 +445,7 @@ const fields = [
 <Form fields={fields} />
 ```
 
-#### With Input Icon
+##### With Input Icon
 
 > `icon` value should correspond to a [FontAwesome icon name](http://fontawesome.io/icons/)
 
@@ -458,7 +466,7 @@ const fields = [
 <Form fields={fields} />
 ```
 
-#### With Fieldset Type
+##### With Fieldset Type
 
 ```jsx
 const fields = [
@@ -485,7 +493,7 @@ const fields = [
 <Form fields={fields} />
 ```
 
-#### With Child Fieldset
+##### With Child Fieldset
 
 ```jsx
 const fields = [
@@ -519,7 +527,7 @@ const fields = [
 <Form fields={fields} />
 ```
 
-#### With Validation
+##### With Validation
 
 > See the [FieldDraft.validate section](#fielddraftvalidate) for more info
 
@@ -583,7 +591,7 @@ const fields = [
 <Form fields={fields} />
 ```
 
-#### With Display Rules
+##### With Display Rules
 
 > See the [FieldDraft.rules section](#fielddraftrules) for more info
 
@@ -617,7 +625,7 @@ const fields = [
 <Form fields={fields} />
 ```
 
-### Props.submit
+#### Props.submit
 
 > To suppress the submit button's render, set the value to `false`
 
@@ -636,7 +644,7 @@ const fields = [
 <Form fields={...} submit='Sign Up' />
 ```
 
-#### With Custom Attributes
+##### With Custom Attributes
 
 > Properties will be passed as `props` to the [`<Component>`](#TODO) which renders the submit element
 
@@ -658,7 +666,7 @@ The above is syntactic sugar for the [`<Button>` module](https://github.com/esr3
 }}} />
 ```
 
-### Props.setState
+#### Props.setState
 
 > Overwrite the default `setState` method
 
@@ -695,7 +703,7 @@ import { setState } from '../../form/form.js';
 <Form fields={fields} setState={fields => setState(fields)} />
 ```
 
-### Props.validate
+#### Props.validate
 
 > Overwrite the default `validate` method
 
@@ -847,17 +855,17 @@ A FieldDraft is a JavaScript Object which represents a Form group.
         </tr>
         <tr>
             <td><code>before</code></td>
-            <td><a href="https://reactjs.org/docs/glossary.html#elements">React Element</a></td>
+            <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
             <td>Content to insert before the group's field(s) (see <a href="#fielddraftbeforefielddraftafter">FieldDraft.before</a>)</td>
         </tr>
         <tr>
             <td><code>after</code></td>
-            <td><a href="https://reactjs.org/docs/glossary.html#elements">React Element</a></td>
+            <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
             <td>Content to insert after the group's field(s) (see <a href="#fielddraftbeforefielddraftafter">FieldDraft.after</a>)</td>
         </tr>
         <tr>
             <td><code>render</code></td>
-            <td><a href="https://reactjs.org/docs/glossary.html#elements">React Element</a></td>
+            <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
             <td>Content to render when <code>type</code> is <code>'HTML'</code></td>
         </tr>
         <tr>

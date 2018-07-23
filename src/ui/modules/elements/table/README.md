@@ -106,11 +106,20 @@ Pass custom options to the `table` object in your theme's config file (e.g. [ui/
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
+* [Examples](#examples)
+* [API](#api)
+
+### Examples
+
+* [Using `<Table>` Tag](#using-table-tag)
+
+#### Using `<Table>` Tag
+
 ```jsx
 <Table columns={columns} data={data} />
 ```
 
-###### API
+### API
 
 > `columns` and `data` are part of the [rc-table API](https://github.com/react-component/table#api)
 
@@ -120,7 +129,7 @@ Pass custom options to the `table` object in your theme's config file (e.g. [ui/
 
 > One-Nexus does not load the `rc-table` CSS so some advanced features may not be compatible
 
-### defaultProps
+#### defaultProps
 
 ```js
 {

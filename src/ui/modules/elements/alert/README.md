@@ -206,11 +206,20 @@ Alert.dismiss(ReactDOM.findDOMNode(myAlert));
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
+* [Examples](#examples)
+* [API](#api)
+
+### Examples
+
+* [Using `<Alert>` Tag](#using-tabs-tag)
+
+#### Using `<Alert>` Tag
+
 ```jsx
 <Alert>This is an alert</Alert>
 ```
 
-###### API
+### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [defaultProps](#defaultprops)
@@ -221,7 +230,7 @@ Alert.dismiss(ReactDOM.findDOMNode(myAlert));
 * [Props.close](#propsicon)
 * [Props.dismiss](#propsdismiss)
 
-### defaultProps
+#### defaultProps
 
 ```js
 {
@@ -234,7 +243,7 @@ Alert.dismiss(ReactDOM.findDOMNode(myAlert));
 }
 ```
 
-### Props.bar
+#### Props.bar
 
 > Set to add `bar` modifier
 
@@ -253,7 +262,7 @@ Alert.dismiss(ReactDOM.findDOMNode(myAlert));
 <Alert bar>This is an alert</Alert>
 ```
 
-### Props.box
+#### Props.box
 
 > Set to add `box` modifier
 
@@ -274,7 +283,7 @@ Alert.dismiss(ReactDOM.findDOMNode(myAlert));
 <Alert box>This is an alert</Alert>
 ```
 
-### Props.alert
+#### Props.alert
 
 > The type/color of alert
 
@@ -295,7 +304,7 @@ Alert.dismiss(ReactDOM.findDOMNode(myAlert));
 <Alert alert='success'>This is an alert</Alert>
 ```
 
-### Props.icon
+#### Props.icon
 
 > Add an icon to the alert
 
@@ -316,13 +325,13 @@ Alert.dismiss(ReactDOM.findDOMNode(myAlert));
 <Alert icon='exclamation-triangle'>This is an alert</Alert>
 ```
 
-#### Right-Aligned Icon
+##### Right-Aligned Icon
 
 ```jsx
 <Alert icon={['exclamation-triangle', 'right']}>This is an alert</Alert>
 ```
 
-#### Props.close
+##### Props.close
 
 > Add a close icon which calls the [`dismiss`](#dismiss) interaction when clicked
 
@@ -343,7 +352,7 @@ Alert.dismiss(ReactDOM.findDOMNode(myAlert));
 <Alert close>This is an alert</Alert>
 ```
 
-### Props.dismiss
+#### Props.dismiss
 
 > Overwrite the default `dismiss` method
 

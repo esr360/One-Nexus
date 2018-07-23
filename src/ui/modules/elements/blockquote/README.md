@@ -89,13 +89,21 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
-###### Using `<Blockquote>` Tag
+* [Examples](#examples)
+* [API](#api)
+
+### Examples
+
+* [Using `<Blockquote>` Tag](#using-blockquote-tag)
+* [Custom Build](#custom-build)
+
+#### Using `<Blockquote>` Tag
 
 ```jsx
 <Blockquote content='This is a blockquote' footer='Optional blockquote footer' />
 ```
 
-###### Custom Build
+#### Custom Build
 
 ```jsx
 <Module name='blockquote'>
@@ -104,7 +112,7 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 </Module>
 ```
 
-###### API
+### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [defaultProps](#defaultprops)
@@ -112,7 +120,7 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 * [Props.footer](#propsfooter)
 * [Blockquote Alerts](#blockquote-alerts)
 
-### defaultProps
+#### defaultProps
 
 ```js
 {
@@ -120,12 +128,12 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 }
 ```
 
-### Props.content
+#### Props.content
 
 <table>
     <tr>
         <td><b>Type</b></td>
-        <td><a href="https://reactjs.org/docs/glossary.html#elements">React Element</td>
+        <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
     </tr>
 </table>
 
@@ -133,12 +141,12 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 <Blockquote content={<div>Blockquote content</div>} />
 ```
 
-### Props.footer
+#### Props.footer
 
 <table>
     <tr>
         <td><b>Type</b></td>
-        <td><a href="https://reactjs.org/docs/glossary.html#elements">React Element</td>
+        <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
     </tr>
 </table>
 
@@ -146,7 +154,7 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 <Blockquote content={...} footer='Optional blockquote footer'} />
 ```
 
-### Blockquote Alerts
+#### Blockquote Alerts
 
 > The Blockquote module works well in combination with the [Alert](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/elements/alert) module ([learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#combining-modules) about combining modules)
 

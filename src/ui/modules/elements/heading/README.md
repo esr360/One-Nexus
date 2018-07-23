@@ -134,25 +134,20 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
+* [Examples](#examples)
+* [API](#api)
+
+### Examples
+
+* [Using `<Heading>` Tag](#using-heading-tag)
+
+#### Using `<Heading>` Tag
+
 ```jsx
 <Heading>Heading</Heading>
 ```
 
-###### API
-
-* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [defaultProps](#defaultprops)
-
-### defaultProps
-
-```js
-{
-    fluid: true,
-    heading: 3
-}
-```
-
-### Heading Group
+#### Heading Group
 
 ```jsx
 <Group>
@@ -170,7 +165,7 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 </Group>
 ```
 
-### Flushed Headings (no margin)
+#### Flushed Headings (no margin)
 
 ```css
 margin-top: 0 !important;
@@ -185,4 +180,18 @@ margin-bottom: 0 !important;
 
 ```html
 <h3 class="heading-flush">Flushed Heading</h3>
+```
+
+### API
+
+* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [defaultProps](#defaultprops)
+
+#### defaultProps
+
+```js
+{
+    fluid: true,
+    heading: 3
+}
 ```

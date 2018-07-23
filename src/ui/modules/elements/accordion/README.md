@@ -225,7 +225,15 @@ Accordion.toggle(ReactDOM.findDOMNode(myPanel));
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
-###### Using `<Accordion>` Tag
+* [Examples](#examples)
+* [API](#api)
+
+### Examples
+
+* [Using `<Accordion>` Tag](#using-accordion-tag)
+* [Custom Build](#custom-build)
+
+#### Using `<Accordion>` Tag
 
 ```jsx
 <Accordion panels={[
@@ -234,7 +242,7 @@ Accordion.toggle(ReactDOM.findDOMNode(myPanel));
 ]} />
 ```
 
-###### Custom Build
+#### Custom Build
 
 ```jsx
 <Module name='accordion'>
@@ -249,14 +257,14 @@ Accordion.toggle(ReactDOM.findDOMNode(myPanel));
 </Module>
 ```
 
-###### API
+### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [defaultProps](#defaultprops)
 * [Props.panels](#propspanels)
 * [Props.toggle](#propstoggle)
 
-### defaultProps
+#### defaultProps
 
 ```js
 {
@@ -265,7 +273,7 @@ Accordion.toggle(ReactDOM.findDOMNode(myPanel));
 }
 ```
 
-### Props.panels
+#### Props.panels
 
 <table>
     <tr>
@@ -283,7 +291,7 @@ const panels = [
 <Accordion panels={panels} />
 ```
 
-#### Panel.title
+##### Panel.title
 
 <table>
     <tr>
@@ -292,7 +300,7 @@ const panels = [
     </tr>
 </table>
 
-#### Panel.content
+##### Panel.content
 
 <table>
     <tr>
@@ -321,7 +329,7 @@ Accordions can be nested:
 ]} />
 ```
 
-#### Panel.active
+##### Panel.active
 
 > Set panel(s) to be active (open) by default
 
@@ -339,7 +347,7 @@ Accordions can be nested:
 ]} />
 ```
 
-### Props.toggle
+#### Props.toggle
 
 > Overwrite the default `toggle` method
 

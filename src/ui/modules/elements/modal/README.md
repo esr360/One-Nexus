@@ -172,7 +172,7 @@ Modal.toggle(target, operator);
         </tr>
         <tr>
             <td><code>[operator]<code></td>
-            <td>('show'|'hide'|'toggle')</td>
+            <td><code>('show'|'hide'|'toggle')<code></td>
             <td>The toggle operator (defaults to 'toggle')</td>
         </tr>
     </tbody>
@@ -201,7 +201,15 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
-###### Using `<Carousel>` Tag
+* [Examples](#examples)
+* [API](#api)
+
+### Examples
+
+* [Using `<Modal>` Tag](#using-modal-tag)
+* [Custom Build](#custom-build)
+
+#### Using `<Modal>` Tag
 
 ```jsx
 <Modal trigger={<Button>Open Modal</Button>}>
@@ -209,7 +217,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 </Modal>
 ```
 
-###### Custom Build
+#### Custom Build
 
 ```jsx
 <Module name='modal' before={target => <Button onClick={() => Modal.toggle(target())}>Open Modal</Button>}>
@@ -220,7 +228,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 </Module>
 ```
 
-###### API
+### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
 * [defaultProps](#defaultprops)
@@ -230,7 +238,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 * [Props.animate](#TODO)
 * [Props.toggle](#TODO)
 
-### defaultProps
+#### defaultProps
 
 ```js
 {
@@ -240,7 +248,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 }
 ```
 
-### Props.content
+#### Props.content
 
 > Pass content via the `content` prop instead of passing as children
 
@@ -252,21 +260,16 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 <Modal trigger={<Button>Open Modal</Button>} content={<div>Modal Content</div>} />
 ```
 
-### Props.trigger
+#### Props.trigger
 
 <table>
     <tr>
         <td><b>Type</b></td>
-        <td>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll">
-                <code>querySelectorall</code>
-            </a> ||
-            <a href="https://reactjs.org/docs/glossary.html#elements">React Element</a>
-        </td>
+        <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
     </tr>
     <tr>
         <td><b>Description</b></td>
-        <td>The element(s) to open the modal when clicked</td>
+        <td>The element(s) to open the modal when clicked (CSS selector or React Element)</td>
     </tr>
 </table>
 
@@ -284,7 +287,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 </Modal>
 ```
 
-### Props.close
+#### Props.close
 
 > Content for the `close` component
 
@@ -294,7 +297,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 </Modal>
 ```
 
-#### Disable Close Icon
+##### Disable Close Icon
 
 ```jsx
 <Modal trigger={<Button>Modal Trigger</Button>} close={false}>
@@ -302,7 +305,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 </Modal>
 ```
 
-### Props.animate
+#### Props.animate
 
 > Available animations are defined by the [module's modifiers](#modifiers)
 
@@ -319,7 +322,7 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 </Modal>
 ```
 
-### Props.toggle
+#### Props.toggle
 
 > Overwrite the default `toggle` method
 
