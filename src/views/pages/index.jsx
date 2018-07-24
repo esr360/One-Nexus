@@ -176,7 +176,7 @@ const Index = () => (
 
         <Billboard>Billboard</Billboard>
 
-        <Accordion panels={panels} toggle={event => {
+        <Accordion foo panels={panels} toggle={event => {
             console.log(event)
         }} />
 
