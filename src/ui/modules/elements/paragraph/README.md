@@ -50,9 +50,9 @@ Pass custom options to the `paragraph` object in your theme's config file (e.g. 
 
 ### Examples
 
-* [Using `<Paragraph>` Tag](#using-paragraph-tag)
+* [Basic Example](#basic-example)
 
-#### Using `<Paragraph>` Tag
+#### Basic Example
 
 ```jsx
 <Paragraph>Lorem ipsum dolor sit amet...</Paragraph>
@@ -61,9 +61,9 @@ Pass custom options to the `paragraph` object in your theme's config file (e.g. 
 ### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [defaultProps](#defaultprops)
+* [DefaultProps](#defaultprops)
 
-#### defaultProps
+#### DefaultProps
 
 ```js
 {

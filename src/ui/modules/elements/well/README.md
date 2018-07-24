@@ -1,72 +1,88 @@
-## Wells
+# One-Nexus Well
 
-##### Components
+* [Overview](#overview)
+* [Configuration](#configuration)
+* [Styles](#styles)
+* [Rendering](#rendering)
 
-* content
-
-##### Modifiers
-
-* dark
+## Overview
 
 ### Quick Look
 
-```html
-<div class="well">
-    <div class="well_content">...</div>
-</div>
+```jsx
+<Well>Well</Well>
 ```
 
-### Options
+## Configuration
 
-For default values view the [`wells.json`](wells.json) file. Standard CSS properties for modules, components and modifiers are not documented below - [learn more](https://github.com/esr360/Synergy/wiki/Configuring-a-Module#pass-custom-css-to-modules).
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Description</th>
-            <th>Default</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>name</code></td>
-            <td>The name used when generating the CSS selector</td>
-        </tr>
-    </tbody>
-</table>
-
-Pass custom options to the `wells` object in your theme's config file (e.g. [themes/One-Nexus/config.json](../../../themes/One-Nexus/config.json)):
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
 
 ```json
 {
-    "app": {
-        "wells": {
-            "dark": {
-                "background": "color(brand, brand-2)"
-            }
+    "well": {
+        "name": "well",
+        "background": "white",
+        "border": "1px solid",
+        "border-color": ["#COLOR", "opaque", "dark-2"],
+        "padding": "1em",
+        "color": "inherit",
+        "-dark": {
+            "background": ["#COLOR", "opaque", "dark-4"],
+            "border": "none",
+            "color": ["#COLOR", "greyscale", "white"]
+        },
+        "-round": {
+            "border-radius": "0.4em"
+        },
+        "-border": {
+            "background": "transparent"
         }
     }
 }
 ```
 
-### Sass
+Pass custom options to the `well` object in your theme's config file (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
 
-Load the table styles in your theme's main `scss` file (e.g. [themes/One-Nexus/One-Nexus.scss](../../../themes/One-Nexus/One-Nexus.scss)) by including the `wells()` mixin:
-
-```scss
-@import '../../app';
-@import './config.json';
-
-@include wells();
+```js
+{
+    "theme": {
+        "well": {
+            ...
+        }
+    }
+}
 ```
+
+## Styles
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
+
+## Rendering
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
+
+* [Examples](#examples)
+* [API](#api)
 
 ### Examples
 
-#### Dark Well
+* [Basic Example](#basic-example)
 
-```html
-<div class="well-dark">
-    <div class="well_content">...</div>
-</div>
+#### Basic Example
+
+```jsx
+<Well>Well</Well>
+```
+
+### API
+
+* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [DefaultProps](#defaultprops)
+
+#### DefaultProps
+
+```js
+{
+    object: true
+}
 ```

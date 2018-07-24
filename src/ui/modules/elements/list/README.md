@@ -125,9 +125,9 @@ Pass custom options to the `list` object in your theme's config file (e.g. [ui/t
 
 ### Examples
 
-* [Using `<List>` Tag](#using-list-tag)
+* [Basic Example](#basic-example)
 
-#### Using `<List>` Tag
+#### Basic Example
 
 ```jsx
 <List reset inline>
@@ -140,10 +140,10 @@ Pass custom options to the `list` object in your theme's config file (e.g. [ui/t
 ### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [defaultProps](#defaultprops)
+* [DefaultProps](#defaultprops)
 * [Static Item](#TODO)
 
-#### defaultProps
+#### DefaultProps
 
 ```js
 {

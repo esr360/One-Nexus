@@ -211,9 +211,9 @@ Alert.dismiss(ReactDOM.findDOMNode(myAlert));
 
 ### Examples
 
-* [Using `<Alert>` Tag](#using-tabs-tag)
+* [Basic Example](#basic-example)
 
-#### Using `<Alert>` Tag
+#### Basic Example
 
 ```jsx
 <Alert>This is an alert</Alert>
@@ -222,7 +222,7 @@ Alert.dismiss(ReactDOM.findDOMNode(myAlert));
 ### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [defaultProps](#defaultprops)
+* [DefaultProps](#defaultprops)
 * [Props.bar](#propsbar)
 * [Props.box](#propsbox)
 * [Props.alert](#propsalert)
@@ -230,7 +230,7 @@ Alert.dismiss(ReactDOM.findDOMNode(myAlert));
 * [Props.close](#propsicon)
 * [Props.dismiss](#propsdismiss)
 
-#### defaultProps
+#### DefaultProps
 
 ```js
 {
@@ -355,6 +355,8 @@ Alert.dismiss(ReactDOM.findDOMNode(myAlert));
 #### Props.dismiss
 
 > Overwrite the default `dismiss` method
+
+* This method gets called on click of each close `icon` component
 
 <table>
     <tr>

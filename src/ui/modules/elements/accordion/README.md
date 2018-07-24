@@ -230,10 +230,10 @@ Accordion.toggle(ReactDOM.findDOMNode(myPanel));
 
 ### Examples
 
-* [Using `<Accordion>` Tag](#using-accordion-tag)
+* [Basic Example](#basic-example)
 * [Custom Build](#custom-build)
 
-#### Using `<Accordion>` Tag
+#### Basic Example
 
 ```jsx
 <Accordion panels={[
@@ -260,11 +260,11 @@ Accordion.toggle(ReactDOM.findDOMNode(myPanel));
 ### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [defaultProps](#defaultprops)
+* [DefaultProps](#defaultprops)
 * [Props.panels](#propspanels)
 * [Props.toggle](#propstoggle)
 
-#### defaultProps
+#### DefaultProps
 
 ```js
 {
@@ -350,6 +350,8 @@ Accordions can be nested:
 #### Props.toggle
 
 > Overwrite the default `toggle` method
+
+* This method gets called on click of each `title` component
 
 <table>
     <tr>

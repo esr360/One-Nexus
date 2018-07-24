@@ -206,10 +206,10 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 
 ### Examples
 
-* [Using `<Modal>` Tag](#using-modal-tag)
+* [Basic Example](#basic-example)
 * [Custom Build](#custom-build)
 
-#### Using `<Modal>` Tag
+#### Basic Example
 
 ```jsx
 <Modal trigger={<Button>Open Modal</Button>}>
@@ -231,14 +231,14 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 ### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [defaultProps](#defaultprops)
+* [DefaultProps](#defaultprops)
 * [Props.content](#TODO)
 * [Props.trigger](#TODO)
 * [Props.close](#TODO)
 * [Props.animate](#TODO)
 * [Props.toggle](#TODO)
 
-#### defaultProps
+#### DefaultProps
 
 ```js
 {
@@ -325,6 +325,8 @@ Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 #### Props.toggle
 
 > Overwrite the default `toggle` method
+
+* This method gets called on click of each `trigger` element
 
 <table>
     <tr>

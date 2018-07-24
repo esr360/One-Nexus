@@ -111,9 +111,9 @@ Pass custom options to the `table` object in your theme's config file (e.g. [ui/
 
 ### Examples
 
-* [Using `<Table>` Tag](#using-table-tag)
+* [Basic Example](#basic-example)
 
-#### Using `<Table>` Tag
+#### Basic Example
 
 ```jsx
 <Table columns={columns} data={data} />
@@ -124,12 +124,12 @@ Pass custom options to the `table` object in your theme's config file (e.g. [ui/
 > `columns` and `data` are part of the [rc-table API](https://github.com/react-component/table#api)
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [defaultProps](#defaultprops)
+* [DefaultProps](#defaultprops)
 * [rc-table API](https://github.com/react-component/table#api)
 
 > One-Nexus does not load the `rc-table` CSS so some advanced features may not be compatible
 
-#### defaultProps
+#### DefaultProps
 
 ```js
 {

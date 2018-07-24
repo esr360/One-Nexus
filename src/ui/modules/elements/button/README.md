@@ -290,9 +290,9 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 
 ### Examples
 
-* [Using `<Button>` Tag](#using-button-tag)
+* [Basic Example](#basic-example)
 
-#### Using `<Button>` Tag
+#### Basic Example
 
 ```jsx
 <Button>Button</Button>
@@ -361,9 +361,9 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 ### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [defaultProps](#defaultprops)
+* [DefaultProps](#defaultprops)
 
-#### defaultProps
+#### DefaultProps
 
 ```js
 {

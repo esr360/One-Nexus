@@ -1,4 +1,4 @@
-# One-Nexus Accordion
+# One-Nexus Tabs
 
 * [Overview](#overview)
 * [Configuration](#configuration)
@@ -117,11 +117,11 @@ Pass custom options to the `tabs` object in your theme's config file (e.g. [ui/t
 
 * [Activate](#activate)
 
-> Interactions are defined in [ui/modules/elements/accordion/accordion.js](../../../modules/elements/accordion/accordion.js)
+> Interactions are defined in [ui/modules/elements/tabs/tabs.js](../../../modules/elements/tabs/tabs.js)
 
 ### Activate
 
-> Activate (show) a tab of an accordion
+> Activate (show) a tab
 
 ```js
 Tabs.activate(event);
@@ -153,13 +153,13 @@ Tabs.activate(event);
 
 ### Examples
 
-* [Using `<Tabs>` Tag](#using-tabs-tag)
+* [Basic Example](#basic-example)
 * [Custom Build](#custom-build)
 * [Tabs With Glued Content](#tabs-with-glued-content)
 * [Tabs With Center Aligned Navigation](#tabs-with-center-aligned-navigation)
 * [Tabs With Full-Width Navigation](#tabs-with-full-width-navigation)
 
-#### Using `<Tabs>` Tag
+#### Basic Example
 
 ```jsx
 <Tabs data={[
@@ -214,11 +214,11 @@ Tabs.activate(event);
 ### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [defaultProps](#defaultprops)
+* [DefaultProps](#defaultprops)
 * [Props.data](#propspanels)
 * [Props.activate](#propstoggle)
 
-#### defaultProps
+#### DefaultProps
 
 ```js
 {
@@ -249,6 +249,8 @@ const data = [
 
 > Overwrite the default `activate` method
 
+* This method gets called on click of each `item` SubComponent of the `nav` Component
+
 <table>
     <tr>
         <td><b>Type</b></td>
@@ -273,5 +275,5 @@ import { activate } from '../../tabs/tabs.js';
 ```
 
 ```jsx
-<Accordion data={data} activte={event => activte(event.target)} />
+<Tabs data={data} activte={event => activte(event.target)} />
 ```

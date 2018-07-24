@@ -139,9 +139,9 @@ By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to
 
 ### Examples
 
-* [Using `<Heading>` Tag](#using-heading-tag)
+* [Basic Example](#basic-example)
 
-#### Using `<Heading>` Tag
+#### Basic Example
 
 ```jsx
 <Heading>Heading</Heading>
@@ -185,9 +185,9 @@ margin-bottom: 0 !important;
 ### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [defaultProps](#defaultprops)
+* [DefaultProps](#defaultprops)
 
-#### defaultProps
+#### DefaultProps
 
 ```js
 {

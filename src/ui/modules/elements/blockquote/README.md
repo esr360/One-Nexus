@@ -94,10 +94,10 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 
 ### Examples
 
-* [Using `<Blockquote>` Tag](#using-blockquote-tag)
+* [Basic Example](#basic-example)
 * [Custom Build](#custom-build)
 
-#### Using `<Blockquote>` Tag
+#### Basic Example
 
 ```jsx
 <Blockquote content='This is a blockquote' footer='Optional blockquote footer' />
@@ -115,12 +115,12 @@ Pass custom options to the `blockquote` object in your theme's config file (e.g.
 ### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [defaultProps](#defaultprops)
+* [DefaultProps](#defaultprops)
 * [Props.content](#propscontent)
 * [Props.footer](#propsfooter)
 * [Blockquote Alerts](#blockquote-alerts)
 
-#### defaultProps
+#### DefaultProps
 
 ```js
 {

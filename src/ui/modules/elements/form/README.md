@@ -238,7 +238,7 @@ Form.validate(field, validators, callback(isValid, field, message));
     <tbody>
         <tr>
             <td>Field</td>
-            <td><code>HTMLElement</code> | <code>String</code></td>
+            <td><code>(HTMLElement|String)</code></td>
             <td>HTMLElement or ID of HTMLElement to validate</td>
         </tr>
         <tr>
@@ -348,10 +348,10 @@ Form.validate(document.getElementById('passwordReEnter'), [
 
 ### Examples
 
-* [Using `<Form>` Tag](#using-form-tag)
+* [Basic Example](#basic-example)
 * [Custom Build](#custom-build)
 
-#### Using `<Form>` Tag
+#### Basic Example
 
 ```jsx
 <Form fields={[
@@ -393,13 +393,13 @@ Form.validate(document.getElementById('passwordReEnter'), [
 ### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [defaultProps](#defaultprops)
+* [DefaultProps](#defaultprops)
 * [Props.fields](#propsfields)
 * [Props.submit](#propssubmit)
 * [Props.setState](#propssetState)
 * [Props.validate](#propsvalidate)
 
-#### defaultProps
+#### DefaultProps
 
 ```js
 {
@@ -632,7 +632,7 @@ const fields = [
 <table>
     <tr>
         <td><b>Type</b></td>
-        <td><code>String</code> | <code>Object</code></td>
+        <td><code>(String|Object)</code></td>
     </tr>
     <tr>
         <td><b>Default</b></td>
@@ -815,7 +815,7 @@ A FieldDraft is a JavaScript Object which represents a Form group.
         </tr>
         <tr>
             <td><code>legend</code></td>
-            <td><code>String</code> | <code>object</code></td>
+            <td><code>(String|object)</code></td>
             <td>The group's <a href="#fielddraftlegend">legend</a> if <code>type</code> is <code>'fieldset'</code></td>
         </tr>
         <tr>

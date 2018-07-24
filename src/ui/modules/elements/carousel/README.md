@@ -242,10 +242,10 @@ Carousel.init(ReactDOM.findDOMNode(myCarousel), 'show');
 
 ### Examples
 
-* [Using `<Carousel>` Tag](#using-carousel-tag)
+* [Basic Example](#basic-example)
 * [Custom Build](#custom-build)
 
-#### Using `<Carousel>` Tag
+#### Basic Example
 
 ```jsx
 <Carousel slides={[
@@ -268,12 +268,12 @@ Carousel.init(ReactDOM.findDOMNode(myCarousel), 'show');
 ### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [defaultProps](#defaultprops)
+* [DefaultProps](#defaultprops)
 * [Props.slides](#propsslides)
 * [Props.options](#propsoptions)
 * [Props.init](#propsinit)
 
-#### defaultProps
+#### DefaultProps
 
 ```js
 {
@@ -325,6 +325,8 @@ const options = {
 #### Props.init
 
 > Overwrite the default `init` method
+
+* This method gets called once the app has rendered
 
 <table>
     <tr>

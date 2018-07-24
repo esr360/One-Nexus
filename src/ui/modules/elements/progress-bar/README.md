@@ -81,9 +81,9 @@ Pass custom options to the `progress-bar` object in your theme's config file (e.
 
 ### Examples
 
-* [Using `<ProgressBar>` Tag](#using-tag-tag)
+* [Basic Example](#basic-example)
 
-#### Using `<ProgressBar>` Tag
+#### Basic Example
 
 ```jsx
 <ProgressBar max={100} value={50} text='Almost there...' />
@@ -94,10 +94,10 @@ Pass custom options to the `progress-bar` object in your theme's config file (e.
 > `max` and `value` are part of the standard [HTML `<progress>` element API](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#Attributes)
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [defaultProps](#defaultprops)
+* [DefaultProps](#defaultprops)
 * [Props.text](#propstoggle)
 
-#### defaultProps
+#### DefaultProps
 
 ```js
 {

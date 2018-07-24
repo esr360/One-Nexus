@@ -76,10 +76,10 @@ Pass custom options to the `image` object in your theme's config file (e.g. [ui/
 
 ### Examples
 
-* [Using `<Image>` Tag](#using-image-tag)
-* [Custom Build](#custom-build)
+* [Basic Example](#basic-example)
+* [Center-XY](#center-xy)
 
-#### Using `<Image>` Tag
+#### Basic Example
 
 ```jsx
 <Image src='https://picsum.photos/640/480' />
