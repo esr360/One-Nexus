@@ -1,64 +1,13 @@
-import defaults from './accordion.json';
+// import defaults from './accordion.json';
+import defaults from './config.js';
 import interactions from './accordion.js';
+
+import styles from './accordion.jss';
 
 const globals = {
     verticalRhythm: {
         'position': 'relative'
     }
-}
-
-function styles(element, globals) {
-    const colors = {
-        primary: 'red',
-        secondary: 'blue'
-    }
-
-    const styles = {
-        ...globals.verticalRhythm,
-    
-        'display': 'block',
-        'color': colors.primary,
-        'padding': '1em',
-
-        foo: () => styles.panel['margin-bottom'] ? '1em' : 0,
-
-        modifiers: {
-            foo: {
-                'font-size': '2em',
-
-                panel: {
-                    'color': colors.primary
-                }
-            }
-        },
-
-        panel: {
-            'display': 'block',
-            'margin-bottom': '1em',
-
-            ':hover': {
-                'color': element.modifier('foo') ? colors.primary : colors.secondary,
-
-                title: {
-                    'color': colors.primary
-                }
-            },
-
-            modifiers: {
-                active: {
-
-                }
-            }
-        }
-    }
-
-    return styles;
-}
-
-function setStyles(element, styles, globals, theme) {
-    console.log(element, styles(element, globals), theme);
-
-    
 }
 
 /**
@@ -68,13 +17,14 @@ function setStyles(element, styles, globals, theme) {
  * @prop {Function} toggle
  */
 const Accordion = ({ panels, toggle, styles, ...props }) => {
-    const config = Object.assign(defaults.accordion, window.theme.accordion);
+    const config = Object.assign(defaults, window.theme.accordion);
 
     return (
-        <Module name={config.name} {...props} ref={node => setStyles(ReactDOM.findDOMNode(node), styles, globals)}>
+        <Module name={config.name} {...props} styles={node => Module.setStyles(node, styles, globals, config)}>
             {panels.map(({ title, content, active }, index) => (
-                <Component modifiers={active ? ['active'] : false} name='section' key={index}>
-                    <Component name='title' onClick={toggle}>
+                <Component modifiers={active ? ['active'] : false} name='panel' key={index}>
+                    <Component name='title' tag='div' onClick={toggle}>
+                        <SubComponent name='test'>Test</SubComponent>
                         <Component name='toggle' className='fa fa-chevron-circle-down' /> {title}
                     </Component>
                     <Component name='content'>{content}</Component>

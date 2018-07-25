@@ -5,7 +5,7 @@ export default {
 }
 
 /**
- * Toggle an accordion section
+ * Toggle an accordion panel
  * 
  * @param {(String|Number|HTMLElement|NodeList)} target
  * @param {('open'|'close')} type
@@ -15,7 +15,7 @@ export default {
 export function toggle(target, type, parent, keepOpen = false) {
     const options = Object.assign(defaults.accordion, window.theme.accordion);
 
-    let section, operator;
+    let panel, operator;
 
     if (parent instanceof NodeList) {
         return parent.forEach(child => toggle(target, type, child, keepOpen));
@@ -23,10 +23,10 @@ export function toggle(target, type, parent, keepOpen = false) {
 
     options.keepOpen = (options.keepOpen === true) ? true : false;
 
-    // determine target accordion section
+    // determine target accordion panel
     if (typeof target === 'object' && ('target' in target)) {
         target.target.parents().reverse().forEach(parent => {
-            if (parent.component('section') === true) {
+            if (parent.component('panel') === true) {
                 return target = parent;
             }
         });
@@ -35,32 +35,32 @@ export function toggle(target, type, parent, keepOpen = false) {
     parent = parent || target.closest('[data-module]');
 
     if (typeof target === 'string') {
-        section = parent.querySelectorAll(target);
+        panel = parent.querySelectorAll(target);
     } else if (typeof target === 'number') {
-        section = parent.children[target - 1];
+        panel = parent.children[target - 1];
     } else if (target instanceof HTMLElement || target instanceof NodeList) {
-        section = target;
+        panel = target;
     } else if (!target) {
-        section = parent.component('section');
+        panel = parent.component('panel');
     }
 
-    if (!section) return;
+    if (!panel) return;
 
-    if (section.constructor === Array) {
-        return section.forEach(section => toggle(section, type, parent, options, true));
+    if (panel.constructor === Array) {
+        return panel.forEach(panel => toggle(panel, type, parent, options, true));
     }
 
-    operator = (section.modifier('active') === true || operator === 'close') ? 'unset' : 'set';
+    operator = (panel.modifier('active') === true || operator === 'close') ? 'unset' : 'set';
 
-    // close sibling sections
+    // close sibling panels
     if (operator === 'set' && (parent.modifier(options.keepOpenModifier) !== true) && keepOpen === false) {
-        parent.component('section').forEach(el => el.modifier('active', 'unset'));
+        parent.component('panel').forEach(el => el.modifier('active', 'unset'));
     }
 
-    if (section instanceof NodeList || section instanceof Array) {
-        section.forEach(el => el.modifier('active', operator));
+    if (panel instanceof NodeList || panel instanceof Array) {
+        panel.forEach(el => el.modifier('active', operator));
     } else {
-        section.modifier('active', operator);
+        panel.modifier('active', operator);
     }
 
     return parent;

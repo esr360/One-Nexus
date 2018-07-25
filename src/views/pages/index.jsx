@@ -24,7 +24,7 @@ function dismiss(event) {
 const Index = () => (
     <app.layouts.Base {...app.config.app.views}>
     
-        <Accordion panels={panels} />
+        <Accordion large panels={panels} />
 
         <Alert close={true}>This is a default alert</Alert>
 

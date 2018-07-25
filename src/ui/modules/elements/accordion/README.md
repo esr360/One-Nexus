@@ -60,7 +60,7 @@
 {
     "accordion": {
         "name": "accordion",
-        "section": {
+        "panel": {
             "active": {
                 "component(title)": {
                     "background": ["#COLOR", "brand", "brand-2"],
@@ -152,7 +152,7 @@ Pass custom options to the `accordion` object in your theme's config file (e.g. 
 
 ### Toggle
 
-> Toggle one or more sections of an accordion
+> Toggle one or more panels of an accordion
 
 ```js
 Accordion.toggle(target, type, parent);
@@ -170,7 +170,7 @@ Accordion.toggle(target, type, parent);
         <tr>
             <td><code>target</code></td>
             <td><code>(String|Number|HTMLElement|NodeList)</code></td>
-            <td>The target section(s) to toggle (<a href="#target">learn more</a>)</td>
+            <td>The target panel(s) to toggle (<a href="#target">learn more</a>)</td>
         </tr>
         <tr>
             <td><code>[type]</code></td>
@@ -180,7 +180,7 @@ Accordion.toggle(target, type, parent);
         <tr>
             <td><code>[parent]</code></td>
             <td><a href="https://github.com/esr360/Synergy/wiki/JavaScript#parameter---els">Synergy selector</a></td>
-            <td>The accordion(s) on which to toggle sections (<a href="#parent">learn more</a>)</td>
+            <td>The accordion(s) on which to toggle panels (<a href="#parent">learn more</a>)</td>
         </tr>
     </tbody>
 </table>
@@ -214,7 +214,7 @@ Accordion.toggle(1, 'close', '#foo');
 // Open all panels on all accordions with class 'partyTime'
 Accordion.toggle('*', 'open', '.partyTime');
 
-// Close all sections on all accordions
+// Close all panels on all accordions
 Accordion.toggle('*', 'close', '*');
 
 // Toggle panel from React Component reference

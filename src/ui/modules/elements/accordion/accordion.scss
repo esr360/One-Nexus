@@ -20,10 +20,10 @@
         // Components
         //*********************************************************
 
-        @include component('section') {
+        @include component('panel') {
             @include vertical-rhythm('bottom');
 
-            @if not this('section', 'margin-bottom') {
+            @if not this('panel', 'margin-bottom') {
                 &:not(:last-child) {
                     > *:first-child, > *:last-child {
                         border-bottom: 0 !important;

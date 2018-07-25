@@ -87,6 +87,10 @@ export default function(env) {
                 }
             ] 
         },
+        
+        resolve: {
+            extensions: ['.js', '.jsx', '.json', '.jss'],
+        },
 
         stats: { colors: true },
 

@@ -2,7 +2,7 @@
     "accordion": {
         "name": "accordion",
         "methods": ["toggle", "open", "close"],
-        "section": {
+        "panel": {
             "active": {
                 "component(title)": {
                     "background": ["#COLOR", "brand", "brand-2"],
