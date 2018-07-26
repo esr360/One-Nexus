@@ -1,4 +1,5 @@
-import defaults from './accordion.json';
+import defaults from './config.js';
+import styles from './accordion.jss';
 
 export default {
     toggle
@@ -13,7 +14,7 @@ export default {
  * @param {Boolean} [keepOpen = false]
  */
 export function toggle(target, type, parent, keepOpen = false) {
-    const options = Object.assign(defaults.accordion, window.theme.accordion);
+    const options = Object.assign(defaults(window.theme), window.theme.accordion);
 
     let panel, operator;
 
@@ -62,6 +63,9 @@ export function toggle(target, type, parent, keepOpen = false) {
     } else {
         panel.modifier('active', operator);
     }
+
+    // re-render the module's styles
+    Module.setStyles(parent, styles, window.theme, options);
 
     return parent;
 }

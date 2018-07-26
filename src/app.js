@@ -28,6 +28,9 @@ import * as KayzenGS from 'kayzen-gs';
 // UI React Components
 //*****************************************************************
 
+// Utilities
+import Colors from './ui/modules/utilities/colors/config';
+
 // Elements
 import Accordion from './ui/modules/elements/accordion/accordion.jsx';
 import Alert from './ui/modules/elements/alert/alert.jsx';
@@ -158,9 +161,16 @@ Element.prototype.parents = function(selector) {
 // Render App
 //*****************************************************************
 
+const verticalRhythm = {
+    'position': 'relative'
+};
+
 // App JSX Component
 const App = ({ theme }) => {
     window.theme = theme;
+
+    window.theme.verticalRhythm = verticalRhythm;
+    window.theme.colors = Colors;
 
     if (process.env.APP_ENV === 'web') {
         require('./app.scss');

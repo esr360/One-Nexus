@@ -1,14 +1,6 @@
-// import defaults from './accordion.json';
 import defaults from './config.js';
-import interactions from './accordion.js';
-
-import styles from './accordion.jss';
-
-const globals = {
-    verticalRhythm: {
-        'position': 'relative'
-    }
-}
+import interactions from './interactions.js';
+import styles from './styles.jss';
 
 /**
  * Render Accordion module
@@ -17,10 +9,10 @@ const globals = {
  * @prop {Function} toggle
  */
 const Accordion = ({ panels, toggle, styles, ...props }) => {
-    const config = Object.assign(defaults, window.theme.accordion);
+    const config = Object.assign(defaults(window.theme), window.theme.accordion);
 
     return (
-        <Module name={config.name} {...props} styles={node => Module.setStyles(node, styles, globals, config)}>
+        <Module name={config.name} {...props} styles={node => Module.setStyles(node, styles, window.theme, config)}>
             {panels.map(({ title, content, active }, index) => (
                 <Component modifiers={active ? ['active'] : false} name='panel' key={index}>
                     <Component name='title' tag='div' onClick={toggle}>

@@ -28,7 +28,7 @@ const Index = () => (
 
         <Alert close={true}>This is a default alert</Alert>
 
-        <Blockquote content='Lorem ipsum dolor sit amet' />
+        <Blockquote Alert='foo' content='Lorem ipsum dolor sit amet' />
 
         <Button>Button</Button>
 
