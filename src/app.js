@@ -69,6 +69,9 @@ import one_nexus from './ui/themes/one_nexus.json';
 // Views
 //*****************************************************************
 
+export { default as SyntaxHighlighter } from './views/tools/syntaxHighlighter';
+export { default as Section } from './views/tools/section';
+
 // Layouts
 import Layout_Base from './views/layouts/base.jsx';
 
@@ -161,8 +164,22 @@ Element.prototype.parents = function(selector) {
 // Render App
 //*****************************************************************
 
-const verticalRhythm = {
-    'position': 'relative'
+const verticalRhythm = (element, position) => {
+    if (position === 'bottom' || !position) {
+        if (element === element.parentNode.lastChild) {
+            return {
+                'margin-bottom': 0
+            }
+        }
+    }
+
+    if (position === 'top' || !position) {
+        if (element === element.parentNode.firstChild) {
+            return {
+                'margin-top': 0
+            }
+        }
+    }
 };
 
 // App JSX Component

@@ -1,5 +1,6 @@
-import defaults from './alert.json';
-import interactions from './alert.js';
+import defaults from './config.js';
+import interactions from './interactions.js';
+import styles from './styles.jss';
 
 /**
  * Render Alert module
@@ -9,7 +10,7 @@ import interactions from './alert.js';
  * @prop {Function} dismiss
  */
 const Alert = ({ alert, icon, dismiss, ...props }) => {
-    const options = Object.assign(defaults.alert, window.theme.alert);
+    const options = Object.assign(defaults(window.theme), window.theme.alert);
     const alerts = options ? Object.keys(options.alerts) : [];
     const hasCustomIcon = icon => icon === undefined || icon === 'right';
 
@@ -28,7 +29,12 @@ const Alert = ({ alert, icon, dismiss, ...props }) => {
     }
 
     return (
-        <Module name={options.name} {...props} modifiers={modifiers} bar={props.box ? false : props.bar}>
+        <Module 
+            name={options.name} {...props} 
+            modifiers={modifiers} 
+            bar={props.box ? false : props.bar} 
+            styles={node => Module.setStyles(node, styles, window.theme, options)}
+        >
             {icon &&
                 <Component
                     name='icon'

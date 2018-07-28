@@ -45,8 +45,8 @@
 @import './ui/modules/utilities/helpers/helpers';
 @import './ui/modules/utilities/print/print';
 
-@import './ui/modules/elements/accordion/accordion';
-@import './ui/modules/elements/alert/alert';
+// @import './ui/modules/elements/accordion/accordion';
+// @import './ui/modules/elements/alert/alert';
 @import './ui/modules/elements/button/button';
 @import './ui/modules/elements/blockquote/blockquote';
 @import './ui/modules/elements/carousel/carousel';
@@ -103,7 +103,7 @@ $sass-config-parser : map-get-deep($app, 'ui', 'sass-config-parser');
 
     /// Elements
     // @include accordion;
-    @include alert;
+    // @include alert;
     @include blockquote;
     @include button;
     @include carousel;

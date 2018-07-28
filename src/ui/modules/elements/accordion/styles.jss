@@ -1,20 +1,30 @@
-
+/**
+ * 
+ * @param element 
+ * @param globals 
+ */
 export default function(element, globals) {
     return {
-        ...globals.verticalRhythm,
-
-        panel: {
+        panel: panel => ({
             'display': 'block',
-            'margin-bottom': '1em'
-        },
 
-        title: {
-            'display': 'block',
-            'margin': 0,
-            'backface-visibility': 'hidden',
-            'font-weight': 'normal',
-            'line-height': 1,
-            'cursor': 'pointer'
+            ...globals.verticalRhythm(panel, 'bottom')
+        }),
+
+        title: title => {
+            const panel = title.closest('[data-component="panel"]');
+
+            return {
+                'display': 'block',
+                'margin': 0,
+                'backface-visibility': 'hidden',
+                'font-weight': 'normal',
+                'line-height': 1,
+                'cursor': 'pointer',
+                'border-bottom': ['important', 
+                    (panel !== panel.parentNode.lastChild) && !panel.style.marginBottom ? 0 : false
+                ]
+            }
         },
 
         toggle: toggle => {
@@ -33,7 +43,10 @@ export default function(element, globals) {
             return {
                 'display': panel.modifier('active') ? 'block' : 'none',
                 'margin': 0,
-                'margin-top': '-1px'
+                'margin-top': '-1px',
+                'border-bottom': ['important', 
+                    (panel !== panel.parentNode.lastChild) && !panel.style.marginBottom ? 0 : false
+                ]
             }
         }
     }

@@ -1,5 +1,4 @@
 import defaults from './config.js';
-import styles from './accordion.jss';
 
 export default {
     toggle
@@ -65,7 +64,7 @@ export function toggle(target, type, parent, keepOpen = false) {
     }
 
     // re-render the module's styles
-    Module.setStyles(parent, styles, window.theme, options);
+    parent.repaint();
 
     return parent;
 }

@@ -16,7 +16,6 @@ const Accordion = ({ panels, toggle, styles, ...props }) => {
             {panels.map(({ title, content, active }, index) => (
                 <Component modifiers={active ? ['active'] : false} name='panel' key={index}>
                     <Component name='title' tag='div' onClick={toggle}>
-                        <SubComponent name='test'>Test</SubComponent>
                         <Component name='toggle' className='fa fa-chevron-circle-down' /> {title}
                     </Component>
                     <Component name='content'>{content}</Component>

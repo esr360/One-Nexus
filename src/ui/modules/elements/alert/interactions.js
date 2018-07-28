@@ -1,4 +1,4 @@
-import defaults from './alert.json';
+import defaults from './config.js';
 
 export default {
     dismiss
@@ -10,11 +10,13 @@ export default {
  * @param {(Object|HTMLElement)} alert 
  */
 export function dismiss(alert) {
-    const options = Object.assign(defaults.alert, window.theme.alert);
+    const options = Object.assign(defaults(window.theme), window.theme.alert);
 
     if (typeof alert === 'object' && ('target' in alert)) {
         alert = alert.target.closest(`[data-module="${options.name}"]`);
     }
 
-    alert.classList.add('hidden');
+    alert.modifier('hidden', 'add');
+
+    alert.repaint();
 }

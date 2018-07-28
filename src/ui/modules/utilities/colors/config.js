@@ -22,11 +22,11 @@ export default {
         'black': '#000000'
     },
     'opaque': {
-        'dark-1': 'rgba(black, 0.1)',
-        'dark-2': 'rgba(black, 0.2)',
-        'dark-4': 'rgba(black, 0.4)',
-        'dark-8': 'rgba(black, 0.8)',
-        'light-8': 'rgba(white, 0.8)'
+        'dark-1': 'rgba(0,0,0, 0.1)',
+        'dark-2': 'rgba(0,0,0, 0.2)',
+        'dark-4': 'rgba(0,0,0, 0.4)',
+        'dark-8': 'rgba(0,0,0, 0.8)',
+        'light-8': 'rgba(255,255,255, 0.8)'
     },
     'validation':{
         'valid': '#00B16A',
