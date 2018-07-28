@@ -1,6 +1,6 @@
-import defaults from './config.js';
-import interactions from './interactions.js';
-import styles from './styles.jss';
+import defaults from './assets/config.js';
+import interactions from './assets/interactions.js';
+import layout from './assets/layout.jss';
 
 /**
  * Render Accordion module
@@ -8,16 +8,17 @@ import styles from './styles.jss';
  * @prop {Array} panels
  * @prop {Function} toggle
  */
-const Accordion = ({ panels, toggle, styles, ...props }) => {
-    const config = Object.assign(defaults(window.theme), window.theme.accordion);
+const Accordion = ({ panels, toggle, layout, ...props }) => {
+    const config = Module.config(defaults(window.theme), window.theme.accordion);
 
     return (
-        <Module name={config.name} {...props} styles={node => Module.setStyles(node, styles, window.theme, config)}>
+        <Module name={config.name} {...props} styles={node => Module.setStyles(node, layout, window.theme, config)}>
             {panels.map(({ title, content, active }, index) => (
-                <Component modifiers={active ? ['active'] : false} name='panel' key={index}>
+                <Component active={active} name='panel' key={index}>
                     <Component name='title' tag='div' onClick={toggle}>
                         <Component name='toggle' className='fa fa-chevron-circle-down' /> {title}
                     </Component>
+
                     <Component name='content'>{content}</Component>
                 </Component>
             ))}
@@ -29,7 +30,7 @@ Object.assign(Accordion, interactions, {
     defaultProps: {
         object: true,
         toggle: interactions.toggle,
-        styles: styles
+        layout: layout
     }
 });
 

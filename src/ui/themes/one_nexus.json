@@ -1,7 +1,14 @@
 {
     "theme": {
         "accordion": {
-            "ding": "dong"
+            "ding": "dong",
+            "panel": {
+                "modifier(active)": {
+                    "title": {
+                        "background": "green"
+                    }
+                }
+            }
         },
         "alert": {
         },
