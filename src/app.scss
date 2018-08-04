@@ -95,7 +95,7 @@ $sass-config-parser : map-get-deep($app, 'ui', 'sass-config-parser');
     /// Utilities
     @include colors;
     @include typography;
-    @include grid;
+    // @include grid;
     @include container;
     @include core;
     @include helpers;

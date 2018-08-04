@@ -1,8 +1,8 @@
 /**
  * Accordion layout styles
  * 
- * @param element - DOM element of accordion
- * @param globals - global UI config
+ * @param {HTMLElement} element - DOM element of accordion
+ * @param {Object} globals - global UI toolkit
  */
 export default (element, globals) => ({
     panel: panel => ({

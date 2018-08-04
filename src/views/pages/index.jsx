@@ -23,8 +23,103 @@ function dismiss(event) {
 
 const Index = () => (
     <app.layouts.Base {...app.config.app.views}>
+
+        <PAX5.row stack='breakpoint-3'>
+            <PAX5.column>Column</PAX5.column>
+            <PAX5.column>Column</PAX5.column>
+            <PAX5.column>Column</PAX5.column>
+        </PAX5.row>
+
+        <PAX5.row>
+            <PAX5.column width={4}>Column</PAX5.column>
+            <PAX5.column width={6}>Column</PAX5.column>
+            <PAX5.column width={2}>Column</PAX5.column>
+        </PAX5.row>
+
+        <PAX5.row>
+            <PAX5.column width={{
+                'breakpoint-1': [1,2], 
+                'breakpoint-2': [1,3], 
+                'breakpoint-3': [1,4]
+            }}>Column</PAX5.column>
+            <PAX5.column width={{
+                'breakpoint-1': [1,2], 
+                'breakpoint-2': [1,3], 
+                'breakpoint-3': [1,4]
+            }}>Column</PAX5.column>
+            <PAX5.column width={{
+                'breakpoint-1': [1,2], 
+                'breakpoint-2': [1,3], 
+                'breakpoint-3': [1,4]
+            }}>Column</PAX5.column>
+            <PAX5.column width={{
+                'breakpoint-1': [1,2], 
+                'breakpoint-2': [1,3], 
+                'breakpoint-3': [1,4]
+            }}>Column</PAX5.column>
+        </PAX5.row>
+
+        <PAX5.row>
+            <PAX5.column breakpoint-1={[1,2]} breakpoint-2={[1,3]} breakpoint-3={[1,4]}>Column 1</PAX5.column>
+            <PAX5.column breakpoint-1={[1,2]} breakpoint-2={[1,3]} breakpoint-3={[1,4]}>Column 1</PAX5.column>
+            <PAX5.column breakpoint-1={[1,2]} breakpoint-2={[1,3]} breakpoint-3={[1,4]}>Column 1</PAX5.column>
+            <PAX5.column breakpoint-1={[1,2]} breakpoint-2={[1,3]} breakpoint-3={[1,4]}>Column 1</PAX5.column>
+        </PAX5.row>
+
+        <PAX5.row>
+            <PAX5.column width={6} push={6}>Column 1</PAX5.column>
+            <PAX5.column width={6} pull={6}>Column 2</PAX5.column>
+        </PAX5.row>
+
+        <PAX5.row>
+            <PAX5.column width={2}>Column 1</PAX5.column>
+            <PAX5.column width={4}>Column 2</PAX5.column>
+            <PAX5.column width={3} pull={3}>Column 3</PAX5.column>
+        </PAX5.row>
+
+        <PAX5.row>
+            <PAX5.column width={2}>Column 1</PAX5.column>
+            <PAX5.column width={4}>Column 2</PAX5.column>
+            <PAX5.column width={6}>Column 3</PAX5.column>
+            <PAX5.column width={2}>Column 4</PAX5.column>
+            <PAX5.column width={4}>Column 5</PAX5.column>
+            <PAX5.column width={6}>Column 6</PAX5.column>
+        </PAX5.row>
+
+        <PAX5.row no-gutter>
+            <PAX5.column>Column</PAX5.column>
+            <PAX5.column>Column</PAX5.column>
+            <PAX5.column>Column</PAX5.column>
+            <PAX5.column>Column</PAX5.column>
+            <PAX5.column>Column</PAX5.column>
+            <PAX5.column>Column</PAX5.column>
+        </PAX5.row>
+
+        <PAX5 columns={[<div>foo</div>, 'bar', <Alert>Alert Column</Alert>]} />
+
+        <PAX5 column-width={{
+            'breakpoint-1': [1,2], 
+            'breakpoint-2': [1,3], 
+            'breakpoint-3': [1,4]
+        }} columns={[<div>foo</div>, 'bar', <Alert>Alert Column</Alert>]} />
+
+        <PAX5.row>
+            <PAX5.column>
+                <div className='foo'>foo</div>
+            </PAX5.column>
+
+            <PAX5.column>bar</PAX5.column>
+
+            <PAX5.column>
+                <Alert>Alert Column</Alert>
+            </PAX5.column>
+        </PAX5.row>
+
+
+        {/**/}
+
     
-        <Accordion large panels={panels} />
+        <Accordion Alert large panels={panels} />
 
         <Alert close={true}>This is a default alert</Alert>
 

@@ -1,4 +1,5 @@
 import defaults from './config.js';
+import parents from '../../../../tools/js/app.parents';
 
 export default {
     toggle
@@ -25,7 +26,7 @@ export function toggle(target, type, parent, keepOpen = false) {
 
     // determine target accordion panel
     if (typeof target === 'object' && ('target' in target)) {
-        target.target.parents().reverse().forEach(parent => {
+        parents(target.target).reverse().forEach(parent => {
             if (parent.component('panel') === true) {
                 return target = parent;
             }

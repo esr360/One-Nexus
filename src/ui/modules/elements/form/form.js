@@ -1,4 +1,5 @@
 import dynamicCallback from '../../../tools/js/app.dynamicCallback';
+import parents from '../../../tools/js/app.parents';
 
 export default {
     validate,
@@ -144,7 +145,7 @@ function handleValidation(isValid, field, message, recurse = true) {
  * @param {(Boolean|String)} operator 
  */
 function toggleStyles(field, operator) {
-    const parentGroup = field.parents('[class*="group"]')[0];
+    const parentGroup = parents(field, '[class*="group"]')[0];
 
     if (parentGroup) {
         if (typeof operator === 'boolean') {

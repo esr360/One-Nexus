@@ -1,13 +1,14 @@
-import * as app from '../../../ui';
-import defaults from './grid.json';
-
-/**
- * Grid
- * 
- * @access public
- * 
- * @param {Object} custom
- */
-export function grid(custom) {
-    app.config.grid = app.parse(defaults.grid, app.custom('grid', custom));
+export default {
+    'name': 'grid',
+    'columns': 12,
+    'gutter': '3%',
+    'default-stack': '940px',
+    'breakpoints': {
+        'break-0': '0px',
+        'break-1': '460px',
+        'break-2': '720px',
+        'break-3': '940px',
+        'break-4': '1200px',
+        'break-5': '1400px'
+    }
 }

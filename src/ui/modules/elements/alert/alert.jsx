@@ -1,6 +1,6 @@
-import defaults from './config.js';
-import interactions from './interactions.js';
-import styles from './styles.jss';
+import defaults from './assets/config.js';
+import interactions from './assets/interactions.js';
+import layout from './assets/layout.jss';
 
 /**
  * Render Alert module
@@ -33,7 +33,7 @@ const Alert = ({ alert, icon, dismiss, ...props }) => {
             name={options.name} {...props} 
             modifiers={modifiers} 
             bar={props.box ? false : props.bar} 
-            styles={node => Module.setStyles(node, styles, window.theme, options)}
+            styles={[layout, window.theme, options]}
         >
             {icon &&
                 <Component

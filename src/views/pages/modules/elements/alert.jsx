@@ -1,4 +1,6 @@
 import * as app from '../../../../app';
+import SyntaxHighlighter from '../../../tools/syntaxHighlighter';
+import Section from '../../../tools/section';
 
 function DEMO__HIDE_ALERT(alert) {
     document.getElementById('alert-demo').classList.add('hidden');
@@ -12,9 +14,9 @@ const AlertBars = () => {
 
             <Heading heading='3' size='5'>Quick Look</Heading>
 
-            <app.SyntaxHighlighter language='jsx'>{
+            <SyntaxHighlighter language='jsx'>{
                 '<Alert>This is a default alert</Alert>'
-            }</app.SyntaxHighlighter>
+            }</SyntaxHighlighter>
 
             <Well>
                 <Alert>This is a default alert</Alert>
@@ -27,12 +29,12 @@ const AlertBars = () => {
                 <List.Item><app.Link to='#render-with-react'>Render With React</app.Link></List.Item>
             </List>
 
-            <app.Section id='configuration'>
+            <Section id='configuration'>
                 <Heading heading='3' size='5'>Configuration</Heading>
 
                 <Alert alert="help"><a href="#">Learn more</a> about module configutation</Alert>
 
-                <app.SyntaxHighlighter language='json'>{`
+                <SyntaxHighlighter language='json'>{`
                     "alert": {
                         "name": "alert",
                         "alerts": {
@@ -69,7 +71,7 @@ const AlertBars = () => {
                             "padding": "1.5em"
                         }
                     }
-                `}</app.SyntaxHighlighter>
+                `}</SyntaxHighlighter>
 
                 <Heading heading='5' size='4'>alert.alerts</Heading>
 
@@ -84,17 +86,17 @@ const AlertBars = () => {
                     <Paragraph>Set to show the alert's icon by default</Paragraph>
                 </Well>
 
-            </app.Section>
+            </Section>
 
-            <app.Section id='styles'>
+            <Section id='styles'>
                 <Heading heading='3' size='5'>Styles</Heading>
 
                 <Alert alert="info">Edit styles in <a href="#">ui/modules/elements/alert/_alert.scss</a></Alert>
 
                 <Alert alert="help"><a href="#">Learn how to modify styles using the above configuration</a> so you don't have to touch the source code</Alert>
-            </app.Section>
+            </Section>
 
-            <app.Section id='interactions'>
+            <Section id='interactions'>
                 <Heading heading='3' size='5'>Interactions</Heading>
 
                 <Alert alert="info">Interactions are defined in <a href="#">ui/modules/elements/alert/alert.js</a></Alert>
@@ -105,23 +107,23 @@ const AlertBars = () => {
                     <Paragraph>Hide an Alert</Paragraph>
                 </Well>
 
-                <app.SyntaxHighlighter language='html'>{`
+                <SyntaxHighlighter language='html'>{`
                     <div class="alert-bar" id="alert-demo">...</div>
-                `}</app.SyntaxHighlighter>
+                `}</SyntaxHighlighter>
 
-                <app.SyntaxHighlighter language='js'>{`
+                <SyntaxHighlighter language='js'>{`
                     const alert = document.getElementById('alert-demo');
 
                     window.UI.alert().dismiss(alert);
-                `}</app.SyntaxHighlighter>
-            </app.Section>
+                `}</SyntaxHighlighter>
+            </Section>
 
-            <app.Section id='render-with-react'>
+            <Section id='render-with-react'>
                 <Heading heading='3' size='5'>Render With React</Heading>
 
-                <app.SyntaxHighlighter language='jsx'>{
+                <SyntaxHighlighter language='jsx'>{
                     '<Alert>This is an alert</Alert>'
-                }</app.SyntaxHighlighter>
+                }</SyntaxHighlighter>
 
                 <List>
                     <List.Item><app.Link to='#props.bar'>[...Global.props]</app.Link></List.Item>
@@ -132,7 +134,7 @@ const AlertBars = () => {
                     <List.Item><app.Link to='#props.close'>Props.close</app.Link></List.Item>
                 </List>
 
-                <app.Section id='props.bar'>
+                <Section id='props.bar'>
                     <Heading size='5'>Props.bar</Heading>
 
                     {/* <app.Table small content={[{
@@ -140,24 +142,24 @@ const AlertBars = () => {
                         type: 'Bool'
                     }]} /> */}
 
-                    <app.SyntaxHighlighter language='jsx'>{
+                    <SyntaxHighlighter language='jsx'>{
                         '<Alert bar>This is an alert</Alert>'
-                    }</app.SyntaxHighlighter>
+                    }</SyntaxHighlighter>
 
                     <Heading heading='4' size='3'>Output:</Heading>
 
-                    <app.SyntaxHighlighter language='html'>{
+                    <SyntaxHighlighter language='html'>{
                         '<div class="alert-bar">This is an alert</div>'
-                    }</app.SyntaxHighlighter>
+                    }</SyntaxHighlighter>
 
                     <Heading heading='4' size='3'>Preview:</Heading>
 
                     <Well>
                         <Alert bar>This is an alert</Alert>
                     </Well>
-                </app.Section>
+                </Section>
 
-                <app.Section id='props.box'>
+                <Section id='props.box'>
                     <Heading size='5'>Props.box</Heading>
 
                     {/* <app.Table small content={[{
@@ -165,24 +167,24 @@ const AlertBars = () => {
                         type: 'Bool'
                     }]} /> */}
 
-                    <app.SyntaxHighlighter language='jsx'>{
+                    <SyntaxHighlighter language='jsx'>{
                         '<Alert box>This is an alert</Alert>'
-                    }</app.SyntaxHighlighter>
+                    }</SyntaxHighlighter>
 
                     <Heading heading='4' size='3'>Output:</Heading>
 
-                    <app.SyntaxHighlighter language='html'>{
+                    <SyntaxHighlighter language='html'>{
                         '<div class="alert-box">This is an alert</div>'
-                    }</app.SyntaxHighlighter>
+                    }</SyntaxHighlighter>
 
                     <Heading heading='4' size='3'>Preview:</Heading>
 
                     <Well>
                         <Alert box>This is an alert</Alert>
                     </Well>
-                </app.Section>
+                </Section>
 
-                <app.Section id='props.alert'>
+                <Section id='props.alert'>
                     <Heading size='5'>Props.alert</Heading>
 
                     {/* <app.Table small content={[{
@@ -190,24 +192,24 @@ const AlertBars = () => {
                         type: 'String'
                     }]} /> */}
 
-                    <app.SyntaxHighlighter language='jsx'>{
+                    <SyntaxHighlighter language='jsx'>{
                         `<Alert alert='success'>This is an alert</Alert>`
-                    }</app.SyntaxHighlighter>
+                    }</SyntaxHighlighter>
 
                     <Heading heading='4' size='3'>Output:</Heading>
 
-                    <app.SyntaxHighlighter language='html'>{
+                    <SyntaxHighlighter language='html'>{
                         '<div class="alert-bar-success">This is an alert</div>'
-                    }</app.SyntaxHighlighter>
+                    }</SyntaxHighlighter>
 
                     <p>You can directly reference available alerts as a prop name:</p>
 
-                    <app.SyntaxHighlighter language='jsx'>{`
+                    <SyntaxHighlighter language='jsx'>{`
                         <Alert success>This is an alert</Alert>
-                    `}</app.SyntaxHighlighter>
-                </app.Section>
+                    `}</SyntaxHighlighter>
+                </Section>
 
-                <app.Section id='props.icon'>
+                <Section id='props.icon'>
                     <Heading size='5'>Props.icon</Heading>
 
                     {/* <app.Table small content={[{
@@ -230,101 +232,101 @@ const AlertBars = () => {
                         </List.Item>
                     </List>
 
-                    <app.Section id='overwrite-default-icon'>
+                    <Section id='overwrite-default-icon'>
                         <Heading size='4'>Overwrite default icon</Heading>
 
-                        <app.SyntaxHighlighter language='jsx'>{
+                        <SyntaxHighlighter language='jsx'>{
                             `<Alert icon='exclamation-triangle'>This is an alert</Alert>`
-                        }</app.SyntaxHighlighter>
+                        }</SyntaxHighlighter>
 
                         <Heading heading='4' size='3'>Output:</Heading>
 
-                        <app.SyntaxHighlighter language='html'>{`
+                        <SyntaxHighlighter language='html'>{`
                             <div class="alert-bar">
                                 <div class="alert_icon fa fa-exclamation-triangle"></div> This is an alert
                             </div>
-                        `}</app.SyntaxHighlighter>
+                        `}</SyntaxHighlighter>
 
                         <Heading heading='4' size='3'>Preview:</Heading>
 
                         <Well>
                             <Alert icon='exclamation-triangle'>This is an alert</Alert>
                         </Well>
-                    </app.Section>
+                    </Section>
 
-                    <app.Section id='disable-default-icon'>
+                    <Section id='disable-default-icon'>
                         <Heading size='4'>Disable default icon</Heading>
 
-                        <app.SyntaxHighlighter language='jsx'>{
+                        <SyntaxHighlighter language='jsx'>{
                             `<Alert icon={false}>This is an alert</Alert>`
-                        }</app.SyntaxHighlighter>
+                        }</SyntaxHighlighter>
 
                         <Heading heading='4' size='3'>Output:</Heading>
 
-                        <app.SyntaxHighlighter language='html'>{`
+                        <SyntaxHighlighter language='html'>{`
                             <div class="alert-bar">This is an alert</div>
-                        `}</app.SyntaxHighlighter>
+                        `}</SyntaxHighlighter>
 
                         <Heading heading='4' size='3'>Preview:</Heading>
 
                         <Well>
                             <Alert icon={false}>This is an alert</Alert>
                         </Well>
-                    </app.Section>
+                    </Section>
 
-                    <app.Section id='right-aligned-icon'>
+                    <Section id='right-aligned-icon'>
                         <Heading size='4'>Right-aligned icon:</Heading>
 
                         <Alert info>A right-aligned icon cannot be used in conjunction with the <code className='code'>close</code> prop</Alert>
 
-                        <app.SyntaxHighlighter language='jsx'>{
+                        <SyntaxHighlighter language='jsx'>{
                             `<Alert icon='right'>This is an alert</Alert>`
-                        }</app.SyntaxHighlighter>
+                        }</SyntaxHighlighter>
 
-                        <app.SyntaxHighlighter language='html'>{`
+                        <SyntaxHighlighter language='html'>{`
                             <div class="alert-bar">
                                 <div class="alert_icon-right fa fa-check"></div> This is an alert
                             </div>
-                        `}</app.SyntaxHighlighter>
+                        `}</SyntaxHighlighter>
 
                         <Well>
                             <Alert icon='right'>This is an alert</Alert>
                         </Well>
-                    </app.Section>
+                    </Section>
 
-                    <app.Section id='right-aligned-custom-icon'>
+                    <Section id='right-aligned-custom-icon'>
                         <Heading size='4'>Right-aligned custom icon:</Heading>
 
-                        <app.SyntaxHighlighter language='jsx'>{
+                        <SyntaxHighlighter language='jsx'>{
                             `<Alert icon={['exclamation-triangle', 'right']}>This is an alert</Alert>`
-                        }</app.SyntaxHighlighter>
+                        }</SyntaxHighlighter>
 
-                        <app.SyntaxHighlighter language='html'>{`
+                        <SyntaxHighlighter language='html'>{`
                             <div class="alert-bar">
                                 <div class="alert_icon-right fa fa-exclamation-triangle"></div> This is an alert
                             </div>
-                        `}</app.SyntaxHighlighter>
+                        `}</SyntaxHighlighter>
 
                         <Well>
                             <Alert icon={['exclamation-triangle', 'right']}>This is an alert</Alert>
                         </Well>
-                    </app.Section>
-                </app.Section>
+                    </Section>
+                </Section>
 
-                <app.Section id='props.close'>
+                <Section id='props.close'>
                     <Heading size='5'>Props.close</Heading>
 
                     <Alert info>This prop cannot be used in conjunction with a right-aligned icon</Alert>
 
-                    <app.SyntaxHighlighter language='jsx'>{
+                    <SyntaxHighlighter language='jsx'>{
                         `<Alert close>This is an alert</Alert>`
-                    }</app.SyntaxHighlighter>
+                    }</SyntaxHighlighter>
 
-                    <app.SyntaxHighlighter language='html'>{`
+                    <SyntaxHighlighter language='html'>{`
                         <div class="alert-bar">
                             <div class="alert_icon-close-right fa fa-times"></div> This is an alert
                         </div>
-                    `}</app.SyntaxHighlighter>
+                    `}</SyntaxHighlighter>
 
                     <Alert info>Clicking the close icon triggers the <code className='code'>dismiss</code> <app.Link to='#interactions'>interaction</app.Link> by default</Alert>
 
@@ -334,23 +336,23 @@ const AlertBars = () => {
 
                     <Heading heading='4' size='4'>Custom callback function onClick:</Heading>
 
-                    <app.SyntaxHighlighter language='js'>{`
+                    <SyntaxHighlighter language='js'>{`
                         function hideAlert() {
                             document.getElementById('alert-demo').classList.add('hidden');
                         }
-                    `}</app.SyntaxHighlighter>
+                    `}</SyntaxHighlighter>
 
-                    <app.SyntaxHighlighter language='jsx'>{`
+                    <SyntaxHighlighter language='jsx'>{`
                         <Alert id='alert-demo' close={hideAlert}>...</Alert>
-                    `}</app.SyntaxHighlighter>
+                    `}</SyntaxHighlighter>
 
                     <Well>
                         <Alert id='alert-demo' close={DEMO__HIDE_ALERT}>
                             Click the X icon to initiate the callback function
                         </Alert>
                     </Well>
-                </app.Section>
-            </app.Section>
+                </Section>
+            </Section>
 
         </app.layouts.Base>
     );
