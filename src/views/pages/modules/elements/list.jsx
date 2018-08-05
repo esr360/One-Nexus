@@ -1,9 +1,10 @@
 import * as app from '../../../../app';
+import Base from '../../../layouts/base';
 
 export default class List extends React.Component {
     render() {
         return (
-            <app.layouts.Base {...app.config.app.views}>
+            <Base {...app.config.app.views}>
 
                 <app.List reset>
                     <app.ListItem>Foo</app.ListItem>
@@ -41,7 +42,7 @@ export default class List extends React.Component {
                     <app.ListItem>Foo</app.ListItem>
                 </app.List>
 
-            </app.layouts.Base>
+            </Base>
         )
     }
 }

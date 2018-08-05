@@ -1,7 +1,8 @@
 import * as app from '../../../../app';
+import Base from '../../../layouts/base';
 
 const Forms = () => (
-    <app.layouts.Base {...app.config.app.views}>
+    <Base {...app.config.app.views}>
 
         <div className="row object">
             <div className="span-6">
@@ -276,7 +277,7 @@ const Forms = () => (
             </div>
         </div>
 
-    </app.layouts.Base>
+    </Base>
 );
 
 export default Forms;

@@ -1,6 +1,7 @@
 import * as app from '../../../../app';
 import SyntaxHighlighter from '../../../tools/syntaxHighlighter';
 import Section from '../../../tools/section';
+import Base from '../../../layouts/base';
 
 function DEMO__HIDE_ALERT(alert) {
     document.getElementById('alert-demo').classList.add('hidden');
@@ -8,7 +9,7 @@ function DEMO__HIDE_ALERT(alert) {
 
 const AlertBars = () => {
     return (
-        <app.layouts.Base {...app.config.app.views}>
+        <Base {...app.config.app.views}>
 
             <Heading heading='2' size='7'>Alert</Heading>
 
@@ -23,10 +24,10 @@ const AlertBars = () => {
             </Well>
 
             <List>
-                <List.Item><app.Link to='#configuration'>Configuration</app.Link></List.Item>
-                <List.Item><app.Link to='#styles'>Styles</app.Link></List.Item>
-                <List.Item><app.Link to='#interactions'>Interactions</app.Link></List.Item>
-                <List.Item><app.Link to='#render-with-react'>Render With React</app.Link></List.Item>
+                <List.Item><Link to='#configuration'>Configuration</Link></List.Item>
+                <List.Item><Link to='#styles'>Styles</Link></List.Item>
+                <List.Item><Link to='#interactions'>Interactions</Link></List.Item>
+                <List.Item><Link to='#render-with-react'>Render With React</Link></List.Item>
             </List>
 
             <Section id='configuration'>
@@ -126,12 +127,12 @@ const AlertBars = () => {
                 }</SyntaxHighlighter>
 
                 <List>
-                    <List.Item><app.Link to='#props.bar'>[...Global.props]</app.Link></List.Item>
-                    <List.Item><app.Link to='#props.bar'>Props.bar</app.Link></List.Item>
-                    <List.Item><app.Link to='#props.box'>Props.box</app.Link></List.Item>
-                    <List.Item><app.Link to='#props.alert'>Props.alert</app.Link></List.Item>
-                    <List.Item><app.Link to='#props.icon'>Props.icon</app.Link></List.Item>
-                    <List.Item><app.Link to='#props.close'>Props.close</app.Link></List.Item>
+                    <List.Item><Link to='#props.bar'>[...Global.props]</Link></List.Item>
+                    <List.Item><Link to='#props.bar'>Props.bar</Link></List.Item>
+                    <List.Item><Link to='#props.box'>Props.box</Link></List.Item>
+                    <List.Item><Link to='#props.alert'>Props.alert</Link></List.Item>
+                    <List.Item><Link to='#props.icon'>Props.icon</Link></List.Item>
+                    <List.Item><Link to='#props.close'>Props.close</Link></List.Item>
                 </List>
 
                 <Section id='props.bar'>
@@ -219,16 +220,16 @@ const AlertBars = () => {
 
                     <List>
                         <List.Item>
-                            <app.Link to='#overwrite-default-icon'>Overwrite default icon</app.Link>
+                            <Link to='#overwrite-default-icon'>Overwrite default icon</Link>
                         </List.Item>
                         <List.Item>
-                            <app.Link to='#disable-default-icon'>Disable default icon</app.Link>
+                            <Link to='#disable-default-icon'>Disable default icon</Link>
                         </List.Item>
                         <List.Item>
-                            <app.Link to='#right-aligned-icon'>Right-aligned icon</app.Link>
+                            <Link to='#right-aligned-icon'>Right-aligned icon</Link>
                         </List.Item>
                         <List.Item>
-                            <app.Link to='#right-aligned-custom-icon'>Right-aligned custom icon</app.Link>
+                            <Link to='#right-aligned-custom-icon'>Right-aligned custom icon</Link>
                         </List.Item>
                     </List>
 
@@ -328,7 +329,7 @@ const AlertBars = () => {
                         </div>
                     `}</SyntaxHighlighter>
 
-                    <Alert info>Clicking the close icon triggers the <code className='code'>dismiss</code> <app.Link to='#interactions'>interaction</app.Link> by default</Alert>
+                    <Alert info>Clicking the close icon triggers the <code className='code'>dismiss</code> <Link to='#interactions'>interaction</Link> by default</Alert>
 
                     <Well>
                         <Alert close>This is an alert</Alert>
@@ -354,7 +355,7 @@ const AlertBars = () => {
                 </Section>
             </Section>
 
-        </app.layouts.Base>
+        </Base>
     );
 }
 

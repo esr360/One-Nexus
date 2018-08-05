@@ -1,9 +1,10 @@
 import * as app from '../../../../app';
+import Base from '../../../layouts/base';
 
 export default class Blockquote extends React.Component {
     render() {
         return (
-            <app.layouts.Base {...app.config.app.views}>
+            <Base {...app.config.app.views}>
 
                 <app.Blockquote content='Lorem ipsum dolor sit amet' />
 
@@ -22,7 +23,7 @@ export default class Blockquote extends React.Component {
 
                 <app.Blockquote content='Lorem ipsum dolor sit amet' />
 
-            </app.layouts.Base>
+            </Base>
         )
     }
 }

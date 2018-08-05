@@ -1,4 +1,5 @@
 import * as app from '../../app';
+import Base from '../layouts/base';
 
 const panels = [
     {title: 'foo', content: 'bar'},
@@ -21,8 +22,8 @@ function dismiss(event) {
     console.log(event);
 }
 
-const Index = () => (
-    <app.layouts.Base {...app.config.app.views}>
+const Index = (props) => (
+    <Base {...props.config.app.views}>
 
         <PAX5.row stack='breakpoint-3'>
             <PAX5.column>Column</PAX5.column>
@@ -301,7 +302,7 @@ const Index = () => (
             <Breadcrumb.Item>Level 2</Breadcrumb.Item>
             <Breadcrumb.Item>Level 3</Breadcrumb.Item>
         </Breadcrumb>
-    </app.layouts.Base>
+    </Base>
 );
 
 export default Index;

@@ -1,9 +1,10 @@
 import * as app from '../../../../app';
+import Base from '../../../layouts/base';
 
 export default class Button extends React.Component {
     render() {
         return (
-            <app.layouts.Base {...app.config.app.views}>
+            <Base {...app.config.app.views}>
 
                 <Group object>
                     <app.Button facebook>Button</app.Button>
@@ -26,7 +27,7 @@ export default class Button extends React.Component {
                     <app.Button>Button</app.Button>
                 </Group>
 
-            </app.layouts.Base>
+            </Base>
         )
     }
 }

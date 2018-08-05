@@ -1,9 +1,10 @@
 import * as app from '../../../../app';
+import Base from '../../../layouts/base';
 
 export default class Accordions extends React.Component {
     render() {
         return (
-            <app.layouts.Base {...app.config.app.views}>
+            <Base {...app.config.app.views}>
                 <Accordion panels={[
                     {title: 'foo', content: 'bar', active: true},
                     {title: 'fizz', content: <div>potato</div>}
@@ -24,7 +25,7 @@ export default class Accordions extends React.Component {
                     )},
                     {title: 'fizz', content: <div>buzz</div>}
                 ]} />
-            </app.layouts.Base>
+            </Base>
         )
     }
 }

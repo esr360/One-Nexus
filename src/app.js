@@ -22,154 +22,37 @@ import * as Synergy from '../../../Synergy/src/index.js';
 // PAX5
 import PAX5 from '../../../pax5/repo/src/pax5';
 
-// Tools
+// UI
 //*****************************************************************
 
-import verticalRhythm from './ui/tools/styles/verticalRhythm.jss';
+// Tools
+import * as tools from './ui/tools'
 
 // Modules
-//*****************************************************************
-
-// Utilities
-import {
-    colors,
-    grid
-} from './ui/modules/utilities';
-
-// Elements
-import { 
-    Accordion,
-    Alert,
-    Blockquote,
-    Button,
-    Carousel,
-    Form,
-    Heading,
-    Image,
-    List,
-    Modal,
-    Paragraph,
-    ProgressBar,
-    Table,
-    Tabs,
-    Tooltip,
-    Well
-} from './ui/modules/elements';
-
-// Objects
-import {
-    Billboard,
-    Breadcrumb,
-    Footer,
-    Header,
-    Logo,
-    Navigation,
-    Overlay,
-    Preloader,
-    Search,
-    SideNav 
-} from './ui/modules/objects';
+import * as utilities from './ui/modules/utilities';
+import * as elements from './ui/modules/elements';
+import * as objects from './ui/modules/objects';
 
 // Themes
-//*****************************************************************
-
 import one_nexus from './ui/themes/one_nexus.json';
 
 // Views
 //*****************************************************************
 
-// Layouts
-import Base from './views/layouts/base.jsx';
-
-// Pages
-import Index from './views/pages/index.jsx';
-import accordions from './views/pages/modules/elements/accordion.jsx';
-import alerts from './views/pages/modules/elements/alert.jsx';
-import blockquotes from './views/pages/modules/elements/blockquote.jsx';
-import buttons from './views/pages/modules/elements/button.jsx';
-import carousels from './views/pages/modules/elements/carousel.jsx';
-import forms from './views/pages/modules/elements/form.jsx';
-import headings from './views/pages/modules/elements/heading.jsx';
-import images from './views/pages/modules/elements/image.jsx';
-import lists from './views/pages/modules/elements/list.jsx';
-import modals from './views/pages/modules/elements/modal.jsx';
-import paragraphs from './views/pages/modules/elements/paragraph.jsx';
-import progressBars from './views/pages/modules/elements/progress-bar.jsx';
-import tables from './views/pages/modules/elements/table.jsx';
-import tabs from './views/pages/modules/elements/tabs.jsx';
-import tooltips from './views/pages/modules/elements/tooltip.jsx';
-import wells from './views/pages/modules/elements/well.jsx';
-
-// Exports
-//*****************************************************************
-
-const tools = {
-    verticalRhythm
-}
-
-const utilities = {
-    colors,
-    grid
-}
-
-const elements = {
-    Accordion,
-    Alert,
-    Blockquote,
-    Button,
-    Carousel,
-    Form,
-    Heading,
-    Image,
-    List,
-    Modal,
-    Paragraph,
-    ProgressBar,
-    Table,
-    Tabs,
-    Tooltip,
-    Well 
-}
-
-const objects = {
-    Billboard,
-    Breadcrumb,
-    Footer,
-    Header,
-    Logo,
-    Navigation,
-    Overlay,
-    Preloader,
-    Search,
-    SideNav    
-}
-
-const modules = {
-    ...utilities,
-    ...elements,
-    ...objects
-}
-
-const layouts = { 
-    Base
-};
-
-export { 
-    config,
-    Link,
-    layouts
-};
+import * as pages from './views/pages';
 
 // DOM/Window Preparation
 //*****************************************************************
 
 Object.assign(window, Synergy, { 
     PAX5,
+    Link,
     theme: {
         ...tools,
         ...utilities
     },
-    ...modules
+    ...elements,
+    ...objects
 });
 
 window.Synergy.CssClassProps = config.app.ui['css-class-props'];
@@ -185,7 +68,6 @@ Element.prototype.modifier = function(modifier, operator) {
 // Render App
 //*****************************************************************
 
-// App JSX Component
 const App = ({ theme }) => {
     window.theme = Synergy.Module.config(window.theme, theme);
 
@@ -195,17 +77,17 @@ const App = ({ theme }) => {
 
     return (
         <Switch>
-            <Route path='/' exact component={Index} />
-            <Route path='/accordion' component={accordions} />
-            <Route path='/alert' component={alerts} />
-            <Route path='/blockquote' component={blockquotes} />
-            <Route path='/button' component={buttons} />
-            <Route path='/carousel' component={carousels} />
-            <Route path='/form' component={forms} />
-            <Route path='/heading' component={headings} />
-            <Route path='/image' component={images} />
-            <Route path='/list' component={lists} />
-            <Route path='/modal' component={modals} />
+            <Route path='/' exact render={() => <pages.Index config={config} />} />
+            <Route path='/accordion' component={pages.accordions} />
+            <Route path='/alert' component={pages.alerts} />
+            <Route path='/blockquote' component={pages.blockquotes} />
+            <Route path='/button' component={pages.buttons} />
+            <Route path='/carousel' component={pages.carousels} />
+            <Route path='/form' component={pages.forms} />
+            <Route path='/heading' component={pages.headings} />
+            <Route path='/image' component={pages.images} />
+            <Route path='/list' component={pages.lists} />
+            <Route path='/modal' component={pages.modals} />
         </Switch>
     );
 }

@@ -1,8 +1,9 @@
 import * as app from '../../../../app';
+import Base from '../../../layouts/base';
 
 const Modals = () => {
     return (
-        <app.layouts.Base {...app.config.app.views}>
+        <Base {...app.config.app.views}>
 
             <Module name='modal' before={target => <Button onClick={() => UI.modal(target()).show()}>Raw</Button>}>
                 <Component name='close' modifiers={['icon']}>×</Component>
@@ -52,7 +53,7 @@ const Modals = () => {
                 <div class="modal_close">Close Modal</div>
             </div>
 
-        </app.layouts.Base>
+        </Base>
     );
 }
 
