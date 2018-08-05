@@ -25,11 +25,8 @@ import PAX5 from '../../../pax5/repo/src/pax5';
 // UI
 //*****************************************************************
 
-// Tools
 import * as tools from './ui/tools'
-
-// Modules
-import * as utilities from './ui/modules/utilities';
+import * as foundation from './ui/foundation';
 import * as elements from './ui/modules/elements';
 import * as objects from './ui/modules/objects';
 
@@ -49,7 +46,7 @@ Object.assign(window, Synergy, {
     Link,
     theme: {
         ...tools,
-        ...utilities
+        ...foundation
     },
     ...elements,
     ...objects
