@@ -22,7 +22,7 @@ function dismiss(event) {
     console.log(event);
 }
 
-const Index = (props) => (
+const Index = props => (
     <Base {...props.config.app.views}>
 
         <PAX5.row stack='breakpoint-3'>

@@ -1,5 +1,4 @@
 export default {
-    'name': 'grid',
     'columns': 12,
     'gutter': '3%',
     'default-stack': '940px',

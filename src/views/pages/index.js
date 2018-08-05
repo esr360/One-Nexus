@@ -1,4 +1,4 @@
-export { default as Index } from './index.jsx';
+export { default as index } from './index.jsx';
 export { default as accordions } from './modules/elements/accordion.jsx';
 export { default as alerts } from './modules/elements/alert.jsx';
 export { default as blockquotes } from './modules/elements/blockquote.jsx';

@@ -1,4 +1,5 @@
-import defaults from './blockquote.json';
+import defaults from './assets/config.js';
+import layout from './assets/layout.jss';
 
 /**
  * Render Blockquote module
@@ -6,11 +7,11 @@ import defaults from './blockquote.json';
  * @prop {ReactElement} content
  * @prop {ReactElement} footer
  */
-const Blockquote = ({ content, footer, ...props }) => {
-    const config = Object.assign(defaults.blockquote, window.theme.blockquote);
+const Blockquote = ({ content, footer, layout, ...props }) => {
+    const config = Object.assign(defaults(window.theme), window.theme.blockquote);
 
     return (
-        <Module name={config.name} {...props}>
+        <Module name={config.name} styles={[layout, window.theme, config]} {...props}>
             <Component name='content'>{content}</Component>
             {props.footer && <Component name='footer' tag='footer'>{footer}</Component>}
         </Module>
@@ -18,7 +19,8 @@ const Blockquote = ({ content, footer, ...props }) => {
 }
 
 Blockquote.defaultProps = {
-    object: true
+    object: true,
+    layout: layout
 };
 
 export default Blockquote;

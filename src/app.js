@@ -16,8 +16,8 @@ import { HashRouter, Switch, Route } from 'react-router-dom';
 
 // Synergy
 //import * as Synergy from 'Synergy';
-import * as Synergy from '../../../Synergy/src/index.js';
 //import * as Synergy from '../../../Synergy/dist/synergy.js';
+import * as Synergy from '../../../Synergy/src/index.js';
 
 // PAX5
 import PAX5 from '../../../pax5/repo/src/pax5';
@@ -27,6 +27,8 @@ import PAX5 from '../../../pax5/repo/src/pax5';
 
 import * as tools from './ui/tools'
 import * as foundation from './ui/foundation';
+
+// Modules
 import * as elements from './ui/modules/elements';
 import * as objects from './ui/modules/objects';
 
@@ -74,10 +76,10 @@ const App = ({ theme }) => {
 
     return (
         <Switch>
-            <Route path='/' exact render={() => <pages.Index config={config} />} />
-            <Route path='/accordion' component={pages.accordions} />
-            <Route path='/alert' component={pages.alerts} />
-            <Route path='/blockquote' component={pages.blockquotes} />
+            <Route path='/' exact render={() => <pages.index config={config} />} />
+            <Route path='/accordion' render={() => <pages.accordions config={config} />} />
+            <Route path='/alert' render={() => <pages.alerts config={config} />} />
+            <Route path='/blockquote' render={() => <pages.blockquotes config={config} />} />
             <Route path='/button' component={pages.buttons} />
             <Route path='/carousel' component={pages.carousels} />
             <Route path='/form' component={pages.forms} />
