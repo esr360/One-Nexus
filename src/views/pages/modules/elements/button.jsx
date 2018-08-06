@@ -16,7 +16,7 @@ const Buttons = props => (
             <Button size-1>Button</Button>
             <Button size-2>Button</Button>
             <Button size-3>Button</Button>
-            <Button size-4>Button</Button>
+            <Button size-8>Button</Button>
         </Group>
 
         <Group object modifiers={['pills']}>

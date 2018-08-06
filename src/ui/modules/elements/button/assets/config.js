@@ -2,7 +2,7 @@ export default function config(theme) {
     return {
         'name': 'button',
         'color': theme.colors.greyscale.white,
-        'background': theme.colors.greyscale['grey-4'],
+        // 'background': theme.colors.greyscale['grey-4'],
         // 'transition': ['#CORE', 'transition'],
         'padding': '0.65em 1em',
         'line-height': '1',
@@ -15,6 +15,10 @@ export default function config(theme) {
         'group-spacing': '0.5em',
         'group-stack': 'break-1',
         'palettes': ['brand', 'greyscale', 'alert', 'social'],
+        'colors': {
+            ...theme.colors.brand,
+            ...theme.colors.alert
+        },
         'border-palettes': false,
         'sizes': theme.typography.sizes,
         'active': {

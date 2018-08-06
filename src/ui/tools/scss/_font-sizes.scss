@@ -63,8 +63,6 @@
         $ms-lr-values: append($ms-lr-values, $new-value);
     }
 
-    @debug $values, $ms-lr-values;
-
     // Create a modifier for each font-size
     @each $key, $value in map-get($font-sizes, 'sizes') {
         // Get current index
@@ -92,6 +90,7 @@
 }
 
 @mixin fluid-scaling($min-font-size, $max-font-size, $min-vw, $max-vw) {
+    @debug $max-font-size, $min-font-size, strip-unit($max-font-size - $min-font-size);
     @media screen and (min-width: $min-vw) {
         font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / (#{strip-unit($max-vw - $min-vw)} / 10)));
     }
