@@ -1,4 +1,4 @@
-export default function layout(element, globals) {
+export default function layout(element, config, globals) {
     return {
         'display': 'inline-block',
         'border-color': 'transparent',
@@ -6,6 +6,6 @@ export default function layout(element, globals) {
         'vertical-align': 'middle',
         'cursor': 'pointer',
 
-        ...globals.fontSizes
+        'font-size': globals.fontSizes(element, config.sizes)
     }
 }

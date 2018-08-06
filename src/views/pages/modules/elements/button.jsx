@@ -12,6 +12,13 @@ const Buttons = props => (
             <Button href='#'>Button</Button>
         </Group>
 
+        <Group object>
+            <Button size-1>Button</Button>
+            <Button size-2>Button</Button>
+            <Button size-3>Button</Button>
+            <Button size-4>Button</Button>
+        </Group>
+
         <Group object modifiers={['pills']}>
             <Button>Button</Button>
             <Button>Button</Button>

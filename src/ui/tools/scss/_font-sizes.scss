@@ -56,11 +56,14 @@
     @for $i from 1 through length($ms-list) {
         $new-value: pow($modular-scale-low-res, nth($ms-list, $i));
         $old-value: strip-unit(nth($values, $i));
+
         // Use the lowest of the two values
         $new-value: min($new-value, $old-value);
 
         $ms-lr-values: append($ms-lr-values, $new-value);
     }
+
+    @debug $values, $ms-lr-values;
 
     // Create a modifier for each font-size
     @each $key, $value in map-get($font-sizes, 'sizes') {
