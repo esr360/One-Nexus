@@ -1,4 +1,3 @@
-import * as app from '../../app';
 import Base from '../layouts/base';
 
 const panels = [

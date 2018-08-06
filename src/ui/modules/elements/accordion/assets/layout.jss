@@ -30,6 +30,8 @@ export default (element, globals) => ({
     toggle: toggle => {
         const panel = toggle.closest('[data-component="panel"]');
 
+        console.log(globals.accordion);
+
         return {
             'float': 'right',
             'line-height': 0.75,

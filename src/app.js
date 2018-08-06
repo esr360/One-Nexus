@@ -80,7 +80,7 @@ const App = ({ theme }) => {
             <Route path='/accordion' render={() => <pages.accordions config={config} />} />
             <Route path='/alert' render={() => <pages.alerts config={config} />} />
             <Route path='/blockquote' render={() => <pages.blockquotes config={config} />} />
-            <Route path='/button' component={pages.buttons} />
+            <Route path='/button' render={() => <pages.buttons config={config} />} />
             <Route path='/carousel' component={pages.carousels} />
             <Route path='/form' component={pages.forms} />
             <Route path='/heading' component={pages.headings} />

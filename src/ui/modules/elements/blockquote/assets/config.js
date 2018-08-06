@@ -1,6 +1,5 @@
 export default function config(theme) {
-    // console.log(theme.typography.colors.base(theme.colors));
-    console.log(theme.typography.sizes['size-2']);
+    console.log(theme.typography.colors.base(theme.colors));
     return {
         'name': 'blockquote',
         // 'font-family': ['Georgia', 'serif'],
