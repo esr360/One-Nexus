@@ -6,6 +6,7 @@ const Buttons = props => (
         <Group object>
             <Button facebook>Button</Button>
             <Button brand-1>Button</Button>
+            <Button brand-2>Button</Button>
             <Button grey-2>Button</Button>
             <Button success>Button</Button>
             <Button error disabled>Button</Button>

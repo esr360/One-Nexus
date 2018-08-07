@@ -6,11 +6,14 @@ export default function layout(element, config, globals) {
         'vertical-align': 'middle',
         'cursor': 'pointer',
         'font-size': globals.fontSize(element, config.sizes, globals),
-        'background-color': () => {
-            for (let [key, value] of Object.entries(config.colors)) {
-                console.log(key, element, element.modifier(key));
-                if (element.modifier(key)) return value;
-            }
-        }
+
+        ...Object.entries(config.colors).reduce((result, color) => {
+            return element.modifier(color[0]) ? {
+                'background-color': color[1],
+                ':hover': {
+                    'background-color': 'black'
+                }
+            } : result;
+        }, {})
     }
 }
