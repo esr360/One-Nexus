@@ -1,9 +1,7 @@
 import Color from 'color';
 
 export default function layout(element, config, globals) {
-    return {
-        ...config,
-
+    return [config, {
         'display': 'inline-block',
         'border-color': 'transparent',
         'text-decoration': 'none',
@@ -109,5 +107,5 @@ export default function layout(element, config, globals) {
                 })
             }
         })
-    }
+    }]
 }

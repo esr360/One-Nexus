@@ -1,8 +1,6 @@
-import config from './config.js';
-
-export default function(element, globals) {
-    return {
-        ...Object.entries(config(globals).alerts).reduce((result, item) => {
+export default function(element, config, globals) {
+    return [config, {
+        ...Object.entries(config.alerts).reduce((result, item) => {
             result[`modifier(${item[0]})`] = { 
                 'background-color': item[1].color
             }
@@ -35,5 +33,5 @@ export default function(element, globals) {
                 'cursor': 'pointer'
             }
         })
-    }
+    }]
 }
