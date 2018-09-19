@@ -8,19 +8,21 @@ export default {
 export function init(navigation) {
     const options = Object.assign(defaults['side-nav'], window.theme['side-nav']);
 
-    Synergy(options.name, el => {
+    sQuery(options.name, el => {
         // populate the side-navigation
         if (typeof navigation === 'string') {
-            el.querySelector('nav').innerHTML = Synergy(navigation).query[0].innerHTML;
+            el.querySelector('nav').innerHTML = sQuery(navigation).query[0].innerHTML;
         }
 
         // toggle side nav on component click
-        Synergy(options.name).component('toggle').forEach(toggleElement => {
+        sQuery(options.name).component('toggle').forEach(toggleElement => {
+            // console.log(toggleElement)
             toggleElement.addEventListener('click', () => toggle(el, 'toggle', options));
         });
 
         // close side nav on component click
-        [...Synergy(options.name).component('close')].forEach(closeElement => {
+        [...sQuery(options.name).component('close')].forEach(closeElement => {
+            console.log(closeElement); // @TODO check that this outputs something
             closeElement.addEventListener('click', () => toggle(el, 'hide', options));
         });
 

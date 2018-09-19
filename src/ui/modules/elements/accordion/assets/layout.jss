@@ -14,7 +14,7 @@ export default (element, config, globals) => {
         }),
 
         title: title => {
-            const panel = title.closest('[data-component="panel"]');
+            const panel = title.parent('panel');
 
             return {
                 'display': 'block',
@@ -23,16 +23,12 @@ export default (element, config, globals) => {
                 'font-weight': 'normal',
                 'line-height': 1,
                 'cursor': 'pointer',
-                'border-bottom': ['important', 
-                    (panel !== panel.parentNode.lastChild) && !panel.style.marginBottom ? 0 : false
-                ]
+                'border-bottom': (panel !== panel.parentNode.lastChild) && !panel.style.marginBottom ? 0 : false
             }
         },
 
         toggle: toggle => {
-            const panel = toggle.closest('[data-component="panel"]');
-
-            console.log(globals.accordion);
+            const panel = toggle.parent('panel');
 
             return {
                 'float': 'right',
@@ -42,15 +38,13 @@ export default (element, config, globals) => {
         },
 
         content: content => {
-            const panel = content.closest('[data-component="panel"]');
+            const panel = content.parent('panel');
 
             return {
                 'display': panel.modifier('active') ? 'block' : 'none',
                 'margin': 0,
                 'margin-top': '-1px',
-                'border-bottom': ['important', 
-                    (panel !== panel.parentNode.lastChild) && !panel.style.marginBottom ? 0 : false
-                ]
+                'border-bottom': (panel !== panel.parentNode.lastChild) && !panel.style.marginBottom ? 0 : false
             }
         }
     }]

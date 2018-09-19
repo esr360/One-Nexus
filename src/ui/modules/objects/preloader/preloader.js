@@ -7,7 +7,7 @@ export default {
 export function toggle() {
     const options = Object.assign(defaults.preloader, window.theme.preloader);
 
-    Synergy(options.name, preloader => {
+    sQuery(options.name, preloader => {
         preloader.modifier('hidden', preloader.modifier('hidden', 'isset') ? 'unset' : 'set');
     });
 }

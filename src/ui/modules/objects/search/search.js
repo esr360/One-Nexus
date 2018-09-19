@@ -7,7 +7,7 @@ export default {
 export function toggle(operator) {
     const config = Object.assign(defaults.search, window.theme.search);
 
-    Synergy(config.name, search => {
+    sQuery(config.name, search => {
         const state = (search.modifier('visible') && operator !== 'show' || operator === 'hide') ? 'unset' : 'set';
     
         search.modifier('visible', state);
@@ -22,7 +22,7 @@ export function init() {
     const config = Object.assign(defaults.search, window.theme.search);
 
     ['show', 'hide', 'toggle'].forEach(trigger => {
-        [...Synergy(config.name).component(trigger)].forEach(triggerEl => {
+        [...sQuery(config.name).component(trigger)].forEach(triggerEl => {
             triggerEl.addEventListener('click', toggle.bind(this, trigger), false);
         });
     });

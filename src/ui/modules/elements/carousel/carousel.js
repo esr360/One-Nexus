@@ -50,7 +50,7 @@ export function init(el, carousel) {
 
     // Compensate for pagination
     if (!options.navigationItem.disable) {
-        const offset = el.component('pagination')[0].clientHeight + parseInt(options.bullet.gutter, 10);
+        const offset = el.getComponent('pagination').clientHeight + parseInt(options.bullet.gutter, 10);
         el.style.paddingBottom = `${offset}px`;
     }
 

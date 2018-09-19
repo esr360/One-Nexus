@@ -10,17 +10,11 @@ import config from './app.json';
 // Vendor
 //*****************************************************************
 
-// React
 import { HashLink as Link } from 'react-router-hash-link';
 import { HashRouter, Switch, Route } from 'react-router-dom';
-
-// Synergy
-//import * as Synergy from 'Synergy';
-//import * as Synergy from '../../../Synergy/dist/synergy.js';
-import * as Synergy from '../../../Synergy/src/index.js';
-
-// PAX5
+import deepextend from 'deep-extend';
 import PAX5 from '../../../pax5/repo/src/pax5';
+import '../../../Synergy/src/synergy';
 
 // UI
 //*****************************************************************
@@ -43,7 +37,7 @@ import * as pages from './views/pages';
 // DOM/Window Preparation
 //*****************************************************************
 
-Object.assign(window, Synergy, { 
+Object.assign(window, { 
     PAX5,
     Link,
     theme: {
@@ -56,19 +50,11 @@ Object.assign(window, Synergy, {
 
 window.Synergy.CssClassProps = config.app.ui['css-class-props'];
 
-Element.prototype.component = function(component, operator) {
-    return Synergy.Synergy(this).component(component, operator, this);
-};
-
-Element.prototype.modifier = function(modifier, operator) {
-    return Synergy.Synergy(this).modifier(modifier, operator, this);
-};
-
 // Render App
 //*****************************************************************
 
 const App = ({ theme }) => {
-    window.theme = Synergy.Module.config(window.theme, theme);
+    window.theme = deepextend(window.theme, theme);
 
     if (process.env.APP_ENV === 'web') {
         require('./app.scss');

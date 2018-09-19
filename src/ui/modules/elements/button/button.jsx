@@ -8,7 +8,7 @@ const Button = props => {
     const config = Object.assign(defaults(window.theme), window.theme.button);
 
     return (
-        <Module name={config.name} tag={props.href ? 'a' : false} styles={[layout, window.theme, config]} {...props}>
+        <Module name={config.name} tag={props.href ? 'a' : false} styles={[layout, config, window.theme]} {...props}>
             {props.children}
         </Module>
     );

@@ -33,7 +33,7 @@ const Alert = ({ alert, icon, dismiss, ...props }) => {
             name={options.name} {...props} 
             modifiers={modifiers} 
             bar={props.box ? false : props.bar} 
-            styles={[layout, window.theme, options]}
+            styles={[layout, options, window.theme]}
         >
             {icon &&
                 <Component

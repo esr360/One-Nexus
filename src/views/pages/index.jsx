@@ -23,17 +23,23 @@ function dismiss(event) {
 
 const Index = props => (
     <Base {...props.config.app.views}>
+    
+        <PAX5.row jss={{background: 'red'}}>
+            <PAX5.column width={4}>Column</PAX5.column>
+            <PAX5.column width={6}>Column</PAX5.column>
+            <PAX5.column width={2}>Column</PAX5.column>
+        </PAX5.row>
+
+        <PAX5.row reverse>
+            <PAX5.column width={4}>Column 1</PAX5.column>
+            <PAX5.column width={6}>Column 2</PAX5.column>
+            <PAX5.column width={2}>Column 3</PAX5.column>
+        </PAX5.row>
 
         <PAX5.row stack='breakpoint-3'>
             <PAX5.column>Column</PAX5.column>
             <PAX5.column>Column</PAX5.column>
             <PAX5.column>Column</PAX5.column>
-        </PAX5.row>
-
-        <PAX5.row>
-            <PAX5.column width={4}>Column</PAX5.column>
-            <PAX5.column width={6}>Column</PAX5.column>
-            <PAX5.column width={2}>Column</PAX5.column>
         </PAX5.row>
 
         <PAX5.row>
@@ -87,7 +93,7 @@ const Index = props => (
         </PAX5.row>
 
         <PAX5.row no-gutter>
-            <PAX5.column>Column</PAX5.column>
+            <PAX5.column>no gutter</PAX5.column>
             <PAX5.column>Column</PAX5.column>
             <PAX5.column>Column</PAX5.column>
             <PAX5.column>Column</PAX5.column>
@@ -119,7 +125,7 @@ const Index = props => (
         {/**/}
 
     
-        <Accordion Alert large panels={panels} />
+        <Accordion large panels={panels} />
 
         <Alert close={true}>This is a default alert</Alert>
 

@@ -3,7 +3,7 @@
  * 
  * @param {Object} theme - global UI toolkit
  */
-export default (theme) => ({
+export default theme => ({
     'name': 'accordion',
 
     title: {
@@ -36,6 +36,22 @@ export default (theme) => ({
         'border-radius': 0,
         'padding': '1.5em'
     },
+
+    // @TODO look into possibility of below syntax instead,
+    // but keep below one for example
+    // panel: panel => ({
+    //     ...(panel.modifier('active') && {
+    //         title: {
+    //             'background': theme.colors.brand['brand-2'],
+    //             'color': theme.colors.greyscale.white,
+    //             'border-color': 'transparent',
+    //             'border-radius': 0
+    //         },
+    //         toggle: {
+    //             'color': theme.colors.greyscale.white
+    //         }        
+    //     })
+    // }),
 
     panel: {
         'modifier(active)': {

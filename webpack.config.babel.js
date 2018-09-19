@@ -29,10 +29,7 @@ export default function(env) {
         }),
         new webpack.ProvidePlugin({
             React: 'react',
-            ReactDOM: 'react-dom',
-            Synergize: ['Synergy', 'Synergize']
-            //Synergize: ['../../../../../../../Synergy/dist/synergy.js', 'Synergize']
-            //Synergize: ['../../../../../../../Synergy/src/js/synergize.js', 'Synergize']
+            ReactDOM: 'react-dom'
         }),
         new CopyWebpackPlugin([
             { from: 'src/ui/images', to: 'assets/images' }
