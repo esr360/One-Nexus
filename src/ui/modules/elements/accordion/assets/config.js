@@ -37,22 +37,6 @@ export default theme => ({
         'padding': '1.5em'
     },
 
-    // @TODO look into possibility of below syntax instead,
-    // but keep below one for example
-    // panel: panel => ({
-    //     ...(panel.modifier('active') && {
-    //         title: {
-    //             'background': theme.colors.brand['brand-2'],
-    //             'color': theme.colors.greyscale.white,
-    //             'border-color': 'transparent',
-    //             'border-radius': 0
-    //         },
-    //         toggle: {
-    //             'color': theme.colors.greyscale.white
-    //         }        
-    //     })
-    // }),
-
     panel: {
         'modifier(active)': {
             title: {

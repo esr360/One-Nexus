@@ -10,8 +10,8 @@ import layout from './assets/layout.jss';
  * @prop {Function} dismiss
  */
 const Alert = ({ alert, icon, dismiss, ...props }) => {
-    const options = Object.assign(defaults(window.theme), window.theme.alert);
-    const alerts = options ? Object.keys(options.alerts) : [];
+    const config = Module.config(defaults(window.theme), window.theme.alert);
+    const alerts = config ? Object.keys(config.alerts) : [];
     const hasCustomIcon = icon => icon === undefined || icon === 'right';
 
     let modifiers = props.modifiers || [];
@@ -20,20 +20,20 @@ const Alert = ({ alert, icon, dismiss, ...props }) => {
         modifiers.push(alert);   
     }
 
-    if (options && hasCustomIcon(icon) && !props.box && options.icon['default-enable']) {
-        icon = options.alerts[alert].icon;
+    if (config && hasCustomIcon(icon) && !props.box && config.icon['default-enable']) {
+        icon = config.alerts[alert].icon;
 
         Object.keys(props).forEach(prop => {
-            if (alerts.includes(prop)) icon = options.alerts[prop].icon;
+            if (alerts.includes(prop)) icon = config.alerts[prop].icon;
         });
     }
 
     return (
         <Module 
-            name={options.name} {...props} 
+            name={config.name} {...props} 
             modifiers={modifiers} 
             bar={props.box ? false : props.bar} 
-            styles={[layout, options, window.theme]}
+            styles={[layout, config, window.theme]}
         >
             {icon &&
                 <Component

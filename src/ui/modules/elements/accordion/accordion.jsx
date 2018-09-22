@@ -12,7 +12,7 @@ const Accordion = ({ panels, toggle, layout, ...props }) => {
     const config = Module.config(defaults(window.theme), window.theme.accordion);
 
     return (
-        <Module name={config.name} {...props} styles={[layout, config, window.theme]}>
+        <Module name={config.name} styles={[layout, config, window.theme]} {...props} >
             {panels.map(({ title, content, active }, index) => (
                 <Component active={active} name='panel' key={index}>
                     <Component name='title' tag='div' onClick={toggle}>

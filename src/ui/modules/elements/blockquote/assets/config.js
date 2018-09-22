@@ -1,8 +1,7 @@
 export default function config(theme) {
-    console.log(theme.typography.colors.base(theme.colors));
     return {
         'name': 'blockquote',
-        // 'font-family': ['Georgia', 'serif'],
+        'font-family': 'Georgia, serif',
         'modifier(callout)': {
             'padding': '0.5em 0.75em',
             'font-size': theme.typography.sizes['size-5'],

@@ -72,7 +72,7 @@ export default function layout(element, config, globals) {
 
         group: group => ({
             button: [element, {
-                'margin-left':  element !== element.parentNode.firstChild && config['group-spacing'] 
+                'margin-left': !element.isFirstChild && config['group-spacing']
             }],
 
             'modifier(pills)': {
@@ -86,10 +86,10 @@ export default function layout(element, config, globals) {
 
                 'modifier(round)': {
                     button: [element, {
-                        'border-top-left-radius': element === element.parentNode.firstChild && config['round-radius'],
-                        'border-bottom-left-radius': element === element.parentNode.firstChild && config['round-radius'],
-                        'border-top-right-radius': element === element.parentNode.lastChild && config['round-radius'],
-                        'border-bottom-right-radius': element === element.parentNode.lastChild && config['round-radius'],
+                        'border-top-left-radius': element.isFirstChild && config['round-radius'],
+                        'border-bottom-left-radius': element.isFirstChild && config['round-radius'],
+                        'border-top-right-radius': element.isLastChild && config['round-radius'],
+                        'border-bottom-right-radius': element.isLastChild && config['round-radius'],
                     }]
                 }
             },

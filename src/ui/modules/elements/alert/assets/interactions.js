@@ -16,7 +16,5 @@ export function dismiss(alert) {
         alert = alert.target.closest(`[data-module="${options.name}"]`);
     }
 
-    alert.modifier('hidden', 'add');
-
-    alert.repaint();
+    alert.modifier('hidden', 'set').repaint();
 }

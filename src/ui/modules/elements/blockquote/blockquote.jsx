@@ -8,10 +8,10 @@ import layout from './assets/layout.jss';
  * @prop {ReactElement} footer
  */
 const Blockquote = ({ content, footer, layout, ...props }) => {
-    const config = Object.assign(defaults(window.theme), window.theme.blockquote);
+    const config = Module.config(defaults(window.theme), window.theme.blockquote);
 
     return (
-        <Module name={config.name} styles={[layout, window.theme, config]} {...props}>
+        <Module name={config.name} styles={[layout, config, window.theme]} {...props}>
             <Component name='content'>{content}</Component>
             {props.footer && <Component name='footer' tag='footer'>{footer}</Component>}
         </Module>

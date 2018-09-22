@@ -5,7 +5,7 @@ import layout from './assets/layout.jss';
  * Render Button module
  */
 const Button = props => {
-    const config = Object.assign(defaults(window.theme), window.theme.button);
+    const config = Module.config(defaults(window.theme), window.theme.button);
 
     return (
         <Module name={config.name} tag={props.href ? 'a' : false} styles={[layout, config, window.theme]} {...props}>

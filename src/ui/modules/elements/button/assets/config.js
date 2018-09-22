@@ -8,11 +8,10 @@ export default function config(theme) {
         ':hover': {
             'background': background => Color(background).darken(0.1).string()
         },
-        // 'transition': ['#CORE', 'transition'],
+        'transition': theme.core.transition,
         'padding': '0.65em 1em',
         'line-height': '1',
         'font-weight': 'normal',
-        // 'font-family': ['#CORE', 'font-family'],
         'border-width': '1px',
         'border-style': 'solid',
         'disabled-opacity': 0.6,
