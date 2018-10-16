@@ -1,5 +1,4 @@
-import dynamicCallback from '../../../tools/js/app.dynamicCallback';
-import parents from '../../../tools/js/app.parents';
+import dynamicCallback from '../../../../tools/js/app.dynamicCallback';
 
 export default {
     validate,
@@ -53,6 +52,40 @@ export function validate(field, validators, handler = handleValidation) {
 }
 
 /**
+ * Handle input validation
+ * 
+ * @private
+ * 
+ * @param {Boolean} isValid
+ * @param {HTMLElement} field
+ * @param {String} message
+ * @param {Boolean} [recurse = true]
+ */
+function handleValidation(isValid, field, message, recurse = true) {
+    if (field.type === 'radio' && recurse) {
+        return handleValidation(isValid, document.querySelectorAll(`input[name="${field.name}"]`), message)
+    }
+
+    if (field instanceof NodeList) {
+        return field.forEach($field => handleValidation(isValid, $field, message, false));
+    }
+
+    toggleStyles(field, isValid);
+
+    if (field) field.setCustomValidity(isValid ? '' : message);
+
+    field.addEventListener('blur', () => {
+        toggleStyles(field, 'remove');
+
+        if (field.type === 'radio') {
+            [...document.querySelectorAll(`input[name="${field.name}"]`)].forEach(radio => {
+                toggleStyles(radio, 'remove');
+            });
+        }
+    });
+}
+
+/**
  * Set field states
  * 
  * @param {Object} fields 
@@ -103,40 +136,6 @@ function callRules(target, rules) {
 }
 
 /**
- * Handle input validation
- * 
- * @private
- * 
- * @param {Boolean} isValid
- * @param {HTMLElement} field
- * @param {String} message
- * @param {Boolean} [recurse = true]
- */
-function handleValidation(isValid, field, message, recurse = true) {
-    if (field.type === 'radio' && recurse) {
-        return handleValidation(isValid, document.querySelectorAll(`input[name="${field.name}"]`), message)
-    }
-
-    if (field instanceof NodeList) {
-        return field.forEach($field => handleValidation(isValid, $field, message, false));
-    }
-
-    toggleStyles(field, isValid);
-
-    if (field) field.setCustomValidity(isValid ? '' : message);
-
-    field.addEventListener('blur', () => {
-        toggleStyles(field, 'remove');
-
-        if (field.type === 'radio') {
-            [...document.querySelectorAll(`input[name="${field.name}"]`)].forEach(radio => {
-                toggleStyles(radio, 'remove');
-            });
-        }
-    });
-}
-
-/**
  * Toggle validation styles on a field
  * 
  * @private
@@ -145,12 +144,12 @@ function handleValidation(isValid, field, message, recurse = true) {
  * @param {(Boolean|String)} operator 
  */
 function toggleStyles(field, operator) {
-    const parentGroup = parents(field, '[class*="group"]')[0];
+    const parentGroup = field.parent('group');
 
     if (parentGroup) {
         if (typeof operator === 'boolean') {
-            parentGroup.modifier(operator ? 'isInvalid' : 'isValid', 'remove');
-            parentGroup.modifier(operator ? 'isValid' : 'isInvalid', 'add');
+            parentGroup.modifier(operator ? 'isInvalid' : 'isValid', 'unset');
+            parentGroup.modifier(operator ? 'isValid' : 'isInvalid', 'set');
         }
 
         if (operator === 'remove') {

@@ -1,14 +1,13 @@
-import * as app from '../../../../app';
 import Base from '../../../layouts/base';
 
-const Forms = () => (
-    <Base {...app.config.app.views}>
+const Forms = props => (
+    <Base {...props.config.app.views}>
 
-        <div className="row object">
-            <div className="span-6">
+        <PAX5.row>
+            <PAX5.column width={6}>
 
                 <Heading size='4' heading='2'>Signup Form</Heading>
-
+                
                 <Form fields={[
                     {
                         type: 'fieldset',
@@ -274,8 +273,8 @@ const Forms = () => (
                     </div>
                     <button type="submit" className="button">Submit</button>
                 </form>
-            </div>
-        </div>
+            </PAX5.column>
+        </PAX5.row>
 
     </Base>
 );

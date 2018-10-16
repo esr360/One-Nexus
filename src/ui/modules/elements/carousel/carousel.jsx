@@ -1,5 +1,6 @@
-import defaults from './carousel.json';
-import interactions from './carousel.js';
+import defaults from './assets/config';
+import interactions from './assets/interactions';
+import layout from './assets/layout.jss';
 
 /**
  * Render Carousel module
@@ -8,10 +9,10 @@ import interactions from './carousel.js';
  * @prop {Function} init
  */
 const Carousel = ({ slides, init, options, ...props }) => {
-    const config = Object.assign(defaults.carousel, window.theme.carousel);
+    const config = Module.config(defaults(window.theme), window.theme.carousel);
 
     return (
-        <Module name={config.name} data-carousel={JSON.stringify(options)} init={init} {...props}>
+        <Module name={config.name} data-carousel={JSON.stringify(options)} styles={[layout, config, window.theme]} init={init} {...props}>
             { slides.map((slide, index) => <Component name='slide' key={index}>{ slide }</Component>) }
         </Module>
     );

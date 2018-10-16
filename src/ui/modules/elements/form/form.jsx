@@ -1,5 +1,6 @@
 import defaults from './form.json';
-import interactions from './form.js';
+import interactions from './assets/interactions';
+import layout from './assets/layout.jss';
 
 /**
  * Render Form module
@@ -12,10 +13,8 @@ import interactions from './form.js';
 const Form = ({ setState, validate, fields, submit, ...props }) => {
     const config = Object.assign(defaults.form, window.theme.form);
 
-    window.addEventListener('load', () => setState(fields), true);
-
     return (
-        <Module name={config.name} {...props}>
+        <Module name={config.name} {...props} styles={[layout, config, window.theme]} ref={() => setState(fields)}>
             <RenderFields setState={setState} validate={validate} fields={fields} />
 
             {submit !== false &&
@@ -35,6 +34,15 @@ const Form = ({ setState, validate, fields, submit, ...props }) => {
         </Module>
     );
 }
+
+Object.assign(Form, interactions, {
+    defaultProps: {
+        object: true,
+        setState: interactions.setState,
+        validate: interactions.validate,
+        submit: { text: 'Submit', Button: 'size-3' }
+    }
+});
 
 /**
  * Render the fields for the <Form> module
@@ -116,8 +124,8 @@ const RenderFields = ({ setState, validate, fields, ...props }) => {
                 )}
 
                 {(properties.type === 'checkbox' || properties.type === 'radio') && (
-                    <Row>
-                        <Column align='middle'>
+                    <PAX5.row>
+                        <PAX5.column align='middle'>
                             <Component 
                                 name={properties.type}
                                 tag='input'
@@ -129,9 +137,9 @@ const RenderFields = ({ setState, validate, fields, ...props }) => {
                                     validateFields(properties, validate);
                                 }}
                             />
-                        </Column>
-                        {properties.label && <Column align='middle'>{label}</Column>}
-                    </Row>
+                        </PAX5.column>
+                        {properties.label && <PAX5.column align='middle'>{label}</PAX5.column>}
+                    </PAX5.row>
                 )}
 
                 {properties.type === 'textarea' && (
@@ -199,15 +207,6 @@ const RenderFieldset = ({ setState, validate, fields, fieldProperties, ...props 
         <RenderFields setState={setState} validate={validate} fields={fieldProperties.fields} formFields={props.formFields || fields} />
     </Component>
 );
-
-Object.assign(Form, interactions, {
-    defaultProps: {
-        object: true,
-        setState: interactions.setState,
-        validate: interactions.validate,
-        submit: { text: 'Submit', Button: 'size-3' }
-    }
-});
 
 export default Form;
 

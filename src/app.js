@@ -67,8 +67,8 @@ const App = ({ theme }) => {
             <Route path='/alert' render={() => <pages.alerts config={config} />} />
             <Route path='/blockquote' render={() => <pages.blockquotes config={config} />} />
             <Route path='/button' render={() => <pages.buttons config={config} />} />
-            <Route path='/carousel' component={pages.carousels} />
-            <Route path='/form' component={pages.forms} />
+            <Route path='/carousel' render={() => <pages.carousels config={config} />} />
+            <Route path='/form' render={() => <pages.forms config={config} />} />
             <Route path='/heading' component={pages.headings} />
             <Route path='/image' component={pages.images} />
             <Route path='/list' component={pages.lists} />
