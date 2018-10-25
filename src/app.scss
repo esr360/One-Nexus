@@ -107,7 +107,7 @@ $sass-config-parser : map-get-deep($app, 'ui', 'sass-config-parser');
     // @include blockquote;
     // @include button;
     // @include carousel;
-    @include form;
+    // @include form;
     @include heading;
     @include image;
     @include list;

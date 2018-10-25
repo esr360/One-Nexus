@@ -55,6 +55,7 @@
                         "disable": false
                     }
                 },
+                "form": {},
                 "modal": {
                     "buzz": true,
                     "top-position": "30%"

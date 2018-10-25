@@ -2,20 +2,20 @@ import defaults from './assets/config.js';
 import layout from './assets/layout.jss';
 
 /**
- * Render Button module
+ * 
  */
-const Button = props => {
-    const config = Module.config(defaults(window.theme), window.theme.button);
+const Button = props => (
+    <Module tag={props.href ? 'a' : false} {...props} />
+);
 
-    return (
-        <Module name={config.name} tag={props.href ? 'a' : false} styles={[layout, config, window.theme]} {...props}>
-            {props.children}
-        </Module>
-    );
-}
-
-Button.defaultProps = {
-    fluid: true
-};
+/**
+ * 
+ */
+Object.assign(Button, { 
+    layout, defaults, defaultProps: {
+        name: 'Button',
+        fluid: true
+    }
+});
 
 export default Button;

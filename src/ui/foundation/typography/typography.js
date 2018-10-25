@@ -1,9 +1,19 @@
 export default {
     'name': 'typography',
     'import-fonts': true,
+    'google-fonts': [
+        {
+            'name': 'Raleway',
+            'sizes': [100, 300, 700, 900]
+        },
+        {
+            'name': 'Lato',
+            'sizes': [300, 700]
+        }
+    ],
     'typefaces': {
-        'primary': ['Raleway', '100,300,700,900'],
-        'secondary': ['Lato', '300,700']
+        'primary': 'Raleway, Helvetica, Arial, sans-serif',
+        'secondary': 'Lato, Helvetica, Arial, sans-serif'
     },
     'colors': {
         'base': colors => colors.greyscale['grey-4'],

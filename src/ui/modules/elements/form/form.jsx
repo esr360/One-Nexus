@@ -1,4 +1,4 @@
-import defaults from './form.json';
+import defaults from './assets/config';
 import interactions from './assets/interactions';
 import layout from './assets/layout.jss';
 
@@ -11,7 +11,7 @@ import layout from './assets/layout.jss';
  * @prop {*} submit
  */
 const Form = ({ setState, validate, fields, submit, ...props }) => {
-    const config = Object.assign(defaults.form, window.theme.form);
+    const config = Object.assign(defaults(window.theme), window.theme.form);
 
     return (
         <Module name={config.name} {...props} styles={[layout, config, window.theme]} ref={() => setState(fields)}>
@@ -124,22 +124,20 @@ const RenderFields = ({ setState, validate, fields, ...props }) => {
                 )}
 
                 {(properties.type === 'checkbox' || properties.type === 'radio') && (
-                    <PAX5.row>
-                        <PAX5.column align='middle'>
-                            <Component 
-                                name={properties.type}
-                                tag='input'
+                    <Component name='selection' {...{[properties.type]:true}}>
+                        <Component 
+                            name={properties.type}
+                            tag='input'
 
-                                {...getInputProps(properties)}
+                            {...getInputProps(properties)}
 
-                                onChange={() => {
-                                    setState(props.formFields || fields);
-                                    validateFields(properties, validate);
-                                }}
-                            />
-                        </PAX5.column>
-                        {properties.label && <PAX5.column align='middle'>{label}</PAX5.column>}
-                    </PAX5.row>
+                            onChange={() => {
+                                setState(props.formFields || fields);
+                                validateFields(properties, validate);
+                            }}
+                        />
+                        {properties.label && label}
+                    </Component>
                 )}
 
                 {properties.type === 'textarea' && (

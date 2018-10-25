@@ -1,3 +1,4 @@
+import defaults from './config.js';
 import dynamicCallback from '../../../../tools/js/app.dynamicCallback';
 
 export default {
@@ -86,6 +87,32 @@ function handleValidation(isValid, field, message, recurse = true) {
 }
 
 /**
+ * Toggle validation styles on a field
+ * 
+ * @private
+ * 
+ * @param {HTMLElement} field 
+ * @param {(Boolean|String)} operator 
+ */
+function toggleStyles(field, operator) {
+    const options = Object.assign(defaults(window.theme), window.theme.form);
+    const parentGroup = field.parent('group');
+
+    if (parentGroup) {
+        if (typeof operator === 'boolean') {
+            parentGroup.modifier(operator ? 'isInvalid' : 'isValid', 'unset');
+            parentGroup.modifier(operator ? 'isValid' : 'isInvalid', 'set');
+        }
+
+        if (operator === 'remove') {
+            ['isValid', 'isInvalid'].forEach(modifier => parentGroup.modifier(modifier, 'remove'));
+        }
+
+        field.parent(options.name).repaint();
+    }
+}
+
+/**
  * Set field states
  * 
  * @param {Object} fields 
@@ -132,28 +159,5 @@ function callRules(target, rules) {
         });
 
         target.style.display = (action === 'hide') ? 'none' : 'block';
-    }
-}
-
-/**
- * Toggle validation styles on a field
- * 
- * @private
- * 
- * @param {HTMLElement} field 
- * @param {(Boolean|String)} operator 
- */
-function toggleStyles(field, operator) {
-    const parentGroup = field.parent('group');
-
-    if (parentGroup) {
-        if (typeof operator === 'boolean') {
-            parentGroup.modifier(operator ? 'isInvalid' : 'isValid', 'unset');
-            parentGroup.modifier(operator ? 'isValid' : 'isInvalid', 'set');
-        }
-
-        if (operator === 'remove') {
-            ['isValid', 'isInvalid'].forEach(modifier => parentGroup.modifier(modifier, 'remove'));
-        }
     }
 }
