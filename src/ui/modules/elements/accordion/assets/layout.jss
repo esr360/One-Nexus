@@ -23,7 +23,7 @@ export default (element, config, globals) => {
                 'font-weight': 'normal',
                 'line-height': 1,
                 'cursor': 'pointer',
-                'border-bottom': (panel !== panel.parentNode.lastChild) && !panel.style.marginBottom ? 0 : false
+                'border-bottom': !panel.isLastChild && !panel.style.marginBottom ? 0 : false
             }
         },
 
@@ -44,7 +44,7 @@ export default (element, config, globals) => {
                 'display': panel.modifier('active') ? 'block' : 'none',
                 'margin': 0,
                 'margin-top': '-1px',
-                'border-bottom': (panel !== panel.parentNode.lastChild) && !panel.style.marginBottom ? 0 : false
+                'border-bottom': !panel.isLastChild && !panel.style.marginBottom ? 0 : false
             }
         }
     }]

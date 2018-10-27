@@ -4,11 +4,11 @@ export default {
     'google-fonts': [
         {
             'name': 'Raleway',
-            'sizes': [100, 300, 700, 900]
+            'sizes': [ 100, 300, 700, 900 ]
         },
         {
             'name': 'Lato',
-            'sizes': [300, 700]
+            'sizes': [ 300, 700 ]
         }
     ],
     'typefaces': {

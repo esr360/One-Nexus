@@ -1,7 +1,17 @@
 import defaults from './config.js';
 
 export default {
+    init, 
     toggle
+}
+
+/**
+ * Initialise an HTML element as an accordion
+ * 
+ * @param {HTMLElement} element 
+ */
+export function init(element) {
+    element.getComponents('panel').forEach(panel => panel.addEventListener('click', toggle));
 }
 
 /**
@@ -28,8 +38,7 @@ export function toggle(target, type, parent, keepOpen = false) {
         target = target.target.closest('[data-component="panel"]');
     }
 
-    // @TOOO don't hard code "accordion" name
-    parent = parent || target.closest('[data-module="accordion"]');
+    parent = parent || target.closest(`[data-module="${options.name}"]`);
 
     if (typeof target === 'string') {
         panel = parent.querySelectorAll(target);
@@ -47,10 +56,10 @@ export function toggle(target, type, parent, keepOpen = false) {
         return panel.forEach(panel => toggle(panel, type, parent, options, true));
     }
 
-    operator = (panel.modifier('active') === true || operator === 'close') ? 'unset' : 'set';
+    operator = (panel.modifier('active') || operator === 'close') ? 'unset' : 'set';
 
     // close sibling panels
-    if (operator === 'set' && (parent.modifier(options.keepOpenModifier) !== true) && keepOpen === false) {
+    if (operator === 'set' && !parent.modifier(options.keepOpenModifier) && keepOpen === false) {
         parent.component('panel').forEach(el => el.modifier('active', 'unset'));
     }
 
@@ -60,8 +69,7 @@ export function toggle(target, type, parent, keepOpen = false) {
         panel.modifier('active', operator);
     }
 
-    // re-render the module's styles
-    parent.repaint();
+    parent.repaint && parent.repaint();
 
     return parent;
 }
