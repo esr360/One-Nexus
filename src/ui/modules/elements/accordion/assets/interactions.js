@@ -7,8 +7,6 @@ export default {
 
 /**
  * Initialise an HTML element as an accordion
- * 
- * @param {HTMLElement} element 
  */
 export function init(element) {
     element.getComponents('panel').forEach(panel => panel.addEventListener('click', toggle));
@@ -16,29 +14,35 @@ export function init(element) {
 
 /**
  * Toggle an accordion panel
- * 
- * @param {(String|Number|HTMLElement|NodeList)} target
- * @param {('open'|'close')} type
- * @param {(HTMLElement|NodeList)} parent
- * @param {Boolean} [keepOpen = false]
  */
-export function toggle(target, type, parent, keepOpen = false) {
-    const options = Object.assign(defaults(window.theme), window.theme.accordion);
+export function toggle(target, parent) {
+    const options = Module.config(defaults(window.theme), window.theme.accordion);  
 
-    let panel, operator;
+    /**
+     */
 
-    if (parent instanceof NodeList) {
-        return parent.forEach(child => toggle(target, type, child, keepOpen));
+    if (typeof parent === 'string') {
+        return toggle(target, document.querySelectorAll(parent));
     }
 
-    options.keepOpen = (options.keepOpen === true) ? true : false;
+    if (parent instanceof NodeList || Array.isArray(parent)) {
+        return parent.forEach(child => toggle(target, child));
+    }
 
-    // determine target accordion panel
     if (typeof target === 'object' && ('target' in target)) {
         target = target.target.closest('[data-component="panel"]');
     }
 
-    parent = parent || target.closest(`[data-module="${options.name}"]`);
+    if (!(parent instanceof HTMLElement) && target instanceof HTMLElement) {
+        parent = target.parent(options.name);
+    } else {
+        return console.error(`Accordion.toggle: parent accordion cannot be determined from ${parent}/${target}`);
+    }
+
+    /**
+     */
+
+    let panel;
 
     if (typeof target === 'string') {
         panel = parent.querySelectorAll(target);
@@ -47,29 +51,32 @@ export function toggle(target, type, parent, keepOpen = false) {
     } else if (target instanceof HTMLElement || target instanceof NodeList) {
         panel = target;
     } else if (!target) {
-        panel = parent.component('panel');
-    }
-
-    if (!panel) return;
-
-    if (panel.constructor === Array) {
-        return panel.forEach(panel => toggle(panel, type, parent, options, true));
-    }
-
-    operator = (panel.modifier('active') || operator === 'close') ? 'unset' : 'set';
-
-    // close sibling panels
-    if (operator === 'set' && !parent.modifier(options.keepOpenModifier) && keepOpen === false) {
-        parent.component('panel').forEach(el => el.modifier('active', 'unset'));
+        panel = parent.getComponents('panel');
     }
 
     if (panel instanceof NodeList || panel instanceof Array) {
-        panel.forEach(el => el.modifier('active', operator));
-    } else {
-        panel.modifier('active', operator);
+        return panel.forEach(panel => toggle(panel, parent));
+    };
+
+    if (!(panel instanceof HTMLElement)) {
+        return console.error(`Accordion.toggle: accordion panel not found - ${panel} is not an HTMLElement`);
     }
+
+    /**
+     */
+
+    const operator = panel.modifier('active') ? 'unset' : 'set';
+
+    if (operator === 'set' && !parent.modifier('keep-open')) {
+        parent.component('panel').forEach(el => el.modifier('active', 'unset'));
+    }
+
+    panel.modifier('active', operator);
+
+    /**
+     */
 
     parent.repaint && parent.repaint();
 
-    return parent;
+    return operator === 'set' ? true : false;
 }

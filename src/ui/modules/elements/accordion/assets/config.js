@@ -45,6 +45,7 @@ export default theme => ({
                 'border-color': 'transparent',
                 'border-radius': 0
             },
+
             toggle: {
                 'color': theme.colors.greyscale.white
             }
