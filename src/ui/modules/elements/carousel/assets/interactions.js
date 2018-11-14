@@ -1,5 +1,4 @@
 import Flickity from 'flickity';
-import defaults from './config';
 
 export default {
     init, 
@@ -12,8 +11,9 @@ export default {
  * @param {*} carousel 
  * @param {HTMLElement} el
  */
-export function init(el, carousel) {
-    const config = Module.config(defaults(window.theme), window.theme.carousel);
+export function init(el, carousel, custom) {
+
+    const config = { ...el.config, ...custom };
 
     // Map Flickity elements to One-Nexus components
     const components = {
@@ -26,10 +26,8 @@ export function init(el, carousel) {
         'navigationItem-next': '.flickity-prev-next-button.next'
     };
 
-    // Get options from data-attr (if applicable)
     if (el.hasAttribute('data-carousel')) {
-        const dataOptions = JSON.parse(el.getAttribute('data-carousel'));
-        config.Flickity = Object.assign(config.Flickity, dataOptions);
+        config.Flickity = Object.assign(config.Flickity, JSON.parse(el.getAttribute('data-carousel')));
     }
 
     carousel = carousel || new Flickity(el, config.Flickity);
@@ -53,7 +51,6 @@ export function init(el, carousel) {
             const components = el.querySelectorAll(value);
 
             components.forEach(el => {
-                // el.classList.add(identifier);
                 sQuery([el, config.name]).setComponent(key);
 
                 el.namespace = identifier;
@@ -66,8 +63,10 @@ export function init(el, carousel) {
     }
 
     // Compensate for pagination
+    // @TODO see if this is still needed; move logic to layout.jss
     if (!config.navigationItem.disable) {
         const offset = el.getComponent('pagination').clientHeight + parseInt(config.bullet.gutter, 10);
+
         el.style.paddingBottom = `${offset}px`;
     }
 

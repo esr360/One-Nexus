@@ -1,7 +1,7 @@
 export { default as index } from './index.jsx';
 export { default as accordions } from './modules/elements/accordions.jsx';
 export { default as alerts } from './modules/elements/alert.jsx';
-export { default as blockquotes } from './modules/elements/blockquote.jsx';
+export { default as blockquotes } from './modules/elements/blockquotes.jsx';
 export { default as buttons } from './modules/elements/button.jsx';
 export { default as carousels } from './modules/elements/carousel.jsx';
 export { default as forms } from './modules/elements/form.jsx';

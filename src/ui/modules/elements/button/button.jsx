@@ -8,11 +8,9 @@ const Button = props => (
     <Module tag={props.href ? 'a' : false} {...props} />
 );
 
-Object.assign(Button, { 
+export default Object.assign(Button, { 
     layout, defaults, defaultProps: {
         name: 'Button',
         fluid: true
     }
 });
-
-export default Button;

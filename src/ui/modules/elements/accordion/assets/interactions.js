@@ -9,16 +9,17 @@ export default {
  * Initialise an HTML element as an accordion
  */
 export function init(element) {
-    element.getComponents('panel').forEach(panel => panel.addEventListener('click', toggle));
+    element.getComponents('panel').forEach(panel => panel.getComponent('title').addEventListener('click', toggle));
 }
 
 /**
  * Toggle an accordion panel
  */
-export function toggle(target, parent) {
-    const options = Module.config(defaults(window.theme), window.theme.accordion);  
+export function toggle(target, parent, theme = window.theme || {}) {
+    const options = Module.config(defaults(theme), theme.accordion);
 
     /**
+     * Determine parent Accordion(s)
      */
 
     if (typeof parent === 'string') {
@@ -33,13 +34,16 @@ export function toggle(target, parent) {
         target = target.target.closest('[data-component="panel"]');
     }
 
-    if (!(parent instanceof HTMLElement) && target instanceof HTMLElement) {
-        parent = target.parent(options.name);
-    } else {
-        return console.error(`Accordion.toggle: parent accordion cannot be determined from ${parent}/${target}`);
+    if (!(parent instanceof HTMLElement)) {
+        if (target instanceof HTMLElement) {
+            parent = target.parent(options.name);
+        } else {
+            return console.error(`Accordion.toggle: parent accordion cannot be determined from ${parent} and ${target}`);
+        }
     }
 
     /**
+     * Determine panel(s) to toggle
      */
 
     let panel;
@@ -56,13 +60,14 @@ export function toggle(target, parent) {
 
     if (panel instanceof NodeList || panel instanceof Array) {
         return panel.forEach(panel => toggle(panel, parent));
-    };
+    }
 
     if (!(panel instanceof HTMLElement)) {
         return console.error(`Accordion.toggle: accordion panel not found - ${panel} is not an HTMLElement`);
     }
 
     /**
+     * Update the DOM
      */
 
     const operator = panel.modifier('active') ? 'unset' : 'set';
@@ -73,10 +78,7 @@ export function toggle(target, parent) {
 
     panel.modifier('active', operator);
 
-    /**
-     */
-
     parent.repaint && parent.repaint();
 
-    return operator === 'set' ? true : false;
+    return operator === 'set';
 }

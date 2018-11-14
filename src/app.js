@@ -5,6 +5,7 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
+import './app.scss';
 import config from './app.json';
 
 // Vendor
@@ -12,7 +13,6 @@ import config from './app.json';
 
 import { HashLink as Link } from 'react-router-hash-link';
 import { HashRouter, Switch, Route } from 'react-router-dom';
-import deepextend from 'deep-extend';
 import PAX5 from '../../../pax5/repo/src/pax5';
 import '../../../Synergy/src/synergy';
 
@@ -54,11 +54,14 @@ window.Synergy.CssClassProps = config.app.ui['css-class-props'];
 //*****************************************************************
 
 const App = ({ theme }) => {
-    window.theme = deepextend(window.theme, theme);
+    console.log(Synergy);
+    // Synergy.theme(modules, theme);
 
-    if (process.env.APP_ENV === 'web') {
-        require('./app.scss');
-    }
+    window.theme = Module.config(window.theme, theme);
+
+    Object.values({ ...elements, ...objects }).forEach(MODULE => MODULE.defaults && (
+        MODULE.config = Module.config(MODULE.defaults(window.theme), window.theme[MODULE.name])
+    ));
 
     return (
         <Switch>

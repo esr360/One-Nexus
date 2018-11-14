@@ -8,21 +8,15 @@ import layout from './assets/layout.jss';
  * @prop {Array} slides
  * @prop {Function} init
  */
-const Carousel = ({ slides, init, options, ...props }) => {
-    const config = Module.config(defaults(window.theme), window.theme.carousel);
+const Carousel = ({ slides, options, ...props }) => (
+    <Module data-carousel={JSON.stringify(options)} {...props}>
+        { slides.map((slide, index) => <Component name='slide' key={index}>{ slide }</Component>) }
+    </Module>
+);
 
-    return (
-        <Module name={config.name} data-carousel={JSON.stringify(options)} styles={[layout, config, window.theme]} init={init} {...props}>
-            { slides.map((slide, index) => <Component name='slide' key={index}>{ slide }</Component>) }
-        </Module>
-    );
-}
-
-Object.assign(Carousel, interactions, {
-    defaultProps: {
-        object: true,
-        init: interactions.init
+export default Object.assign(Carousel, {
+    ...interactions, layout, defaults, defaultProps: {
+        name: 'Carousel',
+        object: true
     }
 });
-
-export default Carousel;

@@ -1,20 +1,20 @@
 {
     "theme": {
-        "accordion": {
+        "Accordion": {
             "ding": "dong",
             "panel": {
                 "modifier(active)": {
                     "title": {
-                        "background": "green"
+                        "background": "red"
                     }
                 }
             }
         },
-        "alert": {
+        "Alert": {
         },
-        "modal": {
+        "Modal": {
         },
-        "button": {
+        "Button": {
             "border-palettes": ["brand", "alert"]
         },
         "colors": {
@@ -27,7 +27,7 @@
         "header": {
             "background": "gradient(brand)"
         },
-        "billboard": {
+        "Billboard": {
             "fullscreen": {
                 "enabled": false
             },
@@ -35,7 +35,7 @@
                 "enabled": true
             }
         },
-        "tables": {
+        "Tables": {
             "background": "white",
             "padding": "0.5em 1em",
             "border": "1px solid rgba(0,0,0,0.1)",

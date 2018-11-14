@@ -7,20 +7,17 @@ import layout from './assets/layout.jss';
  * @prop {ReactElement} content
  * @prop {ReactElement} footer
  */
-const Blockquote = ({ content, footer, layout, ...props }) => {
-    const config = Module.config(defaults(window.theme), window.theme.blockquote);
+const Blockquote = ({ content, footer, ...props }) => (
+    <Module {...props}>
+        <Component name='content'>{content}</Component>
 
-    return (
-        <Module name={config.name} styles={[layout, config, window.theme]} {...props}>
-            <Component name='content'>{content}</Component>
-            {props.footer && <Component name='footer' tag='footer'>{footer}</Component>}
-        </Module>
-    );
-}
+        {props.footer && <Component name='footer' tag='footer'>{footer}</Component>}
+    </Module>
+);
 
-Blockquote.defaultProps = {
-    object: true,
-    layout: layout
-};
-
-export default Blockquote;
+export default Object.assign(Blockquote, {
+    layout, defaults, defaultProps: {
+        name: 'Blockquote',
+        object: true,
+    }
+});

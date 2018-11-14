@@ -4,13 +4,9 @@ import layout from './assets/layout.jss';
 
 /**
  * Render Alert module
- *
- * @prop {String} [alert = 'success']
- * @prop {*} icon
- * @prop {Function} dismiss
  */
-const Alert = ({ alert, icon, dismiss, ...props }) => {
-    const config = Module.config(defaults(window.theme), window.theme.alert);
+const Alert = ({ alert, icon, dismiss, theme = window.theme, ...props }) => {
+    const config = Module.config(defaults(theme), theme.alert);
     const alerts = config ? Object.keys(config.alerts) : [];
     const hasCustomIcon = icon => icon === undefined || icon === 'right';
 
@@ -29,12 +25,7 @@ const Alert = ({ alert, icon, dismiss, ...props }) => {
     }
 
     return (
-        <Module 
-            name={config.name} {...props} 
-            modifiers={modifiers} 
-            bar={props.box ? false : props.bar} 
-            styles={[layout, config, window.theme]}
-        >
+        <Module name={config.name} modifiers={modifiers} bar={props.box ? false : props.bar} {...props}>
             {icon &&
                 <Component
                     name='icon'
@@ -44,12 +35,7 @@ const Alert = ({ alert, icon, dismiss, ...props }) => {
             }
 
             {props.close &&
-                <Component
-                    name='icon'
-                    onClick={dismiss}
-                    modifiers={['close', 'right']}
-                    className={`fa fa-times`}
-                />
+                <Component name={['icon', 'dismiss']} onClick={dismiss} modifiers={['close', 'right']} className={'fa fa-times'} />
             }
 
             {props.box ?
@@ -59,15 +45,13 @@ const Alert = ({ alert, icon, dismiss, ...props }) => {
     );
 }
 
-Object.assign(Alert, interactions, {
-    defaultProps: {
+export default Object.assign(Alert, {
+    ...interactions, layout, defaults, defaultProps: {
+        name: 'Alert',
         alert: 'success',
         bar: true,
         box: false,
         object: true,
-        icon: undefined,
-        dismiss: interactions.dismiss
+        icon: undefined
     }
 });
-
-export default Alert;

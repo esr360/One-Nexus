@@ -8,7 +8,7 @@ const Accordions = props => (
             {title: 'fizz', content: <div>potato</div>}
         ]} />
 
-        <Accordion keepOpen panels={[
+        <Accordion panels={[
             {title: 'foo', content: 'bar'},
             {title: 'fizz', content: (
                 <Accordion id='foo' panels={[
