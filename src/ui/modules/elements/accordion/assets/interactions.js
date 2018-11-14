@@ -15,8 +15,8 @@ export function init(element) {
 /**
  * Toggle an accordion panel
  */
-export function toggle(target, parent, theme = window.theme || {}) {
-    const options = Module.config(defaults(theme), theme.accordion);
+export function toggle(target, parent, config) {
+    config = config || Accordion.config;
 
     /**
      * Determine parent Accordion(s)
@@ -36,7 +36,7 @@ export function toggle(target, parent, theme = window.theme || {}) {
 
     if (!(parent instanceof HTMLElement)) {
         if (target instanceof HTMLElement) {
-            parent = target.parent(options.name);
+            parent = target.parent(config.name);
         } else {
             return console.error(`Accordion.toggle: parent accordion cannot be determined from ${parent} and ${target}`);
         }

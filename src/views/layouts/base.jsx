@@ -17,22 +17,22 @@ const Base = props => (
         <div className='container'>
             <div>
                 <Link to='/'>Home</Link>
-                <Link to='/accordion'>Accordion</Link>
-                <Link to='/alert'>Alert</Link>
-                <Link to='/blockquote'>Blockquote</Link>
-                <Link to='/button'>Button</Link>
-                <Link to='/carousel'>Carousel</Link>
-                <Link to='/form'>Form</Link>
-                <Link to='/heading'>Heading</Link>
-                <Link to='/image'>Image</Link>
-                <Link to='/list'>List</Link>
-                <Link to='/modal'>Modal</Link>
-                <Link to='/paragraph'>Paragraph</Link>
-                <Link to='/progress-bar'>Progress Bar</Link>
-                <Link to='/table'>Table</Link>
+                <Link to='/accordions'>Accordion</Link>
+                <Link to='/alerts'>Alert</Link>
+                <Link to='/blockquotes'>Blockquote</Link>
+                <Link to='/buttons'>Button</Link>
+                <Link to='/carousels'>Carousel</Link>
+                <Link to='/forms'>Form</Link>
+                <Link to='/headings'>Heading</Link>
+                <Link to='/images'>Image</Link>
+                <Link to='/lists'>List</Link>
+                <Link to='/modals'>Modal</Link>
+                <Link to='/paragraphs'>Paragraph</Link>
+                <Link to='/progress-bars'>Progress Bar</Link>
+                <Link to='/tables'>Table</Link>
                 <Link to='/tabs'>Tabs</Link>
-                <Link to='/tooltip'>Tooltip</Link>
-                <Link to='/well'>Well</Link>
+                <Link to='/tooltips'>Tooltip</Link>
+                <Link to='/wells'>Well</Link>
             </div>
 
             {props.children}

@@ -25,17 +25,22 @@
             "modifier-glue": "-",
             "sass-config-parser": "eval-config",
             "css-class-props": ["object"],
+            "colors": {
+                "brand": {
+                    "brand-1": "blue"
+                }
+            },
             "modules": {
                 "fizz": ["#COLOR", "brand", "brand-1"],
-                "accordion": {
+                "Accordion": {
                     "fizz": "foo"
                 },
-                "alert": {
+                "Alert": {
                     "icon": {
                         "default-enable": true
                     }
                 },
-                "button": {
+                "Button": {
                     "palettes": [
                         "brand", "greyscale", "alert", "social", 
                         {"foo": "blue", "bar": "#FF5733"}
@@ -45,18 +50,13 @@
                         "social"  : ["icon", "oval", "size-6", "brand-2"]
                     }
                 },
-                "colors": {
-                    "brand": {
-                        "brand-1": "blue"
-                    }
-                },
-                "carousel": {
+                "Carousel": {
                     "navigationItem": {
                         "disable": false
                     }
                 },
-                "form": {},
-                "modal": {
+                "Form": {},
+                "Modal": {
                     "buzz": true,
                     "top-position": "30%"
                 }

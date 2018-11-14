@@ -21,13 +21,8 @@ import '../../../Synergy/src/synergy';
 
 import * as tools from './ui/tools'
 import * as foundation from './ui/foundation';
-
-// Modules
-import * as elements from './ui/modules/elements';
-import * as objects from './ui/modules/objects';
-
-// Themes
-import one_nexus from './ui/themes/one_nexus.json';
+import * as modules from './ui/modules';
+import * as themes from './ui/themes';
 
 // Views
 //*****************************************************************
@@ -37,36 +32,25 @@ import * as pages from './views/pages';
 // DOM/Window Preparation
 //*****************************************************************
 
-Object.assign(window, { 
-    PAX5,
-    Link,
-    theme: {
-        ...tools,
-        ...foundation
-    }
-});
+Object.assign(window, { PAX5, Link });
 
 window.Synergy.CssClassProps = config.app.ui['css-class-props'];
 
 // Render App
 //*****************************************************************
 
-const App = ({ modules, theme }) => {
-    Synergy.theme(modules, theme);
+const App = ({ modules, ui, theme }) => {
+    Synergy.theme(modules, ui, theme);
 
     return (
         <Switch>
             <Route path='/' exact render={() => <pages.index config={config} />} />
-            <Route path='/accordion' render={() => <pages.accordions config={config} />} />
-            <Route path='/alert' render={() => <pages.alerts config={config} />} />
-            <Route path='/blockquote' render={() => <pages.blockquotes config={config} />} />
-            <Route path='/button' render={() => <pages.buttons config={config} />} />
-            <Route path='/carousel' render={() => <pages.carousels config={config} />} />
-            <Route path='/form' render={() => <pages.forms config={config} />} />
-            <Route path='/heading' component={pages.headings} />
-            <Route path='/image' component={pages.images} />
-            <Route path='/list' component={pages.lists} />
-            <Route path='/modal' component={pages.modals} />
+
+            {Object.keys(pages).map((page, index) => <Route key={index} path={`/${page}`} render={() => {
+                const Page = pages[page];
+
+                return <Page config={config} />;
+            }} />)}
         </Switch>
     );
 }
@@ -74,8 +58,11 @@ const App = ({ modules, theme }) => {
 ReactDOM.render((
     <HashRouter>
         <App 
-            theme={one_nexus.theme} 
-            modules={{...elements, ...objects}} 
+            modules={modules}
+            ui={{ ...tools, ...foundation }}
+            theme={Synergy.config(themes[config.app.ui.theme].theme, config.app.ui)}
         />
     </HashRouter>
-), app);
+), document.getElementById('app'));
+
+export default App;
