@@ -43,9 +43,7 @@ Object.assign(window, {
     theme: {
         ...tools,
         ...foundation
-    },
-    ...elements,
-    ...objects
+    }
 });
 
 window.Synergy.CssClassProps = config.app.ui['css-class-props'];
@@ -53,15 +51,8 @@ window.Synergy.CssClassProps = config.app.ui['css-class-props'];
 // Render App
 //*****************************************************************
 
-const App = ({ theme }) => {
-    console.log(Synergy);
-    // Synergy.theme(modules, theme);
-
-    window.theme = Module.config(window.theme, theme);
-
-    Object.values({ ...elements, ...objects }).forEach(MODULE => MODULE.defaults && (
-        MODULE.config = Module.config(MODULE.defaults(window.theme), window.theme[MODULE.name])
-    ));
+const App = ({ modules, theme }) => {
+    Synergy.theme(modules, theme);
 
     return (
         <Switch>
@@ -80,4 +71,11 @@ const App = ({ theme }) => {
     );
 }
 
-ReactDOM.render(<HashRouter><App theme={one_nexus.theme} /></HashRouter>, app);
+ReactDOM.render((
+    <HashRouter>
+        <App 
+            theme={one_nexus.theme} 
+            modules={{...elements, ...objects}} 
+        />
+    </HashRouter>
+), app);

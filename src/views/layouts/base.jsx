@@ -5,14 +5,14 @@ import * as app from '../../app';
  */
 const Base = props => (
     <main>
-        <Header {...props.header}>
+        {/* <Header {...props.header}>
             <Logo {...props.logo} />
             <Navigation {...props.navigation} />
 
             <div className='sideNav_toggle button-icon-primary max-break-3'>
                 <i className='fa fa-bars'></i>
             </div>
-        </Header>
+        </Header> */}
 
         <div className='container'>
             <div>
@@ -38,7 +38,7 @@ const Base = props => (
             {props.children}
         </div>
 
-        <Footer>
+        {/* <Footer>
             <a href='#'>Link 1</a>
         </Footer>
 
@@ -48,7 +48,7 @@ const Base = props => (
 
         <Search />
 
-        <SideNav navigation={props.navigation.items} />
+        <SideNav navigation={props.navigation.items} /> */}
     </main>
 );
 
