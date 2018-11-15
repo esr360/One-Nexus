@@ -12,7 +12,6 @@ import config from './app.json';
 //*****************************************************************
 
 import { HashLink as Link } from 'react-router-hash-link';
-import { HashRouter, Switch, Route } from 'react-router-dom';
 import PAX5 from '../../../pax5/repo/src/pax5';
 import '../../../Synergy/src/synergy';
 
@@ -34,35 +33,17 @@ import * as pages from './views/pages';
 
 Object.assign(window, { PAX5, Link });
 
-window.Synergy.CssClassProps = config.app.ui['css-class-props'];
-
 // Render App
 //*****************************************************************
 
-const App = ({ modules, ui, theme }) => {
-    Synergy.theme(modules, ui, theme);
-
-    return (
-        <Switch>
-            <Route path='/' exact render={() => <pages.index config={config} />} />
-
-            {Object.keys(pages).map((page, index) => <Route key={index} path={`/${page}`} render={() => {
-                const Page = pages[page];
-
-                return <Page config={config} />;
-            }} />)}
-        </Switch>
-    );
+Synergy.app.defaultProps = {
+    modules: modules,
+    ui: { ...tools, ...foundation },
+    theme: Synergy.config(themes[config.app.ui.theme].theme, config.app.ui),
+    pages: pages,
+    config: config
 }
 
-ReactDOM.render((
-    <HashRouter>
-        <App 
-            modules={modules}
-            ui={{ ...tools, ...foundation }}
-            theme={Synergy.config(themes[config.app.ui.theme].theme, config.app.ui)}
-        />
-    </HashRouter>
-), document.getElementById('app'));
+ReactDOM.render(<Synergy.app />, document.getElementById('app'));
 
-export default App;
+export default Synergy.app;

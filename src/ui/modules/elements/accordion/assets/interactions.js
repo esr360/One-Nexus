@@ -1,5 +1,3 @@
-import defaults from './config.js';
-
 export default {
     init, 
     toggle
