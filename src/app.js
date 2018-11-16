@@ -37,9 +37,9 @@ Object.assign(window, { PAX5, Link });
 //*****************************************************************
 
 Synergy.app.defaultProps = {
+    theme: Synergy.config(themes[config.app.ui.theme].theme, config.app.ui),
     modules: modules,
     ui: { ...tools, ...foundation },
-    theme: Synergy.config(themes[config.app.ui.theme].theme, config.app.ui),
     pages: pages,
     config: config
 }

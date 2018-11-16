@@ -15,7 +15,6 @@
 @import '../node_modules/normalize-scss/sass/normalize';
 @import '../node_modules/Kayzen-GS/dist/kayzen-gs.scss';
 @import '../node_modules/Sass-Boost/dist/sass-boost';
-//@import '../node_modules/Synergy/dist/synergy';
 @import '../../../Cell/src/synergy';
 
 // CSS librarys
@@ -45,33 +44,6 @@
 @import './ui/modules/utilities/helpers/helpers';
 @import './ui/modules/utilities/print/print';
 
-// @import './ui/modules/elements/accordion/accordion';
-// @import './ui/modules/elements/alert/alert';
-// @import './ui/modules/elements/button/button';
-// @import './ui/modules/elements/blockquote/blockquote';
-// @import './ui/modules/elements/carousel/carousel';
-@import './ui/modules/elements/form/form';
-@import './ui/modules/elements/heading/heading';
-@import './ui/modules/elements/image/image';
-@import './ui/modules/elements/list/list';
-@import './ui/modules/elements/modal/modal';
-@import './ui/modules/elements/progress-bar/progress-bar';
-@import './ui/modules/elements/table/table';
-@import './ui/modules/elements/tabs/tabs';
-@import './ui/modules/elements/tooltip/tooltip';
-@import './ui/modules/elements/well/well';
-
-@import './ui/modules/objects/billboard/billboard';
-@import './ui/modules/objects/breadcrumb/breadcrumb';
-@import './ui/modules/objects/footer/footer';
-@import './ui/modules/objects/header/header';
-@import './ui/modules/objects/logo/logo';
-@import './ui/modules/objects/navigation/navigation';
-@import './ui/modules/objects/overlay/overlay';
-@import './ui/modules/objects/preloader/preloader';
-@import './ui/modules/objects/search/search';
-@import './ui/modules/objects/side-nav/side-nav';
-
 // Themes
 //*****************************************************************
 
@@ -87,48 +59,10 @@ $sass-config-parser : map-get-deep($app, 'ui', 'sass-config-parser');
 // Render App
 //*****************************************************************
 
-@mixin app($theme) {
-    $theme: map-merge-deep($theme, map-get-deep($app, 'ui', 'modules')) !global;
+$theme: map-merge-deep($theme, map-get-deep($app, 'ui', 'modules')) !global;
 
-    @include normalize;
+@include normalize;
 
-    /// Utilities
-    @include colors;
-    @include typography;
-    // @include grid;
-    @include container;
-    @include core;
-    @include helpers;
-    @include print;
-
-    /// Elements
-    // @include accordion;
-    // @include alert;
-    // @include blockquote;
-    // @include button;
-    // @include carousel;
-    // @include form;
-    @include heading;
-    @include image;
-    @include list;
-    @include modal;
-    @include progress-bar;
-    @include table;
-    @include tabs;
-    @include tooltip;
-    @include well;
-
-    /// Objects
-    @include billboard;
-    @include breadcrumb;
-    @include footer;
-    @include header;
-    @include logo;
-    @include navigation;
-    @include preloader;
-    @include side-nav;
-    @include search;
-    @include overlay;
-}
-
-@include app($theme);
+/// Utilities
+@include container;
+@include core;
