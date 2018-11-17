@@ -14,7 +14,7 @@ const Base = props => (
             </div>
         </Header> */}
 
-        <div className='container'>
+        <Container>
             <div>
                 <Link to='/'>Home</Link>
                 <Link to='/accordions'>Accordion</Link>
@@ -36,7 +36,7 @@ const Base = props => (
             </div>
 
             {props.children}
-        </div>
+        </Container>
 
         {/* <Footer>
             <a href='#'>Link 1</a>

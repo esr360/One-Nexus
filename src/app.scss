@@ -5,64 +5,15 @@
 /// @author [@esr360](http://twitter.com/esr360)
 ///****************************************************************
 
-// Import config
-@import 'app.json';
-
 // Tools/Utilities
 //*****************************************************************
 
 // Sass librarys
 @import '../node_modules/normalize-scss/sass/normalize';
-@import '../node_modules/Kayzen-GS/dist/kayzen-gs.scss';
 @import '../node_modules/Sass-Boost/dist/sass-boost';
 @import '../../../Cell/src/synergy';
 
 // CSS librarys
 @import '../node_modules/flickity/dist/flickity';
 
-//
-@import './ui/tools/scss/background';
-@import './ui/tools/scss/custom';
-@import './ui/tools/scss/eval-config';
-@import './ui/tools/scss/fill-parent';
-@import './ui/tools/scss/font-sizes';
-@import './ui/tools/scss/horizontal-center';
-@import './ui/tools/scss/overlay';
-@import './ui/tools/scss/retrieve-value';
-@import './ui/tools/scss/triangle';
-@import './ui/tools/scss/vertical-center';
-@import './ui/tools/scss/vertical-rhythm';
-
-// Modules
-//*****************************************************************
-
-@import './ui/modules/utilities/grid/grid';
-@import './ui/modules/utilities/colors/colors';
-@import './ui/modules/utilities/container/container';
-@import './ui/modules/utilities/typography/typography';
-@import './ui/modules/utilities/core/core';
-@import './ui/modules/utilities/helpers/helpers';
-@import './ui/modules/utilities/print/print';
-
-// Themes
-//*****************************************************************
-
-@import './ui/themes/one_nexus.json';
-
-// Config
-//*****************************************************************
-
-$modifier-glue      : map-get-deep($app, 'ui', 'modifier-glue');
-$component-glue     : map-get-deep($app, 'ui', 'component-glue');
-$sass-config-parser : map-get-deep($app, 'ui', 'sass-config-parser');
-
-// Render App
-//*****************************************************************
-
-$theme: map-merge-deep($theme, map-get-deep($app, 'ui', 'modules')) !global;
-
 @include normalize;
-
-/// Utilities
-@include container;
-@include core;

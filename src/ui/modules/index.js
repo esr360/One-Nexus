@@ -4,6 +4,7 @@ export { default as Alert } from './elements/alert/alert';
 export { default as Blockquote } from './elements/blockquote/blockquote';
 export { default as Button } from './elements/button/button';
 export { default as Carousel } from './elements/carousel/carousel.jsx';
+export { default as Container } from './elements/container/container.jsx';
 export { default as Form } from './elements/form/form.jsx';
 export { default as Heading } from './elements/heading/heading';
 export { default as Image } from './elements/image/image';
