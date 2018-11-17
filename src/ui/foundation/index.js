@@ -25,7 +25,7 @@ export function foundation(ui) {
         }
 
         ins {
-            color: color('brand', 'brand-1');
+            color: ${ui.colors.brand['brand-1']};
             font-weight: bold;
             text-decoration: none;
         }
