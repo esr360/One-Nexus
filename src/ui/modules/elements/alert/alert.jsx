@@ -5,8 +5,9 @@ import layout from './assets/layout.jss';
 /**
  * Render Alert module
  */
-const Alert = ({ alert, icon, dismiss, theme = window.theme, ...props }) => {
-    const config = Module.config(defaults(theme), theme.alert);
+const Alert = ({ alert, icon, dismiss, config, ...props }) => {
+    config = config || Alert.config;
+
     const alerts = config ? Object.keys(config.alerts) : [];
     const hasCustomIcon = icon => icon === undefined || icon === 'right';
 

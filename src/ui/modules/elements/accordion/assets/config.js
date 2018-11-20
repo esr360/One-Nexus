@@ -1,8 +1,3 @@
-/**
- * Default accordion configuration
- * 
- * @param {Object} theme - global UI toolkit
- */
 export default theme => ({
     'name': 'accordion',
 

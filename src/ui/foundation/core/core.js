@@ -10,5 +10,3 @@ export default {
     'radius': '0.4em',
     'transition': '0.4s',
 }
-
-console.log(window.ui);

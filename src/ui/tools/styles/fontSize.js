@@ -1,10 +1,5 @@
 /**
  * Determine font=size of element based off modifier
- * 
- * @param {HTMLElement} element 
- * @param {Object} sizes 
- * @param {Object} globals 
- * @param {Object} custom 
  */
 export default function fontSize(element, sizes, globals, custom) {
     const defaults = {
@@ -83,12 +78,6 @@ export default function fontSize(element, sizes, globals, custom) {
 
 /**
  * Calculate fluid-scale value
- * 
- * @param {String} minFontSize 
- * @param {String} maxFontSize 
- * @param {String} minVw 
- * @param {String} maxVw 
- * @param {String} defaultFontSize 
  */
 function fluidScaling(minFontSize, maxFontSize, minVw, maxVw, defaultFontSize) {
     let fontSize = defaultFontSize;

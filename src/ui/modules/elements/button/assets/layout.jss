@@ -20,7 +20,7 @@ export default function layout(element, config, globals) {
                     if (element.modifier('border')) return color[1];
 
                     if (Color(color[1]).luminosity() > 0.6) {
-                        return globals.typography.colors.base(theme.colors);
+                        return globals.typography.colors.base(globals.colors);
                     }
 
                     return config.color;

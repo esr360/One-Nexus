@@ -4,9 +4,7 @@ export { default as typography } from './typography/typography';
 export { default as grid } from './grid/grid';
 
 export function foundation(ui) {
-    const style = document.createElement('style');
-
-    style.appendChild(document.createTextNode(`
+    ui.css(`
         html, body {
             margin: 0;
             padding: 0;
@@ -43,7 +41,15 @@ export function foundation(ui) {
         *::before, *::after {
             box-sizing: border-box;
         }
-    `));
 
-    document.head.appendChild(style);
+        .object:not(:first-child) {
+            margin-top: ${ui.core.margin};
+        }
+
+        .object:not(:last-child) {
+            margin-bottom: ${ui.core.margin};
+        }
+    `);
+
+    ui.googleFonts(ui.typography['google-fonts']);
 }

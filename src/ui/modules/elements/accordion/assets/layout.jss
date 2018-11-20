@@ -1,9 +1,3 @@
-/**
- * Accordion layout styles
- * 
- * @param {HTMLElement} element - DOM element of accordion
- * @param {Object} globals - global UI toolkit
- */
 export default (element, config, globals) => {
     return [config, {
 

@@ -1,16 +1,10 @@
 /**
  * Determine if an element is in the viewport
- * 
- * @access public
- * 
- * @param {Object} custom - where custom options are passed
  */
 export function inViewport(custom) {
 
     /**
-     * @param {HTMLElement} options.target - the target element
-     * @param {('top'|'middle'|'bottom')} options.coverage - point which the element is considered to be in the viepwport
-     * @param {('reached'|'inView')} options.scope - determine how the scope should work
+     * Options
      */
     const options = Object.assign({
         container: document.body,

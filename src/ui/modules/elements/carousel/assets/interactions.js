@@ -11,9 +11,8 @@ export default {
  * @param {*} carousel 
  * @param {HTMLElement} el
  */
-export function init(el, carousel, custom) {
-
-    const config = { ...el.config, ...custom };
+export function init(el, carousel, config) {
+    config = config || Carousel.config;
 
     // Map Flickity elements to One-Nexus components
     const components = {

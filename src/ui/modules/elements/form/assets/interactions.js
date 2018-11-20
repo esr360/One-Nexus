@@ -1,5 +1,4 @@
-import defaults from './config.js';
-import dynamicCallback from '../../../../tools/js/app.dynamicCallback';
+import dynamicCallback from '../../../../tools/interactions/dynamicCallback';
 
 export default {
     validate,
@@ -15,6 +14,9 @@ export default {
  */
 export function validate(field, validators, handler = handleValidation) {
     if (!field) return;
+
+    // @TODO load dynamicCallback from window
+    // console.log(window.ui.tools.dynamicCallback)
 
     if (typeof field === 'string') {
         field = document.getElementById(field);
@@ -94,8 +96,9 @@ function handleValidation(isValid, field, message, recurse = true) {
  * @param {HTMLElement} field 
  * @param {(Boolean|String)} operator 
  */
-function toggleStyles(field, operator) {
-    const options = Object.assign(defaults(window.theme), window.theme.form);
+function toggleStyles(field, operator, config) {
+    config = config || Form.config;
+
     const parentGroup = field.parent('group');
 
     if (parentGroup) {
@@ -108,7 +111,7 @@ function toggleStyles(field, operator) {
             ['isValid', 'isInvalid'].forEach(modifier => parentGroup.modifier(modifier, 'remove'));
         }
 
-        field.parent(options.name).repaint();
+        field.parent(config.name).repaint();
     }
 }
 

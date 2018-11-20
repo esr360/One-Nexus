@@ -4,39 +4,31 @@ import layout from './assets/layout.jss';
 
 /**
  * Render Form module
- * 
- * @prop {Function} setState
- * @prop {Function} validate
- * @prop {Array} fields
- * @prop {*} submit
  */
-const Form = ({ setState, validate, fields, submit, ...props }) => {
-    const config = Object.assign(defaults(window.theme), window.theme.form);
+const Form = ({ setState, validate, fields, submit, config, ...props }) => (
+    <Module {...props} ref={() => setState(fields)}>
+        <RenderFields setState={setState} validate={validate} fields={fields} />
 
-    return (
-        <Module name={config.name} {...props} styles={[layout, config, window.theme]} ref={() => setState(fields)}>
-            <RenderFields setState={setState} validate={validate} fields={fields} />
+        {submit !== false &&
+            <Component name='footer' className='object'>
+                <Component
+                    name='submit'
+                    tag='input'
+                    type='submit'
+                    value={typeof submit === 'object' ? submit.text : submit}
 
-            {submit !== false &&
-                <Component name='footer' className='object'>
-                    <Component
-                        name='submit'
-                        tag='input'
-                        type='submit'
-                        value={typeof submit === 'object' ? submit.text : submit}
+                    onClick={() => validateFields(fields, validate)}
 
-                        onClick={() => validateFields(fields, validate)}
+                    {...getInputProps(submit)}
+                />
+            </Component>
+        }
+    </Module>
+);
 
-                        {...getInputProps(submit)}
-                    />
-                </Component>
-            }
-        </Module>
-    );
-}
-
-Object.assign(Form, interactions, {
-    defaultProps: {
+export default Object.assign(Form, {
+    ...interactions, layout, defaults, defaultProps: {
+        name: 'Form',
         object: true,
         setState: interactions.setState,
         validate: interactions.validate,
@@ -46,11 +38,6 @@ Object.assign(Form, interactions, {
 
 /**
  * Render the fields for the <Form> module
- * 
- * @prop {Function} setState
- * @prop {Function} validate
- * @prop {Array} fields
- * 
  */
 const RenderFields = ({ setState, validate, fields, ...props }) => {
     const inputTypes = [
@@ -78,6 +65,8 @@ const RenderFields = ({ setState, validate, fields, ...props }) => {
     ];
 
     return fields.map((properties, index) => {
+
+        console.log(properties);
 
         if (properties.type === 'fieldset') {
             return <RenderFieldset setState={setState} validate={validate} {...props} fieldProperties={properties} />
@@ -109,7 +98,7 @@ const RenderFields = ({ setState, validate, fields, ...props }) => {
                             onFocus={() => validateFields(properties, validate)}
                             onKeyUp={() => {
                                 setState(props.formFields || fields);
-                                validateFields(properties, validate);
+                                validateFields(fields, validate);
                             }}
                         />
 
@@ -188,11 +177,6 @@ const RenderFields = ({ setState, validate, fields, ...props }) => {
 
 /**
  * Render fieldsets within <RenderFields>
- * 
- * @prop {Function} setState
- * @prop {Function} validate
- * @prop {Array} fields
- * @prop {Object} fieldProperties
  */
 const RenderFieldset = ({ setState, validate, fields, fieldProperties, ...props }) =>  (
     <Component name='fieldset' {...getInputProps(fieldProperties)}>
@@ -206,13 +190,8 @@ const RenderFieldset = ({ setState, validate, fields, fieldProperties, ...props 
     </Component>
 );
 
-export default Form;
-
 /**
  * Validate a form field or multiple form fields
- * 
- * @param {*} field
- * @param {Function} validate
  */
 function validateFields(field, validate) {
     if (field.constructor === Array) {
@@ -228,8 +207,6 @@ function validateFields(field, validate) {
 
 /**
  * Determine the props to pass to a field component
- * 
- * @param {Object} props 
  */
 function getInputProps(props) {
     const blackList = [
@@ -267,8 +244,6 @@ function getInputProps(props) {
 
 /**
  * Determine appropriate modifiers for a field component
- * 
- * @param {Object} properties 
  */
 function componentModifiers(properties) {
     let modifiers = [];

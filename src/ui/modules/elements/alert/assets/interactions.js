@@ -1,5 +1,3 @@
-import defaults from './config.js';
-
 export default {
     init, 
     dismiss
@@ -17,11 +15,11 @@ export function init(element) {
 /**
  * Dissmiss an alert
  */
-export function dismiss(alert) {
-    const options = Object.assign(defaults(window.theme), window.theme.alert);
+export function dismiss(alert, config) {
+    config = config || Alert.config;
 
     if (typeof alert === 'object' && ('target' in alert)) {
-        alert = alert.target.closest(`[data-module="${options.name}"]`);
+        alert = alert.target.closest(`[data-module="${config.name}"]`);
     }
 
     alert.modifier('hidden', 'set')

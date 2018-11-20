@@ -1,4 +1,4 @@
-export default function layout(element, config, globals) {
+export default (element, config, globals) => {
     return [config, {
         ...['checkbox', 'radio'].reduce((result, item) => {
             result[item] = {
@@ -8,13 +8,6 @@ export default function layout(element, config, globals) {
 
             return result;
         }, {}),
-
-        // @TODO see if this is really needed anywhere
-        inputWrapper: inputWrapper => ({
-            'position': 'relative',
-            'display': 'inline-block',
-            'width': '100%'
-        }),
 
         group: group => ({
             ...globals.object(group, `calc(${globals.core.margin} / 2)`),
