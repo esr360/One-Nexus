@@ -7,10 +7,6 @@ export default {
 
 /**
  * Check if an input value is valid
- * 
- * @param {(String|HTMLElement)} field
- * @param {Array} validators
- * @param {Function} handler
  */
 export function validate(field, validators, handler = handleValidation) {
     if (!field) return;

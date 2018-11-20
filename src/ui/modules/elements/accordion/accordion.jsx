@@ -4,8 +4,6 @@ import layout from './assets/layout.jss';
 
 /**
  * Render Accordion module
- *
- * @prop {Array} panels
  */
 const Accordion = ({ panels, toggle, ...props }) => (
     <Module {...props}>
@@ -24,6 +22,6 @@ const Accordion = ({ panels, toggle, ...props }) => (
 export default Object.assign(Accordion, {
     ...interactions, layout, defaults, defaultProps: {
         name: 'Accordion',
-        object: true,
+        object: true
     }
 });

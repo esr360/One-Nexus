@@ -6,7 +6,11 @@ const Forms = props => (
         <PAX5.row>
             <PAX5.column width={6}>
 
-                {/* <Heading size='4' heading='2'>Signup Form</Heading> */}
+                <Group>
+                    <Heading size='4' heading='2'>Signup Form</Heading>
+                </Group>
+
+                <Heading size='4' heading='2'>Signup Form</Heading>
                 
                 <Form fields={[
                     {

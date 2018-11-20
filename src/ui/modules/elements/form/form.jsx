@@ -65,9 +65,6 @@ const RenderFields = ({ setState, validate, fields, ...props }) => {
     ];
 
     return fields.map((properties, index) => {
-
-        console.log(properties);
-
         if (properties.type === 'fieldset') {
             return <RenderFieldset setState={setState} validate={validate} {...props} fieldProperties={properties} />
         }
