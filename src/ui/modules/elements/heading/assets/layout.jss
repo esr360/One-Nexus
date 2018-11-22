@@ -29,20 +29,16 @@ export default (element, config, globals) => {
         //*********************************************************
 
         group: group => {
-            console.log(globals.verticalRhythm(group));
             return {
-                ...globals.verticalRhythm(group, 'bottom'),
+                ...globals.object(group, config.group.gutter),
 
                 'position': 'relative',
-                'margin-bottom': globals.core.margin,
                 'font-size': '1rem',
 
                 heading: [element, {
-                    ...globals.verticalRhythm(group),
+                    ...globals.object(element, config.group.heading.gutter),
 
-                    'margin-top': '0.5em',
-                    'margin-bottom': '0.5em',
-                    'line-height': config['group_heading-lineHeight']
+                    'line-height': config.group.heading['lineHeight']
                 }]
             }
         }

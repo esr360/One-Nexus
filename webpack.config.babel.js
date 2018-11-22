@@ -2,7 +2,6 @@ import path from 'path';
 import webpack from 'webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import StyleLintPlugin from 'stylelint-webpack-plugin';
 import WriteFilePlugin from 'write-file-webpack-plugin';
 import StaticSiteGenerator from './build/plugins/static-site-generator';
 import JsLoader from './build/loaders/js';
@@ -33,11 +32,7 @@ export default function(env) {
         }),
         new CopyWebpackPlugin([
             { from: 'src/ui/images', to: 'assets/images' }
-        ]),
-        new StyleLintPlugin({
-            context: 'src/ui/',
-            configFile: './stylelint.config.js'
-        })
+        ])
     ];
 
     if (isDevServer) {

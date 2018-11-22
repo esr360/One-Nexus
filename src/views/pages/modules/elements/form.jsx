@@ -8,6 +8,7 @@ const Forms = props => (
 
                 <Group>
                     <Heading size='4' heading='2'>Signup Form</Heading>
+                    <Heading size='4' heading='2'>Signup Form</Heading>
                 </Group>
 
                 <Heading size='4' heading='2'>Signup Form</Heading>
