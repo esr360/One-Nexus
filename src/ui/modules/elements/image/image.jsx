@@ -1,20 +1,17 @@
-import defaults from './image.json';
+import defaults from './assets/config.js';
+import layout from './assets/layout.jss';
 
 /**
  * Render Image component
  */
-const Image = props => {
-    const config = Object.assign(defaults.image, window.theme.image);
+const Image = props => (
+    <Module {...props}>
+        <Component name='figure' tag='img' src={props.src}>{props.children}</Component>
+    </Module>
+);
 
-    return (
-        <Module name={config.name} {...props}>
-            <Component name='figure' tag='img' src={props.src}>
-                {props.children}
-            </Component>
-        </Module>
-    );
-}
-
-Image.defaultProps = {};
-
-export default Image;
+export default Object.assign(Image, {
+    layout, defaults, defaultProps: {
+        name: 'Image'
+    }
+});

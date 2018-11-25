@@ -1,48 +1,55 @@
-import * as app from '../../../../app';
 import Base from '../../../layouts/base';
 
-export default class List extends React.Component {
-    render() {
-        return (
-            <Base {...app.config.app.views}>
+export default props => (
+    <Base {...props.config.app.views}>
 
-                <app.List reset>
-                    <app.ListItem>Foo</app.ListItem>
-                    <app.ListItem>Foo</app.ListItem>
-                    <app.ListItem>Foo</app.ListItem>
-                </app.List>
+        <Module name='foo'>
+            <Component name='bar'>
+                <SubComponent name='fizz'>
+                    <SubComponent onClick={() => console.log('foo')} name='buzz'>
+                        <SubComponent name='ting'>
+                            <SubComponent name='tong'>Ting</SubComponent>
+                        </SubComponent>
+                    </SubComponent>
+                </SubComponent>
+            </Component>
+        </Module>
 
-                <app.List reset inline>
-                    <app.ListItem>Foo</app.ListItem>
-                    <app.ListItem>Foo</app.ListItem>
-                    <app.ListItem>Foo</app.ListItem>
-                </app.List>
+        <List reset>
+            <List.Item>Foo</List.Item>
+            <List.Item>Foo</List.Item>
+            <List.Item>Foo</List.Item>
+        </List>
 
-                <app.List reset divider>
-                    <app.ListItem>Foo</app.ListItem>
-                    <app.ListItem>Foo</app.ListItem>
-                    <app.ListItem>Foo</app.ListItem>
-                </app.List>
+        <List reset inline>
+            <List.Item>Foo</List.Item>
+            <List.Item icon='chevron-circle-up'>Foo</List.Item>
+            <List.Item>Foo</List.Item>
+        </List>
 
-                <app.List arrow>
-                    <app.ListItem>Foo</app.ListItem>
-                    <app.ListItem>Foo</app.ListItem>
-                    <app.ListItem>Foo</app.ListItem>
-                </app.List>
+        <List reset divider>
+            <List.Item>Foo</List.Item>
+            <List.Item>Foo</List.Item>
+            <List.Item>Foo</List.Item>
+        </List>
 
-                <app.List arrow highlight>
-                    <app.ListItem>Foo</app.ListItem>
-                    <app.ListItem>Foo</app.ListItem>
-                    <app.ListItem>Foo</app.ListItem>
-                </app.List>
+        <List arrow>
+            <List.Item icon='chevron-circle-up'>Foo</List.Item>
+            <List.Item>Foo</List.Item>
+            <List.Item>Foo</List.Item>
+        </List>
 
-                <app.List clear group>
-                    <app.ListItem>Foo</app.ListItem>
-                    <app.ListItem>Foo</app.ListItem>
-                    <app.ListItem>Foo</app.ListItem>
-                </app.List>
+        <List arrow highlight>
+            <List.Item>Foo</List.Item>
+            <List.Item>Foo</List.Item>
+            <List.Item>Foo</List.Item>
+        </List>
 
-            </Base>
-        )
-    }
-}
+        <List clear group>
+            <List.Item>Foo</List.Item>
+            <List.Item>Foo</List.Item>
+            <List.Item>Foo</List.Item>
+        </List>
+
+    </Base>
+);

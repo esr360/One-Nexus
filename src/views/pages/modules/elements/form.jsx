@@ -1,6 +1,6 @@
 import Base from '../../../layouts/base';
 
-const Forms = props => (
+export default props => (
     <Base {...props.config.app.views}>
 
         <PAX5.row>
@@ -283,5 +283,3 @@ const Forms = props => (
 
     </Base>
 );
-
-export default Forms;

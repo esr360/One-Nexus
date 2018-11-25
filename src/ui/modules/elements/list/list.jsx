@@ -1,24 +1,29 @@
-import defaults from './list.json';
+import defaults from './assets/config.js';
+import layout from './assets/layout.jss';
 
 /**
  * Render List module
- *
- * @prop {String} name
  */
-const List = props => {
-    const config = Object.assign(defaults.list, window.theme.list);
+const List = (props) => (
+    <Module {...props}>{Module.child(props)}</Module>
+);
+
+List.Item = ({ context, icon, config, ...props }) => {
+    config = config || List.config;
+
+    if (context.arrow && !icon) icon = config['arrow-icon'];
 
     return (
-        <Module name={config.name} {...props}>
+        <Component name='item' tag='li'>
+            {icon && <SubComponent name='icon' tag='i' className={`fa fa-${icon}`} />}
             {props.children}
-        </Module>
-    );
-}
-
-List.Item = props => <li>{props.children}</li>;
-
-List.defaultProps = {
-    tag: 'ul'
+        </Component>
+    )
 };
 
-export default List;
+export default Object.assign(List, {
+    layout, defaults, defaultProps: {
+        name: 'List',
+        tag: 'ul'
+    }
+});
