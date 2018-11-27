@@ -8,7 +8,7 @@ const List = (props) => (
     <Module {...props}>{Module.child(props)}</Module>
 );
 
-List.Item = ({ context, icon, config, ...props }) => {
+List.Item = ({ config, context, icon, children }) => {
     config = config || List.config;
 
     if (context.arrow && !icon) icon = config['arrow-icon'];
@@ -16,7 +16,7 @@ List.Item = ({ context, icon, config, ...props }) => {
     return (
         <Component name='item' tag='li'>
             {icon && <SubComponent name='icon' tag='i' className={`fa fa-${icon}`} />}
-            {props.children}
+            {children}
         </Component>
     )
 };

@@ -44,6 +44,10 @@ Synergy.app.defaultProps = {
     config: config
 }
 
-ReactDOM.render(<Synergy.app />, document.getElementById('app'));
+const container = document.getElementById('app');
+
+if (container && container.classList.contains('render')) {
+    ReactDOM.render(<Synergy.app />, container);
+}
 
 export default Synergy.app;
