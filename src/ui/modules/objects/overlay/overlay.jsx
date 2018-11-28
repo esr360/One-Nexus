@@ -1,13 +1,17 @@
-import defaults from './overlay.json';
+import defaults from './assets/config.js';
+import layout from './assets/layout.jss';
+import interactions from './assets/interactions.js';
 
 const Overlay = props => {
-    const config = Object.assign(defaults.overlay, window.theme.overlay);
-
     return (
-        <Module name={config.name} {...props}>
+        <Module {...props}>
             {props.children}
         </Module>
     );
 }
 
-export default Overlay;
+export default Object.assign(Overlay, {
+    ...interactions, layout, defaults, defaultProps: {
+        name: 'Overlay'
+    }
+});

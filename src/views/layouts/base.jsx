@@ -40,11 +40,11 @@ const Base = props => (
 
         {/* <Footer>
             <a href='#'>Link 1</a>
-        </Footer>
+        </Footer> */}
 
         <Overlay id='overlay' />
 
-        <Preloader />
+        {/*<Preloader />
 
         <Search />
 
