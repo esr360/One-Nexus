@@ -27,21 +27,5 @@ export default props => (
 
         <Modal close={false} animate='right' trigger={ <Button>Trigger</Button> }>Modal 3</Modal>
 
-        <Button data-modal-content='foo'>Foo Trigger</Button>
-
-        <Button data-modal-content='bar'>Bar Trigger</Button>
-
-        <button class="button" data-modal-target="modal_1">Modal 1 Trigger</button>
-        <div class="modal-animate-top" id="modal_1">
-            <div class="modal_close"><i class="fa fa-times"></i></div>
-            <div class="modal_content">Modal 1</div>
-        </div>
-
-        <button class="button" data-modal-target="foo">Modal 2 Trigger</button>
-        <div class="modal" id="foo">
-            <div class="modal_content">Modal 2</div>
-            <div class="modal_close">Close Modal</div>
-        </div>
-
     </Base>
 );

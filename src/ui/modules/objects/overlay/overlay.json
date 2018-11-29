@@ -1,9 +1,0 @@
-{
-    "overlay": {
-		"name": "overlay",
-        "background": ["#COLOR", "opaque", "dark-4"],
-        "light-background": ["#COLOR", "greyscale", "white"],
-        "z-index": 11,
-        "transition": ["#CORE", "transition"]
-    }
-}

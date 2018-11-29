@@ -4,9 +4,7 @@ import interactions from './assets/interactions.js';
 
 const Overlay = props => {
     return (
-        <Module {...props}>
-            {props.children}
-        </Module>
+        <Module {...props}>{props.children}</Module>
     );
 }
 

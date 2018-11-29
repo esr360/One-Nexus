@@ -1,5 +1,4 @@
 import defaults from './side-nav.json';
-import overlay from '../../objects/overlay/overlay';
 
 export default {
     init, toggle
