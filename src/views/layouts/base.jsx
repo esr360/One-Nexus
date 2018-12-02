@@ -28,7 +28,6 @@ const Base = props => (
                 <Link to='/lists'>List</Link>
                 <Link to='/modals'>Modal</Link>
                 <Link to='/paragraphs'>Paragraph</Link>
-                <Link to='/progress-bars'>Progress Bar</Link>
                 <Link to='/tables'>Table</Link>
                 <Link to='/tabs'>Tabs</Link>
                 <Link to='/tooltips'>Tooltip</Link>

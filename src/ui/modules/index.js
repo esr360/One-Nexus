@@ -11,7 +11,6 @@ export { default as Image } from './elements/image/image';
 export { default as List } from './elements/list/list';
 export { default as Modal } from './elements/modal/modal.jsx';
 export { default as Paragraph } from './elements/paragraph/paragraph';
-export { default as ProgressBar } from './elements/progress-bar/progress-bar';
 export { default as Table } from './elements/table/table';
 export { default as Tabs } from './elements/tabs/tabs.jsx';
 export { default as Tooltip } from './elements/tooltip/tooltip';
