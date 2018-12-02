@@ -9,8 +9,6 @@ const List = (props) => (
 );
 
 List.Item = ({ config, context, icon, children }) => {
-    config = config || List.config;
-
     if (context.arrow && !icon) icon = config['arrow-icon'];
 
     return (

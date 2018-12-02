@@ -1,5 +1,7 @@
 export default (element, config, globals) => {
     const layout = {
+        ...globals.center(),
+
         'top': config['top-position'],
         'visibility': 'hidden',
         'position': 'fixed',
@@ -20,6 +22,8 @@ export default (element, config, globals) => {
                 'top': `calc(${config['top-position']} * 0.9)`,
 
                 'modifier(visible)': {
+                    'list-style-type': 'disc',
+                    'color': 'red',
                     'top': config['top-position']
                 }
             },
@@ -63,7 +67,9 @@ export default (element, config, globals) => {
             'modifier(icon)': {
                 'position': 'absolute'
             }
-        })
+        }),
+
+        overlay: [config.overlay.element(), config.overlay],
     }
 
     return [config, layout];

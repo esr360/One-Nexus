@@ -1,11 +1,11 @@
-import defaults from './assets/config.js';
+import defaults from './assets/config';
 import layout from './assets/layout.jss';
-import interactions from './modal.js';
+import interactions from './assets/interactions';
 
 /**
  * Render Modal module
  */
-const Modal = ({ toggle, trigger, close, animate, modifiers, ...props }) => {
+const Modal = ({ toggle, trigger, close, animate, modifiers = [], ...props }) => {
     let modal;
 
     if (animate) modifiers.push(`animate-${animate}`);
@@ -31,11 +31,14 @@ const Modal = ({ toggle, trigger, close, animate, modifiers, ...props }) => {
     );
 }
 
+Modal.Close = props => (
+    <Component {...props} name='close'>{props.children}</Component>
+);
+
 export default Object.assign(Modal, {
     ...interactions, layout, defaults, defaultProps: {
         name: 'Modal',
         animate: 'top',
-        modifiers: [],
         close: '×',
         toggle: interactions.toggle
     }

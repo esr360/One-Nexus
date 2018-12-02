@@ -1,21 +1,17 @@
-import defaults from './paragraph.json';
+import defaults from './assets/config';
+import layout from './assets/layout.jss';
 
 /**
  * Render Paragraph module
  */
-const Paragraph = props => {
-    const config = Object.assign(defaults.paragraph, window.theme.paragraph);
+const Paragraph = props => (
+    <Module {...props}>{props.children}</Module>
+);
 
-    return (
-        <Module name={config.name} {...props}>
-            {props.children}
-        </Module>
-    );
-}
-
-Paragraph.defaultProps = {
-    object: true,
-    tag: 'p'
-};
-
-export default Paragraph;
+export default Object.assign(Paragraph, {
+    layout, defaults, defaultProps: {
+        name: 'Paragraph',
+        object: true,
+        tag: 'p'
+    }
+});

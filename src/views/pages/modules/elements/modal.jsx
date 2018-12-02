@@ -15,17 +15,19 @@ export default props => (
         </Modal> */}
 
         <Modal trigger={ <div>Trigger 2</div> }>
+            <Modal.Close icon>close</Modal.Close>
             Modal 2
         </Modal>
 
         <Modal trigger={ <div>Trigger 3</div> } content='Modal 3' />
 
-        <Button id="demoTrigger">Modal Trigger</Button>
         <Modal trigger='#demoTrigger'>
             Modal Content
         </Modal>
+        <Button id="demoTrigger">Modal Trigger</Button>
 
-        <Modal close={false} animate='right' trigger={ <Button>Trigger</Button> }>Modal 3</Modal>
-
+        <Modal close={false} animate='right' trigger={ <Button>Trigger</Button> }>
+            Modal 3
+        </Modal>
     </Base>
 );
