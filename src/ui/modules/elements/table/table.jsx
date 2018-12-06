@@ -10,25 +10,22 @@ import RCTable from 'rc-table';
 const Table = ({ columns, data, config = Table.config, ...props }) => {
     function ref(node) {
         const TABLE = ReactDOM.findDOMNode(node);
-        const ROWS = TABLE.querySelectorAll('.table-row');
-        const THEAD = TABLE.querySelector('.table-thead');
-        const TBODY = TABLE.querySelector('.table-tbody');
 
-        // @TODO this is needed for polymorph to work properly - look into
-        // polymorph update to remove need for this
-        TABLE.setAttribute('data-module', config.name);
+        ['content', 'body', 'thead', 'tbody'].forEach(component => {
+            TABLE.querySelector(`.table-${component}`).setComponent('content', config.name, `table-${component}`);
+        });
 
-        ROWS.forEach(ROW => {
-            ROW.setComponent('row', config.name);
+        TABLE.querySelectorAll('.table-row').forEach(ROW => {
+            ROW.setComponent('row', config.name, 'table-row');
+
+            [...ROW.classList].forEach(className => (className.indexOf('table-') === 0) && ROW.classList.remove(className));
 
             ROW.querySelectorAll('td').forEach(TD => TD.setComponent('cell', config.name));
         });
 
-        THEAD.setComponent('thead', config.name);
-        TBODY.setComponent('tbody', config.name);
-
         Synergy.styleParser(TABLE, window[props.name].layout, config, props.ui || window.ui);
     }
+
     const componentProps = { ref, columns, data, prefixCls: config.name };
 
     return (
