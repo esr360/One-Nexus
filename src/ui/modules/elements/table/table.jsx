@@ -6,37 +6,39 @@ import layout from './assets/layout.jss';
  *
  * @prop {Array} name
  */
-const Table = ({ columns, data, ...props }) => {
-    return (
-        <Module {...props}>
-            <thead>
-                <tr>
+const Table = ({ columns, data, ...props }) => (
+    <Module {...props}>
+        {columns.every(column => column.title) && (
+            <Component name='thead'>
+                <Component name='row' tag='tr'>
                     {columns.map(column => (
-                        <th key={column.key}>{column.title}</th>
+                        <Component name='heading' tag='th' key={column.key}>
+                            {column.title}
+                        </Component>
                     ))}
-                </tr>
-            </thead>
+                </Component>
+            </Component>
+        )}
 
-            <tbody>
-                {data.map(row => (
-                    <tr key={row.key}>
-                        {columns.map(column => (
-                            <td key={column.key}>
-                                {Object.keys(row).map(cell => {
-                                    if (cell === column.key) {
-                                        return row[cell];
-                                    }
-                                })}
+        <Component name='tbody'>
+            {data.map(row => (
+                <Component name='row' tag='tr' key={row.key}>
+                    {columns.map(column => (
+                        <Component name='cell' tag='td' key={column.key}>
+                            {Object.keys(row).map(cell => {
+                                if (cell === column.key) {
+                                    return row[cell];
+                                }
+                            })}
 
-                                {column.render && column.render()}
-                            </td>
-                        ))}
-                    </tr>
-                ))}
-            </tbody>
-        </Module>
-    );
-}
+                            {column.render && column.render()}
+                        </Component>
+                    ))}
+                </Component>
+            ))}
+        </Component>
+    </Module>
+);
 
 export default Object.assign(Table, {
     layout, defaults, defaultProps: {
