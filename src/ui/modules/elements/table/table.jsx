@@ -1,41 +1,46 @@
 import defaults from './assets/config';
 import layout from './assets/layout.jss';
-import RCTable from 'rc-table';
 
 /**
  * Render Table module
  *
  * @prop {Array} name
  */
-const Table = ({ columns, data, config = Table.config, ...props }) => {
-    function ref(node) {
-        const TABLE = ReactDOM.findDOMNode(node);
-
-        ['content', 'body', 'thead', 'tbody'].forEach(component => {
-            TABLE.querySelector(`.table-${component}`).setComponent('content', config.name, `table-${component}`);
-        });
-
-        TABLE.querySelectorAll('.table-row').forEach(ROW => {
-            ROW.setComponent('row', config.name, 'table-row');
-
-            [...ROW.classList].forEach(className => (className.indexOf('table-') === 0) && ROW.classList.remove(className));
-
-            ROW.querySelectorAll('td').forEach(TD => TD.setComponent('cell', config.name));
-        });
-
-        Synergy.styleParser(TABLE, window[props.name].layout, config, props.ui || window.ui);
-    }
-
-    const componentProps = { ref, columns, data, prefixCls: config.name };
-
+const Table = ({ columns, data, ...props }) => {
     return (
-        <Module component={RCTable} componentProps={componentProps} {...props}  />
+        <Module {...props}>
+            <thead>
+                <tr>
+                    {columns.map(column => (
+                        <th key={column.key}>{column.title}</th>
+                    ))}
+                </tr>
+            </thead>
+
+            <tbody>
+                {data.map(row => (
+                    <tr key={row.key}>
+                        {columns.map(column => (
+                            <td key={column.key}>
+                                {Object.keys(row).map(cell => {
+                                    if (cell === column.key) {
+                                        return row[cell];
+                                    }
+                                })}
+
+                                {column.render && column.render()}
+                            </td>
+                        ))}
+                    </tr>
+                ))}
+            </tbody>
+        </Module>
     );
 }
+
 export default Object.assign(Table, {
     layout, defaults, defaultProps: {
         name: 'Table',
-        tag: 'div',
         fixed: true
     }
 });

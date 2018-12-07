@@ -1,8 +1,9 @@
 export default (element, config, globals) => {
     const layout = {
+        'width': '100%',
         'color': 'red',
 
-        cell: cell => ({
+        cell: () => ({
             'color': 'blue'
         })
     }
