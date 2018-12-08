@@ -13,8 +13,7 @@ List.Item = ({ config, context, icon, children }) => {
 
     return (
         <Component name='item' tag='li'>
-            {icon && <SubComponent name='icon' tag='i' className={`fa fa-${icon}`} />}
-            {children}
+            {icon && <SubComponent name='icon' tag='i' className={`fa fa-${icon}`} />}{children}
         </Component>
     )
 };

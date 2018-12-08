@@ -17,7 +17,7 @@ export default theme => ({
             'top': '1rem',
             'right': '1rem',
             'transition': theme.core.transition,
-            'hover': {
+            ':hover': {
                 'color': theme.colors.brand['brand-1']
             }
         }

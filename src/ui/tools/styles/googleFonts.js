@@ -3,7 +3,6 @@ export default function googleFonts(fonts) {
         const typeface = font.name.split(' ').join('+');
         const styles = font.styles.join(',');
         const googleFont = `${typeface}:${styles}`;
-
         const link = document.createElement('link');
 
         link.setAttribute('rel', 'stylesheet');
