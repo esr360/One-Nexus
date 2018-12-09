@@ -5,10 +5,19 @@ export default (element, config, globals) => {
         container: container => ({
             'position': 'relative',
             'display': 'table-header-group',
+
+            ':hover': {
+                wrapper: {
+                    'visibility': 'visible',
+                    'opacity': 1
+                }
+            }
         }),
 
         wrapper: wrapper => ({
-            'text-align': 'center'
+            'text-align': 'center',
+            'visibility': 'hidden',
+            'opacity': 0
         }),
 
         content: content => ({

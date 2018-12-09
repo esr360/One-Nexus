@@ -3,6 +3,9 @@ export default theme => ({
     'distance': '1em',
     'arrow-size': '0.5em',
     'arrow-color': theme.colors.opaque['dark-8'],
+    'wrapper': {
+        'transition': theme.core.transition
+    },
     'content': {
         'max-width': '500px',
         'padding': '0.5em 0.75em',
@@ -14,7 +17,6 @@ export default theme => ({
         'text-transform': 'none',
         'font-weight': 'normal',
         'color': 'white',
-        'transition': theme.core.transition,
         'z-index': 9999
     }
 })
