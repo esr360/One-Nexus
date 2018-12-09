@@ -33,19 +33,15 @@ export default (element, config, globals) => {
             'subComponent(item)': item => ({
                 'display': 'table-cell',
                 'cursor': 'pointer',
-                'border-right': !item.isLastChild && 'none'
+                'position': 'relative',
+                'border-left-color': (!item.isFirstChild && item.previousSibling.hasModifier('active') || item.isLastChild) && 'transparent',
+                'border-right-color': (!item.isLastChild && item.nextSibling.hasModifier('active') || item.isFirstChild) && 'transparent'
             })
         }),
 
         content: content => ({
             'position': 'relative',
-            'top': '-1px',
-
-            'modifier(glue)': {
-                'z-index': 2,
-                'top': '-2px',
-                'margin-top': config.content.glueHeight
-            }
+            'top': '-1px'
         }),
 
         item: item => ({

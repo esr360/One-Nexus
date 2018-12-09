@@ -24,9 +24,7 @@ export default theme => ({
         'color': theme.core['text-color'](theme),
         'background': theme.colors.greyscale.white,
         'border': '1px solid',
-        'border-color': theme.colors.greyscale['grey-2'],
-        'padding': '1.5em',
-        'glueHeight': '6px',
-        'glueColor': theme.colors.brand['brand-1']
+        'border-color': theme.colors.greyscale['grey-3'],
+        'padding': '1.5em'
     }
 });
