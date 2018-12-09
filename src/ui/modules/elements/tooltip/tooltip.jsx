@@ -1,31 +1,29 @@
-import defaults from './tooltip.json';
+import defaults from './assets/config.js';
+import layout from './assets/layout.jss';
 
 /**
- * Render Tooltip module
- *
- * @prop {String} [position = 'top]
+ * Render Tooltip module\
  */
 const Tooltip = ({ position, content, ...props }) => {
-    const config = Object.assign(defaults.tooltip, window.theme.tooltip);
-
     ['top', 'bottom', 'left', 'right'].forEach($position => {
         position = Object.keys(props).includes($position) ? $position : position;
     });
 
     return (
-        <Module name={config.name} {...props}>
-            {props.children}
+        <Module {...props}>
+            <Component name='container'>
+                {props.children}
 
-            <Component name='wrapper' modifiers={[position]}>
-                <Component name='content'>{content}</Component>
+                <Component name='wrapper' modifiers={[position]}>
+                    <Component name='content'>{content}</Component>
+                </Component>
             </Component>
         </Module>
     );
 }
-
-Tooltip.defaultProps = {
-    tag: 'span',
-    position: 'top'
-};
-
-export default Tooltip;
+export default Object.assign(Tooltip, {
+    layout, defaults, defaultProps: {
+        name: 'Tooltip',
+        position: 'top'
+    }
+});

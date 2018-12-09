@@ -34,10 +34,6 @@ export function toggle(target, state, config = Modal.config) {
     // toggle the page overlay
     if (config.overlay.enabled) {
         Overlay.toggle(OVERLAY, state, 'dialog');
-
-        // this has moved to layout.jss, but is to be kept here
-        // until usecase is documented
-        // Synergy.styleParser(OVERLAY, config.overlay);
     }
 
     // toggle the target modal
