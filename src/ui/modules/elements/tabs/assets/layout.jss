@@ -34,8 +34,14 @@ export default (element, config, globals) => {
                 'display': 'table-cell',
                 'cursor': 'pointer',
                 'position': 'relative',
-                'border-left-color': (!item.isFirstChild && item.previousSibling.hasModifier('active') || item.isLastChild) && 'transparent',
-                'border-right-color': (!item.isLastChild && item.nextSibling.hasModifier('active') || item.isFirstChild) && 'transparent'
+                'border-left-color': !item.isFirstChild && 'transparent',
+                'border-right-color': !item.isLastChild && item.nextSibling.hasModifier('active') && 'transparent',
+
+                ':hover': () => ({
+                    previousSibling: [item.previousSibling, {
+                        'border-right-color': 'transparent'
+                    }]
+                })
             })
         }),
 
