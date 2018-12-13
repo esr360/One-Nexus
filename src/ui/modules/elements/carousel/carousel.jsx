@@ -1,6 +1,6 @@
 import defaults from './assets/config';
-import interactions from './assets/interactions';
 import layout from './assets/layout.jss';
+import interactions from './assets/interactions';
 
 /**
  * Render Carousel module

@@ -4,10 +4,10 @@ export default theme => ({
     'arrow-size': '0.5em',
     'arrow-color': theme.colors.opaque['dark-8'],
     'wrapper': {
-        'transition': theme.core.transition
+        'transition': theme.core.transition,
+        'max-width': '400px'
     },
     'content': {
-        'max-width': '500px',
         'padding': '0.5em 0.75em',
         'border-radius': '0',
         'line-height': '1.75',

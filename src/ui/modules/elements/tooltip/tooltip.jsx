@@ -1,5 +1,6 @@
 import defaults from './assets/config.js';
 import layout from './assets/layout.jss';
+import interactions from './assets/interactions';
 
 /**
  * Render Tooltip module\
@@ -7,18 +8,18 @@ import layout from './assets/layout.jss';
 const Tooltip = ({ position, content, ...props }) => {
     return (
         <Module {...props}>
-            <Component name='container'>
-                {props.children}
+            {props.children}
 
-                <Component name='wrapper'>
-                    <Component name='content'>{content}</Component>
-                </Component>
+            <Component name='wrapper'>
+                <Component name='content'>{content}</Component>
+
+                <Component name='arrow' />
             </Component>
         </Module>
     );
 }
 export default Object.assign(Tooltip, {
-    layout, defaults, defaultProps: {
+    ...interactions, layout, defaults, defaultProps: {
         name: 'Tooltip',
         position: 'top'
     }

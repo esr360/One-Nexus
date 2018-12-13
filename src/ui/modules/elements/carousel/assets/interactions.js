@@ -7,9 +7,6 @@ export default {
 
 /**
  * Initialise carousel element
- * 
- * @param {*} carousel 
- * @param {HTMLElement} el
  */
 export function init(el, carousel, config) {
     config = config || Carousel.config;
