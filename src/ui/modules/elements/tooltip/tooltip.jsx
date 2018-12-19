@@ -24,6 +24,7 @@ const Tooltip = ({ position, content, ...props }) => {
         </Module>
     );
 }
+
 export default Object.assign(Tooltip, {
     ...interactions, layout, defaults, defaultProps: {
         name: 'Tooltip',
