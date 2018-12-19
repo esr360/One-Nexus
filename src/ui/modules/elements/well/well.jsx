@@ -1,20 +1,16 @@
-import defaults from './well.json';
+import defaults from './assets/config.js';
+import layout from './assets/layout.jss';
 
 /**
  * Render Well module
  */
-const Well = props => {
-    const config = Object.assign(defaults.well, window.theme.well);
+const Well = props => (
+    <Module {...props}>{props.children}</Module>
+);
 
-    return (
-        <Module name={config.name} {...props}>
-            {props.children}
-        </Module>
-    );
-}
-
-Well.defaultProps = {
-    object: true
-};
-
-export default Well;
+export default Object.assign(Well, {
+    layout, defaults, defaultProps: {
+        name: 'Well',
+        object: true
+    }
+});
