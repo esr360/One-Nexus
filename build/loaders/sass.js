@@ -1,6 +1,6 @@
 import Autoprefixer from 'autoprefixer';
 //import NodeSassJsonImporter from 'node-sass-json-importer';
-import NodeSassJsonImporter from '../../../../node-sass-json-importer/src/index';
+// import NodeSassJsonImporter from '../../../../node-sass-json-importer/src/index';
 
 export default {
     test: /\.scss$/,
@@ -13,7 +13,7 @@ export default {
         }}, 
         {loader: 'sass-loader', options: {
             sourceMap: true,
-            importer: [NodeSassJsonImporter],
+            // importer: [NodeSassJsonImporter],
             outputStyle: 'expanded'
         }}
     ]

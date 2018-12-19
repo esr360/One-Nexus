@@ -15,6 +15,7 @@ export default (element, config, globals) => {
 
         content: content => ({
             'max-width': config.content['max-width'],
+            'position': 'relative',
             'display': 'block'
         }),
 
@@ -38,6 +39,7 @@ export default (element, config, globals) => {
                 'margin': 'auto',
                 'left': 0,
                 'right': 0,
+                'bottom': '-12px',
                 'border-top-color': config.content.background,
             }),
 
