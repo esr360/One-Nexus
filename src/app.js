@@ -12,8 +12,8 @@ import config from './app.json';
 //*****************************************************************
 
 import { HashLink as Link } from 'react-router-hash-link';
-import PAX5 from '../../../pax5/repo/src/pax5';
-import '../../../Synergy/src/synergy';
+import PAX5 from '../../../PAX5/PAX5/src/pax5';
+import '../../../Synergy/Synergy/src/synergy';
 
 // UI
 //*****************************************************************
