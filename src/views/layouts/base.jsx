@@ -14,9 +14,30 @@ const Base = props => (
             </div>
         </Header> */}
 
-        <Billboard>Billboard</Billboard>
+        <Billboard overlay image='http://hdqwalls.com/wallpapers/colorful-polygons.jpg'>Billboard <a href='google.com'>Google</a></Billboard>
 
         <Container>
+            <Breadcrumb data={[
+                {
+                    label: 'level 1',
+                    url: '/',
+                    icon: 'home'
+                },
+                {
+                    label: 'level 2',
+                    url: '/'
+                },
+                {
+                    label: 'level 3'
+                }
+            ]} />
+
+            <Breadcrumb>
+                <Breadcrumb.Item>Level 1</Breadcrumb.Item>
+                <Breadcrumb.Item>Level 2</Breadcrumb.Item>
+                <Breadcrumb.Item>Level 3</Breadcrumb.Item>
+            </Breadcrumb>
+
             <div>
                 <Link to='/'>Home</Link>
                 <Link to='/accordions'>Accordion</Link>

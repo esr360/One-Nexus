@@ -10,13 +10,21 @@ export default (element, config, globals) => {
             'min-height': config.fullscreen['min-height']
         }),
 
-        ...((element.hasModifier('overlay') || config.overlay.enabled) && {
+        overlay: () => ({
+            'position': 'absolute',
+            'top': 0,
+            'height': '100%',
+            'width': '100%'
         }),
 
-        wrapper: () => ({
+        wrapper: wrapper => ({
             ...globals.center(),
 
-            'color': config.color
+            'color': config.color,
+
+            link: [wrapper.querySelectorAll('a'), {
+                color: 'red'
+            }]
         })
     }
 

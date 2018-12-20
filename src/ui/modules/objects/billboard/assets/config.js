@@ -16,9 +16,7 @@ export default theme => ({
     },
 
     'overlay': {
-        'disable-css': true,
-        'enabled': false,
-        'color': theme.colors.brand['brand-1'],
+        'background-color': theme.colors.brand['brand-1'],
         'opacity': '0.6'
-    } 
+    }
 })

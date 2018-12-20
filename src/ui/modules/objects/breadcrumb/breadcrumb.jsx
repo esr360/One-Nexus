@@ -1,22 +1,47 @@
-import defaults from './breadcrumb.json';
+import defaults from './assets/config.js';
+import layout from './assets/layout.jss';
 
 /**
  * Render Breadcrumb module
  */
-const Breadcrumb = props => {
-    const config = Object.assign(defaults.breadcrumb, window.theme.breadcrumb);
+const Breadcrumb = ({ data, icon, separator, ...props }) => (
+    <Module {...props}>
+        <Component name='list' tag='ul'>
+            {props.children}
+
+            {data && data.map((item, index) => {
+                separator = index + 1 < data.length && separator;
+
+                return (
+                    <Breadcrumb.Item icon={item.icon||icon} url={item.url} separator={separator} key={index}>
+                        {item.label}
+                    </Breadcrumb.Item>
+                )
+            })}
+        </Component>
+    </Module>
+);
+
+Breadcrumb.Item = ({ url, icon, separator, ...props }) => {
+    const RenderTag = url ? Component : React.Fragment;
 
     return (
-        <Module name={config.name} {...props}>
-            <ul>{props.children}</ul>
-        </Module>
-    );
-}
+        <Component name='item' tag='li'>
+            <RenderTag name='link' tag='a' href={url}>
+                {icon && <Component name='icon' tag='i' className={`fa fa-${icon}`} />}
+                
+                {props.children}
 
-Breadcrumb.Item = props => <li>{props.children}</li>;
-
-Breadcrumb.defaultProps = {
-    object: true
+                {separator && <Component name='separator' tag='i' className={`fa fa-${separator}`} />}
+            </RenderTag>
+        </Component>
+    )
 };
 
-export default Breadcrumb;
+export default Object.assign(Breadcrumb, {
+    layout, defaults, defaultProps: {
+        name: 'Breadcrumb',
+        object: true,
+        separator: 'angle-right'
+    }
+});
