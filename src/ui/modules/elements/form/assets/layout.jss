@@ -58,6 +58,8 @@ export default (element, config, globals) => {
         }),
 
         fieldset: fieldset => ({
+            ...globals.object(fieldset, config.fieldset.gutter),
+
             'padding': '0',
             'border': 'none'
         }),

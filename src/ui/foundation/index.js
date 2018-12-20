@@ -38,7 +38,7 @@ export function foundation(ui) {
             text-shadow: none;
         }
 
-        *::before, *::after {
+        *, *::before, *::after {
             box-sizing: border-box;
         }
 

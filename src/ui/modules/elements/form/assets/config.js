@@ -1,5 +1,7 @@
 export default theme => ({
     'name': 'form',
+    'valid-color': theme.colors.validation.valid,
+    'invalid-color': theme.colors.validation.invalid,
 
     label: {
         'transition': theme.core.transition
@@ -28,6 +30,7 @@ export default theme => ({
         'font-size': theme.typography.sizes['size-4']
     },
 
-    'valid-color': theme.colors.validation.valid,
-    'invalid-color': theme.colors.validation.invalid
+    fieldset: {
+        gutter: theme.core.margin
+    }
 });

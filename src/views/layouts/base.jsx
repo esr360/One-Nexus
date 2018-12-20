@@ -14,6 +14,8 @@ const Base = props => (
             </div>
         </Header> */}
 
+        <Billboard>Billboard</Billboard>
+
         <Container>
             <div>
                 <Link to='/'>Home</Link>
