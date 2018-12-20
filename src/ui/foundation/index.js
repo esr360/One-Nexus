@@ -49,6 +49,14 @@ export function foundation(ui) {
         .object:not(:last-child) {
             margin-bottom: ${ui.core.margin};
         }
+
+        .object-small:not(:first-child) {
+            margin-top: calc(${ui.core.margin} /2);
+        }
+
+        .object-small:not(:last-child) {
+            margin-bottom: calc(${ui.core.margin} /2);
+        }
     `);
 
     ui.googleFonts(ui.typography['google-fonts']);

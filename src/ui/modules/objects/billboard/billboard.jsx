@@ -4,9 +4,13 @@ import layout from './assets/layout.jss';
 /**
  * Render Billboard module
  */
-const Billboard = props => (
-    <Module {...props}>
-        <Component name='wrapper' Container>{props.children}</Component>
+const Billboard = ({ modifiers=[], ...props }) => (
+    <Module style={props.image && { backgroundImage: `url(${props.image})` }} {...props}>
+        {(props.overlay || modifiers.includes('overlay')) && <Component name='overlay' />}
+
+        <Component name='wrapper' Container>
+            {props.children}
+        </Component>
     </Module>
 );
 

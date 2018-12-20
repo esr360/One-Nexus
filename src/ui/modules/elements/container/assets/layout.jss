@@ -3,7 +3,8 @@ export default function layout(element, config, globals) {
         'position': 'relative',
         'width': config['base-width'],
         'max-width': config['max-width'],
-        'margin': '0 auto',
+        'margin-left': 'auto',
+        'margin-right': 'auto',
 
         'modifier(large)': {
             'max-width': config['large-width']
