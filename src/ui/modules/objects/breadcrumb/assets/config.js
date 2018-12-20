@@ -3,7 +3,7 @@ export default theme => ({
     'font-size': '0.9em',
     'icon-color': theme.core['text-color'](theme),
 
-    'link': {
+    link: {
         'text-decoration': 'none',
         'border-bottom': '1px dotted transparent',
         'transition': theme.core.transition,
@@ -11,5 +11,13 @@ export default theme => ({
         ':hover': {
             'border-bottom-color': 'currentColor'
         }
+    },
+
+    icon: {
+        'margin-right': '0.4em'
+    },
+
+    separator: {
+        'margin-left': '0.4em'
     }
 })

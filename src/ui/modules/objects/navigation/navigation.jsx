@@ -1,4 +1,5 @@
-import defaults from './navigation.json';
+import defaults from './assets/config.js';
+import layout from './assets/layout.jss';
 
 /**
  * Render Navigation component
@@ -6,10 +7,8 @@ import defaults from './navigation.json';
  * @prop {Array} items
  */
 const Navigation = ({ items, ...props }) => {
-    const config = Object.assign(defaults.navigation, window.theme.navigation);
-
     return (
-        <Module name={config.name} {...props} className='min-break-3'>
+        <Module {...props} className='min-break-3'>
             <ul>{renderNavItems(items)}</ul>
         </Module>
     );
@@ -23,4 +22,8 @@ function renderNavItems(items) {
     ));
 }
 
-export default Navigation;
+export default Object.assign(Navigation, {
+    layout, defaults, defaultProps: {
+        name: 'Navigation'
+    }
+});

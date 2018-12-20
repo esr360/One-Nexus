@@ -4,7 +4,7 @@ import layout from './assets/layout.jss';
 /**
  * Render Breadcrumb module
  */
-const Breadcrumb = ({ data, icon, separator, ...props }) => (
+const Breadcrumb = ({ data, separator, icon, ...props }) => (
     <Module {...props}>
         <Component name='list' tag='ul'>
             {props.children}
@@ -13,7 +13,7 @@ const Breadcrumb = ({ data, icon, separator, ...props }) => (
                 separator = index + 1 < data.length && separator;
 
                 return (
-                    <Breadcrumb.Item icon={item.icon||icon} url={item.url} separator={separator} key={index}>
+                    <Breadcrumb.Item url={item.url} separator={separator} icon={item.icon||icon} key={index}>
                         {item.label}
                     </Breadcrumb.Item>
                 )
@@ -22,7 +22,7 @@ const Breadcrumb = ({ data, icon, separator, ...props }) => (
     </Module>
 );
 
-Breadcrumb.Item = ({ url, icon, separator, ...props }) => {
+Breadcrumb.Item = ({ url, separator, icon, ...props }) => {
     const RenderTag = url ? Component : React.Fragment;
 
     return (
