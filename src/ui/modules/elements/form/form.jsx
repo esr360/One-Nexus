@@ -94,8 +94,8 @@ const RenderFields = ({ setState, validate, fields, ...props }) => {
 
                             onFocus={() => validateFields(properties, validate)}
                             onKeyUp={() => {
-                                setState(props.formFields || fields);
                                 validateFields(fields, validate);
+                                setState(props.formFields || fields);
                             }}
                         />
 
@@ -118,8 +118,8 @@ const RenderFields = ({ setState, validate, fields, ...props }) => {
                             {...getInputProps(properties)}
 
                             onChange={() => {
-                                setState(props.formFields || fields);
                                 validateFields(properties, validate);
+                                setState(props.formFields || fields);
                             }}
                         />
                         {properties.label && label}
@@ -143,8 +143,8 @@ const RenderFields = ({ setState, validate, fields, ...props }) => {
                             {...getInputProps(properties)}
 
                             onChange={() => {
-                                setState(props.formFields || fields);
                                 validateFields(properties, validate);
+                                setState(props.formFields || fields);
                             }}
                         >
                             {properties.options.map((options, index) => (

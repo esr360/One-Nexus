@@ -9,9 +9,10 @@ export default props => (
                 <Group>
                     <Heading size='4' heading='2'>Signup Form</Heading>
                     <Heading size='4' heading='2'>Signup Form</Heading>
+                    <Heading size='4' heading='2'>Signup Form</Heading>
                 </Group>
 
-                <Heading size='4' heading='2'>Signup Form</Heading>
+                <Heading size='5' heading='2'>Signup Form</Heading>
                 
                 <Form fields={[
                     {

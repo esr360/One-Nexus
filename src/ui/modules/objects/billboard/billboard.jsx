@@ -1,20 +1,17 @@
-import defaults from './billboard.json';
+import defaults from './assets/config.js';
+import layout from './assets/layout.jss';
 
 /**
  * Render Billboard module
  */
-const Billboard = props => {
-    const config = Object.assign(defaults.billboard, window.theme.billboard);
+const Billboard = props => (
+    <Module {...props}>
+        <Component name='wrapper' Container>{props.children}</Component>
+    </Module>
+);
 
-    return (
-        <Module name={config.name} {...props}>
-            <Component name='wrapper'>
-                {props.children}
-            </Component>
-        </Module>
-    );
-}
-
-Billboard.defaultProps = {};
-
-export default Billboard;
+export default Object.assign(Billboard, {
+    layout, defaults, defaultProps: {
+        name: 'Billboard'
+    }
+});

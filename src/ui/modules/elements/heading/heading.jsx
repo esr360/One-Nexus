@@ -4,11 +4,11 @@ import layout from './assets/layout.jss';
 /**
  * Render Heading component
  */
-const Heading = ({ heading, size, ...props }) => {
-    if (size) props.modifiers.push(`size-${size}`);
+const Heading = ({ heading, size, modifiers=[], ...props }) => {
+    if (size) modifiers.push(`size-${size}`);
 
     return (
-        <Module tag={`h${heading}`} modifiers={props.modifiers} {...props}>
+        <Module tag={`h${heading}`} modifiers={modifiers} {...props}>
             {props.children}
         </Module>
     );
@@ -17,7 +17,6 @@ const Heading = ({ heading, size, ...props }) => {
 export default Object.assign(Heading, {
     layout, defaults, defaultProps: {
         name: 'Heading',
-        modifiers: [],
         fluid: true,
         heading: 3
     }
