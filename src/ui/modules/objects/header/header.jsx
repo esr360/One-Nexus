@@ -1,16 +1,19 @@
-import defaults from './header.json';
+import defaults from './assets/config.js';
+import layout from './assets/layout.jss';
 
 /**
  * Render Header module
  */
 const Header = props => {
-    const config = Object.assign(defaults.header, window.theme.header);
-
     return (
-        <Module name={config.name} {...props}>
+        <Module {...props}>
             <Component name='wrapper'>{props.children}</Component>
         </Module>
     );
 };
 
-export default Header;
+export default Object.assign(Header, {
+    layout, defaults, defaultProps: {
+        name: 'Header'
+    }
+});

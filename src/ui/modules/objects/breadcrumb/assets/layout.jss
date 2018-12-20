@@ -10,17 +10,11 @@ export default (element, config, globals) => {
             'margin-right': !item.isLastChild && '0.2em'
         }),
 
-        link: () => ({
+        link: () => ({}),
 
-        }),
+        icon: () => ({}),
 
-        icon: () => ({
-            'margin-right': '0.4em'
-        }),
-
-        separator: () => ({
-            'margin-left': '0.4em'
-        })
+        separator: () => ({})
     }
 
     return [config, layout];

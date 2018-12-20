@@ -5,14 +5,14 @@ import * as app from '../../app';
  */
 const Base = props => (
     <main>
-        {/* <Header {...props.header}>
+        <Header {...props.header}>
             <Logo {...props.logo} />
             <Navigation {...props.navigation} />
 
             <div className='sideNav_toggle button-icon-primary max-break-3'>
                 <i className='fa fa-bars'></i>
             </div>
-        </Header> */}
+        </Header>
 
         <Billboard overlay image='http://hdqwalls.com/wallpapers/colorful-polygons.jpg'>Billboard <a href='google.com'>Google</a></Billboard>
 
