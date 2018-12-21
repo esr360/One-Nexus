@@ -1,20 +1,27 @@
-import * as app from '../../app';
-
 /**
  * Render Base layout
  */
 const Base = props => (
     <main>
-        <Header {...props.header}>
-            <Logo {...props.logo} />
-            <Navigation {...props.navigation} />
-
-            <div className='sideNav_toggle button-icon-primary max-break-3'>
-                <i className='fa fa-bars'></i>
-            </div>
+        <Header absolute {...props.header}>
+            <Component name='logo'>
+                <Logo {...props.logo} />
+            </Component>
+    
+            <Component name='navigation'>
+                <Navigation {...props.navigation} />
+            </Component>
         </Header>
 
-        <Billboard overlay image='http://hdqwalls.com/wallpapers/colorful-polygons.jpg'>Billboard <a href='google.com'>Google</a></Billboard>
+        <Billboard overlay image='http://hdqwalls.com/wallpapers/colorful-polygons.jpg'>
+            Billboard <a href='google.com'>Google</a>
+        </Billboard>
+
+        {/* <Module name='foo'>
+            <SubComponent name='bar'>
+                <SubComponent name='bar'>fizzbuzz</SubComponent>
+            </SubComponent>
+        </Module> */}
 
         <Container>
             <Breadcrumb data={[

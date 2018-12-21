@@ -7,7 +7,9 @@ import layout from './assets/layout.jss';
 const Logo = ({ href, src, alt, ...props }) => {
     return (
         <Module {...props}>
-            <a href={href} alt={alt}><img src={src} alt={alt} /></a>
+            <Component name='link' tag='a' href={href} alt={alt}>
+                <Component name='image' tag='img' src={src} alt={alt} />
+            </Component>
         </Module>
     );
 }

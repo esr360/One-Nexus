@@ -1,58 +1,36 @@
 import * as app from '../../../ui';
-import defaults from './header.json';
 
 /**
  * Header
- * 
- * @access public
- * 
- * @param {(String|HTMLElement|NodeList)} els
- * @param {Object} custom
  */
 export function header(els = 'header', custom = {}) {
+    const stickyOffset = options.sticky.offset || el.offsetTop;
 
-    custom = app.custom('header', custom);
+    if (options.sticky.enabled || el.modifier('sticky')) {
+        window.addEventListener('load', stickyHeaderHandler);
+        window.addEventListener('scroll', stickyHeaderHandler);
+    }
 
-    app.Synergy(els, (el, options) => {
+    function stickyHeaderHandler() {
+        return toggleStickyHeader({
+            type: (window.scrollY > stickyOffset) ? 'stick' : 'unstick', 
+            target: el,
+            navigation: app.Synergy(options.navigation).query[0],
+            overlay: options.overlay,
+            dropdownShowOverlay: exports.dropdownShowOverlay,
+            dropdownHideOverlay: exports.dropdownHideOverlay,
+            config: options
+        });
+    }
 
-        const stickyOffset = options.sticky.offset || el.offsetTop;
-
-        if (options.sticky.enabled || el.modifier('sticky')) {
-            window.addEventListener('load', stickyHeaderHandler);
-            window.addEventListener('scroll', stickyHeaderHandler);
-        }
-
-        function stickyHeaderHandler() {
-            return toggleStickyHeader({
-                type: (window.scrollY > stickyOffset) ? 'stick' : 'unstick', 
-                target: el,
-                navigation: app.Synergy(options.navigation).query[0],
-                overlay: options.overlay,
-                dropdownShowOverlay: exports.dropdownShowOverlay,
-                dropdownHideOverlay: exports.dropdownHideOverlay,
-                config: options
-            });
-        }
-
-        exports.dropdownShowOverlay = () => app.overlay(options.overlay).show('navDropown');
-        exports.dropdownHideOverlay = () => app.overlay(options.overlay).hide('navDropown');
-
-    }, defaults, custom, app.evalConfig);
-
-    app.config.header = app.parse(defaults.header, custom);
-
-    return exports;
+    exports.dropdownShowOverlay = () => app.overlay(options.overlay).show('navDropown');
+    exports.dropdownHideOverlay = () => app.overlay(options.overlay).hide('navDropown');
 }
 
 /**
  * Toggle Header Stickyness
- * 
- * @access private
- * 
- * @param {Object} options
  */
 function toggleStickyHeader(options) {
-
     const operator = (options.type === 'stick') ? 'add' : 'remove';
 
     app.Synergy([document.body, options.config.name]).component('isFixed', operator);
