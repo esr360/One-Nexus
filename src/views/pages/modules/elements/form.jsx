@@ -110,24 +110,24 @@ export default props => (
                                     ],
                                     rules: [isHomeless => !isHomeless.checked]
                                 }
-                            }
-                        ]
-                    },
-                    {
-                        type: 'select',
-                        id: 'country',
-                        label: 'Country',
-                        required: true,
-                        options: [
-                            {
-                                value: 'Choose your county',
-                                selected: true,
-                                disabled: true
                             },
-                            { value: 'UK' },
-                            { value: 'USA' }
-                        ],
-                        validate: [country => country.value === 'UK']
+                            {
+                                type: 'select',
+                                id: 'country',
+                                label: 'Country',
+                                required: true,
+                                options: [
+                                    {
+                                        value: 'Choose your county',
+                                        selected: true,
+                                        disabled: true
+                                    },
+                                    { value: 'UK' },
+                                    { value: 'USA' }
+                                ],
+                                validate: [country => country.value === 'UK']
+                            },
+                        ]
                     },
                     {
                         type: 'fieldset',

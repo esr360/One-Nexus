@@ -7,7 +7,7 @@ import layout from './assets/layout.jss';
 const Header = props => {
     return (
         <Module {...props}>
-            <Component name='wrapper'>{props.children}</Component>
+            <Component name='wrapper' Container>{props.children}</Component>
         </Module>
     );
 };

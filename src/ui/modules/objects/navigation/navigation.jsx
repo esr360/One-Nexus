@@ -14,11 +14,13 @@ const Navigation = ({ items, ...props }) => {
     );
 }
 
-function renderNavItems(items) {
+function renderNavItems(items, nested) {
+    const RenterTag = nested ? SubComponent : Component;
+
     return items.map((item, index) => (
-        <li key={index}>
-            <a href={item[1]}>{item[0]}</a> { item[2] && <ul>{renderNavItems(item[2])}</ul> }
-        </li>
+        <RenterTag name='item' tag='li' key={index}>
+            <a href={item[1]}>{item[0]}</a> { item[2] && <ul>{renderNavItems(item[2], true)}</ul> }
+        </RenterTag>
     ));
 }
 
