@@ -3,6 +3,11 @@ export default theme => ({
     'text-align': 'right',
     'font-size': '1em',
     'dropdown-icon': '\\f107',
+
+    'dropdown': {
+        'min-width': '200px'
+    },
+
     'item': {
         'border': '1px solid transparent',
 
@@ -21,7 +26,7 @@ export default theme => ({
         },
 
         'modifier(depth)': {
-            'display': 'block'
+            'padding': '0.5rem 0.75rem',
         },
 
         'active': {
