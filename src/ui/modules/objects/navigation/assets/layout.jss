@@ -4,13 +4,15 @@ export default (element, config, globals) => {
             'list-style': 'none',
             'padding': 0,
             'margin': 0,
+        }),
 
-            menu: menu => ({
-                'position': 'absolute',
-                'visibility': 'hidden',
-                'opacity': 0,
-                'text-align': 'left',
-            }),
+        dropdown: dropdown => ({
+            ...layout.menu(dropdown),
+
+            'position': 'absolute',
+            'visibility': 'hidden',
+            'opacity': 0,
+            'text-align': 'left',
         }),
 
         item: item => {
@@ -26,7 +28,7 @@ export default (element, config, globals) => {
                 }],
 
                 ':hover': {
-                    menu: [item.getComponent('menu'), {
+                    dropdown: [item.getComponent('dropdown'), {
                         'visibility': 'visible',
                         'opacity': 1
                     }]
