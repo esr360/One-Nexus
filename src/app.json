@@ -17,7 +17,7 @@
                             ]]
                         ]]
                     ]],
-                    ["link 3", "/"]
+                    ["link 3"]
                 ]
             },
             "logo": {
@@ -38,7 +38,6 @@
             "modules": {
                 "fizz": ["#COLOR", "brand", "brand-1"],
                 "Accordion": {
-                    "fizz": "foo"
                 },
                 "Alert": {
                     "icon": {

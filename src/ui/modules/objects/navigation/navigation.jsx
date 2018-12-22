@@ -3,25 +3,29 @@ import layout from './assets/layout.jss';
 
 /**
  * Render Navigation component
- *
- * @prop {Array} items
  */
 const Navigation = ({ items, ...props }) => {
     return (
         <Module {...props} className='min-break-3'>
-            <ul>{renderNavItems(items)}</ul>
+            <Component name='menu' tag='ul'>{renderNavItems(items)}</Component>
         </Module>
     );
 }
 
-function renderNavItems(items, nested) {
-    const RenterTag = nested ? SubComponent : Component;
+function renderNavItems(items, depth) {
+    if (typeof depth !== 'undefined') depth++;
 
-    return items.map((item, index) => (
-        <RenterTag name='item' tag='li' key={index}>
-            <a href={item[1]}>{item[0]}</a> { item[2] && <ul>{renderNavItems(item[2], true)}</ul> }
-        </RenterTag>
-    ));
+    return items.map((item, index) => {
+        return (
+            <Component name='item' tag='li' modifiers={[depth ? `depth-${depth}` : 'top-level']} key={index}>
+                {item[1] ? <a href={item[1]}>{item[0]}</a> : item[0]}
+                
+                { item[2] && (
+                    <Component name='menu' tag='ul'>{renderNavItems(item[2], depth || 0)}</Component>
+                )}
+            </Component>
+        )
+    });
 }
 
 export default Object.assign(Navigation, {

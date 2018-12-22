@@ -3,29 +3,35 @@ export default theme => ({
     'text-align': 'right',
     'font-size': '1em',
     'dropdown-icon': '\\f107',
-    'global-item': {
-        'padding': '0.5rem 0.75rem',
-        'color': ['#COLOR', 'greyscale', 'white'],
-        'border': '1px solid transparent'
-    },
     'item': {
-        'gutter': '0.5em',
-        'background': 'transparent',
-        'transition': ['#CORE', 'transition'],
-        'border-radius': '0',
-        'hover': {
-            'color': ['#COLOR', 'greyscale', 'white'],
+        'border': '1px solid transparent',
+
+        'modifier(top-level)': {
+            'gutter': '0.5em',
+            'padding': '0.5rem 0.75rem',
             'background': 'transparent',
-            'border': '1px solid',
-            'border-color': ['#COLOR', 'greyscale', 'white']
+            'transition': theme.core.transition,
+            'border-radius': '0',
+
+            ':hover': {
+                'color': theme.colors.greyscale.white,
+                'background': 'transparent',
+                'border-color': theme.colors.greyscale.white
+            }
         },
+
+        'modifier(depth)': {
+            'display': 'block'
+        },
+
         'active': {
-            'color': ['#COLOR', 'greyscale', 'white']
+            'color': theme.colors.greyscale.white
         },
+
         'has-child': {
             'hover': {
-                'color': ['#COLOR', 'brand', 'brand-1'],
-                'background': ['#COLOR', 'greyscale', 'grey-1'],
+                'color': theme.colors.brand['brand-1'],
+                'background': theme.colors.greyscale['grey-1'],
                 'border': '1px solid transparent'
             }
         }
