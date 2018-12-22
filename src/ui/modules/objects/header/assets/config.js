@@ -1,6 +1,6 @@
 export default theme => ({
     'name': 'header',
-    'background': theme.core['background'](theme.colors),
+    'background': theme.colors.greyscale['grey-5'],
     'font-size': '1em',
     'bar': true,
 

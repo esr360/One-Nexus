@@ -1,6 +1,6 @@
 export default (element, config, globals) => {
     const layout = {
-        'overflow': 'hidden',
+        // 'overflow': 'hidden',
 
         ...((element.hasModifier('bar') || config.bar) && {
             ...['logo', 'navigation'].reduce((result, item) => {

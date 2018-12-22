@@ -8,7 +8,6 @@
         },
         "modules": {
             "Accordion": {
-                "ding": "dong",
                 "panel": {
                     "modifier(active)": {
                         "title": {
