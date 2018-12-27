@@ -16,16 +16,21 @@ function renderNavItems(items, depth) {
     if (typeof depth !== 'undefined') depth++;
 
     return items.map((item, index) => {
+        const modifiers = [];
+
+        if (depth)   modifiers.push(`depth-${depth}`);
+        if (item[2]) modifiers.push('has-child');
+
         return (
-            <Component name='item' tag='li' modifiers={[depth ? `depth-${depth}` : 'top-level']} key={index}>
-                {item[1] ? <a href={item[1]}>{item[0]}</a> : item[0]}
+            <SubComponent name='item' tag='li' modifiers={modifiers} key={index}>
+                <SubComponent name='link' tag='a' href={item[1]}>{item[0]}</SubComponent>
                 
                 { item[2] && (
-                    <Component name='dropdown' tag='ul'>
+                    <Component name='dropdown' tag='ul' modifiers={['has-child']}>
                         {renderNavItems(item[2], depth || 0)}
                     </Component>
                 )}
-            </Component>
+            </SubComponent>
         )
     });
 }

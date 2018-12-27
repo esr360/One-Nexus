@@ -4,28 +4,14 @@ export default (element, config, globals) => {
             'list-style': 'none',
             'padding': 0,
             'margin': 0,
-        }),
 
-        dropdown: dropdown => ({
-            ...layout.menu(dropdown),
-
-            'position': 'absolute',
-            'visibility': 'hidden',
-            'opacity': 0,
-            'text-align': 'left',
-        }),
-
-        item: item => {
-            const isLinkItem = item.firstChild && item.firstChild.tagName === 'A';
-
-            return {
+            item: item => ({
                 'display': 'inline-block',
-                'padding': isLinkItem && 0,
 
-                link: [isLinkItem && item.firstChild, {
-                    'display': 'block',
-                    'padding': config.item.padding
-                }],
+                link: link => ({
+                    'text-decoration': 'none',
+                    'display': 'block'
+                }),
 
                 ':hover': {
                     dropdown: [item.getComponent('dropdown'), {
@@ -33,8 +19,39 @@ export default (element, config, globals) => {
                         'opacity': 1
                     }]
                 }
-            }
-        }
+            }),
+        }),
+
+        dropdown: dropdown => ({
+            'list-style': 'none',
+            'padding': 0,
+            'margin': 0,
+            'position': 'absolute',
+            'visibility': 'hidden',
+            'opacity': 0,
+            'text-align': 'left',
+
+            item: item => ({
+                'position': 'relative',
+
+                link: link => ({
+                    'display': 'block',
+                    'text-decoration': 'none'
+                }),
+
+                ':hover': {
+                    dropdown: [item.getComponent('dropdown'), {
+                        'visibility': 'visible',
+                        'opacity': 1
+                    }]
+                }
+            }),
+
+            dropdown: dropdown => ({
+                'transform': 'translateX(-100%)',
+                'top': 0
+            })
+        }),
     }
 
     return [config, layout];
