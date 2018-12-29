@@ -19,14 +19,16 @@ function renderNavItems(items, depth) {
         const modifiers = [];
 
         if (depth)   modifiers.push(`depth-${depth}`);
-        if (item[2]) modifiers.push('has-child');
+        if (item[2]) modifiers.push('has-dropdown');
 
         return (
             <SubComponent name='item' tag='li' modifiers={modifiers} key={index}>
-                <SubComponent name='link' tag='a' href={item[1]}>{item[0]}</SubComponent>
+                <SubComponent name='link' tag='a' href={item[1]} modifiers={item[2] && ['with-dropdown']}>
+                    {item[0]}
+                </SubComponent>
                 
                 { item[2] && (
-                    <Component name='dropdown' tag='ul' modifiers={['has-child']}>
+                    <Component name='dropdown' tag='ul'>
                         {renderNavItems(item[2], depth || 0)}
                     </Component>
                 )}

@@ -9,12 +9,12 @@
                         ["link 2 child 2", "/"],
                         ["link 2 child 3", "/", [
                             ["link 2 grandchild", "/"],
-                            ["link 2 grandchild 2", "/"],
                             ["link 2 child 3", "/", [
                                 ["link 2 grandchild", "/"],
                                 ["link 2 grandchild 2", "/"],
                                 ["link 3 grandchild 3", "/"]
-                            ]]
+                            ]],
+                            ["link 2 grandchild 2", "/"]
                         ]]
                     ]],
                     ["link 3"]
