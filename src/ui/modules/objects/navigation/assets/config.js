@@ -30,7 +30,7 @@ export default theme => ({
                 }
             },
     
-            'modifier(has-child)': {
+            'modifier(has-dropdown)': {
                 ':hover': {
                     link: {
                         'color': theme.colors.brand['brand-1'],
@@ -43,15 +43,29 @@ export default theme => ({
     },
 
     dropdown: {
+        placement: 'left',
+
         'min-width': '200px',
         'transition': theme.core.transition,
+        'box-shadow': `1px 1px 2px 1px ${theme.colors.opaque['dark-1']}`,
 
         item: {
             link: {
-                'padding': '0.5rem 0.75rem',
-                'background': theme.colors.greyscale['grey-6'],
-                'color': theme.colors.greyscale.white
-            }
+                'border-top': `1px solid ${theme.colors.opaque['dark-1']}`,
+                'background': theme.colors.greyscale['grey-1'],
+                'padding': '0.75rem',
+                'transition': theme.core.transition,
+                'color': theme.colors.brand['brand-1'],
+                'font-size': theme.typography.sizes['size-2']
+            },
+
+            ':hover': {
+                link: {
+                    disableCascade: true,
+                    'color': theme.colors.greyscale.white,
+                    'background': theme.colors.brand['brand-1']
+                }
+            },
         }
     },
 })

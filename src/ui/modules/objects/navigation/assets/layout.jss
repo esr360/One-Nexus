@@ -7,10 +7,13 @@ export default (element, config, globals) => {
 
             item: item => ({
                 'display': 'inline-block',
+                'margin-left': !item.isFirstchild && config.menu.item.gutter,
 
                 link: link => ({
                     'text-decoration': 'none',
-                    'display': 'block'
+                    'display': 'block',
+                    'position': 'relative',
+                    'z-index': 2
                 }),
 
                 ':hover': {
@@ -30,25 +33,33 @@ export default (element, config, globals) => {
             'visibility': 'hidden',
             'opacity': 0,
             'text-align': 'left',
+            'z-index': 1,
 
             item: item => ({
                 'position': 'relative',
 
                 link: link => ({
                     'display': 'block',
-                    'text-decoration': 'none'
+                    'text-decoration': 'none',
+                    'border-top-color': item.isFirstChild && 'transparent'
                 }),
 
                 ':hover': {
                     dropdown: [item.getComponent('dropdown'), {
                         'visibility': 'visible',
                         'opacity': 1
+                    }],
+
+                    nextSibling: [item.nextSibling, {
+                        link: {
+                            'border-top-color': 'transparent'
+                        }
                     }]
                 }
             }),
 
             dropdown: dropdown => ({
-                'transform': 'translateX(-100%)',
+                'transform': config.dropdown.placement === 'left' ? 'translateX(-100%)' : 'translateX(100%)',
                 'top': 0
             })
         }),
