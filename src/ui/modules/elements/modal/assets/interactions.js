@@ -17,9 +17,7 @@ export function toggle(target, state, config = Modal.config) {
 
     if (state === 'show') {
         document.querySelectorAll(`[data-module='${config.name}']`).forEach(modal => {
-            if (modal !== target) {
-                toggle(modal, 'hide', config);
-            }
+            if (modal !== target) toggle(modal, 'hide', config);
         });
 
         const closeTriggers = [...sQuery(config.name).component('close'), OVERLAY];

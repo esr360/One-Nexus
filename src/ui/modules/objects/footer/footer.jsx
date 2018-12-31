@@ -1,16 +1,17 @@
-import defaults from './footer.json';
+import defaults from './assets/config.js';
+import layout from './assets/layout.jss';
 
 /**
  * Render Footer module
  */
-const Footer = props => {
-    const config = Object.assign(defaults.footer, window.theme.footer);
+const Footer = props => (
+    <Module {...props}>
+        <Component name='wrapper' Container>{props.children}</Component>
+    </Module>
+);
 
-    return (
-        <Module name={config.name} {...props}>
-            <Component name='wrapper'>{props.children}</Component>
-        </Module>
-    );
-}
-
-export default Footer;
+export default Object.assign(Footer, {
+    layout, defaults, defaultProps: {
+        name: 'Footer'
+    }
+});
