@@ -17,11 +17,11 @@ const Base = props => (
             Billboard <a href='google.com'>Google</a>
         </Billboard>
 
-        {/* <Module name='foo'>
-            <SubComponent name='bar'>
+        <Module name='foo'>
+            <Component name='bar'>
                 <SubComponent name='bar'>fizzbuzz</SubComponent>
-            </SubComponent>
-        </Module> */}
+            </Component>
+        </Module>
 
         <Container>
             <Breadcrumb data={[
@@ -67,9 +67,9 @@ const Base = props => (
             {props.children}
         </Container>
 
-        {/* <Footer>
+        <Footer>
             <a href='#'>Link 1</a>
-        </Footer> */}
+        </Footer>
 
         <Overlay id='overlay' />
 
