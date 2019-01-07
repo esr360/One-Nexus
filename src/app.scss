@@ -15,4 +15,20 @@
 // CSS librarys
 @import '../node_modules/flickity/dist/flickity';
 
+//*****************************************************************
+
 @include normalize;
+
+@keyframes animate--spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.animate--spin {
+    animation: animate--spin 1s infinite linear;
+}
