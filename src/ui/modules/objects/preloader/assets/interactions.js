@@ -1,13 +1,20 @@
-import defaults from './preloader.json';
-
 export default {
+    init,
     toggle
 }
 
-export function toggle() {
-    const options = Object.assign(defaults.preloader, window.theme.preloader);
+export function init(element) {
+    window.addEventListener('load', event => toggle(element), true);
+}
 
-    sQuery(options.name, preloader => {
-        preloader.modifier('hidden', preloader.modifier('hidden', 'isset') ? 'unset' : 'set');
-    });
+export function toggle(element, config) {
+    config = config || Preloader.config;
+
+    if (!(element instanceof HTMLElement)) {
+        element = element.target && element.target.closest(`[data-module="${config.name}"]`);
+    }
+
+    element.modifier('hidden', element.hasModifier('hidden') ? 'unset' : 'set');
+
+    element.repaint();
 }
