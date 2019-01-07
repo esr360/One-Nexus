@@ -6,9 +6,7 @@ import interactions from './assets/interactions.js';
  * Render Preloader module
  */
 const Preloader = ({ toggle, close, ...props }) => {
-    window.addEventListener('load', toggle, true);
-
-    return (
+    return window.appLoaded ? null : (
         <Module {...props}>
             <Component name='holder'>
                 <Component name='spinner' />
@@ -21,7 +19,7 @@ const Preloader = ({ toggle, close, ...props }) => {
 
 export default Object.assign(Preloader, {
     ...interactions, layout, defaults, defaultProps: {
-        toggle: interactions.toggle,
+        name: 'Preloader',
         close: () => <Button onClick={interactions.toggle} round border size-2>Disable Preloader</Button>
     }
 });

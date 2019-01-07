@@ -73,9 +73,9 @@ const Base = props => (
 
         <Overlay id='overlay' />
 
-        {/*<Preloader />
+        <Preloader />
 
-        <Search />
+        {/*<Search />
 
         <SideNav navigation={props.navigation.items} /> */}
     </main>
