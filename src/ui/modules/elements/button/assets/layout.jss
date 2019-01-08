@@ -8,6 +8,7 @@ export default function layout(element, config, globals) {
         'vertical-align': 'middle',
         'cursor': 'pointer',
         'font-size': globals.fontSize(element, config.sizes, globals),
+        'padding': `${config['padding-y']} ${config['padding-x']}`,
 
         // Colored Buttons
         ...Object.entries(config.colors).reduce((result, color) => {
@@ -56,7 +57,8 @@ export default function layout(element, config, globals) {
         },
 
         'modifier(icon)': {
-            'text-align': 'center'
+            'text-align': 'center',
+            'padding': config['padding-y']
         },
 
         'modifier(active)': {
@@ -69,6 +71,11 @@ export default function layout(element, config, globals) {
                 'border-color': 'red'
             }
         },
+
+        icon: icon => ({
+            'height': '1em',
+            'width': '1em'
+        }),
 
         group: group => ({
             button: [element, {

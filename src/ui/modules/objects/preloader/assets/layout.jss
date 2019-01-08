@@ -11,13 +11,9 @@ export default (element, config, globals) => {
             ...globals.center()
         }),
 
-        spinner: spinner => {
-            spinner.classList.add('animate--spin');
-
-            return {
-                'margin': 'auto'
-            }
-        },
+        spinner: spinner => ({
+            'margin': 'auto'
+        }),
 
         close: close => ({
             ...globals.center('horizontal'),
