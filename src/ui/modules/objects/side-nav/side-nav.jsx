@@ -1,35 +1,46 @@
-import defaults from './side-nav.json';
-import interactions from './side-nav.js';
+import defaults from './assets/config.js';
+import layout from './assets/layout.jss';
+import interactions from './assets/interactions.js';
 
 /**
  * Render Side-Nav component
- *
- * @prop {Function} init
- * @prop {(Array|Function)} navigation
  */
-const SideNav = ({ init, toggle, navigation, ...props }) => {
-    const config = Object.assign(defaults['side-nav'], window.theme['side-nav']);
-
-    window.addEventListener('load', () => init(navigation || config.navigation), true);
-
+const SideNav = ({ items, ...props }) => {
     return (
-        <Module name={config.name} {...props}>
-            <nav>{navigation.constructor === Array && <ul>{renderNavItems(navigation)}</ul>}</nav>
+        <Module {...props}>
+            <Component name='menu' tag='ul'>{renderNavItems(items)}</Component>
         </Module>
     );
 }
 
-function renderNavItems(items) {
-    return items.map((item, index) => (
-        <li key={index}>
-            <a href={item[1]}>{item[0]}</a> { item[2] && <ul>{renderNavItems(item[2])}</ul> }
-        </li>
-    ));
+function renderNavItems(items, depth) {
+    if (typeof depth !== 'undefined') depth++;
+
+    return items.map((item, index) => {
+        const modifiers = [];
+
+        modifiers.push(depth ? `depth-${depth}` : 'parent');
+
+        if (item[2]) modifiers.push('has-dropdown');
+
+        return (
+            <Component name='item' tag='li' modifiers={modifiers} key={index}>
+                <SubComponent name='link' tag='a' href={item[1]} modifiers={item[2] && ['with-dropdown']}>
+                    {item[0]}
+                </SubComponent>
+                
+                { item[2] && (
+                    <Component name='menu' tag='ul'>
+                        {renderNavItems(item[2], depth || 0)}
+                    </Component>
+                )}
+            </Component>
+        )
+    });
 }
 
-SideNav.defaultProps = {
-    init: interactions.init,
-    toggle: interactions.toggle
-};
-
-export default SideNav;
+export default Object.assign(SideNav, {
+    ...interactions, layout, defaults, defaultProps: {
+        name: 'SideNav'
+    }
+});
