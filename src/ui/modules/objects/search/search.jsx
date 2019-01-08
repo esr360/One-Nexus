@@ -1,37 +1,30 @@
-import defaults from './search.json';
-import interactions from './search.js';
+import defaults from './assets/config.js';
+import layout from './assets/layout.jss';
+import interactions from './assets/interactions.js';
 
 /**
  * Render Search module
  */
-const Search = ({ init, toggle, go, close, ...props }) => {
-    const config = Object.assign(defaults.search, window.theme.search);
-
-    window.addEventListener('load', init, true);
-
+const Search = ({ go, close, ...props }) => {
     return (
-        <Module name={config.name} {...props}>
-            <Component name='wrapper' tag='form'>
+        <Module {...props}>
+            <Component name='wrapper' tag='form' Container>
                 <Component name='input' tag='input' required type='search' placeholder='Enter search query...' />
 
-                <Component module='button' name='group' small>
-                    <Component name='go' Button={go} tag='button' type='submit'>
-                        <i class="fa fa-search"></i>
-                    </Component>
-                    <Component name='close' Button={close} tag='button' type='button' onClick={toggle}>
-                        <i class="fa fa-times"></i>
-                    </Component>
+                <Component name='actions'>
+                    <Component name='go'>{go()}</Component>
+
+                    <Component name='close'>{close()}</Component>
                 </Component>
             </Component>
         </Module>
     );
 }
 
-Search.defaultProps = {
-    init: interactions.init,
-    toggle: interactions.toggle,
-    go: ['icon', 'brand-1'],
-    close: ['icon', 'brand-2']
-};
-
-export default Search;
+export default Object.assign(Search, {
+    ...interactions, layout, defaults, defaultProps: {
+        name: 'Search',
+        go: () => <Button icon brand-1 size-4><Component name='icon' className="fa fa-search"></Component></Button>,
+        close: () => <Button icon brand-2 size-4 type='button'><Component name='icon' className="fa fa-times"></Component></Button>
+    }
+});

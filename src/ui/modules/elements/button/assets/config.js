@@ -9,7 +9,8 @@ export default function config(theme) {
             'background': background => Color(background).darken(0.1).string()
         },
         'transition': theme.core.transition,
-        'padding': '0.65em 1em',
+        'padding-y': '0.65em',
+        'padding-x': '1em',
         'line-height': '1',
         'font-weight': 'normal',
         'border-width': '1px',

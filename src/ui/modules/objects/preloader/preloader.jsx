@@ -9,7 +9,7 @@ const Preloader = ({ toggle, close, ...props }) => {
     return window.appLoaded ? null : (
         <Module {...props}>
             <Component name='holder'>
-                <Component name='spinner' />
+                <Component name='spinner' className='animate--spin' />
             </Component>
 
             {close && <Component name='close'>{close()}</Component>}
