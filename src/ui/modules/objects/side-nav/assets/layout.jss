@@ -12,7 +12,9 @@ export default (element, config, globals) => {
             'margin': 0
         }],
 
-        menu: [element.getComponent('menu'), {
+        menu: menu => ({
+            'display': menu.hasModifier('hidden') ? 'none' : 'block',
+
             item: item => ({
                 'display': 'block',
 
@@ -31,7 +33,14 @@ export default (element, config, globals) => {
                     }),
                 }]
             })
-        }]
+        }),
+
+        toggleDropdown: toggleDropdown => ({
+            'position': 'absolute',
+            'right': 0,
+            'top': 0,
+            'padding': '1.45em'
+        }),
     }
 
     return [config, layout];
