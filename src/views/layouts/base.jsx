@@ -3,7 +3,7 @@
  */
 const Base = props => (
     <main>
-        <Search visible />
+        <Search />
 
         <Header absolute {...props.header}>
             <Component name='logo'>
@@ -12,7 +12,6 @@ const Base = props => (
     
             <Component name='navigation'>
                 <Navigation {...props.navigation} />
-                <div className='search_toggle'>Toggle Search</div>
             </Component>
         </Header>
 
@@ -78,7 +77,7 @@ const Base = props => (
 
         <Preloader />
 
-        {/* <SideNav navigation={props.navigation.items} /> */}
+        <SideNav {...props.navigation} />
     </main>
 );
 

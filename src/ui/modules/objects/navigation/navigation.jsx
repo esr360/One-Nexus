@@ -18,7 +18,7 @@ function renderNavItems(items, depth) {
     return items.map((item, index) => {
         const modifiers = [];
 
-        if (depth)   modifiers.push(`depth-${depth}`);
+        if (depth) modifiers.push(`depth-${depth}`);
         if (item[2]) modifiers.push('has-dropdown');
 
         return (
