@@ -51,6 +51,14 @@ export default theme => ({
         },
     },
 
+    toggleDropdown: {
+        'background': 'transparent',
+
+        ':hover': {
+            'background': theme.colors.opaque['dark-2']
+        }
+    },
+
     'collapsible': {
         'open-by-default': true,
         'icon': 'fa-chevron-circle-down'

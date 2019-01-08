@@ -26,6 +26,7 @@ function renderNavItems(items, depth) {
         return (
             <Component name='item' tag='li' modifiers={modifiers} key={index}>
                 <SubComponent name='link' tag='a' href={item[1]} modifiers={item[2] && ['with-dropdown']}>
+                    {item[2] && <Component name='toggleDropdown'><i className='fa fa-chevron-circle-down'></i></Component>}
                     {item[0]}
                 </SubComponent>
                 
