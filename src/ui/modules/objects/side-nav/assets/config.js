@@ -59,6 +59,13 @@ export default theme => ({
         }
     },
 
+    overlay: {
+        'element': () => document.getElementById('overlay'),
+        'enabled': true,
+        'clickToClose': true,
+        'z-index': 12
+    },
+
     'collapsible': {
         'open-by-default': true,
         'icon': 'fa-chevron-circle-down'
