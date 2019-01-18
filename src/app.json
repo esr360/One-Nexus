@@ -26,8 +26,8 @@
         },
         "ui": {
             "theme": "one_nexus",
-            "component-glue": "_",
-            "modifier-glue": "-",
+            "component-glue": "__",
+            "modifier-glue": "--",
             "sass-config-parser": "eval-config",
             "css-class-props": ["object"],
             "colors": {

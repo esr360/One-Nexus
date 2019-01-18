@@ -4,11 +4,9 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WriteFilePlugin from 'write-file-webpack-plugin';
 import StaticSiteGenerator from './build/plugins/static-site-generator';
-import JsLoader from './build/loaders/js';
-import SassLoader from './build/loaders/sass';
+import Autoprefixer from 'autoprefixer';
 
 export default function(env) {
-
     // Is this config loaded from `webpack-dev-server` ?
     const isDevServer = path.basename(require.main.filename) === 'webpack-dev-server.js';
 
@@ -22,6 +20,7 @@ export default function(env) {
     let plugins = [
         new webpack.DefinePlugin({
             'process.env': {
+                SYNERGY: true,
                 NODE_ENV: JSON.stringify(isDevServer ? 'development' : 'production'),
                 APP_ENV : JSON.stringify(staticBuild ? 'node' : 'web')
             }
@@ -70,12 +69,32 @@ export default function(env) {
 
         module: { 
             loaders: [ 
-                JsLoader, 
-                SassLoader,
+                {
+                    test: /\.(js|jsx|jss)$/,
+                    exclude: /node_modules/,
+                    use: {
+                        loader: 'babel-loader'
+                    }
+                }, 
+                {
+                    test: /\.scss$/,
+                    use: [
+                        {loader: 'style-loader'}, 
+                        {loader: 'css-loader'},
+                        {loader: 'postcss-loader', options: {
+                            sourceMap: true,
+                            plugins: () => [Autoprefixer]
+                        }}, 
+                        {loader: 'sass-loader', options: {
+                            sourceMap: true,
+                            outputStyle: 'expanded'
+                        }}
+                    ]
+                },
                 {
                     test: /\.css$/,  
                     include: /node_modules/,  
-                    loaders: ['style-loader', 'css-loader'],
+                    loaders: ['style-loader', 'css-loader']
                 }
             ] 
         },

@@ -4,7 +4,7 @@ export default {
 }
 
 export function init(element) {
-    window.addEventListener('load', event => toggle(element), true);
+    window.addEventListener('load', () => toggle(element), true);
 }
 
 export function toggle(element, config) {
