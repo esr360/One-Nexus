@@ -21,7 +21,7 @@ export default theme => ({
 
     toggle: {
         'color': theme.colors.opaque['dark-4'],
-        'transition': '0.4s'
+        'transition': theme.core.transition
     },
 
     content: {
