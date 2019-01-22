@@ -48,7 +48,9 @@
     "react-syntax-highlighter": "^6.1.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@babel/plugin-syntax-class-properties": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
@@ -63,6 +65,7 @@
     "eslint": "^4.14.0",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-react": "^7.12.3",
+    "esm": "^3.1.1",
     "html-webpack-plugin": "^2.30.1",
     "imports-loader": "^0.7.1",
     "jsdoc": "^3.5.5",
@@ -86,6 +89,7 @@
     "write-file-webpack-plugin": "^4.5.0"
   },
   "scripts": {
+    "foo": "node ./build/sassConfig.js",
     "start": "webpack-dev-server",
     "build": "npm run build:prod",
     "build:dev": "webpack --env.build=development",

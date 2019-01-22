@@ -1,0 +1,42 @@
+{
+    "name": "accordion",
+    "title": {
+        "background": "transparent",
+        "color": "grey",
+        "border": "1px solid rgba(0,0,0, 0.2)",
+        "border-radius": 0,
+        "padding": "1em",
+        "transition": "0.4s",
+        ":hover": {
+            "background": "blue",
+            "color": "#ffffff",
+            "toggle": {
+                "color": "#ffffff"
+            }
+        }
+    },
+    "toggle": {
+        "color": "rgba(0,0,0, 0.4)",
+        "transition": "0.4s"
+    },
+    "content": {
+        "background": "white",
+        "color": "grey",
+        "border": "1px solid rgba(0,0,0, 0.15)",
+        "border-radius": 0,
+        "padding": "1.5em"
+    },
+    "panel": {
+        "modifier(active)": {
+            "title": {
+                "background": "#06d2ff",
+                "color": "#ffffff",
+                "border-color": "transparent",
+                "border-radius": 0
+            },
+            "toggle": {
+                "color": "#ffffff"
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 import defaults from './assets/config.js';
 import interactions from './assets/interactions.js';
-import layout from './assets/layout.jss';
+import layout from './assets/layout.js';
 
 /**
  * Render Alert module

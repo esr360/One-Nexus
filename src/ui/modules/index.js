@@ -1,5 +1,5 @@
 // Elements
-export { default as Accordion } from './elements/accordion/accordion';
+export { default as Accordion } from './elements/Accordion/accordion.jsx';
 export { default as Alert } from './elements/alert/alert';
 export { default as Blockquote } from './elements/blockquote/blockquote';
 export { default as Button } from './elements/button/button';

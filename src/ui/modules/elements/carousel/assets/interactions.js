@@ -59,7 +59,7 @@ export function init(el, carousel, config) {
     }
 
     // Compensate for pagination
-    // @TODO see if this is still needed; move logic to layout.jss
+    // @TODO see if this is still needed; move logic to layout.js
     if (!config.navigationItem.disable) {
         const offset = el.getComponent('pagination').clientHeight + parseInt(config.bullet.gutter, 10);
 

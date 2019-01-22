@@ -1,5 +1,5 @@
 import defaults from './assets/config.js';
-import layout from './assets/layout.jss';
+import layout from './assets/layout.js';
 import interactions from './assets/interactions';
 
 /**
