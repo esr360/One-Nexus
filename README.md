@@ -2,7 +2,7 @@
 [![GitHub license](https://api.travis-ci.org/esr360/One-Nexus.svg)](https://travis-ci.org/esr360/One-Nexus)
 
 <a href="http://onenexus.io/">
-    <img src="https://raw.githubusercontent.com/esr360/One-Nexus/master/src/images/logo.png" width="270">
+    <img src="https://raw.githubusercontent.com/esr360/One-Nexus/master/src/ui/images/logo.png" width="270">
 </a>
 
 > One-Nexus is a toolkit for architecting and constructing front-end user-interfaces
