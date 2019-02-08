@@ -1,0 +1,32 @@
+{
+    "accordion": {
+        "name": "accordion",
+        "panel": {
+            "-active": {
+                "_title": {
+                    "background": "#2E3882",
+                    "border-color": "#2E3882",
+                    "color": "white"
+                }
+            }
+        },
+        "title": {
+            "background": "transparent",
+            "color": "#444444",
+            "border": "1px solid rgba(black, 0.15)",
+            "padding": "1em",
+            "transition": "0.4s",
+            ":hover": {
+                "background": "#384BC9",
+                "border-color": "#384BC9",
+                "color": "white"
+            }
+        },
+        "content": {
+            "background": "white",
+            "color": "#444444",
+            "border": "1px solid rgba(black, 0.15)",
+            "padding": "1.5em"
+        }
+    }
+}

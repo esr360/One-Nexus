@@ -16,6 +16,11 @@ export default (element, config, globals) => {
                     'z-index': 2
                 }),
 
+                dropdown: dropdown => ({
+                    'visibility': 'hidden',
+                    'opacity': 0,
+                }),
+
                 ':hover': {
                     dropdown: [item.getComponent('dropdown'), {
                         'visibility': 'visible',
@@ -30,8 +35,6 @@ export default (element, config, globals) => {
             'padding': 0,
             'margin': 0,
             'position': 'absolute',
-            'visibility': 'hidden',
-            'opacity': 0,
             'text-align': 'left',
             'z-index': 1,
 

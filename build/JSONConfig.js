@@ -28,6 +28,10 @@ const THEME = require(PROJECT_ROOT + `/src/ui/themes/${THEME_NAME}.json`).theme;
 // Theme
 const _THEME_ = deepExtend(FOUNDATION, THEME, APP_CONFIG);
 
+/**
+ * @TODO insert to debug warnings/errors/messages
+ */
+
 // Tool
 execFile('find', [PROJECT_ROOT + MODULES_PATH], (err, stdout, stderr) => {
     var file_list = stdout.split('\n');

@@ -39,7 +39,7 @@ Object.assign(window, { PAX5, Link });
 //*****************************************************************
 
 const App = ({ modules, ui, theme, pages, config }) => {
-    Synergy.theme(modules, ui, theme);
+    Synergy.theme(modules, theme, ui);
 
     return (
         <HashRouter ref={() => window.appLoaded = true}>

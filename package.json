@@ -104,7 +104,7 @@
     "docs:js": "jsdoc src/ui -r -d docs/js",
     "docs:sass": "sassdoc src/ui -d docs/sass",
     "sass:devx": "node-sass src/app.scss dist/assets/styles/app.css --output-style=expanded --importer=node_modules/node-sass-json-importer/dist/node-sass-json-importer.js",
-    "sass:dev": "node-sass src/app.scss dist/assets/styles/app.css --output-style=expanded --importer=../../node-sass-json-importer/src/index.js",
+    "sass:dev": "node-sass src/app.scss dist/assets/styles/app.css --output-style=expanded --importer=../../sass-json-importer/sass-json-importer/dist/sass-json-importer.js",
     "json-config": "node ./build/JSONConfig.js"
   }
 }

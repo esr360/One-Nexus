@@ -5,6 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WriteFilePlugin from 'write-file-webpack-plugin';
 import StaticSiteGenerator from './build/plugins/static-site-generator';
 import Autoprefixer from 'autoprefixer';
+import SassJSONImporter from '../../sass-json-importer/sass-json-importer/dist/sass-json-importer';
 
 export default function(env) {
     // Is this config loaded from `webpack-dev-server` ?
@@ -87,6 +88,7 @@ export default function(env) {
                         }}, 
                         {loader: 'sass-loader', options: {
                             sourceMap: true,
+                            importer: SassJSONImporter,
                             outputStyle: 'expanded'
                         }}
                     ]

@@ -32,3 +32,70 @@
 .animate--spin {
     animation: animate--spin 1s infinite linear;
 }
+
+////
+
+@import 'config.json';
+
+// $accordion: (
+//     "name": "accordion",
+//     "panel": (
+//         "-active": (
+//             "_title": (
+//                 "background": #2E3882,
+//                 "border-color": #2E3882,
+//                 "color": white,
+//             )
+//         )
+//     ),
+//     "title": (
+//         "background": transparent,
+//         "color": #444444,
+//         "border": 1px solid rgba(black, 0.15),
+//         "padding": 1em,
+//         "transition": 0.4s,
+//         ":hover": (
+//             "background": #384BC9,
+//             "border-color": #384BC9,
+//             "color": white
+//         )
+//     ),
+//     "content": (
+//         "background": white,
+//         "color": #444444,
+//         "border": 1px solid rgba(black, 0.15),
+//         "padding": 1.5em
+//     )
+// );
+
+@mixin accordion($custom: ()) {
+    $config: config($accordion, $custom);
+
+    @include module {
+        @include component('jingy');
+
+        @include component('panel') {
+            @include modifier('active') {
+                @include component('content') {
+                    display: block;
+                }
+            }
+        }
+
+        @include component('title', (
+            'display': block,
+            'cursor': pointer
+        ));
+
+        @include component('content', (
+            'display': none
+        ));
+    }       
+}
+
+@include accordion((
+    'title': (
+        'background': #06D2FF,
+        'color': white
+    )
+));
