@@ -16,11 +16,6 @@ export default (element, config, globals) => {
                     'z-index': 2
                 }),
 
-                dropdown: dropdown => ({
-                    'visibility': 'hidden',
-                    'opacity': 0,
-                }),
-
                 ':hover': {
                     dropdown: [item.getComponent('dropdown'), {
                         'visibility': 'visible',
@@ -37,6 +32,8 @@ export default (element, config, globals) => {
             'position': 'absolute',
             'text-align': 'left',
             'z-index': 1,
+            'visibility': 'hidden',
+            'opacity': 0,
 
             item: item => ({
                 'position': 'relative',
@@ -47,6 +44,12 @@ export default (element, config, globals) => {
                     'border-top-color': item.isFirstChild && 'transparent'
                 }),
 
+                nextSibling: [item.nextSibling, {
+                    link: {
+                        'border-top': config.dropdown.item.link['border-top']
+                    }
+                }],
+
                 ':hover': {
                     dropdown: [item.getComponent('dropdown'), {
                         'visibility': 'visible',
@@ -55,6 +58,7 @@ export default (element, config, globals) => {
 
                     nextSibling: [item.nextSibling, {
                         link: {
+                            disableCascade: true,
                             'border-top-color': 'transparent'
                         }
                     }]
