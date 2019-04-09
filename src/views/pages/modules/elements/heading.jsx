@@ -1,14 +1,9 @@
-import * as app from '../../../../app';
 import Base from '../../../layouts/base';
 
-export default class Heading extends React.Component {
-    render() {
-        return (
-            <Base {...app.config.app.views}>
+export default props => (
+    <Base {...props.config.app.views}>
 
-                <app.Heading size='4' heading='2'>Signup Form</app.Heading>
+        <Heading size='7' heading='2'>Signup Form</Heading>
 
-            </Base>
-        )
-    }
-}
+    </Base>
+);

@@ -8,8 +8,8 @@ export default (element, config, globals) => {
 
             'modifier(round)': {
                 'subComponent(item)': item => ({
-                    'border-top-left-radius': item.isFirstChild && config.nav['subComponent(item)']['round-radius'],
-                    'border-top-right-radius': item.isLastChild && config.nav['subComponent(item)']['round-radius']
+                    'border-top-left-radius': item.isFirstChild && config.nav.item['round-radius'],
+                    'border-top-right-radius': item.isLastChild && config.nav.item['round-radius']
                 })
             },
 
@@ -36,6 +36,10 @@ export default (element, config, globals) => {
                 'position': 'relative',
                 'border-left-color': !item.isFirstChild && 'transparent',
                 'border-right-color': !item.isLastChild && item.nextSibling.hasModifier('active') && 'transparent',
+
+                previousSibling: [item.previousSibling, {
+                    'border-right': config.nav.item.border
+                }],
 
                 ':hover': () => ({
                     previousSibling: [item.previousSibling, {

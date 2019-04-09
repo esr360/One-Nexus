@@ -15,6 +15,8 @@ export default function(element, config, globals) {
             'margin-right': '0.5em',
             'line-height': 1.25,
 
+            // @TODO functions as values no longer supported,
+            // fix it
             'float': () => {
                 if (element.modifier('box') && !icon.modifier('right')) {
                     return 'left';

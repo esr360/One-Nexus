@@ -16,16 +16,8 @@ const Base = props => (
             </Component>
         </Header>
 
-        <div className="foo qux">
-            <div className="foo_bar">
-                <div className="foo_bar_qux">
-                    <div className="foo_bar_qux_baz" id="fizz"></div>
-                </div>
-            </div>
-        </div>
-
         <Billboard overlay image='http://hdqwalls.com/wallpapers/colorful-polygons.jpg'>
-            Billboard <a href='google.com'>Google</a>
+            Billboard <a href='google.com'>Google</a>  <a href='yahoo.com'>Yahoo</a>
         </Billboard>
 
         <Module name='foo'>
@@ -84,7 +76,7 @@ const Base = props => (
 
         <Overlay id='overlay' />
 
-        <Preloader />
+        {/* <Preloader /> */}
 
         <SideNav {...props.navigation} />
     </main>

@@ -1,4 +1,5 @@
 export { default as index } from './index.jsx';
+export { default as test } from './test.jsx';
 export { default as accordions } from './modules/elements/accordions.jsx';
 export { default as alerts } from './modules/elements/alert.jsx';
 export { default as blockquotes } from './modules/elements/blockquotes.jsx';

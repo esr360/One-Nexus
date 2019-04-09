@@ -1,7 +1,7 @@
 export default theme => ({
     'name': 'tabs',
     'nav': {
-        'subComponent(item)': {
+        'item': {
             'transition': theme.core.transition,
             'color': theme.core['text-color'](theme),
             'background': 'transparent',

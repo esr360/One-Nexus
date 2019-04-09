@@ -67,25 +67,25 @@ const Buttons = props => (
         <Group object>
             <Button size-1>Button</Button>
             <Button size-2>Button</Button>
-            <Button size-3>Button</Button>
+            <Button size-3 grey-3>Button</Button>
             <Button size-8>Button</Button>
         </Group>
 
         <Group object modifiers={['pills']}>
             <Button>Button</Button>
-            <Button>Button</Button>
+            <Button grey-3>Button</Button>
             <Button>Button</Button>
         </Group>
 
         <Group object modifiers={['stack']}>
             <Button>Button</Button>
-            <Button>Button</Button>
+            <Button grey-3>Button</Button>
             <Button>Button</Button>
         </Group>
 
         <Group object modifiers={['pills', 'round']}>
             <Button>Button</Button>
-            <Button>Button</Button>
+            <Button grey-3>Button</Button>
             <Button>Button</Button>
         </Group>
 

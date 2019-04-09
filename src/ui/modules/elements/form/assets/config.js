@@ -4,6 +4,7 @@ export default theme => ({
     'invalid-color': theme.colors.validation.invalid,
 
     label: {
+        'color': theme.core['text-color'](theme),
         'transition': theme.core.transition
     },
 

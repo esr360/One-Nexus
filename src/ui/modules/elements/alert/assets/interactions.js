@@ -22,7 +22,7 @@ export function dismiss(alert, config) {
         alert = alert.target.closest(`[data-module="${config.name}"]`);
     }
 
-    alert.modifier('hidden', 'set')
+    alert.addModifier('hidden')
     
     alert.repaint && alert.repaint();
 }

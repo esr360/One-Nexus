@@ -17,10 +17,17 @@ export default (element, config, globals) => {
                 }),
 
                 ':hover': {
-                    dropdown: [item.getComponent('dropdown'), {
+                    // dropdown: [item.getComponent('dropdown'), {
+                    //     'visibility': 'visible',
+                    //     'opacity': 1
+                    // }],
+
+                    // @todo note - same as above; keeping for documentation
+                    dropdown: {
+                        disableCascade: true,
                         'visibility': 'visible',
                         'opacity': 1
-                    }]
+                    }
                 }
             }),
         }),
@@ -58,7 +65,7 @@ export default (element, config, globals) => {
 
                     nextSibling: [item.nextSibling, {
                         link: {
-                            disableCascade: true,
+                            // disableCascade: true,
                             'border-top-color': 'transparent'
                         }
                     }]
