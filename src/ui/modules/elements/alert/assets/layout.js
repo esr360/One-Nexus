@@ -8,15 +8,13 @@ export default function(element, config, globals) {
             return result;
         }, {}),
 
-        'display': element.modifier('hidden') ? 'none' : 'block',
+        'display': () => element.modifier('hidden') ? 'none' : 'block',
         'position': 'relative',
 
         icon: icon => ({
             'margin-right': '0.5em',
             'line-height': 1.25,
 
-            // @TODO functions as values no longer supported,
-            // fix it
             'float': () => {
                 if (element.modifier('box') && !icon.modifier('right')) {
                     return 'left';

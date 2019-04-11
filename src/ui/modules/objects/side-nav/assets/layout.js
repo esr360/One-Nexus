@@ -3,7 +3,7 @@ export default (element, config, globals) => {
         'position': 'fixed',
         'z-index': 13,
         'top': 0,
-        'transform': element.hasModifier('visible') ? 'translateX(0)' : 'translateX(-100%)',
+        'transform': () => element.hasModifier('visible') ? 'translateX(0)' : 'translateX(-100%)',
         'max-width': '100%',
         'height': '100%',
         'overflow': 'auto',

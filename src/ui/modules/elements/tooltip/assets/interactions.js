@@ -15,22 +15,22 @@ export function init(element, config) {
         let newtop, newleft;
 
         if (element.hasModifier('top')) {
-            newtop = clientRect.top - content.offsetHeight - 10;
+            newtop = clientRect.top - content.offsetHeight + window.scrollY - 10;
             newleft = clientRect.left - (content.offsetWidth / 2) + (element.offsetWidth / 2);
         }
 
         if (element.hasModifier('bottom')) {
-            newtop = clientRect.top + content.offsetHeight - 10;
+            newtop = clientRect.top + content.offsetHeight + window.scrollY - 10;
             newleft = clientRect.left - (content.offsetWidth / 2) + (element.offsetWidth / 2);
         }
 
         if (element.hasModifier('left')) {
-            newtop = clientRect.top - (element.offsetHeight / 2);
+            newtop = clientRect.top - (element.offsetHeight / 2) + window.scrollY;
             newleft = clientRect.left - (content.offsetWidth) - 12;
         }
 
         if (element.hasModifier('right')) {
-            newtop = clientRect.top - (element.offsetHeight / 2);
+            newtop = clientRect.top - (element.offsetHeight / 2) + window.scrollY;
             newleft = clientRect.left + (element.offsetWidth) + 12;
         }
 

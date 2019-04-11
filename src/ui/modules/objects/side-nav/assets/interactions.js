@@ -17,7 +17,7 @@ export function init(element, config) {
         })
     });
 
-    document.body.getComponents('toggle', false, config.name).forEach(trigger => {
+    document.body.getComponents('toggle', { namespace: config.name }).forEach(trigger => {
         trigger.addEventListener('click', () => toggle(element), false);
     });
 }
