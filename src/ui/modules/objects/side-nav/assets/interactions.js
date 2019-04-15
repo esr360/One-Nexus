@@ -32,7 +32,7 @@ export function toggle(element, operator, config) {
 
         Overlay.toggle(OVERLAY);
 
-        if (state === 'set') {
+        if (state === 'set' && config.overlay.clickToClose) {
             OVERLAY.addEventListener('click', function clickHandler() {
                 toggle(element, operator, config);
     

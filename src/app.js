@@ -38,6 +38,8 @@ Object.assign(window, { PAX5, Link });
 // Render App
 //*****************************************************************
 
+Synergy.state = {};
+
 const App = ({ modules, ui, theme, pages, config }) => {
     Synergy.theme(modules, theme, ui);
 

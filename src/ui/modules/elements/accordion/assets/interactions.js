@@ -21,11 +21,11 @@ export function toggle(target, parent, config) {
      */
 
     if (typeof parent === 'string') {
-        return toggle(target, document.querySelectorAll(parent));
+        return toggle(target, sQuery(parent).DOMNodes, config);
     }
 
     if (parent instanceof NodeList || Array.isArray(parent)) {
-        return parent.forEach(child => toggle(target, child));
+        return parent.forEach(child => toggle(target, child, config));
     }
 
     if (typeof target === 'object' && ('target' in target)) {
@@ -36,7 +36,9 @@ export function toggle(target, parent, config) {
         if (target instanceof HTMLElement) {
             parent = target.parent(config.name);
         } else {
-            return console.error(`Accordion.toggle: parent accordion cannot be determined from ${parent} and ${target}`);
+            return console.error(
+                `Accordion.toggle: parent accordion cannot be determined from ${parent} and ${target}`
+            );
         }
     }
 
@@ -57,7 +59,7 @@ export function toggle(target, parent, config) {
     }
 
     if (panel instanceof NodeList || panel instanceof Array) {
-        return panel.forEach(panel => toggle(panel, parent));
+        return panel.forEach(panel => toggle(panel, parent, config));
     }
 
     if (!(panel instanceof HTMLElement)) {

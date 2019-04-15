@@ -7,8 +7,8 @@ import layout from './assets/layout.js';
  */
 const Accordion = ({ panels, toggle, ...props }) => (
     <Module {...props}>
-        {panels.map(({ title, content, active }, index) => (
-            <Component active={active} name='panel' key={index}>
+        {panels.map(({ title, content, active, ref }, index) => (
+            <Component ref={ref} active={active} name='panel' key={index}>
                 <Component name='title' tag='div' onClick={toggle}>
                     <Component name='toggle' className='fa fa-chevron-circle-down' /> {title}
                 </Component>

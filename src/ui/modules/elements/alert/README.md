@@ -49,38 +49,40 @@
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
 
-```json
+```js
 {
-    "alert": {
-        "name": "alert",
-        "alerts": {
-            "error": {
-                "color": ["#COLOR", "alert", "error"],
-                "icon": "times"
-            },
-            "success": {
-                "color": ["#COLOR", "alert", "success"],
-                "icon": "check"
-            },
-            "info": {
-                "color": ["#COLOR", "alert", "info"],
-                "icon": "info-circle"
-            },
-            "help": {
-                "color": ["#COLOR", "alert", "help"],
-                "icon": "question-circle"
-            }
+    'name': 'alert',
+    'color': theme.colors.greyscale.white,
+
+    'alerts': {
+        'error': {
+            'color': theme.colors.alert.error,
+            'icon': 'times'
         },
-        "text-color": ["#COLOR", "greyscale", "white"],
-        "icon": {
-            "default-enable": true
+        'success': {
+            'color': theme.colors.alert.success,
+            'icon': 'check'
         },
-        "-bar": {
-            "padding": "0.85em"
+        'info': {
+            'color': theme.colors.alert.info,
+            'icon': 'info-circle'
         },
-        "-box": {
-            "padding": "1.5em"
+        'help': {
+            'color': theme.colors.alert.help,
+            'icon': 'question-circle'
         }
+    },
+
+    icon: {
+        'default-enable': true
+    },
+
+    'modifier(bar)': {
+        'padding': '0.85em'
+    },
+
+    'modifier(box)': {
+        'padding': '1.5em'
     }
 }
 ```
@@ -173,9 +175,9 @@ Alert.dismiss(alert);
     </thead>
     <tbody>
         <tr>
-            <td>Alert</td>
+            <td><code>alert</code></td>
             <td><a href="#TODO">Synergy selector</a></td>
-            <td>The alert(s) to dismiss</td>
+            <td>The alert(s) to dismiss (if not passed, all alerts will be dismissed)</td>
         </tr>
     </tbody>
 </table>
@@ -197,9 +199,26 @@ Alert.dismiss('.alert');
 
 // Dismmiss all alerts
 Alert.dismiss();
+```
 
+```jsx
 // Dismiss alert from React Component reference
-Alert.dismiss(ReactDOM.findDOMNode(myAlert));
+// Adapted from https://reactjs.org/docs/refs-and-the-dom.html#creating-refs
+class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.myRef = React.createRef();
+    }
+
+    componentDidMount() {
+        // Close the alert after 2 seconds
+        setTimeout(() => Alert.dismiss(this.myRef.current), 2000);
+    }
+
+    render() {
+        return <Alert ref={this.myRef}>My Alert</Alert>;
+    }
+}
 ```
 
 ## Rendering
@@ -277,7 +296,7 @@ Alert.dismiss(ReactDOM.findDOMNode(myAlert));
     </tr>
 </table>
 
-> Setting this to `true` will negative the value of `Props.bar`
+> Setting this to `true` will negate the value of `Props.bar`
 
 ```jsx
 <Alert box>This is an alert</Alert>
@@ -356,7 +375,7 @@ Alert.dismiss(ReactDOM.findDOMNode(myAlert));
 
 > Overwrite the default `dismiss` method
 
-* This method gets called on click of each close `icon` component
+* This method gets called automatically on click of any close `icon` components
 
 <table>
     <tr>

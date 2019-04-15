@@ -20,7 +20,7 @@
 ###### Internal Interface [[?]](#TODO)
 
 ```jsx
-<Module name='accordion'>
+<Module name='accordion' { keepOpen }>
     <Component name='panel' { active }>
         <Component name='title' />
         <Component name='content' />
@@ -56,51 +56,54 @@
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
 
-```json
+```js
 {
-    "accordion": {
-        "name": "accordion",
-        "panel": {
-            "active": {
-                "component(title)": {
-                    "background": ["#COLOR", "brand", "brand-2"],
-                    "color": ["#COLOR", "greyscale", "white"],
-                    "border-color": "transparent",
-                    "border-radius": 0
-                },
-                "component(toggle)": {
-                    "color": ["#COLOR", "greyscale", "white"]
-                }
+    'name': 'accordion',
+
+    title: {
+        'background': 'transparent',
+        'color': 'grey',
+        'border': `1px solid ${theme.colors.opaque['dark-2']}`,
+        'border-radius': 0,
+        'padding': '1em',
+        'transition': '0.4s',
+
+        ':hover': {
+            'background': theme.colors.brand['brand-1'],
+            'color': theme.colors.greyscale.white,
+
+            toggle: {
+                'color': theme.colors.greyscale.white
             }
-        },
-        "title": {
-            "background": "transparent",
-            "color": ["#CORE", "text-color"],
-            "border": "1px solid rgba(black, 0.15)",
-            "border-radius": 0,
-            "padding": "1em",
-            "transition": ["#CORE", "transition"],
-            "hover": {
-                "background": ["#COLOR", "brand", "brand-1"],
-                "color": ["#COLOR", "greyscale", "white"],
-                "component(toggle)": {
-                    "color": ["#COLOR", "greyscale", "white"]
-                }
+        }
+    },
+
+    toggle: {
+        'color': theme.colors.opaque['dark-4'],
+        'transition': theme.core.transition
+    },
+
+    content: {
+        'background': 'white',
+        'color': 'grey',
+        'border': '1px solid rgba(0,0,0, 0.15)',
+        'border-radius': 0,
+        'padding': '1.5em'
+    },
+
+    panel: {
+        'modifier(active)': {
+            title: {
+                'background': theme.colors.brand['brand-2'],
+                'color': theme.colors.greyscale.white,
+                'border-color': 'transparent',
+                'border-radius': 0
+            },
+
+            toggle: {
+                'color': theme.colors.greyscale.white
             }
-        },
-        "content": {
-            "background": ["#COLOR", "greyscale", "white"],
-            "color": ["#CORE", "text-color"],
-            "border": "1px solid rgba(black, 0.15)",
-            "border-radius": 0,
-            "padding": "1.5em"
-        },
-        "toggle": {
-            "color": ["#COLOR", "opaque", "dark-4"],
-            "transition": ["#CORE", "transition"]
-        },
-        "animationSpeed": 400,
-        "keepOpenModifier": "keepOpen"
+        }
     }
 }
 ```
@@ -116,23 +119,21 @@
     </thead>
     <tbody>
         <tr>
-            <td><code>animationSpeed</code></td>
-            <td>The duration (in <code>ms</code>) for the open/close animation</td>
-        </tr>
-        <tr>
-            <td><code>keepOpenModifier</code></td>
-            <td>The modifier to be used for accordions which allow for multiple open panels simultaneously</td>
+            <td><code></code></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
 
-Pass custom options to the `accordion` object in your theme's config file (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
+Pass custom options to the `Accordion` object in your theme's config file underneath the `modules` entry (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
 
 ```js
 {
     "theme": {
-        "accordion": {
-            ...
+        "modules": {
+            "Accordion": {
+                ...
+            }
         }
     }
 }
@@ -144,7 +145,7 @@ Pass custom options to the `accordion` object in your theme's config file (e.g. 
 
 ## Interactions
 
-> Module interactions are applied by default within the module's `.jsx` file ([learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions))
+> [learn more about module interactions](https://github.com/esr360/One-Nexus/wiki/Module-interactions)
 
 * [Toggle](#toggle)
 
@@ -157,6 +158,8 @@ Pass custom options to the `accordion` object in your theme's config file (e.g. 
 ```js
 Accordion.toggle(target, type, parent);
 ```
+
+> This interaction is called automatically when an accordion title component is clicked
 
 <table>
     <thead>
@@ -175,7 +178,7 @@ Accordion.toggle(target, type, parent);
         <tr>
             <td><code>[type]</code></td>
             <td><code>('show'|'hide'|'toggle')</code></td>
-            <td>The toggle operator (defaults to 'toggle')</td>
+            <td>The action type (defaults to 'toggle')</td>
         </tr>
         <tr>
             <td><code>[parent]</code></td>
@@ -194,7 +197,7 @@ Accordion.toggle(target, type, parent);
 
 #### Parent
 
-* If this value is not passed, the function will attempt to determine the parent accordion from the `target` element(s)
+* This parameter is not necessary but is useful if you want to, for example, toggle the 2nd panel in a NodeList of accordions
 
 #### Examples
 
@@ -217,8 +220,8 @@ Accordion.toggle('*', 'open', '.partyTime');
 // Close all panels on all accordions
 Accordion.toggle('*', 'close', '*');
 
-// Toggle panel from React Component reference
-Accordion.toggle(ReactDOM.findDOMNode(myPanel));
+// Toggle panel from React Component reference (assumed to be `this.ref`)
+Accordion.toggle(this.ref.current);
 ```
 
 ## Rendering
