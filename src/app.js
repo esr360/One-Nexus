@@ -14,8 +14,8 @@ import config from './app.json';
 import { HashRouter, Route } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import PAX5 from '../../../PAX5/PAX5/src/pax5';
-import '../../../Synergy/Synergy/src/synergy';
-// import '../../../Synergy/Synergy/dist/synergy';
+// import '../../../Synergy/Synergy/src/synergy';
+import '../../../Synergy/Synergy/dist/synergy';
 
 // UI
 //*****************************************************************
@@ -41,7 +41,7 @@ Object.assign(window, { PAX5, Link });
 Synergy.state = {};
 
 const App = ({ modules, ui, theme, pages, config }) => {
-    Synergy.theme(modules, theme, ui);
+    Synergy.theme(modules, theme, ui, config.app.ui);
 
     return (
         <HashRouter ref={() => window.appLoaded = true}>
@@ -59,7 +59,7 @@ const App = ({ modules, ui, theme, pages, config }) => {
 }
 
 App.defaultProps = {
-    theme: Synergy.config(themes[config.app.ui.theme].theme, config.app.ui),
+    theme: themes[config.app.ui.theme],
     modules: modules,
     ui: { ...tools, ...foundation },
     pages: pages,
