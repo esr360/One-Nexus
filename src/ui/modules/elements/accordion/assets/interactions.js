@@ -4,14 +4,14 @@ export default {
 }
 
 /**
- * Initialise an HTML element as an accordion
+ * Initialise an HTML element as an Accordion
  */
 export function init(element) {
     element.getComponents('panel').forEach(panel => panel.getComponent('title').addEventListener('click', toggle));
 }
 
 /**
- * Toggle an accordion panel
+ * Toggle an Accordion panel
  */
 export function toggle(target, parent, config) {
     config = config || Accordion.config;
@@ -37,7 +37,7 @@ export function toggle(target, parent, config) {
             parent = target.parent(config.name);
         } else {
             return console.error(
-                `Accordion.toggle: parent accordion cannot be determined from ${parent} and ${target}`
+                `Accordion.toggle: parent Accordion cannot be determined from ${parent} and ${target}`
             );
         }
     }
@@ -63,7 +63,7 @@ export function toggle(target, parent, config) {
     }
 
     if (!(panel instanceof HTMLElement)) {
-        return console.error(`Accordion.toggle: accordion panel not found - ${panel} is not an HTMLElement`);
+        return console.error(`Accordion.toggle: Accordion panel not found - ${panel} is not an HTMLElement`);
     }
 
     /**
@@ -78,7 +78,7 @@ export function toggle(target, parent, config) {
 
     panel.modifier('active', operator);
 
-    parent.repaint && parent.repaint();
+    // parent.repaint && parent.repaint();
 
     return operator === 'set';
 }

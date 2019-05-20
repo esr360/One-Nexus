@@ -3,7 +3,7 @@ import Base from '../../../layouts/base';
 const Accordions = props => (
     <Base {...props.config.app.views}>
 
-        <Accordion keep-open panels={[
+        <Accordion className='fizz' keep-open panels={[
             {title: 'foo', content: 'bar', active: true},
             {title: 'fizz', content: <div>potato</div>}
         ]} />

@@ -15,6 +15,11 @@
 // CSS librarys
 @import '../node_modules/flickity/dist/flickity';
 
+// Modules
+//*****************************************************************
+
+// @import './ui/modules/elements/Accordion/assets/layout.scss';
+
 //*****************************************************************
 
 @include normalize;
@@ -34,8 +39,6 @@
 }
 
 ////
-
-@import 'config.json';
 
 // $accordion: (
 //     "name": "accordion",
@@ -68,34 +71,9 @@
 //     )
 // );
 
-@mixin accordion($custom: ()) {
-    $config: config($accordion, $custom);
-
-    @include module {
-        @include component('jingy');
-
-        @include component('panel') {
-            @include modifier('active') {
-                @include component('content') {
-                    display: block;
-                }
-            }
-        }
-
-        @include component('title', (
-            'display': block,
-            'cursor': pointer
-        ));
-
-        @include component('content', (
-            'display': none
-        ));
-    }       
-}
-
-@include accordion((
-    'title': (
-        'background': #06D2FF,
-        'color': white
-    )
-));
+// @include accordion((
+//     'title': (
+//         'background': #06D2FF,
+//         'color': white
+//     )
+// ));

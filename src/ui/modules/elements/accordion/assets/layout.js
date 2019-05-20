@@ -1,5 +1,5 @@
 export default (element, config, globals) => {
-    return [config, {
+    const layout = {
 
         panel: panel => ({
             'display': 'block',
@@ -41,5 +41,7 @@ export default (element, config, globals) => {
                 'border-bottom': !panel.isLastChild && !panel.style.marginBottom ? 0 : false
             }
         }
-    }]
+    };
+
+    return [config, layout];
 };

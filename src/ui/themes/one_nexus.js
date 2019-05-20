@@ -10,7 +10,7 @@ export default theme => ({
             "panel": {
                 "modifier(active)": {
                     "title": {
-                        "background": () => theme.colors.brand['brand-3']
+                        "background": "blue"
                     }
                 }
             }

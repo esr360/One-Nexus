@@ -10,7 +10,7 @@ export default theme => ({
         'transition': '0.4s',
 
         ':hover': {
-            'background': theme.colors.brand['brand-1'],
+            'background': theme.colors.brand['brand-6'],
             'color': theme.colors.greyscale.white,
 
             toggle: {

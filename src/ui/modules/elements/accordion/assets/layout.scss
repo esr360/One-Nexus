@@ -1,0 +1,36 @@
+@import 'config.json';
+@import '../../../../../../../../Cell/Cell/src/synergy';
+
+@debug $FOUNDATION_FILE;
+
+@include module() {
+    @include component('panel') {
+        display: block;
+
+        @include modifier('active') {
+            @include component(content, $cascade: false) {
+                display: block
+            }
+        }
+    };
+
+    @include component('title', (
+        display: block,
+        margin: 0,
+        backface-visibility: hidden,
+        font-weight: normal,
+        line-height: 1,
+        cursor: pointer
+    ));
+
+    @include component('toggle', (
+        float: right,
+        line-height: 0.75
+    ));
+
+    @include component('content', (
+        display: none,
+        margin: 0,
+        margin-top: -1px
+    ));
+}

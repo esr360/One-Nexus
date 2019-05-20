@@ -41,7 +41,7 @@ Object.assign(window, { PAX5, Link });
 Synergy.state = {};
 
 const App = ({ modules, ui, theme, pages, config }) => {
-    Synergy.theme(modules, theme, ui, config.app.ui);
+    Synergy.theme(modules, theme, ui, config.app);
 
     return (
         <HashRouter ref={() => window.appLoaded = true}>
@@ -59,7 +59,7 @@ const App = ({ modules, ui, theme, pages, config }) => {
 }
 
 App.defaultProps = {
-    theme: themes[config.app.ui.theme],
+    theme: themes[config.app.options.THEME_NAME],
     modules: modules,
     ui: { ...tools, ...foundation },
     pages: pages,

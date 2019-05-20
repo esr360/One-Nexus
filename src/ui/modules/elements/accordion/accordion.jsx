@@ -1,6 +1,8 @@
 import defaults from './assets/config.js';
 import interactions from './assets/interactions.js';
-import layout from './assets/layout.js';
+// import layout from './assets/layout.js';
+
+import foo from './assets/layout.scss';
 
 /**
  * Render Accordion module
@@ -20,7 +22,7 @@ const Accordion = ({ panels, toggle, ...props }) => (
 );
 
 export default Object.assign(Accordion, {
-    ...interactions, layout, defaults, defaultProps: {
+    ...interactions, defaults, defaultProps: {
         name: 'Accordion',
         object: true
     }

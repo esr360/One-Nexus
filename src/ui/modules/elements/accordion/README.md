@@ -108,23 +108,6 @@
 }
 ```
 
-> Certain values from the above configuration are excluded from the below table ([learn more](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules#documenting-configuration-properties))
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code></code></td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
-
 Pass custom options to the `Accordion` object in your theme's config file underneath the `modules` entry (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
 
 ```js

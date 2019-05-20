@@ -13,7 +13,7 @@ const Base = props => (
             <Component name='navigation'>
                 <Navigation {...props.navigation} />
                 <div className='sideNav__toggle'>Toggle SideNav</div>
-                <div className='search__toggle'>Search SideNav</div>
+                <div className='search__toggle'>Toggle Search</div>
             </Component>
         </Header>
 

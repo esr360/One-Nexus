@@ -24,21 +24,26 @@
                 "src": "assets/images/logo-light.png"
             }
         },
-        "ui": {
-            "theme": "one_nexus",
+        "options": {
+            "MODULES_PATH": "src/ui/modules",
+            "THEMES_PATH": "src/ui/themes",
+            "THEME_NAME": "one_nexus",
+            "MODULE_DEFAULTS": "assets/config.js",
+            "MODULE_CONFIG_OUTPUT": "assets/config.json",
+            "FOUNDATION_FILE": "src/ui/foundation",
+            "CAST_CONFIG_TO_SASS": false,
             "component-glue": "__",
             "modifier-glue": "--",
             "sass-config-parser": "eval-config",
-            "css-class-props": ["object"],
+            "css-class-props": ["object"]
+        },
+        "theme": {
             "colors": {
                 "brand": {
                     "brand-1": "blue"
                 }
             },
             "modules": {
-                "fizz": ["#COLOR", "brand", "brand-1"],
-                "Accordion": {
-                },
                 "Alert": {
                     "icon": {
                         "default-enable": true

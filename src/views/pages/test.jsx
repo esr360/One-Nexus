@@ -1,5 +1,5 @@
 const Index = props => (
-    <input type="text" class="foo" id="SVRNE" />
+    <Module name='foo' Bar='fizz' Alpha={['beta', 'gamma']}>Test</Module>
 );
 
 export default Index;

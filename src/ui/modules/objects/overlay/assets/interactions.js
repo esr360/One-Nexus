@@ -8,7 +8,9 @@ export default {
 export function toggle(el, operator, flag) {
     const state = (el.modifier('visible') && operator !== 'show' || operator === 'hide') ? 'unset' : 'set';
 
-    el.modifier('visible', state);
+    console.log(flag)
+
+    el.modifier(['visible', flag], state);
 
     el.repaint && el.repaint();
 };
