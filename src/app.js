@@ -6,7 +6,7 @@
 ///****************************************************************
 
 import './app.scss';
-import config from './app.json';
+import { app as config } from './app.json';
 
 // Vendor
 //*****************************************************************
@@ -38,10 +38,8 @@ Object.assign(window, { PAX5, Link });
 // Render App
 //*****************************************************************
 
-Synergy.state = {};
-
 const App = ({ modules, ui, theme, pages, config }) => {
-    Synergy.theme(modules, theme, ui, config.app);
+    Synergy.theme(modules, theme, ui, config);
 
     return (
         <HashRouter ref={() => window.appLoaded = true}>
@@ -59,17 +57,11 @@ const App = ({ modules, ui, theme, pages, config }) => {
 }
 
 App.defaultProps = {
-    theme: themes[config.app.options.THEME_NAME],
+    theme: themes[config.options.THEME_NAME],
     modules: modules,
     ui: { ...tools, ...foundation },
     pages: pages,
     config: config
-}
-
-const container = document.getElementById('app');
-
-if (container && container.classList.contains('render')) {
-    ReactDOM.render(<App />, container);
 }
 
 export default App;

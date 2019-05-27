@@ -1,7 +1,7 @@
 import Base from '../../../layouts/base';
 
 export default props => (
-    <Base {...props.config.app.views}>
+    <Base {...props.config.views}>
         <Tabs nav={{ round: true, full: true }} data={[
             {title: 'foo', content: 'bar', active: true},
             {title: 'fizz', content: 'buzz'},

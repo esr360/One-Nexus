@@ -22,7 +22,7 @@ function dismiss(event) {
 }
 
 const Index = props => (
-    <Base {...props.config.app.views}>
+    <Base {...props.config.views}>
     
         <PAX5.row jss={{background: 'red'}}>
             <PAX5.column width={4}>Column</PAX5.column>

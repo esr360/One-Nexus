@@ -34,7 +34,7 @@ export default theme => ({
 
     panel: {
         'modifier(active)': {
-            title: {
+            'component(title)': {
                 'background': theme.colors.brand['brand-2'],
                 'color': theme.colors.greyscale.white,
                 'border-color': 'transparent',

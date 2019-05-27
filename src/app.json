@@ -31,11 +31,11 @@
             "MODULE_DEFAULTS": "assets/config.js",
             "MODULE_CONFIG_OUTPUT": "assets/config.json",
             "FOUNDATION_FILE": "src/ui/foundation",
-            "CAST_CONFIG_TO_SASS": false,
-            "component-glue": "__",
-            "modifier-glue": "--",
-            "sass-config-parser": "eval-config",
-            "css-class-props": ["object"]
+            "appDomNodeID": "app",
+            "componentGlue": "__",
+            "modifierGlue": "--",
+            "CSSClassProps": ["object"],
+            "multipleClasses": false
         },
         "theme": {
             "colors": {

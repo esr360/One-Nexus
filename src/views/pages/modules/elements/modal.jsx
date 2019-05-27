@@ -1,7 +1,7 @@
 import Base from '../../../layouts/base';
 
 export default props => (
-    <Base {...props.config.app.views}>
+    <Base {...props.config.views}>
         {/* <Modal trigger={ <div>Trigger 1</div> }>
             <Modal.close modifiers={['icon']}>close</Modal.close>
             <Modal.content>

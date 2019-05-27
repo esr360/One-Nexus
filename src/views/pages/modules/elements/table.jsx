@@ -13,7 +13,7 @@ const data = [
 ];
 
 export default props => (
-    <Base {...props.config.app.views}>
+    <Base {...props.config.views}>
         <Table columns={columns} data={data} />
     </Base>
 );

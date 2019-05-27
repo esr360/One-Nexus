@@ -1,7 +1,7 @@
 import Base from '../../../layouts/base';
 
 export default props => (
-    <Base {...props.config.app.views}>
+    <Base {...props.config.views}>
 
         <PAX5.row>
             <PAX5.column width={6}>

@@ -1,7 +1,7 @@
 import Base from '../../../layouts/base';
 
 const Blockquotes = props => (
-    <Base {...props.config.app.views}>
+    <Base {...props.config.views}>
 
         <Blockquote content='Lorem ipsum dolor sit amet' />
 

@@ -1,16 +1,16 @@
 export default theme => ({
     "colors": {
         "brand": {
-            "brand-1": "black",
-            "brand-6": "green"
+            "brand-1": "grey",
+            "brand-6": "orange"
         }
     },
     "modules": {
         "Accordion": {
             "panel": {
                 "modifier(active)": {
-                    "title": {
-                        "background": "blue"
+                    "component(title)": {
+                        "background": () => theme.colors.brand['brand-2']
                     }
                 }
             }

@@ -9,9 +9,13 @@ import SassJSONImporter, { transformJSONtoSass } from '../../sass-json-importer/
 
 import { app } from './src/app.json';
 
+/**
+ * @param {*} env 
+ */
 export default function(env) {
     // Is this config loaded from `webpack-dev-server` ?
-    const isDevServer = path.basename(require.main.filename) === 'webpack-dev-server.js';
+    // const isDevServer = path.basename(require.main.filename) === 'webpack-dev-server.js';
+    const isDevServer = path.basename(require.main.filename) === 'server.js';
 
     // Are we building for a non-production environment?
     const isNonProd = isDevServer || env && env.build === 'development';
@@ -34,7 +38,8 @@ export default function(env) {
         }),
         new CopyWebpackPlugin([
             { from: 'src/ui/images', to: 'assets/images' }
-        ])
+        ]),
+        new webpack.ProgressPlugin({ profile: false })
     ];
 
     if (isDevServer) {
@@ -44,15 +49,20 @@ export default function(env) {
         );
     }
 
-    plugins.push(
-        staticBuild ? StaticSiteGenerator : new HtmlWebpackPlugin({
-            template: 'src/views/core.jsx',
-            inject: false
-        })
-    )
+    plugins.push(staticBuild ? StaticSiteGenerator : new HtmlWebpackPlugin({
+        template: 'src/views/core.jsx',
+        inject: false
+    }));
 
     return {
-        entry: './src/app.js',
+        entry: [
+            'webpack-dev-server/client?http://0.0.0.0:3000',
+            'webpack/hot/only-dev-server',
+            'react-hot-loader/patch',
+            './src/entry.js'
+        ],
+
+        mode: 'development',
 
         output: {
             path: path.resolve(__dirname, 'dist/'),
@@ -71,7 +81,7 @@ export default function(env) {
         plugins,
 
         module: { 
-            loaders: [ 
+            rules: [ 
                 {
                     test: /\.(js|jsx|jss)$/,
                     exclude: /node_modules/,
@@ -90,7 +100,9 @@ export default function(env) {
                         }}, 
                         {loader: 'sass-loader', options: {
                             sourceMap: true,
-                            data: transformJSONtoSass(app.options),
+                            data: transformJSONtoSass({
+                                ...app.options
+                            }),
                             importer: SassJSONImporter,
                             outputStyle: 'expanded'
                         }}

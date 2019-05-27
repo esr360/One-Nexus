@@ -7,6 +7,7 @@ module.exports = function(api) {
             '@babel/preset-env'
         ],
         plugins: [
+            'react-hot-loader/babel',
             '@babel/plugin-syntax-class-properties',
             '@babel/plugin-proposal-class-properties'
         ]

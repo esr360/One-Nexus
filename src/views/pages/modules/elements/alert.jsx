@@ -7,7 +7,7 @@ function DEMO__HIDE_ALERT(alert) {
 }
 
 const AlertBars = props =>  (
-    <Base {...props.config.app.views}>
+    <Base {...props.config.views}>
 
         <Heading heading='2' size='7'>Alert</Heading>
 

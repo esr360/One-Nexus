@@ -1,7 +1,7 @@
 import Base from '../../../layouts/base';
 
 const Carousels = props => (
-    <Base {...props.config.app.views}>
+    <Base {...props.config.views}>
         <Carousel config={{
             slide: {
                 background: 'red'

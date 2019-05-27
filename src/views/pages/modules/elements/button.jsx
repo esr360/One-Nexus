@@ -1,7 +1,7 @@
 import Base from '../../../layouts/base';
 
 const Buttons = props => (
-    <Base {...props.config.app.views}>
+    <Base {...props.config.views}>
 
         <Group object>
             <Button facebook border>Button</Button>

@@ -1,11 +1,12 @@
-@import 'config.json';
 @import '../../../../../../../../Cell/Cell/src/synergy';
-
-@debug $FOUNDATION_FILE;
+// @import '../../../../foundation/index.js';
+// @import '../../../../themes/one_nexus.js';
+@import 'config.js';
 
 @include module() {
     @include component('panel') {
         display: block;
+        color: green;
 
         @include modifier('active') {
             @include component(content, $cascade: false) {
