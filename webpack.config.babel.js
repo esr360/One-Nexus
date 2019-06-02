@@ -5,9 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WriteFilePlugin from 'write-file-webpack-plugin';
 import StaticSiteGenerator from './build/plugins/static-site-generator';
 import Autoprefixer from 'autoprefixer';
-import SassJSONImporter, { transformJSONtoSass } from '../../sass-json-importer/sass-json-importer/dist/sass-json-importer';
-
-import { app } from './src/app.json';
+import SassJSONImporter from '../../sass-json-importer/sass-json-importer/dist/synergy-sass-importer';
 
 /**
  * @param {*} env 
@@ -100,9 +98,6 @@ export default function(env) {
                         }}, 
                         {loader: 'sass-loader', options: {
                             sourceMap: true,
-                            data: transformJSONtoSass({
-                                ...app.options
-                            }),
                             importer: SassJSONImporter,
                             outputStyle: 'expanded'
                         }}

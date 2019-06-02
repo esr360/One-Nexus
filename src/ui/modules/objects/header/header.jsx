@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 
 /**
@@ -13,7 +13,7 @@ const Header = props => {
 };
 
 export default Object.assign(Header, {
-    layout, defaults, defaultProps: {
+    layout, config, defaultProps: {
         name: 'Header'
     }
 });

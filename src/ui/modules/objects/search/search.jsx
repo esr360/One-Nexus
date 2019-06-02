@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 import interactions from './assets/interactions.js';
 
@@ -22,9 +22,17 @@ const Search = ({ go, close, ...props }) => {
 }
 
 export default Object.assign(Search, {
-    ...interactions, layout, defaults, defaultProps: {
+    ...interactions, config, layout, defaultProps: {
         name: 'Search',
-        go: () => <Button icon brand-1 size-4><Component name='icon' className="fa fa-search"></Component></Button>,
-        close: () => <Button icon brand-2 size-4 type='button'><Component name='icon' className="fa fa-times"></Component></Button>
+        go: () => (
+            <Button icon brand-1 size-4>
+                <Component name='icon' className="fa fa-search"></Component>
+            </Button>
+        ),
+        close: () => (
+            <Button icon brand-2 size-4 type='button'>
+                <Component name='icon' className="fa fa-times"></Component>
+            </Button>
+        )
     }
 });

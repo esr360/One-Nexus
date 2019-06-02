@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 import interactions from './assets/interactions.js';
 
@@ -41,7 +41,7 @@ function renderNavItems(items, depth) {
 }
 
 export default Object.assign(SideNav, {
-    ...interactions, layout, defaults, defaultProps: {
+    ...interactions, layout, config, defaultProps: {
         name: 'SideNav'
     }
 });

@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 import interactions from './assets/interactions';
 
@@ -26,7 +26,7 @@ const Tooltip = ({ position, content, ...props }) => {
 }
 
 export default Object.assign(Tooltip, {
-    ...interactions, layout, defaults, defaultProps: {
+    ...interactions, layout, config, defaultProps: {
         name: 'Tooltip',
         position: 'top'
     }

@@ -1,4 +1,4 @@
-import defaults from './assets/config';
+import config from './assets/config';
 import interactions from './assets/interactions';
 import layout from './assets/layout.js';
 
@@ -27,7 +27,7 @@ const Form = ({ setState, validate, fields, submit, config, ...props }) => (
 );
 
 export default Object.assign(Form, {
-    ...interactions, layout, defaults, defaultProps: {
+    ...interactions, layout, config, defaultProps: {
         name: 'Form',
         object: true,
         setState: interactions.setState,

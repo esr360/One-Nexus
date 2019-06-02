@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 
 /**
@@ -19,7 +19,7 @@ List.Item = ({ config, context, icon, children }) => {
 };
 
 export default Object.assign(List, {
-    layout, defaults, defaultProps: {
+    layout, config, defaultProps: {
         name: 'List',
         tag: 'ul'
     }

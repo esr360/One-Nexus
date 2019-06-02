@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 
 /**
@@ -15,7 +15,7 @@ const Billboard = ({ modifiers=[], ...props }) => (
 );
 
 export default Object.assign(Billboard, {
-    layout, defaults, defaultProps: {
+    layout, config, defaultProps: {
         name: 'Billboard'
     }
 });

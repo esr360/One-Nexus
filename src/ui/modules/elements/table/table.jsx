@@ -1,4 +1,4 @@
-import defaults from './assets/config';
+import config from './assets/config';
 import layout from './assets/layout.js';
 
 /**
@@ -41,7 +41,7 @@ const Table = ({ columns, data, ...props }) => (
 );
 
 export default Object.assign(Table, {
-    layout, defaults, defaultProps: {
+    layout, config, defaultProps: {
         name: 'Table',
         fixed: true
     }

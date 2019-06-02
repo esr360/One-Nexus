@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 import interactions from './assets/interactions.js';
 
@@ -18,7 +18,7 @@ const Preloader = ({ toggle, close, ...props }) => {
 };
 
 export default Object.assign(Preloader, {
-    ...interactions, layout, defaults, defaultProps: {
+    ...interactions, layout, config, defaultProps: {
         name: 'Preloader',
         close: () => <Button onClick={interactions.toggle} round border size-2>Disable Preloader</Button>
     }

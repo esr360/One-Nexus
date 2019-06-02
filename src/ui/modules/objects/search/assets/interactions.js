@@ -34,7 +34,7 @@ export function toggle(element, operator, config) {
 
     element.modifier('visible', state);
 
-    element.repaint();
+    // element.repaint();
 
     if (state === 'set') {
         window.setTimeout(() => element.getComponent('input').focus(), 250);

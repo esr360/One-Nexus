@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 
 /**
@@ -15,7 +15,7 @@ const Logo = ({ href, src, alt, ...props }) => {
 }
 
 export default Object.assign(Logo, {
-    layout, defaults, defaultProps: {
+    layout, config, defaultProps: {
         name: 'Logo'
     }
 });

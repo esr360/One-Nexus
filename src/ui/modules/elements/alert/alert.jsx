@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import interactions from './assets/interactions.js';
 import layout from './assets/layout.js';
 
@@ -36,7 +36,7 @@ const Alert = ({ alert, icon, dismiss, config, ...props }) => {
             }
 
             {props.close &&
-                <Component name={['icon', 'dismiss']} onClick={dismiss} modifiers={['close', 'right']} className={'fa fa-times'} />
+                <Component name='icon' onClick={dismiss} modifiers={['close', 'right']} className={'fa fa-times'} />
             }
 
             {props.box ?
@@ -47,9 +47,10 @@ const Alert = ({ alert, icon, dismiss, config, ...props }) => {
 }
 
 export default Object.assign(Alert, {
-    ...interactions, layout, defaults, defaultProps: {
+    ...interactions, layout, config, defaultProps: {
         name: 'Alert',
         alert: 'success',
+        // dismiss: interactions.dismiss,
         bar: true,
         box: false,
         object: true,

@@ -1,4 +1,4 @@
-import defaults from './assets/config';
+import config from './assets/config';
 import layout from './assets/layout.js';
 
 /**
@@ -9,7 +9,7 @@ const Paragraph = props => (
 );
 
 export default Object.assign(Paragraph, {
-    layout, defaults, defaultProps: {
+    layout, config, defaultProps: {
         name: 'Paragraph',
         object: true,
         tag: 'p'

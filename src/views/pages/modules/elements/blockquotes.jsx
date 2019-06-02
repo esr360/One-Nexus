@@ -12,7 +12,7 @@ const Blockquotes = props => (
         <Blockquote callout content='Lorem ipsum dolor sit amet' footer='Someone Famous' />
 
         <Blockquote 
-            Alert='success' 
+            Alert={['bar', 'success']}
             callout 
             content='Lorem ipsum dolor sit amet' 
             footer='Someone Famous'

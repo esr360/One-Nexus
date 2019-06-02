@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 
 /**
@@ -39,7 +39,7 @@ Breadcrumb.Item = ({ url, separator, icon, ...props }) => {
 };
 
 export default Object.assign(Breadcrumb, {
-    layout, defaults, defaultProps: {
+    layout, config, defaultProps: {
         name: 'Breadcrumb',
         object: true,
         separator: 'angle-right'

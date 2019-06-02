@@ -2,8 +2,8 @@ import SyntaxHighlighter from '../../../tools/syntaxHighlighter';
 import Section from '../../../tools/section';
 import Base from '../../../layouts/base';
 
-function DEMO__HIDE_ALERT(alert) {
-    document.getElementById('alert-demo').classList.add('hidden');
+function DEMO__HIDE_ALERT() {
+    document.getElementById('alert-demo').style.display = 'none';
 }
 
 const AlertBars = props =>  (
@@ -346,7 +346,7 @@ const AlertBars = props =>  (
                 `}</SyntaxHighlighter>
 
                 <Well>
-                    <Alert id='alert-demo' close={DEMO__HIDE_ALERT}>
+                    <Alert id='alert-demo' close dismiss={DEMO__HIDE_ALERT}>
                         Click the X icon to initiate the callback function
                     </Alert>
                 </Well>

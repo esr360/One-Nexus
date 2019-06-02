@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 
 /**
@@ -15,7 +15,7 @@ const Heading = ({ heading, size, modifiers=[], ...props }) => {
 }
 
 export default Object.assign(Heading, {
-    layout, defaults, defaultProps: {
+    layout, config, defaultProps: {
         name: 'Heading',
         fluid: true,
         heading: 3

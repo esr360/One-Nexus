@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 
 /**
@@ -11,7 +11,7 @@ const Footer = props => (
 );
 
 export default Object.assign(Footer, {
-    layout, defaults, defaultProps: {
+    layout, config, defaultProps: {
         name: 'Footer'
     }
 });

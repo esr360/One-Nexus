@@ -1,4 +1,4 @@
-import defaults from './assets/config';
+import config from './assets/config';
 import layout from './assets/layout.js';
 import interactions from './assets/interactions';
 
@@ -15,7 +15,7 @@ const Carousel = ({ slides, options, ...props }) => (
 );
 
 export default Object.assign(Carousel, {
-    ...interactions, layout, defaults, defaultProps: {
+    ...interactions, layout, config, defaultProps: {
         name: 'Carousel',
         object: true
     }

@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 
 /**
@@ -9,7 +9,7 @@ const Button = props => (
 );
 
 export default Object.assign(Button, { 
-    layout, defaults, defaultProps: {
+    layout, config, defaultProps: {
         name: 'Button',
         fluid: true
     }

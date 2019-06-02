@@ -3,12 +3,6 @@ export { default as core } from './core/core';
 export { default as typography } from './typography/typography';
 export { default as grid } from './grid/grid';
 
-const foo = {
-    bar: 'red'
-}
-
-export { foo }
-
 export function foundation(ui) {
     ui.css(`
         html, body {

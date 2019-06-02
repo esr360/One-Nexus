@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 
 /**
@@ -38,7 +38,7 @@ function renderNavItems(items, depth) {
 }
 
 export default Object.assign(Navigation, {
-    layout, defaults, defaultProps: {
+    layout, config, defaultProps: {
         name: 'Navigation'
     }
 });

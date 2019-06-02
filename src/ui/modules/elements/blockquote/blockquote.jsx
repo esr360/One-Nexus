@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 
 /**
@@ -16,7 +16,7 @@ const Blockquote = ({ content, footer, ...props }) => (
 );
 
 export default Object.assign(Blockquote, {
-    layout, defaults, defaultProps: {
+    layout, config, defaultProps: {
         name: 'Blockquote',
         object: true,
     }

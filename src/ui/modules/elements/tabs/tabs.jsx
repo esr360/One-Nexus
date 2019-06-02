@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 import interactions from './assets/interactions.js';
 
@@ -25,7 +25,7 @@ const Tabs = ({ data, activate, ...props }) => (
 );
 
 export default Object.assign(Tabs, {
-    ...interactions, layout, defaults, defaultProps: {
+    ...interactions, layout, config, defaultProps: {
         name: 'Tabs',
         object: true
     }

@@ -1,4 +1,4 @@
-import defaults from './assets/config.js';
+import config from './assets/config.js';
 import layout from './assets/layout.js';
 
 /**
@@ -9,7 +9,7 @@ const Well = props => (
 );
 
 export default Object.assign(Well, {
-    layout, defaults, defaultProps: {
+    layout, config, defaultProps: {
         name: 'Well',
         object: true
     }

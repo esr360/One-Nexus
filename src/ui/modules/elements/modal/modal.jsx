@@ -1,4 +1,4 @@
-import defaults from './assets/config';
+import config from './assets/config';
 import layout from './assets/layout.js';
 import interactions from './assets/interactions';
 
@@ -36,7 +36,7 @@ Modal.Close = props => (
 );
 
 export default Object.assign(Modal, {
-    ...interactions, layout, defaults, defaultProps: {
+    ...interactions, layout, config, defaultProps: {
         name: 'Modal',
         animate: 'top',
         close: '×',
