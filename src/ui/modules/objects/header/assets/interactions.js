@@ -6,7 +6,7 @@ import * as app from '../../../ui';
 export function header(els = 'header', custom = {}) {
     const stickyOffset = options.sticky.offset || el.offsetTop;
 
-    if (options.sticky.enabled || el.modifier('sticky')) {
+    if (options.sticky.enabled || el.is('sticky')) {
         window.addEventListener('load', stickyHeaderHandler);
         window.addEventListener('scroll', stickyHeaderHandler);
     }
@@ -36,7 +36,7 @@ function toggleStickyHeader(options) {
     app.Synergy([document.body, options.config.name]).component('isFixed', operator);
 
     // toggle fixed modifier
-    app.Synergy(options.target).modifier('fixed', (options.type === 'stick') ? 'add' : 'remove');
+    // app.Synergy(options.target).modifier('fixed', (options.type === 'stick') ? 'add' : 'remove');
 
     if (options.navigation && options.navigation.children) {
         // loop over each top level navigation item

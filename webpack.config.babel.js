@@ -12,8 +12,8 @@ import SassJSONImporter from '../../sass-json-importer/sass-json-importer/dist/s
  */
 export default function(env) {
     // Is this config loaded from `webpack-dev-server` ?
-    // const isDevServer = path.basename(require.main.filename) === 'webpack-dev-server.js';
-    const isDevServer = path.basename(require.main.filename) === 'server.js';
+    const isDevServer = path.basename(require.main.filename) === 'webpack-dev-server.js';
+    // const isDevServer = path.basename(require.main.filename) === 'server.js';
 
     // Are we building for a non-production environment?
     const isNonProd = isDevServer || env && env.build === 'development';

@@ -14,11 +14,11 @@ export default function layout(element, config, globals) {
         ...Object.entries(config.colors).reduce((result, color) => {
             const colorDark = Color(color[1]).darken(0.1).string();
 
-            return element.modifier(color[0]) && !element.modifier('active') ? {
-                'background-color': element.modifier('border') ? 'transparent' : color[1],
-                'border-color': element.modifier('border') ? color[1] : 'transparent',
+            return element.is(color[0]) && !element.is('active') ? {
+                'background-color': element.is('border') ? 'transparent' : color[1],
+                'border-color': element.is('border') ? color[1] : 'transparent',
                 'color': () => {
-                    if (element.modifier('border')) return color[1];
+                    if (element.is('border')) return color[1];
 
                     if (Color(color[1]).luminosity() > 0.6) {
                         return globals.typography.colors.base(globals.colors);
@@ -28,7 +28,7 @@ export default function layout(element, config, globals) {
                 },
                 ':hover': {
                     'background-color': colorDark,
-                    'color': element.modifier('border') && config.color
+                    'color': element.is('border') && config.color
                 }
             } : result;
         }, {}),

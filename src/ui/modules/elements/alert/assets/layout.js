@@ -8,7 +8,7 @@ export default function(element, config, globals) {
             return result;
         }, {}),
 
-        'display': () => element.modifier('hidden') ? 'none' : 'block',
+        'display': () => element.is('hidden') ? 'none' : 'block',
         'position': 'relative',
 
         icon: icon => ({
@@ -16,10 +16,10 @@ export default function(element, config, globals) {
             'line-height': 1.25,
 
             'float': () => {
-                if (element.modifier('box') && !icon.modifier('right')) {
+                if (element.is('box') && !icon.is('right')) {
                     return 'left';
                 }
-                if (icon.modifier('right')) {
+                if (icon.is('right')) {
                     return 'right'
                 }
             },

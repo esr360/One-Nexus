@@ -99,12 +99,14 @@ function toggleStyles(field, operator, config) {
 
     if (parentGroup) {
         if (typeof operator === 'boolean') {
-            parentGroup.modifier(operator ? 'isInvalid' : 'isValid', 'unset');
-            parentGroup.modifier(operator ? 'isValid' : 'isInvalid', 'set');
+            // @TODO move to react state
+            // parentGroup.modifier(operator ? 'isInvalid' : 'isValid', 'unset');
+            // parentGroup.modifier(operator ? 'isValid' : 'isInvalid', 'set');
         }
 
         if (operator === 'remove') {
-            ['isValid', 'isInvalid'].forEach(modifier => parentGroup.modifier(modifier, 'remove'));
+            // @TODO move to react state
+            // ['isValid', 'isInvalid'].forEach(modifier => parentGroup.modifier(modifier, 'remove'));
         }
 
         field.parent(config.name).repaint();

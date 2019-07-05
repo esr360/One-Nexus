@@ -14,7 +14,7 @@ export function toggle(element, config) {
         element = element.target && element.target.closest(`[data-module="${config.name}"]`);
     }
 
-    element.modifier('hidden', element.hasModifier('hidden') ? 'unset' : 'set');
+    // element.modifier('hidden', element.hasModifier('hidden') ? 'unset' : 'set');
 
     element.repaint();
 }

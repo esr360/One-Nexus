@@ -33,7 +33,8 @@ export function init(el, carousel, config) {
             dot.classList.add(config.name + '_' + 'bullet');
 
             if (dot.classList.contains('is-selected')) {
-                sQuery([dot, config.name + '_' + 'bullet']).modifier('selected', 'set');
+                // @TODO move to react state
+                // sQuery([dot, config.name + '_' + 'bullet']).modifier('selected', 'set');
             }
         });
 
@@ -52,7 +53,8 @@ export function init(el, carousel, config) {
                 el.namespace = identifier;
 
                 if (el.classList.contains('is-selected')) {
-                    sQuery([el, identifier]).modifier('selected', 'set');
+                    // @TODO move to react state
+                    // sQuery([el, identifier]).modifier('selected', 'set');
                 }
             });
         }

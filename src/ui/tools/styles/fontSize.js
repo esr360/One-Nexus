@@ -62,12 +62,12 @@ export default function fontSize(element, sizes, globals, custom) {
         const minFontsize = msLrValues[index - 1] + 'em';
         const maxFontSize = value;
 
-        if (element.modifier(key)) {
+        if (element.is(key)) {
             if (config['fluid-scaling'] === true) {
                 return fluidScaling(minFontsize, maxFontSize, minVw, maxVw, value);
             }
 
-            if (config['fluid-scaling'] === 'modifier' && element.modifier('fluid')) {
+            if (config['fluid-scaling'] === 'modifier' && element.is('fluid')) {
                 return fluidScaling(minFontsize, maxFontSize, minVw, maxVw, value);
             }
 

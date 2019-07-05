@@ -7,7 +7,7 @@ export default function layout(element, config) {
         }),
 
         pagination: () => ({
-            'display': element.modifier('hide-pagination') ? 'none' : null,
+            'display': element.is('hide-pagination') ? 'none' : null,
             'bottom': 'auto'
         }),
 
@@ -16,7 +16,7 @@ export default function layout(element, config) {
         }),
 
         navigationItem: () => ({
-            'display': element.modifier('hide-navigation') || config.navigationItem.disable ? 'none' : null
+            'display': element.is('hide-navigation') || config.navigationItem.disable ? 'none' : null
         })
     }]
 }

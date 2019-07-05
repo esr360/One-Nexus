@@ -26,17 +26,17 @@ export function activate(event, config) {
 
     navItems.forEach(item => {
         if (navItems.indexOf(item) === tabIndex) {
-            item.modifier('active', 'add');
+            // item.modifier('active', 'add');
         } else {
-            item.modifier('active', 'remove');
+            // item.modifier('active', 'remove');
         }
     });
 
     tabItems.forEach(item => {
         if (tabItems.indexOf(item) === tabIndex) {
-            item.modifier('active', 'add');
+            // item.modifier('active', 'add');
         } else {
-            item.modifier('active', 'remove');
+            // item.modifier('active', 'remove');
         }
     });
 

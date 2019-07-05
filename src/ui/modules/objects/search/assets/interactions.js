@@ -32,7 +32,7 @@ export function toggle(element, operator, config) {
         }
     }
 
-    element.modifier('visible', state);
+    // element.modifier('visible', state);
 
     // element.repaint();
 

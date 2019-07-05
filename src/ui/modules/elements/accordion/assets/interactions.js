@@ -70,13 +70,14 @@ export function toggle(target, parent, config) {
      * Update the DOM
      */
 
-    const operator = panel.modifier('active') ? 'unset' : 'set';
+    const operator = panel.is('active') ? 'unset' : 'set';
 
-    if (operator === 'set' && !parent.modifier('keep-open')) {
-        parent.component('panel').forEach(el => el.modifier('active', 'unset'));
+    if (operator === 'set' && !parent.is('keep-open')) {
+        parent.component('panel').forEach(el => el.is('active', 'unset'));
     }
 
-    panel.modifier('active', operator);
+    // @TODO move to react state
+    // panel.modifier('active', operator);
 
     // parent.repaint && parent.repaint();
 

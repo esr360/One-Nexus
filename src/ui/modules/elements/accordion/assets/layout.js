@@ -27,7 +27,7 @@ export default (element, config, globals) => {
             return {
                 'float': 'right',
                 'line-height': 0.75,
-                'transform': panel.modifier('active') ? 'rotate(90deg) translateZ(0)' : 'none'
+                'transform': panel.is('active') ? 'rotate(90deg) translateZ(0)' : 'none'
             }
         },
 
@@ -35,7 +35,7 @@ export default (element, config, globals) => {
             const panel = content.parent('panel');
 
             return {
-                'display': panel.modifier('active') ? 'block' : 'none',
+                'display': panel.is('active') ? 'block' : 'none',
                 'margin': 0,
                 'margin-top': '-1px',
                 'border-bottom': !panel.isLastChild && !panel.style.marginBottom ? 0 : false

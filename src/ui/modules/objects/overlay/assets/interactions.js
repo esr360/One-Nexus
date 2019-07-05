@@ -6,11 +6,9 @@ export default {
  * only desired actions close the overlay
  */
 export function toggle(el, operator, flag) {
-    const state = (el.modifier('visible') && operator !== 'show' || operator === 'hide') ? 'unset' : 'set';
+    const state = (el.is('visible') && operator !== 'show' || operator === 'hide') ? 'unset' : 'set';
 
-    console.log(flag)
-
-    el.modifier(['visible', flag], state);
+    // el.modifier(['visible', flag], state);
 
     el.repaint && el.repaint();
 };

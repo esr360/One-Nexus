@@ -11,7 +11,7 @@ export function init(element, config) {
         toggleDropdown.addEventListener('click', (event) => {
             event.preventDefault();
 
-            dropdown.modifier('hidden', dropdown.hasModifier('hidden') ? 'unset' : 'set');
+            // dropdown.modifier('hidden', dropdown.hasModifier('hidden') ? 'unset' : 'set');
 
             element.repaint();
         })
@@ -41,7 +41,7 @@ export function toggle(element, operator, config) {
         }
     }
 
-    element.modifier('visible', state);
+    // element.modifier('visible', state);
 
     element.repaint();
 

@@ -6,7 +6,7 @@ export default {
  * Show/Hide a Modal
  */
 export function toggle(target, state, config = Modal.config) {
-    if (!state) state = (target.modifier('visible') === true) ? 'hide' : 'show';
+    if (!state) state = (target.is('visible') === true) ? 'hide' : 'show';
 
     const OVERLAY = config.overlay.element();
 
@@ -35,7 +35,8 @@ export function toggle(target, state, config = Modal.config) {
     }
 
     // toggle the target modal
-    sQuery(target).modifier('visible', (state === 'show') ? 'add' : 'remove');
+    // @TODO move to react state
+    // sQuery(target).modifier('visible', (state === 'show') ? 'add' : 'remove');
 
     target.repaint();
 }
