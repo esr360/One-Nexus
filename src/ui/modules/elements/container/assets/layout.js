@@ -1,18 +1,11 @@
-export default function layout(element, config, globals) {
-    return [config, {
-        'position': 'relative',
-        'width': config['base-width'],
-        'max-width': config['max-width'],
-        'margin-left': 'auto',
-        'margin-right': 'auto',
+export default ({ state, config, theme }) => {
+  const layout = {
+    ...(config.object && theme.object(state)),
 
-        'modifier(large)': {
-            'max-width': config['large-width']
-        },
+    'position': 'relative',
+    'margin-left': 'auto',
+    'margin-right': 'auto'
+  }
 
-        'modifier(section)': {
-            'padding-top': '4em',
-            'padding-bottom': '4em'
-        }
-    }]
+  return [config, layout];
 }

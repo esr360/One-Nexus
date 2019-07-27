@@ -1,17 +1,17 @@
-export default function verticalRhythm(element, position) {
-    let styles = {};
+export default function verticalRhythm(state, position) {
+  let styles = {};
 
-    if (position === 'bottom' || !position) {
-        if (element === element.parentNode.lastChild) {
-            styles['margin-bottom'] = 0
-        }
+  if (position === 'bottom' || !position) {
+    if (state.isLastChild) {
+      styles.marginBottom = 0
     }
+  }
 
-    if (position === 'top' || !position) {
-        if (element === element.parentNode.firstChild) {
-            styles['margin-top'] = 0;
-        }
+  if (position === 'top' || !position) {
+    if (state.isFirstChild) {
+      styles.marginBottom = 0;
     }
+  }
 
-    return styles;
-};
+  return styles;
+}

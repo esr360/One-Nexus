@@ -1,47 +1,40 @@
-export default (element, config, globals) => {
-    const layout = {
+export default ({ state, config, theme }) => {
+  const layout = {
+    panel: ({ state }) => ({
+      'display': 'block',
 
-        panel: panel => ({
-            'display': 'block',
+      ...theme.verticalRhythm(state, 'bottom')
+    }),
 
-            ...globals.verticalRhythm(panel, 'bottom')
-        }),
+    title: ({ context }) => {
+      return {
+        'display': 'block',
+        'margin': 0,
+        'backface-visibility': 'hidden',
+        'font-weight': 'normal',
+        'line-height': 1,
+        'cursor': 'pointer',
+        'border-bottom': !context.panel.isLastChild ? 0 : false
+      }
+    },
 
-        title: title => {
-            const panel = title.parent('panel');
+    toggle: ({ context }) => {
+      return {
+        'float': 'right',
+        'line-height': 0.75,
+        'transform': context.panel.active ? 'rotate(90deg) translateZ(0)' : 'none'
+      }
+    },
 
-            return {
-                'display': 'block',
-                'margin': 0,
-                'backface-visibility': 'hidden',
-                'font-weight': 'normal',
-                'line-height': 1,
-                'cursor': 'pointer',
-                'border-bottom': !panel.isLastChild && !panel.style.marginBottom ? 0 : false
-            }
-        },
+    content: ({ context }) => {
+      return {
+        'display': context.panel.active ? 'block' : 'none',
+        'margin': 0,
+        'margin-top': '-1px',
+        'border-bottom': !context.panel.isLastChild ? 0 : false
+      }
+    }
+  }
 
-        toggle: toggle => {
-            const panel = toggle.parent('panel');
-
-            return {
-                'float': 'right',
-                'line-height': 0.75,
-                'transform': panel.is('active') ? 'rotate(90deg) translateZ(0)' : 'none'
-            }
-        },
-
-        content: content => {
-            const panel = content.parent('panel');
-
-            return {
-                'display': panel.is('active') ? 'block' : 'none',
-                'margin': 0,
-                'margin-top': '-1px',
-                'border-bottom': !panel.isLastChild && !panel.style.marginBottom ? 0 : false
-            }
-        }
-    };
-
-    return [config, layout];
-};
+  return [config, layout];
+}

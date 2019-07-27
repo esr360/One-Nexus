@@ -11,6 +11,7 @@ import { app as config } from './app.json';
 // Vendor
 //*****************************************************************
 
+import React, { useState } from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import PAX5 from '../../../PAX5/PAX5/src/pax5';
@@ -33,35 +34,37 @@ import * as pages from './views/pages';
 // DOM/Window Preparation
 //*****************************************************************
 
-Object.assign(window, { PAX5, Link });
+console.log(useState);
+
+Object.assign(window, { PAX5, Link, useState });
 
 // Render App
 //*****************************************************************
 
-const App = ({ modules, ui, theme, pages, config }) => {
-    Synergy.theme(modules, theme, ui, config);
+const App = ({ modules, globals, theme, pages, config }) => {
+  Synergy.theme(modules, theme, globals, config);
 
-    return (
-        <HashRouter ref={() => window.appLoaded = true}>
-            <React.Fragment>
-                <Route path='/' exact render={() => <pages.index config={config} />} />
+  return (
+    <HashRouter ref={() => window.appLoaded = true}>
+      <React.Fragment>
+        <Route path='/' exact render={() => <pages.index config={config} />} />
 
-                {Object.keys(pages).map((page, index) => <Route key={index} path={`/${page}`} render={() => {
-                    const Page = pages[page];
+        {Object.keys(pages).map((page, index) => <Route key={index} path={`/${page}`} render={() => {
+          const Page = pages[page];
 
-                    return <Page config={config} />;
-                }} />)}
-            </React.Fragment>
-        </HashRouter>
-    );
+          return <Page config={config} />;
+        }} />)}
+      </React.Fragment>
+    </HashRouter>
+  );
 }
 
 App.defaultProps = {
-    theme: themes[config.options.THEME_NAME],
-    modules: modules,
-    ui: { ...tools, ...foundation },
-    pages: pages,
-    config: config
+  theme: themes[config.options.THEME_NAME],
+  modules: modules,
+  globals: { ...tools, ...foundation },
+  pages: pages,
+  config: config
 }
 
 export default App;

@@ -3,9 +3,9 @@
  */
 const Base = props => (
     <main>
-        <Search />
+        {/* <Search /> */}
 
-        <Header absolute {...props.header}>
+        {/* <Header absolute {...props.header}>
             <Component name='logo'>
                 <Logo {...props.logo} />
             </Component>
@@ -19,7 +19,7 @@ const Base = props => (
 
         <Billboard overlay image='http://hdqwalls.com/wallpapers/colorful-polygons.jpg'>
             Billboard <a href='google.com'>Google</a>  <a href='yahoo.com'>Yahoo</a>
-        </Billboard>
+        </Billboard> */}
 
         <Module name='foo'>
             <Component name='bar'>
@@ -27,8 +27,8 @@ const Base = props => (
             </Component>
         </Module>
 
-        <Container>
-            <Breadcrumb data={[
+        <Container large section config={{ object: true }}>
+            {/* <Breadcrumb data={[
                 {
                     label: 'level 1',
                     url: '/',
@@ -41,13 +41,13 @@ const Base = props => (
                 {
                     label: 'level 3'
                 }
-            ]} />
+            ]} /> */}
 
-            <Breadcrumb>
+            {/* <Breadcrumb>
                 <Breadcrumb.Item>Level 1</Breadcrumb.Item>
                 <Breadcrumb.Item>Level 2</Breadcrumb.Item>
                 <Breadcrumb.Item>Level 3</Breadcrumb.Item>
-            </Breadcrumb>
+            </Breadcrumb> */}
 
             <div>
                 <Link to='/'>Home</Link>
@@ -71,15 +71,15 @@ const Base = props => (
             {props.children}
         </Container>
 
-        <Footer>
+        {/* <Footer>
             <a href='#'>Link 1</a>
-        </Footer>
+        </Footer> */}
 
-        <Overlay id='overlay' />
+        {/* <Overlay id='overlay' /> */}
 
         {/* <Preloader /> */}
 
-        <SideNav {...props.navigation} />
+        {/* <SideNav {...props.navigation} /> */}
     </main>
 );
 

@@ -7,36 +7,19 @@ export default theme => ({
     'padding': '1em',
     'transition': '0.4s',
 
-    'is-hovered': {
+    ':hover': {
       'background': theme.colors.brand['brand-6'],
       'color': theme.colors.greyscale.white,
-    },
 
-    'with-panel': {
-      'is-active': {
-        'background': theme.colors.brand['brand-2'],
-        'color': theme.colors.greyscale.white,
-        'border-color': 'transparent',
-        'border-radius': 0
+      toggle: {
+        'color': theme.colors.greyscale.white
       }
     }
   },
 
   toggle: {
     'color': theme.colors.opaque['dark-4'],
-    'transition': theme.core.transition,
-
-    'with-panel': {
-      'is-active': {
-        'color': theme.colors.greyscale.white
-      }
-    },
-
-    'with-title': {
-      'is-hovered': {
-        'color': theme.colors.greyscale.white
-      }
-    }
+    'transition': theme.core.transition
   },
 
   content: {
@@ -46,4 +29,19 @@ export default theme => ({
     'border-radius': 0,
     'padding': '1.5em'
   },
+
+  panel: {
+    'is-active': {
+      title: {
+        'background': theme.colors.brand['brand-2'],
+        'color': theme.colors.greyscale.white,
+        'border-color': 'transparent',
+        'border-radius': 0
+      },
+
+      toggle: {
+        'color': theme.colors.greyscale.white
+      }
+    }
+  }
 });
