@@ -1,10 +1,10 @@
-import config from './assets/config.js';
-import layout from './assets/layout.js';
+import config from './assets/config';
+import styles from './assets/styles';
 
 const Container = (props) => <Module {...props} />
 
 export default Object.assign(Container, { 
-  config, layout, defaultProps: {
+  config, styles, defaultProps: {
     name: 'Container'
   }
 });

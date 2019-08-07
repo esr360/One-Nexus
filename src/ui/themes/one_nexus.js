@@ -2,18 +2,11 @@ export default theme => ({
   "colors": {
     "brand": {
       "brand-1": "grey",
-      "brand-6": "orange"
+      "brand-6": "pink"
     }
   },
   "modules": {
     "Accordion": {
-      // "panel": {
-      //   "modifier(active)": {
-      //     "component(title)": {
-      //       "background": () => theme.colors.brand['brand-2']
-      //     }
-      //   }
-      // }
       "title": {
         'with-panel': {
           'is-active': {

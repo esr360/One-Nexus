@@ -9,7 +9,7 @@ export default function verticalRhythm(state, position) {
 
   if (position === 'top' || !position) {
     if (state.isFirstChild) {
-      styles.marginBottom = 0;
+      styles.marginTop = 0;
     }
   }
 

@@ -34,8 +34,6 @@ import * as pages from './views/pages';
 // DOM/Window Preparation
 //*****************************************************************
 
-console.log(useState);
-
 Object.assign(window, { PAX5, Link, useState });
 
 // Render App
@@ -46,15 +44,17 @@ const App = ({ modules, globals, theme, pages, config }) => {
 
   return (
     <HashRouter ref={() => window.appLoaded = true}>
-      <React.Fragment>
-        <Route path='/' exact render={() => <pages.index config={config} />} />
+      <Provider theme={theme}>
+        <React.Fragment>
+          <Route path='/' exact render={() => <pages.index config={config} />} />
 
-        {Object.keys(pages).map((page, index) => <Route key={index} path={`/${page}`} render={() => {
-          const Page = pages[page];
+          {Object.keys(pages).map((page, index) => <Route key={index} path={`/${page}`} render={() => {
+            const Page = pages[page];
 
-          return <Page config={config} />;
-        }} />)}
-      </React.Fragment>
+            return <Page config={config} />;
+          }} />)}
+        </React.Fragment>
+      </Provider>
     </HashRouter>
   );
 }

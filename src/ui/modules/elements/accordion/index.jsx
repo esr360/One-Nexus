@@ -1,28 +1,41 @@
-import config from './assets/config.js';
-import layout from './assets/layout.js';
-// import './assets/layout.scss';
+import config from './assets/config';
+import styles from './assets/styles';
 
-const Accordion = ({ panels, toggle, ...props }) => (
-  <Module {...props}>
-    {panels.map(({ title, content }) => {
-      const [active, toggle] = useState(false);
+const Accordion = ({ panels, persist, ...props }) => {
+  const [live, toggle] = useState(
+    panels.reduce(($, { active, id }, index) => active ? $.concat(id || index) : $, [])
+  );
 
-      return (
-        <Component name='panel' active={active}>
-          <Component name='title' onClick={() => toggle(!active)}>
+  return (
+    <Module {...props}>
+      {panels.map(({ title, content, id }, index) => (
+        <Component name='panel' active={live.includes(id || index)}>
+          <Component name='title' onClick={() => toggle(updatePanels(live, id || index, persist))}>
             {title}
           </Component>
           <Component name='content'>
             {content}
           </Component>
         </Component>
-      );
-    })}
-  </Module>
-);
+      ))}
+    </Module>
+  );
+}
 
 export default Object.assign(Accordion, {
-  config, layout, defaultProps: {
+  config, styles, defaultProps: {
     name: 'Accordion'
   }
 });
+
+/**
+ * Utility Functions
+ */
+
+function updatePanels(live, id, persist) {
+  return live.reduce(($, panel) => {
+    panel === id ? $ = $.filter(item => item !== id) : !persist && $.push(panel);
+
+    return $;
+  }, [id]);
+}
