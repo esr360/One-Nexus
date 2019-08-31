@@ -1,6 +1,6 @@
 // Elements
 export { default as Accordion } from './elements/Accordion';
-// export { default as Alert } from './elements/alert/alert';
+export { default as Alert } from './elements/Alert';
 // export { default as Blockquote } from './elements/blockquote/blockquote';
 // export { default as Button } from './elements/button/button';
 // export { default as Carousel } from './elements/carousel/carousel.jsx';

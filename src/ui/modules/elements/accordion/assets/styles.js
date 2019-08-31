@@ -1,4 +1,4 @@
-export default ({ state, config, context, theme }) => {
+export default ({ state, config, theme }) => {
   const layout = {
     ...(config.object && theme.object(state)),
 

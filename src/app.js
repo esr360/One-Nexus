@@ -11,7 +11,7 @@ import { app as config } from './app.json';
 // Vendor
 //*****************************************************************
 
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import PAX5 from '../../../PAX5/PAX5/src/pax5';
@@ -34,26 +34,24 @@ import * as pages from './views/pages';
 // DOM/Window Preparation
 //*****************************************************************
 
-Object.assign(window, { PAX5, Link, useState });
+Object.assign(window, { PAX5, Link, useState, Fragment });
 
 // Render App
 //*****************************************************************
 
 const App = ({ modules, globals, theme, pages, config }) => {
-  Synergy.theme(modules, theme, globals, config);
+  Synergy.init({ modules, theme, globals, app: config, handleConfig: true });
 
   return (
     <HashRouter ref={() => window.appLoaded = true}>
       <Provider theme={theme}>
-        <React.Fragment>
-          <Route path='/' exact render={() => <pages.index config={config} />} />
+        <Route path='/' exact render={() => <pages.index config={config} />} />
 
-          {Object.keys(pages).map((page, index) => <Route key={index} path={`/${page}`} render={() => {
-            const Page = pages[page];
+        {Object.keys(pages).map((page, index) => <Route key={index} path={`/${page}`} render={() => {
+          const Page = pages[page];
 
-            return <Page config={config} />;
-          }} />)}
-        </React.Fragment>
+          return <Page config={config} />;
+        }} />)}
       </Provider>
     </HashRouter>
   );

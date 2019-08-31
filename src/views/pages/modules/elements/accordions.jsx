@@ -20,6 +20,10 @@ const Accordions = props => {
 
   return (
     <Base {...props.config.views}>
+      <Alert alert='success' close>
+        <a href="#">Learn more</a> about module configutation
+      </Alert>
+
       <Accordion className='fizz' panels={isPartyTime ? partyData : data} />
   
       <Accordion persist panels={[
