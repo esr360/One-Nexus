@@ -15,14 +15,13 @@ import React, { useState, Fragment } from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import PAX5 from '../../../PAX5/PAX5/src/pax5';
-// import '../../../Synergy/Synergy/src/synergy';
-import '../../../Synergy/Synergy/dist/synergy';
+import { Container } from '../../../Synergy/Synergy/dist/synergy';
 
 // UI
 //*****************************************************************
 
+import foundation from './ui/foundation';
 import * as tools from './ui/tools'
-import * as foundation from './ui/foundation';
 import * as modules from './ui/modules';
 import * as themes from './ui/themes';
 
@@ -39,28 +38,27 @@ Object.assign(window, { PAX5, Link, useState, Fragment });
 // Render App
 //*****************************************************************
 
-const App = ({ modules, globals, theme, pages, config }) => {
-  Synergy.init({ modules, theme, globals, app: config, handleConfig: true });
-
+const App = ({ modules, theme, pages, config }) => {
   return (
-    <HashRouter ref={() => window.appLoaded = true}>
-      <Provider theme={theme}>
+    <HashRouter>    
+      <Container {...{ modules, theme, callback: foundation, globals: { React, useState } }}>
         <Route path='/' exact render={() => <pages.index config={config} />} />
 
-        {Object.keys(pages).map((page, index) => <Route key={index} path={`/${page}`} render={() => {
-          const Page = pages[page];
+        {Object.keys(pages).map((page, index) => (
+          <Route key={index} path={`/${page}`} render={() => {
+            const Page = pages[page];
 
-          return <Page config={config} />;
-        }} />)}
-      </Provider>
+            return <Page config={config} />;
+          }} />
+        ))}
+      </Container>
     </HashRouter>
   );
 }
 
 App.defaultProps = {
-  theme: themes[config.options.THEME_NAME],
+  theme: { ...tools, ...themes[config.options.THEME_NAME] },
   modules: modules,
-  globals: { ...tools, ...foundation },
   pages: pages,
   config: config
 }

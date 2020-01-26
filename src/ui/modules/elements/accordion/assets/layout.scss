@@ -1,37 +1,42 @@
-@import '../../../../../../../../Cell/Cell/src/synergy';
-// @import '../../../../foundation/index.js';
-// @import '../../../../themes/one_nexus.js';
+@import '../../../../../../../../Cell/Cell/src/cell';
+@import '../../../../themes/one_nexus.js';
 @import 'config.js';
 
-@include module() {
-    @include component('panel') {
-        display: block;
-        color: green;
+$outputCSSFromConfig: true;
 
-        @include modifier('active') {
-            @include component(content, $cascade: false) {
-                display: block
-            }
-        }
-    };
+// @debug $theme;
+// @debug '';
+// @debug $config;
 
-    @include component('title', (
-        display: block,
-        margin: 0,
-        backface-visibility: hidden,
-        font-weight: normal,
-        line-height: 1,
-        cursor: pointer
-    ));
+@include module('Accordion') {
+  @include component('panel') {
+    display: block;
+    color: green;
 
-    @include component('toggle', (
-        float: right,
-        line-height: 0.75
-    ));
+    @include modifier('active') {
+      @include component(content, $cascade: false) {
+        display: block
+      }
+    }
+  }
 
-    @include component('content', (
-        display: none,
-        margin: 0,
-        margin-top: -1px
-    ));
+  @include component('title', (
+    display: block,
+    margin: 0,
+    backface-visibility: hidden,
+    font-weight: normal,
+    line-height: 1,
+    cursor: pointer
+  ));
+
+  @include component('toggle', (
+    float: right,
+    line-height: 0.75
+  ));
+
+  @include component('content', (
+    display: none,
+    margin: 0,
+    margin-top: -1px
+  ));
 }

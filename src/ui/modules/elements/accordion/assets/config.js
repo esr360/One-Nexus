@@ -1,5 +1,7 @@
 export default (theme) => {
+  console.log(theme);
   return {
+    name: 'Accordion',
     object: true,
 
     title: {
@@ -8,15 +10,13 @@ export default (theme) => {
       'border': `1px solid ${theme.colors.opaque['dark-2']}`,
       'padding': '1em',
 
-      'with-panel': {
-        'is-active': {
-          'background': theme.colors.brand['brand-2'],
-          'color': theme.colors.greyscale.white,
-          'border-color': 'transparent'
-        }
+      'panel-is-active': {
+        'background': theme.colors.brand['brand-2'],
+        'color': theme.colors.greyscale.white,
+        'border-color': 'transparent'
       },
 
-      'is-hovered': {
+      ':hover': {
         'background': theme.colors.brand['brand-6'],
         'color': theme.colors.greyscale.white
       }
@@ -26,16 +26,12 @@ export default (theme) => {
       'color': theme.colors.opaque['dark-4'],
       'transition': theme.core.transition,
 
-      'with-panel': {
-        'is-active': {
-          'color': theme.colors.greyscale.white
-        }
+      'panel-is-active': {
+        'color': theme.colors.greyscale.white
       },
 
-      'with-title': {
-        'is-hovered': {
-          'color': theme.colors.greyscale.white
-        }
+      'title:hover': {
+        'color': theme.colors.greyscale.white
       }
     },
 

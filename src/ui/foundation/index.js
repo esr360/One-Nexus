@@ -1,40 +1,36 @@
-export { default as colors } from './colors/colors';
-export { default as core } from './core/core';
-export { default as typography } from './typography/typography';
-export { default as grid } from './grid/grid';
-
-export function foundation(ui) {
-  ui.css(`
+export default function foundation({ theme }) {
+  // console.log(theme);
+  theme.css(`
     html, body {
       margin: 0;
       padding: 0;
     }
 
     html {
-        overflow-x: hidden;
+      overflow-x: hidden;
     }
 
     body {
-      background: ${ui.core.background(ui.colors)};
-      color: ${ui.core['text-color'](ui)};
-      font-family: ${ui.core['font-family'](ui.typography)};
-      font-size: ${ui.core['font-size'](ui.typography)};
-      line-height: ${ui.core['line-height']};
+      background: ${theme.core.background(theme)};
+      color: ${theme.core['text-color'](theme)};
+      font-family: ${theme.core['font-family'](theme)};
+      font-size: ${theme.core['font-size'](theme)};
+      line-height: ${theme.core['line-height']};
     }
 
     ins {
-      color: ${ui.colors.brand['brand-1']};
+      color: ${theme.colors.brand['brand-1']};
       font-weight: bold;
       text-decoration: none;
     }
 
     h1, h2, h3, h4, h5, h6 {
-      font-size: ${ui.core['font-size'](ui.typography)};
+      font-size: ${theme.core['font-size'](theme)};
     }
 
     ::selection {
-      background-color: ${ui.core['selection-background'](ui.colors)};
-      color: ${ui.core['selection-color'](ui.colors)};
+      background-color: ${theme.core['selection-background'](theme)};
+      color: ${theme.core['selection-color'](theme)};
       text-shadow: none;
     }
 
@@ -43,21 +39,21 @@ export function foundation(ui) {
     }
 
     .object:not(:first-child) {
-      margin-top: ${ui.core.margin};
+      margin-top: ${theme.core.margin};
     }
 
     .object:not(:last-child) {
-      margin-bottom: ${ui.core.margin};
+      margin-bottom: ${theme.core.margin};
     }
 
     .object-small:not(:first-child) {
-      margin-top: calc(${ui.core.margin} /2);
+      margin-top: calc(${theme.core.margin} /2);
     }
 
     .object-small:not(:last-child) {
-      margin-bottom: calc(${ui.core.margin} /2);
+      margin-bottom: calc(${theme.core.margin} /2);
     }
   `);
 
-  ui.googleFonts(ui.typography['google-fonts']);
+  theme.googleFonts(theme.typography['google-fonts']);
 }

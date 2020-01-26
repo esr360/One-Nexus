@@ -1,45 +1,46 @@
-export default theme => ({
-  "colors": {
-    "brand": {
-      "brand-1": "grey",
-      "brand-6": "pink"
+import deepextend from 'deep-extend';
+import core from './core';
+
+export default deepextend(core, {
+  'colors': {
+    'brand': {
+      'brand-1': 'grey',
+      'brand-6': 'pink'
     }
   },
-  "modules": {
-    "Accordion": {
-      "title": {
-        'with-panel': {
-          'is-active': {
-            "background": () => theme.colors.brand['brand-1']
-          }
+  'modules': {
+    'Accordion': {
+      'title': {
+        'panel-is-active': {
+          'background': (theme) => theme.colors.brand['brand-1']
         }
       }
     },
-    "Alert": {
+    'Alert': {
     },
-    "Modal": {
+    'Modal': {
     },
-    "Button": {
-      "border-palettes": ["brand", "alert"]
+    'Button': {
+      'border-palettes': ['brand', 'alert']
     },
-    "core": {},
-    "header": {
-      "background": "gradient(brand)"
+    'core': {},
+    'header': {
+      'background': 'gradient(brand)'
     },
-    "Billboard": {
-      "fullscreen": {
-        "enabled": false
+    'Billboard': {
+      'fullscreen': {
+        'enabled': false
       },
-      "overlay": {
-        "enabled": true
+      'overlay': {
+        'enabled': true
       }
     },
-    "Tables": {
-      "background": "white",
-      "padding": "0.5em 1em",
-      "border": "1px solid rgba(0,0,0,0.1)",
-      "-small": {
-        "max-width": "450px"
+    'Tables': {
+      'background': 'white',
+      'padding': '0.5em 1em',
+      'border': '1px solid rgba(0,0,0,0.1)',
+      '-small': {
+        'max-width': '450px'
       }
     }
   }

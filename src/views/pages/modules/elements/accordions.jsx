@@ -8,21 +8,21 @@ const Accordions = props => {
   });
 
   const data = [
-    {title: 'foo', content: 'bar', active: true},
-    {title: 'fizz', content: <div>potato</div>}
+    {id: 'alpha', title: 'foo', content: 'bar', active: true},
+    {id: 'beta', title: 'fizz', content: <div>potato</div>}
   ];
 
   const partyData = [
-    {title: 'foo', content: 'bar', active: true},
-    {title: 'party time', content: 'bar'},
-    {title: 'fizz', content: <div>potato</div>}
+    {id: 'alpha', title: 'foo', content: 'bar', active: true},
+    {id: 'party', title: 'party time', content: 'bar'},
+    {id: 'beta', title: 'fizz', content: <div>potato</div>}
   ];
 
   return (
     <Base {...props.config.views}>
-      <Alert alert='success' close>
+      {/* <Alert alert='success' close>
         <a href="#">Learn more</a> about module configutation
-      </Alert>
+      </Alert> */}
 
       <Accordion className='fizz' panels={isPartyTime ? partyData : data} />
   

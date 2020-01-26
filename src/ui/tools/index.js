@@ -1,7 +1,8 @@
+export { default as media } from './media';
+
 // interactions
 export { default as dynamicCallback } from './interactions/dynamicCallback';
 export { default as inViewport } from './interactions/inViewport';
-export { default as media } from './interactions/media';
 export { default as scrollSpy } from './interactions/scrollSpy';
 export { default as smoothScroll } from './interactions/smoothScroll';
 
