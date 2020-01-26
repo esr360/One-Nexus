@@ -2,7 +2,7 @@ import verticalRhythm from './verticalRhythm';
 
 export default function object(state, gutter) {
   try {
-    gutter = gutter || theme.core.margin;
+    gutter = gutter || theme.tokens.margin;
   } catch(error) {
     console.warn('ui.globals.object: no gutter passed');
   }

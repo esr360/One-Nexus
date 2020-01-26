@@ -1,6 +1,5 @@
 import config from './assets/config';
-// import styles from './assets/styles';
-import './assets/layout.scss';
+import styles from './assets/styles';
 
 const Accordion = ({ panels, persist, ...props }) => {
   const [live, toggle] = useState(
@@ -23,7 +22,7 @@ const Accordion = ({ panels, persist, ...props }) => {
   );
 }
 
-Accordion.defaultProps = { name: 'Accordion', config }
+Accordion.defaultProps = { name: 'Accordion', config, styles }
 
 export default Accordion;
 

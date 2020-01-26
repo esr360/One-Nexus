@@ -20,7 +20,6 @@ import { Container } from '../../../Synergy/Synergy/dist/synergy';
 // UI
 //*****************************************************************
 
-import foundation from './ui/foundation';
 import * as tools from './ui/tools'
 import * as modules from './ui/modules';
 import * as themes from './ui/themes';
@@ -38,10 +37,10 @@ Object.assign(window, { PAX5, Link, useState, Fragment });
 // Render App
 //*****************************************************************
 
-const App = ({ modules, theme, pages, config }) => {
+const App = ({ modules, theme, utils, pages, config }) => {
   return (
     <HashRouter>    
-      <Container {...{ modules, theme, callback: foundation, globals: { React, useState } }}>
+      <Container {...{ modules, theme, utils, globals: { React, useState } }}>
         <Route path='/' exact render={() => <pages.index config={config} />} />
 
         {Object.keys(pages).map((page, index) => (
@@ -57,7 +56,8 @@ const App = ({ modules, theme, pages, config }) => {
 }
 
 App.defaultProps = {
-  theme: { ...tools, ...themes[config.options.THEME_NAME] },
+  theme: themes[config.options.THEME_NAME],
+  utils: tools,
   modules: modules,
   pages: pages,
   config: config

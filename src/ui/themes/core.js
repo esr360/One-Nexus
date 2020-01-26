@@ -1,17 +1,17 @@
 export default {
   colors: {
-    'brand': {
+    brand: {
       'brand-1': '#2E3882',
       'brand-2': '#06d2ff',
       'brand-3': '#04CEC0'
     },
-    'alert':{
+    alert:{
       'error': '#D9434E',
       'help': '#F5BA42',
       'info': '#4B8CDC',
       'success': '#3BB85D'
     },
-    'greyscale': {
+    greyscale: {
       'white': '#ffffff',
       'grey-1': '#f8f8f8',
       'grey-2': '#dee0e2',
@@ -21,18 +21,18 @@ export default {
       'grey-6': '#161819',
       'black': '#000000'
     },
-    'opaque': {
+    opaque: {
       'dark-1': 'rgba(0,0,0, 0.1)',
       'dark-2': 'rgba(0,0,0, 0.2)',
       'dark-4': 'rgba(0,0,0, 0.4)',
       'dark-8': 'rgba(0,0,0, 0.8)',
       'light-8': 'rgba(255,255,255, 0.8)'
     },
-    'validation':{
+    validation:{
       'valid': '#00B16A',
       'invalid': '#D91E18'
     },
-    'social':{
+    social:{
       'facebook': '#507CBD',
       'twitter': '#63CEF2',
       'linkedin': '#117BB8',
@@ -40,20 +40,13 @@ export default {
       'skype': '#63CEF2',
       'pinterest': '#C92228',
       'instagram': '#5280A5',
-      'rss': '#FBA933',
       'youtube': '#CB312E',
-      'flickr': '#ED1384',
-      'vimeo': '#1EB8EB',
       'dribbble': '#EB4C89',
-      'behance': '#0595FC',
-      'deviantart': '#B3C434',
       'reddit': '#0D7CCD',
-      'google-plus': '#dd4b39',
-      'email': '#6cb42c',
-      'stumbleupon': '#47AD20'
+      'email': '#6cb42c'
     },
-    'gradients': {
-      'brand': {
+    gradients: {
+      brand: {
         'direction': '135deg',
         'color-stops': [
           'brand-1 0%', 
@@ -81,11 +74,11 @@ export default {
       'secondary': 'Lato, Helvetica, Arial, sans-serif'
     },
     'colors': {
-      'base': theme => theme.colors.greyscale['grey-4'],
-      'heading': theme => theme.colors.greyscale['grey-5'],
-      'heavy': theme => theme.colors.greyscale['grey-5'],
-      'link': theme => theme.colors.brand['brand-1'],
-      'link-hover': theme => theme.colors.brand['brand-1']
+      'base': ({ colors }) => colors.greyscale['grey-4'],
+      'heading': ({ colors }) => colors.greyscale['grey-5'],
+      'heavy': ({ colors }) => colors.greyscale['grey-5'],
+      'link': ({ colors }) => colors.brand['brand-1'],
+      'link-hover': ({ colors }) => colors.brand['brand-1']
     },
     'sizes': {
       'size-1': '0.67em',
@@ -103,7 +96,7 @@ export default {
   grid: {
     'columns': 12,
     'gutter': '3%',
-    'default-stack': '940px',
+    'default-stack': ({ grid }) => grid.breakpoints['break-3'],
     'breakpoints': {
       'break-0': '0px',
       'break-1': '460px',
@@ -114,13 +107,13 @@ export default {
       'break-6': '1800px'
     }
   },
-  core: {
-    'background': theme => theme.colors.greyscale['grey-1'],
-    'font-family': theme => theme.typography.typefaces['primary'],
+  tokens: {
+    'background': ({ colors }) => colors.greyscale['grey-1'],
+    'font-family': ({ typography }) => typography.typefaces['primary'],
+    'font-size': ({ typography }) => typography.sizes['size-3'],
     'text-color': theme => theme.typography.colors['base'](theme),
-    'font-size': theme => theme.typography.sizes['size-3'],
-    'selection-background': theme => theme.colors.brand['brand-1'],
-    'selection-color': theme => theme.colors.greyscale['white'],
+    'selection-background': ({ colors }) => colors.brand['brand-1'],
+    'selection-color': ({ colors }) => colors.greyscale['white'],
     'margin': '2rem',
     'line-height': '1.4',
     'radius': '0.4em',

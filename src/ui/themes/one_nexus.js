@@ -23,7 +23,6 @@ export default deepextend(core, {
     'Button': {
       'border-palettes': ['brand', 'alert']
     },
-    'core': {},
     'header': {
       'background': 'gradient(brand)'
     },
