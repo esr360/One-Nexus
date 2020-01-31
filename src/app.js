@@ -28,6 +28,7 @@ import * as themes from './ui/themes';
 //*****************************************************************
 
 import * as pages from './views/pages';
+import * as layouts from './views/layouts';
 
 // DOM/Window Preparation
 //*****************************************************************
@@ -37,7 +38,7 @@ Object.assign(window, { PAX5, Link, useState, Fragment });
 // Render App
 //*****************************************************************
 
-const App = ({ modules, theme, utils, pages, config }) => {
+const App = ({ modules, theme, utils, pages, layouts, config }) => {
   return (
     <HashRouter>    
       <Container {...{ modules, theme, utils, globals: { React, useState } }}>
@@ -47,7 +48,7 @@ const App = ({ modules, theme, utils, pages, config }) => {
           <Route key={index} path={`/${page}`} render={() => {
             const Page = pages[page];
 
-            return <Page config={config} />;
+            return <Page {...{ modules, theme, utils, layouts, config } } />;
           }} />
         ))}
       </Container>
@@ -60,6 +61,7 @@ App.defaultProps = {
   utils: tools,
   modules: modules,
   pages: pages,
+  layouts: layouts,
   config: config
 }
 

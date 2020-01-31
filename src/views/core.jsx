@@ -1,3 +1,4 @@
+import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 export const Core = props => (
@@ -12,7 +13,7 @@ export const Core = props => (
 
       {props.styles && <link href='assets/styles/app.css' rel='stylesheet' />}
 
-      <script type="text/javascript" src='assets/scripts/app.js'></script>
+      <script type="text/javascript" src='app.js'></script>
     </body>
   </html>
 );

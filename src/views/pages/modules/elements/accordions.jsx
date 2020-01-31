@@ -1,6 +1,4 @@
-import Base from '../../../layouts/base';
-
-const Accordions = props => {
+const Accordions = ({ layouts, ...props }) => {
   const [isPartyTime, setPartyTime] = React.useState(0);
 
   React.useEffect(() => {
@@ -19,7 +17,7 @@ const Accordions = props => {
   ];
 
   return (
-    <Base {...props.config.views}>
+    <layouts.base {...props.config.views}>
       {/* <Alert alert='success' close>
         <a href="#">Learn more</a> about module configutation
       </Alert> */}
@@ -41,7 +39,7 @@ const Accordions = props => {
         )},
         {title: 'fizz', content: <div>buzz</div>}
       ]} />
-    </Base>
+    </layouts.base>
   );
 }
 

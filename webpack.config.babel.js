@@ -25,22 +25,20 @@ export default function(env) {
     }),
   ];
 
-  if (isDevServer) {
-    plugins.push(
-      // new WriteFilePlugin(),
-      new webpack.HotModuleReplacementPlugin()
-    );
-  }
+  // if (isDevServer) {
+  //   plugins.push(
+  //     new WriteFilePlugin(),
+  //     new webpack.HotModuleReplacementPlugin()
+  //   );
+  // }
 
-  if (staticBuild) {
-    plugins.push(StaticSiteGenerator); 
-  }
+  // plugins.push(staticBuild ? StaticSiteGenerator : new HtmlWebpackPlugin({
+  //   template: 'src/views/core.jsx',
+  //   inject: false
+  // }));
 
   return {
     entry: [
-      'webpack-dev-server/client?http://0.0.0.0:3000',
-      'webpack/hot/only-dev-server',
-      'react-hot-loader/patch',
       './src/entry.js',
       // './src/static.js'
     ],
@@ -48,20 +46,20 @@ export default function(env) {
     mode: env.build,
       
     resolve: {
-      extensions: ['.js', '.jsx', '.json', '.jss'],
+      extensions: ['.js', '.jsx', '.json', '.jss']
     },
 
     output: {
       filename: 'app.js',
-      // path: path.resolve(__dirname, 'dist/'),
+      // path: path.resolve(__dirname, '/'),
       // publicPath: '/',
-      libraryTarget: 'umd'
+      // libraryTarget: 'umd'
     },
 
     devServer: {
-      contentBase: './dist',
+      // contentBase: './',
       // publicPath: '/',
-      hot: true,
+      // hot: true,
       port: 3000
     },
 
@@ -73,7 +71,7 @@ export default function(env) {
           test: /\.(js|jsx|jss)$/,
           exclude: /node_modules/,
           use: 'babel-loader'
-        }, 
+        },
         {
           test: /\.scss$/,
           use: [
@@ -84,9 +82,11 @@ export default function(env) {
               plugins: () => [Autoprefixer]
             }}, 
             {loader: 'sass-loader', options: {
-              sourceMap: true,
-              importer: SassJSONImporter,
-              outputStyle: 'expanded'
+              sassOptions: {
+                sourceMap: true,
+                importer: SassJSONImporter,
+                outputStyle: 'expanded'
+              }
             }}
           ]
         },
