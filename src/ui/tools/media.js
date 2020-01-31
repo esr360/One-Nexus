@@ -1,7 +1,7 @@
 /**
  * Media
  */
-export function media(media, value, app) {
+export default function media(media, value, app) {
     if (value.indexOf('break') === 0) {
 	    return window.matchMedia(`(${media}: ${app.config.grid.breakpoints[value]})`).matches;
     }

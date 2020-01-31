@@ -1,7 +1,7 @@
 /**
  * Determine if an element is in the viewport
  */
-export function inViewport(custom) {
+export default function inViewport(custom) {
 
     /**
      * Options

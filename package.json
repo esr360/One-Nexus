@@ -92,7 +92,7 @@
     "write-file-webpack-plugin": "^4.5.0"
   },
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --env.build=development",
     "start2": "node build/server.js",
     "build": "npm run build:prod",
     "build:dev": "webpack --env.build=development",

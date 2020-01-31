@@ -5,7 +5,7 @@
  * 
  * @param {Object} custom - where custom options are passed
  */
-export function scrollSpy(custom) {
+export default function scrollSpy(custom) {
 
     /**
      * @param {String} options.container - CSS selector for scrollSpy links container

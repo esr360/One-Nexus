@@ -8,7 +8,7 @@
  * 
  * @param {Object} custom - where custom options are passed
  */
-export function smoothScroll(custom) {
+export default function smoothScroll(custom) {
 
     /**
      * @param {Number} [options.speed=300] - the animation duration (milliseconds)

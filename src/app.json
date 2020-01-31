@@ -1,75 +1,56 @@
 {
-    "app": {
-        "views": {
-            "navigation": {
-                "items": [
-                    ["link 1", "/"],
-                    ["link 2", "/", [
-                        ["link 2 child", "/"],
-                        ["link 2 child 2", "/"],
-                        ["link 2 child 3", "/", [
-                            ["link 2 grandchild", "/"],
-                            ["link 2 child 3", "/", [
-                                ["link 2 grandchild", "/"],
-                                ["link 2 grandchild 2", "/"],
-                                ["link 3 grandchild 3", "/"]
-                            ]],
-                            ["link 2 grandchild 2", "/"]
-                        ]]
-                    ]],
-                    ["link 3"]
-                ]
-            },
-            "logo": {
-                "src": "assets/images/logo-light.png"
-            }
-        },
-        "options": {
-            "MODULES_PATH": "src/ui/modules",
-            "THEMES_PATH": "src/ui/themes",
-            "THEME_NAME": "one_nexus",
-            "MODULE_DEFAULTS": "assets/config.js",
-            "MODULE_CONFIG_OUTPUT": "assets/config.json",
-            "FOUNDATION_FILE": "src/ui/foundation",
-            "appDomNodeID": "app",
-            "componentGlue": "__",
-            "modifierGlue": "--",
-            "CSSClassProps": ["object"],
-            "multipleClasses": false
-        },
-        "theme": {
-            "colors": {
-                "brand": {
-                    "brand-1": "blue"
-                }
-            },
-            "modules": {
-                "Alert": {
-                    "icon": {
-                        "default-enable": true
-                    }
-                },
-                "Button": {
-                    "palettes": [
-                        "brand", "greyscale", "alert", "social", 
-                        {"foo": "blue", "bar": "#FF5733"}
-                    ],
-                    "combine": {
-                        "primary" : ["round", "size-4", "brand-1"],
-                        "social"  : ["icon", "oval", "size-6", "brand-2"]
-                    }
-                },
-                "Carousel": {
-                    "navigationItem": {
-                        "disable": false
-                    }
-                },
-                "Form": {},
-                "Modal": {
-                    "buzz": true,
-                    "top-position": "30%"
-                }
-            }
+  "app": {
+    "views": {
+      "logo": {
+        "src": "assets/images/logo-light.png"
+      }
+    },
+    "options": {
+      "MODULES_PATH": "src/ui/modules",
+      "THEMES_PATH": "src/ui/themes",
+      "THEME_NAME": "one_nexus",
+      "MODULE_DEFAULTS": "assets/config.js",
+      "MODULE_CONFIG_OUTPUT": "assets/config.json",
+      "FOUNDATION_FILE": "src/ui/foundation",
+      "appDomNodeID": "app",
+      "componentGlue": "__",
+      "modifierGlue": "--",
+      "CSSClassProps": ["object"],
+      "multipleClasses": false
+    },
+    "theme": {
+      "colors": {
+        "brand": {
+          "brand-1": "blue"
         }
+      },
+      "modules": {
+        "Alert": {
+          "icon": {
+            "default-enable": true
+          }
+        },
+        "Button": {
+            "palettes": [
+              "brand", "greyscale", "alert", "social", 
+              {"foo": "blue", "bar": "#FF5733"}
+            ],
+            "combine": {
+              "primary" : ["round", "size-4", "brand-1"],
+              "social"  : ["icon", "oval", "size-6", "brand-2"]
+            }
+        },
+        "Carousel": {
+          "navigationItem": {
+            "disable": false
+          }
+        },
+        "Form": {},
+        "Modal": {
+          "buzz": true,
+          "top-position": "30%"
+        }
+      }
     }
+  }
 }
