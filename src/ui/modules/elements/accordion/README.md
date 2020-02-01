@@ -115,13 +115,9 @@ Pass custom configuration to the `Accordion` object in your [theme](https://gith
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>Array.&lt;Object></code></td>
+    <td><code>Array.&lt;{ <a href="#paneltitle">title</a>, <a href="#panelcontent">content</a>, <a href="#panelid">id</a>, <a href="#panelcallback">active</a>, <a href="#panelcallback">callback</a> }></code></td>
   </tr>
 </table>
-
-<pre>
-[{ <a href="#paneltitle">title</a>, <a href="#panelcontent">content</a>, <a href="#panelid">id</a>, <a href="#panelcallback">active</a>, <a href="#panelcallback">callback</a> }, ...]
-</pre>
 
 #### Panel.title
 
