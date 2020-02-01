@@ -29,6 +29,7 @@
 
 ### Internal Interface [[?]](#TODO)
 
+```jsx
 <Module { persist }>
   <Component name='panel' { active }>
     <Component name='title' />
@@ -36,6 +37,7 @@
   </Component>
   ...
 </Module>
+```
 
 ## Configuration
 
