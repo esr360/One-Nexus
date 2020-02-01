@@ -27,12 +27,14 @@
 <Accordion title='foo' content='bar' />
 ```
 
-### Internal Interface [[?]](#TODO)
+### Structural Interface [[?]](#TODO)
 
 ```jsx
 <Module>
   <Component name='panel' { active }>
-    <Component name='title' />
+    <Component name='title'>
+      <Component name='toggle' />
+    </Component>
     <Component name='content' />
   </Component>
   ...
@@ -43,6 +45,7 @@
 
 * ###### panel
 * ###### title
+* ###### toggle
 * ###### content
 
 ## Configuration
@@ -74,7 +77,7 @@
     }
   },
 
-  toggle: {
+  <a href="#toggle">toggle</a>: {
     'color': theme.colors.opaque['dark-4'],
     'transition': theme.tokens.transition,
 
