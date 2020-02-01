@@ -100,10 +100,6 @@
 }
 </pre>
 
-### Custom Configuration
-
-> [Learn how to pass custom configuration to your Modules](#TODO)
-
 ### `config.persist`
 
 > Keep previously opened panels open when toggling a panel
@@ -115,11 +111,17 @@
   </tr>
 </table>
 
+### Custom Configuration
+
+> [Learn how to pass custom configuration to your Modules](#TODO)
+
 ## API
 
 * [`props.panels`](#propspanels)
 
 ### `props.panels`
+
+> The unique data sections that form the [Accordion panel components](#panel)
 
 <table>
   <tr>
@@ -130,6 +132,8 @@
 
 #### `panel.title`
 
+> The content to use for the [title Component](#title) of the Accordion panel
+
 <table>
   <tr>
     <td><b>Type</b></td>
@@ -138,6 +142,8 @@
 </table>
 
 #### `panel.content`
+
+> The content to use for the [content Component](#content) of the Accordion panel
 
 <table>
   <tr>
