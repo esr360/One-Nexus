@@ -3,7 +3,6 @@
 * [Quick Look](#overview)
 * [Configuration](#configuration)
 * [API](#api)
-* [Use Outside of One-Nexus](#use-outside-of-one-nexus)
 
 ## Quick Look
 
@@ -232,21 +231,4 @@ Accordions can be nested:
     }
   }
 ]} />
-```
-
-## Use Outside of One-Nexus
-
-```bash
-npm install --save @one-nexus/modules
-```
-
-```jsx
-import React from 'react';
-import { Accordion } from '@one-nexus/modules';
-
-const Screen = () => (
-  <Accordion { ... } />
-);
-
-export default Screen;
 ```
