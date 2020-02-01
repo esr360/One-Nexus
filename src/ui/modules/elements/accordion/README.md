@@ -47,8 +47,8 @@
 
 <pre>
 {
-  <a href="#configpersist">object</a>: true,
-  persist: true,
+  <a href="#configpersist">persist</a>: true,
+  object: true,
 
   <a href="#paneltitle">title</a>: {
     'background': 'transparent',
