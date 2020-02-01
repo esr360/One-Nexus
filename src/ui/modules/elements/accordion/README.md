@@ -30,7 +30,7 @@
 ### Internal Interface [[?]](#TODO)
 
 ```jsx
-<Module { persist }>
+<Module>
   <Component name='panel' { active }>
     <Component name='title' />
     <Component name='content' />
@@ -38,6 +38,12 @@
   ...
 </Module>
 ```
+
+##### Components
+
+* ###### panel
+* ###### title
+* ###### content
 
 ## Configuration
 
@@ -50,7 +56,7 @@
   <a href="#configpersist">persist</a>: true,
   <a href="#todo">object</a>: true,
 
-  <a href="#paneltitle">title</a>: {
+  <a href="#title">title</a>: {
     'background': 'transparent',
     'color': 'grey',
     'border': `1px solid ${theme.colors.opaque['dark-2']}`,
@@ -81,7 +87,7 @@
     }
   },
 
-  <a href="#panelcontent">content</a>: {
+  <a href="#content">content</a>: {
     'background': 'white',
     'color': 'grey',
     'border': '1px solid rgba(0,0,0, 0.15)',
