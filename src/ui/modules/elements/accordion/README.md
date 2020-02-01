@@ -35,13 +35,14 @@
     <Component name='title'>
       <Component name='toggle' />
     </Component>
+
     <Component name='content' />
   </Component>
   ...
 </Module>
 ```
 
-##### Components
+##### Components [[?]](#TODO)
 
 * ###### panel
 * ###### title
@@ -65,13 +66,13 @@
     'border': `1px solid ${theme.colors.opaque['dark-2']}`,
     'padding': '1em',
 
-    <a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">'panel-is-active'</a>: {
+    'panel-is-active'<a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">[?]</a>: {
       'background': theme.colors.brand['brand-2'],
       'color': theme.colors.greyscale.white,
       'border-color': 'transparent'
     },
 
-    <a href="https://github.com/One-Nexus/Lucid/wiki/Styles#hover">':hover'</a>: {
+    ':hover'<a href="https://github.com/One-Nexus/Lucid/wiki/Styles#hover">[?]</a>: {
       'background': theme.colors.brand['brand-6'],
       'color': theme.colors.greyscale.white
     }
@@ -81,11 +82,11 @@
     'color': theme.colors.opaque['dark-4'],
     'transition': theme.tokens.transition,
 
-    <a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">'panel-is-active'</a>: {
+    'panel-is-active'<a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">[?]</a>: {
       'color': theme.colors.greyscale.white
     },
 
-    <a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">'title:hover'</a>: {
+    'title:hover'<a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">[?]</a>: {
       'color': theme.colors.greyscale.white
     }
   },
@@ -99,7 +100,11 @@
 }
 </pre>
 
-### Config.persist
+### Custom Configuration
+
+> [Learn how to pass custom configuration to your Modules](#TODO)
+
+### `config.persist`
 
 > Keep previously opened panels open when toggling a panel
 
@@ -110,36 +115,11 @@
   </tr>
 </table>
 
-### Custom Configuration Via Theme
-
-Pass custom configuration to the `Accordion` object in your [theme](https://github.com/esr360/One-Nexus/wiki/Themes) underneath the `modules` entry:
-
-```js
-{
-  ...
-
-  modules: {
-    Accordion: {
-      ...
-    }
-  }
-}
-```
-### Custom Configuration - Inline
-
-Pass custom configuration to the `Accordion` Component when using it (this will override any [default](#default-configuration) and [theme](#custom-configuration-via-theme) configuration):
-
-```jsx
-<Accordion config={{ ... }} panels={[
-  ...
-]} />
-```
-
 ## API
 
-* [Props.panels](#propspanels)
+* [`props.panels`](#propspanels)
 
-### Props.panels
+### `props.panels`
 
 <table>
   <tr>
@@ -148,7 +128,7 @@ Pass custom configuration to the `Accordion` Component when using it (this will 
   </tr>
 </table>
 
-#### Panel.title
+#### `panel.title`
 
 <table>
   <tr>
@@ -157,7 +137,7 @@ Pass custom configuration to the `Accordion` Component when using it (this will 
   </tr>
 </table>
 
-#### Panel.content
+#### `panel.content`
 
 <table>
   <tr>
@@ -186,7 +166,7 @@ Accordions can be nested:
 ]} />
 ```
 
-#### Panel.id
+#### `panel.id`
 
 > Use if panels are prone to changing after initial render to preserve correct state
 
@@ -197,7 +177,7 @@ Accordions can be nested:
   </tr>
 </table>
 
-#### Panel.active
+#### `panel.active`
 
 > Set panel(s) to be active (open) by default
 
@@ -215,7 +195,7 @@ Accordions can be nested:
 ]} />
 ```
 
-#### Panel.callback
+#### `panel.callback`
 
 > Callback function to call on panel toggle
 
