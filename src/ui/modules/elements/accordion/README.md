@@ -60,24 +60,24 @@
 <pre>
 {
   <a href="#todo">object</a>: true,
-  <a href="#todo">gutter</a>: theme.tokens.margin,
+  <a href="#todo">gutter</a>: <a href="https://git.io/Jv3AG">theme.tokens.margin</a>,
   <a href="#configpersist">persist</a>: true,
 
   <a href="#title">title</a>: {
     'background': 'transparent',
     'color': 'grey',
-    'border': `1px solid ${theme.colors.opaque['dark-2']}`,
+    'border': `1px solid ${<a href="https://git.io/Jv3AZ">theme.colors.opaque['dark-2']</a>}`,
     'padding': '1em',
 
     'panel-is-active'<a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">[?]</a>: {
-      'background': theme.colors.brand['brand-2'],
-      'color': theme.colors.greyscale.white,
+      'background': <a href="https://git.io/Jv3An">theme.colors.brand['brand-2']</a>,
+      'color': <a href="https://git.io/Jv3A8">theme.colors.greyscale.white</a>,
       'border-color': 'transparent'
     },
 
     ':hover'<a href="https://github.com/One-Nexus/Lucid/wiki/Styles#hover">[?]</a>: {
-      'background': theme.colors.brand['brand-6'],
-      'color': theme.colors.greyscale.white
+      'background': <a href="https://git.io/Jv3Al">theme.colors.brand['brand-3']</a>,
+      'color': <a href="https://git.io/Jv3A8">theme.colors.greyscale.white</a>
     }
   },
 
@@ -86,11 +86,11 @@
     'transition': theme.tokens.transition,
 
     'panel-is-active'<a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">[?]</a>: {
-      'color': theme.colors.greyscale.white
+      'color': <a href="https://git.io/Jv3A8">theme.colors.greyscale.white</a>
     },
 
     'title:hover'<a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">[?]</a>: {
-      'color': theme.colors.greyscale.white
+      'color': <a href="https://git.io/Jv3A8">theme.colors.greyscale.white</a>
     }
   },
 

@@ -16,7 +16,7 @@ export default (theme) => ({
     },
 
     ':hover': {
-      'background': theme.colors.brand['brand-6'],
+      'background': theme.colors.brand['brand-3'],
       'color': theme.colors.greyscale.white
     }
   },
