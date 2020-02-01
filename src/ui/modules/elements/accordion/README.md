@@ -1,7 +1,7 @@
 # One-Nexus Accordion
 
 * [Quick Look](#overview)
-* [Default Configuration](#default-configuration)
+* [Configuration](#configuration)
 * [API](#api)
 
 ## Quick Look
@@ -13,9 +13,11 @@
 ]} />
 ```
 
-## Default Configuration
+## Configuration
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
+
+#### Default Configuration
 
 ```js
 {
@@ -61,63 +63,72 @@
 }
 ```
 
-Pass custom options to the `Accordion` object in your theme's config file underneath the `modules` entry (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
+#### Custom Configuration Via Theme
+
+Pass custom configuration to the `Accordion` object in your [theme](https://github.com/esr360/One-Nexus/wiki/Themes) underneath the `modules` entry:
 
 ```js
 {
-  // TODO
+  ...
+
+  modules: {
+    Accordion: {
+      ...
+    }
+  }
 }
 ```
 
 ## API
 
-* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [DefaultProps](#defaultprops)
 * [Props.panels](#propspanels)
-* [Props.toggle](#propstoggle)
+* [Props.persist](#propspersist)
 
-#### DefaultProps
-
-```js
-{
-  object: true,
-  toggle: interactions.toggle
-}
-```
-
-#### Props.panels
+### Props.panels
 
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>Array</code></td>
+    <td><code>Array.&lt;Object></code></td>
   </tr>
 </table>
 
+<pre>
+[{ <a href="#paneltitle">title</a>, <a href="#panelcontent">content</a>, <a href="#panelid">id</a>, <a href="#panelcallback">active</a>, <a href="#panelcallback">callback</a> }(, ...)]
+</pre>
+
+###### Basic Example
+
 ```jsx
 const panels = [
-  { title: 'foo', content: 'bar' },
-  { title: <div>alpha</div>, content: <div>beta</div> }
+  { 
+    title: 'foo', 
+    content: 'bar' 
+  },
+  { 
+    title: <div>alpha</div>, 
+    content: <div>beta</div> 
+  }
 ];
 
 <Accordion panels={panels} />
 ```
 
-##### Panel.title
+#### Panel.title
 
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
+    <td>(<code>String</code> | <code><a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a></code>)</td>
   </tr>
 </table>
 
-##### Panel.content
+#### Panel.content
 
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
+    <td>(<code>String</code> | <code><a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a></code>)</td>
   </tr>
 </table>
 
@@ -141,14 +152,25 @@ Accordions can be nested:
 ]} />
 ```
 
-##### Panel.active
+#### Panel.id
+
+> Use if panels are prone to changing after initial render to preserve correct state
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>String</code></td>
+  </tr>
+</table>
+
+#### Panel.active
 
 > Set panel(s) to be active (open) by default
 
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>Bool</code></td>
+    <td><code>Boolean</code></td>
   </tr>
 </table>
 
@@ -159,25 +181,53 @@ Accordions can be nested:
 ]} />
 ```
 
-#### Props.toggle
+#### Panel.callback
 
-> Overwrite the default `toggle` method
-
-* This method gets called on click of each `title` component
+> Callback function to call on panel toggle
 
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>Function</code></td>
+    <td><code>Function(state: 'open' | 'close')</code></td>
+  </tr>
+</table>
+
+###### Example
+
+```jsx
+<Accordion panels={[
+  ...
+  {
+    title: ..., 
+    content: ..., 
+    callback: (state) => {
+      if (state === 'open') {
+        // do something
+      }
+
+      if (state === 'close') {
+        // do something
+      }
+    }
+  }
+]} />
+```
+
+### Props.persist
+
+> Keep previously opened panels open when toggling a panel
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>Boolean</code></td>
   </tr>
   <tr>
     <td><b>Default</b></td>
-    <td><a href="#toggle"><code>interactions.toggle</code></a></td>
+    <td><code>true</code></td>
   </tr>
 </table>
 
 ```jsx
-<Accordion panels={panels} toggle={event => {
-    // custom toggle event handler logic...
-}} />
+<Accordion panels={panels} persist={false} />
 ```

@@ -6,14 +6,39 @@ const Accordions = ({ layouts, ...props }) => {
   });
 
   const data = [
-    {id: 'alpha', title: 'foo', content: 'bar', active: true},
-    {id: 'beta', title: 'fizz', content: <div>potato</div>}
+    {
+      id: 'alpha', 
+      title: 'foo', 
+      content: 'bar', 
+      active: true
+    },
+    {
+      id: 'beta', 
+      title: 'fizz', 
+      content: <div>potato</div>
+    }
   ];
 
   const partyData = [
-    {id: 'alpha', title: 'foo', content: 'bar', active: true},
-    {id: 'party', title: 'party time', content: 'bar'},
-    {id: 'beta', title: 'fizz', content: <div>potato</div>}
+    {
+      id: 'alpha', 
+      title: 'foo', 
+      content: 'bar', 
+      active: true
+    },
+    {
+      id: 'party', 
+      title: 'party time', 
+      content: 'bar',
+      callback: (state) => {
+        console.log(state);
+      }
+    },
+    {
+      id: 'beta', 
+      title: 'fizz', 
+      content: <div>potato</div>
+    }
   ];
 
   return (
@@ -24,7 +49,7 @@ const Accordions = ({ layouts, ...props }) => {
 
       <Accordion className='fizz' panels={isPartyTime ? partyData : data} />
   
-      <Accordion persist panels={[
+      <Accordion persist={false} panels={[
         {title: 'foo', content: 'bar'},
         {title: 'fizz', content: (
           <Accordion id='foo' panels={[
