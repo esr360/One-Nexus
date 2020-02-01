@@ -48,7 +48,7 @@
 <pre>
 {
   <a href="#configpersist">persist</a>: true,
-  object: true,
+  <a href="#todo">object</a>: true,
 
   <a href="#paneltitle">title</a>: {
     'background': 'transparent',
@@ -98,10 +98,6 @@
   <tr>
     <td><b>Type</b></td>
     <td><code>Boolean</code></td>
-  </tr>
-  <tr>
-    <td><b>Default</b></td>
-    <td><code>true</code></td>
   </tr>
 </table>
 
