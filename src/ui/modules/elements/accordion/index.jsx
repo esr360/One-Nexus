@@ -1,19 +1,19 @@
 import config from './assets/config';
 import styles from './assets/styles';
 
-const Accordion = ({ panels, persist = true, ...props }) => {
+const Accordion = ({ panels, ...props }) => {
   const [live, setLive] = useState(
     panels.reduce(($, { active, id }, index) => active ? $.concat(id || index) : $, [])
   );
 
   return (
     <Module {...props}>
-      {panels.map(({ title, content, id, callback }, index) => {
-        const current = id || index;
-        const toggle = () => setLive(panelUpdater(live, current, persist, callback));
+      {({ config }) => panels.map(({ title, content, id = index, callback }, index) => {
+        const { persist } = config;
+        const toggle = () => setLive(panelUpdater(live, id, persist, callback));
   
         return (
-          <Component name='panel' active={live.includes(current)}>
+          <Component name='panel' active={live.includes(id)}>
             <Component name='title' onClick={toggle}>
               {title}
             </Component>

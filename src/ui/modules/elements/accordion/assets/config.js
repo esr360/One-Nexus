@@ -1,4 +1,5 @@
 export default (theme) => ({
+  persist: true,
   object: true,
 
   title: {

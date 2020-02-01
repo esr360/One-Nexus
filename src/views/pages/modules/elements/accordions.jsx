@@ -49,7 +49,7 @@ const Accordions = ({ layouts, ...props }) => {
 
       <Accordion className='fizz' panels={isPartyTime ? partyData : data} />
   
-      <Accordion persist={false} panels={[
+      <Accordion config={{ persist: false }} panels={[
         {title: 'foo', content: 'bar'},
         {title: 'fizz', content: (
           <Accordion id='foo' panels={[
