@@ -94,25 +94,8 @@ Pass custom configuration to the `Accordion` object in your [theme](https://gith
 </table>
 
 <pre>
-[{ <a href="#paneltitle">title</a>, <a href="#panelcontent">content</a>, <a href="#panelid">id</a>, <a href="#panelcallback">active</a>, <a href="#panelcallback">callback</a> }(, ...)]
+[{ <a href="#paneltitle">title</a>, <a href="#panelcontent">content</a>, <a href="#panelid">id</a>, <a href="#panelcallback">active</a>, <a href="#panelcallback">callback</a> }, ...]
 </pre>
-
-###### Basic Example
-
-```jsx
-const panels = [
-  { 
-    title: 'foo', 
-    content: 'bar' 
-  },
-  { 
-    title: <div>alpha</div>, 
-    content: <div>beta</div> 
-  }
-];
-
-<Accordion panels={panels} />
-```
 
 #### Panel.title
 
