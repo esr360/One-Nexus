@@ -1,5 +1,5 @@
 export default ({ state, config, utils }) => [config, {
-  ...(config.object && utils.object(state)),
+  ...(config.object && utils.object(state, config.gutter)),
 
   panel: ({ state }) => ({
     'display': 'block',

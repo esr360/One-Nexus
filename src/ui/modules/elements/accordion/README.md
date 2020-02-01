@@ -6,6 +6,8 @@
 
 ## Quick Look
 
+> [Learn more about One-Nexus Modules](#TODO)
+
 ###### Multi-Panel
 
 ```jsx
@@ -57,8 +59,9 @@
 
 <pre>
 {
-  <a href="#configpersist">persist</a>: true,
   <a href="#todo">object</a>: true,
+  <a href="#todo">gutter</a>: theme.tokens.margin,
+  <a href="#configpersist">persist</a>: true,
 
   <a href="#title">title</a>: {
     'background': 'transparent',

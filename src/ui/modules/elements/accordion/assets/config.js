@@ -1,6 +1,7 @@
 export default (theme) => ({
-  persist: true,
   object: true,
+  gutter: theme.tokens.margin,
+  persist: true,
 
   title: {
     'background': 'transparent',

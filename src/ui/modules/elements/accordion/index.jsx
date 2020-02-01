@@ -13,7 +13,7 @@ const Accordion = ({ panels, ...props }) => {
         const toggle = () => setLive(panelUpdater(live, id, persist, callback));
   
         return (
-          <Component name='panel' active={live.includes(id)}>
+          <Component name='panel' active={live.includes(id)} key={id}>
             <Component name='title' onClick={toggle}>
               {title}
             </Component>
