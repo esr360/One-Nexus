@@ -56,13 +56,13 @@
     'border': `1px solid ${theme.colors.opaque['dark-2']}`,
     'padding': '1em',
 
-    <a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">'panel-is-active'↗</a>: {
+    <a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">'panel-is-active'</a>: {
       'background': theme.colors.brand['brand-2'],
       'color': theme.colors.greyscale.white,
       'border-color': 'transparent'
     },
 
-    <a href="https://github.com/One-Nexus/Lucid/wiki/Styles#hover">':hover'↗</a>: {
+    <a href="https://github.com/One-Nexus/Lucid/wiki/Styles#hover">':hover'</a>: {
       'background': theme.colors.brand['brand-6'],
       'color': theme.colors.greyscale.white
     }
@@ -72,11 +72,11 @@
     'color': theme.colors.opaque['dark-4'],
     'transition': theme.tokens.transition,
 
-    <a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">'panel-is-active'↗</a>: {
+    <a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">'panel-is-active'</a>: {
       'color': theme.colors.greyscale.white
     },
 
-    <a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">'title:hover'↗</a>: {
+    <a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">'title:hover'</a>: {
       'color': theme.colors.greyscale.white
     }
   },
