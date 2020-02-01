@@ -6,12 +6,36 @@
 
 ## Quick Look
 
+###### Multi-Panel
+
 ```jsx
 <Accordion panels={[
-  { title: 'foo', content: 'bar' },
-  { title: 'fizz', content: 'buzz' }
+  { 
+    title: 'foo', 
+    content: 'bar' 
+  },
+  { 
+    title: 'fizz', 
+    content: 'buzz' 
+  }
 ]} />
 ```
+
+###### [[Upcoming Feature]](#TODO) Single-Panel
+
+```jsx
+<Accordion title='foo' content='bar' />
+```
+
+### Internal Interface [[?]](#TODO)
+
+<Module { persist }>
+  <Component name='panel' { active }>
+    <Component name='title' />
+    <Component name='content' />
+  </Component>
+  ...
+</Module>
 
 ## Configuration
 
