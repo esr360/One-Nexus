@@ -240,7 +240,7 @@ Accordions can be nested:
 npm install --save @one-nexus/modules
 ```
 
-```js
+```jsx
 import React from 'react';
 import { Accordion } from '@one-nexus/modules';
 
