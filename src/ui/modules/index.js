@@ -6,15 +6,15 @@ export { default as Alert } from './elements/Alert';
 // export { default as Carousel } from './elements/carousel/carousel.jsx';
 export { default as Container } from './elements/Container';
 // export { default as Form } from './elements/form/form.jsx';
-// export { default as Heading } from './elements/heading/heading';
+export { default as Heading } from './elements/Heading/Heading';
 // export { default as Image } from './elements/image/image';
-// export { default as List } from './elements/list/list';
+export { default as List } from './elements/List/List';
 // export { default as Modal } from './elements/modal/modal.jsx';
-// export { default as Paragraph } from './elements/paragraph/paragraph';
+export { default as Paragraph } from './elements/Paragraph/Paragraph';
 // export { default as Table } from './elements/table/table';
 // export { default as Tabs } from './elements/tabs/tabs.jsx';
 // export { default as Tooltip } from './elements/tooltip/tooltip';
-// export { default as Well } from './elements/well/well';
+export { default as Well } from './elements/Well/Well';
 
 // // Objects
 // export { default as Billboard } from './objects/billboard/billboard.jsx';

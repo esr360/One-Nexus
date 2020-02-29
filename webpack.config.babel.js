@@ -18,11 +18,15 @@ export default function(env) {
   let plugins = [
     new webpack.DefinePlugin({
       'process.env': {
+        ONE_NEXUS: true,
         SYNERGY: true,
         // NODE_ENV: JSON.stringify(isDevServer ? 'development' : 'production'),
         // APP_ENV : JSON.stringify(staticBuild ? 'node' : 'web')
       }
     }),
+    // new webpack.ProvidePlugin({
+    //   'React': 'react'
+    // })
   ];
 
   // if (isDevServer) {
@@ -63,13 +67,18 @@ export default function(env) {
       port: 3000
     },
 
+    // externals: {
+    //   'react': 'React',
+    //   'react-dom': 'ReactDOM'
+    // },
+
     plugins,
 
     module: { 
       rules: [ 
         {
           test: /\.(js|jsx|jss)$/,
-          exclude: /node_modules/,
+          // exclude: (MODULE) => ~MODULE.indexOf('/node_modules/') && !(~MODULE.indexOf('/@onenexus/')),
           use: 'babel-loader'
         },
         {

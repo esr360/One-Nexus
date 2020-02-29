@@ -37,7 +37,7 @@ export default (theme) => ({
   content: {
     'background': 'white',
     'color': 'grey',
-    'border': '1px solid rgba(0,0,0, 0.15)',
+    'border': `1px solid ${theme.colors.opaque['dark-2']}`,
     'padding': '1.5em',
   }
 });

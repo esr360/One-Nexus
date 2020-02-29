@@ -1,12 +1,12 @@
 export { default as index } from './index.jsx';
 export { default as test } from './test.jsx';
 export { default as Accordions } from './modules/elements/Accordions.jsx';
-export { default as alerts } from './modules/elements/alert.jsx';
+export { default as Alerts } from './modules/elements/Alert.jsx';
 export { default as blockquotes } from './modules/elements/blockquotes.jsx';
 export { default as buttons } from './modules/elements/button.jsx';
 export { default as carousels } from './modules/elements/carousel.jsx';
 export { default as forms } from './modules/elements/form.jsx';
-export { default as headings } from './modules/elements/heading.jsx';
+export { default as Headings } from './modules/elements/Heading.jsx';
 export { default as images } from './modules/elements/image.jsx';
 export { default as lists } from './modules/elements/list.jsx';
 export { default as modals } from './modules/elements/modal.jsx';

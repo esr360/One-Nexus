@@ -1,9 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import App from './app';
 import { AppContainer } from 'react-hot-loader';
+import deepextend from 'deep-extend';
 
 const container = document.getElementById('app');
+
+// Dependencies
+window.ONE_NEXUS = {
+  deepextend
+}
 
 if (container && container.classList.contains('render')) {
   // ReactDOM.render(<AppContainer><App /></AppContainer>, container);

@@ -11,11 +11,12 @@ import { app as config } from './app.json';
 // Vendor
 //*****************************************************************
 
-import React, { useState, Fragment } from 'react';
+import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import PAX5 from '../../../PAX5/PAX5/src/pax5';
-import { Container } from '../../../Synergy/Synergy/dist/synergy';
+import { Container, useTheme, useConfig, useUtils } from '../../../Synergy/Synergy/src';
+// import { Container, useTheme, useConfig, useUtils} from '../../../Synergy/Synergy/dist/synergy';
 
 // UI
 //*****************************************************************
@@ -33,7 +34,18 @@ import * as layouts from './views/layouts';
 // DOM/Window Preparation
 //*****************************************************************
 
-Object.assign(window, { PAX5, Link, useState, Fragment });
+const { useState, useContext, Fragment } = React;
+
+Object.assign(window, { 
+  React, 
+  useState, 
+  useContext, 
+  Fragment,
+  useTheme, 
+  useConfig, 
+  PAX5, 
+  Link 
+});
 
 // Render App
 //*****************************************************************
@@ -41,7 +53,7 @@ Object.assign(window, { PAX5, Link, useState, Fragment });
 const App = ({ modules, theme, utils, pages, layouts, config }) => {
   return (
     <HashRouter>    
-      <Container {...{ modules, theme, utils, globals: { React, useState } }}>
+      <Container {...{ modules, theme, utils }}>
         <Route path='/' exact render={() => <pages.index config={config} />} />
 
         {Object.keys(pages).map((page, index) => (

@@ -1,6 +1,6 @@
 # One-Nexus Accordion
 
-* [Quick Look](#overview)
+* [Quick Look](#quick-look)
 * [Configuration](#configuration)
 * [API](#api)
 
@@ -59,45 +59,45 @@
 
 <pre>
 {
-  <a href="#todo">object</a>: true,
-  <a href="#todo">gutter</a>: <a href="https://git.io/Jv3AG">theme.tokens.margin</a>,
+  <a href="TODO">object</a>: true,
+  <a href="TODO">gutter</a>: <a href="TODO">theme.tokens.margin</a>,
   <a href="#configpersist">persist</a>: true,
 
   <a href="#title">title</a>: {
     'background': 'transparent',
     'color': 'grey',
-    'border': `1px solid ${<a href="https://git.io/Jv3AZ">theme.colors.opaque['dark-2']</a>}`,
+    'border': `1px solid ${<a href="TODO">theme.colors.opaque['dark-2']</a>}`,
     'padding': '1em',
 
     'panel-is-active'<a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">[?]</a>: {
-      'background': <a href="https://git.io/Jv3An">theme.colors.brand['brand-2']</a>,
-      'color': <a href="https://git.io/Jv3A8">theme.colors.greyscale.white</a>,
+      'background': <a href="TODO">theme.colors.brand['brand-2']</a>,
+      'color': <a href="TODO">theme.colors.greyscale.white</a>,
       'border-color': 'transparent'
     },
 
     ':hover'<a href="https://github.com/One-Nexus/Lucid/wiki/Styles#hover">[?]</a>: {
-      'background': <a href="https://git.io/Jv3Al">theme.colors.brand['brand-3']</a>,
-      'color': <a href="https://git.io/Jv3A8">theme.colors.greyscale.white</a>
+      'background': <a href="TODO">theme.colors.brand['brand-3']</a>,
+      'color': <a href="TODO">theme.colors.greyscale.white</a>
     }
   },
 
   <a href="#toggle">toggle</a>: {
-    'color': theme.colors.opaque['dark-4'],
-    'transition': theme.tokens.transition,
+    'color': <a href="TODO">theme.colors.opaque['dark-4']</a>,
+    'transition': <a href="TODO">theme.tokens.transition</a>,
 
     'panel-is-active'<a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">[?]</a>: {
-      'color': <a href="https://git.io/Jv3A8">theme.colors.greyscale.white</a>
+      'color': <a href="TODO">theme.colors.greyscale.white</a>
     },
 
     'title:hover'<a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">[?]</a>: {
-      'color': <a href="https://git.io/Jv3A8">theme.colors.greyscale.white</a>
+      'color': <a href="TODO">theme.colors.greyscale.white</a>
     }
   },
 
   <a href="#content">content</a>: {
     'background': 'white',
     'color': 'grey',
-    'border': '1px solid rgba(0,0,0, 0.15)',
+    'border': `1px solid ${<a href="TODO">theme.colors.opaque['dark-2']</a>}`,
     'padding': '1.5em',
   }
 }
@@ -140,7 +140,7 @@
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td>(<code>String</code> | <code><a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a></code>)</td>
+    <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
   </tr>
 </table>
 
@@ -151,7 +151,7 @@
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td>(<code>String</code> | <code><a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a></code>)</td>
+    <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
   </tr>
 </table>
 

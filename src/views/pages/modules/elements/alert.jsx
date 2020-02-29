@@ -18,15 +18,15 @@ const AlertBars = props =>  (
         }</SyntaxHighlighter>
 
         <Well>
-            <Alert>This is a default alert</Alert>
+            <Alert alert='success'>This is a default alert</Alert>
         </Well>
 
-        <List>
+        {/* <List>
             <List.Item><Link to='#configuration'>Configuration</Link></List.Item>
             <List.Item><Link to='#styles'>Styles</Link></List.Item>
             <List.Item><Link to='#interactions'>Interactions</Link></List.Item>
             <List.Item><Link to='#render-with-react'>Render With React</Link></List.Item>
-        </List>
+        </List> */}
 
         <Section id='configuration'>
             <Heading heading='3' size='5'>Configuration</Heading>
@@ -74,10 +74,10 @@ const AlertBars = props =>  (
 
             <Heading heading='5' size='4'>alert.alerts</Heading>
 
-            <List>
+            {/* <List>
                 <List.Item><b>color: </b> The background color of the alert</List.Item>
                 <List.Item><b>icon:</b> <a href="https://fontawesome.com/v4.7.0/icons/" target="blank">FontAwesome</a> keyword for the alert's icon</List.Item>
-            </List>
+            </List> */}
 
             <Heading heading='5' size='4'>alert.icon['default-enable']</Heading>
 
@@ -124,14 +124,14 @@ const AlertBars = props =>  (
                 '<Alert>This is an alert</Alert>'
             }</SyntaxHighlighter>
 
-            <List>
+            {/* <List>
                 <List.Item><Link to='#props.bar'>[...Global.props]</Link></List.Item>
                 <List.Item><Link to='#props.bar'>Props.bar</Link></List.Item>
                 <List.Item><Link to='#props.box'>Props.box</Link></List.Item>
                 <List.Item><Link to='#props.alert'>Props.alert</Link></List.Item>
                 <List.Item><Link to='#props.icon'>Props.icon</Link></List.Item>
                 <List.Item><Link to='#props.close'>Props.close</Link></List.Item>
-            </List>
+            </List> */}
 
             <Section id='props.bar'>
                 <Heading size='5'>Props.bar</Heading>
@@ -216,7 +216,7 @@ const AlertBars = props =>  (
                     type: '(String|Array)'
                 }]} /> */}
 
-                <List>
+                {/* <List>
                     <List.Item>
                         <Link to='#overwrite-default-icon'>Overwrite default icon</Link>
                     </List.Item>
@@ -229,7 +229,7 @@ const AlertBars = props =>  (
                     <List.Item>
                         <Link to='#right-aligned-custom-icon'>Right-aligned custom icon</Link>
                     </List.Item>
-                </List>
+                </List> */}
 
                 <Section id='overwrite-default-icon'>
                     <Heading size='4'>Overwrite default icon</Heading>

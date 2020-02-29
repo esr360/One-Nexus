@@ -17,6 +17,12 @@ export default deepextend(core, {
       }
     },
     'Alert': {
+      alerts: {
+        carrot: {
+          color: ({ colors }) => colors.brand['brand-6'],
+          icon: 'check'
+        }
+      }
     },
     'Modal': {
     },
