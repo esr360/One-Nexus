@@ -128,7 +128,7 @@
 
 #### [[Upcoming Feature]](#TODO) Prop Shorthand
 
-> Props passed to Modules will be merged into their evaluated configuration
+> Props passed to Modules will be merged into the Module's evaluated configuration
 
 ```jsx
 <Accordion persist={false} panels={...} />
