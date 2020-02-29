@@ -112,11 +112,27 @@
     <td><b>Type</b></td>
     <td><code>Boolean</code></td>
   </tr>
+  <tr>
+    <td><b>Default</b></td>
+    <td><code>true</code></td>
+  </tr>
 </table>
 
-### Custom Configuration
+### Passing Custom Configuration
 
-> [Learn how to pass custom configuration to your Modules](#TODO)
+> Configuration passed to the `config` prop will be merged with the default configuration
+
+```jsx
+<Accordion config={{ persist: false }} panels={...} />
+```
+
+#### [[Upcoming Feature]](#TODO) Prop Shorthand
+
+> Props passed to Modules will be merged into their evaluated configuration
+
+```jsx
+<Accordion persist={false} panels={...} />
+```
 
 ## API
 
