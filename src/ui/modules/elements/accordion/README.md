@@ -44,13 +44,6 @@
 </Module>
 ```
 
-##### Components [[?]](#TODO)
-
-* ###### panel
-* ###### title
-* ###### toggle
-* ###### content
-
 ## Configuration
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about Module configutation
@@ -63,7 +56,7 @@
   <a href="TODO">gutter</a>: <a href="TODO">theme.tokens.margin</a>,
   <a href="#configpersist">persist</a>: true,
 
-  <a href="#title">title</a>: {
+  title: {
     'background': 'transparent',
     'color': 'grey',
     'border': `1px solid ${<a href="TODO">theme.colors.opaque['dark-2']</a>}`,
@@ -81,7 +74,7 @@
     }
   },
 
-  <a href="#toggle">toggle</a>: {
+  toggle: {
     'color': <a href="TODO">theme.colors.opaque['dark-4']</a>,
     'transition': <a href="TODO">theme.tokens.transition</a>,
 
@@ -94,7 +87,7 @@
     }
   },
 
-  <a href="#content">content</a>: {
+  content: {
     'background': 'white',
     'color': 'grey',
     'border': `1px solid ${<a href="TODO">theme.colors.opaque['dark-2']</a>}`,
@@ -120,18 +113,10 @@
 
 ### Passing Custom Configuration
 
-> Configuration passed to the `config` prop will be merged with the default configuration
+> Configuration passed to the `config` prop will be merged into the default configuration
 
 ```jsx
 <Accordion config={{ persist: false }} panels={...} />
-```
-
-#### [[Upcoming Feature]](#TODO) Prop Shorthand
-
-> Props passed to Modules will be merged into the Module's evaluated configuration
-
-```jsx
-<Accordion persist={false} panels={...} />
 ```
 
 ## API
@@ -140,7 +125,7 @@
 
 ### `props.panels`
 
-> The unique data sections that form the [Accordion panel components](#panel)
+> The unique data sections that form the Accordion panel components
 
 <table>
   <tr>
@@ -151,7 +136,7 @@
 
 #### `panel.title`
 
-> The content to use for the [title Component](#title) of the Accordion panel
+> The content to use for the title Component of the Accordion panel
 
 <table>
   <tr>
@@ -162,7 +147,7 @@
 
 #### `panel.content`
 
-> The content to use for the [content Component](#content) of the Accordion panel
+> The content to use for the content Component of the Accordion panel
 
 <table>
   <tr>

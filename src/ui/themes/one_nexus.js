@@ -5,7 +5,7 @@ export default deepextend(core, {
   'colors': {
     'brand': {
       'brand-1': 'grey',
-      'brand-6': 'pink'
+      'brand-6': 'orange'
     }
   },
   'modules': {

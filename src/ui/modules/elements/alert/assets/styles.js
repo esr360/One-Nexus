@@ -2,10 +2,9 @@ export default ({ state, config, utils }) => [config, {
   ...(config.object && utils.object(state, config.gutter)),
 
   'position': 'relative',
-  'display': state.dismissed ? 'none' : 'block',
   'background-color': config.alerts[state.alert].color,
 
-  close: () => ({
+  dismiss: () => ({
     cursor: 'pointer',
     float: 'right',
     lineHeight: 1.25
@@ -17,4 +16,4 @@ export default ({ state, config, utils }) => [config, {
     'float': state.right ? 'right' : 'left',
     'line-height': 1.25,
   })
-}]
+}];

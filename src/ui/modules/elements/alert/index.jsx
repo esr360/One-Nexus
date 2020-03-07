@@ -1,24 +1,18 @@
 import config from './assets/config';
 import styles from './assets/styles';
 
-const Alert = (props) => {
-  const [dismissed, dismiss] = useState(false);
-  const theme = useTheme();
-  const evaluatedConfig = useConfig(config, theme);
-
-  console.log(evaluatedConfig);
-
-  let { alert, close, icon, heading } = props;
+const Alert = ({ alert, dismiss, icon, heading, children, ...props }) => {
+  const evaluatedConfig = useConfig(config, useTheme());
 
   return (
-    <Module dismissed={dismissed} alert={alert || evaluatedConfig.default} {...props}>
-      {close && <Component name='close' className={`fa fa-times`} onClick={() => dismiss(true)} />}
+    <Module alert={alert || evaluatedConfig.default} {...props}>
+      {dismiss && <Component name='dismiss' className={`fa fa-times`} onClick={dismiss} />}
 
       {icon && <Component name='icon' className={`fa fa-${icon}`} />}
 
       {heading && <Component name='heading'>{heading}</Component>}
 
-      {heading ? <Component name='content'>{props.children}</Component> : props.children}
+      {heading ? <Component name='content'>{children}</Component> : children}
     </Module>
   );
 }

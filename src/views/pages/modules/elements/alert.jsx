@@ -6,8 +6,11 @@ function DEMO__HIDE_ALERT() {
     document.getElementById('alert-demo').style.display = 'none';
 }
 
-const AlertBars = props =>  (
-    <Base {...props.config.views}>
+const AlertBars = props =>  {
+    const [demo1Visible, setDemo1Visibe] = useState(true);
+
+    return (
+      <Base {...props.config.views}>
 
         <Heading heading='2' size='7'>Alert</Heading>
 
@@ -19,6 +22,7 @@ const AlertBars = props =>  (
 
         <Well>
             <Alert alert='success'>This is a default alert</Alert>
+            {demo1Visible && <Alert alert='carrot' dismiss={() => setDemo1Visibe(false)}>This is a carrot alert</Alert>}
         </Well>
 
         {/* <List>
@@ -354,6 +358,7 @@ const AlertBars = props =>  (
         </Section>
 
     </Base>
-);
+    );
+}
 
 export default AlertBars;

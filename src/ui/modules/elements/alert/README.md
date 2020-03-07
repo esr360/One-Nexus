@@ -1,308 +1,125 @@
-# One-Nexus Alert
+# One-Nexus Alert/Notification
 
-* [Overview](#overview)
+* [Quick Look](#quick-look)
 * [Configuration](#configuration)
-* [Styles](#styles)
-* [Interactions](#interactions)
-* [Rendering](#rendering)
+* [API](#api)
 
-## Overview
+## Quick Look
 
-### Quick Look
+> [Learn more about One-Nexus Modules](#TODO)
+
+###### Basic
 
 ```jsx
-<Alert>This is an alert</Alert>
+<Alert alert='success'>This is an alert</Alert>
 ```
 
-### Modifiers
+###### Dismiss Alert
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
+```jsx
+const [someCondition, setSomeCondition] = useState(true);
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Modifier</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><a href="https://github.com/esr360/One-Nexus/wiki/Global-Modifiers">[...Global modifiers]</a></td>
-            <td>Modifiers that can be applied to any module</td>
-        </tr>
-        <tr>
-            <td><a href="#configuration">[...alert.alerts]</a></td>
-            <td>The different type/styles of alerts</td>
-        </tr>
-        <tr>
-            <td><a href="#configuration"><code>bar</code></a></td>
-            <td>Regular alert bar (applied by default)</td>
-        </tr>
-        <tr>
-            <td><a href="#configuration"><code>box</code></a></td>
-            <td>Alternative to <code>bar</code> - has more padding</td>
-        </tr>
-    </tbody>
-</table>
+return someCondition && (
+  <Alert alert='success' dismiss={() => setSomeCondition(false)}>This is an alert</Alert>
+);
+```
+
+### Structural Interface [[?]](#TODO)
+
+```jsx
+<Module>
+  <Component name='dismiss' />
+  <Component name='icon' />
+  <Component name='heading' />
+  <Component name='content' />
+</Module>
+```
 
 ## Configuration
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about Module configutation
 
-```js
+### Default Configuration
+
+<pre>
 {
-    'name': 'alert',
-    'color': theme.colors.greyscale.white,
+  object: true,
+  gutter: theme.tokens.margin,
+  default: 'info',
+  icon: true,
 
-    'alerts': {
-        'error': {
-            'color': theme.colors.alert.error,
-            'icon': 'times'
-        },
-        'success': {
-            'color': theme.colors.alert.success,
-            'icon': 'check'
-        },
-        'info': {
-            'color': theme.colors.alert.info,
-            'icon': 'info-circle'
-        },
-        'help': {
-            'color': theme.colors.alert.help,
-            'icon': 'question-circle'
-        }
+  'color': theme.colors.greyscale.white,
+  'padding': '0.85em',
+
+  'is-box': {
+    'padding': '1.5em'
+  },
+
+  alerts: {
+    error: {
+      color: theme.colors.alert.error,
+      icon: 'times'
     },
-
-    icon: {
-        'default-enable': true
+    success: {
+      color: theme.colors.alert.success,
+      icon: 'check'
     },
-
-    'modifier(bar)': {
-        'padding': '0.85em'
+    info: {
+      color: theme.colors.alert.info,
+      icon: 'info-circle'
     },
-
-    'modifier(box)': {
-        'padding': '1.5em'
+    help: {
+      color: theme.colors.alert.help,
+      icon: 'question-circle'
     }
+  },
+
+  content: {
+    'margin-top': `calc(${theme.tokens.margin}/2)`,
+    'padding-top': `calc(${theme.tokens.margin}/2)`,
+    'border-top': `1px solid ${theme.colors.opaque['dark-1']}`
+  }
 }
-```
+</pre>
 
-> Certain values from the above configuration are excluded from the below table ([learn more](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules#documenting-configuration-properties))
+### `config.alerts`
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>alerts[alert].color</code></td>
-            <td>The background color for the specified alert</td>
-        </tr>
-        <tr>
-            <td><code>alerts[alert].icon</code></td>
-            <td><a href="http://fontawesome.io/icons/">FontAwesome</a> icon name to use as the alert icon</td>
-        </tr>
-        <tr>
-            <td><code>icon['default-enable']</code></td>
-            <td>Show an alert's icon by default (without passing a modifier/prop)</td>
-        </tr>
-    </tbody>
-</table>
-
-Pass custom options to the `alert` object in your theme's config file (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
-
-```js
-{
-    "theme": {
-        "alert": {
-            "alerts": {
-                "error": {
-                    "color": "red",
-                    "icon": "times"
-                },
-                "success": {
-                    "color": "#39dd65",
-                    "icon": "check"
-                },
-                "info": {
-                    "color": "#27a7fa",
-                    "icon": "info-circle"
-                },
-                "help": {
-                    "color": "#f4cf2c",
-                    "icon": "question-circle"
-                },
-                "danger": {
-                    "color": "darkred",
-                    "icon": "exclamation-triangle"
-                }
-            }
-        }
-    }
-}
-```
-
-## Styles
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
-
-## Interactions
-
-> Module interactions are applied by default within the module's `.jsx` file ([learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions))
-
-* [Dismiss](#dismiss)
-
-> Interactions are defined in [ui/modules/elements/alert/alert.js](../../../modules/elements/alert/alert.js)
-
-### Dismiss
-
-> Dismiss an alert
-
-```js
-Alert.dismiss(alert);
-```
+> Keep previously opened panels open when toggling a panel
 
 <table>
-    <thead>
-        <tr>
-            <td><b>Parameter</b></td>
-            <td><b>Type</b></td>
-            <td><b>Description<b/></td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>alert</code></td>
-            <td><a href="#TODO">Synergy selector</a></td>
-            <td>The alert(s) to dismiss (if not passed, all alerts will be dismissed)</td>
-        </tr>
-    </tbody>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code><code>Array.&lt;{ <a href="#todo">color</a>, <a href="#panelcontent">icon</a> }></code></code></td>
+  </tr>
+  <tr>
+    <td><b>Default</b></td>
+    <td><a href="#">See above table</a></td>
+  </tr>
 </table>
 
-#### Examples
+### `config.default`
 
-```js
-// Dismiss alert with ID 'foo'
-Alert.dismiss(document.getElementById('foo'));
+@TODO
 
-// Dismiss alert with ID 'foo'
-Alert.dismiss('#foo');
+### `config.icon`
 
-// Dismiss all alerts with class 'alert'
-Alert.dismiss(document.querySelectorAll('.foo'));
+@TODO
 
-// Dismiss all alerts with class 'alert'
-Alert.dismiss('.alert');
+### Passing Custom Configuration
 
-// Dismmiss all alerts
-Alert.dismiss();
-```
+> Configuration passed to the `config` prop will be merged into the default configuration
 
 ```jsx
-// Dismiss alert from React Component reference
-// Adapted from https://reactjs.org/docs/refs-and-the-dom.html#creating-refs
-class MyComponent extends React.Component {
-    constructor(props) {
-        super(props);
-        this.myRef = React.createRef();
-    }
-
-    componentDidMount() {
-        // Close the alert after 2 seconds
-        setTimeout(() => Alert.dismiss(this.myRef.current), 2000);
-    }
-
-    render() {
-        return <Alert ref={this.myRef}>My Alert</Alert>;
-    }
-}
+<Alert config={{ icon: false }} alert='success' />
 ```
 
-## Rendering
+## API
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
+* [`props.alert`](#propsalert)
+* [`props.icon`](#propsicon)
+* [`props.dismiss`](#propsdismiss)
 
-* [Examples](#examples)
-* [API](#api)
-
-### Examples
-
-* [Basic Example](#basic-example)
-
-#### Basic Example
-
-```jsx
-<Alert>This is an alert</Alert>
-```
-
-### API
-
-* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [DefaultProps](#defaultprops)
-* [Props.bar](#propsbar)
-* [Props.box](#propsbox)
-* [Props.alert](#propsalert)
-* [Props.icon](#propsicon)
-* [Props.close](#propsicon)
-* [Props.dismiss](#propsdismiss)
-
-#### DefaultProps
-
-```js
-{
-    alert: 'success',
-    bar: true,
-    box: false,
-    object: true,
-    icon: undefined,
-    dismiss: interactions.dismiss
-}
-```
-
-#### Props.bar
-
-> Set to add `bar` modifier
-
-<table>
-    <tr>
-        <td><b>Type</b></td>
-        <td><code>Bool</code></td>
-    </tr>
-    <tr>
-        <td><b>Default</b></td>
-        <td><code>true</code></td>
-    </tr>
-</table>
-
-```jsx
-<Alert bar>This is an alert</Alert>
-```
-
-#### Props.box
-
-> Set to add `box` modifier
-
-<table>
-    <tr>
-        <td><b>Type</b></td>
-        <td><code>Bool</code></td>
-    </tr>
-    <tr>
-        <td><b>Default</b></td>
-        <td><code>false</code></td>
-    </tr>
-</table>
-
-> Setting this to `true` will negate the value of `Props.bar`
-
-```jsx
-<Alert box>This is an alert</Alert>
-```
-
-#### Props.alert
+#### `props.alert`
 
 > The type/color of alert
 
@@ -323,7 +140,7 @@ class MyComponent extends React.Component {
 <Alert alert='success'>This is an alert</Alert>
 ```
 
-#### Props.icon
+#### `props.icon`
 
 > Add an icon to the alert
 
@@ -371,7 +188,7 @@ class MyComponent extends React.Component {
 <Alert close>This is an alert</Alert>
 ```
 
-#### Props.dismiss
+#### `props.dismiss`
 
 > Overwrite the default `dismiss` method
 
