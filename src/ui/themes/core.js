@@ -1,9 +1,11 @@
 export default {
+  singleClass: true,
   colors: {
     brand: {
       'brand-1': '#2E3882',
       'brand-2': '#06d2ff',
-      'brand-3': '#04CEC0'
+      'brand-3': '#04CEC0',
+      'brand-3': 'yellow'
     },
     alert:{
       'error': '#D9434E',
@@ -37,8 +39,6 @@ export default {
       'twitter': '#63CEF2',
       'linkedin': '#117BB8',
       'github': '#1C1C1C',
-      'skype': '#63CEF2',
-      'pinterest': '#C92228',
       'instagram': '#5280A5',
       'youtube': '#CB312E',
       'dribbble': '#EB4C89',

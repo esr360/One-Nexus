@@ -4,7 +4,6 @@ import core from './core';
 export default deepextend(core, {
   'colors': {
     'brand': {
-      'brand-1': 'grey',
       'brand-6': 'orange'
     }
   },

@@ -1,36 +1,36 @@
 import Color from 'color';
 
-export default function config(theme) {
-    return {
-        'name': 'button',
-        'color': theme.colors.greyscale.white,
-        'background': theme.colors.greyscale['grey-4'],
-        ':hover': {
-            'background': background => Color(background).darken(0.1).string()
-        },
-        'transition': theme.core.transition,
-        'padding-y': '0.65em',
-        'padding-x': '1em',
-        'line-height': '1',
-        'font-weight': 'normal',
-        'border-width': '1px',
-        'border-style': 'solid',
-        'disabled-opacity': 0.6,
-        'round-radius': '0.4em',
-        'group-spacing': '0.5em',
-        'group-stack': theme.grid.breakpoints['break-2'],
-        'palettes': ['brand', 'greyscale', 'alert', 'social'],
-        'colors': {
-            ...theme.colors.brand,
-            ...theme.colors.alert,
-            ...theme.colors.greyscale,
-            ...theme.colors.social
-        },
-        'sizes': theme.typography.sizes,
-        'active': {
-            'background': theme.colors.brand['brand-1'],
-            'color': theme.colors.greyscale.white
-        },
-        'greyscale-text-threshold': 77
-    }
-}
+export default (theme) => ({
+  'color': theme.colors.greyscale.white,
+  'background': theme.colors.greyscale['grey-4'],
+  'transition': theme.tokens.transition,
+  'padding-y': '0.65em',
+  'padding-x': '1em',
+  'line-height': '1',
+  'font-weight': 'normal',
+  'border-width': '1px',
+  'border-style': 'solid',
+  'disabled-opacity': 0.6,
+  'round-radius': '0.4em',
+  'group-spacing': '0.5em',
+  'group-stack': theme.grid.breakpoints['break-2'],
+  'greyscale-text-threshold': 77,
+  'palettes': ['brand', 'greyscale', 'alert', 'social'],
+  'sizes': theme.typography.sizes,
+
+  'colors': {
+    ...theme.colors.brand,
+    ...theme.colors.alert,
+    ...theme.colors.greyscale,
+    ...theme.colors.social
+  },
+
+  ':hover': {
+    'background': prev => Color(prev).darken(0.2).string()
+  },
+
+  'active': {
+    'background': theme.colors.brand['brand-1'],
+    'color': theme.colors.greyscale.white
+  }
+});

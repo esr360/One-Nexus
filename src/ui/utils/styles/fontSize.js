@@ -1,7 +1,7 @@
 /**
- * Determine font=size of element based off modifier
+ * Determine font-size of element based off modifier
  */
-export default function fontSize(element, sizes, globals, custom) {
+export default function fontSize(state, sizes, globals, custom) {
     const defaults = {
         'fluid-scaling': 'modifier',
         'min-vw': globals.grid.breakpoints['break-1'],
@@ -62,12 +62,12 @@ export default function fontSize(element, sizes, globals, custom) {
         const minFontsize = msLrValues[index - 1] + 'em';
         const maxFontSize = value;
 
-        if (element.is(key)) {
+        if (state[key]) {
             if (config['fluid-scaling'] === true) {
                 return fluidScaling(minFontsize, maxFontSize, minVw, maxVw, value);
             }
 
-            if (config['fluid-scaling'] === 'modifier' && element.is('fluid')) {
+            if (config['fluid-scaling'] === 'modifier' && state.fluid) {
                 return fluidScaling(minFontsize, maxFontSize, minVw, maxVw, value);
             }
 

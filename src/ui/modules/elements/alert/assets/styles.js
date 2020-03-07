@@ -1,8 +1,8 @@
-export default ({ state, config, utils }) => [config, {
+export default ({ state, config: { alerts, ...config }, utils }) => [config, {
   ...(config.object && utils.object(state, config.gutter)),
 
   'position': 'relative',
-  'background-color': config.alerts[state.alert].color,
+  'background-color': alerts[state.alert || Object.keys(state).find(i => alerts[i])].color,
 
   dismiss: () => ({
     cursor: 'pointer',
