@@ -1,4 +1,10 @@
-export { default as media } from './media';
+export function minWidth(query) {
+  return window.matchMedia(`(min-width: ${query}`).matches
+}
+
+export function maxWidth(query) {
+  return window.matchMedia(`(max-width: ${query}`).matches
+}
 
 // interactions
 export { default as dynamicCallback } from './interactions/dynamicCallback';

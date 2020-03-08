@@ -1,34 +1,38 @@
 import Color from 'color';
 
-export default ({ element, theme, state, context, config, utils }) => [config, {
+export default ({ theme, state, context, config, utils }) => [config, {
   'display': 'inline-block',
   'border-color': 'transparent',
   'text-decoration': 'none',
   'vertical-align': 'middle',
   'cursor': 'pointer',
-  'font-size': utils.fontSize(element, config.sizes, theme),
+  'font-size': utils.fontSize(state, config.sizes, theme, config),
   'padding': `${config['padding-y']} ${config['padding-x']}`,
 
-  ...Object.entries(config.colors).reduce((result, [key, value]) => {
-    return state[key] && !state.active ? {
-      'background-color': state.border ? 'transparent' : value,
-      'border-color': state.border ? value : 'transparent',
-      'color': (prev) => {
-        if (Color(value).luminosity() > 0.6 && !state.border) {
-          return theme.colors.opaque['dark-4'];
-        }
+  ...Object.entries(config.colors).reduce(($, [key, value]) => {
+    return state[key] ? {
+      'background': value,
+      'border-color': 'transparent',
 
-        return state.border ? value : prev;
+      'color': (prev) => {
+        return Color(value).luminosity() > config.lightThreshold ? config['color-inverse'] : prev;
       },
 
       ':hover': {
-        ...['background-color', 'border-color'].reduce(($, prop) => {
-          return $[prop] = config[':hover'].background(value), $;
-        }, {}),
+        'background': config.hover.background(value)
+      },
 
-        'color': config.color
+      'is-border': {
+        'background': 'transparent',
+        'color': value,
+        'border-color': value,
+
+        ':hover': {
+          'background': value,
+          'color': config.color
+        }
       }
-    } : result;
+    } : $;
   }, {}),
 
   'is-block': {
@@ -38,36 +42,12 @@ export default ({ element, theme, state, context, config, utils }) => [config, {
 
   'is-disabled': {
     'transition-delay': '999s',
-    'opacity': config['disabled-opacity'],
     'cursor': 'not-allowed'
-  },
-
-  'is-round': {
-    'border-radius': config['round-radius']
-  },
-
-  'is-oval': {
-    'border-radius': '1em'
-  },
-
-  'is-sharp': {
-    'border-radius': 0
   },
 
   'is-icon': {
     'text-align': 'center',
     'padding': config['padding-y']
-  },
-
-  'is-active': {
-    'background': config.active.background,
-    'border-color': config.active.background,
-    'color': config.color,
-
-    ':hover': {
-      'background': 'red',
-      'border-color': 'red'
-    }
   },
 
   icon: () => ({
@@ -76,38 +56,37 @@ export default ({ element, theme, state, context, config, utils }) => [config, {
   }),
 
   ...(context.group && {
-    'margin-left': !state.isFirstChild && config['group-spacing'],
+    'margin-left': state.isFirstChild && 0,
 
     ...(context.group.pills && {
-      'display': 'table-cell',
+      'flex-basis': '100%',
       'margin-left': 0,
 
       ...(context.group.round && {
-        'border-top-left-radius': state.isFirstChild && config['round-radius'],
-        'border-bottom-left-radius': state.isFirstChild && config['round-radius'],
-        'border-top-right-radius': state.isLastChild && config['round-radius'],
-        'border-bottom-right-radius': state.isLastChild && config['round-radius'],
+        'border-top-left-radius': state.isFirstChild && config['is-round']['border-radius'],
+        'border-bottom-left-radius': state.isFirstChild && config['is-round']['border-radius'],
+        'border-top-right-radius': state.isLastChild && config['is-round']['border-radius'],
+        'border-bottom-right-radius': state.isLastChild && config['is-round']['border-radius'],
+      })
+    }),
+
+    ...(context.group.stack && {
+      ...(utils.minWidth(config.group.stack) && {
+        'display': 'block',
+        'width': '100%',
+        'margin-top': '1em',
+        'margin-right': 0,
+        'margin-left': 0,
+        'text-align': 'center'
       })
     })
   }),
 
-  ...(context.group.stack && {
-    ...(window.matchMedia(`(max-width: ${config['group-stack']}`).matches && {
-      'display': 'block',
-      'width': '100%',
-      'margin-top': '1em',
-      'margin-right': 0,
-      'margin-left': 0,
-      'text-align': 'center'
-    })
-  }),
-
-  group: {
-    'margin-bottom': '1em',
+  group: ({ state }) => ({
+    ...(config.group.object && utils.object(state, config.group.gutter)),
 
     'is-pills': {
-      'display': 'table',
-      'width': '100%',
+      'display': 'flex'
     }
-  }
+  })
 }];

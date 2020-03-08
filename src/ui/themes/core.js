@@ -36,9 +36,9 @@ export default {
     },
     social:{
       'facebook': '#507CBD',
-      'twitter': '#63CEF2',
+      'twitter': '#06d2ff',
       'linkedin': '#117BB8',
-      'github': '#1C1C1C',
+      'github': '#3D8DC5',
       'instagram': '#5280A5',
       'youtube': '#CB312E',
       'dribbble': '#EB4C89',

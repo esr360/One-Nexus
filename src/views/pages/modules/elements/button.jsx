@@ -31,13 +31,13 @@ const Buttons = props => (
       <Button brand-2>Button</Button>
       <Button brand-3>Button</Button>
       <Button brand-4>Button</Button>
+      <Button primary>Button</Button>
     </Group>
 
     <Group object>
       <Button facebook block>Button</Button>
       <Button twitter disabled>Button</Button>
       <Button linkedin round>Button</Button>
-      <Button github oval> ovalButton</Button>
       <Button email active>Button</Button>
     </Group>
 
