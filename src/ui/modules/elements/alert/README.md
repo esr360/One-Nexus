@@ -183,6 +183,13 @@
 
 > Overrides [`config.icon`](#TODO)
 
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>(Boolean|String)</code></td>
+  </tr>
+</table>
+
 ###### ...as Boolean
 
 ```jsx
