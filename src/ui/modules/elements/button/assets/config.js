@@ -14,7 +14,7 @@ export default (theme) => ({
 
   'color': theme.colors.greyscale.white,
   'color-inverse': theme.colors.opaque['dark-4'],
-  'background': theme.colors.greyscale['grey-4'],
+  'background': theme.colors.brand['brand-1'],
   'transition': theme.tokens.transition,
   'padding-y': '0.65em',
   'padding-x': '1em',

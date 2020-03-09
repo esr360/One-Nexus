@@ -1,39 +1,43 @@
 # One-Nexus Alert/Notification
 
-* [Quick Look](#quick-look)
+* [Overview](#overview)
 * [Configuration](#configuration)
 * [API](#api)
 
-## Quick Look
+## Overview
 
 > [Learn more about One-Nexus Modules](#TODO)
-
-###### Basic
 
 ```jsx
 <Alert alert='success'>This is an alert</Alert>
 ```
 
-###### Dismiss Alert
+###### Structural Interface [[?]](#TODO)
 
 ```jsx
-const [someCondition, setSomeCondition] = useState(true);
-
-return someCondition && (
-  <Alert alert='success' dismiss={() => setSomeCondition(false)}>This is an alert</Alert>
-);
-```
-
-### Structural Interface [[?]](#TODO)
-
-```jsx
-<Module>
-  <Component name='dismiss' />
-  <Component name='icon' />
-  <Component name='heading' />
-  <Component name='content' />
+<Module name='Alert'>
+  <Component name='icon' /> {children}
 </Module>
 ```
+
+### Modifiers
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about Modifiers
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Modifier</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><<code>box</code></td>
+      <td>Adds a larger padding to the Alert</td>
+    </tr>
+  </tbody>
+</taboe>
 
 ## Configuration
 
@@ -84,16 +88,12 @@ return someCondition && (
 
 ### `config.alerts`
 
-> Keep previously opened panels open when toggling a panel
+> @TODO
 
 <table>
   <tr>
     <td><b>Type</b></td>
     <td><code><code>Array.&lt;{ <a href="#todo">color</a>, <a href="#panelcontent">icon</a> }></code></code></td>
-  </tr>
-  <tr>
-    <td><b>Default</b></td>
-    <td><a href="#">See above table</a></td>
   </tr>
 </table>
 
@@ -116,22 +116,23 @@ return someCondition && (
 ## API
 
 * [`props.alert`](#propsalert)
-* [`props.icon`](#propsicon)
 * [`props.dismiss`](#propsdismiss)
+* [`props.icon`](#propsicon)
+* [`props.heading`](#propsheading)
 
 #### `props.alert`
 
 > The type/color of alert
 
 <table>
-    <tr>
-        <td><b>Type</b></td>
-        <td><code>String</code></td>
-    </tr>
-    <tr>
-        <td><b>Default</b></td>
-        <td><code>'success'</code></td>
-    </tr>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>String</code></td>
+  </tr>
+  <tr>
+    <td><b>Default</b></td>
+    <td><code>'success'</code></td>
+  </tr>
 </table>
 
 > Available values are set in the [module's configuration](#configuration)
@@ -145,14 +146,10 @@ return someCondition && (
 > Add an icon to the alert
 
 <table>
-    <tr>
-        <td><b>Type</b></td>
-        <td><code>(String|Array)</code></td>
-    </tr>
-    <tr>
-        <td><b>Default</b></td>
-        <td><code>undefined</code></td>
-    </tr>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>(String|Array)</code></td>
+  </tr>
 </table>
 
 > Keyword should correspond to a [FontAwesome icon](http://fontawesome.io/icons/) name
@@ -161,64 +158,54 @@ return someCondition && (
 <Alert icon='exclamation-triangle'>This is an alert</Alert>
 ```
 
-##### Right-Aligned Icon
-
-```jsx
-<Alert icon={['exclamation-triangle', 'right']}>This is an alert</Alert>
-```
-
-##### Props.close
-
-> Add a close icon which calls the [`dismiss`](#dismiss) interaction when clicked
-
-<table>
-    <tr>
-        <td><b>Type</b></td>
-        <td><code>Bool</code></td>
-    </tr>
-    <tr>
-        <td><b>Default</b></td>
-        <td><code>false</code></td>
-    </tr>
-</table>
-
-> If your alert has a close icon, you cannot also have another __right-aligned__ icon
-
-```jsx
-<Alert close>This is an alert</Alert>
-```
-
 #### `props.dismiss`
 
-> Overwrite the default `dismiss` method
-
-* This method gets called automatically on click of any close `icon` components
+> Allow the Alert to be dismissable
 
 <table>
-    <tr>
-        <td><b>Type</b></td>
-        <td><code>Function</code></td>
-    </tr>
-    <tr>
-        <td><b>Default</b></td>
-        <td><a href="#dismiss"><code>interactions.dismiss</code></a></td>
-    </tr>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>Function</code></td>
+  </tr>
 </table>
 
 ```jsx
-<Alert dismiss={event => {
-    // custom dismiss event handler logic...
-}} >
-    ...
-</Alert>
+const [someCondition, setSomeCondition] = useState(true);
+
+return someCondition && (
+  <Alert alert='success' dismiss={() => setSomeCondition(false)}>This is an alert</Alert>
+);
 ```
 
-You can import and call the dismiss interaction manually:
+###### Structural Interface [[?]](#TODO)
 
 ```jsx
-import { dismiss } from '../../alert/alert.js';
+<Module>
+  <Component name='icon' /> {children} <Component name='dismiss' />
+</Module>
 ```
 
+#### `props.heading`
+
+> Pass a heading to an Alert
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
+  </tr>
+</table>
+
 ```jsx
-<Alert close dismiss={event => dismiss(event.target)}>...</Alert>
+<Alert alert='success' heading='Alert Heading'>This is an alert</Alert>
+```
+
+###### Structural Interface [[?]](#TODO)
+
+```jsx
+<Module>
+  <Component name='icon' />
+  <Component name='heading' />
+  <Component name='content'>{children}</Component>
+</Module>
 ```
