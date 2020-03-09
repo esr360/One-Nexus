@@ -37,7 +37,7 @@
       <td>Adds a larger padding to the Alert</td>
     </tr>
   </tbody>
-</taboe>
+</table>
 
 ## Configuration
 
