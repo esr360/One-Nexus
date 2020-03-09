@@ -1,13 +1,14 @@
 import config from './assets/config';
 import styles from './assets/styles';
 
-const Alert = ({ alert, dismiss, heading, children, ...props }) => {
-  let { defaultAlert, alerts, icon } = useConfig(config, useTheme(), props);
+const Alert = ({ dismiss, heading, children, ...props }) => {
+  let { name, alerts, alert, icon } = useConfig(props);
 
-  icon = (icon === true) ? (alerts[alert || defaultAlert].icon) : icon;
+  alert = (typeof alert === 'object') ? alert : alerts[alert];
+  icon  = (icon === true) ? alert.icon : icon;
 
   return (
-    <Module alert={alert || defaultAlert} {...props}>
+    <Module name={name} {...props} alert={alert}>
       {dismiss && <Component name='dismiss' className={`fa fa-times`} onClick={dismiss} />}
 
       {icon && <Component name='icon' className={`fa fa-${icon}`} />}
@@ -19,6 +20,6 @@ const Alert = ({ alert, dismiss, heading, children, ...props }) => {
   );
 }
 
-Alert.defaultProps = { name: 'Alert', config, styles }
+Alert.defaultProps = { config, styles }
 
 export default Alert;

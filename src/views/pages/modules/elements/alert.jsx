@@ -21,6 +21,7 @@ const AlertBars = props =>  {
 
       <Well>
           <Alert alert='success'>This is a default alert</Alert>
+          <Alert alert={{ color: 'purple', icon: 'times' }}>This is a default alert</Alert>
           {demo1Visible && <Alert alert='carrot' dismiss={() => setDemo1Visibe(false)}>This is a carrot alert</Alert>}
       </Well>
 

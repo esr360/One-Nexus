@@ -2,7 +2,7 @@ export default (theme) => ({
   name: 'Alert',
   object: true,
   gutter: theme.tokens.margin,
-  defaultAlert: 'info',
+  alert: 'info',
   icon: true,
 
   'color': theme.colors.greyscale.white,

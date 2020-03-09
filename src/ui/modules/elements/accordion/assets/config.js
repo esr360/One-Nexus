@@ -1,4 +1,5 @@
 export default (theme) => ({
+  name: 'Accordion',
   object: true,
   gutter: theme.tokens.margin,
   persist: true,

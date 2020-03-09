@@ -88,30 +88,64 @@
 
 ### `config.alerts`
 
-> @TODO
+> Specify the available Alert types
 
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code><code>Array.&lt;{ <a href="#todo">color</a>, <a href="#panelcontent">icon</a> }></code></code></td>
+    <td><code><code>Array.&lt;{ <a href="#todo">color</a>, <a href="#todo">icon</a> }></code></code></td>
   </tr>
 </table>
 
-### `config.default`
+##### `alerts[$alert].color`
 
 @TODO
+
+##### `alerts[$alert].icon`
+
+@TODO
+
+### `config.alert`
+
+> Set the default [Alert](#TODO)
+
+> [This value can be overridden via Props](#TODO)
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>(String|&lt;{ <a href="#todo">color</a>, <a href="#todo">icon</a> }>)</code></td>
+  </tr>
+</table>
+
+##### ...as String
+
+> Specify a type from the [Alert type's](#TODO)
+
+##### ...as Object
+
+> Specify a new custom [Alert type](#TODO)
 
 ### `config.icon`
 
-@TODO
+> Control the default display of the Alert's icon
 
-### Passing Custom Configuration
+> [This value can be overridden via Props](#TODO)
 
-> Configuration passed to the `config` prop will be merged into the default configuration
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>(Boolean|String)</code></td>
+  </tr>
+</table>
 
-```jsx
-<Alert config={{ icon: false }} alert='success' />
-```
+##### ...as Boolean
+
+> If `true`, the Alert type's icon ([`alerts[$alert].icon`](#TODO)) will be displayed, if `false` no Alert icon will be displayed
+
+##### ...as String
+
+> Keyword should correspond to a [FontAwesome icon](http://fontawesome.io/icons/) name
 
 ## API
 
@@ -122,40 +156,43 @@
 
 #### `props.alert`
 
-> The type/color of alert
+> The type/color of the Alert
+
+> Overrides [`config.alert`](#TODO)
 
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>String</code></td>
-  </tr>
-  <tr>
-    <td><b>Default</b></td>
-    <td><code>'success'</code></td>
+    <td><code>(String|Object)</code></td>
   </tr>
 </table>
 
-> Available values are set in the [module's configuration](#configuration)
+###### ...as String
 
 ```jsx
 <Alert alert='success'>This is an alert</Alert>
 ```
 
-#### `props.icon`
-
-> Add an icon to the alert
-
-<table>
-  <tr>
-    <td><b>Type</b></td>
-    <td><code>(String|Array)</code></td>
-  </tr>
-</table>
-
-> Keyword should correspond to a [FontAwesome icon](http://fontawesome.io/icons/) name
+###### ...as Object
 
 ```jsx
-<Alert icon='exclamation-triangle'>This is an alert</Alert>
+<Alert alert={{ color: '#0099FF' , icon: 'exclamation-triangle'}}>This is an alert</Alert>
+```
+
+#### `props.icon`
+
+> Overrides [`config.icon`](#TODO)
+
+###### ...as Boolean
+
+```jsx
+<Alert icon={false} {...}>This is an alert</Alert>
+```
+
+###### ...as String
+
+```jsx
+<Alert icon='exclamation-triangle' {...}>This is an alert</Alert>
 ```
 
 #### `props.dismiss`
