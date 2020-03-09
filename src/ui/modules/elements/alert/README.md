@@ -47,9 +47,10 @@
 
 <pre>
 {
+  name: 'Alert',
   object: true,
   gutter: theme.tokens.margin,
-  default: 'info',
+  alert: 'info',
   icon: true,
 
   'color': theme.colors.greyscale.white,
