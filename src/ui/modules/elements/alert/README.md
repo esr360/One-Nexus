@@ -120,11 +120,11 @@
 
 ##### ...as String
 
-> Specify a type from the [Alert type's](#TODO)
+* Specify a type from the [Alert type's](#TODO)
 
 ##### ...as Object
 
-> Specify a new custom [Alert type](#TODO)
+* Specify a new custom [Alert type](#TODO)
 
 ### `config.icon`
 
@@ -141,11 +141,11 @@
 
 ##### ...as Boolean
 
-> If `true`, the Alert type's icon ([`alerts[$alert].icon`](#TODO)) will be displayed, if `false` no Alert icon will be displayed
+* If `true`, the Alert type's icon ([`alerts[$alert].icon`](#TODO)) will be displayed, if `false` no Alert icon will be displayed
 
 ##### ...as String
 
-> Keyword should correspond to a [FontAwesome icon](http://fontawesome.io/icons/) name
+* Keyword should correspond to a [FontAwesome icon](http://fontawesome.io/icons/) name
 
 ## API
 
