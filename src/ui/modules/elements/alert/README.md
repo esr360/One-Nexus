@@ -93,7 +93,7 @@
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code><code>Array.&lt;{ <a href="#todo">color</a>, <a href="#todo">icon</a> }></code></code></td>
+    <td><code>Array.&lt;{ <a href="#todo">color</a>, <a href="#todo">icon</a> }></code></td>
   </tr>
 </table>
 
