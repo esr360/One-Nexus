@@ -163,7 +163,7 @@
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>(String|Object)</code></td>
+    <td><code>(String|&lt;{ <a href="#todo">color</a>, <a href="#todo">icon</a> }>)</code></td>
   </tr>
 </table>
 
