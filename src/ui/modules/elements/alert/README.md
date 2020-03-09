@@ -33,7 +33,7 @@
   </thead>
   <tbody>
     <tr>
-      <td><<code>box</code></td>
+      <td><code>box</code></td>
       <td>Adds a larger padding to the Alert</td>
     </tr>
   </tbody>
