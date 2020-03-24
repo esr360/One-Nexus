@@ -180,7 +180,7 @@
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>(String|Object&lt;{ <a href="#alertsalertcolor">color</a>, <a href="#alertsalerticon">icon</a> }>)</code></td>
+    <td><code>(String|&lt;{ <a href="#alertsalertcolor">color</a>, <a href="#alertsalerticon">icon</a> }>)</code></td>
   </tr>
 </table>
 
