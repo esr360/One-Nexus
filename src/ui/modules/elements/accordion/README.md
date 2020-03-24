@@ -42,6 +42,8 @@
 
 ### Default Configuration
 
+> `modules/elements/Accordion/assets/config.js`
+
 <pre>
 {
   <a href="TODO">name</a>: 'Accordion',

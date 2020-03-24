@@ -45,6 +45,8 @@
 
 ### Default Configuration
 
+> `modules/elements/Alert/assets/config.js`
+
 <pre>
 {
   <a href="TODO">name</a>: 'Alert',
