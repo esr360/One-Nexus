@@ -90,7 +90,7 @@
 
 ### `config.persist`
 
-> Set the default [Persist](#propspersist) value
+> Set whether previously opened panels should remain open when toggling a panel
 
 > [This value can be overridden via Props](#propspersist)
 
