@@ -6,7 +6,7 @@
 
 ## Overview
 
-> [Learn more about One-Nexus Modules](#TODO)
+> [Learn more about One-Nexus Modules](https://github.com/esr360/One-Nexus/wiki/Modules)
 
 ```jsx
 <Alert alert='success'>This is an alert</Alert>
@@ -94,7 +94,7 @@
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>Array.&lt;{ <a href="#todo">color</a>, <a href="#todo">icon</a> }></code></td>
+    <td><code>Object.&lt;{ <a href="#todo">color</a>, <a href="#todo">icon</a> }></code></td>
   </tr>
 </table>
 

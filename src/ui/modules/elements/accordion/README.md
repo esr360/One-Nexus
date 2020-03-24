@@ -1,14 +1,12 @@
 # One-Nexus Accordion
 
-* [Quick Look](#quick-look)
+* [Overview](#overview)
 * [Configuration](#configuration)
 * [API](#api)
 
-## Quick Look
+## Overview
 
-> [Learn more about One-Nexus Modules](#TODO)
-
-###### Multi-Panel
+> [Learn more about One-Nexus Modules](https://github.com/esr360/One-Nexus/wiki/Modules)
 
 ```jsx
 <Accordion panels={[
@@ -23,13 +21,7 @@
 ]} />
 ```
 
-###### [[Upcoming Feature]](#TODO) Single-Panel
-
-```jsx
-<Accordion title='foo' content='bar' />
-```
-
-### Structural Interface [[?]](#TODO)
+###### Structural Interface [[?]](#TODO)
 
 ```jsx
 <Module>
@@ -98,30 +90,21 @@
 
 ### `config.persist`
 
-> Keep previously opened panels open when toggling a panel
+> Set the default [Persist](#propspersist) value
+
+> [This value can be overridden via Props](#propspersist)
 
 <table>
   <tr>
     <td><b>Type</b></td>
     <td><code>Boolean</code></td>
   </tr>
-  <tr>
-    <td><b>Default</b></td>
-    <td><code>true</code></td>
-  </tr>
 </table>
-
-### Passing Custom Configuration
-
-> Configuration passed to the `config` prop will be merged into the default configuration
-
-```jsx
-<Accordion config={{ persist: false }} panels={...} />
-```
 
 ## API
 
 * [`props.panels`](#propspanels)
+* [`props.persist`](#propspanels)
 
 ### `props.panels`
 
@@ -236,3 +219,16 @@ Accordions can be nested:
   }
 ]} />
 ```
+
+### `props.persist`
+
+> Keep previously opened panels open when toggling a panel
+
+> Overrides [`config.persist`](#configpersist)
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>Boolean</code></td>
+  </tr>
+</table>
