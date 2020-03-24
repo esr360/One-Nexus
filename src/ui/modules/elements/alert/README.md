@@ -45,7 +45,7 @@
 
 ### Default Configuration
 
-> `modules/elements/Alert/assets/config.js`
+> [`modules/elements/Alert/assets/config.js`](assets/config.js)
 
 <pre>
 {

@@ -42,7 +42,7 @@
 
 ### Default Configuration
 
-> `modules/elements/Accordion/assets/config.js`
+> [`modules/elements/Accordion/assets/config.js`](assets/config.js)
 
 <pre>
 {
