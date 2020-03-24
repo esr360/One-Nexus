@@ -44,6 +44,7 @@
 
 <pre>
 {
+  <a href="TODO">name</a>: 'Accordion',
   <a href="TODO">object</a>: true,
   <a href="TODO">gutter</a>: <a href="TODO">theme.tokens.margin</a>,
   <a href="#configpersist">persist</a>: true,

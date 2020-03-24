@@ -47,20 +47,20 @@
 
 <pre>
 {
-  name: 'Alert',
-  object: true,
-  gutter: theme.tokens.margin,
-  alert: 'info',
-  icon: true,
+  <a href="TODO">name</a>: 'Alert',
+  <a href="TODO">object</a>: true,
+  <a href="TODO">gutter</a>: <a href="TODO">theme.tokens.margin</a>,
+  <a href="TODO">alert</a>: 'info',
+  <a href="TODO">icon</a>: true,
 
   'color': theme.colors.greyscale.white,
   'padding': '0.85em',
 
-  'is-box': {
+  <a href="TODO">'is-box'</a>: {
     'padding': '1.5em'
   },
 
-  alerts: {
+  <a href="TODO">alerts</a>: {
     error: {
       color: theme.colors.alert.error,
       icon: 'times'
