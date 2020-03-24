@@ -87,41 +87,55 @@
 }
 </pre>
 
-### `config.alerts`
+### `config.alerts` (Alert types)
 
 > Specify the available Alert types
+
+* An Alert type is a color paired with an optoinal icon
 
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>Object.&lt;{ <a href="#todo">color</a>, <a href="#todo">icon</a> }></code></td>
+    <td><code>Object.&lt;{ <a href="#alertsalertcolor">color</a>, <a href="#configicon">icon</a> }></code></td>
   </tr>
 </table>
 
 ##### `alerts[$alert].color`
 
-@TODO
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>String</code></td>
+  </tr>
+</table>
 
 ##### `alerts[$alert].icon`
 
-@TODO
+* Value should correspond to a [FontAwesome icon](http://fontawesome.io/icons/) name
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>String</code></td>
+  </tr>
+</table>
 
 ### `config.alert`
 
-> Set the default [Alert](#TODO)
+> Set the default [Alert](#TODO) type
 
 > [This value can be overridden via Props](#TODO)
 
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>(String|Object&lt;{ <a href="#todo">color</a>, <a href="#todo">icon</a> }>)</code></td>
+    <td><code>(String|Object&lt;{ <a href="#alertsalertcolor">color</a>, <a href="#alertsalerticon">icon</a> }>)</code></td>
   </tr>
 </table>
 
 ##### ...as String
 
-* Specify a type from the [Alert type's](#TODO)
+* Specify a key from the [Alert type's](#TODO)
 
 ##### ...as Object
 
@@ -146,7 +160,7 @@
 
 ##### ...as String
 
-* Keyword should correspond to a [FontAwesome icon](http://fontawesome.io/icons/) name
+* Value should correspond to a [FontAwesome icon](http://fontawesome.io/icons/) name
 
 ## API
 
@@ -164,7 +178,7 @@
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>(String|Object&lt;{ <a href="#todo">color</a>, <a href="#todo">icon</a> }>)</code></td>
+    <td><code>(String|Object&lt;{ <a href="#alertsalertcolor">color</a>, <a href="#alertsalerticon">icon</a> }>)</code></td>
   </tr>
 </table>
 

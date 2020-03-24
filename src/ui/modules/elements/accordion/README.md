@@ -25,7 +25,7 @@
 
 ```jsx
 <Module>
-  <Component name='panel' { active }>
+  <Component name='panel'>
     <Component name='title'>
       <Component name='toggle' />
     </Component>
@@ -109,7 +109,7 @@
 
 ### `props.panels`
 
-> The unique data sections that form the Accordion panel components
+> The unique data sections that form the Accordion panels
 
 <table>
   <tr>
