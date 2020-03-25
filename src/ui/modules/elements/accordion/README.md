@@ -3,9 +3,26 @@
 <img src="https://i.imgur.com/4WTw7Fu.png" />
 
 <table>
-  <td><a href="#overview">Overview</a></td>
-  <td><a href="#configuration">Configuration</a></td>
-  <td><a href="#api">API</a></td>
+  <td>
+    <h3><a href="#overview">Overview</a></h3>
+    <ul>
+      <li><a href="#">Structural Interface</a></li>
+    </ul>
+  </td>
+  <td>
+    <h3><a href="#configuration">Configuration</a></h3>
+    <ul>
+      <li><a href="#">Default Configuration</a></li>
+      <li><a href="#"><code>config.persist</code></a></li>
+    </ul>
+  </td>
+  <td>
+    <h3><a href="#api">API</a></h3>
+    <ul>
+      <li><a href="#"><code>props.panels</code></a></li>
+      <li><a href="#"><code>props.persist</code></a></li>
+    </ul>
+  </td>
 </table>
 
 ## Overview
