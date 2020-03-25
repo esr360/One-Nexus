@@ -52,17 +52,17 @@
   <a href="TODO">name</a>: 'Alert',
   <a href="TODO">object</a>: true,
   <a href="TODO">gutter</a>: <a href="TODO">theme.tokens.margin</a>,
-  <a href="TODO">alert</a>: 'info',
-  <a href="TODO">icon</a>: true,
+  <a href="#configalert">alert</a>: 'info',
+  <a href="#configicon">icon</a>: true,
 
   'color': theme.colors.greyscale.white,
   'padding': '0.85em',
 
-  <a href="TODO">'is-box'</a>: {
+  <a href="#modifiers">'is-box'</a>: {
     'padding': '1.5em'
   },
 
-  <a href="TODO">alerts</a>: {
+  <a href="#configalerts-alert-types">alerts</a>: {
     error: {
       color: theme.colors.alert.error,
       icon: 'times'
@@ -98,7 +98,7 @@
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>Object.&lt;{ <a href="#alertsalertcolor">color</a>, <a href="#configicon">icon</a> }></code></td>
+    <td><code>Object.&lt;{ <a href="#alertsalertcolor">color</a>, <a href="#alertsalerticon">icon</a> }></code></td>
   </tr>
 </table>
 
@@ -124,9 +124,9 @@
 
 ### `config.alert`
 
-> Set the default [Alert](#TODO) type
+> Set the default [Alert type](#configalerts-alert-types)
 
-> [This value can be overridden via Props](#TODO)
+> [This value can be overridden via Props](#propsalert)
 
 <table>
   <tr>
@@ -137,17 +137,17 @@
 
 ##### ...as String
 
-* Specify a key from the [Alert type's](#TODO)
+* Specify a key from the available [Alert type's](#configalerts-alert-types)
 
 ##### ...as Object
 
-* Specify a new custom [Alert type](#TODO)
+* Specify a new custom [Alert type](#configalerts-alert-types)
 
 ### `config.icon`
 
 > Control the default display of the Alert's icon
 
-> [This value can be overridden via Props](#TODO)
+> [This value can be overridden via Props](#propsicon)
 
 <table>
   <tr>
@@ -158,7 +158,7 @@
 
 ##### ...as Boolean
 
-* If `true`, the Alert type's icon ([`alerts[$alert].icon`](#TODO)) will be displayed, if `false` no Alert icon will be displayed
+* If `true`, the Alert type's icon ([`alerts[$alert].icon`](#alertsalerticon)) will be displayed, if `false` no Alert icon will be displayed
 
 ##### ...as String
 
@@ -175,7 +175,7 @@
 
 > The type/color of the Alert
 
-> Overrides [`config.alert`](#TODO)
+> Overrides [`config.alert`](#configalert)
 
 <table>
   <tr>
@@ -198,7 +198,7 @@
 
 #### `props.icon`
 
-> Overrides [`config.icon`](#TODO)
+> Overrides [`config.icon`](#configicon)
 
 <table>
   <tr>
