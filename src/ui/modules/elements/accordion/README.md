@@ -1,13 +1,20 @@
 # One-Nexus Accordion
 
-<img width="750px" src="https://i.imgur.com/4WTw7Fu.png" />
 
 <table>
   <thead>
-    <th><a href="#overview">Overview</a></th>
-    <th><a href="#configuration">Configuration</a></th>
-    <th><a href="#API">API</a></th>
+    <tr>
+      <th colspan="3">
+        <img width="750px" src="https://i.imgur.com/4WTw7Fu.png" />
+      </th>
+    </tr>
+    <tr>
+      <th><a href="#overview">Overview</a></th>
+      <th><a href="#configuration">Configuration</a></th>
+      <th><a href="#API">API</a></th>
+    </tr>
   </thead>
+
   <tr>
     <td><li><a href="#">Structural Interface</a></li></td>
     <td><li><a href="#">Default Configuration</a></li></td>
