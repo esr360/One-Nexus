@@ -1,6 +1,6 @@
 # One-Nexus Accordion
 
-<img width="750px" src="https://i.imgur.com/4WTw7Fu.png" />
+<img width="750px" src="http://www.onenexus.io/github/Accordion.png" />
 
 <table>
   <thead>
@@ -9,7 +9,7 @@
     <th><a href="#API">API</a></th>
   </thead>
   <tr>
-    <td><li><a href="#TODO">Live Demo</a></li></td>
+    <td><li><a href="#TODO">Live CodeSandbox Demo</a></li></td>
     <td><li><a href="#default-configuration">Default Configuration</a></li></td>
     <td><li><a href="#propspanels"><code>props.panels</code></a></li></td>
   </tr>

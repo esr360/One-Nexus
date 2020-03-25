@@ -47,7 +47,7 @@ const Accordions = ({ layouts, ...props }) => {
         <a href="#">Learn more</a> about module configutation
       </Alert> */}
 
-      <Accordion className='fizz' panels={isPartyTime ? partyData : data} />
+      <Accordion className='fizz' panels={data} />
   
       <Accordion persist={false} panels={[
         {title: 'foo', content: 'bar'},

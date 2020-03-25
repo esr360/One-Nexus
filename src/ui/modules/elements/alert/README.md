@@ -1,8 +1,34 @@
 # One-Nexus Alert/Notification
 
-* [Overview](#overview)
-* [Configuration](#configuration)
-* [API](#api)
+<img width="750px" src="http://www.onenexus.io/github/Alert.png" />
+
+<table>
+  <thead>
+    <th><a href="#overview">Overview</a></th>
+    <th><a href="#configuration">Configuration</a></th>
+    <th><a href="#API">API</a></th>
+  </thead>
+  <tr>
+    <td><li><a href="#TODO">Live CodeSandbox Demo</a></li></td>
+    <td><li><a href="#default-configuration">Default Configuration</a></li></td>
+    <td><li><a href="#propsalert"><code>props.alert</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configalerts"><code>config.alerts</code></a></li></td>
+    <td><li><a href="#propsicon"><code>props.icon</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configalert"><code>config.alert</code></a></li></td>
+    <td><li><a href="#propsdismiss"><code>props.dismiss</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configicon"><code>config.icon</code></a></li></td>
+    <td><li><a href="#propsheading"><code>props.heading</code></a></li></td>
+  </tr>
+</table>
 
 ## Overview
 
