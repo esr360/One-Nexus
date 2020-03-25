@@ -1,4 +1,5 @@
 export default (theme) => ({
+  name: 'Blockquote',
   object: true,
   gutter: theme.tokens.margin,
 

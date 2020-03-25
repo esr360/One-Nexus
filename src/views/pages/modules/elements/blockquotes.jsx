@@ -1,7 +1,7 @@
 import Base from '../../../layouts/base';
 
-const Blockquotes = props => (
-  <Base {...props.config.views}>
+const Blockquotes = ({ theme, config }) => (
+  <Base {...config.views}>
 
     <Blockquote content='Lorem ipsum dolor sit amet' />
 
@@ -12,10 +12,10 @@ const Blockquotes = props => (
     <Blockquote callout content='Lorem ipsum dolor sit amet' footer='Someone Famous' />
 
     <Blockquote 
-        Alert={['bar', 'success']}
-        callout 
-        content='Lorem ipsum dolor sit amet' 
-        footer='Someone Famous'
+      Alert={[{ alert: { color: theme.colors.brand['brand-2'] } }]}
+      callout 
+      content='Lorem ipsum dolor sit amet' 
+      footer='Someone Famous'
     />
 
     <Blockquote content='Lorem ipsum dolor sit amet' />

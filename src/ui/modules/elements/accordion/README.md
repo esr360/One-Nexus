@@ -24,7 +24,7 @@
 ###### Structural Interface [[?]](#TODO)
 
 ```jsx
-<Module>
+<Module name='Accordion'>
   <Component name='panel'>
     <Component name='title'>
       <Component name='toggle' />

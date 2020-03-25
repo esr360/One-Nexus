@@ -1,25 +1,44 @@
 # One-Nexus Blockquote
 
-* [Quick Look](#quick-look)
+* [Overview](#overview)
 * [Configuration](#configuration)
 * [API](#api)
 
-## Quick Look
+## Overview
 
-> [Learn more about One-Nexus Modules](#TODO)
+> [Learn more about One-Nexus Modules](https://github.com/esr360/One-Nexus/wiki/Modules)
 
 ```jsx
 <Blockquote content='This is a blockquote' footer='Optional blockquote footer' />
 ```
 
-### Structural Interface [[?]](#TODO)
+###### Structural Interface [[?]](#TODO)
 
 ```jsx
-<Module name='blockquote'>
+<Module name='Blockquote'>
   <Component name='content' />
   <Component name='footer' />
 </Module>
 ```
+
+### Modifiers
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about Modifiers
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Modifier</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>callout</code></td>
+      <td>TODO</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Configuration
 
@@ -27,14 +46,17 @@
 
 ### Default Configuration
 
+> [`modules/elements/Blockquote/assets/config.js`](assets/config.js)
+
 <pre>
 {
-  object: true,
-  gutter: theme.tokens.margin,
+  <a href="TODO">name</a>: 'Blockquote',
+  <a href="TODO">object</a>: true,
+  <a href="TODO">gutter</a>: <a href="TODO">theme.tokens.margin</a>,
 
   'font-family': 'Georgia, serif',
 
-  'is-callout': {
+  <a href="#modifiers">'is-callout'</a>: {
     'padding': '0.5em 0.75em',
     'font-size': theme.typography.sizes['size-5'],
     'border-left': '7px solid',
@@ -49,14 +71,6 @@
 }
 </pre>
 
-### Passing Custom Configuration
-
-> Configuration passed to the `config` prop will be merged into the default configuration
-
-```jsx
-<Blockquote config={{ object: false }} {...} />
-```
-
 ## API
 
 * [`props.content`](#propscontent)
@@ -66,10 +80,10 @@
 #### `props.content`
 
 <table>
-    <tr>
-        <td><b>Type</b></td>
-        <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
-    </tr>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
+  </tr>
 </table>
 
 ```jsx
@@ -79,10 +93,10 @@
 #### `props.footer`
 
 <table>
-    <tr>
-        <td><b>Type</b></td>
-        <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
-    </tr>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
+  </tr>
 </table>
 
 ```jsx
@@ -91,11 +105,11 @@
 
 #### Blockquote Alerts
 
-> The Blockquote module works well in combination with the [Alert](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/elements/alert) module ([learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#combining-modules) about combining modules)
+> The Blockquote module works well in combination with the [Alert](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/elements/Alert) module ([learn more](#TODO-combining-modules) about combining modules)
 
 ```jsx
 <Blockquote 
-  Alert='success' 
+  Alert={[{ alert: { color: '#3BB85D' } }]}
   callout 
   content='Lorem ipsum dolor sit amet' 
   footer='Someone Famous'
