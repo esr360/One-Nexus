@@ -52,7 +52,7 @@
 </Module>
 ```
 
-### [Live Demo](#TODO)
+### [Live CodeSandbox Demo](#TODO)
 
 ## Configuration
 
@@ -219,8 +219,6 @@ Accordions can be nested:
     <td><code>Function(state: 'open' | 'close')</code></td>
   </tr>
 </table>
-
-###### Example
 
 ```jsx
 <Accordion panels={[

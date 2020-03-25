@@ -15,7 +15,7 @@
   </tr>
   <tr>
     <td><li><a href="#modifiers">Modifiers</a></li></td>
-    <td><li><a href="#configalerts"><code>config.alerts</code></a></li></td>
+    <td><li><a href="#configalerts-alert-types"><code>config.alerts</code></a></li></td>
     <td><li><a href="#propsicon"><code>props.icon</code></a></li></td>
   </tr>
   <tr>
@@ -46,7 +46,7 @@
 </Module>
 ```
 
-### [Live Demo](#TODO)
+### [Live CodeSandbox Demo](#TODO)
 
 ### Modifiers
 
@@ -298,8 +298,10 @@ return someCondition && (
 </table>
 
 ```jsx
-<Alert alert='success' heading='Alert Heading'>This is an alert</Alert>
+<Alert box alert='info' heading='Alert Heading'>This is an <b>info</b> alert box</Alert>
 ```
+
+<img width="750px" src="http://www.onenexus.io/github/Alert--box.png" />
 
 ###### Structural Interface [[?]](#TODO)
 
