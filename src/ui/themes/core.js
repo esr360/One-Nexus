@@ -4,8 +4,7 @@ export default {
     brand: {
       'brand-1': '#2E3882',
       'brand-2': '#06d2ff',
-      'brand-3': '#04CEC0',
-      'brand-3': 'yellow'
+      'brand-3': '#04CEC0'
     },
     alert:{
       'error': '#D9434E',

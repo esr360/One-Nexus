@@ -1,6 +1,6 @@
 export { default as index } from './index.jsx';
 export { default as test } from './test.jsx';
-export { default as Accordions } from './modules/elements/Accordions.jsx';
+export { default as Accordion } from './modules/elements/Accordion.jsx';
 export { default as Alerts } from './modules/elements/Alert.jsx';
 export { default as Blockquotes } from './modules/elements/Blockquotes.jsx';
 export { default as Buttons } from './modules/elements/Button.jsx';

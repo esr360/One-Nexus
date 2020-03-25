@@ -1,8 +1,12 @@
 # One-Nexus Accordion
 
-* [Overview](#overview)
-* [Configuration](#configuration)
-* [API](#api)
+<img src="https://i.imgur.com/4WTw7Fu.png" />
+
+<table>
+  <td><a href="#overview">Overview</a></td>
+  <td><a href="#configuration">Configuration</a></td>
+  <td><a href="#api">API</a></td>
+</table>
 
 ## Overview
 
