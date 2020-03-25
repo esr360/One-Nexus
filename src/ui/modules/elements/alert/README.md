@@ -122,6 +122,18 @@
   </tr>
 </table>
 
+##### Example
+
+```js
+{
+  [$alert]: {
+    color: '#0099FF',
+    icon: 'exclamation-triangle'
+  },
+  ...
+}
+```
+
 ### `config.alert`
 
 > Set the default [Alert type](#configalerts-alert-types)
