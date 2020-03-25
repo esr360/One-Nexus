@@ -1,6 +1,6 @@
 # One-Nexus Accordion
 
-<img src="https://i.imgur.com/4WTw7Fu.png" />
+<img width="750px" src="https://i.imgur.com/4WTw7Fu.png" />
 
 <table>
   <thead>
@@ -8,18 +8,16 @@
     <th><a href="#configuration">Configuration</a></th>
     <th><a href="#API">API</a></th>
   </thead>
-  <small>
-    <tr>
-      <td><li><a href="#">Structural Interface</a></li></td>
-      <td><li><a href="#">Default Configuration</a></li></td>
-      <td><li><a href="#"><code>props.panels</code></a></li></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><li><a href="#"><code>config.persist</code></a></li></td>
-      <td><li><a href="#"><code>props.persist</code></a></li></td>
-    </tr>
-  </small>
+  <tr>
+    <td><li><a href="#">Structural Interface</a></li></td>
+    <td><li><a href="#">Default Configuration</a></li></td>
+    <td><li><a href="#"><code>props.panels</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#"><code>config.persist</code></a></li></td>
+    <td><li><a href="#"><code>props.persist</code></a></li></td>
+  </tr>
 </table>
 
 ## Overview
