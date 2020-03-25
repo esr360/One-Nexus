@@ -14,7 +14,7 @@
     <td><li><a href="#propsalert"><code>props.alert</code></a></li></td>
   </tr>
   <tr>
-    <td></td>
+    <td><li><a href="#modifiers">Modifiers</a></li></td>
     <td><li><a href="#configalerts"><code>config.alerts</code></a></li></td>
     <td><li><a href="#propsicon"><code>props.icon</code></a></li></td>
   </tr>
@@ -45,6 +45,8 @@
   <Component name='icon' /> {children}
 </Module>
 ```
+
+### [Live Demo](#TODO)
 
 ### Modifiers
 
