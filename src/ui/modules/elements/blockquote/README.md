@@ -16,8 +16,8 @@
 
 ```jsx
 <Module name='blockquote'>
-    <Component name='content' />
-    <Component name='footer' />
+  <Component name='content' />
+  <Component name='footer' />
 </Module>
 ```
 

@@ -107,7 +107,7 @@
 ## API
 
 * [`props.panels`](#propspanels)
-* [`props.persist`](#propspanels)
+* [`props.persist`](#propspersist)
 
 ### `props.panels`
 
@@ -116,7 +116,7 @@
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>Array.&lt;{ <a href="#paneltitle">title</a>, <a href="#panelcontent">content</a>, <a href="#panelid">id</a>, <a href="#panelcallback">active</a>, <a href="#panelcallback">callback</a> }></code></td>
+    <td><code>Array.&lt;{ <a href="#paneltitle">title</a>, <a href="#panelcontent">content</a>, <a href="#panelid">id</a>, <a href="#panelactive">active</a>, <a href="#panelcallback">callback</a> }></code></td>
   </tr>
 </table>
 
