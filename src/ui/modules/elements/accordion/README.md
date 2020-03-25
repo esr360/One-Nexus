@@ -8,18 +8,21 @@
     <th><a href="#overview">Configuration</a></th>
     <th><a href="#overview">API</a></th>
   </thead>
-
-  <tbody>
-    <tr>
-      <td><li><a href="#">Structural Interface</a></li></td>
-      <td><li><a href="#">Default Configuration</a></li></td>
-      <td><li><a href="#"><code>props.panels</code></a></li></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><li><a href="#"><code>props.persist</code></a></li></td>
-      <td><li><a href="#"><code>config.persist</code></a></li></td>
-  </tbody>
+  <tr>
+    <td><li><a href="#">Structural Interface</a></li></td>
+    <td><li><a href="#">Default Configuration</a></li></td>
+    <td><li><a href="#"><code>props.panels</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#"><code>props.persist</code></a></li></td>
+    <td><li><a href="#"><code>config.persist</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#"><code>props.persist</code></a></li></td>
+    <td><li><a href="#"><code>config.persist</code></a></li></td>
+  </tr>
 </table>
 
 ## Overview
