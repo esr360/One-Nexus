@@ -1,22 +1,15 @@
 # One-Nexus Accordion
 
+<img width="750px" src="https://i.imgur.com/4WTw7Fu.png" />
 
 <table>
   <thead>
-    <tr>
-      <th colspan="3">
-        <img width="750px" src="https://i.imgur.com/4WTw7Fu.png" />
-      </th>
-    </tr>
-    <tr>
-      <th><a href="#overview">Overview</a></th>
-      <th><a href="#configuration">Configuration</a></th>
-      <th><a href="#API">API</a></th>
-    </tr>
+    <th><a href="#overview">Overview</a></th>
+    <th><a href="#configuration">Configuration</a></th>
+    <th><a href="#API">API</a></th>
   </thead>
-
   <tr>
-    <td><li><a href="#">Structural Interface</a></li></td>
+    <td><li><a href="#TODO">Live Demo</a></li></td>
     <td><li><a href="#">Default Configuration</a></li></td>
     <td><li><a href="#"><code>props.panels</code></a></li></td>
   </tr>
@@ -58,6 +51,8 @@
   ...
 </Module>
 ```
+
+### [Live Demo](#TODO)
 
 ## Configuration
 
