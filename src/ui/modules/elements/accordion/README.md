@@ -10,13 +10,13 @@
   </thead>
   <tr>
     <td><li><a href="#TODO">Live Demo</a></li></td>
-    <td><li><a href="#">Default Configuration</a></li></td>
-    <td><li><a href="#"><code>props.panels</code></a></li></td>
+    <td><li><a href="#default-configuration">Default Configuration</a></li></td>
+    <td><li><a href="#propspanels"><code>props.panels</code></a></li></td>
   </tr>
   <tr>
     <td></td>
-    <td><li><a href="#"><code>config.persist</code></a></li></td>
-    <td><li><a href="#"><code>props.persist</code></a></li></td>
+    <td><li><a href="#configpersist"><code>config.persist</code></a></li></td>
+    <td><li><a href="#propspersist"><code>props.persist</code></a></li></td>
   </tr>
 </table>
 

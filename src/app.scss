@@ -42,6 +42,11 @@ body {
   line-height: theme('tokens', 'line-height');
 }
 
+#app {
+  width: 50%;
+  padding: 3em;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-size: theme('tokens', 'font-size');
 }
