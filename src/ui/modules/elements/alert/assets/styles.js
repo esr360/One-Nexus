@@ -2,7 +2,7 @@ export default ({ state, config, utils }) => [config, {
   ...(config.object && utils.object(state, config.gutter)),
 
   'position': 'relative',
-  'background-color': state.alert.color,
+  'background-color': config.alerts[Object.keys(state).find($ => config.alerts[$])]?.color,
 
   dismiss: () => ({
     cursor: 'pointer',
@@ -16,4 +16,4 @@ export default ({ state, config, utils }) => [config, {
     'float': state.right ? 'right' : 'left',
     'line-height': 1.25,
   })
-}];
+}, state];

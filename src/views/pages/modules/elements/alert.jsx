@@ -20,15 +20,20 @@ const AlertBars = props =>  {
       }</SyntaxHighlighter>
 
       <Well>
-          <Alert alert='success'>This is a <b>success</b> alert</Alert>
-          <Alert alert='error'>This is an <b>error</b> alert</Alert>
-          <Alert alert='info'>This is an <b>info</b> alert</Alert>
-          <Alert alert='help'>This is a <b>help</b> alert</Alert>
+          <Alert>This is a <b>default</b> alert</Alert>
+          <Alert icon={{ glyph: 'times' }} background={props.theme.colors.brand['brand-2']}>This is a <b>custom</b> alert</Alert>
 
-          <Alert box alert='info' heading='Alert Heading'>This is an <b>info</b> alert box</Alert>
+          <Alert success icon={{ display: 'none' }}>This is a <b>success</b> alert with no icon</Alert>
 
-          <Alert alert={{ color: 'purple', icon: 'times' }}>This is a default alert</Alert>
-          {demo1Visible && <Alert alert='carrot' dismiss={() => setDemo1Visibe(false)}>This is a carrot alert</Alert>}
+          <Alert success>This is a <b>success</b> alert</Alert>
+          <Alert error>This is a <b>success</b> alert</Alert>
+          <Alert info>This is a <b>success</b> alert</Alert>
+          <Alert help>This is a <b>success</b> alert</Alert>
+
+          <Alert box info heading='Alert Heading'>This is an <b>info</b> alert box</Alert>
+
+          {/* <Alert alert={{ color: 'purple', icon: 'times' }}>This is a default alert</Alert>
+          {demo1Visible && <Alert alert='carrot' dismiss={() => setDemo1Visibe(false)}>This is a carrot alert</Alert>} */}
       </Well>
 
       {/* <List>
@@ -41,7 +46,7 @@ const AlertBars = props =>  {
       <Section id='configuration'>
         <Heading heading='3' size='5'>Configuration</Heading>
 
-        <Alert alert="help"><a href="#">Learn more</a> about module configutation</Alert>
+        {/* <Alert alert="help"><a href="#">Learn more</a> about module configutation</Alert> */}
 
         <SyntaxHighlighter language='json'>{`
             "alert": {
@@ -99,15 +104,15 @@ const AlertBars = props =>  {
       <Section id='styles'>
         <Heading heading='3' size='5'>Styles</Heading>
 
-        <Alert alert="info">Edit styles in <a href="#">ui/modules/elements/alert/_alert.scss</a></Alert>
+        {/* <Alert alert="info">Edit styles in <a href="#">ui/modules/elements/alert/_alert.scss</a></Alert> */}
 
-        <Alert alert="help"><a href="#">Learn how to modify styles using the above configuration</a> so you don't have to touch the source code</Alert>
+        {/* <Alert alert="help"><a href="#">Learn how to modify styles using the above configuration</a> so you don't have to touch the source code</Alert> */}
       </Section>
 
       <Section id='interactions'>
         <Heading heading='3' size='5'>Interactions</Heading>
 
-        <Alert alert="info">Interactions are defined in <a href="#">ui/modules/elements/alert/alert.js</a></Alert>
+        {/* <Alert alert="info">Interactions are defined in <a href="#">ui/modules/elements/alert/alert.js</a></Alert> */}
 
         <Heading heading='4' size='4'>Dismiss</Heading>
 

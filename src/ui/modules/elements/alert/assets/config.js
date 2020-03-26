@@ -2,9 +2,8 @@ export default (theme) => ({
   name: 'Alert',
   object: true,
   gutter: theme.tokens.margin,
-  alert: 'info',
-  icon: true,
 
+  'background-color': theme.colors.alert.info,
   'color': theme.colors.greyscale.white,
   'padding': '0.85em',
 
@@ -29,6 +28,10 @@ export default (theme) => ({
       color: theme.colors.alert.help,
       icon: 'question-circle'
     }
+  },
+
+  icon: {
+    glyph: 'info-circle'
   },
 
   content: {

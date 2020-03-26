@@ -1,8 +1,39 @@
 # One-Nexus Button
 
-* [Overview](#overview)
-* [Configuration](#configuration)
-* [API](#api)
+<img width="750px" src="http://www.onenexus.io/github/Button.png" />
+
+<table>
+  <thead>
+    <th><a href="#overview">Overview</a></th>
+    <th><a href="#configuration">Configuration</a></th>
+    <th><a href="#API">API</a></th>
+  </thead>
+  <tr>
+    <td><li><a href="#TODO">Live CodeSandbox Demo</a></li></td>
+    <td><li><a href="#default-configuration">Default Configuration</a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><li><a href="#modifiers">Modifiers</a></li></td>
+    <td><li><a href="#configlightthreshold"><code>config.lightThreshold</code></a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configfluidscaling"><code>config.fluidScaling</code></a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configsizes"><code>config.sizes</code></a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configcolors"><code>config.colors</code></a></li></td>
+    <td></td>
+  </tr>
+</table>
 
 ## Overview
 
@@ -10,20 +41,13 @@
 <Button>Button</Button>
 ```
 
-###### Internal Interface [[?]](#TODO)
+###### Structural Interface [[?]](#TODO)
 
 ```jsx
-<Button { $color, $size, block, border, disabled, round, icon, active } />
+<Module name='Button'>{children}</Module>
 ```
 
-###### Internal Interface - Button Group
-
-```jsx
-<Group { pills { round }, stack }>
-  <Button />
-  ...
-</Group>
-```
+### [Live CodeSandbox Demo](#TODO)
 
 ### Modifiers
 
@@ -46,8 +70,8 @@
       <td>TODO</td>
     </tr>
     <tr>
-        <td><code>block</code></td>
-        <td>Full-width button with centrally aligned text</td>
+      <td><code>block</code></td>
+      <td>Full-width button with centrally aligned text</td>
     </tr>
     <tr>
       <td><code>border</code></td>
@@ -77,6 +101,8 @@
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
 
 ### Default Configuration
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about Module configutation
 
 <pre>
 {
@@ -131,6 +157,36 @@
 }
 </pre>
 
+### `config.lightThreshold`
+
+@TODO
+
+### `config.fluidScaling`
+
+@TODO
+
+### `config.sizes`
+
+This option accepts an object and will create a modifier for each key using the key's value for the modifier's font-size:
+
+```js
+"sizes": {
+    "size-1": "0.67em",
+    "size-2": "0.83em",
+    "size-3": "1.17em",
+    "size-4": "1.25em",
+    "size-5": "1.5em",
+    "size-6": "2em",
+    "size-7": "2.4em",
+    "size-8": "3em",
+    "size-9": "3.4em"
+}
+```
+
+```jsx
+<Button size-8>Button</Button>
+```
+
 ### `config.colors`
 
 This option accepts a list of palettes defined by the [Colors](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/utilities/colors) module.
@@ -177,37 +233,18 @@ Using your new values like so:
 <Button bar>Button</Button>
 ```
 
-### `config.sizes`
-
-This option accepts an object and will create a modifier for each key using the key's value for the modifier's font-size:
-
-```js
-"sizes": {
-    "size-1": "0.67em",
-    "size-2": "0.83em",
-    "size-3": "1.17em",
-    "size-4": "1.25em",
-    "size-5": "1.5em",
-    "size-6": "2em",
-    "size-7": "2.4em",
-    "size-8": "3em",
-    "size-9": "3.4em"
-}
-```
-
-```jsx
-<Button size-8>Button</Button>
-```
 
 ## API
 
-* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [DefaultProps](#defaultprops)
+* [Button Group](#defaultprops)
 
-#### DefaultProps
+#### Button Group
 
-```js
-{
-  fluid: true
-}
+###### Internal Interface
+
+```jsx
+<Group { pills { round }, stack }>
+  <Button />
+  ...
+</Group>
 ```

@@ -9,31 +9,29 @@ export default ({ theme, state, context, config, utils }) => [config, {
   'font-size': utils.fontSize(state, config.sizes, theme, config),
   'padding': `${config['padding-y']} ${config['padding-x']}`,
 
-  ...Object.entries(config.colors).reduce(($, [key, value]) => {
-    return state[key] ? {
-      'background': value,
-      'border-color': 'transparent',
+  ...Object.entries(config.colors).reduce(($, [key, value]) => state[key] ? {
+    'background': value,
+    'border-color': 'transparent',
 
-      'color': (prev) => {
-        return Color(value).luminosity() > config.lightThreshold ? config['color-inverse'] : prev;
-      },
+    'color': (prev) => {
+      return Color(value).luminosity() > config.lightThreshold ? config['color-inverse'] : prev;
+    },
+
+    ':hover': {
+      'background': config.hover.background(value)
+    },
+
+    'is-border': {
+      'background': 'transparent',
+      'color': value,
+      'border-color': value,
 
       ':hover': {
-        'background': config.hover.background(value)
-      },
-
-      'is-border': {
-        'background': 'transparent',
-        'color': value,
-        'border-color': value,
-
-        ':hover': {
-          'background': value,
-          'color': config.color
-        }
+        'background': value,
+        'color': config.color
       }
-    } : $;
-  }, {}),
+    }
+  } : $, {}),
 
   'is-block': {
     'width': '100%',

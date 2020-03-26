@@ -42,6 +42,8 @@
 </Module>
 ```
 
+### [Live CodeSandbox Demo](#TODO)
+
 ### Modifiers
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about Modifiers
@@ -126,11 +128,11 @@
 
 #### Blockquote Alerts
 
-> The Blockquote module works well in combination with the [Alert](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/elements/Alert) module ([learn more](#TODO-combining-modules) about combining modules)
+The Blockquote module works well in combination with the [Alert](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/elements/Alert) module ([learn more](#TODO-combining-modules) about combining modules).
 
 ```jsx
 <Blockquote 
-  Alert={[{ alert: { color: '#3BB85D' } }]}
+  Alert={{ alert: { color: '#3BB85D' } }}
   callout 
   content='Lorem ipsum dolor sit amet' 
   footer='Someone Famous'

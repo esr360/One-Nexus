@@ -12,7 +12,7 @@ const Blockquotes = ({ theme, config }) => (
     <Blockquote callout content='Lorem ipsum dolor sit amet' footer='Someone Famous' />
 
     <Blockquote 
-      Alert={[{ alert: { color: theme.colors.brand['brand-2'] } }]}
+      Alert={['success']}
       callout 
       content='Lorem ipsum dolor sit amet' 
       footer='Someone Famous'
