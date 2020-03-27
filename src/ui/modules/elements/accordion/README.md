@@ -16,7 +16,7 @@
   <tr>
     <td></td>
     <td><li><a href="#configpersist"><code>config.persist</code></a></li></td>
-    <td><</td>
+    <td></td>
   </tr>
 </table>
 
