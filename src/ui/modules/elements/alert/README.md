@@ -20,7 +20,7 @@
   </tr>
   <tr>
     <td></td>
-    <td><li><a href="#configicon"><code>config.icon.glyph</code></a></li></td>
+    <td><li><a href="#configiconglyph"><code>config.icon.glyph</code></a></li></td>
     <td><li><a href="#propsheading"><code>props.heading</code></a></li></td>
   </tr>
 </table>
@@ -30,7 +30,7 @@
 > [Learn more about One-Nexus Modules](https://github.com/esr360/One-Nexus/wiki/Modules)
 
 ```jsx
-<Alert alert='success'>This is an alert</Alert>
+<Alert success>This is an alert</Alert>
 ```
 
 ###### Structural Interface [[?]](#TODO)
@@ -56,6 +56,10 @@
   </thead>
   <tbody>
     <tr>
+      <td><code><a href="#propsalerttype">[$alertType]</a></code></td>
+      <td>Any available <a href="#configalerts-alert-types">Alert Type</a></td>
+    </tr>
+    <tr>
       <td><code>box</code></td>
       <td>Adds a larger padding to the Alert</td>
     </tr>
@@ -76,7 +80,7 @@
   <a href="TODO">object</a>: true,
   <a href="TODO">gutter</a>: <a href="TODO">theme.tokens.margin</a>,
   <a href="#configalert">alert</a>: 'info',
-  <a href="#configicon">icon</a>: true,
+  <a href="#configiconglyph">icon</a>: true,
 
   'color': theme.colors.greyscale.white,
   'padding': '0.85em',
@@ -121,7 +125,7 @@
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>Object.&lt;{ <a href="#alertsalertcolor">color</a>, <a href="#alertsalerticon">icon</a> }></code></td>
+    <td><code>Object.&lt;{ <a href="#alertsalerttypecolor">color</a>, <a href="#alertsalerttypeicon">icon</a> }></code></td>
   </tr>
 </table>
 
@@ -211,7 +215,7 @@
 const [someCondition, setSomeCondition] = useState(true);
 
 return someCondition && (
-  <Alert alert='success' dismiss={() => setSomeCondition(false)}>This is an alert</Alert>
+  <Alert success dismiss={() => setSomeCondition(false)}>This is an alert</Alert>
 );
 ```
 
@@ -235,7 +239,7 @@ return someCondition && (
 </table>
 
 ```jsx
-<Alert box alert='info' heading='Alert Heading'>This is an <b>info</b> alert box</Alert>
+<Alert box info heading='Alert Heading'>This is an <b>info</b> alert box</Alert>
 ```
 
 <img width="750px" src="http://www.onenexus.io/github/Alert--box.png" />
