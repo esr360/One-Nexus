@@ -11,21 +11,16 @@
   <tr>
     <td><li><a href="#TODO">Live CodeSandbox Demo</a></li></td>
     <td><li><a href="#default-configuration">Default Configuration</a></li></td>
-    <td><li><a href="#propsalert"><code>props.alert</code></a></li></td>
+    <td><li><a href="#propsalerttype"><code>props[$alertType]</code></a></li></td>
   </tr>
   <tr>
     <td><li><a href="#modifiers">Modifiers</a></li></td>
     <td><li><a href="#configalerts-alert-types"><code>config.alerts</code></a></li></td>
-    <td><li><a href="#propsicon"><code>props.icon</code></a></li></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><li><a href="#configalert"><code>config.alert</code></a></li></td>
     <td><li><a href="#propsdismiss"><code>props.dismiss</code></a></li></td>
   </tr>
   <tr>
     <td></td>
-    <td><li><a href="#configicon"><code>config.icon</code></a></li></td>
+    <td><li><a href="#configicon"><code>config.icon.glyph</code></a></li></td>
     <td><li><a href="#propsheading"><code>props.heading</code></a></li></td>
   </tr>
 </table>
@@ -130,7 +125,7 @@
   </tr>
 </table>
 
-##### `alerts[$alert].color`
+##### `alerts[$alertType].color`
 
 <table>
   <tr>
@@ -139,7 +134,7 @@
   </tr>
 </table>
 
-##### `alerts[$alert].icon`
+##### `alerts[$alertType].icon`
 
 * Value should correspond to a [FontAwesome icon](http://fontawesome.io/icons/) name
 
@@ -154,7 +149,7 @@
 
 ```js
 {
-  [$alert]: {
+  [$alertType]: {
     color: '#0099FF',
     icon: 'exclamation-triangle'
   },
@@ -162,101 +157,43 @@
 }
 ```
 
-### `config.alert`
+### `config.icon.glyph`
 
-> Set the default [Alert type](#configalerts-alert-types)
-
-> [This value can be overridden via Props](#propsalert)
+> Control the default Alert icon
 
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>(String|&lt;{ <a href="#alertsalertcolor">color</a>, <a href="#alertsalerticon">icon</a> }>)</code></td>
+    <td><code>String</code></td>
   </tr>
 </table>
-
-##### ...as String
-
-* Specify a key from the available [Alert type's](#configalerts-alert-types)
-
-##### ...as Object
-
-* Specify a new custom [Alert type](#configalerts-alert-types)
-
-### `config.icon`
-
-> Control the default display of the Alert's icon
-
-> [This value can be overridden via Props](#propsicon)
-
-<table>
-  <tr>
-    <td><b>Type</b></td>
-    <td><code>(Boolean|String)</code></td>
-  </tr>
-</table>
-
-##### ...as Boolean
-
-* If `true`, the Alert type's icon ([`alerts[$alert].icon`](#alertsalerticon)) will be displayed, if `false` no Alert icon will be displayed
-
-##### ...as String
 
 * Value should correspond to a [FontAwesome icon](http://fontawesome.io/icons/) name
 
+###### Control via Props
+
+```jsx
+<Alert icon={{ glyph: 'exclamation-triangle' }} {...} />
+```
+
 ## API
 
-* [`props.alert`](#propsalert)
+* [`props[$alertType]`](#propsalerttype)
 * [`props.dismiss`](#propsdismiss)
-* [`props.icon`](#propsicon)
 * [`props.heading`](#propsheading)
 
-#### `props.alert`
+#### `props[$alertType]`
 
-> The type/color of the Alert
+> The type of the Alert
 
-> Overrides [`config.alert`](#configalert)
-
-<table>
-  <tr>
-    <td><b>Type</b></td>
-    <td><code>(String|&lt;{ <a href="#alertsalertcolor">color</a>, <a href="#alertsalerticon">icon</a> }>)</code></td>
-  </tr>
-</table>
-
-###### ...as String
+* Pass a [Modifier Prop](#TODO) whose value corresponds to an [Alert Type](#configalerts-alert-types)
 
 ```jsx
-<Alert alert='success'>This is an alert</Alert>
+<Alert success {...} />
 ```
 
-###### ...as Object
-
 ```jsx
-<Alert alert={{ color: '#0099FF' , icon: 'exclamation-triangle'}}>This is an alert</Alert>
-```
-
-#### `props.icon`
-
-> Overrides [`config.icon`](#configicon)
-
-<table>
-  <tr>
-    <td><b>Type</b></td>
-    <td><code>(Boolean|String)</code></td>
-  </tr>
-</table>
-
-###### ...as Boolean
-
-```jsx
-<Alert icon={false} {...}>This is an alert</Alert>
-```
-
-###### ...as String
-
-```jsx
-<Alert icon='exclamation-triangle' {...}>This is an alert</Alert>
+<Alert error {...} />
 ```
 
 #### `props.dismiss`

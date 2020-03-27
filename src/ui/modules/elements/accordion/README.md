@@ -16,7 +16,7 @@
   <tr>
     <td></td>
     <td><li><a href="#configpersist"><code>config.persist</code></a></li></td>
-    <td><li><a href="#propspersist"><code>props.persist</code></a></li></td>
+    <td><</td>
   </tr>
 </table>
 
@@ -113,8 +113,6 @@
 
 > Set whether previously opened panels should remain open when toggling a panel
 
-> [This value can be overridden via Props](#propspersist)
-
 <table>
   <tr>
     <td><b>Type</b></td>
@@ -122,10 +120,15 @@
   </tr>
 </table>
 
+###### Control via Props
+
+```jsx
+<Accordion persist={false} {...} />
+```
+
 ## API
 
 * [`props.panels`](#propspanels)
-* [`props.persist`](#propspersist)
 
 ### `props.panels`
 
@@ -238,16 +241,3 @@ Accordions can be nested:
   }
 ]} />
 ```
-
-### `props.persist`
-
-> Keep previously opened panels open when toggling a panel
-
-> Overrides [`config.persist`](#configpersist)
-
-<table>
-  <tr>
-    <td><b>Type</b></td>
-    <td><code>Boolean</code></td>
-  </tr>
-</table>

@@ -8,7 +8,7 @@ const Alert = ({ dismiss, heading, children, ...props }) => {
     <Module name={name} {...props}>
       {dismiss && <Component name='dismiss' className={`fa fa-times`} onClick={dismiss} />}
 
-      {icon && <Component name='icon' className={`fa fa-${alert ? alerts[alert].icon : icon.glyph}`} />}
+      {icon && <Component name='icon' right className={`fa fa-${alert ? alerts[alert].icon : icon.glyph}`} />}
 
       {heading && <Component name='heading'>{heading}</Component>}
 

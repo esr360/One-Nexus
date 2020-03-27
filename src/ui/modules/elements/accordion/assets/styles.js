@@ -29,4 +29,4 @@ export default ({ state, config, utils }) => [config, {
     'margin-top': '-1px',
     'border-bottom': context.panel.isLastChild ? config.content.border : 0
   })
-}];
+}, state];

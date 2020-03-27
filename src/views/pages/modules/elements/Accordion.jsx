@@ -47,7 +47,7 @@ const Accordions = ({ layouts, ...props }) => {
         <a href="#">Learn more</a> about module configutation
       </Alert> */}
 
-      <Accordion className='fizz' panels={data} />
+      <Accordion title={{ backgroundColor: 'red', 'panel-is-active': { backgroundColor: 'green' } }} className='fizz' panels={data} />
   
       <Accordion persist={false} panels={[
         {title: 'foo', content: 'bar'},
