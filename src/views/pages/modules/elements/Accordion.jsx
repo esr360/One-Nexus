@@ -2,7 +2,7 @@ const Accordions = ({ layouts, ...props }) => {
   const [isPartyTime, setPartyTime] = React.useState(0);
 
   React.useEffect(() => {
-    setTimeout(() => setPartyTime(true), 3000);
+    // setTimeout(() => setPartyTime(true), 3000);
   });
 
   const data = [
@@ -14,7 +14,7 @@ const Accordions = ({ layouts, ...props }) => {
     },
     {
       id: 'beta', 
-      title: 'fizz', 
+      title: 'fizz',
       content: <div>potato</div>
     }
   ];

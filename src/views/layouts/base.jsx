@@ -18,12 +18,6 @@ export default props => (
         Billboard <a href='google.com'>Google</a>  <a href='yahoo.com'>Yahoo</a>
     </Billboard> */}
 
-    <Module name='foo'>
-      <Component name='bar'>
-        <SubComponent name='bar'>fizzbuzz</SubComponent>
-      </Component>
-    </Module>
-
     <Container large section config={{ object: true }}>
       {/* <Breadcrumb data={[
           {

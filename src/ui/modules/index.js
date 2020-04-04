@@ -7,6 +7,7 @@ export { default as Button } from './elements/Button';
 export { default as Container } from './elements/Container';
 // export { default as Form } from './elements/form/form.jsx';
 export { default as Heading } from './elements/Heading/Heading';
+export { default as Icon } from './elements/Icon';
 // export { default as Image } from './elements/image/image';
 export { default as List } from './elements/List/List';
 // export { default as Modal } from './elements/modal/modal.jsx';

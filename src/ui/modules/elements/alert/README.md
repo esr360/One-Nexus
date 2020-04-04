@@ -37,7 +37,7 @@
 
 ```jsx
 <Module name='Alert'>
-  <Component name='icon' /> {children}
+  <Icon as='icon' /> {children}
 </Module>
 ```
 
@@ -79,9 +79,8 @@
   <a href="TODO">name</a>: 'Alert',
   <a href="TODO">object</a>: true,
   <a href="TODO">gutter</a>: <a href="TODO">theme.tokens.margin</a>,
-  <a href="#configalert">alert</a>: 'info',
-  <a href="#configiconglyph">icon</a>: true,
 
+  'background-color': theme.colors.alert.info,
   'color': theme.colors.greyscale.white,
   'padding': '0.85em',
 
@@ -108,6 +107,10 @@
     }
   },
 
+  icon: {
+    <a href="#configiconglyph">glyph</a>: 'info-circle'
+  },
+
   content: {
     'margin-top': `calc(${theme.tokens.margin}/2)`,
     'padding-top': `calc(${theme.tokens.margin}/2)`,
@@ -120,7 +123,7 @@
 
 > Specify the available Alert types
 
-* An Alert type is a color paired with an optoinal icon
+* An Alert type is a color paired with an optional icon
 
 <table>
   <tr>
@@ -178,6 +181,14 @@
 
 ```jsx
 <Alert icon={{ glyph: 'exclamation-triangle' }} {...} />
+```
+
+###### Disable Icon
+
+There is no dedicated API for disabling the icon as it can be done easily using [styles](#TODO):
+
+```jsx
+<Alert icon={{ display: 'none' }} {...} />
 ```
 
 ## API
@@ -242,14 +253,20 @@ return someCondition && (
 <Alert box info heading='Alert Heading'>This is an <b>info</b> alert box</Alert>
 ```
 
+This is syntractic sugar for:
+
+```jsx
+<Alert box info header={{ content: 'Alert Heading' }}>This is an <b>info</b> alert box</Alert>
+```
+
 <img width="750px" src="http://www.onenexus.io/github/Alert--box.png" />
 
 ###### Structural Interface [[?]](#TODO)
 
 ```jsx
-<Module>
-  <Component name='icon' />
-  <Component name='heading' />
-  <Component name='content'>{children}</Component>
+<Module name='Alert'>
+  <Icon as='icon' />
+  <Component name='header' />
+  <Component name='body'>{children}</Component>
 </Module>
 ```

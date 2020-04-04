@@ -1,19 +1,27 @@
-export default ({ state, config, utils }) => [config, {
+export default ({ state, context, config, utils, element }) => [config, {
   ...(config.object && utils.object(state, config.gutter)),
 
   'position': 'relative',
   'background-color': config.alerts[Object.keys(state).find($ => config.alerts[$])]?.color,
 
-  dismiss: () => ({
-    cursor: 'pointer',
-    float: 'right',
-    lineHeight: 1.25
+  ...(context.Container.isHovered && {
+    'background-color': 'blue'
   }),
 
   icon: ({ state }) => ({
-    'margin-right': state.right ? 0 : '0.5em',
-    'margin-left': state.right ? '0.5em' : 0,
-    'float': state.right ? 'right' : 'left',
+    'margin-right': '0.5em',
+    'float': 'left',
     'line-height': 1.25,
+
+    ...(state.right && {
+      'margin-right': 0,
+      'margin-left': '0.5em',
+      'float': 'right',
+    }),
+
+    ...(state.dismiss && {
+      cursor: 'pointer',
+      lineHeight: 1.25
+    })
   })
 }, state];

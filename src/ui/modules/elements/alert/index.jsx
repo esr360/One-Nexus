@@ -2,17 +2,20 @@ import config from './assets/config';
 import styles from './assets/styles';
 
 const Alert = ({ dismiss, heading, children, ...props }) => {
-  const { name, alerts, icon, alert = Object.keys(props).find($ => alerts[$]) } = useConfig(props);
+  const { name, alerts, icon, header, alert = Object.keys(props).find($ => alerts[$]) } = useConfig(props);
 
   return (
     <Module name={name} {...props}>
-      {dismiss && <Component name='dismiss' className={`fa fa-times`} onClick={dismiss} />}
+      {dismiss && <Icon as='icon' glyph='times' right dismiss onClick={dismiss} />}
 
-      {icon && <Component name='icon' right className={`fa fa-${alert ? alerts[alert].icon : icon.glyph}`} />}
+      <Icon as='icon' glyph={alert ? alerts[alert].icon : icon.glyph} />
 
-      {heading && <Component name='heading'>{heading}</Component>}
-
-      {heading ? <Component name='content'>{children}</Component> : children}
+      {heading || header?.content ? (
+        <Fragment>
+          <Component name='header'>{heading}</Component>
+          <Component name='body'>{children}</Component>
+        </Fragment>
+      ) : children}
     </Module>
   );
 }
