@@ -11,15 +11,10 @@
   <tr>
     <td><li><a href="#TODO">Live CodeSandbox Demo</a></li></td>
     <td><li><a href="#default-configuration">Default Configuration</a></li></td>
-    <td><li><a href="#propscontent"><code>props.content</code></a></li></td>
+    <td><li><a href="#propssource"><code>props.source</code></a></li></td>
   </tr>
   <tr>
     <td><li><a href="#modifiers">Modifiers</a></li></td>
-    <td></td>
-    <td><li><a href="#propsfooter"><code>props.footer</code></a></li></td>
-  </tr>
-  <tr>
-    <td></td>
     <td></td>
     <td><li><a href="#blockquote-alerts">Blockquote Alerts</a></li></td>
   </tr>
@@ -30,14 +25,14 @@
 > [Learn more about One-Nexus Modules](https://github.com/esr360/One-Nexus/wiki/Modules)
 
 ```jsx
-<Blockquote content='This is a blockquote' footer='Optional blockquote footer' />
+<Blockquote source='Optional Blockquote source'>This is a Blockquote</Blockquote>
 ```
 
 ###### Structural Interface [[?]](#TODO)
 
 ```jsx
 <Module name='Blockquote'>
-  <Component name='content' />
+  <Component name='body' />
   <Component name='footer' />
 </Module>
 ```
@@ -96,11 +91,10 @@
 
 ## API
 
-* [`props.content`](#propscontent)
-* [`props.footer`](#propsfooter)
+* [`props.source`](#propssource)
 * [Blockquote Alerts](#blockquote-alerts)
 
-#### `props.content`
+#### `props.source`
 
 <table>
   <tr>
@@ -110,47 +104,23 @@
 </table>
 
 ```jsx
-<Blockquote content={<div>Blockquote content</div>} />
+<Blockquote source='Optional Blockquote source'>...</Blockquote>
 ```
 
-#### `props.footer`
-
-<table>
-  <tr>
-    <td><b>Type</b></td>
-    <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
-  </tr>
-</table>
+This is syntactic sugar for:
 
 ```jsx
-<Blockquote content={...} footer='Optional blockquote footer'} />
+<Blockquote footer={{ content: 'Optional Blockquote source' }}>...</Blockquote>
 ```
 
 #### Blockquote Alerts
 
 The Blockquote module works well in combination with the [Alert](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/elements/Alert) Module ([learn more](#TODO-combining-modules) about combining modules).
 
-> Note the presence of the `error` modifier from the Alert Module
-
 ```jsx
-<Blockquote as={Alert}
-  icon={{ display: 'none' }}
-  callout
-  error
-  content='Lorem ipsum dolor sit amet' 
-  footer='Someone Famous'
-/>
-```
-
-...or:
-
-```jsx
-<Blockquote as={Alert}
-  icon={{ display: 'none' }}
-  modifiers={['callout', 'error']}
-  content='Lorem ipsum dolor sit amet' 
-  footer='Someone Famous'
-/>
+<Blockquote as={Alert} callout success source='Someone Famous' icon={{ display: 'none' }}>
+  This is a hybrid Blockquote/Alert
+</Blockquote>
 ```
 
 <img width="750px" src="http://www.onenexus.io/github/Blockquote--Alert.png" />

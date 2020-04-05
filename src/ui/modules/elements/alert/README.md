@@ -37,7 +37,8 @@
 
 ```jsx
 <Module name='Alert'>
-  <Icon as='icon' /> {children}
+  <Icon as='icon' />
+  <Component name='body' />
 </Module>
 ```
 
@@ -233,8 +234,10 @@ return someCondition && (
 ###### Structural Interface [[?]](#TODO)
 
 ```jsx
-<Module>
-  <Component name='icon' /> {children} <Component name='dismiss' />
+<Module name='Alert'>
+  <Icon as 'icon' right dismiss />
+  <Icon as='icon' />
+  <Component name='body' />
 </Module>
 ```
 
@@ -267,6 +270,6 @@ This is syntactic sugar for:
 <Module name='Alert'>
   <Icon as='icon' />
   <Component name='header' />
-  <Component name='body'>{children}</Component>
+  <Component name='body' />
 </Module>
 ```

@@ -4,10 +4,6 @@ export default ({ state, context, config, utils }) => [config, {
   'position': 'relative',
   'background-color': config.alerts[Object.keys(state).find($ => config.alerts[$])]?.color,
 
-  ...(context.Container.isHovered && {
-    'background-color': 'blue'
-  }),
-
   icon: ({ state }) => ({
     'margin-right': '0.5em',
     'float': 'left',

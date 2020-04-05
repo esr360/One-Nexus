@@ -30,7 +30,7 @@ const Blockquotes = ({ theme, config }) => (
 
     <hr />
 
-    <Blockquote as={Alert} callout success source='Someone Famous'>
+    <Blockquote as={Alert} callout success source='Someone Famous' icon={{ display: 'none' }}>
       This is a hybrid Blockquote/Alert
     </Blockquote>
 
