@@ -1,14 +1,14 @@
 import config from './assets/config.js';
 import styles from './assets/styles.js';
 
-const Blockquote = ({ content, footer, ...props }) => {
-  const { name } = useConfig(props);
+const Blockquote = ({ source, children, ...props }) => {
+  const { name, footer } = useConfig(props);
 
   return (
     <Module name={name} {...props}>
-      <Component name='content'>{content}</Component>
+      <Component name='body'>{children}</Component>
 
-      {footer && <Component tag='footer'>{footer}</Component>}
+      {(source || footer?.content) && <Component name='footer'>{source}</Component>}
     </Module>
   );
 }

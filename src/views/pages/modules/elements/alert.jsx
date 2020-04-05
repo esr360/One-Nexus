@@ -22,7 +22,7 @@ const AlertBars = props =>  {
       }</SyntaxHighlighter>
 
       <Well>
-          <Alert success icon={{ glyph: '' }}>This is a <b>default</b> alert</Alert>
+          <Alert success icon={{ display: 'none' }}>This is a <b>default</b> alert</Alert>
 
           <Alert success>This is a <b>success</b> alert</Alert>
           <Alert error>This is a <b>success</b> alert</Alert>
@@ -43,13 +43,6 @@ const AlertBars = props =>  {
 
           <Alert box success heading='Test Heading'>This is an <b>info</b> alert box</Alert>
       </Well>
-
-      {/* <List>
-          <List.Item><Link to='#configuration'>Configuration</Link></List.Item>
-          <List.Item><Link to='#styles'>Styles</Link></List.Item>
-          <List.Item><Link to='#interactions'>Interactions</Link></List.Item>
-          <List.Item><Link to='#render-with-react'>Render With React</Link></List.Item>
-      </List> */}
     </Base>
   );
 }

@@ -2,7 +2,7 @@ import config from './assets/config';
 import styles from './assets/styles';
 
 const Alert = ({ dismiss, heading, children, ...props }) => {
-  const { name, alerts, icon, header, alert = Object.keys(props).find($ => alerts[$]) } = useConfig(props);
+  const { name, alerts, icon, header, alert = Module.modifiers(props).find($ => alerts[$]) } = useConfig(props);
 
   return (
     <Module name={name} {...props}>
@@ -10,12 +10,9 @@ const Alert = ({ dismiss, heading, children, ...props }) => {
 
       <Icon as='icon' glyph={alert ? alerts[alert].icon : icon.glyph} />
 
-      {heading || header?.content ? (
-        <Fragment>
-          <Component name='header'>{heading}</Component>
-          <Component name='body'>{children}</Component>
-        </Fragment>
-      ) : children}
+      {(heading || header?.content) && <Component name='header'>{heading}</Component>}
+
+      <Component name='body'>{children}</Component>
     </Module>
   );
 }

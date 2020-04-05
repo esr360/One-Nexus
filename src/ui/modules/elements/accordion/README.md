@@ -120,7 +120,7 @@
   </tr>
 </table>
 
-###### Control via Props
+###### Override via Props
 
 ```jsx
 <Accordion persist={false} {...} />

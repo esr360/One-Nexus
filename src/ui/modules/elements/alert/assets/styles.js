@@ -1,4 +1,4 @@
-export default ({ state, context, config, utils, element }) => [config, {
+export default ({ state, context, config, utils }) => [config, {
   ...(config.object && utils.object(state, config.gutter)),
 
   'position': 'relative',

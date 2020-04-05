@@ -3,15 +3,16 @@ import SyntaxHighlighter from '../../../tools/syntaxHighlighter';
 
 const Blockquotes = ({ theme, config }) => (
   <Base {...config.views}>
-    {/* <Blockquote content='Lorem ipsum dolor sit amet' />
+    <Blockquote content='Lorem ipsum dolor sit amet' />
+    <Blockquote>Lorem ipsum dolor sit amet</Blockquote>
 
-    <Blockquote callout content='Lorem ipsum dolor sit amet' />
+    <Blockquote callout>Lorem ipsum dolor sit amet</Blockquote>
 
-    <Blockquote content='Lorem ipsum dolor sit amet' footer='Someone Famous' />
+    <Blockquote source='Someone Famous'>Lorem ipsum dolor sit amet</Blockquote>
 
-    <Blockquote callout content='Lorem ipsum dolor sit amet' footer='Someone Famous' />
+    <Blockquote callout source='Someone Famous'>Lorem ipsum dolor sit amet</Blockquote>
 
-    <Blockquote content='Lorem ipsum dolor sit amet' /> */}
+    <Blockquote>Lorem ipsum dolor sit amet</Blockquote>
 
     <Alert error>This is some regular Alert</Alert>
 
@@ -21,7 +22,7 @@ const Blockquotes = ({ theme, config }) => (
 
     <hr />
 
-    <Blockquote callout content='This is a Callout Blockquote' footer='Someone Famous' />
+    <Blockquote callout source='Someone Famous'>This is a Callout Blockquote</Blockquote>
 
     <SyntaxHighlighter language='jsx'>{`
       <Blockquote callout content='This is a Callout Blockquote' footer='Someone Famous' />
@@ -29,14 +30,9 @@ const Blockquotes = ({ theme, config }) => (
 
     <hr />
 
-    <Blockquote as={Alert}
-      icon={{ glyph: 'exclamation-triangle' }}
-      callout 
-      error
-      box
-      content='This is a fucking Error Callout Alert Blockquote hybrid' 
-      footer='Someone Famous'
-    />
+    <Blockquote as={Alert} callout success source='Someone Famous'>
+      This is a hybrid Blockquote/Alert
+    </Blockquote>
 
     <SyntaxHighlighter language='jsx'>{`
       <Blockquote 

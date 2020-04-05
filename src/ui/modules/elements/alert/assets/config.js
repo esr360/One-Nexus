@@ -34,9 +34,9 @@ export default (theme) => ({
     glyph: 'info-circle'
   },
 
-  body: {
-    'margin-top': `calc(${theme.tokens.margin}/2)`,
-    'padding-top': `calc(${theme.tokens.margin}/2)`,
-    'border-top': `1px solid ${theme.colors.opaque['dark-1']}`
+  header: {
+    'margin-bottom': `calc(${theme.tokens.margin}/2)`,
+    'padding-bottom': `calc(${theme.tokens.margin}/2)`,
+    'border-bottom': `1px solid ${theme.colors.opaque['dark-1']}`
   }
 });

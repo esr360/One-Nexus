@@ -128,12 +128,26 @@
 
 #### Blockquote Alerts
 
-The Blockquote module works well in combination with the [Alert](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/elements/Alert) module ([learn more](#TODO-combining-modules) about combining modules).
+The Blockquote module works well in combination with the [Alert](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/elements/Alert) Module ([learn more](#TODO-combining-modules) about combining modules).
+
+> Note the presence of the `error` modifier from the Alert Module
 
 ```jsx
-<Blockquote 
-  Alert={{ alert: { color: '#3BB85D' } }}
-  callout 
+<Blockquote as={Alert}
+  icon={{ display: 'none' }}
+  callout
+  error
+  content='Lorem ipsum dolor sit amet' 
+  footer='Someone Famous'
+/>
+```
+
+...or:
+
+```jsx
+<Blockquote as={Alert}
+  icon={{ display: 'none' }}
+  modifiers={['callout', 'error']}
   content='Lorem ipsum dolor sit amet' 
   footer='Someone Famous'
 />

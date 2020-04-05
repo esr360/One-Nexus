@@ -177,18 +177,18 @@
 
 * Value should correspond to a [FontAwesome icon](http://fontawesome.io/icons/) name
 
-###### Control via Props
+###### Override via Props
 
 ```jsx
 <Alert icon={{ glyph: 'exclamation-triangle' }} {...} />
 ```
 
-###### Disable Icon
+###### Disable Alert Icon
 
 There is no dedicated API for disabling the icon as it can be done easily using [styles](#TODO):
 
 ```jsx
-<Alert icon={{ display: 'none' }} {...} />
+<Alert icon={{ glyph: 'exclamation-triangle', display: 'none' }} {...} />
 ```
 
 ## API
@@ -253,7 +253,7 @@ return someCondition && (
 <Alert box info heading='Alert Heading'>This is an <b>info</b> alert box</Alert>
 ```
 
-This is syntractic sugar for:
+This is syntactic sugar for:
 
 ```jsx
 <Alert box info header={{ content: 'Alert Heading' }}>This is an <b>info</b> alert box</Alert>
