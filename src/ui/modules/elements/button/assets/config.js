@@ -4,6 +4,7 @@ export default (theme) => ({
   lightThreshold: 0.55,
   fluidScaling: true,
   sizes: theme.typography.sizes,
+  colorInverse: theme.colors.opaque['dark-4'],
 
   colors: {
     ...theme.colors.brand,
@@ -13,7 +14,6 @@ export default (theme) => ({
   },
 
   'color': theme.colors.greyscale.white,
-  'color-inverse': theme.colors.opaque['dark-4'],
   'background': theme.colors.brand['brand-1'],
   'transition': theme.tokens.transition,
   'padding': '0.65em 1em',

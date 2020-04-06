@@ -14,16 +14,6 @@
     <td><li><a href="#TODO">Button Group</a></li></td>
   </tr>
   <tr>
-    <td><li><a href="#modifiers">Modifiers</a></li></td>
-    <td><li><a href="#configlightthreshold"><code>config.lightThreshold</code></a></li></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><li><a href="#configfluidscaling"><code>config.fluidScaling</code></a></li></td>
-    <td></td>
-  </tr>
-  <tr>
     <td></td>
     <td><li><a href="#configsizes"><code>config.sizes</code></a></li></td>
     <td></td>
@@ -36,6 +26,21 @@
   <tr>
     <td></td>
     <td><li><a href="#TODO"><code>config.hover.background</code></a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configfluidscaling"><code>config.fluidScaling</code></a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#TODO"><code>config.colorInverse</code></a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><li><a href="#modifiers">Modifiers</a></li></td>
+    <td><li><a href="#configlightthreshold"><code>config.lightThreshold</code></a></li></td>
     <td></td>
   </tr>
 </table>
@@ -162,82 +167,35 @@
 }
 </pre>
 
-### `config.lightThreshold`
-
-@TODO
-
-### `config.fluidScaling`
-
-@TODO
-
 ### `config.sizes`
 
-This option accepts an object and will create a modifier for each key using the key's value for the modifier's font-size:
-
-```js
-"sizes": {
-    "size-1": "0.67em",
-    "size-2": "0.83em",
-    "size-3": "1.17em",
-    "size-4": "1.25em",
-    "size-5": "1.5em",
-    "size-6": "2em",
-    "size-7": "2.4em",
-    "size-8": "3em",
-    "size-9": "3.4em"
-}
-```
-
-```jsx
-<Button size-8>Button</Button>
-```
+TODO
 
 ### `config.colors`
 
-This option accepts a list of palettes defined by the [Colors](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/utilities/colors) module.
+TODO
 
-```json
-"palettes": ["brand", "greyscale", "alert", "social"]
-```
+### `config.hover.background`
 
-This will create a modifier for each color in each palette, with the color's key as the modifier name.
-
-```jsx
-<Button brand-1>Button</Button>
-<Button grey-3>Button</Button>
-<Button success>Button</Button>
-<Button facebook>Button</Button>
-```
-
-If you only want to create modifiers for specific colors in a certain palette, you can pass the keys like so:
+> This function determines the Button's background color based off the Button's non-hovered background color, by utilizing [Lucid's Previous Value feature](https://github.com/One-Nexus/Lucid/wiki/Styles#previous-value) and the [`color`](https://www.npmjs.com/package/color) JavaScript library
 
 ```js
-"palettes": [
-    "brand", 
-    {"greyscale": ["grey-1", "grey-3", "grey-4"]}, 
-    "alert", 
-    {"social": ["facebook", "twitter"]}
-]
+'background': prev => Color(prev).desaturate(0.1).lighten(0.2)
 ```
 
-You can also create new palettes:
+This assumes the logic for a given Button's hovered color is transferable from Button to Button - but this may not neccesserily be the case for your system. It's a neat way to generate dynamic [modifiers](#TODO) with hover states for Button colors, but you may have to create your Button modifiers manually if the logic to determine your hovered colors is non-transferable.
 
-```js
-"palettes": [
-    {
-        "foo": "blue", 
-        "bar": "#FF5733"
-    }
-]
-```
+### `config.colorInverse`
 
-Using your new values like so:
+> The value to use for the Button's text color if the background contrast becomes too great (determined by [`config.lightThreshold`](#TODO))
 
-```jsx
-<Button foo>Button</Button>
-<Button bar>Button</Button>
-```
+### `config.lightThreshold`
 
+> This value determines whether or not to use [`config.colorInverse`](#TODO) as the Button's text color, based on the Button's [background color](#TODO)
+
+### `config.fluidScaling`
+
+> This value determines whether or not Buttons should have [fluid scalability](#TODO)
 
 ## API
 
@@ -245,7 +203,7 @@ Using your new values like so:
 
 ### Button Group
 
-> [Learn more] about the `<Group>` Module
+> [Learn more](#TODO) about the `<Group>` Module
 
 ```jsx
 <Group>

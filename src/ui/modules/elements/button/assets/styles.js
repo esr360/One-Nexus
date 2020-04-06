@@ -14,11 +14,11 @@ export default ({ theme, state, context, config, utils }) => [config, {
     'border-color': 'transparent',
 
     'color': (prev) => {
-      return Color(value).luminosity() > config.lightThreshold ? config['color-inverse'] : prev;
+      return Color(value).luminosity() > config.lightThreshold ? config.colorInverse : prev;
     },
 
     ':hover': {
-      'background': config.hover.background(value)
+      'background': config.hover.background?.(value)
     },
 
     'is-border': {
