@@ -198,7 +198,7 @@ There is no dedicated API for disabling the icon as it can be done easily using 
 * [`props.dismiss`](#propsdismiss)
 * [`props.heading`](#propsheading)
 
-#### `props[$alertType]`
+### `props[$alertType]`
 
 > The type of the Alert
 
@@ -212,7 +212,7 @@ There is no dedicated API for disabling the icon as it can be done easily using 
 <Alert error {...} />
 ```
 
-#### `props.dismiss`
+### `props.dismiss`
 
 > Allow the Alert to be dismissable
 
@@ -241,7 +241,7 @@ return someCondition && (
 </Module>
 ```
 
-#### `props.heading`
+### `props.heading`
 
 > Pass a heading to an Alert
 

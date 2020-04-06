@@ -53,7 +53,7 @@
   <tbody>
     <tr>
       <td><code>callout</code></td>
-      <td>TODO</td>
+      <td>Add some prominence to the Blockquote</td>
     </tr>
   </tbody>
 </table>
@@ -94,7 +94,7 @@
 * [`props.source`](#propssource)
 * [Blockquote Alerts](#blockquote-alerts)
 
-#### `props.source`
+### `props.source`
 
 <table>
   <tr>
@@ -113,7 +113,7 @@ This is syntactic sugar for:
 <Blockquote footer={{ content: 'Optional Blockquote source' }}>...</Blockquote>
 ```
 
-#### Blockquote Alerts
+### Blockquote Alerts
 
 The Blockquote module works well in combination with the [Alert](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/elements/Alert) Module ([learn more](#TODO-combining-modules) about combining modules).
 

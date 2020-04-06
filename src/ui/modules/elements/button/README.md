@@ -1,6 +1,6 @@
 # One-Nexus Button
 
-<img width="750px" src="http://www.onenexus.io/github/Button.png" />
+<img width="350px" src="http://www.onenexus.io/github/Button.png" />
 
 <table>
   <thead>
@@ -11,7 +11,7 @@
   <tr>
     <td><li><a href="#TODO">Live CodeSandbox Demo</a></li></td>
     <td><li><a href="#default-configuration">Default Configuration</a></li></td>
-    <td></td>
+    <td><li><a href="#TODO">Button Group</a></li></td>
   </tr>
   <tr>
     <td><li><a href="#modifiers">Modifiers</a></li></td>
@@ -33,6 +33,11 @@
     <td><li><a href="#configcolors"><code>config.colors</code></a></li></td>
     <td></td>
   </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#TODO"><code>config.hover.background</code></a></li></td>
+    <td></td>
+  </tr>
 </table>
 
 ## Overview
@@ -44,7 +49,7 @@
 ###### Structural Interface [[?]](#TODO)
 
 ```jsx
-<Module name='Button'>{children}</Module>
+<Module name='Button' />
 ```
 
 ### [Live CodeSandbox Demo](#TODO)
@@ -238,13 +243,14 @@ Using your new values like so:
 
 * [Button Group](#defaultprops)
 
-#### Button Group
+### Button Group
 
-###### Internal Interface
+> [Learn more] about the `<Group>` Module
 
 ```jsx
-<Group { pills { round }, stack }>
+<Group>
   <Button />
-  ...
+  <Button />
+  <Button />
 </Group>
 ```
