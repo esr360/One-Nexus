@@ -11,7 +11,7 @@
   <tr>
     <td><li><a href="#TODO">Live CodeSandbox Demo</a></li></td>
     <td><li><a href="#default-configuration">Default Configuration</a></li></td>
-    <td><li><a href="#TODO">Button Group</a></li></td>
+    <td><li><a href="#button-group">Button Group</a></li></td>
   </tr>
   <tr>
     <td><li><a href="#modifiers">Modifiers</a></li></td>
@@ -25,12 +25,12 @@
   </tr>
   <tr>
     <td></td>
-    <td><li><a href="#TODO"><code>config.hover.background</code></a></li></td>
+    <td><li><a href="#confighoverbackground"><code>config.hover.background</code></a></li></td>
     <td></td>
   </tr>
   <tr>
     <td></td>
-    <td><li><a href="#TODO"><code>config.colorInverse</code></a></li></td>
+    <td><li><a href="#configcolorinverse"><code>config.colorInverse</code></a></li></td>
     <td></td>
   </tr>
   <tr>
@@ -61,7 +61,7 @@
 
 ### Modifiers
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about Modifiers
 
 <table class="table">
   <thead>
@@ -72,12 +72,12 @@
   </thead>
   <tbody>
     <tr>
-      <td><a href="#TODO"><code>$color</code></a></td>
-      <td>TODO</td>
+      <td><a href="#configcolors"><code>$color</code></a></td>
+      <td>Key corresponding to a color from <a href="#configcolors"><code>config.colors</code></a></td>
     </tr>
     <tr>
-      <td><a href="#TODO"><code>$size</code></a></td>
-      <td>TODO</td>
+      <td><a href="#configsizes"><code>$size</code></a></td>
+      <td>Key corresponding to a size from <a href="#configsizes"><code>config.sizes</code></a><</td>
     </tr>
     <tr>
       <td><code>block</code></td>
@@ -169,7 +169,7 @@
 
 ### `config.sizes`
 
-> An object containing the list of available font-sizes to use for the Button Module, which will be passed to the [`fontSize()` utility function]
+> An object containing the list of available font-sizes to use for the Button Module, which will be passed to the [`fontSize()` utility function](#TODO)
 
 ###### Inside `./assets/styles.js`
 
@@ -235,15 +235,15 @@ Color Modifiers are compatible with the [`border` Modifier](#TODO):
 'background': prev => Color(prev).desaturate(0.1).lighten(0.2)
 ```
 
-This assumes the logic for a given Button's hovered color is transferable from Button to Button - but this may not neccesserily be the case for your system. It's a neat way to generate dynamic [modifiers](#TODO) with hover states for Button colors, but you may have to create your Button modifiers manually if the logic to determine your hovered colors is non-transferable.
+This assumes the logic for a given Button's hovered color is transferable from Button to Button - but this may not neccesserily be the case for your system. It's a neat way to generate dynamic [Modifiers](#TODO) with hover states for Button colors, but you may have to create your Button Modifiers manually if the logic to determine your hovered colors is non-transferable.
 
 ### `config.colorInverse`
 
-> The value to use for the Button's text color if the background contrast becomes too great (determined by [`config.lightThreshold`](#TODO))
+> The value to use for the Button's text color if the background contrast becomes too great (determined by [`config.lightThreshold`](#configlightthreshold))
 
 ### `config.lightThreshold`
 
-> This value determines whether or not to use [`config.colorInverse`](#TODO) as the Button's text color, based on the Button's [background color](#TODO)
+> This value determines whether or not to use [`config.colorInverse`](#configcolorinverse) as the Button's text color, based on the Button instance's background color
 
 ### `config.fluidScaling`
 
@@ -255,7 +255,7 @@ This assumes the logic for a given Button's hovered color is transferable from B
 
 ### Button Group
 
-> [Learn more](#TODO) about the `<Group>` Module
+> [Learn more](https://github.com/One-Nexus/Lucid/wiki/Group) about the `<Group>` Module
 
 ```jsx
 <Group>
