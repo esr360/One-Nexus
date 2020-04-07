@@ -14,7 +14,7 @@
     <td><li><a href="#TODO">Button Group</a></li></td>
   </tr>
   <tr>
-    <td></td>
+    <td><li><a href="#modifiers">Modifiers</a></li></td>
     <td><li><a href="#configsizes"><code>config.sizes</code></a></li></td>
     <td></td>
   </tr>
@@ -34,7 +34,7 @@
     <td></td>
   </tr>
   <tr>
-    <td><li><a href="#modifiers">Modifiers</a></li></td>
+    <td></td>
     <td><li><a href="#configlightthreshold"><code>config.lightThreshold</code></a></li></td>
     <td></td>
   </tr>
