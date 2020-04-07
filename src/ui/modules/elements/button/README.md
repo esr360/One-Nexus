@@ -77,7 +77,7 @@
     </tr>
     <tr>
       <td><a href="#configsizes"><code>$size</code></a></td>
-      <td>Key corresponding to a size from <a href="#configsizes"><code>config.sizes</code></a><</td>
+      <td>Key corresponding to a size from <a href="#configsizes"><code>config.sizes</code></a></td>
     </tr>
     <tr>
       <td><code>block</code></td>
