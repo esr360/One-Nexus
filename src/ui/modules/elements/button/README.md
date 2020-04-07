@@ -30,17 +30,17 @@
   </tr>
   <tr>
     <td></td>
-    <td><li><a href="#configfluidscaling"><code>config.fluidScaling</code></a></li></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
     <td><li><a href="#TODO"><code>config.colorInverse</code></a></li></td>
     <td></td>
   </tr>
   <tr>
     <td><li><a href="#modifiers">Modifiers</a></li></td>
     <td><li><a href="#configlightthreshold"><code>config.lightThreshold</code></a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configfluidscaling"><code>config.fluidScaling</code></a></li></td>
     <td></td>
   </tr>
 </table>
@@ -169,15 +169,67 @@
 
 ### `config.sizes`
 
-TODO
+> An object containing the list of available font-sizes to use for the Button Module, which will be passed to the [`fontSize()` utility function]
+
+###### Inside `./assets/styles.js`
+
+```js
+'font-size': utils.fontSize(state, config.sizes, theme, config)
+```
+
+###### Sample
+
+```js
+{
+  'size-1': '12px',
+  'size-2': '16px',
+  'size-3': '20px',
+  large: '2em'
+}
+```
+
+Sizes can be applied by passing the desired key as a [Modifier](#TODO) when using the Button Module:
+
+```jsx
+<Button size-1>...</Button>
+<Button large>...</Button>
+```
+
+> The Button size can be affected by [fluid scalability](#TODO)
 
 ### `config.colors`
 
-TODO
+> An object containing the list of available colors to use for the Button Module
+
+###### Sample
+
+```js
+{
+  'brand-1': '#2E3882',
+  'brand-2': '#06d2ff',
+  'brand-3': '#04CEC0',
+  success: '#3BB85D'
+}
+```
+
+Colors can be applied by passing the desired key as a [Modifier](#TODO) when using the Button Module:
+
+```jsx
+<Button brand-1>Button</Button>
+<Button success>Button</Button>
+```
+
+#### Use with `border` Modifier
+
+Color Modifiers are compatible with the [`border` Modifier](#TODO):
+
+```jsx
+<Button success border>Button</Button>
+```
 
 ### `config.hover.background`
 
-> This function determines the Button's background color based off the Button's non-hovered background color, by utilizing [Lucid's Previous Value feature](https://github.com/One-Nexus/Lucid/wiki/Styles#previous-value) and the [`color`](https://www.npmjs.com/package/color) JavaScript library
+> By default this value is a function which determines the hovered Button's background color based off the Button's non-hovered background color, by utilizing [Lucid's Previous Value feature](https://github.com/One-Nexus/Lucid/wiki/Styles#previous-value) and the [`color`](https://www.npmjs.com/package/color) JavaScript library
 
 ```js
 'background': prev => Color(prev).desaturate(0.1).lighten(0.2)

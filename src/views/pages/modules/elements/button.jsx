@@ -21,6 +21,10 @@ const Buttons = props => (
     </Group>
 
     <Group object>
+      <Button border success>Button</Button>
+    </Group>
+
+    <Group object>
       <Button facebook>Button</Button>
       <Button twitter>Button</Button>
       <Button linkedin>Button</Button>
