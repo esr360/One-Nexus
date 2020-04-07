@@ -112,7 +112,7 @@
 
 ### Default Configuration
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about Module configutation
+> [`modules/elements/Button/assets/config.js`](assets/config.js)
 
 <pre>
 {
@@ -169,7 +169,7 @@
 
 ### `config.sizes`
 
-> An object containing the list of available font-sizes to use for the Button Module, which will be passed to the [`fontSize()` utility function](#TODO)
+> An object containing the list of available font sizes to use for the Button Module, which will be passed to the [`fontSize()` utility function](#TODO)
 
 ###### Inside `./assets/styles.js`
 
