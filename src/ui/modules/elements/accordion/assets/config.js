@@ -7,7 +7,9 @@ export default (theme) => ({
   title: {
     'background': 'transparent',
     'color': 'grey',
-    'border': `1px solid ${theme.colors.opaque['dark-2']}`,
+    'border-width': '1px',
+    'border-style': 'solid',
+    'border-color': theme.colors.opaque['dark-2'],
     'padding': '1em',
 
     'panel-is-active': {

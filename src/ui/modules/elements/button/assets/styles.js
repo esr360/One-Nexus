@@ -7,31 +7,35 @@ export default ({ theme, state, context, config, utils }) => [config, {
   'vertical-align': 'middle',
   'cursor': 'pointer',
   'font-size': utils.fontSize(state, config.sizes, theme, config),
-  'padding': `${config['padding-y']} ${config['padding-x']}`,
+
 
   ...Object.entries(config.colors).reduce(($, [key, value]) => state[key] ? {
-    'background': value,
+    'background-color': value,
     'border-color': 'transparent',
 
     'color': (prev) => {
       return Color(value).luminosity() > config.lightThreshold ? config.colorInverse : prev;
     },
 
-    ':hover': {
-      'background': config.hover.background?.(value)
+    'hover': {
+      'background-color': config.hover['background-color']?.(value)
     },
 
     'is-border': {
-      'background': 'transparent',
+      'background-color': 'transparent',
       'color': value,
       'border-color': value,
 
-      ':hover': {
-        'background': value,
+      'hover': {
+        'background-color': value,
         'color': config.color
       }
     }
   } : $, {}),
+
+  ...(context.Container.isHovered && {
+    // 'background-color': 'blue'
+  }),
 
   'is-block': {
     'width': '100%',
@@ -54,7 +58,7 @@ export default ({ theme, state, context, config, utils }) => [config, {
   }),
 
   ...(context.group && {
-    'margin-left': state.isFirstChild && 0,
+    'margin-left': state.isFirstChild ? 0 : null,
 
     ...(context.group.pills && {
       'flex-basis': '100%',

@@ -3,12 +3,12 @@ import Base from '../../../layouts/base';
 const Buttons = props => (
   <Base {...props.config.views}>
     <Group>
-      <Button dribbble border>Button</Button>
-      <Button reddit>Button</Button>
-      <Button linkedin round>Button</Button>
+      <Button dribbble border>Button 1</Button>
+      <Button reddit>Button 2</Button>
+      <Button linkedin round>Button 3</Button>
     </Group>
 
-    <Group>
+    {/* <Group>
       <Button facebook border>Button</Button>
       <Button twitter border>Button</Button>
       <Button linkedin border>Button</Button>
@@ -38,7 +38,7 @@ const Buttons = props => (
 
     <Group object>
       <Button brand-1>Button</Button>
-      <Button brand-2>Button</Button>
+      <Button youtube size-4>Button</Button>
       <Button brand-3>Button</Button>
       <Button brand-4>Button</Button>
       <Button primary>Button</Button>
@@ -83,7 +83,7 @@ const Buttons = props => (
       <Button>Button</Button>
       <Button grey-3>Button</Button>
       <Button>Button</Button>
-    </Group>
+    </Group> */}
   </Base>
 );
 

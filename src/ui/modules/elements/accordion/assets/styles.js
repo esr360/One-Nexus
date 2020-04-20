@@ -14,7 +14,7 @@ export default ({ state, config, utils }) => [config, {
     'font-weight': 'normal',
     'line-height': 1,
     'cursor': 'pointer',
-    'border-bottom': context.panel.isLastChild ? config.title.border : 0
+    'border-bottom': context.panel.isLastChild ? `1px solid ${config.title['border-color']}` : 0
   }),
 
   toggle: ({ context }) => ({
@@ -27,6 +27,6 @@ export default ({ state, config, utils }) => [config, {
     'display': context.panel.active ? 'block' : 'none',
     'margin': 0,
     'margin-top': '-1px',
-    'border-bottom': context.panel.isLastChild ? config.content.border : 0
+    'border-bottom': context.panel.isLastChild ? `1px solid ${config.title['border-color']}` : 0
   })
 }, state];

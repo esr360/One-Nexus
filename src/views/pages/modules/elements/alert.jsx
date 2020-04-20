@@ -29,7 +29,7 @@ const AlertBars = props =>  {
           <Alert info>This is a <b>success</b> alert</Alert>
           <Alert help>This is a <b>success</b> alert</Alert>
           
-          <Alert icon={{ glyph: 'times' }} background={props.theme.colors.brand['brand-2']}>This is a <b>custom</b> alert</Alert>
+          <Alert icon={{ glyph: 'times' }} background-color={props.theme.colors.brand['brand-2']}>This is a <b>custom</b> alert</Alert>
 
           <Alert success icon={{ display: 'none' }}>This is a <b>success</b> alert with no icon</Alert>
 

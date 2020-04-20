@@ -12,6 +12,7 @@ import { app as config } from './app.json';
 //*****************************************************************
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { HashRouter, Route } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import PAX5 from '../../../PAX5/PAX5/src/pax5';
@@ -38,6 +39,7 @@ const { useState, useContext, Fragment } = React;
 
 Object.assign(window, { 
   React, 
+  ReactDOM,
   useState, 
   useContext, 
   Fragment,

@@ -1,6 +1,7 @@
 import Color from 'color';
 
 export default (theme) => ({
+  name: 'Button',
   lightThreshold: 0.55,
   fluidScaling: true,
   sizes: theme.typography.sizes,
@@ -14,7 +15,7 @@ export default (theme) => ({
   },
 
   'color': theme.colors.greyscale.white,
-  'background': theme.colors.brand['brand-1'],
+  'background-color': theme.colors.brand['brand-1'],
   'transition': theme.tokens.transition,
   'padding': '0.65em 1em',
   'line-height': '1',
@@ -23,7 +24,7 @@ export default (theme) => ({
   'border-style': 'solid',
 
   hover: {
-    'background': prev => Color(prev).desaturate(0.1).lighten(0.2)
+    'background-color': prev => Color(prev).desaturate(0.1).lighten(0.5).hex()
   },
 
   active: {

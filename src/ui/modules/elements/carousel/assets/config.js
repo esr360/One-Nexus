@@ -1,37 +1,33 @@
-export default function config(theme) {
-    return {
-        'name': 'carousel',
+export default (theme) => ({
+  name: 'Carousel',
+  object: true,
+  gutter: theme.tokens.margin,
+  background: 'deepskyblue',
 
-        navigationItem: {
-            'disable': false,
-            'height': theme.typography.sizes['size-10'],
-            'width': theme.typography.sizes['size-10'],
-            'background-color': theme.colors.opaque['light-8'],
-            'arrow-color': theme.colors.opaque['dark-4'],
-            'arrow-size': '40%',
-            'shape': 'circle',
-            'transition': theme.core.transition
-        },
+  ':hover': {
+    background: 'green'
+  },
 
-        bullet: {
-            'disable': false,
-            'height': '10px',
-            'width': '10px',
-            'background-color': theme.colors.opaque['dark-4'],
-            'transition': theme.core.transition,
+  navigation: {
+    padding: '1em',
+    background: 'pink'
+  },
 
-            'modifier(selected)': {
-                'background-color': theme.colors.brand['brand-3']
-            }
-        },
+  pager: {
+    padding: '1em',
+    background: 'lime'
+  },
 
-        pagination: {
-            'margin-top': `calc(${theme.core.margin} / 2)`
-        },
+  control: {
+    background: 'blue',
+    color: 'white',
 
-        'Flickity': {
-            'cellAlign': 'left',
-            'contain': true
-        }
+    ':hover': {
+      background: 'pink'
+    },
+
+    ':disabled': {
+      background: 'red'
     }
-}
+  }
+})

@@ -1,23 +1,20 @@
 import Base from '../../../layouts/base';
 
-const Carousels = props => (
-    <Base {...props.config.views}>
-        <Carousel config={{
-            slide: {
-                background: 'red'
-            }
-        }} slides={[
-            <img src="https://picsum.photos/640/480" />,
-            <img src="https://picsum.photos/640/480" />,
-            <img src="https://picsum.photos/640/480" />
-        ]} />
+export default props => (
+  <Base {...props.config.views}>
+    <br />
+    <Carousel slides={[
+      <img src="https://picsum.photos/640/480" />,
+      <img src="https://picsum.photos/640/480" />,
+      <img src="https://picsum.photos/640/480" />
+    ]} />
 
-        <Carousel hide-navigation slides={[
-            <img src="https://picsum.photos/640/480" />,
-            <img src="https://picsum.photos/640/480" />,
-            <img src="https://picsum.photos/640/480" />
-        ]} />
-    </Base>
+    {/* <Module name='projects' as={CarouselProvider}>
+      <Group as={Slider}>
+        <Component name='project' as={Slide} index={0}>First Slide</Component>
+        <Component name='project' as={Slide} index={1}>Second Slide</Component>
+        <Component name='project' as={Slide} index={2}>Third Slide</Component>
+      </Group>
+    </Module> */}
+  </Base>
 );
-
-export default Carousels;

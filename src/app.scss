@@ -25,6 +25,12 @@
 
 @include normalize;
 
+#app {
+  background: #ffffff;
+  width: 60%;
+  padding: 3em;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -40,12 +46,6 @@ body {
   font-family: unquote(theme('tokens', 'font-family'));
   font-size: theme('tokens', 'font-size');
   line-height: theme('tokens', 'line-height');
-}
-
-#app {
-  background: #ffffff;
-  width: 60%;
-  padding: 3em;
 }
 
 h1, h2, h3, h4, h5, h6 {

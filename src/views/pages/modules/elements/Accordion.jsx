@@ -47,22 +47,24 @@ const Accordions = ({ layouts, ...props }) => {
         <a href="#">Learn more</a> about module configutation
       </Alert> */}
 
-      <Accordion title={{ backgroundColor: 'red', 'panel-is-active': { backgroundColor: 'green' } }} className='fizz' panels={data} />
+      <Accordion title={{ background: 'red', 'panel-is-active': { background: 'green' } }} className='fizz' panels={data} />
+
+      <Accordion panels={data} />
   
       <Accordion persist={false} panels={[
-        {title: 'foo', content: 'bar'},
-        {title: 'fizz', content: (
+        {title: 'foo1', content: 'bar'},
+        {title: 'fizz1', content: (
           <Accordion id='foo' panels={[
-            {title: 'foo', content: 'bar'},
-            {title: 'fizz', content: (
+            {title: 'foo2', content: 'bar'},
+            {title: 'fizz2', content: (
               <Accordion modifiers={['keepOpen']} panels={[
-                {title: 'foo', content: 'bar'},
-                {title: 'fizz', content: <div>potato</div>}
+                {title: 'foo3', content: 'bar'},
+                {title: 'fizz3', content: <div>potato</div>}
               ]} />
             )}
           ]} />
         )},
-        {title: 'fizz', content: <div>buzz</div>}
+        {title: 'fizz4', content: <div>buzz</div>}
       ]} />
     </layouts.base>
   );

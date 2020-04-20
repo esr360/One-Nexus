@@ -1,9 +1,7 @@
 import verticalRhythm from './verticalRhythm';
 
 export default function object(state, gutter) {
-  let styles = {
-    margin: `${gutter} 0`
-  }
+  const styles = { marginTop: gutter, marginBottom: gutter }
 
   return { ...styles, ...verticalRhythm(state) }
 }
