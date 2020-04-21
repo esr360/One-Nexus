@@ -6,8 +6,11 @@ export default props => (
     <Carousel slides={[
       <img src="https://picsum.photos/640/480" />,
       <img src="https://picsum.photos/640/480" />,
+      <img src="https://picsum.photos/640/480" />,
       <img src="https://picsum.photos/640/480" />
-    ]} />
+    ]}>
+      <Component name='thingy'>Testy</Component>
+    </Carousel>
 
     {/* <Module name='projects' as={CarouselProvider}>
       <Group as={Slider}>

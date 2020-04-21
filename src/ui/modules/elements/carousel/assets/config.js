@@ -3,6 +3,8 @@ export default (theme) => ({
   object: true,
   gutter: theme.tokens.margin,
   background: 'deepskyblue',
+  naturalSlideWidth: 2,
+  naturalSlideHeight: 1,
 
   ':hover': {
     background: 'green'
@@ -16,6 +18,12 @@ export default (theme) => ({
   pager: {
     padding: '1em',
     background: 'lime'
+  },
+
+  dot: {
+    'is-active': {
+      background: 'deepskyblue',
+    }
   },
 
   control: {
