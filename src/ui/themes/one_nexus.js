@@ -4,7 +4,7 @@ import core from './core';
 export default deepextend(core, {
   'colors': {
     'brand': {
-      'brand-6': 'orange'
+      'brand-4': '#556be8'
     }
   },
   'modules': {

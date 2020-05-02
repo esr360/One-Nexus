@@ -1,22 +1,163 @@
 # One-Nexus Carousel
 
-@TODO
+[IMAGE COMING SOON]
+
+<table>
+  <thead>
+    <th><a href="#overview">Overview</a></th>
+    <th><a href="#configuration">Configuration</a></th>
+    <th><a href="#API">API</a></th>
+  </thead>
+  <tr>
+    <td><li><a href="#TODO">Live CodeSandbox Demo</a></li></td>
+    <td><li><a href="#default-configuration">Default Configuration</a></li></td>
+    <td><li><a href="#TODO"><code>props.slides</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#TODO"><code>config.naturalSlideWidth</code></a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#TODO"><code>config.naturalSlideHeight</code></a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#TODO">Pure-React-Carousel Options</a></li></td>
+    <td></td>
+  </tr>
+</table>
 
 ## Overview
 
-@TODO
+> [Learn more about One-Nexus Modules](https://github.com/esr360/One-Nexus/wiki/Modules)
+
+```jsx
+<Carousel slides={[
+  <img src="https://picsum.photos/640/480" />,
+  <img src="https://picsum.photos/640/480" />,
+  <img src="https://picsum.photos/640/480" />,
+  <img src="https://picsum.photos/640/480" />
+]} />
+```
+
+###### Structural Interface [[?]](#TODO)
+
+```jsx
+<Module name='Carousel'>
+  <Component name='frame'>
+    <Component name='slider'>
+        <Component name='slide' />
+        ...
+    </Component>
+
+    <Component name='navigation'>
+      <Component name='control' back />
+      <Component name='control' next />
+    </Component>
+  </Component>
+
+  <Component name='pager'>
+    <Component name='dot'  />
+    ...
+  </Component>
+</Module>
+```
+
+### [Live CodeSandbox Demo](#TODO)
 
 ## Configuration
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about Module configutation
+
+### Default Configuration
+
+> [`modules/elements/Alert/assets/config.js`](assets/config.js)
+
+<pre>
+{
+  name: 'Carousel',
+  object: true,
+  gutter: theme.tokens.margin,
+  naturalSlideWidth: 2,
+  naturalSlideHeight: 1,
+
+  frame: {
+    background: theme.colors.opaque['dark-1'],
+  },
+
+  control: {
+    borderStyle: 'none',
+    background: theme.colors.brand['brand-4'],
+    color: 'white',
+    height: '2em',
+    width: '2em',
+
+    ':focus': {
+      boxShadow: `0 0 0 4px ${theme.colors.brand['brand-1']}`
+    },
+
+    ':hover': {
+      background: theme.colors.brand['brand-2']
+    },
+
+    ':disabled': {
+      background: theme.colors.brand['brand-3']
+    },
+
+    back: <Icon glyph='caret-left' />,
+    next: <Icon glyph='caret-right' />
+  },
+
+  pager: {
+    padding: '1em'
+  },
+
+  dot: {
+    height: '1em',
+    width: '1em',
+    border: 'none',
+    background: theme.colors.greyscale['grey-3'],
+
+    ':focus': {
+      boxShadow: `0 0 0 4px ${theme.colors.brand['brand-1']}`
+    },
+
+    ':hover': {
+      background: theme.colors.brand['brand-4']
+    },
+
+    ':disabled': {
+      background: theme.colors.brand['brand-3']
+    }
+  }
+}
+</pre>
+
+### `config.naturalSlideWidth` / `config.naturalSlideHeight`
+
+@TODO
+
+### Pure-React-Carousel Options
 
 @TODO
 
 ## API
 
+* [`props.slides`](#)
 * [Build Your Own Carousel](#)
+
+### `props.slides`
+
+@TODO
 
 ### Build Your Own Carousel
 
 Due to the versatility of Carousels, your requirements may not be catered for by the out-the-box One-Nexus Carousel. In these cases, you can build your own by following these steps.
+
+> Take a look at how the [out-the-box One-Nexus Carousel](/index.jsx) is built for a better understanding of these steps
 
 #### Step 1 - Import `pure-react-carousel` Assets
 
@@ -48,7 +189,7 @@ export default MyComplexCarousel;
 
 #### Step 2 - Add `CarouselProvider`
 
-Every Carousel created with `pure-react-carousel` needs to be wrapped with the `CarouselProvider` Component. We can tell our `MyComplexCarousel` Module to render as this Component using the [`as` prop](#TODO). We will also create and pass a [`Ref`](#TODO) to the `CarouselProvider` so we can later access the Carousel store. This is done using the [`host` prop]:
+Every Carousel created with `pure-react-carousel` needs to be wrapped with the `CarouselProvider` Component. We can tell our `MyComplexCarousel` Module to render as this Component using the [`as` prop](#TODO).
 
 ```jsx
 ...
@@ -56,12 +197,9 @@ Every Carousel created with `pure-react-carousel` needs to be wrapped with the `
 const MyComplexCarousel = (props) => {
   const { name } = useConfig(props);
 
-  // Create a ref for CarouselProvider
-  const provider = React.createRef();
-
   return (
-    // pass appropriate `as` and `host` props
-    <Module name={name} as={CarouselProvider} host={provider} {...props}>
+    // pass `CarouselProvider` to `as` prop
+    <Module name={name} as={CarouselProvider} {...props}>
       ...
     </Module>
   );
@@ -70,72 +208,7 @@ const MyComplexCarousel = (props) => {
 ...
 ```
 
-#### Step 3 - Expose `carouselStore`
-
-It's likely that your custom Carousel will need access to each instances's store, so you can do things like apply "active" styles to [Carousel Dots](https://github.com/express-labs/pure-react-carousel#dot-). We can access the instance's store by accessing the `Ref` we created in the previous step (but only once the Component has mounted - which is why we must place it in a [`useEffect`](#TODO) call):
-
-```jsx
-...
-
-const MyComplexCarousel = (props) => {
-  const { name } = useConfig(props);
-
-  const provider = React.useRef();
-
-  // Create a `useEffect` passing an empty array as the dependencies,
-  // then access the `provider.current.carouselStore` value
-  React.useEffect(() => {
-    const { carouselStore } = provider.current;
-  
-    console.log(carouselStore);
-  }, []);
-
-  return (
-    <Module name={name} as={CarouselProvider} host={provider} {...props}>
-      ...
-    </Module>
-  );
-}
-
-...
-```
-
-#### Step 4 - Map Store to State
-
-Now that we have access to the Carousel instance's store, we can can abstract the values we need into our own Carousel's state and make use of them. This example will get the `currentSlide` value from the store and map it to the internal state of the Module. To subscribe to Carousel changes we use `carouselStore.subscribe`:
-
-
-```jsx
-...
-
-const MyComplexCarousel = (props) => {
-  const { name } = useConfig(props);
-
-  const provider = React.useRef();
-
-  // Store the `currentSlide` value in a local state
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  React.useEffect(() => {
-    const { carouselStore } = provider.current;
-  
-    // Subscribe to Carousel changes then update the local state
-    carouselStore.subscribe(() => setCurrentSlide(carouselStore.state.currentSlide));
-  }, []);
-
-  return (
-    <Module name={name} as={CarouselProvider} host={provider} {...props}>
-      ...
-    </Module>
-  );
-}
-
-...
-```
-
-Now the value `currentSlide` will always return the index of the current/active slide - we will make use of this later.
-
-#### Step 5 - Flesh Out The JSX
+#### Step 3 - Flesh Out The JSX
 
 We can start fleshing out the JSX of our Carousel. We can see we are importing the `Slider`, `Slide`, `ButtonBack`, `ButtonNext` and `Dot` Components, so let's build something that utilises them.
 
@@ -146,17 +219,9 @@ We can start fleshing out the JSX of our Carousel. We can see we are importing t
 
 const MyComplexCarousel = ({ slides, ...props }) => {
   const { name } = useConfig(props);
-  const provider = React.useRef();
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  React.useEffect(() => {
-    const { carouselStore } = provider.current;
-  
-    carouselStore.subscribe(() => setCurrentSlide(carouselStore.state.currentSlide));
-  }, []);
 
   return (
-    <Module name={name} as={CarouselProvider} host={provider} {...props}>
+    <Module name={name} as={CarouselProvider} {...props}>
       <Component name='slider' as={Slider}>
         {slides.map((slide, index) => (
           // We continue to pass the `pure-react-carousel` Components via `as`
@@ -170,10 +235,7 @@ const MyComplexCarousel = ({ slides, ...props }) => {
       </Component>
 
       <Component name='pager'>
-        {slides.map(($, index) => (
-          // Here you can see we make use of the `currentSlide` value
-          <Component name='dot' as={Dot} active={currentSlide === index} slide={index} />
-        ))}
+        {slides.map(($, index) => <Component name='dot' as={Dot} slide={index} />)}
       </Component>
     </Module>
   );
@@ -190,16 +252,16 @@ Each Carousel also needs the following properties (required by `pure-react-carou
 ...
 
 const MyComplexCarousel = ({ slides, ...props }) => {
-  ...
+  const { name } = useConfig(props);
 
-  const params = {
+  const requiredParams = {
     totalSlides: slides.length,
     naturalSlideWidth: 16,
     naturalSlideHeight: 9
   }
 
   return (
-    <Module name={name} as={CarouselProvider} host={provider} {...params} {...props}>
+    <Module name={name} as={CarouselProvider} {...requiredParams} {...props}>
       ...
     </Module>
   );
@@ -218,29 +280,56 @@ export default (theme) => ({
 
   navigation: {
     padding: '1em',
-    background: 'pink'
-  },
-
-  control: {
-    background: 'blue',
-    color: 'white',
-
-    ':hover': {
-      background: 'pink'
-    }
+    background: theme.colors.brand['brand-1']
   },
 
   pager: {
     padding: '1em',
-    background: 'lime'
+    background: theme.colors.brand['brand-2']
   },
 
   dot: {
-    'is-active': {
-      background: 'deepskyblue',
+    'height': '1em',
+    'width': '1em',,
+
+    ':hover': {
+      background: theme.colors.brand['brand-4']
+    },
+
+    ':disabled': {
+      background: theme.colors.brand['brand-1'],
+    }
+  },
+
+  control: {
+    background: theme.colors.brand['brand-4'],
+    padding: '0.25em 0.85em',
+    color: 'white',
+
+    ':hover': {
+      background: theme.colors.brand['brand-2']
     }
   }
 })
+```
+
+###### `MyComplexCarousel/assets/styles.js`
+
+```js
+export default ({ state, config }) => [config, {
+  'text-align': 'center',
+
+  control: ({ state }) => ({
+    'border': 'none',
+    'margin-left': state.isFirstChild ? 0 : '0.5em'
+  }),
+
+  dot: ({ state }) => ({
+    'border-radius': '50%',
+    'border': 'none',
+    'margin-left': state.isFirstChild ? 0 : '0.5em'
+  })
+}, state];
 ```
 
 ...from here you can see how we now have complete control over building a fully customized Carousel.

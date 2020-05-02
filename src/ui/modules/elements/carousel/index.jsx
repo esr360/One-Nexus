@@ -5,35 +5,27 @@ import config from './assets/config';
 import styles from './assets/styles';
 
 const Carousel = ({ slides, defaultSlide = 0, ...props }) => {
-  const { name, naturalSlideWidth, naturalSlideHeight } = useConfig(props);
+  const { name, naturalSlideWidth, naturalSlideHeight, control } = useConfig(props);
 
-  const [currentSlide, setCurrentSlide, provider] = [...useState(defaultSlide), React.useRef()];
-
-  const params = { naturalSlideWidth, naturalSlideHeight }
-
-  React.useEffect(() => {
-    const { carouselStore } = provider.current;
-  
-    carouselStore.subscribe(() => setCurrentSlide(carouselStore.state.currentSlide));
-  }, []);
+  const requiredParams = { naturalSlideWidth, naturalSlideHeight, totalSlides: slides.length }
 
   return (
-    <Module name={name} as={CarouselProvider} totalSlides={slides.length} host={provider} {...params} {...props}>
-      <Component name='slider' as={Slider}>
-        {slides.map((slide, index) => (
-          <Component name='slide' as={Slide} index={index} key={index} content={slide} />
-        ))}
-      </Component>
+    <Module name={name} as={CarouselProvider} {...requiredParams} {...props}>
+      <Component name='frame'>
+        <Component name='slider' as={Slider}>
+          {slides.map((slide, index) => (
+            <Component name='slide' as={Slide} index={index} key={index} content={slide} />
+          ))}
+        </Component>
 
-      <Component name='navigation'>
-        <Component name='control' as={ButtonBack}>Back</Component>
-        <Component name='control' as={ButtonNext}>Next</Component>
+        <Component name='navigation'>
+          <Component name='control' as={ButtonBack} back content={control.back} />
+          <Component name='control' as={ButtonNext} next content={control.next} />
+        </Component>
       </Component>
 
       <Component name='pager'>
-        {slides.map(($, index) => (
-          <Component name='dot' as={Dot} active={currentSlide === index} slide={index} key={index} />
-        ))}
+        {slides.map(($, index) => <Component name='dot' as={Dot} slide={index} key={index} />)}
       </Component>
     </Module>
   );
