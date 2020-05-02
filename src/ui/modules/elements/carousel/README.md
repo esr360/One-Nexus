@@ -138,11 +138,26 @@
 
 ### `config.naturalSlideWidth` / `config.naturalSlideHeight`
 
-@TODO
+> Control the aspect ratio of the Carousel
+
+Combined, these values form an aspect ratio for the carousel. For example:
+
+```js
+{
+  naturalSlideWidth: 16,
+  naturalSlideHeight: 9
+}
+```
+
+...would cause your carousel to have an aspect ratio of **16:9**.
 
 ### Pure-React-Carousel Options
 
-@TODO
+Any prop passed to your `<Carousel />` instance will also be fed to the [`<CarouselProvider />`](https://www.npmjs.com/package/pure-react-carousel#carouselprovider-) Pure-React-Carousel component - meaning that any valid `CarouselProvider` prop can be passed.
+
+```jsx
+<Carousel slides={[...]} dragEnabled={false} orientation='vertical' visibleSlides={4} />
+```
 
 ## API
 
@@ -151,7 +166,23 @@
 
 ### `props.slides`
 
-@TODO
+> The Carousel slides
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>Array.&lt;<a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>></code></td>
+  </tr>
+</table>
+
+```jsx
+<Carousel slides={[
+  <img src="https://picsum.photos/640/480" />,
+  <img src="https://picsum.photos/640/480" />,
+  <img src="https://picsum.photos/640/480" />,
+  <img src="https://picsum.photos/640/480" />
+]} />
+```
 
 ### Build Your Own Carousel
 
@@ -235,7 +266,7 @@ const MyComplexCarousel = ({ slides, ...props }) => {
       </Component>
 
       <Component name='pager'>
-        {slides.map(($, index) => <Component name='dot' as={Dot} slide={index} />)}
+        {slides.map(($, index) => (<Component name='dot' as={Dot} slide={index} />))}
       </Component>
     </Module>
   );
