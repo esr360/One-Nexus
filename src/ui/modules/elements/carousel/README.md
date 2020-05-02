@@ -11,21 +11,21 @@
   <tr>
     <td><li><a href="#TODO">Live CodeSandbox Demo</a></li></td>
     <td><li><a href="#default-configuration">Default Configuration</a></li></td>
-    <td><li><a href="#TODO"><code>props.slides</code></a></li></td>
+    <td><li><a href="#propsslides"><code>props.slides</code></a></li></td>
   </tr>
   <tr>
     <td></td>
-    <td><li><a href="#TODO"><code>config.naturalSlideWidth</code></a></li></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><li><a href="#TODO"><code>config.naturalSlideHeight</code></a></li></td>
+    <td><li><a href="#confignaturalslidewidth--confignaturalslideheight"><code>config.naturalSlideWidth</code></a></li></td>
     <td></td>
   </tr>
   <tr>
     <td></td>
-    <td><li><a href="#TODO">Pure-React-Carousel Options</a></li></td>
+    <td><li><a href="#confignaturalslidewidth--confignaturalslideheight"><code>config.naturalSlideHeight</code></a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#pure-react-carousel-options">Pure-React-Carousel Options</a></li></td>
     <td></td>
   </tr>
 </table>
@@ -161,8 +161,8 @@ Any prop passed to your `<Carousel />` instance will also be fed to the [`<Carou
 
 ## API
 
-* [`props.slides`](#)
-* [Build Your Own Carousel](#)
+* [`props.slides`](#propsslides)
+* [Build Your Own Carousel](#build-your-own-carousel)
 
 ### `props.slides`
 
