@@ -136,6 +136,14 @@
 }
 </pre>
 
+#### TIP: Hide/Show Carousel Pager
+
+When using One-Nexus, trivial things like hiding/showing Components do not require bespoke options/APIs (e.g. `hidePager`). The `pager` Component for a given Carousel can be hidden, for example, using [styles](#TODO):
+
+```jsx
+<Carousel slides={[...]} pager={{ display: 'none' }} />
+```
+
 ### `config.naturalSlideWidth` / `config.naturalSlideHeight`
 
 > Control the aspect ratio of the Carousel

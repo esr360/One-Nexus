@@ -1,5 +1,7 @@
 export default (theme) => ({
+  name: 'Container',
   object: true,
+  gutter: theme.tokens.margin,
 
   'width': '90%',
   'max-width': theme.grid.breakpoints['break-4'],

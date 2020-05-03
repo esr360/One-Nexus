@@ -8,7 +8,7 @@ export default props => (
       <img src="https://picsum.photos/640/480" />,
       <img src="https://picsum.photos/640/480" />,
       <img src="https://picsum.photos/640/480" />
-    ]} />
+    ]} pager={{ display: 'none' }} />
 
     {/* <Module name='projects' as={CarouselProvider}>
       <Group as={Slider}>

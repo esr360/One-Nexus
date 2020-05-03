@@ -1,10 +1,12 @@
 import config from './assets/config';
 import styles from './assets/styles';
 
-const Container = (props) => <Module {...props} />
+const Container = props => {
+  const { name } = useConfig(props);
 
-export default Object.assign(Container, { 
-  config, styles, defaultProps: {
-    name: 'Container'
-  }
-});
+  return <Module name={name} {...props} />;
+}
+
+Container.defaultProps = { config, styles }
+
+export default Container;

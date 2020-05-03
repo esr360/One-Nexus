@@ -1,11 +1,7 @@
-export default ({ state, config, theme }) => {
-  const layout = {
-    ...(config.object && theme.object(state)),
+export default ({ state, config, utils }) => [config, {
+  ...(config.object && utils.object(state, config.gutter)),
 
-    'position': 'relative',
-    'margin-left': 'auto',
-    'margin-right': 'auto'
-  }
-
-  return [config, layout];
-}
+  'position': 'relative',
+  'margin-left': 'auto',
+  'margin-right': 'auto'
+}];
