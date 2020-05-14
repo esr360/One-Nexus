@@ -18,7 +18,7 @@ export default props => (
         Billboard <a href='google.com'>Google</a>  <a href='yahoo.com'>Yahoo</a>
     </Billboard> */}
 
-    <Container large section config={{ object: true }}>
+    <Container large section>
       {/* <Breadcrumb data={[
           {
               label: 'level 1',

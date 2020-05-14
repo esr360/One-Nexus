@@ -5,7 +5,7 @@ export { default as Alert } from './modules/elements/Alert.jsx';
 export { default as Blockquote } from './modules/elements/Blockquote.jsx';
 export { default as Button } from './modules/elements/Button.jsx';
 export { default as Carousel } from './modules/elements/Carousel.jsx';
-export { default as forms } from './modules/elements/form.jsx';
+export { default as Form } from './modules/elements/Form.jsx';
 export { default as Headings } from './modules/elements/Heading.jsx';
 export { default as images } from './modules/elements/image.jsx';
 export { default as lists } from './modules/elements/list.jsx';

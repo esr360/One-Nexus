@@ -11,7 +11,7 @@ export default (theme) => ({
   },
 
   'is-section': {
-    'padding-top': theme.core.margin,
-    'padding-bottom': theme.core.margin
+    'padding-top': theme.tokens.margin,
+    'padding-bottom': theme.tokens.margin
   }
 });
