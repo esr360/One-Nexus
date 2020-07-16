@@ -1,5 +1,5 @@
 import config from './assets/config';
-import interactions from './assets/interactions';
+import { validator, setState } from './assets/interactions';
 import styles from './assets/styles';
 
 if (typeof React === 'undefined') {
@@ -30,42 +30,25 @@ const otherTypes = [
   'week'
 ];
 
-const { validator, setState } = interactions;
-
 const formContext = React.createContext({});
 
 const Form = ({ fields, submit, ...props }) => {
   const { name } = useConfig(props);
-
   const [formFields, updateFormFields] = useState({});
+  const formFieldNodes = Object.keys(formFields).reduce(($, id) => ($[id] = formFields[id].node, $), {});
 
-  const formFieldNodes = Object.keys(formFields).reduce((accumulator, currentValue) => {
-    accumulator[currentValue] = formFields[currentValue].node;
-
-    return accumulator;
-  }, {});
-
-  const ContextValues = { formFields, formFieldNodes, updateFormFields }
+  const handleSubmit = () => validateFields(formFields, formFieldNodes);
 
   return (
-    <formContext.Provider value={ContextValues}>
+    <formContext.Provider value={{ formFields, updateFormFields, formFieldNodes }}>
       <Module name={name} {...props}>
         <RenderFields fields={fields} />
 
-        {submit !== false &&
+        {submit !== false && (
           <Component name='footer'>
-            <Component
-              name='submit'
-              tag='input'
-              type='submit'
-              value={typeof submit === 'object' ? submit.text : submit}
-
-              onClick={() => validateFields(fields)}
-
-              {...getInputProps(submit)}
-            />
+            <Component name='submit' tag='input' type='submit' value={submit} onClick={handleSubmit} {...getInputAttrs(submit)} />
           </Component>
-        }
+        )}
       </Module>
     </formContext.Provider>
   );
@@ -75,7 +58,9 @@ Form.defaultProps = { config, styles }
 
 Form.Field = ({ properties, ...props }) => {
   const { id, label, type, icon, options, fieldset, render, after, validate, tree } = properties;
-  const { formFields, formFieldNodes, updateFormFields } = React.useContext(formContext);
+
+  const { formFields, updateFormFields, formFieldNodes } = React.useContext(formContext);
+
   const [REF, isValid, setIsValid] = [React.createRef(), ...useState()];
 
   const onBlur = ({ target }) => {
@@ -90,7 +75,7 @@ Form.Field = ({ properties, ...props }) => {
     }
   }
 
-  const onChange = () => {
+  const onChange = ({ target }) => {
     setIsValid(validator(target, validate, formFieldNodes));
 
     if (tree) {
@@ -113,40 +98,40 @@ Form.Field = ({ properties, ...props }) => {
 
       {inputTypes.includes(type) && (
         <Component name='field'>
-          <Component tag='input' host={REF} {...getInputProps(properties)} onBlur={onBlur} onKeyUp={onKeyup} />
+          <Component tag='input' host={REF} {...getInputAttrs(properties)} onBlur={onBlur} onKeyUp={onKeyup} />
 
           {icon && <Icon as='icon' glyph={icon} />}
         </Component>
       )}
 
       {otherTypes.includes(type) && (
-        <input {...getInputProps(properties)}/>
+        <input {...getInputAttrs(properties)}/>
       )}
 
       {(type === 'checkbox' || type === 'radio') && (
         <Component name='selection' {...{[type]:true}}>
-          <Component name={type} tag='input' {...getInputProps(properties)} onChange={onChange} />
+          <Component name={type} tag='input' {...getInputAttrs(properties)} onChange={onChange} />
 
           {label && <Component name='label' htmlFor={id} content={label} />}
         </Component>
       )}
 
       {type === 'textarea' && (
-        <Component name='input'ag='textarea' {...getInputProps(properties)} />
+        <Component name='input'ag='textarea' {...getInputAttrs(properties)} />
       )}
 
       {type === 'select' && (
         <Component name='field'>
-          <Component name='select' {...getInputProps(properties)} onChange={onChange}>
+          <Component name='select' tag='select' host={REF} {...getInputAttrs(properties)} onChange={onChange}>
             {options.map((options) => (
-              <option value={options.value} {...getInputProps(options)}>{options.value}</option>
+              <option value={options.value} {...getInputAttrs(options)}>{options.value}</option>
             ))}
           </Component>
         </Component>
       )}
 
       {type ==='HTML' && (
-        <div {...getInputProps(properties)}>{render}</div>
+        <div {...getInputAttrs(properties)}>{render}</div>
       )}
 
       {fieldset && (
@@ -154,15 +139,12 @@ Form.Field = ({ properties, ...props }) => {
       )}
 
       {after && (
-        <div {...getInputProps(after)}>{after.render}</div>
+        <div {...getInputAttrs(after)}>{after.render}</div>
       )}
     </Component>    
   );
 }
 
-export default Form;
-
-/** Render the fields for the <Form> module */
 const RenderFields = ({ fields, ...props }) => fields.map((properties, index) => {
   if (properties.type === 'fieldset') {
     return <RenderFieldset key={index} {...props} fieldProperties={properties} />
@@ -172,9 +154,9 @@ const RenderFields = ({ fields, ...props }) => fields.map((properties, index) =>
 });
 
 const RenderFieldset = ({ fields, fieldProperties, ...props }) => (
-  <Component name='fieldset' {...getInputProps(fieldProperties)}>
+  <Component name='fieldset' {...getInputAttrs(fieldProperties)}>
     {fieldProperties.legend && (
-      <Component name='legend' {...getInputProps(fieldProperties.legend)}>
+      <Component name='legend' {...getInputAttrs(fieldProperties.legend)}>
         { typeof fieldProperties.legend === 'object' ? fieldProperties.legend.title : fieldProperties.legend }
       </Component>
     )}
@@ -183,18 +165,17 @@ const RenderFieldset = ({ fields, fieldProperties, ...props }) => (
   </Component>
 );
 
-////
+export default Form;
 
 function validateFields(formFields, formFieldNodes, tree) {
   Object.values(formFields).forEach(({ node, validators, setIsValid, roots }) => {
-    if (tree.some(branch => roots.includes(branch))) {
+    if (!tree || tree.some(branch => roots.includes(branch))) {
       setIsValid(validator(node, validators, formFieldNodes));
     }
   });
 }
 
-/** Determine the props to pass to a field component */
-function getInputProps(props) {
+function getInputAttrs(props) {
   const blackList = [
     'validate',
     'label',
@@ -228,7 +209,6 @@ function getInputProps(props) {
   return inputProps;
 }
 
-/** Determine appropriate modifiers for a field component */
 function getModifiers(properties) {
   let modifiers = [];
 

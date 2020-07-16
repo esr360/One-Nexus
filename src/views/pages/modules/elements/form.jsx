@@ -61,75 +61,76 @@ export default props => (
                             message: 'Passwords do not match'
                           }
                         ]
+                      },
+
+                      {
+                        type: 'fieldset',
+                        id: 'personalDetails',
+                        legend: 'Personal Details',
+                        fields: [
+                          {
+                            type: 'email',
+                            id: 'email',
+                            label: 'Email Address',
+                            required: true
+                          },
+                          {
+                            type: 'tel',
+                            label: 'Phone Number'
+                          },
+                          {
+                            type: 'checkbox',
+                            id: 'isHomeless',
+                            label: 'I\'m homeless',
+                            groupProps: {
+                              className: 'well-border'
+                            },
+                            fieldset: {
+                              type: 'fieldset',
+                              legend: 'Address',
+                              id: 'address',
+                              fields: [
+                                {
+                                  type: 'text',
+                                  label: 'Address Line 1'
+                                },
+                                {
+                                  type: 'text',
+                                  label: 'Address Line 2'
+                                },
+                                {
+                                  type: 'text',
+                                  label: 'City'
+                                },
+                                {
+                                  type: 'text',
+                                  label: 'Postcode'
+                                }
+                              ],
+                              // rules: [isHomeless => !isHomeless.checked]
+                            }
+                          },
+                          {
+                            type: 'select',
+                            id: 'country',
+                            label: 'Country',
+                            required: true,
+                            options: [
+                              {
+                                value: 'Choose your county',
+                                selected: true,
+                                disabled: true
+                              },
+                              { value: 'UK' },
+                              { value: 'USA' }
+                            ],
+                            validate: [({ country }) => country.value === 'UK']
+                          }
+                        ]
                       }
+
                     ]
                   },
-
-                  // {
-                  //     type: 'fieldset',
-                  //     id: 'personalDetails',
-                  //     legend: 'Personal Details',
-                  //     fields: [
-                  //         {
-                  //             type: 'email',
-                  //             id: 'email',
-                  //             label: 'Email Address',
-                  //             required: true
-                  //         },
-                  //         {
-                  //             type: 'tel',
-                  //             label: 'Phone Number'
-                  //         },
-                  //         {
-                  //             type: 'checkbox',
-                  //             id: 'isHomeless',
-                  //             label: 'I\'m homeless',
-                  //             groupProps: {
-                  //                 className: 'well-border'
-                  //             },
-                  //             fieldset: {
-                  //                 type: 'fieldset',
-                  //                 legend: 'Address',
-                  //                 id: 'address',
-                  //                 fields: [
-                  //                     {
-                  //                         type: 'text',
-                  //                         label: 'Address Line 1'
-                  //                     },
-                  //                     {
-                  //                         type: 'text',
-                  //                         label: 'Address Line 2'
-                  //                     },
-                  //                     {
-                  //                         type: 'text',
-                  //                         label: 'City'
-                  //                     },
-                  //                     {
-                  //                         type: 'text',
-                  //                         label: 'Postcode'
-                  //                     }
-                  //                 ],
-                  //                 rules: [isHomeless => !isHomeless.checked]
-                  //             }
-                  //         },
-                  //         {
-                  //             type: 'select',
-                  //             id: 'country',
-                  //             label: 'Country',
-                  //             required: true,
-                  //             options: [
-                  //                 {
-                  //                     value: 'Choose your county',
-                  //                     selected: true,
-                  //                     disabled: true
-                  //                 },
-                  //                 { value: 'UK' },
-                  //                 { value: 'USA' }
-                  //             ],
-                  //             validate: [country => country.value === 'UK']
-                  //         },
-                  //     ]
-                  // },
 
                   // {
                   //     type: 'fieldset',
@@ -208,7 +209,7 @@ export default props => (
                   //         ]
                   //     }
                   // },
-                ]} submit={{ text: 'Sign Up', Button: ['size-4', 'brand-2'] }} />
+                ]} submit='Ok lets go!' />
             {/* </PAX5.column> */}
         {/* </PAX5.row> */}
     </Base>

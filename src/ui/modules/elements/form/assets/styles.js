@@ -96,6 +96,17 @@ export default ({ config, theme, utils }) => [config, {
 
   select: select => ({
     'width': '100%',
-    'appearance': 'none' // @TODO this doesn't seem to work
+    'outline': 0,
+    'appearance': 'none', // @TODO this doesn't seem to work
+
+    'group-is-valid': {
+      'color': config['valid-color'],
+      'border-color': 'currentColor'
+    },
+
+    'group-is-invalid': {
+      'color': config['invalid-color'],
+      'border-color': 'currentColor'
+    }
   })
 }];
