@@ -1,13 +1,11 @@
 export default { validator, setState }
 
-export function validator(field, validators, fields, handler = handleValidation) {
-  if (!field) {
+export function validator(node, validators, fields, setErrorMessage, { strict = false, defaultMessage = 'Invalid field' } = {}) {
+  if (!node) {
     return;
   }
 
-  field.setCustomValidity('');
-
-  let [isValid, message] = [true, 'Invalid field'];
+  let [isValid, message] = [true, defaultMessage];
 
   if (validators) validators.forEach(rule => {
     if (typeof rule === 'function') {
@@ -29,28 +27,16 @@ export function validator(field, validators, fields, handler = handleValidation)
     }
   });
 
-  if (typeof field.getAttribute('required') !== 'undefined' && field.getAttribute('required') !== false) {
-    if (field.validity.valid === false) {
-      [isValid, message] = [false, field.validationMessage];
+  if (typeof node.getAttribute('required') !== 'undefined' && node.getAttribute('required') !== false) {
+    if (node.validity.valid === false) {
+      [isValid, message] = [false, node.validationMessage];
     }
   }
 
-  handler(isValid, field, message);
+  setErrorMessage(isValid ? null : message);
 
-  return isValid;
-}
-
-function handleValidation(isValid, field, message, recurse = true) {
-  if (field.type === 'radio' && recurse) {
-    return handleValidation(isValid, document.querySelectorAll(`input[name="${field.name}"]`), message)
-  }
-
-  if (field instanceof NodeList) {
-    return field.forEach($field => handleValidation(isValid, $field, message, false));
-  }
-
-  if (field) {
-    field.setCustomValidity(isValid ? '' : message);
+  if (!strict || (strict && !isValid)) {
+    return isValid;
   }
 }
 

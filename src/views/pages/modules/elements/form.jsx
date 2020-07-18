@@ -70,13 +70,14 @@ export default props => (
                         fields: [
                           {
                             type: 'email',
-                            id: 'email',
                             label: 'Email Address',
+                            id: 'email',
                             required: true
                           },
                           {
                             type: 'tel',
-                            label: 'Phone Number'
+                            label: 'Phone Number',
+                            id: 'phoneNumber'
                           },
                           {
                             type: 'checkbox',
@@ -92,19 +93,23 @@ export default props => (
                               fields: [
                                 {
                                   type: 'text',
-                                  label: 'Address Line 1'
+                                  label: 'Address Line 1',
+                                  // id: 'addressLine1'
                                 },
                                 {
                                   type: 'text',
-                                  label: 'Address Line 2'
+                                  label: 'Address Line 2',
+                                  // id: 'addressLine2'
                                 },
                                 {
                                   type: 'text',
-                                  label: 'City'
+                                  label: 'City',
+                                  // id: 'addressCity'
                                 },
                                 {
                                   type: 'text',
-                                  label: 'Postcode'
+                                  label: 'Postcode',
+                                  // id: 'addressPostcode'
                                 }
                               ],
                               // rules: [isHomeless => !isHomeless.checked]

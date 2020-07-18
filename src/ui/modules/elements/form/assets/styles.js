@@ -1,13 +1,4 @@
 export default ({ config, theme, utils }) => [config, {
-  ...['checkbox', 'radio'].reduce((result, item) => {
-    result[item] = {
-      'height': '1em',
-      'margin-right': '1em'
-    };
-
-    return result;
-  }, {}),
-
   // group: group => ({
   //   'position': 'relative',
 
@@ -54,27 +45,54 @@ export default ({ config, theme, utils }) => [config, {
   //   }
   // }),
 
-  fieldset: fieldset => ({
+  group: ({ state }) => ({
+    ...utils.object(state, config.gutter)
+  }),
+
+  ...['checkbox', 'radio'].reduce(($, component) => ($[component] = {
+    'height': '1em',
+    'margin-right': '1em'
+  }, $), {}),
+
+  fieldset: () => ({
     'padding': '0',
     'border': 'none'
   }),
 
-  field: field => ({
+  field: () => ({
     'position': 'relative',
     'display': 'inline-block',
     'width': '100%'
   }),
 
-  icon: icon => ({
+  icon: () => ({
     'position': 'absolute',
     'top': '50%',
     'transform': 'translateY(-50%)',
     'left': '0.75em',
     'color': config.input.color,
-    'transition': theme.tokens.transition
+    'transition': theme.tokens.transition,
+
+    'group-is-valid': {
+      'color': config['valid-color']
+    },
+
+    'group-is-invalid': {
+      'color': config['invalid-color']
+    }
   }),
 
-  input: input => ({
+  label: () => ({
+    'group-is-valid': {
+      'color': config['valid-color']
+    },
+
+    'group-is-invalid': {
+      'color': config['invalid-color']
+    }
+  }),
+
+  input: () => ({
     'display': 'block',
     'width': '100%',
     'outline': 'inherit',
@@ -94,7 +112,7 @@ export default ({ config, theme, utils }) => [config, {
     }
   }),
 
-  select: select => ({
+  select: () => ({
     'width': '100%',
     'outline': 0,
     'appearance': 'none', // @TODO this doesn't seem to work
@@ -108,5 +126,9 @@ export default ({ config, theme, utils }) => [config, {
       'color': config['invalid-color'],
       'border-color': 'currentColor'
     }
+  }),
+  
+  error: () => ({
+    'color': config['invalid-color'],
   })
 }];

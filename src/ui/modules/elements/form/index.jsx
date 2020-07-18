@@ -30,6 +30,10 @@ const otherTypes = [
   'week'
 ];
 
+/**
+ * Form
+ */
+
 const formContext = React.createContext({});
 
 const Form = ({ fields, submit, ...props }) => {
@@ -37,7 +41,7 @@ const Form = ({ fields, submit, ...props }) => {
   const [formFields, updateFormFields] = useState({});
   const formFieldNodes = Object.keys(formFields).reduce(($, id) => ($[id] = formFields[id].node, $), {});
 
-  const handleSubmit = () => validateFields(formFields, formFieldNodes);
+  const handleSubmit = () => validateFields(formFields, formFieldNodes, null, true);
 
   return (
     <formContext.Provider value={{ formFields, updateFormFields, formFieldNodes }}>
@@ -56,27 +60,23 @@ const Form = ({ fields, submit, ...props }) => {
 
 Form.defaultProps = { config, styles }
 
+/**
+ * Form Field
+ */
+
 Form.Field = ({ properties, ...props }) => {
   const { id, label, type, icon, options, fieldset, render, after, validate, tree } = properties;
-
   const { formFields, updateFormFields, formFieldNodes } = React.useContext(formContext);
 
   const [REF, isValid, setIsValid] = [React.createRef(), ...useState()];
+  const [errorMessage, setErrorMessage] = React.useState();
 
   const onBlur = ({ target }) => {
-    setIsValid(validator(target, validate, formFieldNodes));
-  }
-
-  const onKeyup = ({ target }) => {
-    setIsValid(validator(target, validate, formFieldNodes));
-
-    if (tree) {
-      validateFields(formFields, formFieldNodes, tree);
-    }
+    setIsValid(validator(target, validate, formFieldNodes, setErrorMessage, { strict: true } ));
   }
 
   const onChange = ({ target }) => {
-    setIsValid(validator(target, validate, formFieldNodes));
+    setIsValid(validator(target, validate, formFieldNodes, setErrorMessage));
 
     if (tree) {
       validateFields(formFields, formFieldNodes, tree);
@@ -84,11 +84,12 @@ Form.Field = ({ properties, ...props }) => {
   }
 
   React.useEffect(() => {
-    updateFormFields(formFields => ({ ...formFields, [id]: { 
+    if (id) updateFormFields(formFields => ({ ...formFields, [id]: { 
       node: REF.current, 
       validators: validate,
       roots: tree || [],
-      setIsValid 
+      setIsValid,
+      setErrorMessage 
     } }));
   }, []);
 
@@ -98,7 +99,7 @@ Form.Field = ({ properties, ...props }) => {
 
       {inputTypes.includes(type) && (
         <Component name='field'>
-          <Component tag='input' host={REF} {...getInputAttrs(properties)} onBlur={onBlur} onKeyUp={onKeyup} />
+          <Component tag='input' host={REF} {...getInputAttrs(properties)} onBlur={onBlur} onKeyUp={onChange} />
 
           {icon && <Icon as='icon' glyph={icon} />}
         </Component>
@@ -141,6 +142,8 @@ Form.Field = ({ properties, ...props }) => {
       {after && (
         <div {...getInputAttrs(after)}>{after.render}</div>
       )}
+
+      {errorMessage && <Component name='error'>{errorMessage}</Component>}
     </Component>    
   );
 }
@@ -167,10 +170,10 @@ const RenderFieldset = ({ fields, fieldProperties, ...props }) => (
 
 export default Form;
 
-function validateFields(formFields, formFieldNodes, tree) {
-  Object.values(formFields).forEach(({ node, validators, setIsValid, roots }) => {
+function validateFields(formFields, formFieldNodes, tree, strict) {
+  Object.values(formFields).forEach(({ node, validators, setIsValid, setErrorMessage, roots }) => {
     if (!tree || tree.some(branch => roots.includes(branch))) {
-      setIsValid(validator(node, validators, formFieldNodes));
+      setIsValid(validator(node, validators, formFieldNodes, setErrorMessage, { strict }));
     }
   });
 }
@@ -210,13 +213,12 @@ function getInputAttrs(props) {
 }
 
 function getModifiers(properties) {
-  let modifiers = [];
+  let modifiers = {};
 
-  if (properties.validate || properties.required) modifiers.push('validate');
-  if (properties.icon) modifiers.push('has-icon');
-  if (properties.compound) modifiers.push('compound');
-
-  if (properties.type === 'select') modifiers.push('isSelect');
+  if (properties.validate || properties.required) modifiers['validate'] = true;
+  if (properties.icon) modifiers['has-icon'] = true;
+  if (properties.compound) modifiers['compound'] = true;
+  if (properties.type === 'select') modifiers['isSelect'] = true;
 
   return modifiers;
 }
