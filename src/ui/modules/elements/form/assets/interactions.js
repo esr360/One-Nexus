@@ -1,20 +1,26 @@
 export default { validator, setState }
 
-export function validator(node, validators, fields, setErrorMessage, { strict = false, defaultMessage = 'Invalid field' } = {}) {
+export function validator(node, validators, formFields, setErrorMessage, { 
+  strict = false, 
+  defaultMessage = 'Invalid field',
+  onValidation
+} = {}) {
   if (!node) {
     return;
   }
+
+  const formFieldNodes = Object.keys(formFields).reduce(($, id) => ($[id] = formFields[id].node, $), {});
 
   let [isValid, message] = [true, defaultMessage];
 
   if (validators) validators.forEach(rule => {
     if (typeof rule === 'function') {
-      if (!rule(fields)) {
+      if (!rule(formFieldNodes)) {
         isValid = false;
       }
     }
     else if (typeof rule.rule === 'function') {
-      if (!rule.rule(fields)) {
+      if (!rule.rule(formFieldNodes)) {
         isValid = false;
       }
     }
@@ -35,8 +41,18 @@ export function validator(node, validators, fields, setErrorMessage, { strict = 
 
   setErrorMessage(isValid ? null : message);
 
+  if (onValidation) {
+    onValidation({ isValid, validate });
+  }
+
   if (!strict || (strict && !isValid)) {
     return isValid;
+  }
+
+  function validate(id) {
+    const { setIsValid, node, validators, setErrorMessage } = formFields[id];
+
+    setIsValid(validator(node, validators, formFields, setErrorMessage));
   }
 }
 

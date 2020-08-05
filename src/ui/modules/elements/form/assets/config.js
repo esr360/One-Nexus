@@ -1,5 +1,7 @@
 export default ({ colors, typography, tokens }) => ({
-  'name': 'Form',
+  name: 'Form',
+  validateFieldsOn: ['blur', 'change'],
+
   'valid-color': colors.validation.valid,
   'invalid-color': colors.validation.invalid,
   'gutter': tokens.margin,

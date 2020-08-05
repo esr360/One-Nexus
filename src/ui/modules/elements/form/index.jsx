@@ -37,14 +37,13 @@ const otherTypes = [
 const formContext = React.createContext({});
 
 const Form = ({ fields, submit, ...props }) => {
-  const { name } = useConfig(props);
-  const [formFields, updateFormFields] = useState({});
-  const formFieldNodes = Object.keys(formFields).reduce(($, id) => ($[id] = formFields[id].node, $), {});
+  const { name, validateFieldsOn } = useConfig(props);
+  const [formFields, updateFormFields] = React.useState({});
 
-  const handleSubmit = () => validateFields(formFields, formFieldNodes, null, true);
+  const handleSubmit = () => validateFields(formFields, null, true);
 
   return (
-    <formContext.Provider value={{ formFields, updateFormFields, formFieldNodes }}>
+    <formContext.Provider value={{ formFields, updateFormFields, validateFieldsOn }}>
       <Module name={name} {...props}>
         <RenderFields fields={fields} />
 
@@ -65,29 +64,29 @@ Form.defaultProps = { config, styles }
  */
 
 Form.Field = ({ properties, ...props }) => {
-  const { id, label, type, icon, options, fieldset, render, after, validate, tree } = properties;
-  const { formFields, updateFormFields, formFieldNodes } = React.useContext(formContext);
-
-  const [REF, isValid, setIsValid] = [React.createRef(), ...useState()];
+  const { formFields, updateFormFields, validateFieldsOn } = React.useContext(formContext);
+  const [REF, isValid, setIsValid] = [React.createRef(), ...React.useState()];
   const [errorMessage, setErrorMessage] = React.useState();
 
+  const { id, label, type, icon, options, fieldset, render, after } = properties;
+  const { validators, onValidation, validateOn = validateFieldsOn } = properties;
+
   const onBlur = ({ target }) => {
-    setIsValid(validator(target, validate, formFieldNodes, setErrorMessage, { strict: true } ));
+    if (validateOn.includes('blur')) {
+      setIsValid(validator(target, validators, formFields, setErrorMessage, { onValidation }));
+    }
   }
 
   const onChange = ({ target }) => {
-    setIsValid(validator(target, validate, formFieldNodes, setErrorMessage));
-
-    if (tree) {
-      validateFields(formFields, formFieldNodes, tree);
+    if (validateOn.includes('change')) {
+      setIsValid(validator(target, validators, formFields, setErrorMessage, { onValidation }));
     }
   }
 
   React.useEffect(() => {
     if (id) updateFormFields(formFields => ({ ...formFields, [id]: { 
       node: REF.current, 
-      validators: validate,
-      roots: tree || [],
+      validators,
       setIsValid,
       setErrorMessage 
     } }));
@@ -131,12 +130,12 @@ Form.Field = ({ properties, ...props }) => {
         </Component>
       )}
 
-      {type ==='HTML' && (
-        <div {...getInputAttrs(properties)}>{render}</div>
-      )}
-
       {fieldset && (
         <RenderFieldset {...props} fieldProperties={fieldset} />
+      )}
+
+      {type ==='HTML' && (
+        <div {...getInputAttrs(properties)}>{render}</div>
       )}
 
       {after && (
@@ -170,11 +169,9 @@ const RenderFieldset = ({ fields, fieldProperties, ...props }) => (
 
 export default Form;
 
-function validateFields(formFields, formFieldNodes, tree, strict) {
-  Object.values(formFields).forEach(({ node, validators, setIsValid, setErrorMessage, roots }) => {
-    if (!tree || tree.some(branch => roots.includes(branch))) {
-      setIsValid(validator(node, validators, formFieldNodes, setErrorMessage, { strict }));
-    }
+function validateFields(formFields, strict) {
+  Object.values(formFields).forEach(({ node, validators, setIsValid, setErrorMessage }) => {
+    setIsValid(validator(node, validators, formFields, setErrorMessage, { strict }));
   });
 }
 

@@ -14,55 +14,57 @@ export default props => (
                       title: 'Login Details'
                     },
                     fields: [
+                      // Username
                       {
                         type: 'text',
                         label: 'Username',
                         id: 'username',
                         icon: 'user',
                         required: true,
-                        validate: [
+                        validators: [
                           {
                             rule: ({ username }) => username.value.length > 3,
                             message: 'Must be more than 3 characters'
                           }
                         ]
-                        // validators: [
-                        //   {
-                        //     rule: ({ current }) => current.value.length > 3,
-                        //     message: 'Must be more than 3 characters'
-                        //   }
-                        // ]
                       },
+
+                      // Password
                       {
                         type: 'password',
                         label: 'Password',
                         icon: 'key',
                         id: 'userPassword',
                         required: true,
-                        tree: ['password'],
-                        validate: [
+                        validators: [
                           {
                             rule: ({ userPassword }) => userPassword.value.length > 8,
                             message: 'Must be more than 8 characters'
                           }
                         ]
                       },
+
+                      // Password Re-Enter
                       {
                         type: 'password',
                         id: 'passwordReEnter',
                         label: 'Re-enter Password',
                         required: true,
-                        tree: ['password'],
-                        validate: [
+                        validators: [
                           {
                             rule: ({ userPassword, passwordReEnter }) => {
                               return passwordReEnter.value === userPassword.value;
                             },
                             message: 'Passwords do not match'
                           }
-                        ]
+                        ],
+                        onValidation: ({ isValid, validate }) => {
+                          validate('userPassword');
+                        },
+                        validateOn: ['blur', 'change'],
                       },
 
+                      // Personal Details
                       {
                         type: 'fieldset',
                         id: 'personalDetails',
@@ -129,11 +131,10 @@ export default props => (
                               { value: 'UK' },
                               { value: 'USA' }
                             ],
-                            validate: [({ country }) => country.value === 'UK']
+                            validators: [({ country }) => country.value === 'UK']
                           }
                         ]
                       }
-
                     ]
                   },
 
