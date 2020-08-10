@@ -41,7 +41,16 @@ export default props => (
                             rule: ({ userPassword }) => userPassword.value.length > 8,
                             message: 'Must be more than 8 characters'
                           }
-                        ]
+                        ],
+                        onValidation: ({ passwordReEnter, current }, validate) => {
+                          const { value, isValid } = current;
+
+                          console.log(value, isValid);
+
+                          if (passwordReEnter.node.value.length) {
+                            validate(passwordReEnter);
+                          }
+                        },
                       },
 
                       // Password Re-Enter
@@ -58,10 +67,11 @@ export default props => (
                             message: 'Passwords do not match'
                           }
                         ],
-                        onValidation: ({ isValid, validate }) => {
-                          validate('userPassword');
-                        },
                         validateOn: ['blur', 'change'],
+                        visibility: [
+                          // ({ isValid }) => isValid('userPassword'),
+                          ({ userPassword }) => userPassword.value.length > 3,
+                        ]
                       },
 
                       // Personal Details

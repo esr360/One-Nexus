@@ -64,33 +64,34 @@ Form.defaultProps = { config, styles }
  */
 
 Form.Field = ({ properties, ...props }) => {
+  const REF = React.createRef();
+
   const { formFields, updateFormFields, validateFieldsOn } = React.useContext(formContext);
-  const [REF, isValid, setIsValid] = [React.createRef(), ...React.useState()];
+  const [isValid, setIsValid] = React.useState();
   const [errorMessage, setErrorMessage] = React.useState();
 
   const { id, label, type, icon, options, fieldset, render, after } = properties;
   const { validators, onValidation, validateOn = validateFieldsOn } = properties;
 
-  const onBlur = ({ target }) => {
-    if (validateOn.includes('blur')) {
-      setIsValid(validator(target, validators, formFields, setErrorMessage, { onValidation }));
+  const fieldObject = node => ({ node, setIsValid, setErrorMessage, validators, onValidation });
+
+  const validate = ({ node, setIsValid, validators, setErrorMessage, onValidation }) => {
+    const [isValid, message] = validator(node, validators, formFields);
+
+    setErrorMessage(isValid ? null : message);
+
+    setIsValid(isValid);
+
+    if (onValidation) {
+      onValidation({ ...formFields, current: { ...node, isValid } }, validate);
     }
   }
 
-  const onChange = ({ target }) => {
-    if (validateOn.includes('change')) {
-      setIsValid(validator(target, validators, formFields, setErrorMessage, { onValidation }));
-    }
-  }
+  const eventHandler = event => ({ target }) => validateOn.includes(event) && validate(fieldObject(target));
 
-  React.useEffect(() => {
-    if (id) updateFormFields(formFields => ({ ...formFields, [id]: { 
-      node: REF.current, 
-      validators,
-      setIsValid,
-      setErrorMessage 
-    } }));
-  }, []);
+  if (id) {
+    React.useEffect(() => updateFormFields(fields => ({ ...fields, [id]: fieldObject(REF.current)})), []);
+  }
 
   return (
     <Component name='group' {...getModifiers(properties)} valid={isValid === true} invalid={isValid === false}>
@@ -98,7 +99,7 @@ Form.Field = ({ properties, ...props }) => {
 
       {inputTypes.includes(type) && (
         <Component name='field'>
-          <Component tag='input' host={REF} {...getInputAttrs(properties)} onBlur={onBlur} onKeyUp={onChange} />
+          <Component tag='input' host={REF} {...getInputAttrs(properties)} onBlur={eventHandler('blur')} onKeyUp={eventHandler('change')} />
 
           {icon && <Icon as='icon' glyph={icon} />}
         </Component>
@@ -110,7 +111,7 @@ Form.Field = ({ properties, ...props }) => {
 
       {(type === 'checkbox' || type === 'radio') && (
         <Component name='selection' {...{[type]:true}}>
-          <Component name={type} tag='input' {...getInputAttrs(properties)} onChange={onChange} />
+          <Component name={type} tag='input' {...getInputAttrs(properties)} onChange={eventHandler('change')} />
 
           {label && <Component name='label' htmlFor={id} content={label} />}
         </Component>
@@ -122,7 +123,7 @@ Form.Field = ({ properties, ...props }) => {
 
       {type === 'select' && (
         <Component name='field'>
-          <Component name='select' tag='select' host={REF} {...getInputAttrs(properties)} onChange={onChange}>
+          <Component name='select' tag='select' host={REF} {...getInputAttrs(properties)} onChange={eventHandler('change')}>
             {options.map((options) => (
               <option value={options.value} {...getInputAttrs(options)}>{options.value}</option>
             ))}
@@ -169,9 +170,9 @@ const RenderFieldset = ({ fields, fieldProperties, ...props }) => (
 
 export default Form;
 
-function validateFields(formFields, strict) {
+function validateFields(formFields) {
   Object.values(formFields).forEach(({ node, validators, setIsValid, setErrorMessage }) => {
-    setIsValid(validator(node, validators, formFields, setErrorMessage, { strict }));
+    setIsValid(validator(node, validators, formFields, setErrorMessage));
   });
 }
 

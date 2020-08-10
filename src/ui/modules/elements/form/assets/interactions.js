@@ -1,10 +1,6 @@
 export default { validator, setState }
 
-export function validator(node, validators, formFields, setErrorMessage, { 
-  strict = false, 
-  defaultMessage = 'Invalid field',
-  onValidation
-} = {}) {
+export function validator(node, validators, formFields, { defaultMessage = 'Invalid field' } = {}) {
   if (!node) {
     return;
   }
@@ -39,21 +35,7 @@ export function validator(node, validators, formFields, setErrorMessage, {
     }
   }
 
-  setErrorMessage(isValid ? null : message);
-
-  if (onValidation) {
-    onValidation({ isValid, validate });
-  }
-
-  if (!strict || (strict && !isValid)) {
-    return isValid;
-  }
-
-  function validate(id) {
-    const { setIsValid, node, validators, setErrorMessage } = formFields[id];
-
-    setIsValid(validator(node, validators, formFields, setErrorMessage));
-  }
+  return [isValid, message];
 }
 
 export function setState(fields) {
