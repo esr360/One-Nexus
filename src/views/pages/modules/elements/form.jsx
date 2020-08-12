@@ -23,7 +23,7 @@ export default props => (
                         required: true,
                         validators: [
                           {
-                            rule: ({ username }) => username.value.length > 3,
+                            rule: ({ username }) => username.node.value.length > 3,
                             message: 'Must be more than 3 characters'
                           }
                         ]
@@ -38,14 +38,14 @@ export default props => (
                         required: true,
                         validators: [
                           {
-                            rule: ({ userPassword }) => userPassword.value.length > 8,
+                            rule: ({ userPassword }) => userPassword.node.value.length > 8,
                             message: 'Must be more than 8 characters'
                           }
                         ],
                         onValidation: ({ passwordReEnter, current }, validate) => {
                           const { value, isValid } = current;
 
-                          console.log(value, isValid);
+                          // console.log(value, isValid);
 
                           if (passwordReEnter.node.value.length) {
                             validate(passwordReEnter);
@@ -62,7 +62,7 @@ export default props => (
                         validators: [
                           {
                             rule: ({ userPassword, passwordReEnter }) => {
-                              return passwordReEnter.value === userPassword.value;
+                              return passwordReEnter.node.value === userPassword.node.value;
                             },
                             message: 'Passwords do not match'
                           }
@@ -141,7 +141,7 @@ export default props => (
                               { value: 'UK' },
                               { value: 'USA' }
                             ],
-                            validators: [({ country }) => country.value === 'UK']
+                            validators: [({ country }) => country.node.value === 'UK']
                           }
                         ]
                       }
