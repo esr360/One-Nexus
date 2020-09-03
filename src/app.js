@@ -38,15 +38,15 @@ import * as layouts from './views/layouts';
 const { useState, useContext, Fragment } = React;
 
 Object.assign(window, { 
-  React, 
+  React,
   ReactDOM,
-  useState, 
-  useContext, 
+  useState,
+  useContext,
   Fragment,
-  useTheme, 
-  useConfig, 
-  PAX5, 
-  Link 
+  useTheme,
+  useConfig,
+  PAX5,
+  Link
 });
 
 // Render App

@@ -1,9 +1,7 @@
+import React from 'react';
+
 import config from './assets/config';
 import styles from './assets/styles';
-
-if (typeof React === 'undefined') {
-  var React = require('react');
-}
 
 const inputTypes = [
   'text',
@@ -29,26 +27,28 @@ const otherTypes = [
   'week'
 ];
 
-/**
- * Form
- */
-
 const formContext = React.createContext({});
 
-const Form = ({ fields, submit, ...props }) => {
+const Form = ({ fields, submit, children, ...props }) => {
   const { name, validateFieldsOn } = useConfig(props);
   const [formFields, updateFormFields] = React.useState({});
 
   const handleSubmit = () => Object.values(formFields).forEach(field => validate(field, formFields));
 
+  const refreshVisibility = () => Object.values(formFields).forEach(({ visibility, show, hide }) => {
+    visibility && (visibility.every(determiner => determiner(formFields)) ? show() : hide());
+  });
+
   return (
-    <formContext.Provider value={{ formFields, updateFormFields, validateFieldsOn }}>
+    <formContext.Provider value={{ formFields, updateFormFields, validateFieldsOn, refreshVisibility }}>
       <Module name={name} {...props}>
-        <RenderFields fields={fields} />
+        {fields && <RenderFields fields={fields} />}
+
+        {children && children}
 
         {submit && (
           <Component name='footer'>
-            <Component name='submit' tag='input' type='submit' value={submit} onClick={handleSubmit} {...getInputAttrs(submit)} />
+            <Component name='submit' tag='input' type='submit' value={submit} onClick={handleSubmit} {...getAttrs(submit)} />
           </Component>
         )}
       </Module>
@@ -56,32 +56,38 @@ const Form = ({ fields, submit, ...props }) => {
   );
 }
 
-Form.defaultProps = { config, styles }
+Form.defaultProps = { config, styles };
 
-/**
- * Form Field
- */
-Form.Field = ({ properties }) => {
-  const ref = React.createRef();
+Form.Field = ({ properties, group }) => {
+  const host = React.createRef();
+  const { formFields, updateFormFields, validateFieldsOn, refreshVisibility } = React.useContext(formContext);
 
-  const { formFields, updateFormFields, validateFieldsOn } = React.useContext(formContext);
+  const { id, label, type, icon, options, fieldset, render, after, hidden } = properties;
+  const { visibility, validators, onValidation, validateOn = validateFieldsOn } = properties;
+
+  const [isHidden, setIsHidden] = React.useState(hidden);
   const [isValid, setIsValid] = React.useState();
   const [errorMessage, setErrorMessage] = React.useState();
 
-  const { id, label, type, icon, options, fieldset, render, after } = properties;
-  const { validators, onValidation, validateOn = validateFieldsOn } = properties;
-
-  const eventHandler = event => () => validateOn.includes(event) && validate(formFields[id], formFields);
+  const eventHandler = event => () => (refreshVisibility(), validateOn.includes(event) && validate(formFields[id], formFields));
+  const fieldObject = host => ({ node: host.current, setIsValid, setErrorMessage, validators, onValidation, visibility });
 
   if (id) {
-    React.useEffect(() => updateFormFields(fields => {
-      return { ...fields, [id]: { node: ref.current, setIsValid, setErrorMessage, validators, onValidation }};
-    }), []);
+    React.useEffect(() => updateFormFields(prev => ({ ...prev, [id]: {
+      validate: fields => validate(fieldObject(host), fields),
+      isValid: fields => validator(host.current, validators, fields)[0],
+      show: () => setIsHidden(false),
+      hide: () => setIsHidden(true),
+      value: () => host.current.value,
+
+      ...fieldObject(host)
+    }})), []);
   }
 
   const modifiers = {
     'has-icon': Boolean(properties.icon),
     'compound': Boolean(properties.compound),
+    'hidden': Boolean(isHidden),
   }
 
   return (
@@ -90,33 +96,33 @@ Form.Field = ({ properties }) => {
 
       {inputTypes.includes(type) && (
         <Component name='field'>
-          <Component tag='input' host={ref} {...getInputAttrs(properties)} onBlur={eventHandler('blur')} onKeyUp={eventHandler('change')} />
+          <Component tag='input' host={host} {...getAttrs(properties)} onBlur={eventHandler('blur')} onKeyUp={eventHandler('change')} />
 
           {icon && <Icon as='icon' glyph={icon} />}
         </Component>
       )}
 
       {otherTypes.includes(type) && (
-        <input {...getInputAttrs(properties)}/>
+        <input {...getAttrs(properties)}/>
       )}
 
       {(type === 'checkbox' || type === 'radio') && (
         <Component name='selection' {...{[type]:true}}>
-          <Component name={type} tag='input' host={ref} {...getInputAttrs(properties)} onChange={eventHandler('change')} />
+          <Component name={type} tag='input' host={host} {...getAttrs(properties)} onChange={eventHandler('change')} group={group} />
 
           {label && <Component name='label' htmlFor={id} content={label} />}
         </Component>
       )}
 
       {type === 'textarea' && (
-        <Component name='input'ag='textarea' {...getInputAttrs(properties)} />
+        <Component name='input'ag='textarea' {...getAttrs(properties)} />
       )}
 
       {type === 'select' && (
         <Component name='field'>
-          <Component name='select' tag='select' host={ref} {...getInputAttrs(properties)} onChange={eventHandler('change')}>
+          <Component name='select' tag='select' host={host} {...getAttrs(properties)} onChange={eventHandler('change')}>
             {options.map((options) => (
-              <option value={options.value} {...getInputAttrs(options)}>{options.value}</option>
+              <option value={options.value} {...getAttrs(options)}>{options.value}</option>
             ))}
           </Component>
         </Component>
@@ -127,11 +133,11 @@ Form.Field = ({ properties }) => {
       )}
 
       {type ==='HTML' && (
-        <div {...getInputAttrs(properties)}>{render}</div>
+        <div {...getAttrs(properties)}>{render}</div>
       )}
 
       {after && (
-        <div {...getInputAttrs(after)}>{after.render}</div>
+        <div {...getAttrs(after)}>{after.render}</div>
       )}
 
       {errorMessage && <Component name='error'>{errorMessage}</Component>}
@@ -139,37 +145,29 @@ Form.Field = ({ properties }) => {
   );
 }
 
-/**
- * Form Fieldset
- */
-Form.Fieldset = ({ properties: { legend, fields, ...props }}) => (
-  <Component name='fieldset' {...getInputAttrs(props)}>
-    {legend && (
-      <Component name='legend' {...getInputAttrs(legend)}>
-        { typeof legend === 'object' ? legend.title : legend }
-      </Component>
-    )}
+Form.Fieldset = ({ properties: { legend, fields, id, after, ...props }}) => (
+  <Component name='fieldset' {...getAttrs(props)}>
+    {legend && <Component name='legend'>{legend}</Component>}
 
-    <RenderFields fields={fields} />
+    <RenderFields fields={fields} group={id} />
+
+    {after && <div {...getAttrs(after)}>{after.render}</div>}
   </Component>
 );
 
-/**
- * 
- */
-const RenderFields = ({ fields }) => fields.map((properties, index) => {
-  const Render = properties.type === 'fieldset' ? Form.Fieldset : Form.Field;
-
-  return <Render key={index} properties={properties} />;
-});
-
-/**
- * 
- */
 export default Form;
 
 /**
- * 
+ * Render Fields/Fieldset
+ */
+const RenderFields = ({ fields, group }) => fields.map((properties, index) => {
+  const Render = properties.type === 'fieldset' ? Form.Fieldset : Form.Field;
+
+  return <Render key={index} properties={properties} group={group} />;
+});
+
+/**
+ * Validator
  */
 function validator(node, validators = [], formFields, { defaultMessage = 'Invalid field' } = {}) {
   let [isValid, message] = [true, defaultMessage];
@@ -177,7 +175,7 @@ function validator(node, validators = [], formFields, { defaultMessage = 'Invali
   validators.forEach(rule => {
     message = (rule.message || message), rule = (rule.rule ?? rule);
 
-    if (typeof rule === 'function' ? !rule(formFields) : !rule) {
+    if (typeof rule === 'function' ? !rule(node.value, formFields) : !rule) {
       isValid = false;
     }
   });
@@ -190,9 +188,9 @@ function validator(node, validators = [], formFields, { defaultMessage = 'Invali
 }
 
 /**
- * 
+ * Validate
  */
-function validate({ node, setIsValid, setErrorMessage, validators, onValidation }, formFields) {
+function validate({ node, setErrorMessage, setIsValid, validators, onValidation }, formFields) {
   const [isValid, message] = validator(node, validators, formFields);
 
   setErrorMessage(isValid ? null : message);
@@ -200,19 +198,13 @@ function validate({ node, setIsValid, setErrorMessage, validators, onValidation 
   setIsValid(isValid);
 
   if (onValidation) {
-    onValidation({ ...formFields, current: { ...node, isValid } }, field => validate(field, formFields));
+    onValidation({ value: node.value, isValid, message }, formFields);
   }
 }
 
 /**
- * 
+ * Get Input Attributes
  */
-function getInputAttrs(props = {}) {
-  const blackList = [
-    'validate', 'label', 'icon', 'HTML', 'rules', 'render', 'fields', 'legend', 'fieldset', 'tag', 'before', 'after', 'options'
-  ];
-
-  return Object.keys(props).filter(prop => !blackList.includes(prop)).reduce((attributes, prop) => {
-    return attributes[prop] = props[prop], attributes;
-  }, {});
+function getAttrs({ attributes = {}, type, required } = {}) {
+  return Object.assign(attributes, { type, required });
 }

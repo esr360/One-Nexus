@@ -46,7 +46,9 @@ export default ({ config, theme, utils }) => [config, {
   // }),
 
   group: ({ state }) => ({
-    ...utils.object(state, config.gutter)
+    ...utils.object(state, config.gutter),
+
+    display: state.hidden ? 'none' : 'block'
   }),
 
   ...['checkbox', 'radio'].reduce(($, component) => ($[component] = {
@@ -62,7 +64,7 @@ export default ({ config, theme, utils }) => [config, {
   field: () => ({
     'position': 'relative',
     'display': 'inline-block',
-    'width': '100%'
+    'width': '100%',
   }),
 
   icon: () => ({

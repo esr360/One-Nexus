@@ -10,9 +10,7 @@ export default props => (
                   {
                     type: 'fieldset',
                     id: 'loginDetails',
-                    legend: {
-                      title: 'Login Details'
-                    },
+                    legend: 'Login Details',
                     fields: [
                       // Username
                       {
@@ -23,7 +21,7 @@ export default props => (
                         required: true,
                         validators: [
                           {
-                            rule: ({ username }) => username.node.value.length > 3,
+                            rule: value => value.length > 3,
                             message: 'Must be more than 3 characters'
                           }
                         ]
@@ -38,17 +36,13 @@ export default props => (
                         required: true,
                         validators: [
                           {
-                            rule: ({ userPassword }) => userPassword.node.value.length > 8,
+                            rule: value => value.length > 8,
                             message: 'Must be more than 8 characters'
                           }
                         ],
-                        onValidation: ({ passwordReEnter, current }, validate) => {
-                          const { value, isValid } = current;
-
-                          // console.log(value, isValid);
-
-                          if (passwordReEnter.node.value.length) {
-                            validate(passwordReEnter);
+                        onValidation: ({}, { passwordReEnter, userPassword }) => {
+                          if (passwordReEnter.value().length) {
+                            passwordReEnter.validate({ userPassword });
                           }
                         },
                       },
@@ -57,20 +51,18 @@ export default props => (
                       {
                         type: 'password',
                         id: 'passwordReEnter',
+                        hidden: true,
                         label: 'Re-enter Password',
                         required: true,
+                        validateOn: ['blur', 'change'],
                         validators: [
                           {
-                            rule: ({ userPassword, passwordReEnter }) => {
-                              return passwordReEnter.node.value === userPassword.node.value;
-                            },
+                            rule: (value, { userPassword }) => value === userPassword.value(),
                             message: 'Passwords do not match'
                           }
                         ],
-                        validateOn: ['blur', 'change'],
                         visibility: [
-                          // ({ isValid }) => isValid('userPassword'),
-                          ({ userPassword }) => userPassword.value.length > 3,
+                          ({ userPassword }) => userPassword.isValid(),
                         ]
                       },
 
@@ -148,83 +140,75 @@ export default props => (
                     ]
                   },
 
-                  // {
-                  //     type: 'fieldset',
-                  //     id: 'offers',
-                  //     legend: 'Offers',
-                  //     fields: [
-                  //         {
-                  //             type: 'checkbox',
-                  //             id: 'freeSpam',
-                  //             label: 'I would like to receive free spam',
-                  //             after: {
-                  //                 id: 'freeSpamAlert',
-                  //                 className: 'object-small',
-                  //                 render: <Alert>You will receive free spam</Alert>,
-                  //                 rules: [freeSpam => freeSpam.checked]
-                  //             }
-                  //         },
-                  //         {
-                  //             type: 'checkbox',
-                  //             id: 'freePizza',
-                  //             label: 'I would like to receive a free large pizza',
-                  //             after: {
-                  //                 id: 'freePizzaAlert',
-                  //                 className: 'object-small',
-                  //                 render: <Alert alert='info'>You will receive one large pizza</Alert>,
-                  //                 rules: [freePizza => freePizza.checked]
-                  //             }
-                  //         },
-                  //         {
-                  //             type: 'fieldset',
-                  //             legend: {
-                  //                 title: 'Choose one:',
-                  //                 className: 'heading-size-3'
-                  //             },
-                  //             fields: [
-                  //                 {
-                  //                     type: 'radio',
-                  //                     name: 'choose-one',
-                  //                     id: 'freeXbox',
-                  //                     label: 'Free Xbox 360',
-                  //                     required: true
-                  //                 },
-                  //                 {
-                  //                     type: 'radio',
-                  //                     name: 'choose-one',
-                  //                     id: 'freePS4',
-                  //                     label: 'Free Playstation 4',
-                  //                     required: true
-                  //                 },
-                  //                 {
-                  //                     type: 'radio',
-                  //                     name: 'choose-one',
-                  //                     id: 'freeCheese',
-                  //                     label: 'Free slice of cheddar cheese',
-                  //                     required: true
-                  //                 },
-                  //                 {
-                  //                     type: 'radio',
-                  //                     name: 'choose-one',
-                  //                     id: 'giveUs10Bux',
-                  //                     label: 'You agree to give us $10',
-                  //                     required: true
-                  //                 }
-                  //             ]
-                  //         }
-                  //     ],
-                  //     rules: [country => country.value !== 'USA'],
-                  //     // @TODO see why this doesn't render
-                  //     after: {
-                  //         id: 'freeBoth',
-                  //         className: 'object-small',
-                  //         render: <Alert alert='help'>You want free spam and free pizza??</Alert>,
-                  //         rules: [
-                  //             freeSpam => freeSpam.checked,
-                  //             freePizza => freePizza.checked
-                  //         ]
-                  //     }
-                  // },
+                  {
+                      type: 'fieldset',
+                      id: 'offers',
+                      legend: 'Offers',
+                      fields: [
+                        {
+                          type: 'checkbox',
+                          id: 'freeSpam',
+                          label: 'I would like to receive free spam',
+                          after: {
+                            id: 'freeSpamAlert',
+                            className: 'object-small',
+                            render: <Alert>You will receive free spam</Alert>,
+                            rules: [freeSpam => freeSpam.checked]
+                          }
+                        },
+                        {
+                          type: 'checkbox',
+                          id: 'freePizza',
+                          label: 'I would like to receive a free large pizza',
+                          after: {
+                            id: 'freePizzaAlert',
+                            className: 'object-small',
+                            render: <Alert alert='info'>You will receive one large pizza</Alert>,
+                            rules: [freePizza => freePizza.checked]
+                          }
+                        },
+                        {
+                          type: 'fieldset',
+                          legend: 'Choose one:',
+                          id: 'choose-one-x',
+                          fields: [
+                            {
+                              type: 'radio',
+                              id: 'freeXbox',
+                              label: 'Free Xbox 360',
+                              required: true
+                            },
+                            {
+                              type: 'radio',
+                              id: 'freePS4',
+                              label: 'Free Playstation 4',
+                              required: true
+                            },
+                            {
+                              type: 'radio',
+                              id: 'freeCheese',
+                              label: 'Free slice of cheddar cheese',
+                              required: true
+                            },
+                            {
+                              type: 'radio',
+                              id: 'giveUs10Bux',
+                              label: 'You agree to give us $10',
+                              required: true
+                            }
+                          ]
+                        }
+                      ],
+                      rules: [country => country.value !== 'USA'],
+                      after: {
+                        id: 'freeBoth',
+                        render: <Alert alert='help'>You want free spam and free pizza??</Alert>,
+                        rules: [
+                          freeSpam => freeSpam.checked,
+                          freePizza => freePizza.checked
+                        ]
+                      }
+                  },
                 ]} submit='Ok lets go!' />
             {/* </PAX5.column> */}
         {/* </PAX5.row> */}
