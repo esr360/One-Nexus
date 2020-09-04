@@ -56,9 +56,14 @@ export default ({ config, theme, utils }) => [config, {
     'margin-right': '1em'
   }, $), {}),
 
-  fieldset: () => ({
+  fieldset: ({ state }) => ({
+    display: state.hidden ? 'none' : 'block',
     'padding': '0',
     'border': 'none'
+  }),
+
+  after: ({ state }) => ({
+    display: state.hidden ? 'none' : 'block',
   }),
 
   field: () => ({

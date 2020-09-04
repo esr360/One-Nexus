@@ -51,10 +51,10 @@ export default props => (
                       {
                         type: 'password',
                         id: 'passwordReEnter',
-                        hidden: true,
                         label: 'Re-enter Password',
+                        hidden: true,
                         required: true,
-                        validateOn: ['blur', 'change'],
+                        validateOn: ['change'],
                         validators: [
                           {
                             rule: (value, { userPassword }) => value === userPassword.value(),
@@ -87,9 +87,6 @@ export default props => (
                             type: 'checkbox',
                             id: 'isHomeless',
                             label: 'I\'m homeless',
-                            groupProps: {
-                              className: 'well-border'
-                            },
                             fieldset: {
                               type: 'fieldset',
                               legend: 'Address',
@@ -98,25 +95,27 @@ export default props => (
                                 {
                                   type: 'text',
                                   label: 'Address Line 1',
-                                  // id: 'addressLine1'
+                                  id: 'addressLine1'
                                 },
                                 {
                                   type: 'text',
                                   label: 'Address Line 2',
-                                  // id: 'addressLine2'
+                                  id: 'addressLine2'
                                 },
                                 {
                                   type: 'text',
                                   label: 'City',
-                                  // id: 'addressCity'
+                                  id: 'addressCity'
                                 },
                                 {
                                   type: 'text',
                                   label: 'Postcode',
-                                  // id: 'addressPostcode'
+                                  id: 'addressPostcode'
                                 }
                               ],
-                              // rules: [isHomeless => !isHomeless.checked]
+                              visibility: [
+                                ({ isHomeless }) => !isHomeless.checked()
+                              ]
                             }
                           },
                           {
@@ -133,7 +132,7 @@ export default props => (
                               { value: 'UK' },
                               { value: 'USA' }
                             ],
-                            validators: [({ country }) => country.node.value === 'UK']
+                            validators: [value => value === 'UK']
                           }
                         ]
                       }
@@ -151,9 +150,9 @@ export default props => (
                           label: 'I would like to receive free spam',
                           after: {
                             id: 'freeSpamAlert',
-                            className: 'object-small',
+                            hidden: true,
                             render: <Alert>You will receive free spam</Alert>,
-                            rules: [freeSpam => freeSpam.checked]
+                            visibility: [({ freeSpam }) => freeSpam.checked()]
                           }
                         },
                         {
@@ -162,9 +161,9 @@ export default props => (
                           label: 'I would like to receive a free large pizza',
                           after: {
                             id: 'freePizzaAlert',
-                            className: 'object-small',
+                            hidden: true,
                             render: <Alert alert='info'>You will receive one large pizza</Alert>,
-                            rules: [freePizza => freePizza.checked]
+                            visibility: [({ freePizza }) => freePizza.checked()]
                           }
                         },
                         {

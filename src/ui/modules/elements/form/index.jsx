@@ -33,11 +33,11 @@ const Form = ({ fields, submit, children, ...props }) => {
   const { name, validateFieldsOn } = useConfig(props);
   const [formFields, updateFormFields] = React.useState({});
 
-  const handleSubmit = () => Object.values(formFields).forEach(field => validate(field, formFields));
-
   const refreshVisibility = () => Object.values(formFields).forEach(({ visibility, show, hide }) => {
     visibility && (visibility.every(determiner => determiner(formFields)) ? show() : hide());
   });
+
+  const handleSubmit = () => Object.values(formFields).forEach(field => validate(field, formFields));
 
   return (
     <formContext.Provider value={{ formFields, updateFormFields, validateFieldsOn, refreshVisibility }}>
@@ -65,33 +65,34 @@ Form.Field = ({ properties, group }) => {
   const { id, label, type, icon, options, fieldset, render, after, hidden } = properties;
   const { visibility, validators, onValidation, validateOn = validateFieldsOn } = properties;
 
-  const [isHidden, setIsHidden] = React.useState(hidden);
   const [isValid, setIsValid] = React.useState();
   const [errorMessage, setErrorMessage] = React.useState();
 
   const eventHandler = event => () => (refreshVisibility(), validateOn.includes(event) && validate(formFields[id], formFields));
-  const fieldObject = host => ({ node: host.current, setIsValid, setErrorMessage, validators, onValidation, visibility });
+  const fieldObject = host => ({ node: host.current, setIsValid, setErrorMessage, validators, onValidation });
+
+  const modifiers = {
+    hasIcon: Boolean(properties.icon),
+    compound: Boolean(properties.compound),
+    valid: isValid === true,
+    invalid: isValid === false
+  }
 
   if (id) {
     React.useEffect(() => updateFormFields(prev => ({ ...prev, [id]: {
+      ...prev[id],
+
       validate: fields => validate(fieldObject(host), fields),
       isValid: fields => validator(host.current, validators, fields)[0],
-      show: () => setIsHidden(false),
-      hide: () => setIsHidden(true),
       value: () => host.current.value,
+      checked: () => host.current.checked,
 
       ...fieldObject(host)
     }})), []);
   }
 
-  const modifiers = {
-    'has-icon': Boolean(properties.icon),
-    'compound': Boolean(properties.compound),
-    'hidden': Boolean(isHidden),
-  }
-
   return (
-    <Component name='group' {...modifiers} valid={isValid === true} invalid={isValid === false}>
+    <Form.ControlledElement name='group' {...{ id, visibility, hidden, modifiers }}>
       {label && (type !== 'checkbox' && type !== 'radio') && <Component name='label' htmlFor={id} content={label} />}
 
       {inputTypes.includes(type) && (
@@ -102,21 +103,18 @@ Form.Field = ({ properties, group }) => {
         </Component>
       )}
 
-      {otherTypes.includes(type) && (
-        <input {...getAttrs(properties)}/>
-      )}
+      {otherTypes.includes(type) && <input {...getAttrs(properties)} />}
 
       {(type === 'checkbox' || type === 'radio') && (
         <Component name='selection' {...{[type]:true}}>
-          <Component name={type} tag='input' host={host} {...getAttrs(properties)} onChange={eventHandler('change')} group={group} />
-
-          {label && <Component name='label' htmlFor={id} content={label} />}
+          <SubComponent name='wrapper' tag='label'>
+            <Component name={type} tag='input' host={host} {...getAttrs(properties)} onChange={eventHandler('change')} group={group} />
+            <Component name='label'>{label}</Component>
+          </SubComponent>
         </Component>
       )}
 
-      {type === 'textarea' && (
-        <Component name='input'ag='textarea' {...getAttrs(properties)} />
-      )}
+      {type === 'textarea' && <Component name='input'ag='textarea' {...getAttrs(properties)} />}
 
       {type === 'select' && (
         <Component name='field'>
@@ -128,31 +126,44 @@ Form.Field = ({ properties, group }) => {
         </Component>
       )}
 
-      {fieldset && (
-        <Form.Fieldset properties={fieldset} />
-      )}
+      {fieldset && <Form.Fieldset properties={fieldset} />}
 
-      {type ==='HTML' && (
-        <div {...getAttrs(properties)}>{render}</div>
-      )}
-
-      {after && (
-        <div {...getAttrs(after)}>{after.render}</div>
-      )}
+      {type ==='HTML' && <div {...getAttrs(properties)}>{render}</div>}
 
       {errorMessage && <Component name='error'>{errorMessage}</Component>}
-    </Component>    
+
+      {after && <Form.ControlledElement name='after' {...after} />}
+    </Form.ControlledElement>    
+  );
+}
+
+Form.ControlledElement = ({ render, name, id, hidden, visibility, modifiers, ...props }) => {
+  const { updateFormFields } = React.useContext(formContext);
+  const [isHidden, setIsHidden] = React.useState(hidden);
+
+  if (id) {  
+    React.useEffect(() => updateFormFields(prev => ({ ...prev, [id]: {
+      ...prev[id], visibility,
+      show: () => setIsHidden(false),
+      hide: () => setIsHidden(true)
+    }})), []);
+  }
+
+  return (
+    <Component name={name} hidden={isHidden} {...getAttrs(props)} {...modifiers}>
+      {render || props.children}
+    </Component>
   );
 }
 
 Form.Fieldset = ({ properties: { legend, fields, id, after, ...props }}) => (
-  <Component name='fieldset' {...getAttrs(props)}>
+  <Form.ControlledElement id={id} name='fieldset' {...props}>
     {legend && <Component name='legend'>{legend}</Component>}
 
     <RenderFields fields={fields} group={id} />
 
-    {after && <div {...getAttrs(after)}>{after.render}</div>}
-  </Component>
+    {after && <Form.ControlledElement name='after' {...after} />}
+  </Form.ControlledElement>
 );
 
 export default Form;
@@ -175,7 +186,9 @@ function validator(node, validators = [], formFields, { defaultMessage = 'Invali
   validators.forEach(rule => {
     message = (rule.message || message), rule = (rule.rule ?? rule);
 
-    if (typeof rule === 'function' ? !rule(node.value, formFields) : !rule) {
+    const value = ['checkbox', 'radio'].some($ => node.type === $) ? node.checked : node.value;
+
+    if (typeof rule === 'function' ? !rule(value, formFields) : !rule) {
       isValid = false;
     }
   });
@@ -192,13 +205,14 @@ function validator(node, validators = [], formFields, { defaultMessage = 'Invali
  */
 function validate({ node, setErrorMessage, setIsValid, validators, onValidation }, formFields) {
   const [isValid, message] = validator(node, validators, formFields);
+  const value = ['checkbox', 'radio'].some($ => node.type === $) ? node.checked : node.value;
 
   setErrorMessage(isValid ? null : message);
 
   setIsValid(isValid);
 
   if (onValidation) {
-    onValidation({ value: node.value, isValid, message }, formFields);
+    onValidation({ value, isValid, message }, formFields);
   }
 }
 
