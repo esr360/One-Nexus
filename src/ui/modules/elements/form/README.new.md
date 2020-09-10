@@ -254,12 +254,12 @@
   </tr>
   <tr>
     <td><code>visibility</code></td>
-    <td><code>><a href="#TODO">VisibilityType</a></code></td>
+    <td><code><a href="#TODO">VisibilityType</a></code></td>
     <td></td>
   </tr>
   <tr>
     <td><code>validators</code></td>
-    <td><code>><a href="#TODO">ValidatorsType</a></code></td>
+    <td><code><a href="#TODO">ValidatorsType</a></code></td>
     <td></td>
   </tr>
   <tr>
@@ -271,19 +271,19 @@
 
 ###### `VisibilityType`
 
-```ts
+```js
 Array<formFields => boolean>
 ```
 
 ###### `ValidatorsType`
 
-```ts
+```js
 Array<{ rule: (value: string, formFields: Array<FieldObject>) => boolean, message: string }>
 ```
 
 ###### `onValidationType`
 
-```ts
+```js
 (result: { value: string; isValid: boolean; message: string }, formFields: Array<FieldObject>) => void
 ```
 
