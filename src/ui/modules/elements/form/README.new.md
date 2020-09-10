@@ -247,35 +247,45 @@
     <td><code>Boolean</code></td>
     <td></td>
   </tr>
-</table>
-
-<table>
-  <thead>
-    <th>Property</th>
-    <th>Type</th>
-    <th>Description</th>
-  </thead>
-  <tr>
-    <td><code>visibility</code></td>
-    <td><code>Array&lt;formFields => Boolean></code></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><code>validators</code></td>
-    <td><code>Array&lt;{ rule: (value: String, formFields: Array&lt;FieldObject>) => Boolean, message: String }></code></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><code>onValidation</code></td>
-    <td><code>({ value: String, isValid: Boolean, message: String }, formFields: Array&lt;FieldObject>) => void</code></td>
-    <td></td>
-  </tr>
   <tr>
     <td><code>validateOn</code></td>
     <td><code>Array&lt;'blur' | 'change'></code></td>
     <td></td>
   </tr>
+  <tr>
+    <td><code>visibility</code></td>
+    <td><code>><a href="#TODO">VisibilityType</a></code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>validators</code></td>
+    <td><code>><a href="#TODO">ValidatorsType</a></code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>onValidation</code></td>
+    <td><code><a href="#TODO">onValidationType</a></code></td>
+    <td></td>
+  </tr>
 </table>
+
+###### `VisibilityType`
+
+```ts
+Array<formFields => boolean>
+```
+
+###### `ValidatorsType`
+
+```ts
+Array<{ rule: (value: string, formFields: Array<FieldObject>) => boolean, message: string }>
+```
+
+###### `onValidationType`
+
+```ts
+(result: { value: string; isValid: boolean; message: string }, formFields: Array<FieldObject>) => void
+```
 
 #### Manually Create Fields/Fieldsets
 
