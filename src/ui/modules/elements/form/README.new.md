@@ -200,72 +200,67 @@
   <tr>
     <td><code>id</code></td>
     <td><code>String</code></td>
-    <td></td>
+    <td>Unique (relative to the form) identifier for the field</td>
   </tr>
   <tr>
     <td><code>label</code></td>
     <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">React.ReactNode</a></code></td>
-    <td></td>
+    <td>The label for the field</td>
   </tr>
   <tr>
     <td><code>type</code></td>
     <td><code>String</code></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><code>icon</code></td>
-    <td><code>String</code></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><code>group</code></td>
-    <td><code>String</code></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><code>options</code></td>
-    <td><code>Array&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#Attributes">HTMLOptionElement.Attributes</a>></code></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><code>fieldset</code></td>
-    <td><code>Array&lt;<a href="#FieldsetObject">FieldsetObject</a>></code></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><code>render</code></td>
-    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">React.ReactNode</a></code></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><code>after</code></td>
-    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">React.ReactNode</a></code></td>
-    <td></td>
+    <td>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#%3Cinput%3E_types">type of HTML input</a> to render</td>
   </tr>
   <tr>
     <td><code>hidden</code></td>
     <td><code>Boolean</code></td>
-    <td></td>
+    <td>Hide the field visually so it can later be shown dynamically (not to be confused with the HTML <code>hidden</code> attribute)</td>
   </tr>
   <tr>
-    <td><code>validateOn</code></td>
-    <td><code>Array&lt;'blur' | 'change'></code></td>
-    <td></td>
+    <td><code>icon</code></td>
+    <td><code>String</code></td>
+    <td>A glyph to pass to the <code>glyph</code> prop of the <code><a href="#TODO">&lt;Icon /></a></code> Module</td>
   </tr>
   <tr>
-    <td><code>visibility</code></td>
-    <td><code><a href="#TODO">VisibilityType</a></code></td>
-    <td></td>
+    <td><code>options</code></td>
+    <td><code>Array&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#Attributes">HTMLOptionElement.Attributes</a>></code></td>
+    <td>List of dropdown options to use when type is <code>select</code></td>
+  </tr>
+  <tr>
+    <td><code>group</code></td>
+    <td><code>String</code></td>
+    <td>Unique identifier (relative to the form) for grouping fields with a type of <code>radio</code> and <code>checkbox</code></td>
+  </tr>
+  <tr>
+    <td><code>render</code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">React.ReactNode</a></code></td>
+    <td>Content to render when type is <code>HTML</code></td>
+  </tr>
+  <tr>
+    <td><code>after</code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">React.ReactNode</a></code></td>
+    <td>Content to render after the field</td>
   </tr>
   <tr>
     <td><code>validators</code></td>
     <td><code><a href="#TODO">ValidatorsType</a></code></td>
-    <td></td>
+    <td>List of validators on which to validate the field</td>
+  </tr>
+  <tr>
+    <td><code>validateOn</code></td>
+    <td><code>Array&lt;'blur' | 'change'></code></td>
+    <td>Control the events that should trigger the field's validators</td>
   </tr>
   <tr>
     <td><code>onValidation</code></td>
     <td><code><a href="#TODO">onValidationType</a></code></td>
-    <td></td>
+    <td>Callback function to execute whenever the field is validated (will be executed regardless of successul validation)</td>
+  </tr>
+  <tr>
+    <td><code>visibility</code></td>
+    <td><code><a href="#TODO">VisibilityType</a></code></td>
+    <td>List of rules to control the field's visibility (will be executed whenever <b>any</b> event is triggered on <b>any</b> field)</td>
   </tr>
 </table>
 
