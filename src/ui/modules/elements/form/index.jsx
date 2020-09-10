@@ -41,7 +41,7 @@ const Form = ({ fields, submit, children, ...props }) => {
 
   return (
     <formContext.Provider value={{ formFields, updateFormFields, validateFieldsOn, refreshVisibility }}>
-      <Module name={name} {...props}>
+      <Module name={name} tag='form' {...props}>
         {fields && <RenderFields fields={fields} />}
 
         {children && children}
@@ -58,11 +58,11 @@ const Form = ({ fields, submit, children, ...props }) => {
 
 Form.defaultProps = { config, styles };
 
-Form.Field = ({ properties, group }) => {
+Form.Field = properties => {
   const host = React.createRef();
   const { formFields, updateFormFields, validateFieldsOn, refreshVisibility } = React.useContext(formContext);
 
-  const { id, label, type, icon, options, fieldset, render, after, hidden } = properties;
+  const { id, label, type, icon, group, options, fieldset, render, after, hidden } = properties;
   const { visibility, validators, onValidation, validateOn = validateFieldsOn } = properties;
 
   const [isValid, setIsValid] = React.useState();
@@ -72,10 +72,10 @@ Form.Field = ({ properties, group }) => {
   const fieldObject = host => ({ node: host.current, setIsValid, setErrorMessage, validators, onValidation });
 
   const modifiers = {
-    hasIcon: Boolean(properties.icon),
-    compound: Boolean(properties.compound),
     valid: isValid === true,
-    invalid: isValid === false
+    invalid: isValid === false,
+    hasIcon: Boolean(properties.icon),
+    compound: Boolean(properties.compound)
   }
 
   if (id) {
@@ -126,7 +126,7 @@ Form.Field = ({ properties, group }) => {
         </Component>
       )}
 
-      {fieldset && <Form.Fieldset properties={fieldset} />}
+      {fieldset && <Form.Fieldset {...fieldset} />}
 
       {type ==='HTML' && <div {...getAttrs(properties)}>{render}</div>}
 
@@ -136,6 +136,16 @@ Form.Field = ({ properties, group }) => {
     </Form.ControlledElement>    
   );
 }
+
+Form.Fieldset = ({ legend, fields, id, after, ...props }) => (
+  <Form.ControlledElement id={id} name='fieldset' {...props}>
+    {legend && <Component name='legend'>{legend}</Component>}
+
+    <RenderFields fields={fields} group={id} />
+
+    {after && <Form.ControlledElement name='after' {...after} />}
+  </Form.ControlledElement>
+);
 
 Form.ControlledElement = ({ render, name, id, hidden, visibility, modifiers, ...props }) => {
   const { updateFormFields } = React.useContext(formContext);
@@ -156,25 +166,15 @@ Form.ControlledElement = ({ render, name, id, hidden, visibility, modifiers, ...
   );
 }
 
-Form.Fieldset = ({ properties: { legend, fields, id, after, ...props }}) => (
-  <Form.ControlledElement id={id} name='fieldset' {...props}>
-    {legend && <Component name='legend'>{legend}</Component>}
-
-    <RenderFields fields={fields} group={id} />
-
-    {after && <Form.ControlledElement name='after' {...after} />}
-  </Form.ControlledElement>
-);
-
 export default Form;
 
 /**
  * Render Fields/Fieldset
  */
-const RenderFields = ({ fields, group }) => fields.map((properties, index) => {
-  const Render = properties.type === 'fieldset' ? Form.Fieldset : Form.Field;
+const RenderFields = ({ fields, group }) => fields.map((props, index) => {
+  const Render = props.type === 'fieldset' ? Form.Fieldset : Form.Field;
 
-  return <Render key={index} properties={properties} group={group} />;
+  return <Render key={index} group={group} {...props} />;
 });
 
 /**
@@ -204,6 +204,10 @@ function validator(node, validators = [], formFields, { defaultMessage = 'Invali
  * Validate
  */
 function validate({ node, setErrorMessage, setIsValid, validators, onValidation }, formFields) {
+  if (!node) {
+    return;
+  }
+
   const [isValid, message] = validator(node, validators, formFields);
   const value = ['checkbox', 'radio'].some($ => node.type === $) ? node.checked : node.value;
 
@@ -219,6 +223,6 @@ function validate({ node, setErrorMessage, setIsValid, validators, onValidation 
 /**
  * Get Input Attributes
  */
-function getAttrs({ attributes = {}, type, required } = {}) {
-  return Object.assign(attributes, { type, required });
+function getAttrs({ attributes = {}, type, required, selected, disabled } = {}) {
+  return Object.assign(attributes, { type, required, selected, disabled });
 }

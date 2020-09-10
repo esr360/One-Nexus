@@ -1,0 +1,324 @@
+# One-Nexus Form
+
+<img width="750px" src="http://www.onenexus.io/github/Form.png" />
+
+<table>
+  <thead>
+    <th><a href="#overview">Overview</a></th>
+    <th><a href="#configuration">Configuration</a></th>
+    <th><a href="#API">API</a></th>
+  </thead>
+  <tr>
+    <td><li><a href="#TODO">Live CodeSandbox Demo</a></li></td>
+    <td><li><a href="#default-configuration">Default Configuration</a></li></td>
+    <td><li><a href="#propspanels"><code>props.fields</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configpersist"><code>config.validateFieldsOn</code></a></li></td>
+    <td><li><a href="#propspanels"><code>props.submit</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configpersist"><code>config.validColor</code></a></li></td>
+    <td><li><a href="#propspanels"><code>Form.Field</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configpersist"><code>config.invalidColor</code></a></li></td>
+    <td><li><a href="#propspanels"><code>Form.Fieldset</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><li><a href="#propspanels"><code>Form.ControlledElement</code></a></li></td>
+  </tr>
+</table>
+
+## Overview
+
+> [Learn more about One-Nexus Modules](https://github.com/esr360/One-Nexus/wiki/Modules)
+
+```jsx
+<Form fields={[
+  {
+    type: 'text',
+    label: 'Username'
+  },
+  {
+    type: 'password',
+    label: 'Password'
+  }
+]} submit='Login' />
+```
+
+###### Structural Interface [[?]](#TODO)
+
+```jsx
+<Module name='form'>
+  <Component name='group'>
+    <Component name='label' />
+
+    <Component name='field'>
+      <Component name='input' />
+    </Component>
+  </Component>
+
+  ...
+
+  <Component name='footer'>
+    <Component name='submit' />
+  </Component>
+</Module>
+```
+
+### [Live CodeSandbox Demo](#TODO)
+
+## Configuration
+
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about Module configutation
+
+### Default Configuration
+
+> [`modules/elements/Form/assets/config.js`](assets/config.js)
+
+<pre>
+{
+  name: 'Form',
+  validateFieldsOn: ['blur', 'change'],
+  validColor': colors.validation.valid,
+  invalidColor': colors.validation.invalid,
+  gutter: tokens.margin,
+
+  label: {
+    'color': typography.colors.base,
+    'transition': tokens.transition
+  },
+
+  input: {
+    'color': typography.colors.base,
+    'border': '1px solid',
+    'border-color': colors.greyscale['grey-3'],
+    'padding': '0.75em',
+    'transition': tokens.transition,
+    'font-family': typography.typefaces.primary
+  },
+
+  select: {
+    'color': typography.colors.base,
+    'border': '1px solid',
+    'border-color': colors.greyscale['grey-3'],
+    'padding': '0.75em',
+    'transition': tokens.transition,
+    'font-family': typography.typefaces.primary
+  },
+
+  legend: {
+    'margin-bottom': '1rem',
+    'font-size': typography.sizes['size-4']
+  },
+
+  fieldset: {
+    gutter: tokens.margin
+  }
+}
+</pre>
+
+### `config.validateFieldsOn`
+
+> Set the default user events that should trigger field validation
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>Array</code></td>
+  </tr>
+</table>
+
+###### Specify For Individual Fields
+
+@TODO
+
+### `config.validColor` / `config.invalidColor`
+
+> Set the field validation colors
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>String</code> (color)</td>
+  </tr>
+</table>
+
+## API
+
+* [`props.fields`](#propspanels)
+* [`props.submit`](#propspanels)
+* [`Form.Field`](#propspanels)
+* [`Form.Fieldset`](#propspanels)
+* [`Form.ControlledElement`](#propspanels)
+
+### `props.fields`
+
+* [`FieldObject`](#FieldObject)
+* [Manually Create Fields/Fieldsets](#TODO)
+
+> An array of fields/fieldsets to base your Form on
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td>
+      <code>Array&lt;<a href="#FieldObject">FieldObject</a>></code>
+    </td>
+  </tr>
+</table>
+
+```jsx
+<Form fields={[
+  {
+    type: 'text',
+    id: 'username',
+    label: 'Username'
+  },
+  {
+    type: 'password',
+    id: 'password',
+    label: 'Password'
+  }
+]} submit='Login' />
+```
+
+#### `FieldObject`
+
+<table>
+  <thead>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Description</th>
+  </thead>
+  <tr>
+    <td><code>id</code></td>
+    <td><code>String</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>label</code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">React.ReactNode</a></code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>type</code></td>
+    <td><code>String</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>icon</code></td>
+    <td><code>String</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>group</code></td>
+    <td><code>String</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>options</code></td>
+    <td><code>Array&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#Attributes">HTMLOptionElement.Attributes</a>></code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>fieldset</code></td>
+    <td><code>Array&lt;<a href="#FieldsetObject">FieldsetObject</a>></code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>render</code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">React.ReactNode</a></code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>after</code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">React.ReactNode</a></code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>hidden</code></td>
+    <td><code>Boolean</code></td>
+    <td></td>
+  </tr>
+</table>
+
+<table>
+  <thead>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Description</th>
+  </thead>
+  <tr>
+    <td><code>visibility</code></td>
+    <td><code>Array&lt;formFields => Boolean></code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>validators</code></td>
+    <td><code>Array&lt;{ rule: (value: String, formFields: Array&lt;FieldObject>) => Boolean, message: String }></code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>onValidation</code></td>
+    <td><code>({ value: String, isValid: Boolean, message: String }, formFields: Array&lt;FieldObject>) => void</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>validateOn</code></td>
+    <td><code>Array&lt;'blur' | 'change'></code></td>
+    <td></td>
+  </tr>
+</table>
+
+#### Manually Create Fields/Fieldsets
+
+You can have more control over the structure of your form's fields/fieldsets by using the [`Form.Field`](#TODO), [`Form.Fieldset`](#TODO) and [`Form.ControlledElement`](#TODO) APIs.
+
+###### Basic Example
+
+```jsx
+<Form>
+  <Form.Field type='text' id='username' label='Username' />
+  <Form.Field type='password' id='password' label='Password' />
+
+  <Button type='submit'>Login</Button>
+</Form>
+```
+
+### `props.submit`
+
+TODO
+
+### `Form.Field`
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td>
+      <code>
+        Array&lt;{ 
+          <a href="#paneltitle">title</a>, 
+          <a href="#panelcontent">content</a>, 
+          <a href="#panelid">id</a>, 
+          <a href="#panelactive">active</a>, 
+          <a href="#panelcallback">callback</a> 
+        }>
+      </code>
+    </td>
+  </tr>
+</table>
+
+### `Form.Fieldset`
+
+TODO
+
+### `Form.ControlledElement`
+
+TODO
