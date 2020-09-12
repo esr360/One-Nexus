@@ -264,7 +264,7 @@ The `FieldObject` is a list of properties available when creating One-Nexus Form
   </tr>
   <tr>
     <td><code>type</code></td>
-    <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#%3Cinput%3E_types">HTMLInputElement.Attributes</a>[]</code></td>
+    <td><code>string(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#%3Cinput%3E_types">HTMLInputElement.Attributes</a>)</code></td>
     <td>The type of HTML input to render</td>
   </tr>
   <tr>
@@ -284,7 +284,7 @@ The `FieldObject` is a list of properties available when creating One-Nexus Form
   </tr>
   <tr>
     <td><code>options?</code></td>
-    <td><code>Array&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#Attributes">HTMLOptionElement.Attributes</a>[]></code></td>
+    <td><code>Array&lt;string(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#Attributes">HTMLOptionElement.Attributes</a>)></code></td>
     <td>List of dropdown options to use when type is <code>select</code></td>
   </tr>
   <tr>
