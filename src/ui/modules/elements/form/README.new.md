@@ -11,27 +11,37 @@
   <tr>
     <td><li><a href="#TODO">Live CodeSandbox Demo</a></li></td>
     <td><li><a href="#default-configuration">Default Configuration</a></li></td>
-    <td><li><a href="#propspanels"><code>props.fields</code></a></li></td>
+    <td><li><a href="#todo"><code>FieldInterface</code></a></li></td>
   </tr>
   <tr>
     <td></td>
-    <td><li><a href="#configpersist"><code>config.validateFieldsOn</code></a></li></td>
-    <td><li><a href="#propspanels"><code>props.submit</code></a></li></td>
+    <td><li><a href="#todo"><code>config.validateFieldsOn</code></a></li></td>
+    <td><li><a href="#todo"><code>FieldObject</code></a></li></td>
   </tr>
   <tr>
     <td></td>
-    <td><li><a href="#configpersist"><code>config.validColor</code></a></li></td>
-    <td><li><a href="#propspanels"><code>Form.Field</code></a></li></td>
+    <td><li><a href="#todo"><code>config.validColor</code></a></li></td>
+    <td><li><a href="#todo"><code>props.fields</code></a></li></td>
   </tr>
   <tr>
     <td></td>
-    <td><li><a href="#configpersist"><code>config.invalidColor</code></a></li></td>
-    <td><li><a href="#propspanels"><code>Form.Fieldset</code></a></li></td>
+    <td><li><a href="#todo"><code>config.invalidColor</code></a></li></td>
+    <td><li><a href="#todo"><code>props.submit</code></a></li></td>
   </tr>
   <tr>
     <td></td>
     <td></td>
-    <td><li><a href="#propspanels"><code>Form.ControlledElement</code></a></li></td>
+    <td><li><a href="#todo"><code>Form.Field</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><li><a href="#todo"><code>Form.Fieldset</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><li><a href="#todo"><code>Form.ControlledElement</code></a></li></td>
   </tr>
 </table>
 
@@ -152,44 +162,94 @@
 
 ## API
 
-* [`props.fields`](#propspanels)
-* [`props.submit`](#propspanels)
-* [`Form.Field`](#propspanels)
-* [`Form.Fieldset`](#propspanels)
-* [`Form.ControlledElement`](#propspanels)
+* [`FieldInterface`](#todo)
+* [`FieldObject`](#fieldobject)
+* [`props.fields`](#todo)
+* [`props.submit`](#todo)
+* [`Form.Field`](#todo)
+* [`Form.Fieldset`](#todo)
+* [`Form.ControlledElement`](#todo)
 
-### `props.fields`
+### `FieldInterface`
 
-* [`FieldObject`](#FieldObject)
-* [Manually Create Fields/Fieldsets](#TODO)
-
-> An array of fields/fieldsets to base your Form on
+The `FieldInterface` is the internal interace of a One-Nexus Form field/fieldset that is exposed when handling the field's behaviour.
 
 <table>
+  <thead>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Description</th>
+  </thead>
   <tr>
-    <td><b>Type</b></td>
-    <td>
-      <code>Array&lt;<a href="#FieldObject">FieldObject</a>></code>
-    </td>
+    <td><code>node</code></td>
+    <td><code>HTMLElement</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>setIsValid</code></td>
+    <td><code>Dispatch&lt;SetStateAction&lt;boolean>></code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>setErrorMessage</code></td>
+    <td><code>Dispatch&lt;SetStateAction&lt;string>></code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>validators</code></td>
+    <td><code><a href="#TODO">ValidatorsType</a></code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>onValidation</code></td>
+    <td><code><a href="#TODO">onValidationType</a></code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>validate</code></td>
+    <td><code>(fields?: { [id: string]: FieldObject }) => void</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>isValid</code></td>
+    <td><code>(fields?: { [id: string]: FieldObject }) => boolean</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>value</code></td>
+    <td><code>() => string</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>checked</code></td>
+    <td><code>() => boolean</code></td>
+    <td></td>
   </tr>
 </table>
+
+### `FieldObject`
+
+The `FieldObject` is a list of properties available when creating One-Nexus Form fields and fieldsets.
+
+###### Example `FieldObject` Representations
+
+```jsx
+<Form>
+  <Form.Field property={value}>
+  <Form.Field property={value}>
+</Form>
+```
 
 ```jsx
 <Form fields={[
   {
-    type: 'text',
-    id: 'username',
-    label: 'Username'
+    property: value
   },
   {
-    type: 'password',
-    id: 'password',
-    label: 'Password'
+    property: value
   }
-]} submit='Login' />
+]} />
 ```
-
-#### `FieldObject`
 
 <table>
   <thead>
@@ -209,8 +269,8 @@
   </tr>
   <tr>
     <td><code>type</code></td>
-    <td><code>String</code></td>
-    <td>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#%3Cinput%3E_types">type of HTML input</a> to render</td>
+    <td><code>String(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#%3Cinput%3E_types">HTMLInputElement.Attributes</a>)</code></td>
+    <td>The type of HTML input to render</td>
   </tr>
   <tr>
     <td><code>hidden</code></td>
@@ -228,6 +288,11 @@
     <td>List of dropdown options to use when type is <code>select</code></td>
   </tr>
   <tr>
+    <td><code>fields</code></td>
+    <td><code>Array&lt;<a href="#FieldObject">FieldObject</a>></code></td>
+    <td>A list of fields/sub-fieldsets to render when type is <code>fieldset</code></td>
+  </tr>
+  <tr>
     <td><code>group</code></td>
     <td><code>String</code></td>
     <td>Unique identifier (relative to the form) for grouping fields with a type of <code>radio</code> and <code>checkbox</code></td>
@@ -243,14 +308,14 @@
     <td>Content to render after the field</td>
   </tr>
   <tr>
+    <td><code>validateOn</code></td>
+    <td><code>Array&lt;'blur' | 'change'></code></td>
+    <td>Control the events that should trigger the field's validators (defaults to <code><a href="#configvalidatefieldson">config.validateFieldsOn</a></code>)</td>
+  </tr>
+  <tr>
     <td><code>validators</code></td>
     <td><code><a href="#TODO">ValidatorsType</a></code></td>
     <td>List of validators on which to validate the field</td>
-  </tr>
-  <tr>
-    <td><code>validateOn</code></td>
-    <td><code>Array&lt;'blur' | 'change'></code></td>
-    <td>Control the events that should trigger the field's validators</td>
   </tr>
   <tr>
     <td><code>onValidation</code></td>
@@ -264,65 +329,190 @@
   </tr>
 </table>
 
-###### `VisibilityType`
-
-```js
-Array<formFields => boolean>
-```
+#### Validators
 
 ###### `ValidatorsType`
 
 ```js
-Array<{ rule: (value: string, formFields: Array<FieldObject>) => boolean, message: string }>
+Array<{ rule: (value: string, fields: { [id: string]: FieldObject }) => boolean; message?: string }>
 ```
+
+```js
+Array<(value: string, fields: { [id: string]: FieldObject }) => boolean>
+```
+
+###### Example
+
+```jsx
+<Formm fields={[
+  {
+    type: 'password',
+    label: 'Password',
+    id: 'userPassword',
+    validators: [
+      {
+        rule: value => value.length > 8,
+        message: 'Must be more than 8 characters'
+      }
+    ],
+  },
+  {
+    type: 'password',
+    id: 'passwordReEnter',
+    label: 'Re-enter Password',
+    validators: [
+      {
+        rule: (value, { userPassword }) => value === userPassword.value(),
+        message: 'Passwords do not match'
+      }
+    ]
+  }
+]} />
+```
+
+#### OnValidation
 
 ###### `onValidationType`
 
 ```js
-(result: { value: string; isValid: boolean; message: string }, formFields: Array<FieldObject>) => void
+(result: { value: string; isValid: boolean; message: string }, fields: { [id: string]: FieldObject }) => void
+```
+
+#### Visibility
+
+###### `VisibilityType`
+
+```js
+Array<(fields: { [id: string]: FieldObject }) => boolean>
+```
+
+### `props.fields`
+
+> A list of fields/fieldsets to use for the Form
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>Array&lt;<a href="#FieldObject">FieldObject</a>></code></td>
+  </tr>
+</table>
+
+```jsx
+<Form fields={[
+  {
+    type: 'text',
+    id: 'username',
+    label: 'Username'
+  },
+  {
+    type: 'password',
+    id: 'password',
+    label: 'Password'
+  }
+]} submit='Login' />
 ```
 
 #### Manually Create Fields/Fieldsets
 
-You can have more control over the structure of your form's fields/fieldsets by using the [`Form.Field`](#TODO), [`Form.Fieldset`](#TODO) and [`Form.ControlledElement`](#TODO) APIs.
+You can have more control over the structure of your form by using the [`Form.Field`](#TODO), [`Form.Fieldset`](#TODO) and [`Form.ControlledElement`](#TODO) APIs (combined with JSX) instead of passing `props.fields`.
 
 ###### Basic Example
+
+```jsx
+<Form>
+  <div>
+    <Form.Field type='text' id='username' label='Username' />
+  </div>
+
+  <div>
+    <Form.Field type='password' id='password' label='Password' />
+  </div>
+
+  <div>
+    <Button type='submit'>Login</Button>
+  </div>
+</Form>
+```
+
+### `props.submit`
+
+> The value to use for the Form's `submit` button
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>String</code></td>
+  </tr>
+</table>
+
+```jsx
+<Form fields={fields} submit='Login' />
+```
+
+> You can [manually construct your form's JSX](#manually-create-fieldsfieldsets) (including the submit button) and omit passing the `fields` and `submit` props
+
+### `Form.Field`
+
+The `<Form.Field>` Component is used as an alternative to passing [`props.fields`](#TODO)`<Form>`, should you need more control over the structure of the Form.
 
 ```jsx
 <Form>
   <Form.Field type='text' id='username' label='Username' />
   <Form.Field type='password' id='password' label='Password' />
 
-  <Button type='submit'>Login</Button>
+  ...
 </Form>
 ```
 
-### `props.submit`
+#### Props
 
-TODO
-
-### `Form.Field`
-
-<table>
-  <tr>
-    <td><b>Type</b></td>
-    <td>
-      <code>
-        Array&lt;{ 
-          <a href="#paneltitle">title</a>, 
-          <a href="#panelcontent">content</a>, 
-          <a href="#panelid">id</a>, 
-          <a href="#panelactive">active</a>, 
-          <a href="#panelcallback">callback</a> 
-        }>
-      </code>
-    </td>
-  </tr>
-</table>
+> `Form.Field` accepts any property from [`FieldObject`](#TODO) as a prop
 
 ### `Form.Fieldset`
 
-TODO
+The `<Form.Fieldset>` Component is used as an alternative to passing [`props.fields`](#TODO) to `<Form>`, should you need more control over the structure of the Form.
+
+```jsx
+<Form>
+  <Form.Fieldset legend='Your Details'>
+    <Form.Field type='text' id='firstName' label='First Name' />
+    <Form.Field type='text' id='lastName' label='Last Name' />
+    <Form.Field type='email' id='email' label='Email Address' />
+  </Form.Fieldset>
+
+  ...
+</Form>
+```
+
+#### Props
+
+<table>
+  <thead>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Description</th>
+  </thead>
+  <tr>
+    <td><code>legend?</code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">React.ReactNode</a></code></td>
+    <td>The Fieldset legend</td>
+  </tr>
+  <tr>
+    <td><code>fields?</code></td>
+    <td><code>Array&lt;<a href="#FieldObject">FieldObject</a>></code></td>
+    <td>A list of fields/sub-fieldsets to use for the Fieldset</td>
+  </tr>
+  <tr>
+    <td><code>id?</code></td>
+    <td><code>String</code></td>
+    <td>Unique (relative to the form) identifier for the field</td>
+  </tr>
+  <tr>
+    <td><code>after?</code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">React.ReactNode</a></code></td>
+    <td>Content to render after the Fieldset</td>
+  </tr>
+</table>
 
 ### `Form.ControlledElement`
 

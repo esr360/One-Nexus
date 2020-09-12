@@ -52,7 +52,6 @@ export default props => (
                         type: 'password',
                         id: 'passwordReEnter',
                         label: 'Re-enter Password',
-                        hidden: true,
                         required: true,
                         validateOn: ['change'],
                         validators: [
@@ -60,9 +59,6 @@ export default props => (
                             rule: (value, { userPassword }) => value === userPassword.value(),
                             message: 'Passwords do not match'
                           }
-                        ],
-                        visibility: [
-                          ({ userPassword }) => userPassword.isValid(),
                         ]
                       },
 

@@ -48,7 +48,7 @@ const Form = ({ fields, submit, children, ...props }) => {
 
         {submit && (
           <Component name='footer'>
-            <Component name='submit' tag='input' type='submit' value={submit} onClick={handleSubmit} {...getAttrs(submit)} />
+            <Button as='button' type='submit' content={submit} onClick={handleSubmit} />
           </Component>
         )}
       </Module>
@@ -137,17 +137,19 @@ Form.Field = properties => {
   );
 }
 
-Form.Fieldset = ({ legend, fields, id, after, ...props }) => (
-  <Form.ControlledElement id={id} name='fieldset' {...props}>
+Form.Fieldset = ({ children, legend, fields, id, after, ...props }) => (
+  <Form.ControlledElement id={id} name='fieldset' tag='fieldset' {...props}>
     {legend && <Component name='legend'>{legend}</Component>}
 
-    <RenderFields fields={fields} group={id} />
+    {fields && <RenderFields fields={fields} group={id} />}
+
+    {children && children}
 
     {after && <Form.ControlledElement name='after' {...after} />}
   </Form.ControlledElement>
 );
 
-Form.ControlledElement = ({ render, name, id, hidden, visibility, modifiers, ...props }) => {
+Form.ControlledElement = ({ tag='div', render, name, id, hidden, visibility, modifiers, ...props }) => {
   const { updateFormFields } = React.useContext(formContext);
   const [isHidden, setIsHidden] = React.useState(hidden);
 
@@ -160,7 +162,7 @@ Form.ControlledElement = ({ render, name, id, hidden, visibility, modifiers, ...
   }
 
   return (
-    <Component name={name} hidden={isHidden} {...getAttrs(props)} {...modifiers}>
+    <Component tag={tag} name={name} hidden={isHidden} {...getAttrs(props)} {...modifiers}>
       {render || props.children}
     </Component>
   );

@@ -137,5 +137,10 @@ export default ({ config, theme, utils }) => [config, {
   
   error: () => ({
     'color': config['invalid-color'],
+  }),
+
+  button: () => ({
+    'background-color': 'red',
+    'font-style': 'italic'
   })
 }];
