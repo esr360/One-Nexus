@@ -207,12 +207,12 @@ The `FieldInterface` is the internal interace of a One-Nexus Form field that is 
   </tr>
   <tr>
     <td><code>isValid</code></td>
-    <td><code>(fields: { [id: string]: FieldObject }) => boolean</code></td>
+    <td><code>(fields:&nbsp;{&nbsp;[id:&nbsp;string]:&nbsp;FieldObject&nbsp;})&nbsp;=>&nbsp;boolean</code></td>
     <td>Determine if the field is valid (<code>fields</code> is only required if the field's validators depend on other fields, in which case only those fields need to be passed)</td>
   </tr>
   <tr>
     <td><code>validate</code></td>
-    <td><code>(fields: { [id: string]: FieldObject }) => void</code></td>
+    <td><code>(fields:&nbsp;{&nbsp;[id:&nbsp;string]:&nbsp;FieldObject&nbsp;})&nbsp;=>&nbsp;void</code></td>
     <td>Calls <code>setIsValid</code> (based on the result of the validators), <code>setErrorMessage</code> (based on the first failing validator) and <code>onValidation</code></td>
   </tr>
   <tr>
