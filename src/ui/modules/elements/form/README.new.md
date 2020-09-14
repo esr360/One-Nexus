@@ -156,7 +156,7 @@
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>String</code> (color)</td>
+    <td><code>string</code> (color)</td>
   </tr>
 </table>
 
@@ -172,7 +172,7 @@
 
 ### `FieldInterface`
 
-The `FieldInterface` is the internal interace of a One-Nexus Form field/fieldset that is exposed when handling the field's behaviour.
+The `FieldInterface` is the internal interace of a One-Nexus Form field that is exposed when handling the field's behaviour.
 
 <table>
   <thead>
@@ -183,55 +183,53 @@ The `FieldInterface` is the internal interace of a One-Nexus Form field/fieldset
   <tr>
     <td><code>node</code></td>
     <td><code>HTMLElement</code></td>
-    <td></td>
+    <td>The underlying HTML element/node of the field</td>
   </tr>
   <tr>
     <td><code>setIsValid</code></td>
     <td><code>Dispatch&lt;SetStateAction&lt;boolean>></code></td>
-    <td></td>
+    <td>The internal <code>setIsValid</code> method to determine which modifer (<code>valid</code> or <code>invalid</code>) to apply to the field Component</td>
   </tr>
   <tr>
     <td><code>setErrorMessage</code></td>
     <td><code>Dispatch&lt;SetStateAction&lt;string>></code></td>
-    <td></td>
+    <td>The internal <code>setErrorMessage</code> method to update the field's error message</td>
   </tr>
   <tr>
     <td><code>validators</code></td>
     <td><code><a href="#TODO">ValidatorsType</a></code></td>
-    <td></td>
+    <td>The list of <a href="#TODO">validators</a> passed when creating the field</td>
   </tr>
   <tr>
     <td><code>onValidation</code></td>
     <td><code><a href="#TODO">OnValidationType</a></code></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><code>validate</code></td>
-    <td><code>(fields?: { [id: string]: FieldObject }) => void</code></td>
-    <td></td>
+    <td>The <a href="#"><code>onValidation</code></a> callback passed when creating the field</td>
   </tr>
   <tr>
     <td><code>isValid</code></td>
-    <td><code>(fields?: { [id: string]: FieldObject }) => boolean</code></td>
-    <td></td>
+    <td><code>(fields: { [id: string]: FieldObject }) => boolean</code></td>
+    <td>Determine if the field is valid (<code>fields</code> is only required if the field's validators depend on other fields, in which case only those fields need to be passed)</td>
+  </tr>
+  <tr>
+    <td><code>validate</code></td>
+    <td><code>(fields: { [id: string]: FieldObject }) => void</code></td>
+    <td>Calls <code>setIsValid</code> (based on the result of the validators), <code>setErrorMessage</code> (based on the first failing validator) and <code>onValidation</code></td>
   </tr>
   <tr>
     <td><code>value</code></td>
     <td><code>() => string</code></td>
-    <td></td>
+    <td>Get the value of the input field</td>
   </tr>
   <tr>
     <td><code>checked</code></td>
     <td><code>() => boolean</code></td>
-    <td></td>
+    <td>Determine whether a field with a type of <code>radio<code> or <code>checkbox</code> is checked</td>
   </tr>
 </table>
 
 ### `FieldObject`
 
 The `FieldObject` is a list of properties available when creating One-Nexus Form fields and fieldsets.
-
-###### Example `FieldObject` Representations
 
 ```jsx
 <Form>
@@ -259,17 +257,17 @@ The `FieldObject` is a list of properties available when creating One-Nexus Form
   </thead>
   <tr>
     <td><code>id</code></td>
-    <td><code>String</code></td>
+    <td><code>string</code></td>
     <td>Unique (relative to the form) identifier for the field</td>
   </tr>
   <tr>
     <td><code>type</code></td>
-    <td><code>string(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#%3Cinput%3E_types">HTMLInputElement.Attributes</a>)</code></td>
+    <td><code>string(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#%3Cinput%3E_types">HTMLInputElement.Types</a>)</code></td>
     <td>The type of HTML input to render</td>
   </tr>
   <tr>
     <td><code>label?</code></td>
-    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">React.ReactNode</a></code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
     <td>The label for the field</td>
   </tr>
   <tr>
@@ -279,7 +277,7 @@ The `FieldObject` is a list of properties available when creating One-Nexus Form
   </tr>
   <tr>
     <td><code>icon?</code></td>
-    <td><code>String</code></td>
+    <td><code>string</code></td>
     <td>A glyph to pass to the <code>glyph</code> prop of the <code><a href="#TODO">&lt;Icon /></a></code> Module</td>
   </tr>
   <tr>
@@ -294,17 +292,17 @@ The `FieldObject` is a list of properties available when creating One-Nexus Form
   </tr>
   <tr>
     <td><code>group?</code></td>
-    <td><code>String</code></td>
+    <td><code>string</code></td>
     <td>Unique identifier (relative to the form) for grouping fields with a type of <code>radio</code> and <code>checkbox</code></td>
   </tr>
   <tr>
     <td><code>render?</code></td>
-    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">React.ReactNode</a></code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
     <td>Content to render when type is <code>HTML</code></td>
   </tr>
   <tr>
     <td><code>after?</code></td>
-    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">React.ReactNode</a></code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
     <td>Content to render after the field</td>
   </tr>
   <tr>
@@ -347,8 +345,9 @@ Array<(value: string, fields: { [id: string]: FieldObject }) => boolean>
 <Form fields={[
   {
     type: 'password',
-    label: 'Password',
     id: 'userPassword',
+    label: 'Password',
+    required: true,
     validators: [
       {
         rule: value => value.length > 8,
@@ -360,6 +359,7 @@ Array<(value: string, fields: { [id: string]: FieldObject }) => boolean>
     type: 'password',
     id: 'passwordReEnter',
     label: 'Re-enter Password',
+    required: true,
     validators: [
       {
         rule: (value, { userPassword }) => value === userPassword.value(),
@@ -378,6 +378,44 @@ Array<(value: string, fields: { [id: string]: FieldObject }) => boolean>
 (result: { value: string; isValid: boolean; message: string }, fields: { [id: string]: FieldObject }) => void
 ```
 
+###### Example
+
+```jsx
+<Form fields={[
+  {
+    type: 'password',
+    id: 'userPassword',
+    label: 'Password',
+    required: true,
+    validators: [
+      {
+        rule: value => value.length > 8,
+        message: 'Must be more than 8 characters'
+      }
+    ],
+    onValidation: ({}, { passwordReEnter, userPassword }) => {
+      // As passwordReEnter's validity depends on the value of userPassword,
+      // we must re-validate passwordReEnter if it has previously been validated
+      if (passwordReEnter.value().length) {
+        passwordReEnter.validate({ userPassword });
+      }
+    },
+  },
+  {
+    type: 'password',
+    id: 'passwordReEnter',
+    label: 'Re-enter Password',
+    required: true,
+    validators: [
+      {
+        rule: (value, { userPassword }) => value === userPassword.value(),
+        message: 'Passwords do not match'
+      }
+    ]
+  }
+]} />
+```
+
 #### Visibility
 
 ###### `VisibilityType`
@@ -385,6 +423,34 @@ Array<(value: string, fields: { [id: string]: FieldObject }) => boolean>
 ```js
 Array<(fields: { [id: string]: FieldObject }) => boolean>
 ```
+
+###### Example
+
+```jsx
+<Form fields={[
+  {
+    type: 'checkbox',
+    id: 'freeSpam',
+    label: 'I would like to receive free spam',
+    after: {
+      id: 'freeSpamAlert',
+      hidden: true,
+      render: <Alert>You will receive free spam</Alert>,
+      visibility: [({ freeSpam }) => freeSpam.checked()]
+    }
+  }
+]} />
+```
+
+In order for a field to be `visible`, every function within the array must return `true`, otherwise the field will remain/become hidden, as show by this internal piece of code:
+
+```js
+visibility.every(determiner => determiner(formFields)) ? show() : hide()
+```
+
+#### After
+
+TODO
 
 ### `props.fields`
 
@@ -441,7 +507,7 @@ You can have more control over the structure of your form by using the [`Form.Fi
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>String</code></td>
+    <td><code>string</code></td>
   </tr>
 </table>
 
@@ -494,7 +560,7 @@ The `<Form.Fieldset>` Component is used as an alternative to passing [`props.fie
   </thead>
   <tr>
     <td><code>legend?</code></td>
-    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">React.ReactNode</a></code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
     <td>The Fieldset legend</td>
   </tr>
   <tr>
@@ -504,12 +570,12 @@ The `<Form.Fieldset>` Component is used as an alternative to passing [`props.fie
   </tr>
   <tr>
     <td><code>id?</code></td>
-    <td><code>String</code></td>
+    <td><code>string</code></td>
     <td>Unique (relative to the form) identifier for the field</td>
   </tr>
   <tr>
     <td><code>after?</code></td>
-    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">React.ReactNode</a></code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
     <td>Content to render after the Fieldset</td>
   </tr>
 </table>
