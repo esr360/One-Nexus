@@ -1,10 +1,22 @@
 import Base from '../../../layouts/base';
 
+const showSomeWarning = ({ somethingDangerous }) => somethingDangerous.checked();
+
 export default props => (
     <Base {...props.config.views}>
         {/* <PAX5.row> */}
             {/* <PAX5.column width={6}> */}
                 <Heading size='5' heading='2'>Signup Form</Heading>
+
+                <Form>
+                  <Form.Field type='checkbox' id='somethingDangerous' label='I too like to live dangerously' />
+
+                  <Form.ControlledElement id='someWarning' hidden={true} visibility={[showSomeWarning]}>
+                    This is some custom content; perhaps a warning message that you wish to display to users who check a specific checkbox
+                  </Form.ControlledElement>
+
+                  <Button type='submit'>Submit</Button>
+                </Form>
                 
                 <Form fields={[
                   {

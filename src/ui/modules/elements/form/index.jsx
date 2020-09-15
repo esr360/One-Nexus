@@ -149,7 +149,7 @@ Form.Fieldset = ({ children, legend, fields, id, after, ...props }) => (
   </Form.ControlledElement>
 );
 
-Form.ControlledElement = ({ tag='div', render, name, id, hidden, visibility, modifiers, ...props }) => {
+Form.ControlledElement = ({ tag='div', name = 'fragment', render, id, hidden, visibility, modifiers, ...props }) => {
   const { updateFormFields } = React.useContext(formContext);
   const [isHidden, setIsHidden] = React.useState(hidden);
 

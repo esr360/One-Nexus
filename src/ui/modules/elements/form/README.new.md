@@ -223,7 +223,7 @@ The `FieldInterface` is the internal interace of a One-Nexus Form field that is 
   <tr>
     <td><code>checked</code></td>
     <td><code>() => boolean</code></td>
-    <td>Determine whether a field with a type of <code>radio<code> or <code>checkbox</code> is checked</td>
+    <td>Determine whether a field with a type of <code>radio</code> or <code>checkbox</code> is checked</td>
   </tr>
 </table>
 
@@ -519,12 +519,17 @@ You can have more control over the structure of your form by using the [`Form.Fi
 
 ### `Form.Field`
 
-The `<Form.Field>` Component is used as an alternative to passing [`props.fields`](#TODO)`<Form>`, should you need more control over the structure of the Form.
+The `<Form.Field>` Component is used as an alternative to passing [`props.fields`](#TODO) to `<Form>`, should you need more control over the structure of the Form.
 
 ```jsx
 <Form>
-  <Form.Field type='text' id='username' label='Username' />
-  <Form.Field type='password' id='password' label='Password' />
+  <div>
+    <Form.Field type='text' id='username' label='Username' />
+  </div>
+
+  <div>
+    <Form.Field type='password' id='password' label='Password' />
+  </div>
 
   ...
 </Form>
@@ -578,8 +583,64 @@ The `<Form.Fieldset>` Component is used as an alternative to passing [`props.fie
     <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
     <td>Content to render after the Fieldset</td>
   </tr>
+  <tr>
+    <td><code>...</code></td>
+    <td></td>
+    <td><a href="#TODO">Any <code>Form.ControlledElement</code> Prop</a></td>
+  </tr>
 </table>
 
 ### `Form.ControlledElement`
 
-TODO
+A "controlled element" in this context means an element whose visibility is (typically) dynamically determined/controlled by one or more fields within the Form (but not always). All fields within a Form are controlled elements, as are all fieldsets and elements created by the [`after`](#TODO) `FieldObject` property (you may notice that any element/object that accepts an `id` prop corresponds to a controlled element). This allows you to easily hide and show fields and other content within the Form.
+
+If you are [manually constructing the Form's JSX](#manually-create-fieldsfieldsets) you can use `Form.ControlledElement` to create dynamically visible content.
+
+```jsx
+const showSomeWarning = ({ somethingDangerous }) => somethingDangerous.checked();
+
+const Form = (
+  <Form>
+      <Form.Field type='checkbox' id='somethingDangerous' label='I too like to live dangerously' />
+
+      <Form.ControlledElement id='someWarning' hidden={true} visibility={[showSomeWarning]}>
+        This is some custom content that is hidden by defauly; it will become visible when the `somethingDangerous` checkbox is checked
+      </Form.ControlledElement>
+
+      <Button type='submit'>Submit</Button>
+  </Form>
+);
+```
+
+#### Props
+
+<table>
+  <thead>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Description</th>
+  </thead>
+  <tr>
+    <td><code>id</code></td>
+    <td><code>string</code></td>
+    <td>Unique (relative to the form) identifier for the element</td>
+  </tr>
+  <tr>
+    <td><code>hidden?</code></td>
+    <td><code>Boolean</code></td>
+    <td>Hide the element visually so it can later be shown dynamically (not to be confused with the HTML <code>hidden</code> attribute)</td>
+  </tr>
+  <tr>
+    <td><code>visibility?</code></td>
+    <td><code><a href="#TODO">VisibilityType</a></code></td>
+    <td>List of rules to control the element's visibility (will be executed whenever <b>any</b> event is triggered on <b>any</b> field)</td>
+  </tr>
+  <tr>
+    <td><code>tag?='div'</code></td>
+    <td>
+      <code>string(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTMLElement</a>)</code> | 
+      <code><a href="https://react-cn.github.io/react/docs/glossary.html#react-components">ReactComponent</a></code>
+    </td>
+    <td>The underlying HTML Element or React Component to render</td>
+  </tr>
+</table>

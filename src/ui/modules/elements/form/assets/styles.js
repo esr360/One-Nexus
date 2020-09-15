@@ -66,6 +66,10 @@ export default ({ config, theme, utils }) => [config, {
     display: state.hidden ? 'none' : 'block',
   }),
 
+  fragment: ({ state }) => ({
+    display: state.hidden ? 'none' : 'block',
+  }),
+
   field: () => ({
     'position': 'relative',
     'display': 'inline-block',
