@@ -8,9 +8,9 @@ const Alert = ({ dismiss, heading, children, ...props }) => {
     <Module name={name} {...props}>
       {dismiss && <Icon as='icon' glyph='times' right dismiss onClick={dismiss} />}
 
-      <Icon as='icon' glyph={alert ? alerts[alert].icon : icon.glyph} />
+      <Icon as='icon' {...icon} glyph={alert ? alerts[alert].icon : icon.glyph} />
 
-      {(heading || header?.content) && <Component name='header'>{heading}</Component>}
+      {(heading || header?.render) && <Component name='header'>{heading}</Component>}
 
       <Component name='body'>{children}</Component>
     </Module>

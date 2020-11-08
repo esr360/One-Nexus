@@ -106,3 +106,10 @@ h1, h2, h3, h4, h5, h6 {
     @import url(http://fonts.googleapis.com/css?family=#{$google-font});
   }
 }
+
+.Form__fieldset {
+  display: block;
+}
+.Form__fieldset--hidden {
+  display: none;
+}

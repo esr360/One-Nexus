@@ -3,7 +3,7 @@ import SyntaxHighlighter from '../../../tools/syntaxHighlighter';
 
 const Blockquotes = ({ theme, config }) => (
   <Base {...config.views}>
-    <Blockquote content='Lorem ipsum dolor sit amet' />
+    <Blockquote render='Lorem ipsum dolor sit amet' />
     <Blockquote>Lorem ipsum dolor sit amet</Blockquote>
 
     <Blockquote callout>Lorem ipsum dolor sit amet</Blockquote>
@@ -30,7 +30,7 @@ const Blockquotes = ({ theme, config }) => (
 
     <hr />
 
-    <Blockquote as={Alert} callout box success source='Someone Famous' icon={{ display: 'none' }}>
+    <Blockquote as={Alert} callout box error source='Someone Famous' icon={{ display: 'none' }}>
       This is a hybrid Blockquote/Alert
     </Blockquote>
 

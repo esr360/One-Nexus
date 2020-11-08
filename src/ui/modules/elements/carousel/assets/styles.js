@@ -15,7 +15,8 @@ export default ({ state, config, utils }) => [config, {
     'width': '100%'
   }),
 
-  control: ({ state }) => ({
+  control: ({ state, context }) => ({
+    // ...(console.log(context, state) && {}),
     'margin-left': state.next && 'auto',
 
     ':focus': {

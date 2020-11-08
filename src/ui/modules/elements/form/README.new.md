@@ -136,18 +136,67 @@
 
 ### `config.validateFieldsOn`
 
-> Set the default user events that should trigger field validation
+> Set the default user events that should trigger inline field validation
 
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>Array</code></td>
+    <td><code>Array<'blur' | 'change'></code></td>
   </tr>
 </table>
 
+###### Override via Props
+
+```jsx
+<Form validateFieldsOn={['blur']}>
+  ...
+</Form>
+```
+
 ###### Specify For Individual Fields
 
-@TODO
+The behaviour can be controlled on a per-field basis by passing the [`validateOn`](#TODO) property to the field:
+
+```jsx
+<Form>
+  <Form.Field id='username' label='Username' validateOn={['blur']} validators={...} />
+
+  ...
+</Form>
+```
+
+```jsx
+<Form fields={[
+  {
+    id: 'username',
+    label: 'Username',
+    validateOn: ['blur'],
+    validators: ...
+  },
+
+  ...
+]} />
+```
+
+###### Disable Inline Validation
+
+To disable inline validation, pass an empty array as the value for `validateFieldsOn`:
+
+```jsx
+<Form validateFieldsOn={[]}>
+  ...
+</Form>
+```
+
+Or on a per-field basis:
+
+```jsx
+<Form>
+  <Form.Field id='username' label='Username' validators={...} validateOn={[]}  />
+
+  ...
+</Form>
+```
 
 ### `config.validColor` / `config.invalidColor`
 
@@ -156,7 +205,7 @@
 <table>
   <tr>
     <td><b>Type</b></td>
-    <td><code>string</code> (color)</td>
+    <td><code>string(color)</code></td>
   </tr>
 </table>
 
@@ -302,8 +351,8 @@ The `FieldObject` is a list of properties available when creating One-Nexus Form
   </tr>
   <tr>
     <td><code>after?</code></td>
-    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
-    <td>Content to render after the field</td>
+    <td><code>Object</code></td>
+    <td>Content to render after the field (see <a href="#"><code>Form.ControlledElement</code> Props for available properties)</td>
   </tr>
   <tr>
     <td><code>validateOn?</code></td>
@@ -448,10 +497,6 @@ In order for a field to be `visible`, every function within the array must retur
 visibility.every(determiner => determiner(formFields)) ? show() : hide()
 ```
 
-#### After
-
-TODO
-
 ### `props.fields`
 
 > A list of fields/fieldsets to use for the Form
@@ -580,8 +625,8 @@ The `<Form.Fieldset>` Component is used as an alternative to passing [`props.fie
   </tr>
   <tr>
     <td><code>after?</code></td>
-    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
-    <td>Content to render after the Fieldset</td>
+    <td><code>Object</code></td>
+    <td>Content to render after the Fieldset (see <a href="#"><code>Form.ControlledElement</code> Props for available properties)</td>
   </tr>
   <tr>
     <td><code>...</code></td>
@@ -604,7 +649,8 @@ const Form = (
       <Form.Field type='checkbox' id='somethingDangerous' label='I too like to live dangerously' />
 
       <Form.ControlledElement id='someWarning' hidden={true} visibility={[showSomeWarning]}>
-        This is some custom content that is hidden by defauly; it will become visible when the `somethingDangerous` checkbox is checked
+        This is some custom content that is hidden by default; it will become visible 
+        when the `somethingDangerous` checkbox is checked
       </Form.ControlledElement>
 
       <Button type='submit'>Submit</Button>
@@ -636,10 +682,14 @@ const Form = (
     <td>List of rules to control the element's visibility (will be executed whenever <b>any</b> event is triggered on <b>any</b> field)</td>
   </tr>
   <tr>
+    <td><code>render?</code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
+    <td>Content to render instead of <code>props.children</code></td>
+  </tr>
+  <tr>
     <td><code>tag?='div'</code></td>
     <td>
-      <code>string(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTMLElement</a>)</code> | 
-      <code><a href="https://react-cn.github.io/react/docs/glossary.html#react-components">ReactComponent</a></code>
+      <code>string(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTMLElement</a>)</code>&nbsp;|&nbsp;<code><a href="https://react-cn.github.io/react/docs/glossary.html#react-components">ReactComponent</a></code>
     </td>
     <td>The underlying HTML Element or React Component to render</td>
   </tr>

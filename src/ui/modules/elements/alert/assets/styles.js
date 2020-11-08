@@ -4,7 +4,7 @@ export default ({ state, config, utils, context }) => [config, {
   'position': 'relative',
   'background-color': config.alerts[Object.keys(state).find($ => config.alerts[$])]?.color,
 
-  ...(context.Container.isHovered && {
+  ...context.Container.hovered({
     'background-color': 'blue'
   }),
 

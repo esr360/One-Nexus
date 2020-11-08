@@ -8,7 +8,7 @@ const Blockquote = ({ source, children, ...props }) => {
     <Module name={name} {...props}>
       <Component name='body'>{children}</Component>
 
-      {(source || footer?.content) && <Component name='footer'>{source}</Component>}
+      {(source || footer?.render) && <Component name='footer'>{source}</Component>}
     </Module>
   );
 }

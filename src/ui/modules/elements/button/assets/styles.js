@@ -8,7 +8,6 @@ export default ({ theme, state, context, config, utils }) => [config, {
   'cursor': 'pointer',
   'font-size': utils.fontSize(state, config.sizes, theme, config),
 
-
   ...Object.entries(config.colors).reduce(($, [key, value]) => state[key] ? {
     'background-color': value,
     'border-color': 'transparent',
@@ -17,8 +16,9 @@ export default ({ theme, state, context, config, utils }) => [config, {
       return Color(value).luminosity() > config.lightThreshold ? config.colorInverse : prev;
     },
 
-    'hover': {
-      'background-color': config.hover['background-color']?.(value)
+    'hovered': {
+      'font-size': '1.5em',
+      'background-color': config.hovered['background-color']?.(value)
     },
 
     'is-border': {
@@ -26,16 +26,12 @@ export default ({ theme, state, context, config, utils }) => [config, {
       'color': value,
       'border-color': value,
 
-      'hover': {
+      'hovered': {
         'background-color': value,
         'color': config.color
       }
     }
   } : $, {}),
-
-  ...(context.Container.isHovered && {
-    // 'background-color': 'blue'
-  }),
 
   'is-block': {
     'width': '100%',
@@ -48,8 +44,7 @@ export default ({ theme, state, context, config, utils }) => [config, {
   },
 
   'is-icon': {
-    'text-align': 'center',
-    'padding': config['padding-y']
+    'text-align': 'center'
   },
 
   icon: () => ({

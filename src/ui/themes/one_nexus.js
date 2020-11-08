@@ -18,7 +18,7 @@ export default deepextend(core, {
     'Alert': {
       alerts: {
         carrot: {
-          color: ({ colors }) => colors.brand['brand-6'],
+          color: ({ colors }) => colors.brand['brand-4'],
           icon: 'check'
         }
       }

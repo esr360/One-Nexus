@@ -3,6 +3,7 @@ import Base from '../../../layouts/base';
 const Buttons = props => (
   <Base {...props.config.views}>
     <Group>
+      <Heading>Hello</Heading>
       <Button dribbble border>Button 1</Button>
       <Button reddit>Button 2</Button>
       <Button linkedin round>Button 3</Button>

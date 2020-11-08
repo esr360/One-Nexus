@@ -33,9 +33,13 @@ const Form = ({ fields, submit, children, ...props }) => {
   const { name, validateFieldsOn } = useConfig(props);
   const [formFields, updateFormFields] = React.useState({});
 
-  const refreshVisibility = () => Object.values(formFields).forEach(({ visibility, show, hide }) => {
-    visibility && (visibility.every(determiner => determiner(formFields)) ? show() : hide());
-  });
+  const controlledElements = Object.values(formFields).filter(({ visibility }) => visibility);
+
+  const refreshVisibility = () => {
+    controlledElements.forEach(({ visibility, show, hide }) => {
+      visibility.every(determiner => determiner(formFields)) ? show() : hide();
+    });
+  }
 
   const handleSubmit = () => Object.values(formFields).forEach(field => validate(field, formFields));
 
@@ -56,7 +60,7 @@ const Form = ({ fields, submit, children, ...props }) => {
   );
 }
 
-Form.defaultProps = { config, styles };
+Form.defaultProps = { config };
 
 Form.Field = properties => {
   const host = React.createRef();
@@ -68,14 +72,18 @@ Form.Field = properties => {
   const [isValid, setIsValid] = React.useState();
   const [errorMessage, setErrorMessage] = React.useState();
 
-  const eventHandler = event => () => (refreshVisibility(), validateOn.includes(event) && validate(formFields[id], formFields));
+  // const eventHandler = event => () => (refreshVisibility(), validateOn.includes(event) && validate(formFields[id], formFields));
+  const eventHandler = event => () => {
+    refreshVisibility(); 
+    validateOn.includes(event) && validate(formFields[id], formFields);
+  }
+
   const fieldObject = host => ({ node: host.current, setIsValid, setErrorMessage, validators, onValidation });
 
   const modifiers = {
     valid: isValid === true,
     invalid: isValid === false,
-    hasIcon: Boolean(properties.icon),
-    compound: Boolean(properties.compound)
+    hasIcon: Boolean(properties.icon)
   }
 
   if (id) {
@@ -161,8 +169,14 @@ Form.ControlledElement = ({ tag='div', name = 'fragment', render, id, hidden, vi
     }})), []);
   }
 
+  React.useEffect(() => {
+    // console.log(id);
+  });
+
+  const foo = props => <Component name={name} {...props}>{props.children}</Component>;
+
   return (
-    <Component tag={tag} name={name} hidden={isHidden} {...getAttrs(props)} {...modifiers}>
+    <Component as={foo} tag={tag} name='fragment' hidden={isHidden} {...getAttrs(props)} {...modifiers}>
       {render || props.children}
     </Component>
   );

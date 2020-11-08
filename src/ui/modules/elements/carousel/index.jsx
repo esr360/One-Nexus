@@ -10,17 +10,17 @@ const Carousel = ({ slides, defaultSlide = 0, ...props }) => {
   const requiredParams = { naturalSlideWidth, naturalSlideHeight, totalSlides: slides.length }
 
   return (
-    <Module name={name} as={CarouselProvider} {...requiredParams} {...props}>
+    <Module name={name} as={CarouselProvider} attributes={requiredParams} {...props}>
       <Component name='frame'>
         <Component name='slider' as={Slider}>
           {slides.map((slide, index) => (
-            <Component name='slide' as={Slide} index={index} key={index} content={slide} />
+            <Component name='slide' as={Slide} index={index} key={index} render={slide} />
           ))}
         </Component>
 
         <Component name='navigation'>
-          <Component name='control' as={ButtonBack} back content={control.back} />
-          <Component name='control' as={ButtonNext} next content={control.next} />
+          <Component name='control' as={ButtonBack} back render={control.back} />
+          <Component name='control' as={ButtonNext} next render={control.next} />
         </Component>
       </Component>
 

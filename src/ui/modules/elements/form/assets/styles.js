@@ -1,11 +1,5 @@
 export default ({ config, theme, utils }) => [config, {
   // group: group => ({
-  //   'position': 'relative',
-
-  //   'modifier(compound)': {
-  //     'margin-bottom': `calc(${theme.tokens.margin} / 4)`
-  //   },
-
   //   'modifier(has-icon)': {
   //     ...['input', 'select'].reduce((result, item) => {
   //       result[item] = {
@@ -16,51 +10,10 @@ export default ({ config, theme, utils }) => [config, {
   //     }, {})
   //   },
 
-  //   'modifier(validate)': {
-  //     'modifier(isValid)': {
-  //       ...['label', 'field', 'icon', 'input', 'select'].reduce((result, item) => {
-  //         result[item] = {
-  //           'color': config['valid-color'],
-  //           'border-color': 'currentColor'
-  //         };
-
-  //         return result;
-  //       }, {})
-  //     },
-
-  //     'modifier(isInvalid)': {
-  //       ...['label', 'field', 'icon', 'input', 'select'].reduce((result, item) => {
-  //         result[item] = {
-  //           'color': config['invalid-color'],
-  //           'border-color': 'currentColor'
-  //         };
-
-  //         return result;
-  //       }, {}),
-  //     }
-  //   },
-
   //   'modifier(isSelect)': {
   //     'position': 'relative'
   //   }
   // }),
-
-  group: ({ state }) => ({
-    ...utils.object(state, config.gutter),
-
-    display: state.hidden ? 'none' : 'block'
-  }),
-
-  ...['checkbox', 'radio'].reduce(($, component) => ($[component] = {
-    'height': '1em',
-    'margin-right': '1em'
-  }, $), {}),
-
-  fieldset: ({ state }) => ({
-    display: state.hidden ? 'none' : 'block',
-    'padding': '0',
-    'border': 'none'
-  }),
 
   after: ({ state }) => ({
     display: state.hidden ? 'none' : 'block',
@@ -68,6 +21,28 @@ export default ({ config, theme, utils }) => [config, {
 
   fragment: ({ state }) => ({
     display: state.hidden ? 'none' : 'block',
+  }),
+
+  group: ({ state }) => ({
+    ...utils.object(state, config.gutter),
+
+    display: state.hidden ? 'none' : 'block'
+  }),
+
+  // ...['checkbox', 'radio'].reduce(($, component) => ($[component] = {
+  //   'height': '1em',
+  //   'margin-right': '1em'
+  // }, $), {}),
+
+  ...Object.fromEntries(['checkbox', 'radio'].map(key => [key, { 
+    'height': '1em', 
+    'margin-right': '1em' 
+  }])),
+
+  fieldset: ({ state }) => ({
+    display: state.hidden ? 'none' : 'block',
+    'padding': '0',
+    'border': 'none'
   }),
 
   field: () => ({
@@ -126,7 +101,6 @@ export default ({ config, theme, utils }) => [config, {
   select: () => ({
     'width': '100%',
     'outline': 0,
-    'appearance': 'none', // @TODO this doesn't seem to work
 
     'group-is-valid': {
       'color': config['valid-color'],

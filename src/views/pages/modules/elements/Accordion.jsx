@@ -2,7 +2,7 @@ const Accordions = ({ layouts, ...props }) => {
   const [isPartyTime, setPartyTime] = React.useState(0);
 
   React.useEffect(() => {
-    // setTimeout(() => setPartyTime(true), 3000);
+    setTimeout(() => setPartyTime(true), 3000);
   });
 
   const data = [
@@ -43,13 +43,13 @@ const Accordions = ({ layouts, ...props }) => {
 
   return (
     <layouts.base {...props.config.views}>
-      {/* <Alert alert='success' close>
+      <Alert alert='success' close>
         <a href="#">Learn more</a> about module configutation
-      </Alert> */}
+      </Alert>
 
       <Accordion title={{ background: 'red', 'panel-is-active': { background: 'green' } }} className='fizz' panels={data} />
 
-      <Accordion panels={data} />
+      <Accordion panels={isPartyTime ? partyData : data} />
   
       <Accordion persist={false} panels={[
         {title: 'foo1', content: 'bar'},

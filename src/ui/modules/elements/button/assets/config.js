@@ -23,7 +23,7 @@ export default (theme) => ({
   'border-width': '1px',
   'border-style': 'solid',
 
-  hover: {
+  'hovered': {
     'background-color': prev => Color(prev).desaturate(0.1).lighten(0.5).hex()
   },
 
