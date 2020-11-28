@@ -60,7 +60,7 @@ const Form = ({ fields, submit, children, ...props }) => {
   );
 }
 
-Form.defaultProps = { config };
+Form.defaultProps = { config, styles };
 
 Form.Field = properties => {
   const host = React.createRef();
@@ -72,13 +72,10 @@ Form.Field = properties => {
   const [isValid, setIsValid] = React.useState();
   const [errorMessage, setErrorMessage] = React.useState();
 
-  // const eventHandler = event => () => (refreshVisibility(), validateOn.includes(event) && validate(formFields[id], formFields));
   const eventHandler = event => () => {
     refreshVisibility(); 
     validateOn.includes(event) && validate(formFields[id], formFields);
   }
-
-  const fieldObject = host => ({ node: host.current, setIsValid, setErrorMessage, validators, onValidation });
 
   const modifiers = {
     valid: isValid === true,
@@ -87,16 +84,23 @@ Form.Field = properties => {
   }
 
   if (id) {
-    React.useEffect(() => updateFormFields(prev => ({ ...prev, [id]: {
-      ...prev[id],
+    React.useEffect(() => updateFormFields(prev => {
+      const fieldProps = { node: host.current, setIsValid, setErrorMessage, validators, onValidation };
+  
+      return { 
+        ...prev, 
+  
+        [id]: {
+          ...prev[id],
+          ...fieldProps,
 
-      validate: fields => validate(fieldObject(host), fields),
-      isValid: fields => validator(host.current, validators, fields)[0],
-      value: () => host.current.value,
-      checked: () => host.current.checked,
-
-      ...fieldObject(host)
-    }})), []);
+          validate: fields => validate(fieldProps, fields),
+          isValid: fields => validator(fieldProps.node, validators, fields)[0],
+          value: () => fieldProps.node.value,
+          checked: () => fieldProps.node.checked,
+        }
+      }
+    }), []);
   }
 
   return (
@@ -162,21 +166,22 @@ Form.ControlledElement = ({ tag='div', name = 'fragment', render, id, hidden, vi
   const [isHidden, setIsHidden] = React.useState(hidden);
 
   if (id) {  
-    React.useEffect(() => updateFormFields(prev => ({ ...prev, [id]: {
-      ...prev[id], visibility,
-      show: () => setIsHidden(false),
-      hide: () => setIsHidden(true)
-    }})), []);
+    React.useEffect(() => updateFormFields(prev => ({ 
+      ...prev, 
+
+      [id]: {
+        ...prev[id], 
+        visibility,
+        show: () => setIsHidden(false),
+        hide: () => setIsHidden(true)
+      }
+    })), []);
   }
 
-  React.useEffect(() => {
-    // console.log(id);
-  });
-
-  const foo = props => <Component name={name} {...props}>{props.children}</Component>;
+  const wrapper = props => <Component name={name} {...props}>{props.children}</Component>;
 
   return (
-    <Component as={foo} tag={tag} name='fragment' hidden={isHidden} {...getAttrs(props)} {...modifiers}>
+    <Component component={wrapper} tag={tag} name='fragment' hidden={isHidden} {...getAttrs(props)} {...modifiers}>
       {render || props.children}
     </Component>
   );

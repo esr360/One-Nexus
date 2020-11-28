@@ -111,7 +111,9 @@ export default props => (
                                 }
                               ],
                               visibility: [
-                                ({ isHomeless }) => !isHomeless.checked()
+                                ({ isHomeless }) => {
+                                  return !isHomeless.checked()
+                                }
                               ]
                             }
                           },
