@@ -3,14 +3,11 @@
 * [Overview](#overview)
 * [Configuration](#configuration)
 * [Styles](#styles)
-* [Interactions](#interactions)
 * [Rendering](#rendering)
 
 ## Overview
 
 ### Quick Look
-
-###### React
 
 ```jsx
 <List>
@@ -19,22 +16,6 @@
     <ListItem>List item</ListItem>
 </List>
 ```
-
-###### HTML
-
-```html
-<ul class="list">
-    <li>List item</li>
-    <li>List item</li>
-    <li>List item</li>
-</ul>
-```
-
-### Components
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
-
-**This module has no `components`**
 
 ### Modifiers
 
@@ -123,7 +104,7 @@ Pass custom options to the `list` object in your theme's config file (e.g. [ui/t
 
 ```js
 {
-    "app": {
+    "theme": {
         "list": {
             ...
         }
@@ -135,20 +116,45 @@ Pass custom options to the `list` object in your theme's config file (e.g. [ui/t
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
 
-## Interactions
-
-> This module has no interactions
-
 ## Rendering
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
+* [Examples](#examples)
+* [API](#api)
+
+### Examples
+
+* [Basic Example](#basic-example)
+
+#### Basic Example
+
 ```jsx
 <List reset inline>
-    <ListItem>List item</ListItem>
-    <ListItem>List item</ListItem>
-    <ListItem>List item</ListItem>
+    <List.Item>List item</List.Item>
+    <List.Item>List item</List.Item>
+    <List.Item>List item</List.Item>
 </List>
 ```
 
+### API
+
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [DefaultProps](#defaultprops)
+* [Static Item](#TODO)
+
+#### DefaultProps
+
+```js
+{
+    tag: 'ul'
+}
+```
+
+#### Static Item
+
+> Used for creating [items in a list](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li)
+
+```jsx
+<List.Item>List item</List.Item>
+```

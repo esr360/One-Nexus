@@ -1,26 +1,23 @@
-import defaults from './heading.json';
+import config from './assets/config.js';
+import layout from './assets/layout.js';
 
 /**
  * Render Heading component
- *
- * @prop {String} name
  */
-export default class Heading extends React.Component {
-    render() {
-        let modifiers = this.props.modifiers || [];
+const Heading = ({ heading, size, modifiers=[], ...props }) => {
+    if (size) modifiers.push(`size-${size}`);
 
-        if (this.props.size) modifiers.push(`size-${this.props.size}`);
-
-        return (
-            <Module {...this.props} tag={`h${this.props.heading}`} modifiers={modifiers}>
-                {this.props.children}
-            </Module>
-        )
-    }
+    return (
+        <Module tag={`h${heading}`} modifiers={modifiers} {...props}>
+            {props.children}
+        </Module>
+    );
 }
 
-Heading.defaultProps = {
-    name: defaults.heading.name,
-    fluid: true,
-    heading: 3
-};
+export default Object.assign(Heading, {
+    layout, config, defaultProps: {
+        name: 'Heading',
+        fluid: true,
+        heading: 3
+    }
+});

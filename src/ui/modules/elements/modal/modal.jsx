@@ -1,63 +1,45 @@
-import defaults from './modal.json';
+import config from './assets/config';
+import layout from './assets/layout.js';
+import interactions from './assets/interactions';
 
 /**
  * Render Modal module
- *
- * @prop {String} name
  */
-export default class Modal extends Synergize {
-    constructor(props) {
-        super(props);
+const Modal = ({ toggle, trigger, close, animate, modifiers = [], ...props }) => {
+    let modal;
 
-        this.trigger = this.props.trigger;
-        this.modifiers = this.props.modifiers || [];
+    if (animate) modifiers.push(`animate-${animate}`);
 
-        if (this.props.animate) {
-            this.modifiers.push(`animate-${this.props.animate}`);
-        }
+    function init(node) {
+        typeof trigger === 'string' && document.querySelectorAll(trigger).forEach(trigger => {
+            trigger.addEventListener('click', () => toggle(node), false)
+        });
     }
 
-    componentDidMount() {
-        if (typeof this.trigger === 'string') {
-            document.querySelectorAll(this.trigger).forEach(trigger => {
-                trigger.addEventListener('click', () => {
-                    this.toggle(ReactDOM.findDOMNode(this));
-                }, false)
-            });
-        }
-    }
+    return (
+        <React.Fragment>
+            <Module modifiers={modifiers} init={init} ref={node => modal = node} {...props}>
+                {close && <Component modifiers={['icon']} name='close'>{close}</Component>}
 
-    static close(props) {
-        return props.children && (
-            <Component {...props} name='close'>{props.children}</Component>
-        );
-    }
+                <Component name='content'>{props.content||props.children}</Component>
+            </Module>
 
-    static content(props) {
-        return <Component name='content'>{props.content||props.children}</Component>;
-    }
-
-    render() {
-        return [
-            <Module modifiers={this.modifiers} {...this.props}>
-                {this.content([
-                    this.constructor.close({
-                        children: this.props.close, 
-                        modifiers: ['icon']
-                    }),
-                    this.constructor.content(this.props)
-                ])}
-            </Module>,
-
-            React.isValidElement(this.trigger) && React.cloneElement(this.trigger, {
-                onClick: () => this.toggle(ReactDOM.findDOMNode(this))
-            })
-        ]
-    }
+            {React.isValidElement(trigger) && React.cloneElement(trigger, {
+                onClick: () => toggle(ReactDOM.findDOMNode(modal))
+            })}
+        </React.Fragment>
+    );
 }
 
-Modal.defaultProps = {
-    name: defaults.modal.name,
-    animate: 'top',
-    close: '×'
-};
+Modal.Close = props => (
+    <Component {...props} name='close'>{props.children}</Component>
+);
+
+export default Object.assign(Modal, {
+    ...interactions, layout, config, defaultProps: {
+        name: 'Modal',
+        animate: 'top',
+        close: '×',
+        toggle: interactions.toggle
+    }
+});

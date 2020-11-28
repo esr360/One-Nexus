@@ -1,26 +1,26 @@
-import defaults from './list.json';
+import config from './assets/config.js';
+import layout from './assets/layout.js';
 
 /**
  * Render List module
- *
- * @prop {String} name
  */
-export default class List extends React.Component {
-    // list item
-    static Item(props) {
-        return <li>{props.children}</li>;
-    }
+const List = (props) => (
+    <Module {...props}>{Module.child(props)}</Module>
+);
 
-    render() {
-        return (
-            <Module {...this.props}>
-                {this.props.children}
-            </Module>
-        )
-    }
-}
+List.Item = ({ config, context, icon, children }) => {
+    if (context.arrow && !icon) icon = config['arrow-icon'];
 
-List.defaultProps = {
-    name: defaults.list.name,
-    tag: 'ul'
+    return (
+        <Component name='item' tag='li'>
+            {icon && <SubComponent name='icon' tag='i' className={`fa fa-${icon}`} />}{children}
+        </Component>
+    )
 };
+
+export default Object.assign(List, {
+    layout, config, defaultProps: {
+        name: 'List',
+        tag: 'ul'
+    }
+});

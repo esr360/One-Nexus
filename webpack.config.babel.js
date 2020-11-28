@@ -1,95 +1,114 @@
 import path from 'path';
 import webpack from 'webpack';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import StyleLintPlugin from 'stylelint-webpack-plugin';
 import WriteFilePlugin from 'write-file-webpack-plugin';
 import StaticSiteGenerator from './build/plugins/static-site-generator';
-import JsLoader from './build/loaders/js';
-import SassLoader from './build/loaders/sass';
+import Autoprefixer from 'autoprefixer';
+import SassJSONImporter from '../../sass-json-importer/sass-json-importer/dist/synergy-sass-importer';
 
+/**
+ * @param {*} env 
+ */
 export default function(env) {
+  const isDevServer = path.basename(require.main.filename) === 'webpack-dev-server.js';
+  // const isDevServer = path.basename(require.main.filename) === 'server.js';
+  const isNonProd = isDevServer || env && env.build === 'development';
+  const staticBuild = env && env.static;
 
-    // Is this config loaded from `webpack-dev-server` ?
-    const isDevServer = path.basename(require.main.filename) === 'webpack-dev-server.js';
+  let plugins = [
+    new webpack.DefinePlugin({
+      'process.env': {
+        ONE_NEXUS: true,
+        SYNERGY: true,
+        // NODE_ENV: JSON.stringify(isDevServer ? 'development' : 'production'),
+        // APP_ENV : JSON.stringify(staticBuild ? 'node' : 'web')
+      }
+    }),
+    // new webpack.ProvidePlugin({
+    //   'React': 'react'
+    // })
+  ];
 
-    // Are we building for a non-production environment?
-    const isNonProd = isDevServer || env && env.build === 'development';
+  // if (isDevServer) {
+  //   plugins.push(
+  //     new WriteFilePlugin(),
+  //     new webpack.HotModuleReplacementPlugin()
+  //   );
+  // }
 
-    // Are we building static files as opposed to a single page app?
-    const staticBuild = env && env.static;
+  // plugins.push(staticBuild ? StaticSiteGenerator : new HtmlWebpackPlugin({
+  //   template: 'src/views/core.jsx',
+  //   inject: false
+  // }));
 
-    // Define default plugins
-    let plugins = [
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify(isDevServer ? 'development' : 'production'),
-                APP_ENV : JSON.stringify(staticBuild ? 'node' : 'web')
-            }
-        }),
-        new webpack.ProvidePlugin({
-            React: 'react',
-            ReactDOM: 'react-dom',
-            Synergize: ['Synergy', 'Synergize']
-            //Synergize: ['../../../../../../../Synergy/dist/synergy.js', 'Synergize']
-            //Synergize: ['../../../../../../../Synergy/src/js/synergize.js', 'Synergize']
-        }),
-        new CopyWebpackPlugin([
-            { from: 'src/ui/images', to: 'assets/images' }
-        ]),
-        new StyleLintPlugin({
-            context: 'src/ui/',
-            configFile: './stylelint.config.js'
-        })
-    ];
+  return {
+    entry: [
+      './src/entry.js',
+      // './src/static.js'
+    ],
 
-    if (isDevServer) {
-        plugins.push(
-            new WriteFilePlugin(),
-            new webpack.HotModuleReplacementPlugin()
-        );
-    }
+    mode: env.build,
+      
+    resolve: {
+      extensions: ['.js', '.jsx', '.json', '.jss']
+    },
 
-    plugins.push(
-        staticBuild ? StaticSiteGenerator : new HtmlWebpackPlugin({
-            template: 'src/views/core.jsx',
-            inject: false
-        })
-    )
+    output: {
+      filename: 'app.js',
+      // path: path.resolve(__dirname, '/'),
+      // publicPath: '/',
+      // libraryTarget: 'umd'
+    },
 
-    return {
-        entry: './src/app.js',
+    devServer: {
+      // contentBase: './',
+      // publicPath: '/',
+      // hot: true,
+      port: 3000
+    },
 
-        output: {
-            path: path.resolve(__dirname, 'dist/'),
-            filename: 'assets/scripts/app.js',
-            publicPath: '/',
-            libraryTarget: 'umd'
+    // externals: {
+    //   'react': 'React',
+    //   'react-dom': 'ReactDOM'
+    // },
+
+    plugins,
+
+    module: { 
+      rules: [ 
+        {
+          test: /\.(js|jsx|jss)$/,
+          // exclude: (MODULE) => ~MODULE.indexOf('/node_modules/') && !(~MODULE.indexOf('/@onenexus/')),
+          use: 'babel-loader'
         },
-
-        devServer: {
-            contentBase: './dist',
-            publicPath: '/',
-            hot: true,
-            port: 3000
+        {
+          test: /\.scss$/,
+          use: [
+            {loader: 'style-loader'}, 
+            {loader: 'css-loader'},
+            {loader: 'postcss-loader', options: {
+              sourceMap: true,
+              plugins: () => [Autoprefixer]
+            }}, 
+            {loader: 'sass-loader', options: {
+              sassOptions: {
+                sourceMap: true,
+                importer: SassJSONImporter,
+                outputStyle: 'expanded'
+              }
+            }}
+          ]
         },
+        {
+          test: /\.css$/,  
+          include: /node_modules/,  
+          loaders: ['style-loader', 'css-loader']
+        }
+      ]
+    },
 
-        plugins,
+    stats: { colors: true },
 
-        module: { 
-            loaders: [ 
-                JsLoader, 
-                SassLoader,
-                {
-                    test: /\.css$/,  
-                    include: /node_modules/,  
-                    loaders: ['style-loader', 'css-loader'],
-                }
-            ] 
-        },
-
-        stats: { colors: true },
-
-        devtool: isNonProd ? 'source-map' : false
-    }
-};
+    devtool: isNonProd ? 'source-map' : false
+  }
+}

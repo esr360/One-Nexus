@@ -1,43 +1,29 @@
 # One-Nexus Modal
 
-> [Use outside of One-Nexus](#TODO)
-
 * [Overview](#overview)
 * [Configuration](#configuration)
 * [Styles](#styles)
 * [Interactions](#interactions)
-* [React Rendering](#reactrendering)
-* [HTML Rendering](#html-rendering)
+* [Rendering](#rendering)
 
 ## Overview
 
 ### Quick Look
 
-###### React
-
 ```jsx
-<Modal trigger={<div>Modal Trigger</div>}>
+<Modal trigger={ <Button>Modal Trigger</Button> }>
     Modal Content
 </Modal>
 ```
 
-###### HTML
+###### Internal Interface [[?]](#TODO)
 
-```html
-<div data-modal-target="demo_modal">Modal Trigger</div>
-
-<div id="demo_modal" class="modal-animate-top">
-    <div class="modal_close">×</div>
-    <div class="modal_content">Modal Content</div>
-</div>
+```jsx
+<Module name='modal' { visible, animate { top, bottom, left, right, zoom } }>
+    <Component name='close' { icon } />
+    <Component name='content' />
+</Module>
 ```
-
-### Components
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
-
-* close
-* content
 
 ### Modifiers
 
@@ -142,7 +128,7 @@ Pass custom options to the `modal` object in your theme's config file (e.g. [ui/
 
 ```js
 {
-    "app": {
+    "theme": {
         "modal": {
             ...
         }
@@ -156,11 +142,9 @@ Pass custom options to the `modal` object in your theme's config file (e.g. [ui/
 
 ## Interactions
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions) about module interactions
+> Module interactions are applied by default within the module's `.jsx` file ([learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions))
 
 * [Toggle](#toggle)
-* [Show](#show)
-* [Hide](#hide)
 
 > Interactions are defined in [ui/modules/elements/modal/modal.js](../../../modules/elements/modal/modal.js)
 
@@ -169,7 +153,7 @@ Pass custom options to the `modal` object in your theme's config file (e.g. [ui/
 > Toggle a modal
 
 ```js
-UI.modal(target).toggle();
+Modal.toggle(target, operator);
 ```
 
 <table>
@@ -182,10 +166,15 @@ UI.modal(target).toggle();
     </thead>
     <tbody>
         <tr>
-            <td>Target</td>
-            <td>(querySelector|HTMLElement)</td>
+            <td><code>target</code></td>
+            <td><a href="#TODO">Synergy selector</a></td>
             <td>The target modal to toggle</td>
         </tr>
+        <tr>
+            <td><code>[operator]<code></td>
+            <td><code>('show'|'hide'|'toggle')<code></td>
+            <td>The toggle operator (defaults to 'toggle')</td>
+        </tr>
     </tbody>
 </table>
 
@@ -193,92 +182,34 @@ UI.modal(target).toggle();
 
 ```js
 // Toggle modal with ID 'foo'
-UI.modal('#foo').toggle();
+Modal.toggle(document.getElementById('foo'));
 
 // Toggle modal with ID 'foo'
-UI.modal(document.getElementById('foo')).toggle();
-```
-
-### Show
-
-> Show a modal
-
-```js
-UI.modal(target).show();
-```
-
-<table>
-    <thead>
-        <tr>
-            <td><b>Parameter</b></td>
-            <td><b>Type</b></td>
-            <td><b>Description<b/></td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Target</td>
-            <td>(querySelector|HTMLElement)</td>
-            <td>The target modal to show</td>
-        </tr>
-    </tbody>
-</table>
-
-#### Examples
-
-```js
-// Show modal with ID 'foo'
-UI.modal('#foo').show();
+Modal.toggle('#foo');
 
 // Show modal with ID 'foo'
-UI.modal(document.getElementById('foo')).show();
-```
-
-### Hide
-
-> Hide a modal
-
-```js
-UI.modal(target).hide();
-```
-
-<table>
-    <thead>
-        <tr>
-            <td><b>Parameter</b></td>
-            <td><b>Type</b></td>
-            <td><b>Description<b/></td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Target</td>
-            <td>(querySelector|HTMLElement)</td>
-            <td>The target modal to hide</td>
-        </tr>
-    </tbody>
-</table>
-
-#### Examples
-
-```js
-// Hide modal with ID 'foo'
-UI.modal('#foo').hide();
+Modal.toggle('#foo', 'show');
 
 // Hide modal with ID 'foo'
-UI.modal(document.getElementById('foo')).hide();
+Modal.toggle('#foo', 'hide');
+
+// Reference a React Component
+Modal.toggle(ReactDOM.findDOMNode(myModal), 'show');
 ```
 
-## React Rendering
+## Rendering
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
 
-* [Basic Usage](#TODO)
-* [Static Methods](#TODO)
-* [Raw Module](#TODO)
-* [Props](#TODO)
+* [Examples](#examples)
+* [API](#api)
 
-### Basic Usage
+### Examples
+
+* [Basic Example](#basic-example)
+* [Custom Build](#custom-build)
+
+#### Basic Example
 
 ```jsx
 <Modal trigger={<Button>Open Modal</Button>}>
@@ -286,25 +217,10 @@ UI.modal(document.getElementById('foo')).hide();
 </Modal>
 ```
 
-### Static Methods
-
-> [Learn more](#TODO) about rendering modules using their static methods
+#### Custom Build
 
 ```jsx
-<Modal trigger={<Button>Open Modal</Button>}>
-    <Modal.close modifiers={['icon']}>×</Modal.close>
-    <Modal.content>
-        Modal Content
-    </Modal.content>
-</Modal>
-```
-
-### Raw Module (without using `Modal.jsx`)
-
-> [Learn more](#TODO) about raw modules
-
-```jsx
-<Module name='modal' before={target => <Button onClick={() => UI.modal(target()).show()}>Open Modal</Button>}>
+<Module name='modal' before={target => <Button onClick={() => Modal.toggle(target())}>Open Modal</Button>}>
     <Component name='close' modifiers={['icon']}>×</Component>
     <Component name='content'>
         Modal Content
@@ -312,13 +228,25 @@ UI.modal(document.getElementById('foo')).hide();
 </Module>
 ```
 
-### Props
+### API
 
 * [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [DefaultProps](#defaultprops)
 * [Props.content](#TODO)
 * [Props.trigger](#TODO)
 * [Props.close](#TODO)
 * [Props.animate](#TODO)
+* [Props.toggle](#TODO)
+
+#### DefaultProps
+
+```js
+{
+    animate: 'top',
+    close: '×',
+    toggle: interactions.toggle
+}
+```
 
 #### Props.content
 
@@ -328,21 +256,20 @@ UI.modal(document.getElementById('foo')).hide();
 <Modal trigger={<Button>Open Modal</Button>} content='Modal Content' />
 ```
 
+```jsx
+<Modal trigger={<Button>Open Modal</Button>} content={<div>Modal Content</div>} />
+```
+
 #### Props.trigger
 
 <table>
     <tr>
         <td><b>Type</b></td>
-        <td>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll">
-                <code>querySelectorall</code>
-            </a> ||
-            <a href="https://reactjs.org/docs/glossary.html#elements"><code>React Element</code></a>
-        </td>
+        <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
     </tr>
     <tr>
         <td><b>Description</b></td>
-        <td>The element(s) to open the modal when clicked</td>
+        <td>The element(s) to open the modal when clicked (CSS selector or React Element)</td>
     </tr>
 </table>
 
@@ -362,26 +289,68 @@ UI.modal(document.getElementById('foo')).hide();
 
 #### Props.close
 
+> Content for the `close` component
+
 ```jsx
+<Modal trigger={<Button>Modal Trigger</Button>} close='×'>
+    Modal Content
+</Modal>
 ```
 
 ##### Disable Close Icon
 
 ```jsx
+<Modal trigger={<Button>Modal Trigger</Button>} close={false}>
+    Modal Content
+</Modal>
 ```
 
 #### Props.animate
 
+> Available animations are defined by the [module's modifiers](#modifiers)
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>('top'|'bottom'|'left'|'right'|'zoom')</code></td>
+    </tr>
+</table>
+
 ```jsx
+<Modal trigger={<Button>Modal Trigger</Button>} animate='zoom'>
+    Modal Content
+</Modal>
 ```
 
-## HTML Rendering
+#### Props.toggle
 
-```html
-<div data-modal-target="demo_modal">Modal Trigger</div>
+> Overwrite the default `toggle` method
 
-<div id="demo_modal" class="modal-animate-top">
-    <div class="modal_close">×</div>
-    <div class="modal_content">Modal Content</div>
-</div>
+* This method gets called on click of each `trigger` element
+
+<table>
+    <tr>
+        <td><b>Type</b></td>
+        <td><code>Function</code></td>
+    </tr>
+    <tr>
+        <td><b>Default</b></td>
+        <td><a href="#toggle"><code>interactions.toggle</code></a></td>
+    </tr>
+</table>
+
+```jsx
+<Modal trigger={...} toggle={node => {
+    // custom toggle event handler logic...
+}} />
+```
+
+You can import and call the toggle interaction manually:
+
+```jsx
+import { toggle } from '../../modal/modal.js';
+```
+
+```jsx
+<Modal trigger={...} toggle={node => toggle(node)} />
 ```

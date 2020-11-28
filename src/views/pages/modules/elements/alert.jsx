@@ -1,360 +1,50 @@
-import * as app from '../../../../app';
-
-export default class AlertBars extends React.Component {
-
-    DEMO__HIDE_ALERT(alert) {
-        document.getElementById('alert-demo').classList.add('hidden');
-    }
-
-    render() {
-        return (
-            <app.layouts.Base {...app.config.app.views}>
-
-                <app.Heading heading='2' size='7'>Alert</app.Heading>
-
-                <app.Heading heading='3' size='5'>Quick Look</app.Heading>
-
-                <app.SyntaxHighlighter language='jsx'>{
-                    '<Alert>This is a default alert</Alert>'
-                }</app.SyntaxHighlighter>
-
-                <app.Well>
-                    <app.Alert>This is a default alert</app.Alert>
-                </app.Well>
-
-                <app.List>
-                    <app.ListItem><app.Link to='#configuration'>Configuration</app.Link></app.ListItem>
-                    <app.ListItem><app.Link to='#styles'>Styles</app.Link></app.ListItem>
-                    <app.ListItem><app.Link to='#interactions'>Interactions</app.Link></app.ListItem>
-                    <app.ListItem><app.Link to='#render-with-react'>Render With React</app.Link></app.ListItem>
-                </app.List>
-
-                <app.Section id='configuration'>
-                    <app.Heading heading='3' size='5'>Configuration</app.Heading>
-
-                    <app.Alert alert="help"><a href="#">Learn more</a> about module configutation</app.Alert>
-
-                    <app.SyntaxHighlighter language='json'>{`
-                        "alert": {
-                            "name": "alert",
-                            "alerts": {
-                                "error": {
-                                    "color": ["#COLOR", "alert", "error"],
-                                    "icon": "times"
-                                },
-                                "success": {
-                                    "color": ["#COLOR", "alert", "success"],
-                                    "icon": "check"
-                                },
-                                "info": {
-                                    "color": ["#COLOR", "alert", "info"],
-                                    "icon": "info-circle"
-                                },
-                                "help": {
-                                    "color": ["#COLOR", "alert", "help"],
-                                    "icon": "question-circle"
-                                }
-                            },
-                            "text-color": ["#COLOR", "greyscale", "white"],
-                            "icon": {
-                                "default-enable": true,
-                                "margin-right": "0.5em",
-                                "line-height": "1.25",
-                                "-right": {
-                                    "margin-left": "0.5em"
-                                }
-                            },
-                            "-bar": {
-                                "padding": "0.85em"
-                            },
-                            "-box": {
-                                "padding": "1.5em"
-                            }
-                        }
-                    `}</app.SyntaxHighlighter>
-
-                    <app.Heading heading='5' size='4'>alert.alerts</app.Heading>
-
-                    <app.List>
-                        <app.ListItem><b>color: </b> The background color of the alert</app.ListItem>
-                        <app.ListItem><b>icon:</b> <a href="https://fontawesome.com/v4.7.0/icons/" target="blank">FontAwesome</a> keyword for the alert's icon</app.ListItem>
-                    </app.List>
-
-                    <app.Heading heading='5' size='4'>alert.icon['default-enable']</app.Heading>
-
-                    <app.Well>
-                        <app.Paragraph>Set to show the alert's icon by default</app.Paragraph>
-                    </app.Well>
-
-                </app.Section>
-
-                <app.Section id='styles'>
-                    <app.Heading heading='3' size='5'>Styles</app.Heading>
-
-                    <app.Alert alert="info">Edit styles in <a href="#">ui/modules/elements/alert/_alert.scss</a></app.Alert>
-
-                    <app.Alert alert="help"><a href="#">Learn how to modify styles using the above configuration</a> so you don't have to touch the source code</app.Alert>
-                </app.Section>
-
-                <app.Section id='interactions'>
-                    <app.Heading heading='3' size='5'>Interactions</app.Heading>
-
-                    <app.Alert alert="info">Interactions are defined in <a href="#">ui/modules/elements/alert/alert.js</a></app.Alert>
-
-                    <app.Heading heading='4' size='4'>Dismiss</app.Heading>
-
-                    <app.Well>
-                        <app.Paragraph>Hide an Alert</app.Paragraph>
-                    </app.Well>
-
-                    <app.SyntaxHighlighter language='html'>{`
-                        <div class="alert-bar" id="alert-demo">...</div>
-                    `}</app.SyntaxHighlighter>
-
-                    <app.SyntaxHighlighter language='js'>{`
-                        const alert = document.getElementById('alert-demo');
-
-                        window.UI.alert().dismiss(alert);
-                    `}</app.SyntaxHighlighter>
-                </app.Section>
-
-                <app.Section id='render-with-react'>
-                    <app.Heading heading='3' size='5'>Render With React</app.Heading>
-
-                    <app.SyntaxHighlighter language='jsx'>{
-                        '<Alert>This is an alert</Alert>'
-                    }</app.SyntaxHighlighter>
-
-                    <app.List>
-                        <app.ListItem><app.Link to='#props.bar'>[...Global.props]</app.Link></app.ListItem>
-                        <app.ListItem><app.Link to='#props.bar'>Props.bar</app.Link></app.ListItem>
-                        <app.ListItem><app.Link to='#props.box'>Props.box</app.Link></app.ListItem>
-                        <app.ListItem><app.Link to='#props.alert'>Props.alert</app.Link></app.ListItem>
-                        <app.ListItem><app.Link to='#props.icon'>Props.icon</app.Link></app.ListItem>
-                        <app.ListItem><app.Link to='#props.close'>Props.close</app.Link></app.ListItem>
-                    </app.List>
-
-                    <app.Section id='props.bar'>
-                        <app.Heading size='5'>Props.bar</app.Heading>
-
-                        <app.Table small content={[{
-                            default: 'true',
-                            type: 'Bool'
-                        }]} />
-
-                        <app.SyntaxHighlighter language='jsx'>{
-                            '<Alert bar>This is an alert</Alert>'
-                        }</app.SyntaxHighlighter>
-
-                        <app.Heading heading='4' size='3'>Output:</app.Heading>
-
-                        <app.SyntaxHighlighter language='html'>{
-                            '<div class="alert-bar">This is an alert</div>'
-                        }</app.SyntaxHighlighter>
-
-                        <app.Heading heading='4' size='3'>Preview:</app.Heading>
-
-                        <app.Well>
-                            <app.Alert bar>This is an alert</app.Alert>
-                        </app.Well>
-                    </app.Section>
-
-                    <app.Section id='props.box'>
-                        <app.Heading size='5'>Props.box</app.Heading>
-
-                        <app.Table small content={[{
-                            default: 'false',
-                            type: 'Bool'
-                        }]} />
-
-                        <app.SyntaxHighlighter language='jsx'>{
-                            '<Alert box>This is an alert</Alert>'
-                        }</app.SyntaxHighlighter>
-
-                        <app.Heading heading='4' size='3'>Output:</app.Heading>
-
-                        <app.SyntaxHighlighter language='html'>{
-                            '<div class="alert-box">This is an alert</div>'
-                        }</app.SyntaxHighlighter>
-
-                        <app.Heading heading='4' size='3'>Preview:</app.Heading>
-
-                        <app.Well>
-                            <app.Alert box>This is an alert</app.Alert>
-                        </app.Well>
-                    </app.Section>
-
-                    <app.Section id='props.alert'>
-                        <app.Heading size='5'>Props.alert</app.Heading>
-
-                        <app.Table small content={[{
-                            default: 'success',
-                            type: 'String'
-                        }]} />
-
-                        <app.SyntaxHighlighter language='jsx'>{
-                            `<Alert alert='success'>This is an alert</Alert>`
-                        }</app.SyntaxHighlighter>
-
-                        <app.Heading heading='4' size='3'>Output:</app.Heading>
-
-                        <app.SyntaxHighlighter language='html'>{
-                            '<div class="alert-bar-success">This is an alert</div>'
-                        }</app.SyntaxHighlighter>
-
-                        <p>You can directly reference available alerts as a prop name:</p>
-
-                        <app.SyntaxHighlighter language='jsx'>{`
-                            <Alert success>This is an alert</Alert>
-                        `}</app.SyntaxHighlighter>
-                    </app.Section>
-
-                    <app.Section id='props.icon'>
-                        <app.Heading size='5'>Props.icon</app.Heading>
-
-                        <app.Table small content={[{
-                            default: 'undefined',
-                            type: '(String|Array)'
-                        }]} />
-
-                        <app.List>
-                            <app.ListItem>
-                                <app.Link to='#overwrite-default-icon'>Overwrite default icon</app.Link>
-                            </app.ListItem>
-                            <app.ListItem>
-                                <app.Link to='#disable-default-icon'>Disable default icon</app.Link>
-                            </app.ListItem>
-                            <app.ListItem>
-                                <app.Link to='#right-aligned-icon'>Right-aligned icon</app.Link>
-                            </app.ListItem>
-                            <app.ListItem>
-                                <app.Link to='#right-aligned-custom-icon'>Right-aligned custom icon</app.Link>
-                            </app.ListItem>
-                        </app.List>
-
-                        <app.Section id='overwrite-default-icon'>
-                            <app.Heading size='4'>Overwrite default icon</app.Heading>
-
-                            <app.SyntaxHighlighter language='jsx'>{
-                                `<Alert icon='exclamation-triangle'>This is an alert</Alert>`
-                            }</app.SyntaxHighlighter>
-
-                            <app.Heading heading='4' size='3'>Output:</app.Heading>
-
-                            <app.SyntaxHighlighter language='html'>{`
-                                <div class="alert-bar">
-                                    <div class="alert_icon fa fa-exclamation-triangle"></div> This is an alert
-                                </div>
-                            `}</app.SyntaxHighlighter>
-
-                            <app.Heading heading='4' size='3'>Preview:</app.Heading>
-
-                            <app.Well>
-                                <app.Alert icon='exclamation-triangle'>This is an alert</app.Alert>
-                            </app.Well>
-                        </app.Section>
-
-                        <app.Section id='disable-default-icon'>
-                            <app.Heading size='4'>Disable default icon</app.Heading>
-
-                            <app.SyntaxHighlighter language='jsx'>{
-                                `<Alert icon={false}>This is an alert</Alert>`
-                            }</app.SyntaxHighlighter>
-
-                            <app.Heading heading='4' size='3'>Output:</app.Heading>
-
-                            <app.SyntaxHighlighter language='html'>{`
-                                <div class="alert-bar">This is an alert</div>
-                            `}</app.SyntaxHighlighter>
-
-                            <app.Heading heading='4' size='3'>Preview:</app.Heading>
-
-                            <app.Well>
-                                <app.Alert icon={false}>This is an alert</app.Alert>
-                            </app.Well>
-                        </app.Section>
-
-                        <app.Section id='right-aligned-icon'>
-                            <app.Heading size='4'>Right-aligned icon:</app.Heading>
-
-                            <app.Alert info>A right-aligned icon cannot be used in conjunction with the <code className='code'>close</code> prop</app.Alert>
-
-                            <app.SyntaxHighlighter language='jsx'>{
-                                `<Alert icon='right'>This is an alert</Alert>`
-                            }</app.SyntaxHighlighter>
-
-                            <app.SyntaxHighlighter language='html'>{`
-                                <div class="alert-bar">
-                                    <div class="alert_icon-right fa fa-check"></div> This is an alert
-                                </div>
-                            `}</app.SyntaxHighlighter>
-
-                            <app.Well>
-                                <app.Alert icon='right'>This is an alert</app.Alert>
-                            </app.Well>
-                        </app.Section>
-
-                        <app.Section id='right-aligned-custom-icon'>
-                            <app.Heading size='4'>Right-aligned custom icon:</app.Heading>
-
-                            <app.SyntaxHighlighter language='jsx'>{
-                                `<Alert icon={['exclamation-triangle', 'right']}>This is an alert</Alert>`
-                            }</app.SyntaxHighlighter>
-
-                            <app.SyntaxHighlighter language='html'>{`
-                                <div class="alert-bar">
-                                    <div class="alert_icon-right fa fa-exclamation-triangle"></div> This is an alert
-                                </div>
-                            `}</app.SyntaxHighlighter>
-
-                            <app.Well>
-                                <app.Alert icon={['exclamation-triangle', 'right']}>This is an alert</app.Alert>
-                            </app.Well>
-                        </app.Section>
-                    </app.Section>
-
-                    <app.Section id='props.close'>
-                        <app.Heading size='5'>Props.close</app.Heading>
-
-                        <app.Alert info>This prop cannot be used in conjunction with a right-aligned icon</app.Alert>
-
-                        <app.SyntaxHighlighter language='jsx'>{
-                            `<Alert close>This is an alert</Alert>`
-                        }</app.SyntaxHighlighter>
-
-                        <app.SyntaxHighlighter language='html'>{`
-                            <div class="alert-bar">
-                                <div class="alert_icon-close-right fa fa-times"></div> This is an alert
-                            </div>
-                        `}</app.SyntaxHighlighter>
-
-                        <app.Alert info>Clicking the close icon triggers the <code className='code'>dismiss</code> <app.Link to='#interactions'>interaction</app.Link> by default</app.Alert>
-
-                        <app.Well>
-                            <app.Alert close>This is an alert</app.Alert>
-                        </app.Well>
-
-                        <app.Heading heading='4' size='4'>Custom callback function onClick:</app.Heading>
-    
-                        <app.SyntaxHighlighter language='js'>{`
-                            function hideAlert() {
-                                document.getElementById('alert-demo').classList.add('hidden');
-                            }
-                        `}</app.SyntaxHighlighter>
-    
-                        <app.SyntaxHighlighter language='jsx'>{`
-                            <Alert id='alert-demo' close={hideAlert}>...</Alert>
-                        `}</app.SyntaxHighlighter>
-    
-                        <app.Well>
-                            <app.Alert id='alert-demo' close={this.DEMO__HIDE_ALERT}>
-                                Click the X icon to initiate the callback function
-                            </app.Alert>
-                        </app.Well>
-                    </app.Section>
-                </app.Section>
-
-            </app.layouts.Base>
-        )
-    }
+import SyntaxHighlighter from '../../../tools/syntaxHighlighter';
+import Base from '../../../layouts/base';
+
+function DEMO__HIDE_ALERT() {
+    document.getElementById('alert-demo').style.display = 'none';
 }
+
+const AlertBars = props =>  {
+  const [demo1Visible, setDemo1Visibe] = useState(true);
+
+  console.time('foo');
+  React.useEffect(() => console.timeEnd('foo'));
+
+  return (
+    <Base {...props.config.views}>
+      <Heading heading='2' size='7'>Alert</Heading>
+
+      <Heading heading='3' size='5'>Quick Look</Heading>
+
+      <SyntaxHighlighter language='jsx'>{
+          '<Alert foo="bar">This is a default alert</Alert>'
+      }</SyntaxHighlighter>
+
+      <Well>
+          <Alert success icon={{ display: 'none' }}>This is a <b>default</b> alert</Alert>
+
+          <Alert success>This is a <b>success</b> alert</Alert>
+          <Alert error>This is a <b>success</b> alert</Alert>
+          <Alert info>This is a <b>success</b> alert</Alert>
+          <Alert help>This is a <b>success</b> alert</Alert>
+          
+          <Alert icon={{ glyph: 'times' }} background-color={props.theme.colors.brand['brand-2']}>This is a <b>custom</b> alert</Alert>
+
+          <Alert success icon={{ display: 'none' }}>This is a <b>success</b> alert with no icon</Alert>
+
+          {demo1Visible && <Alert carrot dismiss={() => setDemo1Visibe(false)}>This is a carrot alert</Alert>}
+
+          <Alert icon={{ glyph: 'palette', right: true, onClick: (event) => console.log(event) }}>This is a default alert</Alert>
+
+          <Alert dismiss={() => console.log('dismiss')}>This is a default alert</Alert>
+
+          <Alert box info header={{ content: 'Alert Heading' }}>This is an <b>info</b> alert box</Alert>
+
+          <Alert box success heading='Test Heading'>This is an <b>info</b> alert box</Alert>
+      </Well>
+    </Base>
+  );
+}
+
+export default AlertBars;

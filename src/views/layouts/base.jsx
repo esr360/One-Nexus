@@ -1,49 +1,56 @@
-import * as app from '../../app';
+export default props => (
+  <main>
+    {/* <Search /> */}
 
-/**
- * Render Base layout
- */
-export default class Base extends React.Component {
-    render() {
-        return (
-            <main>
-                <app.Header {...this.props.header} content={
-                    <Component name='wrapper'>
-                        <app.Logo {...this.props.logo} />
-                        <app.Navigation {...this.props.navigation} />
+    {/* <Header absolute {...props.header}>
+        <Component name='logo'>
+            <Logo {...props.logo} />
+        </Component>
 
-                        <div className='sideNav_toggle button-icon-primary max-break-3'>
-                            <i className='fa fa-bars'></i>
-                        </div>
-                    </Component>
-                } />
+        <Component name='navigation'>
+            <Navigation {...props.navigation} />
+            <div className='sideNav__toggle'>Toggle SideNav</div>
+            <div className='search__toggle'>Toggle Search</div>
+        </Component>
+    </Header>
 
-                <div className="container">
-                    <div>
-                        <app.Link to='/'>Home</app.Link>
-                        <app.Link to='/accordion'>Accordion</app.Link>
-                        <app.Link to='/alert'>Alert</app.Link>
-                        <app.Link to='/blockquote'>Blockquote</app.Link>
-                        <app.Link to='/button'>Button</app.Link>
-                        <app.Link to='/carousel'>Carousel</app.Link>
-                        <app.Link to='/form'>Form</app.Link>
-                        <app.Link to='/heading'>Heading</app.Link>
-                        <app.Link to='/image'>Image</app.Link>
-                        <app.Link to='/list'>List</app.Link>
-                        <app.Link to='/modal'>Modal</app.Link>
-                        <app.Link to='/paragraph'>Paragraph</app.Link>
-                        <app.Link to='/progress-bar'>Progress Bar</app.Link>
-                        <app.Link to='/table'>Table</app.Link>
-                        <app.Link to='/tabs'>Tabs</app.Link>
-                        <app.Link to='/tooltip'>Tooltip</app.Link>
-                        <app.Link to='/well'>Well</app.Link>
-                    </div>
+    <Billboard overlay image='http://hdqwalls.com/wallpapers/colorful-polygons.jpg'>
+        Billboard <a href='google.com'>Google</a>  <a href='yahoo.com'>Yahoo</a>
+    </Billboard> */}
 
-                    {this.props.children}
-                </div>
+    <Container large section>
+      {/* <Breadcrumb data={[
+          {
+              label: 'level 1',
+              url: '/',
+              icon: 'home'
+          },
+          {
+              label: 'level 2',
+              url: '/'
+          },
+          {
+              label: 'level 3'
+          }
+      ]} /> */}
 
-                <div class="overlay" id="overlay"></div>
-            </main>
-        )
-    }
-}
+      {/* <Breadcrumb>
+          <Breadcrumb.Item>Level 1</Breadcrumb.Item>
+          <Breadcrumb.Item>Level 2</Breadcrumb.Item>
+          <Breadcrumb.Item>Level 3</Breadcrumb.Item>
+      </Breadcrumb> */}
+
+      {props.children}
+    </Container>
+
+    {/* <Footer>
+        <a href='#'>Link 1</a>
+    </Footer> */}
+
+    {/* <Overlay id='overlay' /> */}
+
+    {/* <Preloader /> */}
+
+    {/* <SideNav {...props.navigation} /> */}
+  </main>
+);

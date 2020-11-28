@@ -1,15 +1,19 @@
-import defaults from './header.json';
+import config from './assets/config.js';
+import layout from './assets/layout.js';
 
 /**
- * Render Header component
- *
- * @param {String} props.name
- * @param {Object} props.logo
- * @param {Object} props.navigation
- * @param {Array}  props.modifiers
+ * Render Header module
  */
-export const Header = ({name = defaults.header.name, modifiers, content}) => (
-    <Module name={name} modifiers={modifiers}>
-        <Component name='wrapper'>{content}</Component>
-    </Module>
-);
+const Header = props => {
+    return (
+        <Module {...props}>
+            <Component name='wrapper' Container>{props.children}</Component>
+        </Module>
+    );
+};
+
+export default Object.assign(Header, {
+    layout, config, defaultProps: {
+        name: 'Header'
+    }
+});

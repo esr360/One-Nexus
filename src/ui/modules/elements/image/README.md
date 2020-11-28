@@ -3,7 +3,6 @@
 * [Overview](#overview)
 * [Configuration](#configuration)
 * [Styles](#styles)
-* [Interactions](#interactions)
 * [Rendering](#rendering)
 
 ## Overview
@@ -13,25 +12,9 @@
 
 ### Quick Look
 
-###### React
-
 ```jsx
 <Image src='https://picsum.photos/640/480' />
 ```
-
-###### HTML
-
-```html
-<div class="image">   
-    <img class="image_figure" src="https://picsum.photos/640/480" alt="" />
-</div>
-```
-
-### Components
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
-
-* figure
 
 ### Modifiers
 
@@ -72,7 +55,7 @@ Pass custom options to the `image` object in your theme's config file (e.g. [ui/
 
 ```js
 {
-    "app": {
+    "theme": {
         "image": {
             ...
         }
@@ -84,23 +67,25 @@ Pass custom options to the `image` object in your theme's config file (e.g. [ui/
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
 
-## Interactions
-
-> This module has no interactions
-
 ## Rendering
 
-> If you are *not* using React, simply look to the 'Output' section of any example
-
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
+
+* [Examples](#examples)
+* [API](#api)
+
+### Examples
+
+* [Basic Example](#basic-example)
+* [Center-XY](#center-xy)
+
+#### Basic Example
 
 ```jsx
 <Image src='https://picsum.photos/640/480' />
 ```
 
-* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-
-### Center-XY
+#### Center-XY
 
 ```jsx
 <Image center-xy src='https://picsum.photos/640/480' />
@@ -113,3 +98,7 @@ Pass custom options to the `image` object in your theme's config file (e.g. [ui/
     <img class="image_figure" src="https://picsum.photos/640/480" alt="" />
 </div>
 ```
+
+### API
+
+* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)

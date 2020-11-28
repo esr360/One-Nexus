@@ -1,25 +1,25 @@
-import * as app from '../../../../app';
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Dot } from 'pure-react-carousel';
 
-export default class Carousel extends React.Component {
-    render() {
-        return (
-            <app.layouts.Base {...app.config.app.views}>
+const Carousels = ({ layouts, ...props }) => {
+  return (
+    <layouts.base {...props.config.views}>
+      <br />
+      <Carousel slides={[
+        <img src="https://picsum.photos/640/480" />,
+        <img src="https://picsum.photos/640/480" />,
+        <img src="https://picsum.photos/640/480" />,
+        <img src="https://picsum.photos/640/480" />
+      ]} pager={{ display: 'none' }} />
 
-                <div class="carousel">
-                    <img src="https://picsum.photos/640/480" />
-                    <img src="https://picsum.photos/640/480" />
-                    <img src="https://picsum.photos/640/480" />
-                    <img src="https://picsum.photos/640/480" />
-                    <img src="https://picsum.photos/640/480" />
-                </div>
-
-                <app.Carousel slides={[
-                    <img src="https://picsum.photos/640/480" />,
-                    <img src="https://picsum.photos/640/480" />,
-                    <img src="https://picsum.photos/640/480" />
-                ]} />
-
-            </app.layouts.Base>
-        )
-    }
+      {/* <Module name='projects' as={CarouselProvider}>
+        <Group as={Slider}>
+          <Component name='project' as={Slide} index={0}>First Slide</Component>
+          <Component name='project' as={Slide} index={1}>Second Slide</Component>
+          <Component name='project' as={Slide} index={2}>Third Slide</Component>
+        </Group>
+      </Module> */}
+    </layouts.base>
+  );
 }
+
+export default Carousels;

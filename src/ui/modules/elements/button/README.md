@@ -1,390 +1,266 @@
 # One-Nexus Button
 
-* [Overview](#overview)
-* [Configuration](#configuration)
-* [Styles](#styles)
-* [Interactions](#interactions)
-* [Rendering](#rendering)
+<img width="350px" src="http://www.onenexus.io/github/Button.png" />
+
+<table>
+  <thead>
+    <th><a href="#overview">Overview</a></th>
+    <th><a href="#configuration">Configuration</a></th>
+    <th><a href="#API">API</a></th>
+  </thead>
+  <tr>
+    <td><li><a href="#TODO">Live CodeSandbox Demo</a></li></td>
+    <td><li><a href="#default-configuration">Default Configuration</a></li></td>
+    <td><li><a href="#button-group">Button Group</a></li></td>
+  </tr>
+  <tr>
+    <td><li><a href="#modifiers">Modifiers</a></li></td>
+    <td><li><a href="#configsizes"><code>config.sizes</code></a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configcolors"><code>config.colors</code></a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#confighoverbackground"><code>config.hover.background</code></a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configcolorinverse"><code>config.colorInverse</code></a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configlightthreshold"><code>config.lightThreshold</code></a></li></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configfluidscaling"><code>config.fluidScaling</code></a></li></td>
+    <td></td>
+  </tr>
+</table>
 
 ## Overview
-
-### Quick Look
-
-###### React
 
 ```jsx
 <Button>Button</Button>
 ```
 
-###### HTML
+###### Structural Interface [[?]](#TODO)
 
-```html
-<button class="button">Button</button>
+```jsx
+<Module name='Button' />
 ```
 
-### Components
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
-
-* group
+### [Live CodeSandbox Demo](#TODO)
 
 ### Modifiers
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about Modifiers
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>Modifier</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><a href="https://github.com/esr360/One-Nexus/wiki/Global-Modifiers">[...Global modifiers]</a></td>
-            <td>Modifiers that can be applied to any module</td>
-        </tr>
-        <tr>
-            <td><a href="#color-palettes">[...button.palettes.palette]</a></td>
-            <td>The color palettes to use to generate color modifiers</td>
-        </tr>
-        <tr>
-            <td><a href="#sizes">[...button.sizes]</a></td>
-            <td>The different size modifiers for buttons</td>
-        </tr>
-        <tr>
-            <td><code>block</code></td>
-            <td>Full-width buttons with centrally aligned text</td>
-        </tr>
-        <tr>
-            <td><code>border</code></td>
-            <td>Buttons with transparent background and a border</td>
-        </tr>
-        <tr>
-            <td><code>disabled</code></td>
-            <td>Disabled/Opaque buttons</td>
-        </tr>
-        <tr>
-            <td><code>round</code></td>
-            <td>Buttons with rounded corners</td>
-        </tr>
-        <tr>
-            <td><code>oval</code> / <code>circle</code></td>
-            <td>Buttons with fully rounded corners to form a circular/oval shape</td>
-        </tr>
-        <tr>
-            <td><code>sharp</code></td>
-            <td>Force buttons to not have round corners</td>
-        </tr>
-        <tr>
-            <td><code>icon</code></td>
-            <td>Used for buttons which contain an icon instead of text</td>
-        </tr>
-        <tr>
-            <td><code>active</code></td>
-            <td>Signals that the button is in the <code>active</code> state</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>Modifier</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#configcolors"><code>$color</code></a></td>
+      <td>Key corresponding to a color from <a href="#configcolors"><code>config.colors</code></a></td>
+    </tr>
+    <tr>
+      <td><a href="#configsizes"><code>$size</code></a></td>
+      <td>Key corresponding to a size from <a href="#configsizes"><code>config.sizes</code></a></td>
+    </tr>
+    <tr>
+      <td><code>block</code></td>
+      <td>Full-width button with centrally aligned text</td>
+    </tr>
+    <tr>
+      <td><code>border</code></td>
+      <td>Button with transparent background and a border</td>
+    </tr>
+    <tr>
+      <td><code>disabled</code></td>
+      <td>Disabled button</td>
+    </tr>
+    <tr>
+      <td><code>round</code></td>
+      <td>Button with rounded corners</td>
+    </tr>
+    <tr>
+      <td><code>icon</code></td>
+      <td>Used for buttons which contain an icon instead of text</td>
+    </tr>
+    <tr>
+      <td><code>active</code></td>
+      <td>Button in the <code>active</code> state</td>
+    </tr>
+  </tbody>
 </table>
 
 ## Configuration
 
 > [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
 
-```json
+### Default Configuration
+
+> [`modules/elements/Button/assets/config.js`](assets/config.js)
+
+<pre>
 {
-    "button": {
-        "name": "button",
-        "color": ["#COLOR", "greyscale", "white"],
-        "background": ["#COLOR", "greyscale", "grey-4"],
-        "transition": ["#CORE", "transition"],
-        "padding": "0.65em 1em",
-        "line-height": "1",
-        "font-weight": "normal",
-        "font-family": ["#CORE", "font-family"],
-        "border-width": "1px",
-        "border-style": "solid",
-        "disabled-opacity": "0.6",
-        "round-radius": "0.4em",
-        "group-spacing": "0.5em",
-        "group-stack": "break-1",
-        "palettes": ["brand", "greyscale", "alert", "social"],
-        "border-palettes": false,
-        "sizes": ["#TYPOGRAPHY-CONFIG", "sizes"],
-        "active": {
-            "background": ["#COLOR", "brand", "brand-1"],
-            "color": ["#COLOR", "greyscale", "white"]
-        },
-        "greyscale-text-threshold": 77
-    }
+  lightThreshold: 0.55,
+  fluidScaling: true,
+  sizes: theme.typography.sizes,
+
+  colors: {
+    ...theme.colors.brand,
+    ...theme.colors.alert,
+    ...theme.colors.greyscale,
+    ...theme.colors.social
+  },
+
+  'color': theme.colors.greyscale.white,
+  'color-inverse': theme.colors.opaque['dark-4'],
+  'background': theme.colors.brand['brand-1'],
+  'transition': theme.tokens.transition,
+  'padding-y': '0.65em',
+  'padding-x': '1em',
+  'line-height': '1',
+  'font-weight': 'normal',
+  'border-width': '1px',
+  'border-style': 'solid',
+
+  hover: {
+    'background': prev => Color(prev).desaturate(0.1).lighten(0.2)
+  },
+
+  active: {
+    'background': theme.colors.brand['brand-1'],
+    'color': theme.colors.greyscale.white
+  },
+
+  'is-disabled': {
+    'opacity': 0.6
+  },
+
+  'is-round': {
+    'border-radius': '1.2em'
+  },
+
+  'in-group': {
+    'margin-left': '0.5em'
+  },
+
+  group: {
+    object: true,
+    gutter: theme.tokens.margin,
+    stack: theme.grid.breakpoints['break-2']
+  }
 }
+</pre>
+
+### `config.sizes`
+
+> An object containing the list of available font sizes to use for the Button Module, which will be passed to the [`fontSize()` utility function](#TODO)
+
+###### Inside `./assets/styles.js`
+
+```js
+'font-size': utils.fontSize(state, config.sizes, theme, config)
 ```
 
-> Certain values from the above configuration are excluded from the below table ([learn more](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules#documenting-configuration-properties))
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>disabled-opacity</code></td>
-            <td>The opacity to be used when a Button has the `disabled` modifier</td>
-        </tr>
-        <tr>
-            <td><code>round-radius</code></td>
-            <td>The border-radius to be used when a Button has the `round` modifier</td>
-        </tr>
-        <tr>
-            <td><code>group-spacing</code></td>
-            <td>The margin between each Button when contained within a <a href="https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#groupwrap-modules">Group component</a></td>
-        </tr>
-        <tr>
-            <td><code>group-stack</code></td>
-            <td>The browser window width at which Buttons within a <a href="https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#groupwrap-modules">Group component</a> should become stacked</td>
-        </tr>
-        <tr>
-            <td><code>palettes</code></td>
-            <td>Array of palettes to be used to generate Button colors</td>
-        </tr>
-        <tr>
-            <td><code>border-palettes</code></td>
-            <td>Array of palettes to be used to generate Button colors for Buttons with the `border` modifier (falsey value will default to the value used by the `palettes` option)</td>
-        </tr>
-        <tr>
-            <td><code>sizes</code></td>
-            <td>Object of font sizes to use to generate modifiers (<a href="#sizes">learn more</a>)</td>
-        </tr>
-        <tr>
-            <td><code>active</code></td>
-            <td>Styles for Buttons with the <code>active</code> modifier</td>
-        </tr>
-        <tr>
-            <td><code>greyscale-text-threshold</code></td>
-            <td>The background-color threshold at which dark text should be applied to a Button with a bright background color</td>
-        </tr>
-    </tbody>
-</table>
-
-Pass custom options to the `button` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
+###### Sample
 
 ```js
 {
-    "app": {
-        "button": {
-            ...
-        }
-    }
+  'size-1': '12px',
+  'size-2': '16px',
+  'size-3': '20px',
+  large: '2em'
 }
 ```
 
-#### Tip: Combine commonly reused modifiers ([Learn More](#TODO))
-
-If you are commonly reusing the same combination of modifiers multiple times, you can combine them into a new modifier:
-
-```js
-"button" {
-    ...
-    "combine": {
-        "primary" : ["round", "size-4", "brand-1"],
-        "social"  : ["icon", "oval", "size-6", "brand-2"]
-    }
-}
-```
-
-##### Usage
-
-###### React
+Sizes can be applied by passing the desired key as a [Modifier](#TODO) when using the Button Module:
 
 ```jsx
-<Button primary>Button</Button>
-
-// Equivilent to:
-<Button round size-4 brand-1>Button</Button>
-
-// Equivilent to:
-<Button modifiers={['round', 'size-4', 'brand-1']}>Button</Button>
+<Button size-1>...</Button>
+<Button large>...</Button>
 ```
 
-###### HTML
+> The Button size can be affected by [fluid scalability](#TODO)
 
-```html
-<button class="button-primary">Button</button>
+### `config.colors`
 
-<!-- Equivilent to: -->
-<button class="button-round-size-4-brand-1">Button</button>
+> An object containing the list of available colors to use for the Button Module
+
+###### Sample
+
+```js
+{
+  'brand-1': '#2E3882',
+  'brand-2': '#06d2ff',
+  'brand-3': '#04CEC0',
+  success: '#3BB85D'
+}
 ```
 
-#### Color Palettes
-
-This option accepts a list of palettes defined by the [Colors](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/utilities/colors) module.
-
-```json
-"palettes": ["brand", "greyscale", "alert", "social"]
-```
-
-This will create a modifier for each color in each palette, with the color's key as the modifier name.
-
-###### React
+Colors can be applied by passing the desired key as a [Modifier](#TODO) when using the Button Module:
 
 ```jsx
 <Button brand-1>Button</Button>
-<Button grey-3>Button</Button>
 <Button success>Button</Button>
-<Button facebook>Button</Button>
 ```
 
-###### HTML
+#### Use with `border` Modifier
 
-```html
-<button class="button-brand-1">Button</button>
-<button class="button-grey-3">Button</button>
-<button class="button-success">Button</button>
-<button class="button-facebook">Button</button>
-```
-
-If you only want to create modifiers for specific colors in a certain palette, you can pass the keys like so:
-
-```js
-"palettes": [
-    "brand", 
-    {"greyscale": ["grey-1", "grey-3", "grey-4"]}, 
-    "alert", 
-    {"social": ["facebook", "twitter"]}
-]
-```
-
-You can also create new palettes:
-
-```js
-"palettes": [
-    {"foo": "blue", "bar": "#FF5733"}
-]
-```
-
-Using your new values like so:
-
-###### React
+Color Modifiers are compatible with the [`border` Modifier](#TODO):
 
 ```jsx
-<Button foo>Button</Button>
-<Button bar>Button</Button>
+<Button success border>Button</Button>
 ```
 
-###### HTML
+### `config.hover.background`
 
-```html
-<button class="button-foo">Button</button>
-<button class="button-bar">Button</button>
-```
-
-#### Sizes
-
-This option accepts an object and will create a modifier for each key using the key's value for the modifier's font-size:
+> By default this value is a function which determines the hovered Button's background color based off the Button's non-hovered background color, by utilizing [Lucid's Previous Value feature](https://github.com/One-Nexus/Lucid/wiki/Styles#previous-value) and the [`color`](https://www.npmjs.com/package/color) JavaScript library
 
 ```js
-"sizes": {
-    "size-1": "0.67em",
-    "size-2": "0.83em",
-    "size-3": "1.17em",
-    "size-4": "1.25em",
-    "size-5": "1.5em",
-    "size-6": "2em",
-    "size-7": "2.4em",
-    "size-8": "3em",
-    "size-9": "3.4em"
-}
+'background': prev => Color(prev).desaturate(0.1).lighten(0.2)
 ```
 
-```jsx
-<Button size-8>Button</Button>
-```
+This assumes the logic for a given Button's hovered color is transferable from Button to Button - but this may not neccesserily be the case for your system. It's a neat way to generate dynamic [Modifiers](#TODO) with hover states for Button colors, but you may have to create your Button Modifiers manually if the logic to determine your hovered colors is non-transferable.
 
-```html
-<button class="button-size-8">Size 8 Button</button>
-```
+### `config.colorInverse`
 
-By default, a value of <code>["#TYPOGRAPHY-CONFIG", "sizes"]</code> is passed to the "sizes" option, which will fetch the font sizes from the [Typography module](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/utilities/typography).
+> The value to use for the Button's text color if the background contrast becomes too great (determined by [`config.lightThreshold`](#configlightthreshold))
 
-## Styles
+### `config.lightThreshold`
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
+> This value determines whether or not to use [`config.colorInverse`](#configcolorinverse) as the Button's text color, based on the Button instance's background color
 
-## Interactions
+### `config.fluidScaling`
 
-> This module has no interactions
+> This value determines whether or not Buttons should have [fluid scalability](#TODO)
 
-## Rendering
+## API
 
-> If you are *not* using React, simply look to the 'Output' section of any example
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
-
-```jsx
-<Button>Button</Button>
-```
-
-* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
+* [Button Group](#defaultprops)
 
 ### Button Group
 
+> [Learn more](https://github.com/One-Nexus/Lucid/wiki/Group) about the `<Group>` Module
+
 ```jsx
 <Group>
-    <Button>Button</Button>
-    <Button>Button</Button>
-    <Button>Button</Button>
+  <Button />
+  <Button />
+  <Button />
 </Group>
-```
-
-##### Output
-
-```html
-<div class="button_group">
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-</Group>
-```
-
-#### Pills Group
-
-```jsx
-<Group pills>
-    <Button>Button</Button>
-    <Button>Button</Button>
-    <Button>Button</Button>
-</Group>
-```
-
-##### Output
-
-```html
-<div class="button_group-pills">
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-</div>
-```
-
-#### Round Pills Group
-
-```jsx
-<Group round pills>
-    <Button>Button</Button>
-    <Button>Button</Button>
-    <Button>Button</Button>
-</Group>
-```
-
-##### Output
-
-```html
-<div class="button_group-pills-round">
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-</div>
 ```

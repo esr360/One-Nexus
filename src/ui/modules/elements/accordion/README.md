@@ -1,448 +1,253 @@
 # One-Nexus Accordion
 
-* [Overview](#overview)
-* [Configuration](#configuration)
-* [Styles](#styles)
-* [Interactions](#interactions)
-* [Rendering](#rendering)
+<img width="750px" src="http://www.onenexus.io/github/Accordion.png" />
+
+<table>
+  <thead>
+    <th><a href="#overview">Overview</a></th>
+    <th><a href="#configuration">Configuration</a></th>
+    <th><a href="#API">API</a></th>
+  </thead>
+  <tr>
+    <td><li><a href="#TODO">Live CodeSandbox Demo</a></li></td>
+    <td><li><a href="#default-configuration">Default Configuration</a></li></td>
+    <td><li><a href="#propspanels"><code>props.panels</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configpersist"><code>config.persist</code></a></li></td>
+    <td></td>
+  </tr>
+</table>
 
 ## Overview
 
-### Quick Look
-
-###### React
+> [Learn more about One-Nexus Modules](https://github.com/esr360/One-Nexus/wiki/Modules)
 
 ```jsx
 <Accordion panels={[
-    {title: 'foo', content: 'bar'},
-    {title: 'fizz', content: 'buzz'}
+  { 
+    title: 'foo', 
+    content: 'bar' 
+  },
+  { 
+    title: 'fizz', 
+    content: 'buzz' 
+  }
 ]} />
 ```
 
-###### HTML
+###### Structural Interface [[?]](#TODO)
 
-```html
-<div class="accordion">
-    <div class="accordion_section">
-        <div class="accordion_title">
-            <div class="accordion_toggle fa fa-chevron-circle-down"></div> foo
-        </div>
-        <div class="accordion_content">bar</div>
-    </div>
-    <div class="accordion_section">
-        <div class="accordion_title">
-            <div class="accordion_toggle fa fa-chevron-circle-down"></div> fizz
-        </div>
-        <div class="accordion_content">buzz</div>
-    </div>
-</div>
+```jsx
+<Module name='Accordion'>
+  <Component name='panel'>
+    <Component name='title'>
+      <Component name='toggle' />
+    </Component>
+
+    <Component name='content' />
+  </Component>
+  ...
+</Module>
 ```
 
-### Components
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
-
-* content
-* section
-* title
-* toggle
-
-### Modifiers
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Modifier</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><a href="https://github.com/esr360/One-Nexus/wiki/Global-Modifiers">[...Global modifiers]</a></td>
-            <td>Modifiers that can be applied to any module</td>
-        </tr>
-        <tr>
-            <td><code>keepOpen</code></td>
-            <td>Allows multiple accordion panels to be open simultaneously</td>
-        </tr>
-    </tbody>
-</table>
+### [Live CodeSandbox Demo](#TODO)
 
 ## Configuration
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about Module configutation
 
-```json
+### Default Configuration
+
+> [`modules/elements/Accordion/assets/config.js`](assets/config.js)
+
+<pre>
 {
-    "accordion": {
-        "name": "accordion",
-        "section": {
-            "vertical-rhythm": 0
-        },
-        "title": {
-            "background": "transparent",
-            "color": ["#CORE", "text-color"],
-            "border": "1px solid rgba(black, 0.15)",
-            "border-radius": 0,
-            "padding": "1em",
-            "transition": ["#CORE", "transition"],
-            "hover": {
-                "background": ["#COLOR", "brand", "brand-1"],
-                "color": ["#COLOR", "greyscale", "white"],
-                "component(toggle)": {
-                    "color": ["#COLOR", "greyscale", "white"]
-                }
-            },
-            "active": {
-                "background": ["#COLOR", "brand", "brand-1"],
-                "color": ["#COLOR", "greyscale", "white"],
-                "border-color": "transparent",
-                "border-radius": 0,
-                "component(toggle)": {
-                    "color": ["#COLOR", "greyscale", "white"]
-                }
-            }
-        },
-        "content": {
-            "background": ["#COLOR", "greyscale", "white"],
-            "color": ["#CORE", "text-color"],
-            "border": "1px solid rgba(black, 0.15)",
-            "border-radius": 0,
-            "padding": "1.5em"
-        },
-        "toggle": {
-            "color": ["#COLOR", "opaque", "dark-4"]
-        },
-        "animationSpeed": 400,
-        "keepOpenModifier": "keepOpen"
+  <a href="TODO">name</a>: 'Accordion',
+  <a href="TODO">object</a>: true,
+  <a href="TODO">gutter</a>: <a href="TODO">theme.tokens.margin</a>,
+  <a href="#configpersist">persist</a>: true,
+
+  title: {
+    'background': 'transparent',
+    'color': 'grey',
+    'border': `1px solid ${<a href="TODO">theme.colors.opaque['dark-2']</a>}`,
+    'padding': '1em',
+
+    'panel-is-active'<a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">[?]</a>: {
+      'background': <a href="TODO">theme.colors.brand['brand-2']</a>,
+      'color': <a href="TODO">theme.colors.greyscale.white</a>,
+      'border-color': 'transparent'
+    },
+
+    ':hover'<a href="https://github.com/One-Nexus/Lucid/wiki/Styles#hover">[?]</a>: {
+      'background': <a href="TODO">theme.colors.brand['brand-3']</a>,
+      'color': <a href="TODO">theme.colors.greyscale.white</a>
     }
-}
-```
+  },
 
-> Certain values from the above configuration are excluded from the below table ([learn more](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules#documenting-configuration-properties))
+  toggle: {
+    'color': <a href="TODO">theme.colors.opaque['dark-4']</a>,
+    'transition': <a href="TODO">theme.tokens.transition</a>,
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>section['vertical-rhythm']</code></td>
-            <td>The vertical specing between each separate accordion</td>
-        </tr>
-        <tr>
-            <td><code>animationSpeed</code></td>
-            <td>The duration (in `ms`) for the open/close animation</td>
-        </tr>
-        <tr>
-            <td><code>keepOpenModifier</code></td>
-            <td>The modifier to be used for accordions which allow for multiple open panels simultaneously</td>
-        </tr>
-    </tbody>
-</table>
+    'panel-is-active'<a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">[?]</a>: {
+      'color': <a href="TODO">theme.colors.greyscale.white</a>
+    },
 
-Pass custom options to the `accordion` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
-
-```js
-{
-    "app": {
-        "accordion": {
-            ...
-        }
+    'title:hover'<a href="https://github.com/One-Nexus/Lucid/wiki/Context#accessing-parents-state">[?]</a>: {
+      'color': <a href="TODO">theme.colors.greyscale.white</a>
     }
+  },
+
+  content: {
+    'background': 'white',
+    'color': 'grey',
+    'border': `1px solid ${<a href="TODO">theme.colors.opaque['dark-2']</a>}`,
+    'padding': '1.5em',
+  }
 }
-```
+</pre>
 
-## Styles
+### `config.persist`
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
-
-## Interactions
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions) about module interactions
-
-* [Toggle](#toggle)
-* [Open](#open)
-* [Close](#close)
-
-> Interactions are defined in [ui/modules/elements/accordion/accordion.js](../../../modules/elements/accordion/accordion.js)
-
-### Toggle
-
-> Toggle one or more sections of an accordion
-
-```js
-UI.accordion(parent).toggle(target);
-```
+> Set whether previously opened panels should remain open when toggling a panel
 
 <table>
-    <thead>
-        <tr>
-            <td><b>Parameter</b></td>
-            <td><b>Type</b></td>
-            <td><b>Description<b/></td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Parent</td>
-            <td><a href="https://github.com/esr360/Synergy/wiki/JavaScript#parameter---els">Synergy selector</a></td>
-            <td>The accordion(s) on which to toggle sections</td>
-        </tr>
-        <tr>
-            <td>Target</td>
-            <td>(String | Number | HTMLElement | NodeList)</td>
-            <td>The target section(s) to toggle</td>
-        </tr>
-    </tbody>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>Boolean</code></td>
+  </tr>
 </table>
 
-#### Examples
-
-```js
-// Toggle first section of accordion with ID 'foo'
-UI.accordion(document.getElementById('foo')).toggle(1);
-
-// Toggle section with ID 'bar' on accordion with ID 'foo'
-UI.accordion(document.getElementById('foo')).toggle(document.getElementById('bar'));
-
-// Toggle section with ID 'bar' on accordion with ID 'foo'
-UI.accordion('#foo').toggle('#bar');
-
-// Toggle sections with class 'foo' on accordion with ID 'foo'
-UI.accordion(document.getElementById('foo')).toggle('.foo');
-
-// Toggle second section on all accordions with class 'accordion'
-UI.accordion('.accordion').toggle(2);
-
-// Toggle sections with class 'foo' on all accordions with class 'accordion'
-UI.accordion('.accordion').toggle('.foo');
-
-// Toggle first section on all accordions
-UI.accordion().toggle(1);
-
-// Toggle all sections on all accordions
-UI.accordion().toggle();
-```
-
-### Open
-
-> Open one or more sections of an accordion
-
-```js
-UI.accordion(parent).open(target);
-```
-
-<table>
-    <thead>
-        <tr>
-            <td><b>Parameter</b></td>
-            <td><b>Type</b></td>
-            <td><b>Description<b/></td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Parent</td>
-            <td><a href="https://github.com/esr360/Synergy/wiki/JavaScript#parameter---els">Synergy selector</a></td>
-            <td>The accordion on which to open sections</td>
-        </tr>
-        <tr>
-            <td>Target</td>
-            <td>(String | Number | HTMLElement | NodeList)</td>
-            <td>The target section(s) to open</td>
-        </tr>
-    </tbody>
-</table>
-
-#### Examples
-
-```js
-// Opens all sections of accordion with ID 'foo'
-UI.accordion(document.getElementById('foo')).open();
-
-// Opens first section of accordion with ID 'foo'
-UI.accordion(document.getElementById('foo')).open(1);
-
-// Opens first section of all accordions
-UI.accordion().open(1);
-
-// Opens all sections with class 'foo' for all accordions
-UI.accordion().open(document.querySelectorAll('.foo'));
-
-// Opens all sections with class 'foo' for all accordions
-UI.accordion().open('.foo');
-```
-
-### Close
-
-> Close one or more sections of an accordion
-
-```js
-UI.accordion(parent).close(target);
-```
-
-<table>
-    <thead>
-        <tr>
-            <td><b>Parameter</b></td>
-            <td><b>Type</b></td>
-            <td><b>Description<b/></td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Parent</td>
-            <td><a href="https://github.com/esr360/Synergy/wiki/JavaScript#parameter---els">Synergy selector</a></td>
-            <td>The accordion on which to close sections</td>
-        </tr>
-        <tr>
-            <td>Target</td>
-            <td>(String | Number | HTMLElement | NodeList)</td>
-            <td>The target section(s) to close</td>
-        </tr>
-    </tbody>
-</table>
-
-#### Examples
-
-```js
-// Closes all sections of accordion with ID 'foo'
-UI.accordion(document.getElementById('foo')).close();
-
-// Closes first section of accordion with ID 'foo'
-UI.accordion(document.getElementById('foo')).close(1);
-
-// Closes first section of all accordions
-UI.accordion().close(1);
-
-// Closes all sections with class 'foo' for all accordions
-UI.accordion().close(document.querySelectorAll('.foo'));
-
-// Closes all sections with class 'foo' for all accordions
-UI.accordion().close('.foo');
-```
-
-## Rendering
-
-> If you are *not* using React, simply look to the 'Output' section of any example
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
+###### Override via Props
 
 ```jsx
-<Accordion panels={[
-    {title: 'foo', content: 'bar'},
-    {title: 'fizz', content: 'buzz'}
-]} />
+<Accordion persist={false} {...} />
 ```
 
-* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [Props.panels](#propspanels)
+## API
 
-### Props.panels
+* [`props.panels`](#propspanels)
+
+### `props.panels`
+
+> The data sections that form the Accordion panels
 
 <table>
-    <tr>
-        <td><b>Type</b></td>
-        <td><code>Array</code></td>
-    </tr>
+  <tr>
+    <td><b>Type</b></td>
+    <td>
+      <code>
+        Array&lt;{ 
+          <a href="#paneltitle">title</a>, 
+          <a href="#panelcontent">content</a>, 
+          <a href="#panelid">id</a>, 
+          <a href="#panelactive">active</a>, 
+          <a href="#panelcallback">callback</a> 
+        }>
+      </code>
+    </td>
+  </tr>
 </table>
 
-```jsx
-const panels = [
-    { title: 'foo', content: 'bar' },
-    { title: <div>alpha</div>, content: <div>beta</div> }
-];
+#### `panel.title`
 
-<Accordion panels={panels} />
-```
-
-###### Output
-
-```html
-<div class="accordion">
-    <div class="accordion_section">
-        <div class="accordion_title">
-            <div class="accordion_toggle fa fa-chevron-circle-down"></div> foo
-        </div>
-        <div class="accordion_content">bar</div>
-    </div>
-    <div class="accordion_section">
-        <div class="accordion_title">
-            <div class="accordion_toggle fa fa-chevron-circle-down"></div>
-            <div>alpha</div>
-        </div>
-        <div class="accordion_content"><div>beta</div></div>
-    </div>
-</div>
-```
-
-#### Panel.title
+> The content to use for the title Component of the Accordion panel
 
 <table>
-    <tr>
-        <td><b>Type</b></td>
-        <td>JSX</td>
-    </tr>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
+  </tr>
 </table>
 
-#### Panel.content
+#### `panel.content`
+
+> The content to use for the content Component of the Accordion panel
 
 <table>
-    <tr>
-        <td><b>Type</b></td>
-        <td>JSX</td>
-    </tr>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
+  </tr>
 </table>
 
 Accordions can be nested:
 
 ```jsx
 <Accordion panels={[
-    {title: ..., content: 'alpha'},
-    {title: ..., content: (
+  {title: ..., content: 'alpha'},
+  {title: ..., content: (
+    <Accordion panels={[
+      {title: ..., content: 'beta'},
+      {title: ..., content: (
         <Accordion panels={[
-            {title: ..., content: 'beta'},
-            {title: ..., content: (
-                <Accordion panels={[
-                    {title: ..., content: 'gamma'},
-                    {title: ..., content: <div>potato</div>}
-                ]} />
-            )}
+          {title: ..., content: 'gamma'},
+          {title: ..., content: <div>potato</div>}
         ]} />
-    )},
-    {title: ..., content: <div>buzz</div>}
+      )}
+    ]} />
+  )},
+  {title: ..., content: <div>buzz</div>}
 ]} />
 ```
 
-#### Panel.active
+#### `panel.id`
+
+> Use if panels are prone to changing after initial render to preserve correct state
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>String</code></td>
+  </tr>
+</table>
+
+#### `panel.active`
 
 > Set panel(s) to be active (open) by default
 
 <table>
-    <tr>
-        <td><b>Type</b></td>
-        <td><code>Bool</code></td>
-    </tr>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>Boolean</code></td>
+  </tr>
 </table>
 
 ```jsx
 <Accordion panels={[
-    {title: ..., content: ...}
-    {title: ..., content: ..., active: true}
+  {title: ..., content: ...}
+  {title: ..., content: ..., active: true}
 ]} />
 ```
 
-###### Output
+#### `panel.callback`
 
-```html
-<div class="accordion">
-    <div class="accordion_section">...</div>
-    <div class="accordion_section-active">...</div>
-</div>
+> Callback function to call on panel toggle
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>Function(state: 'open' | 'close')</code></td>
+  </tr>
+</table>
+
+```jsx
+<Accordion panels={[
+  ...
+  {
+    title: ..., 
+    content: ..., 
+    callback: (state) => {
+      if (state === 'open') {
+        // do something
+      }
+
+      if (state === 'close') {
+        // do something
+      }
+    }
+  }
+]} />
 ```

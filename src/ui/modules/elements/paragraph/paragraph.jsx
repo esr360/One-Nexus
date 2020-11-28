@@ -1,22 +1,17 @@
-import defaults from './paragraph.json';
+import config from './assets/config';
+import layout from './assets/layout.js';
 
 /**
  * Render Paragraph module
- *
- * @prop {String} name
  */
-export default class Paragraph extends React.Component {
-    render() {
-        return (
-            <Module {...this.props}>
-                {this.props.children}
-            </Module>
-        )
-    }
-}
+const Paragraph = props => (
+    <Module {...props}>{props.children}</Module>
+);
 
-Paragraph.defaultProps = {
-    name: defaults.paragraph.name,
-    object: true,
-    tag: 'p'
-};
+export default Object.assign(Paragraph, {
+    layout, config, defaultProps: {
+        name: 'Paragraph',
+        object: true,
+        tag: 'p'
+    }
+});

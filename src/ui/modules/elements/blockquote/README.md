@@ -1,182 +1,126 @@
 # One-Nexus Blockquote
 
-* [Overview](#overview)
-* [Configuration](#configuration)
-* [Styles](#styles)
-* [Interactions](#interactions)
-* [Rendering](#rendering)
+<img width="750px" src="http://www.onenexus.io/github/Blockquote.png" />
+
+<table>
+  <thead>
+    <th><a href="#overview">Overview</a></th>
+    <th><a href="#configuration">Configuration</a></th>
+    <th><a href="#API">API</a></th>
+  </thead>
+  <tr>
+    <td><li><a href="#TODO">Live CodeSandbox Demo</a></li></td>
+    <td><li><a href="#default-configuration">Default Configuration</a></li></td>
+    <td><li><a href="#propssource"><code>props.source</code></a></li></td>
+  </tr>
+  <tr>
+    <td><li><a href="#modifiers">Modifiers</a></li></td>
+    <td></td>
+    <td><li><a href="#blockquote-alerts">Blockquote Alerts</a></li></td>
+  </tr>
+</table>
 
 ## Overview
 
-### Quick Look
-
-###### React
+> [Learn more about One-Nexus Modules](https://github.com/esr360/One-Nexus/wiki/Modules)
 
 ```jsx
-<Blockquote content='This is a blockquote' footer='Optional blockquote footer' />
+<Blockquote source='Optional Blockquote source'>This is a Blockquote</Blockquote>
 ```
 
-###### HTML
+###### Structural Interface [[?]](#TODO)
 
-```html
-<blockquote class="blockquote">
-    <div class="blockquote_content">This is a blockquote</div>
-    <div class="blockquote_footer">Optional blockquote footer</div>
-</blockquote>
+```jsx
+<Module name='Blockquote'>
+  <Component name='body' />
+  <Component name='footer' />
+</Module>
 ```
 
-### Components
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Components) about components
-
-* content
-* footer
+### [Live CodeSandbox Demo](#TODO)
 
 ### Modifiers
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about Modifiers
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>Modifier</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><a href="https://github.com/esr360/One-Nexus/wiki/Global-Modifiers">[...Global modifiers]</a></td>
-            <td>Modifiers that can be applied to any module</td>
-        </tr>
-        <tr>
-            <td><a href="#configuration"><code>callout</code></a></td>
-            <td>Alternative style for blockquote</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>Modifier</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>callout</code></td>
+      <td>Add some prominence to the Blockquote</td>
+    </tr>
+  </tbody>
 </table>
 
 ## Configuration
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about Module configutation
 
-```json
+### Default Configuration
+
+> [`modules/elements/Blockquote/assets/config.js`](assets/config.js)
+
+<pre>
 {
-    "blockquote": {
-        "name": "blockquote",
-        "font-family": ["Georgia", "serif"],
-        "-callout": {
-            "padding": "0.5em 0.75em",
-            "font-size": ["#FONT-SIZE", "size-5"],
-            "border-left": "7px solid",
-            "border-left-color": ["#COLOR", "opaque", "dark-1"]
-        },
-        "footer": {
-            "font-size": ["#FONT-SIZE", "size-2"],
-            "font-style": "italic",
-            "color": ["#COLOR", "opaque", "dark-4"]
-        }
-    }
+  <a href="TODO">name</a>: 'Blockquote',
+  <a href="TODO">object</a>: true,
+  <a href="TODO">gutter</a>: <a href="TODO">theme.tokens.margin</a>,
+
+  'font-family': 'Georgia, serif',
+
+  <a href="#modifiers">'is-callout'</a>: {
+    'padding': '0.5em 0.75em',
+    'font-size': theme.typography.sizes['size-5'],
+    'border-left': '7px solid',
+    'border-left-color': theme.colors.opaque['dark-1']
+  },
+
+  footer: {
+    'font-size': theme.typography.sizes['size-2'],
+    'font-style': 'italic',
+    'color': theme.colors.opaque['dark-4']
+  }
 }
-```
+</pre>
 
-Pass custom options to the `blockquote` object in your theme's config file (e.g. [ui/themes/One-Nexus/theme.json](../../../themes/One-Nexus/theme.json)):
+## API
 
-```js
-{
-    "app": {
-        "blockquote": {
-            ...
-        }
-    }
-}
-```
-
-## Styles
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
-
-## Interactions
-
-> This module has no interactions
-
-## Rendering
-
-> If you are *not* using React, simply look to the 'Output' section of any example
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
-
-```jsx
-<Blockquote content='This is a blockquote' />
-```
-
-* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [Props.content](#propscontent)
-* [Props.footer](#propsfooter)
+* [`props.source`](#propssource)
 * [Blockquote Alerts](#blockquote-alerts)
 
-### Props.content
+### `props.source`
 
 <table>
-    <tr>
-        <td><b>Type</b></td>
-        <td>JSX</td>
-    </tr>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
+  </tr>
 </table>
 
 ```jsx
-<Blockquote content={<div>Blockquote content</div>} />
+<Blockquote source='Optional Blockquote source'>...</Blockquote>
 ```
 
-###### Output
-
-```html
-<blockquote class="blockquote">
-    <div class="blockquote_content">
-        <div>Blockquote content</div>
-    </div>
-</blockquote>
-```
-
-### Props.footer
-
-<table>
-    <tr>
-        <td><b>Type</b></td>
-        <td>JSX</td>
-    </tr>
-</table>
+This is syntactic sugar for:
 
 ```jsx
-<Blockquote content={...} footer='Optional blockquote footer'} />
-```
-
-###### Output
-
-```html
-<blockquote class="blockquote">
-    <div class="blockquote_content">...</div>
-    <div class="blockquote_footer">Optional blockquote footer</div>
-</blockquote>
+<Blockquote footer={{ content: 'Optional Blockquote source' }}>...</Blockquote>
 ```
 
 ### Blockquote Alerts
 
-> The Blockquote module works well in combination with the [Alert](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/elements/alert) module ([learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#combining-modules) about combining modules)
+The Blockquote module works well in combination with the [Alert](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules/elements/Alert) Module ([learn more](#TODO-combining-modules) about combining modules).
 
 ```jsx
-<app.Blockquote 
-    Alert='success' 
-    callout 
-    content='Lorem ipsum dolor sit amet' 
-    footer='Someone Famous'
-/>
+<Blockquote as={Alert} callout success source='Someone Famous' icon={{ display: 'none' }}>
+  This is a hybrid Blockquote/Alert
+</Blockquote>
 ```
 
-###### Output
-
-```html
-<blockquote class="blockquote-callout alert-success">
-    <div class="blockquote_content">Lorem ipsum dolor sit amet</div>
-    <div class="blockquote_footer">Someone Famous</div>
-</blockquote>
-```
+<img width="750px" src="http://www.onenexus.io/github/Blockquote--Alert.png" />

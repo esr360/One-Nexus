@@ -1,8 +1,0 @@
-{
-    "scroll-top": {
-        "name": "scroll-top",
-        "position": ["auto", "2rem", "2rem", "auto"],
-        "hide-below": ["#BREAKPOINT", "break-5"],
-        "activePosition": 350
-    }
-}

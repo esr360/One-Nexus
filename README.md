@@ -1,13 +1,13 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/esr360/One-Nexus/blob/master/LICENSE)
 [![GitHub license](https://api.travis-ci.org/esr360/One-Nexus.svg)](https://travis-ci.org/esr360/One-Nexus)
 
-<a href="http://onenexus.io/">
+<a href="https://edmundreed.com/projects/one-nexus/">
     <img src="https://raw.githubusercontent.com/esr360/One-Nexus/master/src/ui/images/logo.png" width="270">
 </a>
 
 > One-Nexus is a toolkit for architecting and constructing front-end user-interfaces
 
-[Visit Website](http://onenexus.io/) | 
+[Visit Website](https://edmundreed.com/projects/one-nexus/) | 
 [View SassDoc Documentation](http://esr360.github.io/One-Nexus/docs/sass) |
 [View JSDoc Documentation](http://esr360.github.io/One-Nexus/docs/sass)
 

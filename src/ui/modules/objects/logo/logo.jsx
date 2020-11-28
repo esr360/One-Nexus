@@ -1,15 +1,21 @@
-import defaults from './logo.json';
+import config from './assets/config.js';
+import layout from './assets/layout.js';
 
 /**
  * Render Logo component
- *
- * @param {String} props.name
- * @param {Array}  props.modifiers
  */
-export const Logo = ({name = defaults.logo.name, modifiers, href, src, alt}) => (
-    <Module name={name} modifiers={modifiers}>
-        <a href={href} alt={alt}>
-            <img src={src} alt={alt} />
-        </a>
-    </Module>
-);
+const Logo = ({ href, src, alt, ...props }) => {
+    return (
+        <Module {...props}>
+            <Component name='link' tag='a' href={href} alt={alt}>
+                <Component name='image' tag='img' src={src} alt={alt} />
+            </Component>
+        </Module>
+    );
+}
+
+export default Object.assign(Logo, {
+    layout, config, defaultProps: {
+        name: 'Logo'
+    }
+});
