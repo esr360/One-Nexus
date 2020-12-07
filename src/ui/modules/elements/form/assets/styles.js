@@ -3,16 +3,16 @@ export default ({ config, theme, utils }) => [config, {
     display: state.hidden ? 'none' : 'block',
   }),
 
-  errorSignal: () => ({
-    'group-is-valid': {
-      'color': config['valid-color'],
+  errorSignal: ({ context: { group } }) => ({
+    ...(group.valid && {
+      'color': config.validColor,
       'border-color': 'currentColor'
-    },
+    }),
 
-    'group-is-invalid': {
-      'color': config['invalid-color'],
+    ...(group.invalid && {
+      'color': config.invalidColor,
       'border-color': 'currentColor'
-    }
+    })
   }),
 
   group: ({ state }) => ({
@@ -32,7 +32,7 @@ export default ({ config, theme, utils }) => [config, {
   field: () => ({
     'position': 'relative',
     'display': 'inline-block',
-    'width': '100%',
+    'width': '100%'
   }),
 
   icon: () => ({
@@ -46,14 +46,18 @@ export default ({ config, theme, utils }) => [config, {
 
   label: () => ({}),
 
-  input: () => ({
+  input: ({ context: { group } }) => ({
     'display': 'block',
     'width': '100%',
     'outline': 'inherit',
 
     ':focus': {
       'outline': 0
-    }
+    },
+    
+    ...(group.hasIcon && {
+      'padding-left': '2em'
+    })
   }),
 
   select: () => ({
