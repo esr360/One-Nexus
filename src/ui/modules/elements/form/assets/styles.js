@@ -1,16 +1,22 @@
 export default ({ config, theme, utils }) => [config, {
-  after: ({ state }) => ({
-    display: state.hidden ? 'none' : 'block',
-  }),
-
   fragment: ({ state }) => ({
     display: state.hidden ? 'none' : 'block',
   }),
 
+  errorSignal: () => ({
+    'group-is-valid': {
+      'color': config['valid-color'],
+      'border-color': 'currentColor'
+    },
+
+    'group-is-invalid': {
+      'color': config['invalid-color'],
+      'border-color': 'currentColor'
+    }
+  }),
+
   group: ({ state }) => ({
     ...utils.object(state, config.gutter),
-
-    // display: state.hidden ? 'none' : 'block'
   }),
 
   ...Object.fromEntries(['checkbox', 'radio'].map(key => [key, { 
@@ -18,8 +24,7 @@ export default ({ config, theme, utils }) => [config, {
     'margin-right': '1em' 
   }])),
 
-  fieldset: ({ state }) => ({
-    display: state.hidden ? 'none' : 'block',
+  fieldset: () => ({
     'padding': '0',
     'border': 'none'
   }),
@@ -37,25 +42,9 @@ export default ({ config, theme, utils }) => [config, {
     'left': '0.75em',
     'color': config.input.color,
     'transition': theme.tokens.transition,
-
-    // 'group-is-valid': {
-    //   'color': config['valid-color']
-    // },
-
-    // 'group-is-invalid': {
-    //   'color': config['invalid-color']
-    // }
   }),
 
-  label: () => ({
-    // 'group-is-valid': {
-    //   'color': config['valid-color']
-    // },
-
-    // 'group-is-invalid': {
-    //   'color': config['invalid-color']
-    // }
-  }),
+  label: () => ({}),
 
   input: () => ({
     'display': 'block',
@@ -64,36 +53,12 @@ export default ({ config, theme, utils }) => [config, {
 
     ':focus': {
       'outline': 0
-    },
-
-    // 'group-is-valid': {
-    //   'color': config['valid-color'],
-    //   'border-color': 'currentColor'
-    // },
-
-    // 'group-is-invalid': {
-    //   'color': config['invalid-color'],
-    //   'border-color': 'currentColor'
-    // }
+    }
   }),
 
   select: () => ({
     'width': '100%',
-    'outline': 0,
-
-    // 'group-is-valid': {
-    //   'color': config['valid-color'],
-    //   'border-color': 'currentColor'
-    // },
-
-    // 'group-is-invalid': {
-    //   'color': config['invalid-color'],
-    //   'border-color': 'currentColor'
-    // }
-  }),
-  
-  error: () => ({
-    'color': config['invalid-color'],
+    'outline': 0
   }),
 
   button: () => ({

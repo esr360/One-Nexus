@@ -34,7 +34,6 @@ export default props => (
                         icon: 'key',
                         id: 'userPassword',
                         required: true,
-                        validateOn: [],
                         validators: [
                           {
                             rule: value => value.length > 8,
@@ -138,75 +137,75 @@ export default props => (
                     ]
                   },
 
-                  {
-                      type: 'fieldset',
-                      id: 'offers',
-                      legend: 'Offers',
-                      fields: [
-                        {
-                          type: 'checkbox',
-                          id: 'freeSpam',
-                          label: 'I would like to receive free spam',
-                          after: {
-                            id: 'freeSpamAlert',
-                            hidden: true,
-                            render: <Alert>You will receive free spam</Alert>,
-                            visibility: [({ freeSpam }) => freeSpam.checked()]
-                          }
-                        },
-                        {
-                          type: 'checkbox',
-                          id: 'freePizza',
-                          label: 'I would like to receive a free large pizza',
-                          after: {
-                            id: 'freePizzaAlert',
-                            hidden: true,
-                            render: <Alert alert='info'>You will receive one large pizza</Alert>,
-                            visibility: [({ freePizza }) => freePizza.checked()]
-                          }
-                        },
-                        {
-                          type: 'fieldset',
-                          legend: 'Choose one:',
-                          id: 'choose-one-x',
-                          fields: [
-                            {
-                              type: 'radio',
-                              id: 'freeXbox',
-                              label: 'Free Xbox 360',
-                              required: true
-                            },
-                            {
-                              type: 'radio',
-                              id: 'freePS4',
-                              label: 'Free Playstation 4',
-                              required: true
-                            },
-                            {
-                              type: 'radio',
-                              id: 'freeCheese',
-                              label: 'Free slice of cheddar cheese',
-                              required: true
-                            },
-                            {
-                              type: 'radio',
-                              id: 'giveUs10Bux',
-                              label: 'You agree to give us $10',
-                              required: true
-                            }
-                          ]
-                        }
-                      ],
-                      rules: [country => country.value !== 'USA'],
-                      after: {
-                        id: 'freeBoth',
-                        render: <Alert alert='help'>You want free spam and free pizza??</Alert>,
-                        rules: [
-                          freeSpam => freeSpam.checked,
-                          freePizza => freePizza.checked
-                        ]
-                      }
-                  },
+                  // {
+                  //     type: 'fieldset',
+                  //     id: 'offers',
+                  //     legend: 'Offers',
+                  //     fields: [
+                  //       {
+                  //         type: 'checkbox',
+                  //         id: 'freeSpam',
+                  //         label: 'I would like to receive free spam',
+                  //         after: {
+                  //           id: 'freeSpamAlert',
+                  //           hidden: true,
+                  //           render: <Alert>You will receive free spam</Alert>,
+                  //           visibility: [({ freeSpam }) => freeSpam.checked()]
+                  //         }
+                  //       },
+                  //       {
+                  //         type: 'checkbox',
+                  //         id: 'freePizza',
+                  //         label: 'I would like to receive a free large pizza',
+                  //         after: {
+                  //           id: 'freePizzaAlert',
+                  //           hidden: true,
+                  //           render: <Alert alert='info'>You will receive one large pizza</Alert>,
+                  //           visibility: [({ freePizza }) => freePizza.checked()]
+                  //         }
+                  //       },
+                  //       {
+                  //         type: 'fieldset',
+                  //         legend: 'Choose one:',
+                  //         id: 'choose-one-x',
+                  //         fields: [
+                  //           {
+                  //             type: 'radio',
+                  //             id: 'freeXbox',
+                  //             label: 'Free Xbox 360',
+                  //             required: true
+                  //           },
+                  //           {
+                  //             type: 'radio',
+                  //             id: 'freePS4',
+                  //             label: 'Free Playstation 4',
+                  //             required: true
+                  //           },
+                  //           {
+                  //             type: 'radio',
+                  //             id: 'freeCheese',
+                  //             label: 'Free slice of cheddar cheese',
+                  //             required: true
+                  //           },
+                  //           {
+                  //             type: 'radio',
+                  //             id: 'giveUs10Bux',
+                  //             label: 'You agree to give us $10',
+                  //             required: true
+                  //           }
+                  //         ]
+                  //       }
+                  //     ],
+                  //     rules: [country => country.value !== 'USA'],
+                  //     after: {
+                  //       id: 'freeBoth',
+                  //       render: <Alert alert='help'>You want free spam and free pizza??</Alert>,
+                  //       rules: [
+                  //         freeSpam => freeSpam.checked,
+                  //         freePizza => freePizza.checked
+                  //       ]
+                  //     }
+                  // },
                 ]} submit='Ok lets go!' />
             {/* </PAX5.column> */}
         {/* </PAX5.row> */}

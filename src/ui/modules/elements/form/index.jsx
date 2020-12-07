@@ -73,7 +73,7 @@ Form.Field = properties => {
   const [errorMessage, setErrorMessage] = React.useState();
 
   const eventHandler = event => () => {
-    refreshVisibility(); 
+    refreshVisibility();
     validateOn.includes(event) && validate(formFields[id], formFields);
   }
 
@@ -83,35 +83,43 @@ Form.Field = properties => {
     hasIcon: Boolean(properties.icon)
   }
 
-  if (id) {
-    React.useEffect(() => updateFormFields(prev => {
-      const fieldProps = { node: host.current, setIsValid, setErrorMessage, validators, onValidation };
-  
-      return { 
-        ...prev, 
-  
-        [id]: {
-          ...prev[id],
-          ...fieldProps,
+  React.useEffect(() => {
+    const fieldProps = { node: host.current, setIsValid, setErrorMessage, validators, onValidation };
 
-          validate: fields => validate(fieldProps, fields),
-          isValid: fields => validator(fieldProps.node, validators, fields)[0],
-          value: () => fieldProps.node.value,
-          checked: () => fieldProps.node.checked,
-        }
+    updateFormFields(prev => ({ 
+      ...prev, 
+
+      [id]: {
+        ...prev[id],
+        ...fieldProps,
+
+        validate: fields => validate(fieldProps, fields),
+        isValid: fields => validator(fieldProps.node, validators, fields)[0],
+        value: () => fieldProps.node.value,
+        checked: () => fieldProps.node.checked,
       }
-    }), []);
-  }
+    }));
+  }, []);
 
   return (
     <Form.ControlledElement name='group' {...{ id, visibility, hidden, modifiers }}>
-      {label && (type !== 'checkbox' && type !== 'radio') && <Component name='label' htmlFor={id} content={label} />}
+      {label && (type !== 'checkbox' && type !== 'radio') && (
+        <Component name='label' roles={['errorSignal']} htmlFor={id} render={label} />
+      )}
 
       {inputTypes.includes(type) && (
         <Component name='field'>
-          <Component tag='input' host={host} {...getAttrs(properties)} onBlur={eventHandler('blur')} onKeyUp={eventHandler('change')} />
+          <Component 
+            tag='input' 
+            roles={['errorSignal']}
+            host={host} 
+            onBlur={eventHandler('blur')} 
+            onKeyUp={eventHandler('change')}
 
-          {icon && <Icon as='icon' glyph={icon} />}
+            {...getAttrs(properties)} 
+          />
+
+          {icon && <Icon as='icon' roles={['errorSignal']} glyph={icon} />}
         </Component>
       )}
 
@@ -130,7 +138,7 @@ Form.Field = properties => {
 
       {type === 'select' && (
         <Component name='field'>
-          <Component name='select' tag='select' host={host} {...getAttrs(properties)} onChange={eventHandler('change')}>
+          <Component tag='select' roles={['errorSignal']} host={host} {...getAttrs(properties)} onChange={eventHandler('change')}>
             {options.map((options) => (
               <option value={options.value} {...getAttrs(options)}>{options.value}</option>
             ))}
@@ -142,7 +150,7 @@ Form.Field = properties => {
 
       {type ==='HTML' && <div {...getAttrs(properties)}>{render}</div>}
 
-      {errorMessage && <Component name='error'>{errorMessage}</Component>}
+      {errorMessage && <Component name='errorSignal'>{errorMessage}</Component>}
 
       {after && <Form.ControlledElement name='after' {...after} />}
     </Form.ControlledElement>    
@@ -161,28 +169,28 @@ Form.Fieldset = ({ children, legend, fields, id, after, ...props }) => (
   </Form.ControlledElement>
 );
 
-Form.ControlledElement = ({ tag='div', name = 'fragment', render, id, hidden, visibility, modifiers, ...props }) => {
-  const { updateFormFields } = React.useContext(formContext);
+Form.ControlledElement = ({ tag='div', name = 'fragment', id, hidden, visibility, modifiers, ...props }) => {
+  const { formFields, updateFormFields } = React.useContext(formContext);
   const [isHidden, setIsHidden] = React.useState(hidden);
 
-  if (id) {  
-    React.useEffect(() => updateFormFields(prev => ({ 
-      ...prev, 
+  React.useEffect(() => {
+    if (!formFields[id]) {
+      updateFormFields(prev => ({
+        ...prev, 
 
-      [id]: {
-        ...prev[id], 
-        visibility,
-        show: () => setIsHidden(false),
-        hide: () => setIsHidden(true)
-      }
-    })), []);
-  }
-
-  const wrapper = props => <Component name={name} {...props}>{props.children}</Component>;
+        [id]: {
+          ...prev[id], 
+          visibility,
+          show: () => setIsHidden(false),
+          hide: () => setIsHidden(true)
+        }
+      }));
+    }
+  });
 
   return (
-    <Component component={wrapper} tag={tag} name='fragment' hidden={isHidden} {...getAttrs(props)} {...modifiers}>
-      {render || props.children}
+    <Component name={name} roles={['fragment']} tag={tag} hidden={isHidden} {...getAttrs(props)} {...modifiers} {...props}>
+      {props.render || props.children}
     </Component>
   );
 }
