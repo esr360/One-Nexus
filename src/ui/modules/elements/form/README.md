@@ -591,7 +591,7 @@ The `<Form.Field>` Component is used as an alternative to passing [`props.fields
 
 ### `Form.Fieldset`
 
-The `<Form.Fieldset>` Component is used as an alternative to passing [`props.fields`](#TODO) to `<Form>`, should you need more control over the structure of the Form.
+The `<Form.Fieldset>` Component is used as an alternative to passing [`props.fields`](#propsfields) to `<Form>`, should you need more control over the structure of the Form.
 
 ```jsx
 <Form>
@@ -636,7 +636,7 @@ The `<Form.Fieldset>` Component is used as an alternative to passing [`props.fie
   <tr>
     <td><code>...</code></td>
     <td></td>
-    <td><a href="#TODO">Any <code>Form.ControlledElement</code> Prop</a></td>
+    <td><a href="#formcontrolledelement">Any <code>Form.ControlledElement</code> Prop</a></td>
   </tr>
 </table>
 
