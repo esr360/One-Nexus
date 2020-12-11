@@ -1,1140 +1,696 @@
 # One-Nexus Form
 
-* [Overview](#overview)
-* [Configuration](#configuration)
-* [Styles](#styles)
-* [Interactions](#interactions)
-* [Rendering](#rendering)
-* [Representations](#representations)
+<img width="450px" src="https://edmundreed.com/projects/one-nexus/images/Form.png" />
+
+<table>
+  <thead>
+    <th><a href="#overview">Overview</a></th>
+    <th><a href="#configuration">Configuration</a></th>
+    <th><a href="#API">API</a></th>
+  </thead>
+  <tr>
+    <td><li><a href="#TODO">Live CodeSandbox Demo</a></li></td>
+    <td><li><a href="#default-configuration">Default Configuration</a></li></td>
+    <td><li><a href="#fieldinterface"><code>FieldInterface</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configvalidatefieldson"><code>config.validateFieldsOn</code></a></li></td>
+    <td><li><a href="#fieldobject"><code>FieldObject</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configvalidcolor--configinvalidcolor"><code>config.validColor</code></a></li></td>
+    <td><li><a href="#propsfields"><code>props.fields</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><li><a href="#configvalidcolor--configinvalidcolor"><code>config.invalidColor</code></a></li></td>
+    <td><li><a href="#propssubmit"><code>props.submit</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><li><a href="#formfield"><code>Form.Field</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><li><a href="#formfieldset"><code>Form.Fieldset</code></a></li></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><li><a href="#formcontrolledelement"><code>Form.ControlledElement</code></a></li></td>
+  </tr>
+</table>
 
 ## Overview
 
-### Quick Look
+> [Learn more about One-Nexus Modules](https://github.com/esr360/One-Nexus/wiki/Modules)
 
 ```jsx
 <Form fields={[
-    {
-        type: 'text',
-        label: 'Username'
-    },
-    {
-        type: 'password',
-        label: 'Password'
-    }
+  {
+    type: 'text',
+    label: 'Username'
+  },
+  {
+    type: 'password',
+    label: 'Password'
+  }
 ]} submit='Login' />
 ```
 
-###### Internal Interface [[?]](#TODO)
+###### Structural Interface [[?]](#TODO)
 
 ```jsx
-<Module name='form'>
-    <Component name='group' { compound, has-icon, validate { isValid, isInvalid }, isSelect }>
-        <Component name='label' />
+<Module name='Form'>
+  <Component name='group'>
+    <Component name='label' />
 
-        <Component name='field'>
-            <Component name='input' />
-            <Component name='icon' />
-        </Component>
+    <Component name='field'>
+      <Component name='input' />
     </Component>
+  </Component>
 
-    ...
+  ...
 
-    <Component name='footer'>
-        <Component name='submit' />
-    </Component>
+  <Component name='footer'>
+    <Component name='submit' />
+  </Component>
 </Module>
 ```
 
-### Modifiers
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Modifiers) about modifiers
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Modifier</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><a href="https://github.com/esr360/One-Nexus/wiki/Global-Modifiers">[...Global modifiers]</a></td>
-            <td>Modifiers that can be applied to any module</td>
-        </tr>
-    </tbody>
-</table>
+### [Live CodeSandbox Demo](#TODO)
 
 ## Configuration
 
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about module configutation
+> [Learn more](https://github.com/esr360/One-Nexus/wiki/Module-Configuration) about Module configutation
 
-```json
+### Default Configuration
+
+> [`modules/elements/Form/assets/config.js`](assets/config.js)
+
+<pre>
 {
-    "form": {
-        "name": "form",
-        "methods": ["setState", "validate"],
-        "label": {
-            "transition": ["#CORE", "transition"]
-        },
-        "input": {
-            "color": ["#CORE", "text-color"],
-            "border": "1px solid",
-            "border-color": ["#COLOR", "greyscale", "grey-3"],
-            "padding": "0.75em",
-            "transition": ["#CORE", "transition"],
-            "font-family": ["#CORE", "font-family"]
-        },
-        "select": {
-            "color": ["#CORE", "text-color"],
-            "border": "1px solid",
-            "border-color": ["#COLOR", "greyscale", "grey-3"],
-            "padding": "0.75em",
-            "transition": ["#CORE", "transition"],
-            "font-family": ["#CORE", "font-family"]
-        },
-        "legend": {
-            "margin-bottom": "1rem",
-            "font-size": ["#FONT-SIZE", "size-4"]
-        },
-        "valid-color": ["#COLOR", "validation", "valid"],
-        "invalid-color": ["#COLOR", "validation", "invalid"]
-    }
+  name: 'Form',
+  validateFieldsOn: ['blur', 'change'],
+  validColor': colors.validation.valid,
+  invalidColor': colors.validation.invalid,
+  gutter: tokens.margin,
+
+  label: {
+    'color': typography.colors.base,
+    'transition': tokens.transition
+  },
+
+  input: {
+    'color': typography.colors.base,
+    'border': '1px solid',
+    'border-color': colors.greyscale['grey-3'],
+    'padding': '0.75em',
+    'transition': tokens.transition,
+    'font-family': typography.typefaces.primary
+  },
+
+  select: {
+    'color': typography.colors.base,
+    'border': '1px solid',
+    'border-color': colors.greyscale['grey-3'],
+    'padding': '0.75em',
+    'transition': tokens.transition,
+    'font-family': typography.typefaces.primary
+  },
+
+  legend: {
+    'margin-bottom': '1rem',
+    'font-size': typography.sizes['size-4']
+  },
+
+  fieldset: {
+    gutter: tokens.margin
+  }
 }
-```
+</pre>
 
-> Certain values from the above configuration are excluded from the below table ([learn more](https://github.com/esr360/One-Nexus/tree/master/src/ui/modules#documenting-configuration-properties))
+### `config.validateFieldsOn`
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>valid-color</code></td>
-            <td>The color to signal that an input is valid</td>
-        </tr>
-        <tr>
-            <td><code>invalid-color</code></td>
-            <td>The color to signal that an input is invalid</td>
-        </tr>
-    </tbody>
-</table>
-
-Pass custom options to the `form` object in your theme's config file (e.g. [ui/themes/one_nexus.json](../../../themes/one_nexus.json)):
-
-```js
-{
-    "theme": {
-        "form": {
-            ...
-        }
-    }
-}
-```
-
-## Styles
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Styling-a-module) about module styles
-
-## Interactions
-
-> Module interactions are applied by default within the module's `.jsx` file ([learn more](https://github.com/esr360/One-Nexus/wiki/Module-interactions))
-
-* [setState](#setstate)
-* [validate](#validate)
-
-> Interactions are defined in [ui/modules/elements/form/form.js](../../../modules/elements/form/form.js)
-
-### setState
-
-> Show/hide form fields based on specified rulesets
-
-```js
-Form.setState(fields);
-```
-
-> [Jump to module's application of this interaction](#with-display-rules)
+> Set the default user events that should trigger inline field validation
 
 <table>
-    <thead>
-        <tr>
-            <td><b>Parameter</b></td>
-            <td><b>Type</b></td>
-            <td><b>Description<b/></td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Fields</td>
-            <td><code>Array</code></td>
-            <td>Array of <a href="#fielddraft">FieldDraft</a>'s on which to apply rulesets</td>
-        </tr>
-    </tbody>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>Array<'blur' | 'change'></code></td>
+  </tr>
 </table>
 
-#### Example
+###### Override via Props
 
-> This object would be part of the [`fields` prop](#propsfields)
-
-```js
-{
-    type: 'checkbox',
-    id: 'isHomeless',
-    label: 'I`m homeless',
-    fieldset: {
-        type: 'fieldset',
-        legend: 'Address',
-        id: 'address',
-        fields: [
-            ...
-        ]
-    }
-}
+```jsx
+<Form validateFieldsOn={['blur']}>
+  ...
+</Form>
 ```
 
-> Hide the `Address` fieldset if the `isHomeless` checkbox is checked
+###### Specify For Individual Fields
 
-```js
-Form.setState([
-    {
-        id: 'address',
-        rules: [isHomeless => !isHomeless.checked]
-    }
-]);
+The behaviour can be controlled on a per-field basis by passing the [`validateOn`](#specify-for-individual-fields) property to the field:
+
+```jsx
+<Form>
+  <Form.Field id='username' label='Username' validateOn={['blur']} validators={...} />
+
+  ...
+</Form>
 ```
-
-The above is syntactic sugar for:
-
-```js
-Form.setState([
-    {
-        id: 'address',
-        rules: [!document.getElementById('isHomeless').checked]
-    }
-]);
-```
-
-### validate
-
-> Determine if a field is valid
-
-```js
-Form.validate(field, validators, callback(isValid, field, message));
-```
-
-> [Jump to module's application of this interaction](#with-validation)
-
-<table>
-    <thead>
-        <tr>
-            <td><b>Parameter</b></td>
-            <td><b>Type</b></td>
-            <td><b>Description<b/></td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Field</td>
-            <td><code>(HTMLElement|String)</code></td>
-            <td>HTMLElement or ID of HTMLElement to validate</td>
-        </tr>
-        <tr>
-            <td>Validators</td>
-            <td><code>Array</code></td>
-            <td>Array of <a href="#fielddraftvalidate">validators</a> to apply</td>
-        </tr>
-        <tr>
-            <td>Callback</td>
-            <td><code>Function</code></td>
-            <td>Callback function to run after validation has taken place</td>
-        </tr>
-    </tbody>
-</table>
-
-* [`callback`](#TODO])
-* [Example](#TODO)
-
-#### `callback`
-
-```js
-callback(isValid, field, message)
-```
-
-<table>
-    <thead>
-        <tr>
-            <td><b>Parameter</b></td>
-            <td><b>Type</b></td>
-            <td><b>Description<b/></td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>isValid</td>
-            <td><code>Bool</code></td>
-            <td>Boolean value stating whether or not the field is valid</td>
-        </tr>
-        <tr>
-            <td>field</td>
-            <td><code>HTMLElement</code></td>
-            <td>The HTMLElement of the field</td>
-        </tr>
-        <tr>
-            <td>message</td>
-            <td><code>String</code></td>
-            <td>The error message for the validator</td>
-        </tr>
-    </tbody>
-</table>
-
-#### Example
-
-> This object would be part of the [`fields` prop](#propsfields)
-
-```js
-{
-    type: 'password',
-    label: 'Password',
-    id: 'userPassword',
-    required: true
-},
-{
-    type: 'password',
-    id: 'passwordReEnter',
-    label: 'Re-enter Password',
-    required: true
-}
-```
-
-```js
-function callback(isValid, field, errorMessage) {
-    if (!isValid) {
-        field.classList.add('invalid');
-
-        alert(errorMessage);
-    }
-}
-```
-
-```js
-Form.validate('passwordReEnter', [
-    {
-        rule: (userPassword, passwordReEnter) => passwordReEnter.value === userPassword.value,
-        message: 'Passwords do not match'
-    }
-], callback);
-```
-
-The above is syntactic sugar for:
-
-```js
-Form.validate(document.getElementById('passwordReEnter'), [
-    {
-        rule: document.getElementById('passwordReEnter').value === document.getElementById('userPassword').value,
-        message: 'Passwords do not match'
-    }
-], callback);
-```
-
-## Rendering
-
-> [Learn more](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module) about rendering modules
-
-* [Examples](#examples)
-* [API](#api)
-
-### Examples
-
-* [Basic Example](#basic-example)
-* [Custom Build](#custom-build)
-
-#### Basic Example
 
 ```jsx
 <Form fields={[
-    {
-        type: 'text',
-        label: 'Username'
+  {
+    id: 'username',
+    label: 'Username',
+    validateOn: ['blur'],
+    validators: ...
+  },
+
+  ...
+]} />
+```
+
+###### Disable Inline Validation
+
+To disable inline validation, pass an empty array as the value for `validateFieldsOn`:
+
+```jsx
+<Form validateFieldsOn={[]}>
+  ...
+</Form>
+```
+
+Or on a per-field basis:
+
+```jsx
+<Form>
+  <Form.Field id='username' label='Username' validators={...} validateOn={[]}  />
+
+  ...
+</Form>
+```
+
+### `config.validColor` / `config.invalidColor`
+
+> Set the field validation colors
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>string(color)</code></td>
+  </tr>
+</table>
+
+## API
+
+* [`FieldInterface`](#fieldinterface)
+* [`FieldObject`](#fieldobject)
+* [`props.fields`](#propsfields)
+* [`props.submit`](#propssubmit)
+* [`Form.Field`](#formfield)
+* [`Form.Fieldset`](#formfieldset)
+* [`Form.ControlledElement`](#formcontrolledelement)
+
+### `FieldInterface`
+
+The `FieldInterface` is the internal interace of a One-Nexus Form field that is exposed when handling the field's behaviour.
+
+<table>
+  <thead>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Description</th>
+  </thead>
+  <tr>
+    <td><code>node</code></td>
+    <td><code>HTMLElement</code></td>
+    <td>The underlying HTML element/node of the field</td>
+  </tr>
+  <tr>
+    <td><code>setIsValid</code></td>
+    <td><code>Dispatch&lt;SetStateAction&lt;boolean>></code></td>
+    <td>The internal <code>setIsValid</code> method to determine which modifer (<code>valid</code> or <code>invalid</code>) to apply to the field Component</td>
+  </tr>
+  <tr>
+    <td><code>setErrorMessage</code></td>
+    <td><code>Dispatch&lt;SetStateAction&lt;string>></code></td>
+    <td>The internal <code>setErrorMessage</code> method to update the field's error message</td>
+  </tr>
+  <tr>
+    <td><code>validators</code></td>
+    <td><code><a href="#validatorstype">ValidatorsType</a></code></td>
+    <td>The list of <a href="#validators">validators</a> passed when creating the field</td>
+  </tr>
+  <tr>
+    <td><code>onValidation</code></td>
+    <td><code><a href="#onvalidationtype">OnValidationType</a></code></td>
+    <td>The <a href="#onvalidation"><code>onValidation</code></a> callback passed when creating the field</td>
+  </tr>
+  <tr>
+    <td><code>isValid</code></td>
+    <td><code>(fields:&nbsp;{&nbsp;[id:&nbsp;string]:&nbsp;<a href="#fieldobject">FieldObject</a>&nbsp;})&nbsp;=>&nbsp;boolean</code></td>
+    <td>Determine if the field is valid (<code>fields</code> is only required if the field's validators depend on other fields, in which case only those fields need to be specified (via Object destruction))</td>
+  </tr>
+  <tr>
+    <td><code>validate</code></td>
+    <td><code>(fields:&nbsp;{&nbsp;[id:&nbsp;string]:&nbsp;<a href="#fieldobject">FieldObject</a>&nbsp;})&nbsp;=>&nbsp;void</code></td>
+    <td>Calls <code>setIsValid</code> (based on the result of the validators), <code>setErrorMessage</code> (based on the first failing validator) and <code>onValidation</code></td>
+  </tr>
+  <tr>
+    <td><code>value</code></td>
+    <td><code>() => string</code></td>
+    <td>Get the value of the input field</td>
+  </tr>
+  <tr>
+    <td><code>checked</code></td>
+    <td><code>() => boolean</code></td>
+    <td>Determine whether a field with a type of <code>radio</code> or <code>checkbox</code> is checked</td>
+  </tr>
+</table>
+
+### `FieldObject`
+
+The `FieldObject` is a list of properties available when creating One-Nexus Form fields and fieldsets.
+
+```jsx
+<Form>
+  <Form.Field property={value} />
+  <Form.Field property={value} />
+</Form>
+```
+
+```jsx
+<Form fields={[
+  {
+    property: value
+  },
+  {
+    property: value
+  }
+]} />
+```
+
+<table>
+  <thead>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Description</th>
+  </thead>
+  <tr>
+    <td><code>id</code></td>
+    <td><code>string</code></td>
+    <td>Unique (relative to the form) identifier for the field</td>
+  </tr>
+  <tr>
+    <td><code>type</code></td>
+    <td>
+      <code>string(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#%3Cinput%3E_types">HTMLInputElement.Types</a>) | 'fieldset'</code>
+    </td>
+    <td>The type of HTML input to render (or for specifying that the current collection defines a new fielset)</td>
+  </tr>
+  <tr>
+    <td><code><a href="#fieldobjectlabel">label?</a></code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
+    <td>The label for the field</td>
+  </tr>
+  <tr>
+    <td><code><a href="#fieldobjectlegend">legend?</a></code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
+    <td>When type is `fieldset`, this property allows you to specify a legend for the fieldset</td>
+  </tr>
+  <tr>
+    <td><code>icon?</code></td>
+    <td><code>string</code></td>
+    <td>A glyph to pass to the <code>glyph</code> prop of the <code><a href="#TODO">&lt;Icon /></a></code> Module</td>
+  </tr>
+  <tr>
+    <td><code>options?</code></td>
+    <td><code>Array&lt;string(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#Attributes">HTMLOptionElement.Attributes</a>)></code></td>
+    <td>List of dropdown options to use when type is <code>select</code></td>
+  </tr>
+  <tr>
+    <td><code>fields?</code></td>
+    <td><code>Array&lt;<a href="#FieldObject">FieldObject</a>></code></td>
+    <td>A list of fields/sub-fieldsets to render when type is <code>fieldset</code></td>
+  </tr>
+  <tr>
+    <td><code>group?</code></td>
+    <td><code>string</code></td>
+    <td>Unique identifier (relative to the form) for grouping fields with a type of <code>radio</code> and <code>checkbox</code></td>
+  </tr>
+  <tr>
+    <td><code>render?</code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
+    <td>Content to render when type is <code>HTML</code></td>
+  </tr>
+  <tr>
+    <td><code>after?</code></td>
+    <td><code>Object</code></td>
+    <td>Content to render after the field (see <a href="#formcontrolledelement"><code>Form.ControlledElement</code> Props for available properties)</td>
+  </tr>
+  <tr>
+    <td><code>validateOn?</code></td>
+    <td><code>Array&lt;'blur' | 'change'></code></td>
+    <td>Control the events that should trigger the field's validators (defaults to <code><a href="#configvalidatefieldson">config.validateFieldsOn</a></code>)</td>
+  </tr>
+  <tr>
+    <td><code>validators?</code></td>
+    <td><code><a href="#validatorstype">ValidatorsType</a></code></td>
+    <td>List of validators on which to validate the field</td>
+  </tr>
+  <tr>
+    <td><code>onValidation?</code></td>
+    <td><code><a href="#onvalidationtype">OnValidationType</a></code></td>
+    <td>Callback function to execute whenever the field is validated (will be executed regardless of successul validation)</td>
+  </tr>
+  <tr>
+    <td><code>visible?</code></td>
+    <td><code><a href="#visibletype">VisibleType</a></code></td>
+    <td>List of rules to control the field's visibility (will be executed on load, and whenever <b>any</b> event is triggered on <b>any</b> field)</td>
+  </tr>
+</table>
+
+#### Validators
+
+###### `ValidatorsType`
+
+```js
+Array<{ rule: (value: string, fields: { [id: string]: FieldObject }) => boolean; message?: string }>
+```
+
+```js
+Array<(value: string, fields: { [id: string]: FieldObject }) => boolean>
+```
+
+###### Example
+
+```jsx
+<Form fields={[
+  {
+    type: 'password',
+    id: 'userPassword',
+    label: 'Password',
+    required: true,
+    validators: [
+      {
+        rule: value => value.length > 8,
+        message: 'Must be more than 8 characters'
+      }
+    ],
+  },
+  {
+    type: 'password',
+    id: 'passwordReEnter',
+    label: 'Re-enter Password',
+    required: true,
+    validators: [
+      {
+        rule: (value, { userPassword }) => value === userPassword.value(),
+        message: 'Passwords do not match'
+      }
+    ]
+  }
+]} />
+```
+
+#### OnValidation
+
+###### `OnValidationType`
+
+```js
+(result: { value: string; isValid: boolean; message: string }, fields: { [id: string]: FieldObject }) => void
+```
+
+###### Example
+
+```jsx
+<Form fields={[
+  {
+    type: 'password',
+    id: 'userPassword',
+    label: 'Password',
+    required: true,
+    validators: [
+      {
+        rule: value => value.length > 8,
+        message: 'Must be more than 8 characters'
+      }
+    ],
+    onValidation: ({}, { passwordReEnter, userPassword }) => {
+      // As passwordReEnter's validity depends on the value of userPassword,
+      // we must re-validate passwordReEnter if it has previously been validated
+      if (passwordReEnter.value().length) {
+        passwordReEnter.validate({ userPassword });
+      }
     },
-    {
-        type: 'password',
-        label: 'Password'
+  },
+  {
+    type: 'password',
+    id: 'passwordReEnter',
+    label: 'Re-enter Password',
+    required: true,
+    validators: [
+      {
+        rule: (value, { userPassword }) => value === userPassword.value(),
+        message: 'Passwords do not match'
+      }
+    ]
+  }
+]} />
+```
+
+#### Visible
+
+###### `VisibleType`
+
+```js
+Array<(fields: { [id: string]: FieldObject }) => boolean>
+```
+
+###### Example
+
+```jsx
+<Form fields={[
+  {
+    type: 'checkbox',
+    id: 'freeSpam',
+    label: 'I would like to receive free spam',
+    after: {
+      id: 'freeSpamAlert',
+      render: <Alert>You will receive free spam</Alert>,
+      visible: [({ freeSpam }) => freeSpam.checked()]
     }
+  }
+]} />
+```
+
+In order for a field to be `visible`, every function within the array must return `true`, otherwise the field will remain/become hidden. Fields with a `visible` property will be hidden by default unless all conditions within the `visible` array are `true` when the form loads.
+
+#### `FieldObject.label`
+
+This property will behave differently depending on whether you pass a String, or a [ReactElement](https://reactjs.org/docs/glossary.html#elements). To learn more, read the [Controlling HTML Output](#TODO) section of One-Nexus Modules page.
+
+#### `FieldObject.legend`
+
+This property will behave differently depending on whether you pass a String, or a [ReactElement](https://reactjs.org/docs/glossary.html#elements). To learn more, read the [Controlling HTML Output](#TODO) section of One-Nexus Modules page.
+
+### `props.fields`
+
+> A list of fields/fieldsets to use for the Form
+
+<table>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>Array&lt;<a href="#FieldObject">FieldObject</a>></code></td>
+  </tr>
+</table>
+
+```jsx
+<Form fields={[
+  {
+    type: 'text',
+    id: 'username',
+    label: 'Username'
+  },
+  {
+    type: 'password',
+    id: 'password',
+    label: 'Password'
+  }
 ]} submit='Login' />
 ```
 
-#### Custom Build
+#### Manually Create Fields/Fieldsets
+
+You can have more control over the structure of your form by using the [`Form.Field`](#formfield), [`Form.Fieldset`](#formfieldset) and [`Form.ControlledElement`](#formcontrolledelement) APIs (combined with JSX) instead of passing `props.fields`.
+
+###### Basic Example
 
 ```jsx
-<Module name='form'>
-    <Component name='group' validate>
-        <Component name='label'>Username</Component>
-        <Component name='field'>
-            <Component name='input' required type='text' id='username' />
-        </Component>
-    </Component>
+<Form>
+  <div>
+    <Form.Field type='text' id='username' label='Username' />
+  </div>
 
-    <Component name='group' validate>
-        <Component name='label'>Password</Component>
-        <Component name='field'>
-            <Component name='input' required type='password' id='userPassword' />
-        </Component>
-    </Component>
+  <div>
+    <Form.Field type='password' id='password' label='Password' />
+  </div>
 
-    <Component name='footer' object>
-        <Component name='submit' Button type='submit' value='Login' tag='input' />
-    </Component>
-</Module>
+  <div>
+    <Button type='submit'>Login</Button>
+  </div>
+</Form>
 ```
 
-### API
+### `props.submit`
 
-* [[...Global props]](https://github.com/esr360/One-Nexus/wiki/Rendering-a-module#global-props)
-* [DefaultProps](#defaultprops)
-* [Props.fields](#propsfields)
-* [Props.submit](#propssubmit)
-* [Props.setState](#propssetState)
-* [Props.validate](#propsvalidate)
-
-#### DefaultProps
-
-```js
-{
-    object: true,
-    setState: interactions.setState,
-    validate: interactions.validate,
-    submit: { text: 'Submit', Button: 'size-3' }
-}
-```
-
-#### Props.fields
-
-> Array of [FieldDraft](#fielddraft)'s to render
+> The value to use for the Form's `submit` button
 
 <table>
-    <tr>
-        <td><b>Type</b></td>
-        <td><code>Array</code></td>
-    </tr>
+  <tr>
+    <td><b>Type</b></td>
+    <td><code>string</code></td>
+  </tr>
 </table>
 
-* [Basic Example](#basic-example)
-* [With Input Icon](#with-input-icon)
-* [With Fieldset Type](#with-fieldset-type)
-* [With Child Fieldset](#with-child-fieldset)
-* [With Validation](#with-validation)
-* [With Display Rules](#with-display-rules)
-
-##### Basic Example
-
 ```jsx
-const fields = [
-    {
-        type: 'text',
-        label: 'Username'
-    },
-    {
-        type: 'password',
-        label: 'Password'
-    }
-];
-
-<Form fields={fields} />
+<Form fields={fields} submit='Login' />
 ```
 
-##### With Input Icon
+> You can [manually construct your form's JSX](#manually-create-fieldsfieldsets) (including the submit button) and omit passing the `fields` and `submit` props
 
-> `icon` value should correspond to a [FontAwesome icon name](http://fontawesome.io/icons/)
+### `Form.Field`
 
-```jsx
-const fields = [
-    {
-        type: 'text',
-        icon: 'user',
-        label: 'Username'
-    },
-    {
-        type: 'password',
-        icon: 'key',
-        label: 'Password'
-    }
-];
-
-<Form fields={fields} />
-```
-
-##### With Fieldset Type
+The `<Form.Field>` Component is used as an alternative to passing [`props.fields`](#propsfields) to `<Form>`, should you need more control over the structure of the Form.
 
 ```jsx
-const fields = [
-    {
-        type: 'fieldset',
-        legend: 'Login',
-        fields: [
-            {
-                type: 'text',
-                label: 'Username'
-            },
-            {
-                type: 'password',
-                label: 'Password'
-            }
-        ]
-    },
-    {
-        type: 'fieldset',
-        ...
-    }
-];
+<Form>
+  <div>
+    <Form.Field type='text' id='username' label='Username' />
+  </div>
 
-<Form fields={fields} />
+  <div>
+    <Form.Field type='password' id='password' label='Password' />
+  </div>
+
+  ...
+</Form>
 ```
 
-##### With Child Fieldset
+#### Props
+
+> `Form.Field` accepts any property from [`FieldObject`](#fieldobject) as a prop
+
+### `Form.Fieldset`
+
+The `<Form.Fieldset>` Component is used as an alternative to passing [`props.fields`](#TODO) to `<Form>`, should you need more control over the structure of the Form.
 
 ```jsx
-const fields = [
-    {
-        type: 'checkbox',
-        label: 'Receive post',
-        fieldset: {
-            legend: 'Address',
-            fields: [
-                {
-                    type: 'text',
-                    label: 'Address Line 1'
-                },
-                {
-                    type: 'text',
-                    label: 'Address Line 2'
-                },
-                {
-                    type: 'text',
-                    label: 'City'
-                },
-                {
-                    type: 'text',
-                    label: 'Postcode'
-                }
-            ]
-        }
-    }
-];
+<Form>
+  <Form.Fieldset legend='Your Details'>
+    <Form.Field type='text' id='firstName' label='First Name' />
+    <Form.Field type='text' id='lastName' label='Last Name' />
+    <Form.Field type='email' id='email' label='Email Address' />
+  </Form.Fieldset>
 
-<Form fields={fields} />
+  ...
+</Form>
 ```
 
-##### With Validation
-
-> See the [FieldDraft.validate section](#fielddraftvalidate) for more info
-
-The validation rules for each field get called whenever there is:
-
-* an `onClick` event triggered by the form's submit button
-* an `onFocus` event triggered by one of the form's fields
-* an `onKeyUp` event triggered by one of the form's fields
-* an `onChange` event triggered by one of the form's radio, checkbox or select elements
-* a load or refresh of the page
-
-```jsx
-const fields = [
-    {
-        type: 'fieldset',
-        id: 'loginDetails',
-        legend: 'Login Details',
-        fields: [
-            {
-                type: 'text',
-                label: 'Username',
-                id: 'username',
-                required: true,
-                validate: [
-                    {
-                        rule: field => field.value.length > 3,
-                        message: 'Must be more than 3 characters'
-                    }
-                ]
-            },
-            {
-                type: 'password',
-                label: 'Password',
-                id: 'userPassword',
-                required: true,
-                validate: [
-                    {
-                        rule: field => field.value.length > 8,
-                        message: 'Must be more than 8 characters'
-                    }
-                ]
-            },
-            {
-                type: 'password',
-                id: 'passwordReEnter',
-                label: 'Re-enter Password',
-                required: true,
-                validate: [
-                    {
-                        rule: (userPassword, passwordReEnter) => {
-                            return passwordReEnter.value === userPassword.value;
-                        },
-                        message: 'Passwords do not match'
-                    }
-                ]
-            }
-        ]
-    }
-]
-
-<Form fields={fields} />
-```
-
-##### With Display Rules
-
-> See the [FieldDraft.rules section](#fielddraftrules) for more info
-
-The field rules for each field will be called when:
-
-* a `keyUp` event triggered by one of the form's fields
-* an `onChange` event triggered by one of the form's radio, checkbox or select elements
-* the page is loaded/refreshed
-
-```jsx
-const fields = [
-    {
-        type: 'checkbox',
-        id: 'isHomeless',
-        label: 'I`m homeless',
-        fieldset: {
-            type: 'fieldset',
-            legend: 'Address',
-            id: 'address',
-            fields: [
-                ...
-            ],
-            // #Address fieldset will only be shown if
-            // the #isHomeless checkbox is not checked
-            // - i.e it will be hidden if it is checked
-            rules: [isHomeless => !isHomeless.checked]
-        }
-    }
-];
-
-<Form fields={fields} />
-```
-
-#### Props.submit
-
-> To suppress the submit button's render, set the value to `false`
+#### Props
 
 <table>
-    <tr>
-        <td><b>Type</b></td>
-        <td><code>(String|Object)</code></td>
-    </tr>
-    <tr>
-        <td><b>Default</b></td>
-        <td><code>Submit</code></td>
-    </tr>
+  <thead>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Description</th>
+  </thead>
+  <tr>
+    <td><code>legend?</code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
+    <td>The Fieldset legend</td>
+  </tr>
+  <tr>
+    <td><code>fields?</code></td>
+    <td><code>Array&lt;<a href="#FieldObject">FieldObject</a>></code></td>
+    <td>A list of fields/sub-fieldsets to use for the Fieldset</td>
+  </tr>
+  <tr>
+    <td><code>id?</code></td>
+    <td><code>string</code></td>
+    <td>Unique (relative to the form) identifier for the field</td>
+  </tr>
+  <tr>
+    <td><code>after?</code></td>
+    <td><code>Object</code></td>
+    <td>Content to render after the Fieldset (see <a href="#formcontrolledelement"><code>Form.ControlledElement</code> Props for available properties)</td>
+  </tr>
+  <tr>
+    <td><code>...</code></td>
+    <td></td>
+    <td><a href="#TODO">Any <code>Form.ControlledElement</code> Prop</a></td>
+  </tr>
 </table>
 
-```jsx
-<Form fields={...} submit='Sign Up' />
-```
+### `Form.ControlledElement`
 
-##### With Custom Attributes
+A "controlled element" in this context means an element whose visibility is (typically) dynamically determined/controlled by one or more fields within the Form (but not always). All fields within a Form are controlled elements, as are all fieldsets and elements created by the `after` `FieldObject` property (you may notice that any element/object that accepts an `id` prop corresponds to a controlled element). This allows you to easily hide and show fields and other content within the Form.
 
-> Properties will be passed as `props` to the [`<Component>`](#TODO) which renders the submit element
+If you are [manually constructing the Form's JSX](#manually-create-fieldsfieldsets) you can use `Form.ControlledElement` to create dynamically visible content.
 
 ```jsx
-<Form fields={...} submit={{ text: 'Sign Up', Button: ['size-4', 'brand-1'] }} />
+const showSomeWarning = ({ somethingDangerous }) => somethingDangerous.checked();
+
+const Form = (
+  <Form>
+      <Form.Field type='checkbox' id='somethingDangerous' label='I too like to live dangerously' />
+
+      <Form.ControlledElement id='someWarning' visible={[showSomeWarning]}>
+        This is some custom content that is hidden by default; it will become visible 
+        when the `somethingDangerous` checkbox is checked
+      </Form.ControlledElement>
+
+      <Button type='submit'>Submit</Button>
+  </Form>
+);
 ```
 
-The above is syntactic sugar for the [`<Button>` module](https://github.com/esr360/One-Nexus/tree/refactor/src/ui/modules/elements/button):
-
-```jsx
-<Form fields={...} submit={{ text: 'Sign Up', className: 'button-size-4-brand-1' }} />
-```
-
-```jsx
-<Form fields={...} submit={{ text: 'Sign Up', onClick: e => {
-    e.preventDefault();
-
-    // handle form submission...
-}}} />
-```
-
-#### Props.setState
-
-> Overwrite the default `setState` method
-
-This method gets called whenever there is:
-
-* a `keyUp` event triggered by one of the form's fields
-* an `onChange` event triggered by one of the form's radio, checkbox or select elements
-* the page is loaded/refreshed
+#### Props
 
 <table>
-    <tr>
-        <td><b>Type</b></td>
-        <td><code>Function</code></td>
-    </tr>
-    <tr>
-        <td><b>Default</b></td>
-        <td><a href="#setstate"><code>interactions.setState</code></a></td>
-    </tr>
+  <thead>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Description</th>
+  </thead>
+  <tr>
+    <td><code>id</code></td>
+    <td><code>string</code></td>
+    <td>Unique (relative to the form) identifier for the element</td>
+  </tr>
+  <tr>
+    <td><code>visible?</code></td>
+    <td><code><a href="#visibletype">VisibleType</a></code></td>
+    <td>List of rules to control the element's visibility (will be executed on load, and whenever <b>any</b> event is triggered on <b>any</b> field)</td>
+  </tr>
+  <tr>
+    <td><code>render?</code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
+    <td>Content to render instead of <code>props.children</code></td>
+  </tr>
+  <tr>
+    <td><code>tag</code></td>
+    <td>
+      <code>string(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTMLElement</a>)</code>&nbsp;|&nbsp;<code><a href="https://react-cn.github.io/react/docs/glossary.html#react-components">ReactComponent</a></code>
+    </td>
+    <td>The underlying HTML Element or React Component to render (defaults to <code>div</code>)</td>
+  </tr>
 </table>
-
-```jsx
-<Form fields={fields} setState={fields => {
-    // manually handle state of fields
-}} />
-```
-
-You can import and call the setState interaction manually:
-
-```jsx
-import { setState } from '../../form/form.js';
-```
-
-```jsx
-<Form fields={fields} setState={fields => setState(fields)} />
-```
-
-#### Props.validate
-
-> Overwrite the default `validate` method
-
-This method gets called whenever there is:
-
-* an `onClick` event triggered by the form's submit button
-* an `onFocus` event triggered by one of the form's fields
-* an `onKeyUp` event triggered by one of the form's fields
-* an `onChange` event triggered by one of the form's radio, checkbox or select elements
-* a load or refresh of the page
-
-<table>
-    <tr>
-        <td><b>Type</b></td>
-        <td><code>Function</code></td>
-    </tr>
-    <tr>
-        <td><b>Default</b></td>
-        <td><a href="#validate"><code>interactions.validate</code></a></td>
-    </tr>
-</table>
-
-> See the [Field-Draft](#fielddraft) section for more information 
-
-```js
-const fields = [
-    {
-        type: 'text',
-        label: 'Username',
-        id: 'username',
-        validate: [
-            {
-                rule: field => field.value.length > 3,
-                message: 'Must be more than 3 characters'
-            }
-        ]
-    },
-    {
-        type: 'password',
-        label: 'Password',
-        id: 'userPassword',
-        validate: [
-            {
-                rule: field => field.value.length > 8,
-                message: 'Must be more than 8 characters'
-            }
-        ]
-    }
-];
-
-const validate = (field, rules) => {
-    rules.forEach(rule => {
-        if (!rule.rule(document.getElementById(field))) {
-            console.log(rule.message);
-        }
-    });
-}
-```
-
-```jsx
-<Form fields={fields} validate={validate} />
-```
-
-You can import and call the validate interaction manually:
-
-```jsx
-import { validate } from '../../form/form.js';
-```
-
-```jsx
-<Form fields={fields} validate={(field, rules) => validate(field, rules)} />
-```
-
-## Representations
-
-### FieldDraft
-
-A FieldDraft is a JavaScript Object which represents a Form group.
-
-* [FieldDraft.type](#fielddrafttype)
-* [FieldDraft.label](#fielddraftlabel)
-* [FieldDraft.legend](#fielddraftlegend)
-* [FieldDraft.icon](#fielddrafticon)
-* [FieldDraft.rules](#fielddraftrules)
-* [FieldDraft.validate](#fielddraftvalidate)
-* [FieldDraft.fieldset](#fielddraftfieldset)
-* [FieldDraft.compound](#fielddraftcompound)
-* [FieldDraft.groupProps](#fielddraftgroupprops)
-* [FieldDraft.before/FieldDraft.after](#fielddraftbeforefielddraftafter)
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Param</th>
-            <th>Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>type</code></td>
-            <td><code>String</code></td>
-            <td>The <a href="#fielddrafttype">type</a> of Form group</td>
-        </tr>
-        <tr>
-            <td><code>label</code></td>
-            <td><code>String</code></td>
-            <td>The text to use for the field's label</td>
-        </tr>
-        <tr>
-            <td><code>legend</code></td>
-            <td><code>(String|object)</code></td>
-            <td>The group's <a href="#fielddraftlegend">legend</a> if <code>type</code> is <code>'fieldset'</code></td>
-        </tr>
-        <tr>
-            <td><code>icon</code></td>
-            <td><code>String</code></td>
-            <td><a href="http://fontawesome.io/icons/">FontAwesome</a> icon name</td>
-        </tr>
-        <tr>
-            <td><code>validate</code></td>
-            <td><code>Array</code></td>
-            <td><a href="#fielddraftvalidate">Validator</a> conditions to determine whether the field should validate</td>
-        </tr>
-        <tr>
-            <td><code>rules</code></td>
-            <td><code>Array</code></td>
-            <td><a href="#fielddraftrules">Rules</a> to determine whether the field should be visible</td>
-        </tr>
-        <tr>
-            <td><code>fields</code></td>
-            <td><code>Array</code></td>
-            <td>Array of <a href="#fielddraft">FieldDraft</a>'s to use when <code>type</code> is <code>fieldset</code>, or to pass to the <code>fieldset</code> parameter</td>
-        </tr>
-        <tr>
-            <td><code>fieldset</code></td>
-            <td><code>Object</code></td>
-            <td>Add a child fieldset (see <a href="#fielddraftfieldset">FieldDraft.fieldset</a>)</td>
-        </tr>
-        <tr>
-            <td><code>groupProps</code></td>
-            <td><code>Object</code></td>
-            <td>Properties to pass to the Form `group` Component</td>
-        </tr>
-        <tr>
-            <td><code>Compound</code></td>
-            <td><code>Bool</code></td>
-            <td>If <code>true</code>, form group will has smaller top/bottom margin</td>
-        </tr>
-        <tr>
-            <td><code>before</code></td>
-            <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
-            <td>Content to insert before the group's field(s) (see <a href="#fielddraftbeforefielddraftafter">FieldDraft.before</a>)</td>
-        </tr>
-        <tr>
-            <td><code>after</code></td>
-            <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
-            <td>Content to insert after the group's field(s) (see <a href="#fielddraftbeforefielddraftafter">FieldDraft.after</a>)</td>
-        </tr>
-        <tr>
-            <td><code>render</code></td>
-            <td><code>(String | <a href="https://reactjs.org/docs/glossary.html#elements">ReactElement</a>)</code></td>
-            <td>Content to render when <code>type</code> is <code>'HTML'</code></td>
-        </tr>
-        <tr>
-            <td><code>{HTML Attributes}</code></td>
-            <td><code>String</code></td>
-            <td>Any valid <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes">HTML attribute</a></td>
-        </tr>
-    </tbody>
-</table>
-
-##### Example
-
-```js
-{
-    type: 'text',
-    label: 'Username',
-    id: 'username',
-    required: true,
-    validate: [{
-        rule: field => field.value.length > 3,
-        message: 'Username must be more than 3 characters'
-    }]
-}
-```
-
-#### FieldDraft.type
-
-The `type` parameter for a FieldDraft can be one of the following:
-
-* any valid [HTML input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types), to represent an input HTML element
-* `fieldset` | `textarea` - to represent an HTML element of the corresponding tag
-* `HTML` - to represent a custom HTML/JSX block
-
-#### FieldDraft.label
-
-##### Basic example
-
-```js
-{
-    label: 'Field label'
-}
-```
-
-##### Pass custom attributes
-
-> Properties will be passed as `props` to the [`<Component>`](#TODO) which renders the label element
-
-```js
-{
-    label: {
-        title: 'Field label',
-        Heading: 'size-4',
-        ...
-    }
-}
-```
-
-#### FieldDraft.legend
-
-> For use when `type` is `fieldset` or when using the `fieldset` parameter
-
-##### Basic example
-
-```js
-{
-    legend: 'Legend title'
-}
-```
-
-##### Pass custom attributes
-
-> Properties will be passed as `props` to the [`<Component>`](#TODO) which renders the legend element
-
-```js
-{
-    legend: {
-        title: 'Legend title',
-        Heading: 'size-4',
-        ...
-    }
-}
-```
-
-#### FieldDraft.icon
-
-> Value should correspond to a [FontAwesome icon name](http://fontawesome.io/icons/)
-
-```js
-{
-    icon: 'user'
-}
-```
-
-##### Sample Output
-
-```html
-<div class="form_group-has-icon">
-    <label class="form_label" for="username">Username</label>
-    <div class="form_field">
-        <input class="form_input" type="text" id="username">
-        <i class="form_icon fa fa-user"></i>
-    </div>
-</div>
-```
-
-#### FieldDraft.rules
-
-> An array of conditions which will determine whether or not the field will be visible
-
-* For a field to be visible, all conditions must return `true`
-* To hide a field based on some criteria, create a condition which returns `false`
-
-```js
-{
-    rules: [
-        //field will show when checkbox with id `foo` is checked
-        document.getElementById('foo').checked,
-
-        // `foo` will dynamically fetch the checkbox with id `foo`,
-        // as such, the below is the same as the above
-        foo => foo.checked,
-
-        // `foo` and `bar` will dynamically fetch inputs with the
-        // corresponding IDs of `foo` and `bar` - condition will test
-        // whether the values for inputs `foo` and `bar` are equal
-        (foo, bar) => foo.value === bar.value
-
-        // hide the field if checkbox with id `fizz` is checked
-        fizz => !fizz.checked
-    ]
-}
-```
-
-Field will be visible:
-
-```js
-{
-    rules: [true, true, true]
-}
-```
-
-Field will be hidden:
-
-```js
-{
-    rules: [true, false, true]
-}
-```
-
-#### FieldDraft.validate
-
-> An array of conditions which will determine whether or not the field is valid
-
-> For a field to be valid, all conditions must return `true`
-
-```js
-{
-    validate: [
-        // The field's value must be more than 3 characters
-        field => field.value.length > 3,
-
-        // `foo` and `bar` will dynamically fetch inputs with the
-        // corresponding IDs of `foo` and `bar` - condition will test
-        // whether the values for inputs `foo` and `bar` are equal
-        (foo, bar) => foo.value === bar.value,
-
-        // Set a custom error message
-        {
-            rule: field => field.value.length > 3,
-            message: 'Must be more than 3 characters'
-        },
-        {
-            rule: (foo, bar) => foo.value === bar.value,
-            message: 'Passwords do not match'
-        }
-    ]
-}
-```
-
-#### FieldDraft.fieldset
-
-> Create a child fieldset element
-
-```js
-{
-    fieldset: {...FieldDraft}
-}
-```
-
-#### FieldDraft.compound
-
-> Create tighter form groups
-
-```js
-{
-    compound: true
-}
-```
-
-##### Sample Output
-
-```html
-<div class="form_group-compound">
-    <input type="text" class="form_input" placeholder="Username">
-</div>
-<div class="form_group-compound">
-    <input type="password" class="form_input" placeholder="••••••••">
-</div>
-```
-
-#### FieldDraft.groupProps
-
-> Properties will be passed as `props` to the [`<Component>`](#TODO) which renders the group element
-
-```js
-{
-    groupProps: {
-        Well: 'border'
-    }
-}
-```
-
-The above is syntactic sugar for the [`<Well>` module](https://github.com/esr360/One-Nexus/tree/refactor/src/ui/modules/elements/well):
-
-```js
-{
-    groupProps: {
-        className: 'well-border'
-    }
-}
-```
-
-##### Sample Output
-
-```html
-<div class="form_group well-border">
-    ...
-</div>
-```
-
-#### FieldDraft.before/FieldDraft.after
-
-> Insert content before or after the field group's content
-
-```jsx
-{
-    before: <Alert>Alert Message</Alert>,
-    after: <Alert>Alert Message</Alert>
-}
-```
-
-#####  Conditional visiblity
-
-```jsx
-after: {
-    id: 'freeSpamAlert',
-    render: <Alert info>You will receive free spam</Alert>,
-    rules: [someCheckbox => someCheckbox.checked]
-}
-```
-
-##### Custom attributes
-
-> Properties will be passed as `props` to the [`<Component>`](#TODO) which renders the `before`/`after` content
-
-```jsx
-after: {
-    render: <Alert>Alert Message</Alert>,
-    className: 'object-small',
-    ...
-}
-```

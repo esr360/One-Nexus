@@ -63,147 +63,147 @@ export default props => (
                       },
 
                       // Personal Details
-                      // {
-                      //   type: 'fieldset',
-                      //   id: 'personalDetails',
-                      //   legend: 'Personal Details',
-                      //   fields: [
-                      //     {
-                      //       type: 'email',
-                      //       label: 'Email Address',
-                      //       id: 'email',
-                      //       required: true
-                      //     },
-                      //     {
-                      //       type: 'tel',
-                      //       label: 'Phone Number',
-                      //       id: 'phoneNumber'
-                      //     },
-                      //     {
-                      //       type: 'checkbox',
-                      //       id: 'isHomeless',
-                      //       label: 'I\'m homeless',
-                      //       fieldset: {
-                      //         type: 'fieldset',
-                      //         legend: 'Address',
-                      //         id: 'address',
-                      //         fields: [
-                      //           {
-                      //             type: 'text',
-                      //             label: 'Address Line 1',
-                      //             id: 'addressLine1'
-                      //           },
-                      //           {
-                      //             type: 'text',
-                      //             label: 'Address Line 2',
-                      //             id: 'addressLine2'
-                      //           },
-                      //           {
-                      //             type: 'text',
-                      //             label: 'City',
-                      //             id: 'addressCity'
-                      //           },
-                      //           {
-                      //             type: 'text',
-                      //             label: 'Postcode',
-                      //             id: 'addressPostcode'
-                      //           }
-                      //         ],
-                      //         visible: [({ isHomeless }) => !isHomeless.checked()]
-                      //       }
-                      //     },
-                      //     {
-                      //       type: 'select',
-                      //       id: 'country',
-                      //       label: 'Country',
-                      //       required: true,
-                      //       options: [
-                      //         {
-                      //           value: 'Choose your county',
-                      //           selected: true,
-                      //           disabled: true
-                      //         },
-                      //         { value: 'UK' },
-                      //         { value: 'USA' }
-                      //       ],
-                      //       validators: [value => value === 'UK']
-                      //     }
-                      //   ]
-                      // }
+                      {
+                        type: 'fieldset',
+                        id: 'personalDetails',
+                        legend: 'Personal Details',
+                        fields: [
+                          {
+                            type: 'email',
+                            label: 'Email Address',
+                            id: 'email',
+                            required: true
+                          },
+                          {
+                            type: 'tel',
+                            label: 'Phone Number',
+                            id: 'phoneNumber'
+                          },
+                          {
+                            type: 'checkbox',
+                            id: 'isHomeless',
+                            label: 'I\'m homeless',
+                            fieldset: {
+                              type: 'fieldset',
+                              legend: 'Address',
+                              id: 'address',
+                              fields: [
+                                {
+                                  type: 'text',
+                                  label: 'Address Line 1',
+                                  id: 'addressLine1'
+                                },
+                                {
+                                  type: 'text',
+                                  label: 'Address Line 2',
+                                  id: 'addressLine2'
+                                },
+                                {
+                                  type: 'text',
+                                  label: 'City',
+                                  id: 'addressCity'
+                                },
+                                {
+                                  type: 'text',
+                                  label: 'Postcode',
+                                  id: 'addressPostcode'
+                                }
+                              ],
+                              visible: [({ isHomeless }) => !isHomeless.checked()]
+                            }
+                          },
+                          {
+                            type: 'select',
+                            id: 'country',
+                            label: 'Country',
+                            required: true,
+                            options: [
+                              {
+                                value: 'Choose your county',
+                                selected: true,
+                                disabled: true
+                              },
+                              { value: 'UK' },
+                              { value: 'USA' }
+                            ],
+                            validators: [value => value === 'UK']
+                          }
+                        ]
+                      }
                     ]
                   },
 
-                  // {
-                  //   type: 'fieldset',
-                  //   id: 'offers',
-                  //   legend: 'Offers',
-                  //   fields: [
-                  //     {
-                  //       type: 'fieldset',
-                  //       legend: 'Fizzy:',
-                  //       id: 'fizzy',
-                  //       fields: [
-                  //         {
-                  //           type: 'checkbox',
-                  //           id: 'freeSpam',
-                  //           label: 'I would like to receive free spam',
-                  //           after: {
-                  //             id: 'freeSpamAlert',
-                  //             render: <Alert>You will receive free spam</Alert>,
-                  //             visible: [({ freeSpam }) => freeSpam.checked()]
-                  //           }
-                  //         },
-                  //         {
-                  //           type: 'checkbox',
-                  //           id: 'freePizza',
-                  //           label: 'I would like to receive a free large pizza',
-                  //           after: {
-                  //             id: 'freePizzaAlert',
-                  //             render: <Alert alert='info'>You will receive one large pizza</Alert>,
-                  //             visible: [({ freePizza }) => freePizza.checked()]
-                  //           }
-                  //         },
-                  //       ],
-                  //       after: {
-                  //         id: 'freeBoth',
-                  //         render: <Alert help>You want free spam and free pizza??</Alert>,
-                  //         visible: [({ freePizza, freeSpam }) => freePizza.checked() && freeSpam.checked()]
-                  //       }
-                  //     },
-                  //     {
-                  //       type: 'fieldset',
-                  //       legend: 'Choose one:',
-                  //       id: 'choose-one-x',
-                  //       fields: [
-                  //         {
-                  //           type: 'radio',
-                  //           id: 'freeXbox',
-                  //           label: 'Free Xbox 360',
-                  //           required: true
-                  //         },
-                  //         {
-                  //           type: 'radio',
-                  //           id: 'freePS4',
-                  //           label: 'Free Playstation 4',
-                  //           required: true
-                  //         },
-                  //         {
-                  //           type: 'radio',
-                  //           id: 'freeCheese',
-                  //           label: 'Free slice of cheddar cheese',
-                  //           required: true
-                  //         },
-                  //         {
-                  //           type: 'radio',
-                  //           id: 'giveUs10Bux',
-                  //           label: 'You agree to give us $10',
-                  //           required: true
-                  //         }
-                  //       ]
-                  //     }
-                  //   ],
-                  //   visible: [({ country }) => country.value() !== 'USA']
-                  // },
+                  {
+                    type: 'fieldset',
+                    id: 'offers',
+                    legend: 'Offers',
+                    fields: [
+                      {
+                        type: 'fieldset',
+                        legend: 'Fizzy:',
+                        id: 'fizzy',
+                        fields: [
+                          {
+                            type: 'checkbox',
+                            id: 'freeSpam',
+                            label: 'I would like to receive free spam',
+                            after: {
+                              id: 'freeSpamAlert',
+                              render: <Alert>You will receive free spam</Alert>,
+                              visible: [({ freeSpam }) => freeSpam.checked()]
+                            }
+                          },
+                          {
+                            type: 'checkbox',
+                            id: 'freePizza',
+                            label: 'I would like to receive a free large pizza',
+                            after: {
+                              id: 'freePizzaAlert',
+                              render: <Alert alert='info'>You will receive one large pizza</Alert>,
+                              visible: [({ freePizza }) => freePizza.checked()]
+                            }
+                          },
+                        ],
+                        after: {
+                          id: 'freeBoth',
+                          render: <Alert help>You want free spam and free pizza??</Alert>,
+                          visible: [({ freePizza, freeSpam }) => freePizza.checked() && freeSpam.checked()]
+                        }
+                      },
+                      {
+                        type: 'fieldset',
+                        legend: 'Choose one:',
+                        id: 'choose-one-x',
+                        fields: [
+                          {
+                            type: 'radio',
+                            id: 'freeXbox',
+                            label: 'Free Xbox 360',
+                            required: true
+                          },
+                          {
+                            type: 'radio',
+                            id: 'freePS4',
+                            label: 'Free Playstation 4',
+                            required: true
+                          },
+                          {
+                            type: 'radio',
+                            id: 'freeCheese',
+                            label: 'Free slice of cheddar cheese',
+                            required: true
+                          },
+                          {
+                            type: 'radio',
+                            id: 'giveUs10Bux',
+                            label: 'You agree to give us $10',
+                            required: true
+                          }
+                        ]
+                      }
+                    ],
+                    visible: [({ country }) => country.value() !== 'USA']
+                  },
                 ]} submit='Ok lets go!' />
             {/* </PAX5.column> */}
         {/* </PAX5.row> */}
