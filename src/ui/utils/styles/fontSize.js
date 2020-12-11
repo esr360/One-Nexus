@@ -1,7 +1,11 @@
 /**
  * Determine font-size of element based off modifier
  */
-export default function fontSize(state, sizes, theme, custom) {
+export default function fontSize(state, custom, theme, sizes) {
+  if (!sizes) {
+    sizes = custom.sizes;
+  }
+
   const defaults = {
     fluidScaling: 'modifier',
     'min-vw': theme.grid.breakpoints['break-1'],

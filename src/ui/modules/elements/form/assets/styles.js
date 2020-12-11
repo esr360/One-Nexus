@@ -19,12 +19,25 @@ export default ({ config, theme, utils }) => [config, {
     ...utils.object(state, config.gutter),
   }),
 
-  ...Object.fromEntries(['checkbox', 'radio'].map(key => [key, { 
+  wrapper: () => ({
+    'display': 'flex',
+    'align-items': 'center'
+  }),
+
+  ...Object.fromEntries(['checkbox', 'radio'].map(key => [key, {
     'height': '1em', 
     'margin-right': '1em' 
   }])),
 
-  fieldset: () => ({
+  foo: {
+    color: 'blue'
+  },
+
+  fieldset: ({ state }) => ({
+    ...(utils.object(state, config.fieldset.gutter)),
+
+    'margin-left': '0',
+    'margin-right': '0',
     'padding': '0',
     'border': 'none'
   }),
@@ -44,7 +57,9 @@ export default ({ config, theme, utils }) => [config, {
     'transition': theme.tokens.transition,
   }),
 
-  label: () => ({}),
+  legend: () => ({
+    'font-weight': 'bold'
+  }),
 
   input: ({ context: { group } }) => ({
     'display': 'block',
@@ -66,7 +81,7 @@ export default ({ config, theme, utils }) => [config, {
   }),
 
   button: () => ({
-    'background-color': 'red',
-    'font-style': 'italic'
+    // 'background-color': 'red',
+    // 'font-style': 'italic'
   })
 }];

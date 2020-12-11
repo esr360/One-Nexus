@@ -1,6 +1,6 @@
 # One-Nexus Form
 
-<img width="750px" src="http://www.onenexus.io/github/Form.png" />
+<img width="450px" src="https://edmundreed.com/projects/one-nexus/images/Form.png" />
 
 <table>
   <thead>
@@ -65,7 +65,7 @@
 ###### Structural Interface [[?]](#TODO)
 
 ```jsx
-<Module name='form'>
+<Module name='Form'>
   <Component name='group'>
     <Component name='label' />
 
@@ -256,12 +256,12 @@ The `FieldInterface` is the internal interace of a One-Nexus Form field that is 
   </tr>
   <tr>
     <td><code>isValid</code></td>
-    <td><code>(fields:&nbsp;{&nbsp;[id:&nbsp;string]:&nbsp;FieldObject&nbsp;})&nbsp;=>&nbsp;boolean</code></td>
-    <td>Determine if the field is valid (<code>fields</code> is only required if the field's validators depend on other fields, in which case only those fields need to be passed)</td>
+    <td><code>(fields:&nbsp;{&nbsp;[id:&nbsp;string]:&nbsp;<a href="#TODO">FieldObject</a>&nbsp;})&nbsp;=>&nbsp;boolean</code></td>
+    <td>Determine if the field is valid (<code>fields</code> is only required if the field's validators depend on other fields, in which case only those fields need to be specified (via Object destruction))</td>
   </tr>
   <tr>
     <td><code>validate</code></td>
-    <td><code>(fields:&nbsp;{&nbsp;[id:&nbsp;string]:&nbsp;FieldObject&nbsp;})&nbsp;=>&nbsp;void</code></td>
+    <td><code>(fields:&nbsp;{&nbsp;[id:&nbsp;string]:&nbsp;<a href="#TODO">FieldObject</a>&nbsp;})&nbsp;=>&nbsp;void</code></td>
     <td>Calls <code>setIsValid</code> (based on the result of the validators), <code>setErrorMessage</code> (based on the first failing validator) and <code>onValidation</code></td>
   </tr>
   <tr>
@@ -311,18 +311,20 @@ The `FieldObject` is a list of properties available when creating One-Nexus Form
   </tr>
   <tr>
     <td><code>type</code></td>
-    <td><code>string(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#%3Cinput%3E_types">HTMLInputElement.Types</a>)</code></td>
-    <td>The type of HTML input to render</td>
+    <td>
+      <code>string(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#%3Cinput%3E_types">HTMLInputElement.Types</a>) | 'fieldset'</code>
+    </td>
+    <td>The type of HTML input to render (or for specifying that the current collection defines a new fielset)</td>
   </tr>
   <tr>
-    <td><code>label?</code></td>
+    <td><code><a href="#TODO">label?</a></code></td>
     <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
     <td>The label for the field</td>
   </tr>
   <tr>
-    <td><code>hidden?</code></td>
-    <td><code>Boolean</code></td>
-    <td>Hide the field visually so it can later be shown dynamically (not to be confused with the HTML <code>hidden</code> attribute)</td>
+    <td><code><a href="#TODO">legend?</a></code></td>
+    <td><code><a href="https://react-cn.github.io/react/docs/glossary.html#react-nodes">ReactNode</a></code></td>
+    <td>When type is `fieldset`, this property allows you to specify a legend for the fieldset</td>
   </tr>
   <tr>
     <td><code>icon?</code></td>
@@ -370,9 +372,9 @@ The `FieldObject` is a list of properties available when creating One-Nexus Form
     <td>Callback function to execute whenever the field is validated (will be executed regardless of successul validation)</td>
   </tr>
   <tr>
-    <td><code>visibility?</code></td>
-    <td><code><a href="#TODO">VisibilityType</a></code></td>
-    <td>List of rules to control the field's visibility (will be executed whenever <b>any</b> event is triggered on <b>any</b> field)</td>
+    <td><code>visible?</code></td>
+    <td><code><a href="#TODO">VisibileType</a></code></td>
+    <td>List of rules to control the field's visibility (will be executed on load, and whenever <b>any</b> event is triggered on <b>any</b> field)</td>
   </tr>
 </table>
 
@@ -465,9 +467,9 @@ Array<(value: string, fields: { [id: string]: FieldObject }) => boolean>
 ]} />
 ```
 
-#### Visibility
+#### Visible
 
-###### `VisibilityType`
+###### `VisibileType`
 
 ```js
 Array<(fields: { [id: string]: FieldObject }) => boolean>
@@ -483,19 +485,22 @@ Array<(fields: { [id: string]: FieldObject }) => boolean>
     label: 'I would like to receive free spam',
     after: {
       id: 'freeSpamAlert',
-      hidden: true,
       render: <Alert>You will receive free spam</Alert>,
-      visibility: [({ freeSpam }) => freeSpam.checked()]
+      visible: [({ freeSpam }) => freeSpam.checked()]
     }
   }
 ]} />
 ```
 
-In order for a field to be `visible`, every function within the array must return `true`, otherwise the field will remain/become hidden, as show by this internal piece of code:
+In order for a field to be `visible`, every function within the array must return `true`, otherwise the field will remain/become hidden. Fields with a `visible` property will be hidden by default unless all conditions within the `visible` array are `true` when the form loads.
 
-```js
-visibility.every(determiner => determiner(formFields)) ? show() : hide()
-```
+#### FieldObject.label
+
+This property will behave differently depending on whether you pass a String, or a [ReactElement](https://reactjs.org/docs/glossary.html#elements). To learn more, read the [Controlling HTML Output](#TODO) section of One-Nexus Modules page.
+
+#### FieldObject.legend
+
+This property will behave differently depending on whether you pass a String, or a [ReactElement](https://reactjs.org/docs/glossary.html#elements). To learn more, read the [Controlling HTML Output](#TODO) section of One-Nexus Modules page.
 
 ### `props.fields`
 
@@ -648,7 +653,7 @@ const Form = (
   <Form>
       <Form.Field type='checkbox' id='somethingDangerous' label='I too like to live dangerously' />
 
-      <Form.ControlledElement id='someWarning' hidden={true} visibility={[showSomeWarning]}>
+      <Form.ControlledElement id='someWarning' visible={[showSomeWarning]}>
         This is some custom content that is hidden by default; it will become visible 
         when the `somethingDangerous` checkbox is checked
       </Form.ControlledElement>
@@ -672,14 +677,9 @@ const Form = (
     <td>Unique (relative to the form) identifier for the element</td>
   </tr>
   <tr>
-    <td><code>hidden?</code></td>
-    <td><code>Boolean</code></td>
-    <td>Hide the element visually so it can later be shown dynamically (not to be confused with the HTML <code>hidden</code> attribute)</td>
-  </tr>
-  <tr>
-    <td><code>visibility?</code></td>
-    <td><code><a href="#TODO">VisibilityType</a></code></td>
-    <td>List of rules to control the element's visibility (will be executed whenever <b>any</b> event is triggered on <b>any</b> field)</td>
+    <td><code>visible?</code></td>
+    <td><code><a href="#TODO">VisibileType</a></code></td>
+    <td>List of rules to control the element's visibility (will be executed on load, and whenever <b>any</b> event is triggered on <b>any</b> field)</td>
   </tr>
   <tr>
     <td><code>render?</code></td>

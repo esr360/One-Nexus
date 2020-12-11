@@ -6,7 +6,7 @@ export default ({ theme, state, context, config, utils }) => [config, {
   'text-decoration': 'none',
   'vertical-align': 'middle',
   'cursor': 'pointer',
-  'font-size': utils.fontSize(state, config.sizes, theme, config),
+  'font-size': utils.fontSize(state, config, theme),
 
   ...Object.entries(config.colors).reduce(($, [key, value]) => state[key] ? {
     'background-color': value,

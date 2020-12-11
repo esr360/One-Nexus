@@ -33,15 +33,17 @@ const Form = ({ fields, submit, children, ...props }) => {
   const { name, validateFieldsOn } = useConfig(props);
   const [formFields, updateFormFields] = React.useState({});
 
-  const controlledElements = Object.values(formFields).filter(({ visibility }) => visibility);
+  const controlledElements = Object.values(formFields).filter(({ visible }) => visible);
 
   const refreshVisibility = () => {
-    controlledElements.forEach(({ visibility, show, hide }) => {
-      visibility.every(determiner => determiner(formFields)) ? show() : hide();
+    controlledElements.forEach(({ visible, show, hide }) => {
+      visible.every(determiner => determiner(formFields)) ? show() : hide();
     });
   }
 
   const handleSubmit = () => Object.values(formFields).forEach(field => validate(field, formFields));
+
+  React.useEffect(() => refreshVisibility(), [formFields]);
 
   return (
     <formContext.Provider value={{ formFields, updateFormFields, validateFieldsOn, refreshVisibility }}>
@@ -52,7 +54,7 @@ const Form = ({ fields, submit, children, ...props }) => {
 
         {submit && (
           <Component name='footer'>
-            <Button as='button' type='submit' content={submit} onClick={handleSubmit} />
+            <Button as='button' type='submit' render={submit} onClick={handleSubmit} />
           </Component>
         )}
       </Module>
@@ -66,8 +68,8 @@ Form.Field = properties => {
   const host = React.createRef();
   const { formFields, updateFormFields, validateFieldsOn, refreshVisibility } = React.useContext(formContext);
 
-  const { id, label, type, icon, group, options, fieldset, render, after, hidden } = properties;
-  const { visibility, validators, onValidation, validateOn = validateFieldsOn } = properties;
+  const { id, label, type, icon, group, options, fieldset, render, after } = properties;
+  const { visible, validators, onValidation, validateOn = validateFieldsOn } = properties;
 
   const [isValid, setIsValid] = React.useState();
   const [errorMessage, setErrorMessage] = React.useState();
@@ -102,9 +104,9 @@ Form.Field = properties => {
   }, []);
 
   return (
-    <Form.ControlledElement name='group' {...{ id, visibility, hidden, modifiers }}>
+    <Form.ControlledElement name='group' {...{ id, visible, modifiers }}>
       {label && (type !== 'checkbox' && type !== 'radio') && (
-        <Component name='label' roles={['errorSignal']} htmlFor={id} render={label} />
+        React.isValidElement(label) ? label : <Component name='label' roles={['errorSignal']} htmlFor={id} render={label} />
       )}
 
       {inputTypes.includes(type) && (
@@ -159,7 +161,7 @@ Form.Field = properties => {
 
 Form.Fieldset = ({ children, legend, fields, id, after, ...props }) => (
   <Form.ControlledElement id={id} name='fieldset' tag='fieldset' {...props}>
-    {legend && <Component name='legend'>{legend}</Component>}
+    {legend && React.isValidElement(legend) ? legend : <Component name='legend'>{legend}</Component>}
 
     {fields && <RenderFields fields={fields} group={id} />}
 
@@ -169,9 +171,9 @@ Form.Fieldset = ({ children, legend, fields, id, after, ...props }) => (
   </Form.ControlledElement>
 );
 
-Form.ControlledElement = ({ tag='div', name = 'fragment', id, hidden, visibility, modifiers, ...props }) => {
+Form.ControlledElement = ({ tag='div', name = 'fragment', id, visible, modifiers, ...props }) => {
   const { formFields, updateFormFields } = React.useContext(formContext);
-  const [isHidden, setIsHidden] = React.useState(hidden);
+  const [isHidden, setIsHidden] = React.useState(false);
 
   React.useEffect(() => {
     if (!formFields[id]) {
@@ -180,7 +182,7 @@ Form.ControlledElement = ({ tag='div', name = 'fragment', id, hidden, visibility
 
         [id]: {
           ...prev[id], 
-          visibility,
+          visible,
           show: () => setIsHidden(false),
           hide: () => setIsHidden(true)
         }

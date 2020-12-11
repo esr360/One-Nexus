@@ -171,12 +171,6 @@
 
 > An object containing the list of available font sizes to use for the Button Module, which will be passed to the [`fontSize()` utility function](#TODO)
 
-###### Inside `./assets/styles.js`
-
-```js
-'font-size': utils.fontSize(state, config.sizes, theme, config)
-```
-
 ###### Sample
 
 ```js
