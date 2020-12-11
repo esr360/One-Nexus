@@ -494,11 +494,11 @@ Array<(fields: { [id: string]: FieldObject }) => boolean>
 
 In order for a field to be `visible`, every function within the array must return `true`, otherwise the field will remain/become hidden. Fields with a `visible` property will be hidden by default unless all conditions within the `visible` array are `true` when the form loads.
 
-#### FieldObject.label
+#### `FieldObject.label`
 
 This property will behave differently depending on whether you pass a String, or a [ReactElement](https://reactjs.org/docs/glossary.html#elements). To learn more, read the [Controlling HTML Output](#TODO) section of One-Nexus Modules page.
 
-#### FieldObject.legend
+#### `FieldObject.legend`
 
 This property will behave differently depending on whether you pass a String, or a [ReactElement](https://reactjs.org/docs/glossary.html#elements). To learn more, read the [Controlling HTML Output](#TODO) section of One-Nexus Modules page.
 
