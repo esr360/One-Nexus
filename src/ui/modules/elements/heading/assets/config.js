@@ -1,14 +1,14 @@
 export default theme => ({
-    'name': 'heading',
-    'sizes': theme.typography.sizes,
+    name: 'heading',
+    sizes: theme.typography.sizes,
+
+    'in-group': {
+      'line-height': 0.8,
+      gutter: '0.5em',
+    },
     
     group: {
-        gutter: theme.core.margin,
-
-        heading: {
-            'line-height': 0.8,
-
-            gutter: '0.5em'
-        }
+      object: true,
+      gutter: theme.tokens.margin,
     }
 });

@@ -1,89 +1,97 @@
 import Color from 'color';
 
-export default ({ theme, state, context, config, utils }) => [config, {
-  'display': 'inline-block',
-  'border-color': 'transparent',
-  'text-decoration': 'none',
-  'vertical-align': 'middle',
-  'cursor': 'pointer',
-  'font-size': utils.fontSize(state, config, theme),
+export default ({ theme, state, config, utils }) => {
+  const brand = Module.modifiers(state).find($ => config.colors[$]);
+  const brandColor = config.colors[brand];
+  const { lightThreshold, colorInverse } = config;
 
-  ...Object.entries(config.colors).reduce(($, [key, value]) => state[key] ? {
-    'background-color': value,
+  const styles = {
+    'display': 'inline-block',
     'border-color': 'transparent',
+    'text-decoration': 'none',
+    'vertical-align': 'middle',
+    'cursor': 'pointer',
+    'font-size': utils.fontSize(state, config, theme),
 
-    'color': (prev) => {
-      return Color(value).luminosity() > config.lightThreshold ? config.colorInverse : prev;
-    },
-
-    'hovered': {
-      'font-size': '1.5em',
-      'background-color': config.hovered['background-color']?.(value)
-    },
-
-    'is-border': {
-      'background-color': 'transparent',
-      'color': value,
-      'border-color': value,
-
+    ...(brand && { [`is-${brand}`]: {
+      'background-color': brandColor,
+      'border-color': 'transparent',
+      'color': (prev) => Color(brandColor).luminosity() > lightThreshold ? colorInverse : prev,
+  
       'hovered': {
-        'background-color': value,
-        'color': config.color
+        'background-color': config.hovered['background-color']?.(brandColor)
+      },
+  
+      'is-border': {
+        'background-color': 'transparent',
+        'color': brandColor,
+        'border-color': brandColor,
+  
+        'hovered': {
+          'background-color': brandColor,
+          'color': config.color
+        }
       }
-    }
-  } : $, {}),
+    }}),
 
-  'is-block': {
-    'width': '100%',
-    'text-align': 'center'
-  },
+    'is-block': {
+      'width': '100%',
+      'text-align': 'center'
+    },
 
-  'is-disabled': {
-    'transition-delay': '999s',
-    'cursor': 'not-allowed'
-  },
+    'is-round': {
+      'border-radius': config.roundRadius
+    },
 
-  'is-icon': {
-    'text-align': 'center'
-  },
+    'is-disabled': {
+      'transition-delay': '999s',
+      'cursor': 'not-allowed'
+    },
 
-  icon: () => ({
-    'height': '1em',
-    'width': '1em'
-  }),
+    'is-icon': {
+      'text-align': 'center'
+    },
 
-  ...(context.group && {
-    'margin-left': state.isFirstChild ? 0 : null,
-
-    ...(context.group.pills && {
-      'flex-basis': '100%',
-      'margin-left': 0,
-
-      ...(context.group.round && {
-        'border-top-left-radius': state.isFirstChild && config['is-round']['border-radius'],
-        'border-bottom-left-radius': state.isFirstChild && config['is-round']['border-radius'],
-        'border-top-right-radius': state.isLastChild && config['is-round']['border-radius'],
-        'border-bottom-right-radius': state.isLastChild && config['is-round']['border-radius'],
-      })
+    icon: () => ({
+      'height': '1em',
+      'width': '1em'
     }),
 
-    ...(context.group.stack && {
-      ...(utils.minWidth(config.group.stack) && {
-        'display': 'block',
-        'width': '100%',
-        'margin-top': '1em',
-        'margin-right': 0,
-        'margin-left': 0,
-        'text-align': 'center'
-      })
+    group: ({ state, config: { gutter, object, stack } }) => ({
+      ...(object && utils.object(state, gutter)),
+
+      'is-pills': {
+        'display': 'flex'
+      },
+
+      [config.name]: ({ config: { roundRadius }, state: { isFirstChild, isLastChild } }) => ({
+        'margin-left': isFirstChild ? 0 : null,
+
+        ...(state.pills && {
+          'flex-basis': '100%',
+          'margin-left': 0
+        }),
+  
+        ...(state.pills && state.round && {
+          'border-top-left-radius': isFirstChild && roundRadius,
+          'border-bottom-left-radius': isFirstChild && roundRadius,
+          'border-top-right-radius': isLastChild && roundRadius,
+          'border-bottom-right-radius': isLastChild && roundRadius,
+        }),
+  
+        ...(state.stack && {
+          ...(utils.minWidth(stack) && {
+            'display': 'block',
+            'width': '100%',
+            'margin-top': '1em',
+            'margin-right': 0,
+            'margin-left': 0,
+            'text-align': 'center'
+          })
+        })
+      }),
     })
-  }),
+  }
 
-  group: ({ state }) => ({
-    ...(config.group.object && utils.object(state, config.group.gutter)),
-
-    'is-pills': {
-      'display': 'flex'
-    }
-  })
-}];
+  return [config, styles];
+}

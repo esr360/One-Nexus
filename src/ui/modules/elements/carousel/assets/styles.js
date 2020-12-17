@@ -15,9 +15,8 @@ export default ({ state, config, utils }) => [config, {
     'width': '100%'
   }),
 
-  control: ({ state, context }) => ({
-    // ...(console.log(context, state) && {}),
-    'margin-left': state.next && 'auto',
+  control: ({ state: next }) => ({
+    'margin-left': next && 'auto',
 
     ':focus': {
       'outline': 0
@@ -36,9 +35,9 @@ export default ({ state, config, utils }) => [config, {
     'text-align': 'center'
   }),
 
-  dot: ({ state }) => ({
+  dot: ({ state: isFirstChild }) => ({
     'border-radius': '50%',
-    'margin-left': state.isFirstChild ? 0 : '0.5em',
+    'margin-left': isFirstChild ? 0 : '0.5em',
 
     ':focus': {
       'outline': 0

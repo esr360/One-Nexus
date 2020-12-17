@@ -6,6 +6,7 @@ export default (theme) => ({
   fluidScaling: true,
   sizes: theme.typography.sizes,
   colorInverse: theme.colors.opaque['dark-4'],
+  roundRadius: '1.2em',
 
   colors: {
     ...theme.colors.brand,
@@ -24,7 +25,7 @@ export default (theme) => ({
   'border-style': 'solid',
 
   'hovered': {
-    'background-color': prev => Color(prev).desaturate(0.1).lighten(0.5).hex()
+    'background-color': (prev) => Color(prev).desaturate(0.1).lighten(0.5 - Color(prev).luminosity()).hex()
   },
 
   active: {
@@ -34,10 +35,6 @@ export default (theme) => ({
 
   'is-disabled': {
     'opacity': 0.6
-  },
-
-  'is-round': {
-    'border-radius': '1.2em'
   },
 
   'in-group': {

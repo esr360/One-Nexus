@@ -29,16 +29,12 @@ export default ({ config, theme, utils }) => [config, {
     'margin-right': '1em' 
   }])),
 
-  foo: {
-    color: 'blue'
-  },
+  fieldset: ({ state, config }) => ({
+    ...(utils.object(state, config.gutter)),
 
-  fieldset: ({ state }) => ({
-    ...(utils.object(state, config.fieldset.gutter)),
-
-    'margin-left': '0',
-    'margin-right': '0',
-    'padding': '0',
+    'margin-left': 0,
+    'margin-right': 0,
+    'padding': 0,
     'border': 'none'
   }),
 

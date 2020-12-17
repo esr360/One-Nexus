@@ -7,26 +7,26 @@ export default ({ state, config, utils }) => [config, {
     ...utils.verticalRhythm(state, 'bottom')
   }),
 
-  title: ({ context }) => ({
+  title: ({ context: panel }) => ({
     'display': 'block',
     'margin': 0,
     'backface-visibility': 'hidden',
     'font-weight': 'normal',
     'line-height': 1,
     'cursor': 'pointer',
-    'border-bottom': context.panel.isLastChild ? `1px solid ${config.title['border-color']}` : 'none'
+    'border-bottom': panel.isLastChild ? `1px solid ${config.title['border-color']}` : 'none'
   }),
 
-  toggle: ({ context }) => ({
+  toggle: ({ context: panel }) => ({
     'float': 'right',
     'line-height': 0.75,
-    'transform': context.panel.active ? 'rotate(90deg) translateZ(0)' : 'none'
+    'transform': panel.active ? 'rotate(90deg) translateZ(0)' : 'none'
   }),
 
-  content: ({ context }) => ({
-    'display': context.panel.active ? 'block' : 'none',
+  content: ({ context: panel }) => ({
+    'display': panel.active ? 'block' : 'none',
     'margin': 0,
     'margin-top': '-1px',
-    'border-bottom': context.panel.isLastChild ? `1px solid ${config.title['border-color']}` : 'none'
+    'border-bottom': panel.isLastChild ? `1px solid ${config.title['border-color']}` : 'none'
   })
 }, state];

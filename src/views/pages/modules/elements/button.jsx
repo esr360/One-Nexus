@@ -3,10 +3,11 @@ import Base from '../../../layouts/base';
 const Buttons = props => (
   <Base {...props.config.views}>
     <Group>
-      <Heading>Hello</Heading>
+      <Button brand-2 size-1>Button 1</Button>
       <Button dribbble border size-5>Button 1</Button>
       <Button reddit>Button 2</Button>
       <Button linkedin round>Button 3</Button>
+      <Button round>Button 4</Button>
     </Group>
 
     {/* <Group>
@@ -78,13 +79,13 @@ const Buttons = props => (
       <Button>Button</Button>
       <Button grey-3>Button</Button>
       <Button>Button</Button>
-    </Group>
+    </Group> */}
 
     <Group object pills round>
       <Button>Button</Button>
       <Button grey-3>Button</Button>
       <Button>Button</Button>
-    </Group> */}
+    </Group>
   </Base>
 );
 

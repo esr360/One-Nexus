@@ -2,7 +2,7 @@ export default ({ state, config, utils, context }) => [config, {
   ...(config.object && utils.object(state, config.gutter)),
 
   'position': 'relative',
-  'background-color': config.alerts[Object.keys(state).find($ => config.alerts[$])]?.color,
+  'background-color': Module.findValueFromState(config.alerts, state)?.color,
 
   // ...context.Container.hovered({
   //   'background-color': 'blue'
