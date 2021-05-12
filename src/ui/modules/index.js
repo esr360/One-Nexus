@@ -8,7 +8,7 @@ export { default as Container } from './elements/Container';
 export { default as Form } from './elements/Form';
 export { default as Heading } from './elements/Heading';
 export { default as Icon } from './elements/Icon';
-// export { default as Image } from './elements/image/image';
+export { default as Image } from './elements/Image';
 export { default as List } from './elements/List/List';
 // export { default as Modal } from './elements/modal/modal.jsx';
 export { default as Paragraph } from './elements/Paragraph/Paragraph';

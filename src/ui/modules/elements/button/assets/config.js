@@ -10,8 +10,9 @@ export default (theme) => ({
 
   colors: {
     ...theme.colors.brand,
+    ...theme.colors.testGrey,
     ...theme.colors.alert,
-    ...theme.colors.greyscale,
+    // ...theme.colors.greyscale,
     ...theme.colors.social
   },
 
@@ -25,7 +26,15 @@ export default (theme) => ({
   'border-style': 'solid',
 
   'hovered': {
-    'background-color': (prev) => Color(prev).desaturate(0.1).lighten(0.5 - Color(prev).luminosity()).hex()
+    'background-color': (prev) => {
+      const lightness = Color(prev).lightness();
+      const luminosity = Color(prev).luminosity();
+      const contrast = Color(prev).contrast(Color(prev).lighten(0.25));
+
+      console.log(Math.round(lightness), luminosity, Number(contrast.toPrecision(2)));
+
+      return Color(prev).lightness(lightness + 10).hex();
+    }
   },
 
   active: {
@@ -47,3 +56,18 @@ export default (theme) => ({
     stack: theme.grid.breakpoints['break-2']
   }
 });
+
+// 100 => 95
+// 95  => 90
+// 90  => 85
+// 85  => 90
+// 80  => 85
+// 70  => 80
+// 60  => 70
+// 55  => 65
+// 50  => 60
+// 40  => 55
+// 30  => 45
+// 20  => 40
+// 10  => 35
+// 0   => 30

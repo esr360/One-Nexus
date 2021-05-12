@@ -12,6 +12,22 @@ export default {
       'info': '#4B8CDC',
       'success': '#3BB85D'
     },
+    testGrey: {
+      'light-100': 'hsl(0, 0%, 100%)',
+      'light-95': 'hsl(0, 0%, 95%)',
+      'light-90': 'hsl(0, 0%, 90%)',
+      'light-85': 'hsl(0, 0%, 85%)',
+      'light-80': 'hsl(0, 0%, 80%)',
+      'light-70': 'hsl(0, 0%, 70%)',
+      'light-60': 'hsl(0, 0%, 60%)',
+      'light-55': 'hsl(0, 0%, 55%)',
+      'light-50': 'hsl(0, 0%, 50%)',
+      'light-40': 'hsl(0, 0%, 40%)',
+      'light-30': 'hsl(0, 0%, 30%)',
+      'light-20': 'hsl(0, 0%, 20%)',
+      'light-10': 'hsl(0, 0%, 10%)',
+      'light-0': 'hsl(0, 0%, 0%)',
+    },
     greyscale: {
       'white': '#ffffff',
       'grey-1': '#f8f8f8',

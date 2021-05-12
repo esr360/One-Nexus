@@ -1,9 +1,8 @@
 import Color from 'color';
 
-export default ({ theme, state, config, utils }) => {
-  const brand = Module.modifiers(state).find($ => config.colors[$]);
-  const brandColor = config.colors[brand];
-  const { lightThreshold, colorInverse } = config;
+export default ({ theme, state, config: { lightThreshold, colorInverse, ...config }, utils }) => {
+  const [brand, brandColor] = Module.findPropFromConfig(state, config.colors);
+  const brandColorHovered = config.hovered['background-color']?.(brandColor);
 
   const styles = {
     'display': 'inline-block',
@@ -13,13 +12,14 @@ export default ({ theme, state, config, utils }) => {
     'cursor': 'pointer',
     'font-size': utils.fontSize(state, config, theme),
 
-    ...(brand && { [`is-${brand}`]: {
+    ...(state[brand] && {
       'background-color': brandColor,
       'border-color': 'transparent',
-      'color': (prev) => Color(brandColor).luminosity() > lightThreshold ? colorInverse : prev,
+      'color': prev => Color(brandColor).luminosity() > lightThreshold ? colorInverse : prev,
   
       'hovered': {
-        'background-color': config.hovered['background-color']?.(brandColor)
+        'background-color': brandColorHovered,
+        'color': Color(brandColorHovered).luminosity() > lightThreshold ? null : 'white'
       },
   
       'is-border': {
@@ -32,7 +32,7 @@ export default ({ theme, state, config, utils }) => {
           'color': config.color
         }
       }
-    }}),
+    }),
 
     'is-block': {
       'width': '100%',
