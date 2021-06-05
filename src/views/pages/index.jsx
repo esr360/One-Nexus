@@ -245,9 +245,9 @@ const Index = props => (
             <List.Item>Foo</List.Item>
         </List>
 
-        <Modal trigger={ <div>Modal Trigger</div> }>
+        {/* <Modal trigger={ <div>Modal Trigger</div> }>
             Modal
-        </Modal>
+        </Modal> */}
 
         <Paragraph>Paragraph</Paragraph>
 
