@@ -1,7 +1,6 @@
-import Base from '../../../layouts/base';
-
-export default props => (
-    <Base {...props.config.views}>
+const Modals = ({ layouts, ...props }) => {
+  return (
+    <layouts.base {...props.config.views}>
         {/* <Modal trigger={ <div>Trigger 1</div> }>
             <Modal.close modifiers={['icon']}>close</Modal.close>
             <Modal.content>
@@ -29,5 +28,8 @@ export default props => (
         <Modal close={false} animate='right' trigger={ <Button>Trigger</Button> }>
             Modal 3
         </Modal>
-    </Base>
-);
+    </layouts.base>
+  );
+}
+
+export default Modals;

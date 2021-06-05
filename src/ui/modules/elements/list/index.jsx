@@ -15,8 +15,6 @@ const List = ({ children, ...props }) => {
   )
 }
 
-List.defaultProps = { config, styles }
-
 List.Item = ({ icon, children }) => {
   const { arrow, arrowIcon } = React.useContext(ListContext);
 
@@ -27,5 +25,7 @@ List.Item = ({ icon, children }) => {
     </Component>
   )
 };
+
+List.defaultProps = { config, styles }
 
 export default List;

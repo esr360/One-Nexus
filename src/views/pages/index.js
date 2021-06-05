@@ -10,7 +10,7 @@ export { default as Heading } from './modules/elements/Heading.jsx';
 export { default as Icon } from './modules/elements/Icon.jsx';
 export { default as Image } from './modules/elements/Image.jsx';
 export { default as List } from './modules/elements/List.jsx';
-export { default as modals } from './modules/elements/modal.jsx';
+export { default as Modal } from './modules/elements/Modal.jsx';
 export { default as paragraphs } from './modules/elements/paragraph.jsx';
 export { default as tables } from './modules/elements/table.jsx';
 export { default as tabs } from './modules/elements/tabs.jsx';
