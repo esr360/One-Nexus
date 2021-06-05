@@ -4,14 +4,14 @@ export default ({ config, theme, utils }) => [config, {
   }),
 
   errorSignal: ({ context: { group } }) => ({
+    'border-color': 'currentColor',
+
     ...(group.valid && {
       'color': config.validColor,
-      'border-color': 'currentColor'
     }),
 
     ...(group.invalid && {
       'color': config.invalidColor,
-      'border-color': 'currentColor'
     })
   }),
 
@@ -54,10 +54,10 @@ export default ({ config, theme, utils }) => [config, {
   }),
 
   legend: () => ({
-    'font-weight': 'bold'
+    'position': 'absolute'
   }),
 
-  input: ({ context: { group } }) => ({
+  input: ({ context }) => ({
     'display': 'block',
     'width': '100%',
     'outline': 'inherit',
@@ -66,8 +66,8 @@ export default ({ config, theme, utils }) => [config, {
       'outline': 0
     },
     
-    ...(group.hasIcon && {
-      'padding-left': '2em'
+    ...(context.group.hasIcon && {
+      'padding-left': '2.5em'
     })
   }),
 
@@ -77,7 +77,7 @@ export default ({ config, theme, utils }) => [config, {
   }),
 
   button: () => ({
-    // 'background-color': 'red',
-    // 'font-style': 'italic'
+    'background-color': 'red',
+    'font-style': 'italic'
   })
 }];

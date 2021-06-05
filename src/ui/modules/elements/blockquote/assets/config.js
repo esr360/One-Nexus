@@ -4,6 +4,7 @@ export default (theme) => ({
   gutter: theme.tokens.margin,
 
   'font-family': 'Georgia, serif',
+  'padding': 0,
 
   'is-callout': {
     'padding': '0.5em 0.75em',
