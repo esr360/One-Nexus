@@ -9,7 +9,13 @@ const Lists = ({ layouts, ...props }) => {
 
       <List reset inline>
         <List.Item>Foo</List.Item>
-        <List.Item icon='chevron-circle-up'>Foo</List.Item>
+        <List.Item icon={<Icon glyph='times' />}>Foo</List.Item>
+        <List.Item>Foo</List.Item>
+      </List>
+
+      <List divider>
+        <List.Item>Foo</List.Item>
+        <List.Item>Foo</List.Item>
         <List.Item>Foo</List.Item>
       </List>
 
@@ -20,7 +26,7 @@ const Lists = ({ layouts, ...props }) => {
       </List>
 
       <List arrow>
-        <List.Item icon='chevron-circle-up'>Foo</List.Item>
+        <List.Item icon={<Icon glyph='chevron-circle-up' />}>Foo</List.Item>
         <List.Item>Foo</List.Item>
         <List.Item>Foo</List.Item>
       </List>

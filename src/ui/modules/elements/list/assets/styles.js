@@ -15,29 +15,27 @@ export default ({ state, config, utils, theme }) => [config, {
     'list-style': 'none',
   },
 
-  item: ({ state: { isFirstChild, isLastChild } }) => {
-    return {
-      ...(state.inline && {
-        'display': 'inline-block',
-        'padding-left': 0,
-        'margin-left': isFirstChild ? 0 : config['inline-spacing']
-      }),
-    
-      ...(state.divider && !isLastChild && {
-        'margin-bottom': '1em',
-        'padding-bottom': '1em',
-        'border-bottom': `1px dotted ${theme.colors.opaque['dark-2']}`
-      }),
+  item: ({ state: { isFirstChild, isLastChild } }) => ({
+    ...(state.inline && {
+      'display': 'inline-block',
+      'padding-left': 0,
+      'margin-left': isFirstChild ? 0 : config.inlineSpacing
+    }),
+  
+    ...(state.divider && !isLastChild && {
+      'margin-bottom': '1em',
+      'padding-bottom': '1em',
+      'border-bottom': `1px dotted ${theme.colors.opaque['dark-2']}`
+    }),
 
-      ...(state.arrow && {
-        'margin-bottom': 0,
-        'line-height': 1.7
-      }),
+    ...(state.arrow && {
+      'margin-bottom': 0,
+      'line-height': 1.7
+    }),
 
-      icon: {
-        'display': 'inline-block',
-        'margin-right': '0.5em'
-      }
+    icon: {
+      'display': 'inline-block',
+      'margin-right': '0.5em'
     }
-  }
+  })
 }];

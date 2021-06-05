@@ -27,7 +27,7 @@ const otherTypes = [
   'week'
 ];
 
-const formContext = React.createContext({});
+const FormContext = React.createContext({});
 
 const Form = ({ fields, submit, children, ...props }) => {
   const { name, validateFieldsOn } = useConfig(props);
@@ -46,7 +46,7 @@ const Form = ({ fields, submit, children, ...props }) => {
   React.useEffect(() => refreshVisibility(), [formFields]);
 
   return (
-    <formContext.Provider value={{ formFields, updateFormFields, validateFieldsOn, refreshVisibility }}>
+    <FormContext.Provider value={{ formFields, updateFormFields, validateFieldsOn, refreshVisibility }}>
       <Module name={name} tag='form' {...props}>
         {fields && <RenderFields fields={fields} />}
 
@@ -58,7 +58,7 @@ const Form = ({ fields, submit, children, ...props }) => {
           </Component>
         )}
       </Module>
-    </formContext.Provider>
+    </FormContext.Provider>
   );
 }
 
@@ -66,7 +66,7 @@ Form.defaultProps = { config, styles };
 
 Form.Field = properties => {
   const host = React.createRef();
-  const { formFields, updateFormFields, validateFieldsOn, refreshVisibility } = React.useContext(formContext);
+  const { formFields, updateFormFields, validateFieldsOn, refreshVisibility } = React.useContext(FormContext);
 
   const { id, label, type, icon, group, options, fieldset, render, after } = properties;
   const { visible, validators, onValidation, validateOn = validateFieldsOn } = properties;
@@ -172,7 +172,7 @@ Form.Fieldset = ({ children, legend, fields, id, after, ...props }) => (
 );
 
 Form.ControlledElement = ({ tag='div', name = 'fragment', id, visible, modifiers, ...props }) => {
-  const { formFields, updateFormFields } = React.useContext(formContext);
+  const { formFields, updateFormFields } = React.useContext(FormContext);
   const [isHidden, setIsHidden] = React.useState(false);
 
   React.useEffect(() => {
