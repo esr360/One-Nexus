@@ -1,26 +1,23 @@
 import config from './assets/config.js';
-import layout from './assets/layout.js';
+import styles from './assets/styles.js';
 
-/**
- * Render List module
- */
-const List = (props) => (
-    <Module {...props}>{Module.child(props)}</Module>
-);
+const List = ({ children, ...props }) => {
+  const { name } = useConfig(props);
+
+  return <Module name={name} {...props}>{children}</Module>
+}
 
 List.Item = ({ config, context, icon, children }) => {
-    if (context.arrow && !icon) icon = config['arrow-icon'];
+  // if (context.arrow && !icon) icon = config['arrow-icon'];
 
-    return (
-        <Component name='item' tag='li'>
-            {icon && <SubComponent name='icon' tag='i' className={`fa fa-${icon}`} />}{children}
-        </Component>
-    )
+  return (
+    <Component name='item' tag='li'>
+      {icon && <SubComponent name='icon' tag='i' className={`fa fa-times`} />}
+      {children}
+    </Component>
+  )
 };
 
-export default Object.assign(List, {
-    layout, config, defaultProps: {
-        name: 'List',
-        tag: 'ul'
-    }
-});
+List.defaultProps = { config, styles }
+
+export default List;

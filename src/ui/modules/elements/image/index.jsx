@@ -1,17 +1,16 @@
 import config from './assets/config.js';
-import layout from './assets/layout.js';
+import styles from './assets/styles.js';
 
-/**
- * Render Image component
- */
-const Image = props => (
-    <Module {...props}>
-        <Component name='figure' tag='img' src={props.src}>{props.children}</Component>
+const Image = ({ src, children, ...props }) => {
+  const { name } = useConfig(props);
+
+  return (
+    <Module name={name} {...props}>
+      <Component name='figure' tag='img' src={src}>{children}</Component>
     </Module>
-);
+  )
+}
 
-export default Object.assign(Image, {
-    layout, config, defaultProps: {
-        name: 'Image'
-    }
-});
+Image.defaultProps = { config, styles }
+
+export default Image;

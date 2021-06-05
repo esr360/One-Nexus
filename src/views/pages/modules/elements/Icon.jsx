@@ -1,10 +1,4 @@
 const Icons = ({ layouts, ...props }) => {
-  const [isPartyTime, setPartyTime] = React.useState(0);
-
-  React.useEffect(() => {
-    // setTimeout(() => setPartyTime(true), 3000);
-  });
-
   return (
     <layouts.base {...props.config.views}>
       <Group>

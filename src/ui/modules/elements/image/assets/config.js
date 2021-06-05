@@ -1,3 +1,3 @@
-export default theme => ({
-    'name': 'image'
+export default (theme) => ({
+  name: 'Image'
 });

@@ -8,13 +8,13 @@ export default ({ state, config, utils }) => [config, {
   }),
 
   title: ({ context:  { panel } }) => ({
-      'display': 'block',
-      'margin': 0,
-      'backface-visibility': 'hidden',
-      'font-weight': 'normal',
-      'line-height': 1,
-      'cursor': 'pointer',
-      'border-bottom': panel.isLastChild ? `1px solid ${config.title['border-color']}` : 'none'
+    'display': 'block',
+    'margin': 0,
+    'backface-visibility': 'hidden',
+    'font-weight': 'normal',
+    'line-height': 1,
+    'cursor': 'pointer',
+    'border-bottom': panel.isLastChild ? `1px solid ${config.title['border-color']}` : 'none'
   }),
 
   toggle: ({ context: { panel } }) => ({
