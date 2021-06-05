@@ -6,8 +6,10 @@ export default ({ state, config, utils }) => [config, {
   'left': 0,
   'transform': 'translateZ(0)',
   'cursor': 'pointer',
+  'visibility': 'hidden',
+  'opacity': 0,
 
-  'modifier(visible)': {
+  'is-visible': {
     'visibility': 'visible',
     'opacity': 1
   },

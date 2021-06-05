@@ -1,16 +1,16 @@
 export default ({ state, config, utils }) => [config, {
   'top': config['top-position'],
-  'visibility': 'hidden',
   'position': 'fixed',
   'max-width': '90%',
   'max-height': '90%',
   'overflow': 'auto',
+  'visibility': 'hidden',
   'opacity': 0,
 
-  // 'modifier(visible)': {
-  //   'visibility': 'visible',
-  //   'opacity': 1
-  // },
+  'is-visible': {
+    'visibility': 'visible',
+    'opacity': 1
+  },
 
   // 'modifier(animate)': {
   //   'transition': globals.core.transition,

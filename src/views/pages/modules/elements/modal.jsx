@@ -1,8 +1,4 @@
 const Modals = ({ layouts, ...props }) => {
-  const context = useModuleContext();
-
-  console.log(context);
-
   return (
     <layouts.base {...props.config.views}>
         {/* <Modal trigger={ <div>Trigger 1</div> }>

@@ -1,5 +1,5 @@
 export default props => {
-  const [showOverlay, setShowOverlay] = useState(false);
+  const [{ showOverlay, onOverlayClick }, setShowOverlay] = useState({ showOverlay: false });
 
   return (
     <Module name="page" setShowOverlay={setShowOverlay}>
@@ -50,7 +50,10 @@ export default props => {
           <a href='#'>Link 1</a>
       </Footer> */}
 
-      {showOverlay && <Overlay id='overlay' />}
+      <Overlay id='overlay' visible={showOverlay} onClick={onOverlayClick ? () => {
+        setShowOverlay({ showOverlay: false });
+        onOverlayClick();
+      } : null} />
 
       {/* <Preloader /> */}
 

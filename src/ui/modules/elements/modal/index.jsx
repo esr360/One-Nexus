@@ -1,28 +1,50 @@
+import React from 'react';
+
 import config from './assets/config.js';
 import styles from './assets/styles.js';
 
-const Modal = ({ toggle, trigger, close, animate, ...props }) => {
+const ModalContext = React.createContext({});
+
+const Modal = ({ toggle, trigger, close = true, animate, ...props }) => {
   const { name } = useConfig(props);
-  const { page, ...context } = useModuleContext();
+  const { page } = useModuleContext();
+  const [showModal, setShowModal] = useState(false);
 
-  console.log(context);
+  const toggleModal = (toggle) => {
+    setShowModal(toggle);
 
-  page.setShowOverlay(true);
+    page.setShowOverlay({
+      showOverlay: toggle,
+      onOverlayClick: () => setShowModal(false)
+    });
+  }
 
   return (
-    <React.Fragment>
-      <Module name={name} {...props}>
-        {close && <Component name='close'>{close}</Component>}
+    <ModalContext.Provider value={{ toggleModal }}>
+      <Module name={name} visible={showModal} {...props}>
+        {close && (
+          <Modal.Close>
+            <Icon glyph="times" />
+          </Modal.Close>
+        )}
 
         <Component name='content'>{props.children}</Component>
       </Module>
-    </React.Fragment>
+
+      {trigger && <div onClick={() => toggleModal(true)}>{trigger}</div>};
+    </ModalContext.Provider>
   );
 }
 
-Modal.Close = props => (
-  <Component {...props} name='close'>{props.children}</Component>
-);
+Modal.Close = props => {
+  const { toggleModal } = React.useContext(ModalContext);
+
+  return (
+    <Component name='close' {...props} onClick={() => toggleModal(false)}>
+      {props.children}
+    </Component>  
+  );
+}
 
 Modal.defaultProps = { config, styles }
 
