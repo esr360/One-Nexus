@@ -44,7 +44,6 @@ export default ({ theme, state, config: { lightThreshold, colorInverse, ...confi
     },
 
     'is-disabled': {
-      'transition-delay': '999s',
       'cursor': 'not-allowed'
     },
 
@@ -64,8 +63,16 @@ export default ({ theme, state, config: { lightThreshold, colorInverse, ...confi
         'display': 'flex'
       },
 
+      'is-grid': {
+        ...(utils.minWidth(stack) && {
+          'display': 'grid',
+          'grid-gap': '1em',
+          'grid-template-columns': `repeat(${state.columns}, 1fr)`,
+        })
+      },
+
       [config.name]: ({ config: { roundRadius }, state: { isFirstChild, isLastChild } }) => ({
-        'margin-left': isFirstChild ? 0 : null,
+        'margin-left': isFirstChild || state.grid ? 0 : null,
 
         ...(state.pills && {
           'flex-basis': '100%',
