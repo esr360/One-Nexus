@@ -16,7 +16,7 @@ import ReactDOM from 'react-dom';
 import { HashRouter, Route } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import PAX5 from '../../../PAX5/PAX5/src/pax5';
-import { Container, useTheme, useConfig, useUtils } from '../../../Synergy/Synergy/src';
+import { Container, useTheme, useConfig, useUtils, useModuleContext } from '../../../Synergy/Synergy/src';
 // import { Container, useTheme, useConfig, useUtils} from '../../../Synergy/Synergy/dist/synergy';
 
 // UI
@@ -42,6 +42,7 @@ Object.assign(window, {
   ReactDOM,
   useState,
   useContext,
+  useModuleContext,
   Fragment,
   useTheme,
   useConfig,

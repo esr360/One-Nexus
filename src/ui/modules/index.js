@@ -24,7 +24,7 @@ export { default as Well } from './elements/Well/Well';
 // export { default as Header } from './objects/header/header.jsx';
 // export { default as Logo } from './objects/logo/logo.jsx';
 // export { default as Navigation } from './objects/navigation/navigation.jsx';
-// export { default as Overlay } from './objects/overlay/overlay.jsx';
+export { default as Overlay } from './objects/Overlay';
 // export { default as Preloader } from './objects/preloader/preloader.jsx';
 // export { default as Search } from './objects/search/search.jsx';
 // export { default as SideNav } from './objects/side-nav/side-nav.jsx';

@@ -1,56 +1,60 @@
-export default props => (
-  <main>
-    {/* <Search /> */}
+export default props => {
+  const [showOverlay, setShowOverlay] = useState(false);
 
-    {/* <Header absolute {...props.header}>
-        <Component name='logo'>
-            <Logo {...props.logo} />
-        </Component>
+  return (
+    <Module name="page" setShowOverlay={setShowOverlay}>
+      {/* <Search /> */}
 
-        <Component name='navigation'>
-            <Navigation {...props.navigation} />
-            <div className='sideNav__toggle'>Toggle SideNav</div>
-            <div className='search__toggle'>Toggle Search</div>
-        </Component>
-    </Header>
+      {/* <Header absolute {...props.header}>
+          <Component name='logo'>
+              <Logo {...props.logo} />
+          </Component>
 
-    <Billboard overlay image='http://hdqwalls.com/wallpapers/colorful-polygons.jpg'>
-        Billboard <a href='google.com'>Google</a>  <a href='yahoo.com'>Yahoo</a>
-    </Billboard> */}
+          <Component name='navigation'>
+              <Navigation {...props.navigation} />
+              <div className='sideNav__toggle'>Toggle SideNav</div>
+              <div className='search__toggle'>Toggle Search</div>
+          </Component>
+      </Header>
 
-    <Container large section>
-      {/* <Breadcrumb data={[
-          {
-              label: 'level 1',
-              url: '/',
-              icon: 'home'
-          },
-          {
-              label: 'level 2',
-              url: '/'
-          },
-          {
-              label: 'level 3'
-          }
-      ]} /> */}
+      <Billboard overlay image='http://hdqwalls.com/wallpapers/colorful-polygons.jpg'>
+          Billboard <a href='google.com'>Google</a>  <a href='yahoo.com'>Yahoo</a>
+      </Billboard> */}
 
-      {/* <Breadcrumb>
-          <Breadcrumb.Item>Level 1</Breadcrumb.Item>
-          <Breadcrumb.Item>Level 2</Breadcrumb.Item>
-          <Breadcrumb.Item>Level 3</Breadcrumb.Item>
-      </Breadcrumb> */}
+      <Container large section>
+        {/* <Breadcrumb data={[
+            {
+                label: 'level 1',
+                url: '/',
+                icon: 'home'
+            },
+            {
+                label: 'level 2',
+                url: '/'
+            },
+            {
+                label: 'level 3'
+            }
+        ]} /> */}
 
-      {props.children}
-    </Container>
+        {/* <Breadcrumb>
+            <Breadcrumb.Item>Level 1</Breadcrumb.Item>
+            <Breadcrumb.Item>Level 2</Breadcrumb.Item>
+            <Breadcrumb.Item>Level 3</Breadcrumb.Item>
+        </Breadcrumb> */}
 
-    {/* <Footer>
-        <a href='#'>Link 1</a>
-    </Footer> */}
+        {props.children}
+      </Container>
 
-    {/* <Overlay id='overlay' /> */}
+      {/* <Footer>
+          <a href='#'>Link 1</a>
+      </Footer> */}
 
-    {/* <Preloader /> */}
+      {showOverlay && <Overlay id='overlay' />}
 
-    {/* <SideNav {...props.navigation} /> */}
-  </main>
-);
+      {/* <Preloader /> */}
+
+      {/* <SideNav {...props.navigation} /> */}
+    </Module>
+  );
+}
