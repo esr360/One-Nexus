@@ -50,7 +50,7 @@ export default props => {
           <a href='#'>Link 1</a>
       </Footer> */}
 
-      <Overlay id='overlay' visible={showOverlay} onClick={onOverlayClick ? () => {
+      <Overlay id='overlay' visible={showOverlay} dismissable={onOverlayClick} onClick={onOverlayClick ? () => {
         setShowOverlay({ showOverlay: false });
         onOverlayClick();
       } : null} />

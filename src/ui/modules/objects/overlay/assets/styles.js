@@ -5,9 +5,12 @@ export default ({ state, config, utils }) => [config, {
   'bottom': 0,
   'left': 0,
   'transform': 'translateZ(0)',
-  'cursor': 'pointer',
   'visibility': 'hidden',
   'opacity': 0,
+
+  'is-dismissable': {
+    'cursor': 'pointer',
+  },
 
   'is-visible': {
     'visibility': 'visible',

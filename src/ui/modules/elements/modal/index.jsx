@@ -5,8 +5,8 @@ import styles from './assets/styles.js';
 
 const ModalContext = React.createContext({});
 
-const Modal = ({ toggle, trigger, close = true, animate, ...props }) => {
-  const { name } = useConfig(props);
+const Modal = ({ toggle, trigger, animate, ...props }) => {
+  const { name, close = true } = useConfig(props);
   const { page } = useModuleContext();
   const [showModal, setShowModal] = useState(false);
 
