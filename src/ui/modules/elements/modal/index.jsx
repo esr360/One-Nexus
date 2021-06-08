@@ -3,41 +3,37 @@ import React from 'react';
 import config from './assets/config.js';
 import styles from './assets/styles.js';
 
-const ModalContext = React.createContext({});
-
-const Modal = ({ toggle, trigger, animate, ...props }) => {
-  const { name, close = true } = useConfig(props);
-  const { page } = useModuleContext();
+const Modal = ({ toggle, trigger, animate, onShow, onHide, ...props }) => {
+  const { name, close = true, ...config } = useConfig(props);
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = (toggle) => {
     setShowModal(toggle);
 
-    page.setShowOverlay({
-      showOverlay: toggle,
-      onOverlayClick: () => setShowModal(false)
-    });
+    if (toggle) {
+      // onShow?.();
+      config.onShow?.(setShowModal, onHide);
+    } else {
+      // onHide?.();
+      config.onHide?.(onHide);
+    }
   }
 
   return (
-    <ModalContext.Provider value={{ toggleModal }}>
-      <Module name={name} visible={showModal} {...props}>
-        {close && (
-          <Modal.Close>
-            <Icon glyph="times" />
-          </Modal.Close>
-        )}
+    <React.Fragment>
+      <Module name={name} visible={showModal} toggleModal={toggleModal} {...props}>
+        {close && <Modal.Close><Icon glyph="times" /></Modal.Close>}
 
         <Component name='content'>{props.children}</Component>
       </Module>
 
       {trigger && <div onClick={() => toggleModal(true)}>{trigger}</div>};
-    </ModalContext.Provider>
+    </React.Fragment>
   );
 }
 
 Modal.Close = props => {
-  const { toggleModal } = React.useContext(ModalContext);
+  const { Modal: { toggleModal } } = useModuleContext();
 
   return (
     <Component name='close' {...props} onClick={() => toggleModal(false)}>
