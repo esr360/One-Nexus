@@ -12,11 +12,15 @@ const Modal = ({ toggle, trigger, animate, onShow, onHide, ...props }) => {
     setShowModal(toggle);
 
     toggle ? onShow?.() : onHide?.();
-
-    template?.Modal?.[toggle ? 'onShow' : 'onHide']?.(() => {
-      setShowModal(false), onHide?.();
-    }, closeOnOverlayClick)
   }
+
+  React.useEffect(() => trigger?.current?.addEventListener('click', () => toggleModal(true)), []);
+
+  React.useEffect(() => {
+    const templateCallback = template?.Modal?.[showModal ? 'onShow' : 'onHide'];
+
+    templateCallback?.(() => toggleModal(!showModal), closeOnOverlayClick);
+  }, [showModal]);
 
   return (
     <React.Fragment>
@@ -26,7 +30,9 @@ const Modal = ({ toggle, trigger, animate, onShow, onHide, ...props }) => {
         <Component name='content'>{props.children}</Component>
       </Module>
 
-      {trigger && <Module.Fragment onClick={() => toggleModal(true)}>{trigger}</Module.Fragment>};
+      {React.isValidElement(trigger) && (
+        <Module.Fragment onClick={() => toggleModal(true)}>{trigger}</Module.Fragment>
+      )}
     </React.Fragment>
   );
 }

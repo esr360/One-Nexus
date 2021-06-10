@@ -1,4 +1,7 @@
 const Modals = ({ layouts, ...props }) => {
+  const [showModal, setShowModal] = useState(false);
+  const trigger1 = React.useRef();
+
   return (
     <layouts.base {...props.config.views}>
         {/* <Modal trigger={ <div>Trigger 1</div> }>
@@ -13,23 +16,26 @@ const Modals = ({ layouts, ...props }) => {
             Modal 4
         </Modal> */}
 
-        <Modal trigger={ <div>Trigger 1</div> } onHide={() => console.log('yeahhh bwoiiii')}>
-            Modal 1
+        <>
+          <div ref={trigger1}>Hello please click me</div>
+
+          <Modal trigger={trigger1}>
+            Hello do I show?
+        </Modal>
+        </>
+
+        <Modal trigger={<div>Trigger 1</div>}>
+          Modal 1
         </Modal>
 
-        <Modal trigger={ <div>Trigger 2</div> } close={false} onHide={() => console.log('yeahhh bwoiiii')}>
+        <Modal trigger={<div>Trigger 2</div>} close={false} onHide={() => console.log('yeahhh bwoiiii')}>
             <Modal.Close>close</Modal.Close>
             Modal 2
         </Modal>
 
-        <Modal trigger={ <div>Trigger 3</div> } content='Modal 3' />
+        <Modal trigger={<div>Trigger 3</div>} content='Modal 3' />
 
-        <Modal trigger='#demoTrigger'>
-            Modal Content
-        </Modal>
-        <Button id="demoTrigger">Modal Trigger</Button>
-
-        <Modal close={false} animate='right' trigger={ <Button>Trigger</Button> }>
+        <Modal close={false} animate='right' trigger={<Button>Trigger</Button>}>
             Modal 3
         </Modal>
     </layouts.base>
