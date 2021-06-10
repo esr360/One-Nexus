@@ -13,8 +13,12 @@ const Modals = ({ layouts, ...props }) => {
             Modal 4
         </Modal> */}
 
-        <Modal trigger={ <div>Trigger 2</div> } onHide={() => console.log('yeahhh bwoiiii')}>
-            <Modal.Close icon>close</Modal.Close>
+        <Modal trigger={ <div>Trigger 1</div> } onHide={() => console.log('yeahhh bwoiiii')}>
+            Modal 1
+        </Modal>
+
+        <Modal trigger={ <div>Trigger 2</div> } close={false} onHide={() => console.log('yeahhh bwoiiii')}>
+            <Modal.Close>close</Modal.Close>
             Modal 2
         </Modal>
 

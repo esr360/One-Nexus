@@ -1,22 +1,17 @@
 export default props => {
-  const [{ showOverlay, onOverlayClick }, setShowOverlay] = useState({ showOverlay: false });
+  const [showOverlay, setShowOverlay] = useState(false);
+  const onOverlayClick = React.useRef(null);
 
   const templateConfig = {
-    setShowOverlay,
-
     Modal: {
-      onShow: (setShowModal) => {
-        setShowOverlay({
-          showOverlay: true,
-          onOverlayClick: () => {
-            setShowOverlay({ showOverlay: false })
-            setShowModal(false);
-          }
-        })
+      onShow: (callback, closeOnOverlayClick = true) => {
+        setShowOverlay(true);
+
+        onOverlayClick.current = closeOnOverlayClick ? () => {
+          setShowOverlay(false), callback();
+        } : null;
       },
-      onHide: () => {
-        setShowOverlay({ showOverlay: false })
-      }
+      onHide: () => setShowOverlay(false)
     }
   }
 
@@ -24,7 +19,7 @@ export default props => {
     <Module name="template" {...templateConfig}>
       <Container large section>{props.children}</Container>
 
-      <Overlay id='overlay' visible={showOverlay} dismissable={onOverlayClick} onClick={onOverlayClick} />
+      <Overlay id='overlay' visible={showOverlay} dismissable={onOverlayClick.current} onClick={onOverlayClick.current} />
     </Module>
   );
 }

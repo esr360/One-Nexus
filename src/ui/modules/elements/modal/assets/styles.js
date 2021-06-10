@@ -12,6 +12,14 @@ export default ({ state, config, utils }) => [config, {
     'opacity': 1
   },
 
+  close: () => ({
+    cursor: 'pointer',
+
+    'is-icon': {
+      position: 'absolute'
+    }
+  }),
+
   // 'modifier(animate)': {
   //   'transition': globals.core.transition,
 
