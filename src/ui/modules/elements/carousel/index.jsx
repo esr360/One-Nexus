@@ -25,7 +25,7 @@ const Carousel = ({ slides, defaultSlide = 0, ...props }) => {
       </Component>
 
       <Component name='pager'>
-        {slides.map(($, index) => <Component name='dot' as={Dot} slide={index} key={index} />)}
+        {slides.map(($, index) => <Component name='dot' as={Dot} attributes={{ slide: index }} key={index} />)}
       </Component>
     </Module>
   );

@@ -75,4 +75,4 @@ export default ({ state, config, utils }) => [config, {
   // }),
 
   // overlay: [config.overlay.element(), config.overlay],
-}];
+}, state];

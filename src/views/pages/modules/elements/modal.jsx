@@ -21,7 +21,7 @@ const Modals = ({ layouts, ...props }) => {
 
           <Modal trigger={trigger1}>
             Hello do I show?
-        </Modal>
+          </Modal>
         </>
 
         <Modal trigger={<div>Trigger 1</div>}>
