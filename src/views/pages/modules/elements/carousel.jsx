@@ -5,10 +5,10 @@ const Carousels = ({ layouts, ...props }) => {
     <layouts.base {...props.config.views}>
       <br />
       <Carousel slides={[
-        <img src="https://picsum.photos/640/480" />,
-        <img src="https://picsum.photos/640/480" />,
-        <img src="https://picsum.photos/640/480" />,
-        <img src="https://picsum.photos/640/480" />
+        <img src="https://picsum.photos/1500/750" />,
+        <img src="https://picsum.photos/1500/750" />,
+        <img src="https://picsum.photos/1500/750" />,
+        <img src="https://picsum.photos/1500/750" />,
       ]} pager={{ display: 'none' }} />
 
       {/* <Module name='projects' as={CarouselProvider}>

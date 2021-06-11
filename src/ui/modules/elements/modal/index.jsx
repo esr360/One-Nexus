@@ -4,7 +4,7 @@ import config from './assets/config.js';
 import styles from './assets/styles.js';
 
 const Modal = ({ toggle, trigger, animate, onShow, onHide, ...props }) => {
-  const { name, closeOnOverlayClick, close } = useConfig(props);
+  const { name, close, overlay } = useConfig(props);
   const [showModal, setShowModal] = useState(false);
   const { template } = useModuleContext();
 
@@ -19,19 +19,23 @@ const Modal = ({ toggle, trigger, animate, onShow, onHide, ...props }) => {
   React.useEffect(() => {
     const templateCallback = template?.Modal?.[showModal ? 'onShow' : 'onHide'];
 
-    templateCallback?.(() => toggleModal(!showModal), closeOnOverlayClick);
+    templateCallback?.(() => toggleModal(!showModal), overlay.dismissOnClick);
   }, [showModal]);
 
   return (
     <React.Fragment>
       <Module name={name} visible={showModal} toggleModal={toggleModal} {...props}>
-        {close && <Modal.Close icon>{close.component}</Modal.Close>}
+        {close && <Modal.Close icon>{close.node}</Modal.Close>}
 
         <Component name='content'>{props.children}</Component>
       </Module>
 
       {React.isValidElement(trigger) && (
         <Module.Fragment onClick={() => toggleModal(true)}>{trigger}</Module.Fragment>
+      )}
+
+      {overlay?.component && (
+        <overlay.component visible={showModal} onClick={overlay.dismissOnClick ? () => toggleModal(false) : null} />
       )}
     </React.Fragment>
   );

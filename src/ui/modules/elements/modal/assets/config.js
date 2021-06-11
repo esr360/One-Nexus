@@ -9,12 +9,16 @@ export default (theme) => ({
   'z-index': 14,
   'top-position': '50%',
 
-  'content': {
+  overlay: {
+    dismissOnClick: true
+  },
+
+  content: {
     'padding': '2em'
   },
 
   close: {
-    component: <Icon glyph="times" />,
+    node: <Icon glyph="times" />,
 
     'is-icon': {
       'font-size': theme.typography.sizes['size-6'],

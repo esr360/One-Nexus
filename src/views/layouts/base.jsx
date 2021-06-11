@@ -19,7 +19,7 @@ export default props => {
     <Module name='template' {...templateConfig}>
       <Container large section>{props.children}</Container>
 
-      <Overlay visible={showOverlay} dismissable={onOverlayClick.current} onClick={onOverlayClick.current} />
+      <Overlay visible={showOverlay} onClick={onOverlayClick.current} />
     </Module>
   );
 }
