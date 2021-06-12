@@ -1,6 +1,6 @@
 const Modals = ({ layouts, ...props }) => {
   const [showModal, setShowModal] = useState(false);
-  const trigger1 = React.useRef();
+  const modalTrigger = React.useRef();
 
   return (
     <layouts.base {...props.config.views}>
@@ -16,16 +16,16 @@ const Modals = ({ layouts, ...props }) => {
       <br />
 
       <>
-        <div ref={trigger1}>Hello please click me</div>
+        <div ref={modalTrigger}>Hello please click me</div>
 
-        <Modal trigger={trigger1}>
+        <Modal trigger={modalTrigger}>
           Hello do I show?
         </Modal>
       </>
 
       <br />
 
-      <Modal trigger={<div>Trigger 1</div>}>
+      <Modal overlay={{ closeOnClick: false }} trigger={<div>Trigger 1</div>}>
         Modal 1
       </Modal>
 

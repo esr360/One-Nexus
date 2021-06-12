@@ -1,27 +1,23 @@
-import React from 'react';
-
 import config from './assets/config.js';
 import styles from './assets/styles.js';
 
 const Modal = ({ toggle, trigger, animate, onShow, onHide, visible, ...props }) => {
-  const { name, close, overlay, transition } = useConfig(props);
+  const { name, close, overlay } = useConfig(props);
   const [showModal, setShowModal] = useState(false);
   const { template } = useModuleContext();
 
   const isVisible = visible || showModal;
 
-  const toggleModal = (toggle) => {
-    setShowModal(toggle);
+  const toggleModal = toggle => (setShowModal(toggle), toggle ? onShow?.() : onHide?.());
 
-    toggle ? onShow?.() : onHide?.();
-  }
-
-  React.useEffect(() => trigger?.current?.addEventListener('click', () => toggleModal(true)), []);
+  React.useEffect(() => {
+    trigger?.current?.addEventListener('click', () => toggleModal(true));
+  }, []);
 
   React.useEffect(() => {
     const templateCallback = template?.Modal?.[isVisible ? 'onShow' : 'onHide'];
 
-    templateCallback?.(() => toggleModal(!isVisible), overlay.dismissOnClick);
+    templateCallback?.(() => toggleModal(!isVisible), overlay.closeOnClick);
   }, [isVisible]);
 
   return (
@@ -37,7 +33,7 @@ const Modal = ({ toggle, trigger, animate, onShow, onHide, visible, ...props }) 
       )}
 
       {overlay?.component && (
-        <overlay.component visible={isVisible} onClick={overlay.dismissOnClick ? () => toggleModal(false) : null} />
+        <overlay.component visible={isVisible} onClick={overlay.closeOnClick ? () => toggleModal(false) : null} />
       )}
     </React.Fragment>
   );
