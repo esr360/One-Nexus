@@ -3,10 +3,12 @@ import React from 'react';
 import config from './assets/config.js';
 import styles from './assets/styles.js';
 
-const Modal = ({ toggle, trigger, animate, onShow, onHide, ...props }) => {
-  const { name, close, overlay } = useConfig(props);
+const Modal = ({ toggle, trigger, animate, onShow, onHide, visible, ...props }) => {
+  const { name, close, overlay, transition } = useConfig(props);
   const [showModal, setShowModal] = useState(false);
   const { template } = useModuleContext();
+
+  const isVisible = visible || showModal;
 
   const toggleModal = (toggle) => {
     setShowModal(toggle);
@@ -17,14 +19,14 @@ const Modal = ({ toggle, trigger, animate, onShow, onHide, ...props }) => {
   React.useEffect(() => trigger?.current?.addEventListener('click', () => toggleModal(true)), []);
 
   React.useEffect(() => {
-    const templateCallback = template?.Modal?.[showModal ? 'onShow' : 'onHide'];
+    const templateCallback = template?.Modal?.[isVisible ? 'onShow' : 'onHide'];
 
-    templateCallback?.(() => toggleModal(!showModal), overlay.dismissOnClick);
-  }, [showModal]);
+    templateCallback?.(() => toggleModal(!isVisible), overlay.dismissOnClick);
+  }, [isVisible]);
 
   return (
     <React.Fragment>
-      <Module name={name} visible={showModal} toggleModal={toggleModal} {...props}>
+      <Module name={name} visible={isVisible} toggleModal={toggleModal} {...props}>
         {close && <Modal.Close icon>{close.node}</Modal.Close>}
 
         <Component name='content'>{props.children}</Component>
@@ -35,7 +37,7 @@ const Modal = ({ toggle, trigger, animate, onShow, onHide, ...props }) => {
       )}
 
       {overlay?.component && (
-        <overlay.component visible={showModal} onClick={overlay.dismissOnClick ? () => toggleModal(false) : null} />
+        <overlay.component visible={isVisible} onClick={overlay.dismissOnClick ? () => toggleModal(false) : null} />
       )}
     </React.Fragment>
   );

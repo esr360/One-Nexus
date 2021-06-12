@@ -10,7 +10,8 @@ export default (theme) => ({
   'top-position': '50%',
 
   overlay: {
-    dismissOnClick: true
+    dismissOnClick: true,
+    // component: Overlay
   },
 
   content: {
