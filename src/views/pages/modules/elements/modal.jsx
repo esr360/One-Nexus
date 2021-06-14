@@ -18,22 +18,23 @@ const Modals = ({ layouts, ...props }) => {
       <>
         <div ref={modalTrigger}>Hello please click me</div>
 
-        <Modal trigger={modalTrigger}>
-          Hello do I show?
+        <Modal trigger={modalTrigger} animate='top'>
+          Hello do I show with top animation?
         </Modal>
       </>
 
       <br />
 
-      <Modal overlay={{ closeOnClick: false }} trigger={<div>Trigger 1</div>}>
-        Modal 1
+      <Modal overlay={{ closeOnClick: false }} animate='bottom' trigger={<div>Trigger 1</div>}>
+        Modal 1 with bottom animation and no overlay click close
       </Modal>
 
       <br />
 
-      <Modal trigger={<div>Trigger 2</div>} close={false} onHide={() => console.log('yeahhh bwoiiii')}>
+      <Modal trigger={<div>Trigger 2</div>} close={false} animate={false}>
           <Modal.Close>close</Modal.Close>
-          Modal 2
+
+          Modal 2 with custom close and no animation
       </Modal>
 
       <br />

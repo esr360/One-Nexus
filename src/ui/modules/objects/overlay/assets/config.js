@@ -3,5 +3,5 @@ export default (theme) => ({
   'background': theme.colors.opaque['dark-4'],
   'light-background': theme.colors.greyscale.white,
   'z-index': 11,
-  'transition': theme.tokens.transition
+  'transition': theme.tokens.transition,
 })

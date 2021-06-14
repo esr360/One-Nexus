@@ -1,7 +1,7 @@
 export default (theme) => ({
   name: 'Modal',
+  animate: 'left',
 
-  'dafault-animation': 'left',
   'background': theme.colors.greyscale['grey-1'],
   'width': '650px',
   'border-radius': 0,
@@ -11,7 +11,7 @@ export default (theme) => ({
 
   overlay: {
     closeOnClick: true,
-    // component: Overlay
+    component: Overlay,
   },
 
   content: {

@@ -1,8 +1,8 @@
 import config from './assets/config.js';
 import styles from './assets/styles.js';
 
-const Modal = ({ toggle, trigger, animate, onShow, onHide, visible, ...props }) => {
-  const { name, close, overlay } = useConfig(props);
+const Modal = ({ toggle, trigger, onShow, onHide, visible, ...props }) => {
+  const { name, close, overlay, animate } = useConfig(props);
   const [showModal, setShowModal] = useState(false);
   const { template } = useModuleContext();
 
@@ -20,9 +20,11 @@ const Modal = ({ toggle, trigger, animate, onShow, onHide, visible, ...props }) 
     templateCallback?.(() => toggleModal(!isVisible), overlay.closeOnClick);
   }, [isVisible]);
 
+  const modifiers = { [`animate-${animate}`]: Boolean(animate) };
+
   return (
     <React.Fragment>
-      <Module name={name} visible={isVisible} toggleModal={toggleModal} {...props}>
+      <Module name={name} visible={isVisible} toggleModal={toggleModal} {...modifiers} {...props}>
         {close && <Modal.Close icon>{close.node}</Modal.Close>}
 
         <Component name='content'>{props.children}</Component>
@@ -33,7 +35,7 @@ const Modal = ({ toggle, trigger, animate, onShow, onHide, visible, ...props }) 
       )}
 
       {overlay?.component && (
-        <overlay.component visible={isVisible} onClick={overlay.closeOnClick ? () => toggleModal(false) : null} />
+        <overlay.component {...Module.props(overlay)} visible={isVisible} onClick={() => toggleModal(false)} />
       )}
     </React.Fragment>
   );
