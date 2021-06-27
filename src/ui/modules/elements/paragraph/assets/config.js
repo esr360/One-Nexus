@@ -1,3 +1,3 @@
-export default theme => ({
-    'name': 'paragraph'
-})
+export default (theme) => ({
+  name: 'Paragraph'
+});

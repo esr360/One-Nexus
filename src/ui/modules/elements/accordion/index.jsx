@@ -24,7 +24,7 @@ const Accordion = ({ panels, ...props }) => {
   );
   
   function panelUpdater(id, persist, callback) {
-    callback && callback(live.includes(id) ? 'close' : 'open');
+    callback?.(live.includes(id) ? 'close' : 'open');
   
     return live.reduce(($, panel) => {
       return panel === id ? ($ = $.filter(item => item !== id)) && $ : persist && $.push(panel), $;

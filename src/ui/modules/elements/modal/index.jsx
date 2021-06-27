@@ -34,7 +34,7 @@ const Modal = ({ toggle, trigger, onShow, onHide, visible, ...props }) => {
         <Module.Fragment onClick={() => toggleModal(true)}>{trigger}</Module.Fragment>
       )}
 
-      {overlay?.component && (
+      {overlay.component && (
         <overlay.component {...Module.props(overlay)} visible={isVisible} onClick={() => toggleModal(false)} />
       )}
     </React.Fragment>

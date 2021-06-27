@@ -11,7 +11,7 @@ export { default as Icon } from './elements/Icon';
 export { default as Image } from './elements/Image';
 export { default as List } from './elements/List';
 export { default as Modal } from './elements/Modal';
-export { default as Paragraph } from './elements/Paragraph/Paragraph';
+export { default as Paragraph } from './elements/Paragraph';
 // export { default as Table } from './elements/table/table';
 // export { default as Tabs } from './elements/tabs/tabs.jsx';
 // export { default as Tooltip } from './elements/tooltip/tooltip';
